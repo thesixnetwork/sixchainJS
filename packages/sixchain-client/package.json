@@ -1,0 +1,51 @@
+{
+  "name": "@thesixnetwork/sixchain-client",
+  "version": "1.0.0",
+  "description": "SIX Protocol sdk",
+  "author": "sixnetwork <hamdee@six.network>",
+  "homepage": "https://github.com/thesixnetwork/sixchain-sdk",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thesixnetwork/sixchain-sdk"
+  },
+  "scripts": {
+    "copy": "copyfiles -f ../../LICENSE README.md package.json dist",
+    "clean": "rimraf dist/**",
+    "prepare": "npm run build",
+    "build": "npm run clean; tsc; tsc -p tsconfig.esm.json; npm run copy",
+    "lint": "eslint . --fix",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "bugs": {
+    "url": "https://github.com/thesixnetwork/sixchainJS/issues"
+  },
+  "dependencies": {
+    "@cosmjs/cosmwasm-stargate": "^0.28.13",
+    "@cosmjs/launchpad": "0.27.0",
+    "@cosmjs/proto-signing": "0.27.0",
+    "@cosmjs/stargate": "0.27.0",
+    "@types/lodash": "^4.14.182",
+    "@web3auth/core": "^4.0.0-alpha.0",
+    "axios": "^0.27.2",
+    "cross-fetch": "^3.1.5",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.1.1",
+    "cryptojs": "^2.5.3",
+    "dotenv": "^16.0.3",
+    "ethers": "^6.13.4",
+    "lodash": "^4.17.21",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.2",
+    "@types/node": "^18.8.4",
+    "jest": "^29.0.3"
+  }
+}
