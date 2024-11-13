@@ -1,6 +1,5 @@
-import { SixDataChainConnector, typesTxNFTManager} from "@thesixnetwork/sixchain-client";
+import { SixDataChainConnector, typesTxNFTManager, fee} from "@thesixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee";
 import exampleNFTData from "../resource/nft-metadata-example.json";
 
 const main = async () => {
@@ -17,7 +16,7 @@ const main = async () => {
     // Get index of account
     const address = (await accountSigner.getAccounts())[0].address;
     const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-      gasPrice: GasPrice.fromString("1.25usix"),
+      gasPrice: fee.GasPrice.fromString("1.25usix"),
     });
   
     const msgArray: Array<EncodeObject> = [];

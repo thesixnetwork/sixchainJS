@@ -13,3 +13,15 @@ it('cosmos', () => {
   });
   expect(message).toMatchSnapshot();
 });
+
+it('stakingV2', () => {
+  const message = cosmos.staking.v2beta1.MessageComposer.fromPartial.delegate({
+    amount: {
+      amount: '1',
+      denom: 'uatom'
+    },
+    delegatorAddress:"myaddress",
+    validatorAddress:"valaddress"
+  });
+  expect(message).toMatchSnapshot();
+});
