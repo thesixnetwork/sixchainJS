@@ -10,7 +10,7 @@
     "sourceMap": false,
     "declaration": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
   },
   "exclude": ["dist", "node_modules"]
 }

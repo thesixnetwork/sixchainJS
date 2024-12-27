@@ -7,15 +7,18 @@ import {
 } from "../../../cosmos/staking/v1beta1/staking";
 import { Any } from "../../../google/protobuf/any";
 import { Coin } from "../../../cosmos/base/v1beta1/coin";
+import { WhitelistDelegator } from "../../../cosmos/staking/v1beta1/whitelist";
 
 export const protobufPackage = "cosmos.staking.v1beta1";
 
+/** MsgSetValidatorApproval */
 export interface MsgSetValidatorApproval {
   approver_address: string;
   new_approver_address: string;
   enabled: boolean;
 }
 
+/** MsgSetValidatorApprovalResponse */
 export interface MsgSetValidatorApprovalResponse {}
 
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
@@ -33,6 +36,7 @@ export interface MsgCreateValidator {
   approver_address: string;
   pubkey: Any | undefined;
   value: Coin | undefined;
+  special_mode: boolean;
 }
 
 /** MsgCreateValidatorResponse defines the Msg/CreateValidator response type. */
@@ -51,6 +55,8 @@ export interface MsgEditValidator {
   commission_rate: string;
   min_self_delegation: string;
   max_license: string;
+  license_mode: boolean;
+  special_mode: boolean;
 }
 
 /** MsgEditValidatorResponse defines the Msg/EditValidator response type. */
@@ -98,6 +104,30 @@ export interface MsgUndelegate {
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponse {
   completion_time: Date | undefined;
+}
+
+/** MsgCreateWhitelistDelegator defines the Msg/MsgCreateWhitelistDelegator response type. */
+export interface MsgCreateWhitelistDelegator {
+  creator: string;
+  validator_address: string;
+  delegator_address: string;
+}
+
+/** MsgDeleteWhitelistDelegator defines the Msg/MsgCreateWhitelistDelegator response type. */
+export interface MsgDeleteWhitelistDelegator {
+  creator: string;
+  validator_address: string;
+  delegator_address: string;
+}
+
+/** MsgCreateWhitelistdelegatorResponse defines the Msg/MsgListCreateWhitelistDelegator response type. */
+export interface MsgCreateWhitelistdelegatorResponse {
+  whitelist_delegator: WhitelistDelegator | undefined;
+}
+
+/** MsgCreateWhitelistdelegatorResponse defines the Msg/MsgListDeleteWhitelistDelegator response type. */
+export interface MsgDeleteWhitelistdelegatorResponse {
+  whitelist_delegator: WhitelistDelegator | undefined;
 }
 
 const baseMsgSetValidatorApproval: object = {
@@ -280,6 +310,7 @@ const baseMsgCreateValidator: object = {
   delegator_address: "",
   validator_address: "",
   approver_address: "",
+  special_mode: false,
 };
 
 export const MsgCreateValidator = {
@@ -332,6 +363,9 @@ export const MsgCreateValidator = {
     if (message.value !== undefined) {
       Coin.encode(message.value, writer.uint32(106).fork()).ldelim();
     }
+    if (message.special_mode === true) {
+      writer.uint32(112).bool(message.special_mode);
+    }
     return writer;
   },
 
@@ -380,6 +414,9 @@ export const MsgCreateValidator = {
           break;
         case 13:
           message.value = Coin.decode(reader, reader.uint32());
+          break;
+        case 14:
+          message.special_mode = reader.bool();
           break;
         default:
           reader.skipType(tag & 7);
@@ -474,6 +511,11 @@ export const MsgCreateValidator = {
     } else {
       message.value = undefined;
     }
+    if (object.special_mode !== undefined && object.special_mode !== null) {
+      message.special_mode = Boolean(object.special_mode);
+    } else {
+      message.special_mode = false;
+    }
     return message;
   },
 
@@ -509,6 +551,8 @@ export const MsgCreateValidator = {
       (obj.pubkey = message.pubkey ? Any.toJSON(message.pubkey) : undefined);
     message.value !== undefined &&
       (obj.value = message.value ? Coin.toJSON(message.value) : undefined);
+    message.special_mode !== undefined &&
+      (obj.special_mode = message.special_mode);
     return obj;
   },
 
@@ -597,6 +641,11 @@ export const MsgCreateValidator = {
     } else {
       message.value = undefined;
     }
+    if (object.special_mode !== undefined && object.special_mode !== null) {
+      message.special_mode = object.special_mode;
+    } else {
+      message.special_mode = false;
+    }
     return message;
   },
 };
@@ -658,6 +707,8 @@ const baseMsgEditValidator: object = {
   commission_rate: "",
   min_self_delegation: "",
   max_license: "",
+  license_mode: false,
+  special_mode: false,
 };
 
 export const MsgEditValidator = {
@@ -679,6 +730,12 @@ export const MsgEditValidator = {
     }
     if (message.max_license !== "") {
       writer.uint32(42).string(message.max_license);
+    }
+    if (message.license_mode === true) {
+      writer.uint32(48).bool(message.license_mode);
+    }
+    if (message.special_mode === true) {
+      writer.uint32(56).bool(message.special_mode);
     }
     return writer;
   },
@@ -704,6 +761,12 @@ export const MsgEditValidator = {
           break;
         case 5:
           message.max_license = reader.string();
+          break;
+        case 6:
+          message.license_mode = reader.bool();
+          break;
+        case 7:
+          message.special_mode = reader.bool();
           break;
         default:
           reader.skipType(tag & 7);
@@ -749,6 +812,16 @@ export const MsgEditValidator = {
     } else {
       message.max_license = "";
     }
+    if (object.license_mode !== undefined && object.license_mode !== null) {
+      message.license_mode = Boolean(object.license_mode);
+    } else {
+      message.license_mode = false;
+    }
+    if (object.special_mode !== undefined && object.special_mode !== null) {
+      message.special_mode = Boolean(object.special_mode);
+    } else {
+      message.special_mode = false;
+    }
     return message;
   },
 
@@ -766,6 +839,10 @@ export const MsgEditValidator = {
       (obj.min_self_delegation = message.min_self_delegation);
     message.max_license !== undefined &&
       (obj.max_license = message.max_license);
+    message.license_mode !== undefined &&
+      (obj.license_mode = message.license_mode);
+    message.special_mode !== undefined &&
+      (obj.special_mode = message.special_mode);
     return obj;
   },
 
@@ -804,6 +881,16 @@ export const MsgEditValidator = {
       message.max_license = object.max_license;
     } else {
       message.max_license = "";
+    }
+    if (object.license_mode !== undefined && object.license_mode !== null) {
+      message.license_mode = object.license_mode;
+    } else {
+      message.license_mode = false;
+    }
+    if (object.special_mode !== undefined && object.special_mode !== null) {
+      message.special_mode = object.special_mode;
+    } else {
+      message.special_mode = false;
     }
     return message;
   },
@@ -1407,8 +1494,427 @@ export const MsgUndelegateResponse = {
   },
 };
 
+const baseMsgCreateWhitelistDelegator: object = {
+  creator: "",
+  validator_address: "",
+  delegator_address: "",
+};
+
+export const MsgCreateWhitelistDelegator = {
+  encode(
+    message: MsgCreateWhitelistDelegator,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.validator_address !== "") {
+      writer.uint32(18).string(message.validator_address);
+    }
+    if (message.delegator_address !== "") {
+      writer.uint32(26).string(message.delegator_address);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgCreateWhitelistDelegator {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgCreateWhitelistDelegator,
+    } as MsgCreateWhitelistDelegator;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.validator_address = reader.string();
+          break;
+        case 3:
+          message.delegator_address = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgCreateWhitelistDelegator {
+    const message = {
+      ...baseMsgCreateWhitelistDelegator,
+    } as MsgCreateWhitelistDelegator;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.validator_address !== undefined &&
+      object.validator_address !== null
+    ) {
+      message.validator_address = String(object.validator_address);
+    } else {
+      message.validator_address = "";
+    }
+    if (
+      object.delegator_address !== undefined &&
+      object.delegator_address !== null
+    ) {
+      message.delegator_address = String(object.delegator_address);
+    } else {
+      message.delegator_address = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgCreateWhitelistDelegator): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.validator_address !== undefined &&
+      (obj.validator_address = message.validator_address);
+    message.delegator_address !== undefined &&
+      (obj.delegator_address = message.delegator_address);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgCreateWhitelistDelegator>
+  ): MsgCreateWhitelistDelegator {
+    const message = {
+      ...baseMsgCreateWhitelistDelegator,
+    } as MsgCreateWhitelistDelegator;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.validator_address !== undefined &&
+      object.validator_address !== null
+    ) {
+      message.validator_address = object.validator_address;
+    } else {
+      message.validator_address = "";
+    }
+    if (
+      object.delegator_address !== undefined &&
+      object.delegator_address !== null
+    ) {
+      message.delegator_address = object.delegator_address;
+    } else {
+      message.delegator_address = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgDeleteWhitelistDelegator: object = {
+  creator: "",
+  validator_address: "",
+  delegator_address: "",
+};
+
+export const MsgDeleteWhitelistDelegator = {
+  encode(
+    message: MsgDeleteWhitelistDelegator,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.validator_address !== "") {
+      writer.uint32(18).string(message.validator_address);
+    }
+    if (message.delegator_address !== "") {
+      writer.uint32(26).string(message.delegator_address);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteWhitelistDelegator {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgDeleteWhitelistDelegator,
+    } as MsgDeleteWhitelistDelegator;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.validator_address = reader.string();
+          break;
+        case 3:
+          message.delegator_address = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgDeleteWhitelistDelegator {
+    const message = {
+      ...baseMsgDeleteWhitelistDelegator,
+    } as MsgDeleteWhitelistDelegator;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.validator_address !== undefined &&
+      object.validator_address !== null
+    ) {
+      message.validator_address = String(object.validator_address);
+    } else {
+      message.validator_address = "";
+    }
+    if (
+      object.delegator_address !== undefined &&
+      object.delegator_address !== null
+    ) {
+      message.delegator_address = String(object.delegator_address);
+    } else {
+      message.delegator_address = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgDeleteWhitelistDelegator): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.validator_address !== undefined &&
+      (obj.validator_address = message.validator_address);
+    message.delegator_address !== undefined &&
+      (obj.delegator_address = message.delegator_address);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgDeleteWhitelistDelegator>
+  ): MsgDeleteWhitelistDelegator {
+    const message = {
+      ...baseMsgDeleteWhitelistDelegator,
+    } as MsgDeleteWhitelistDelegator;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (
+      object.validator_address !== undefined &&
+      object.validator_address !== null
+    ) {
+      message.validator_address = object.validator_address;
+    } else {
+      message.validator_address = "";
+    }
+    if (
+      object.delegator_address !== undefined &&
+      object.delegator_address !== null
+    ) {
+      message.delegator_address = object.delegator_address;
+    } else {
+      message.delegator_address = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgCreateWhitelistdelegatorResponse: object = {};
+
+export const MsgCreateWhitelistdelegatorResponse = {
+  encode(
+    message: MsgCreateWhitelistdelegatorResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.whitelist_delegator !== undefined) {
+      WhitelistDelegator.encode(
+        message.whitelist_delegator,
+        writer.uint32(10).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgCreateWhitelistdelegatorResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgCreateWhitelistdelegatorResponse,
+    } as MsgCreateWhitelistdelegatorResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.whitelist_delegator = WhitelistDelegator.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgCreateWhitelistdelegatorResponse {
+    const message = {
+      ...baseMsgCreateWhitelistdelegatorResponse,
+    } as MsgCreateWhitelistdelegatorResponse;
+    if (
+      object.whitelist_delegator !== undefined &&
+      object.whitelist_delegator !== null
+    ) {
+      message.whitelist_delegator = WhitelistDelegator.fromJSON(
+        object.whitelist_delegator
+      );
+    } else {
+      message.whitelist_delegator = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgCreateWhitelistdelegatorResponse): unknown {
+    const obj: any = {};
+    message.whitelist_delegator !== undefined &&
+      (obj.whitelist_delegator = message.whitelist_delegator
+        ? WhitelistDelegator.toJSON(message.whitelist_delegator)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgCreateWhitelistdelegatorResponse>
+  ): MsgCreateWhitelistdelegatorResponse {
+    const message = {
+      ...baseMsgCreateWhitelistdelegatorResponse,
+    } as MsgCreateWhitelistdelegatorResponse;
+    if (
+      object.whitelist_delegator !== undefined &&
+      object.whitelist_delegator !== null
+    ) {
+      message.whitelist_delegator = WhitelistDelegator.fromPartial(
+        object.whitelist_delegator
+      );
+    } else {
+      message.whitelist_delegator = undefined;
+    }
+    return message;
+  },
+};
+
+const baseMsgDeleteWhitelistdelegatorResponse: object = {};
+
+export const MsgDeleteWhitelistdelegatorResponse = {
+  encode(
+    message: MsgDeleteWhitelistdelegatorResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.whitelist_delegator !== undefined) {
+      WhitelistDelegator.encode(
+        message.whitelist_delegator,
+        writer.uint32(10).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteWhitelistdelegatorResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseMsgDeleteWhitelistdelegatorResponse,
+    } as MsgDeleteWhitelistdelegatorResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.whitelist_delegator = WhitelistDelegator.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgDeleteWhitelistdelegatorResponse {
+    const message = {
+      ...baseMsgDeleteWhitelistdelegatorResponse,
+    } as MsgDeleteWhitelistdelegatorResponse;
+    if (
+      object.whitelist_delegator !== undefined &&
+      object.whitelist_delegator !== null
+    ) {
+      message.whitelist_delegator = WhitelistDelegator.fromJSON(
+        object.whitelist_delegator
+      );
+    } else {
+      message.whitelist_delegator = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: MsgDeleteWhitelistdelegatorResponse): unknown {
+    const obj: any = {};
+    message.whitelist_delegator !== undefined &&
+      (obj.whitelist_delegator = message.whitelist_delegator
+        ? WhitelistDelegator.toJSON(message.whitelist_delegator)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<MsgDeleteWhitelistdelegatorResponse>
+  ): MsgDeleteWhitelistdelegatorResponse {
+    const message = {
+      ...baseMsgDeleteWhitelistdelegatorResponse,
+    } as MsgDeleteWhitelistdelegatorResponse;
+    if (
+      object.whitelist_delegator !== undefined &&
+      object.whitelist_delegator !== null
+    ) {
+      message.whitelist_delegator = WhitelistDelegator.fromPartial(
+        object.whitelist_delegator
+      );
+    } else {
+      message.whitelist_delegator = undefined;
+    }
+    return message;
+  },
+};
+
 /** Msg defines the staking Msg service. */
 export interface Msg {
+  /** Set who allow to create validator */
   SetValidatorApproval(
     request: MsgSetValidatorApproval
   ): Promise<MsgSetValidatorApprovalResponse>;
@@ -1435,6 +1941,14 @@ export interface Msg {
    * delegate and a validator.
    */
   Undelegate(request: MsgUndelegate): Promise<MsgUndelegateResponse>;
+  /** create white list for special delegator */
+  CreateWhitelistdelegator(
+    request: MsgCreateWhitelistDelegator
+  ): Promise<MsgCreateWhitelistdelegatorResponse>;
+  /** delete white list for special delegator */
+  DeleteWhitelistdelegator(
+    request: MsgDeleteWhitelistDelegator
+  ): Promise<MsgDeleteWhitelistdelegatorResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -1515,6 +2029,34 @@ export class MsgClientImpl implements Msg {
     );
     return promise.then((data) =>
       MsgUndelegateResponse.decode(new Reader(data))
+    );
+  }
+
+  CreateWhitelistdelegator(
+    request: MsgCreateWhitelistDelegator
+  ): Promise<MsgCreateWhitelistdelegatorResponse> {
+    const data = MsgCreateWhitelistDelegator.encode(request).finish();
+    const promise = this.rpc.request(
+      "cosmos.staking.v1beta1.Msg",
+      "CreateWhitelistdelegator",
+      data
+    );
+    return promise.then((data) =>
+      MsgCreateWhitelistdelegatorResponse.decode(new Reader(data))
+    );
+  }
+
+  DeleteWhitelistdelegator(
+    request: MsgDeleteWhitelistDelegator
+  ): Promise<MsgDeleteWhitelistdelegatorResponse> {
+    const data = MsgDeleteWhitelistDelegator.encode(request).finish();
+    const promise = this.rpc.request(
+      "cosmos.staking.v1beta1.Msg",
+      "DeleteWhitelistdelegator",
+      data
+    );
+    return promise.then((data) =>
+      MsgDeleteWhitelistdelegatorResponse.decode(new Reader(data))
     );
   }
 }

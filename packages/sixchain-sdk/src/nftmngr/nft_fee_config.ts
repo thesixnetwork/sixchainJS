@@ -1,5 +1,5 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export enum FeeDistributionMethod {
   BURN = 0,
   REWARD_POOL = 1,
@@ -10,32 +10,32 @@ export const FeeDistributionMethodSDKType = FeeDistributionMethod;
 export const FeeDistributionMethodAmino = FeeDistributionMethod;
 export function feeDistributionMethodFromJSON(object: any): FeeDistributionMethod {
   switch (object) {
-    case 0:
-    case "BURN":
-      return FeeDistributionMethod.BURN;
-    case 1:
-    case "REWARD_POOL":
-      return FeeDistributionMethod.REWARD_POOL;
-    case 2:
-    case "TRANSFER":
-      return FeeDistributionMethod.TRANSFER;
-    case -1:
-    case "UNRECOGNIZED":
-    default:
-      return FeeDistributionMethod.UNRECOGNIZED;
+  case 0:
+  case 'BURN':
+    return FeeDistributionMethod.BURN;
+  case 1:
+  case 'REWARD_POOL':
+    return FeeDistributionMethod.REWARD_POOL;
+  case 2:
+  case 'TRANSFER':
+    return FeeDistributionMethod.TRANSFER;
+  case -1:
+  case 'UNRECOGNIZED':
+  default:
+    return FeeDistributionMethod.UNRECOGNIZED;
   }
 }
 export function feeDistributionMethodToJSON(object: FeeDistributionMethod): string {
   switch (object) {
-    case FeeDistributionMethod.BURN:
-      return "BURN";
-    case FeeDistributionMethod.REWARD_POOL:
-      return "REWARD_POOL";
-    case FeeDistributionMethod.TRANSFER:
-      return "TRANSFER";
-    case FeeDistributionMethod.UNRECOGNIZED:
-    default:
-      return "UNRECOGNIZED";
+  case FeeDistributionMethod.BURN:
+    return 'BURN';
+  case FeeDistributionMethod.REWARD_POOL:
+    return 'REWARD_POOL';
+  case FeeDistributionMethod.TRANSFER:
+    return 'TRANSFER';
+  case FeeDistributionMethod.UNRECOGNIZED:
+  default:
+    return 'UNRECOGNIZED';
   }
 }
 export interface FeeDistribution {
@@ -43,7 +43,7 @@ export interface FeeDistribution {
   portion: number;
 }
 export interface FeeDistributionProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeDistribution";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FeeDistribution';
   value: Uint8Array;
 }
 export interface FeeDistributionAmino {
@@ -51,7 +51,7 @@ export interface FeeDistributionAmino {
   portion?: number;
 }
 export interface FeeDistributionAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.FeeDistribution";
+  type: '/thesixnetwork.sixprotocol.nftmngr.FeeDistribution';
   value: FeeDistributionAmino;
 }
 export interface FeeDistributionSDKType {
@@ -63,7 +63,7 @@ export interface FeeConfig {
   feeDistributions: FeeDistribution[];
 }
 export interface FeeConfigProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeConfig";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FeeConfig';
   value: Uint8Array;
 }
 export interface FeeConfigAmino {
@@ -71,7 +71,7 @@ export interface FeeConfigAmino {
   fee_distributions?: FeeDistributionAmino[];
 }
 export interface FeeConfigAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.FeeConfig";
+  type: '/thesixnetwork.sixprotocol.nftmngr.FeeConfig';
   value: FeeConfigAmino;
 }
 export interface FeeConfigSDKType {
@@ -82,14 +82,14 @@ export interface NFTFeeConfig {
   schemaFee?: FeeConfig;
 }
 export interface NFTFeeConfigProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTFeeConfig";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTFeeConfig';
   value: Uint8Array;
 }
 export interface NFTFeeConfigAmino {
   schema_fee?: FeeConfigAmino;
 }
 export interface NFTFeeConfigAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.NFTFeeConfig";
+  type: '/thesixnetwork.sixprotocol.nftmngr.NFTFeeConfig';
   value: NFTFeeConfigAmino;
 }
 export interface NFTFeeConfigSDKType {
@@ -102,7 +102,7 @@ function createBaseFeeDistribution(): FeeDistribution {
   };
 }
 export const FeeDistribution = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeDistribution",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FeeDistribution',
   encode(message: FeeDistribution, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.method !== 0) {
       writer.uint32(8).int32(message.method);
@@ -119,15 +119,15 @@ export const FeeDistribution = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.method = reader.int32() as any;
-          break;
-        case 2:
-          message.portion = reader.float();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.method = reader.int32() as any;
+        break;
+      case 2:
+        message.portion = reader.float();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -165,21 +165,21 @@ export const FeeDistribution = {
   },
   toProtoMsg(message: FeeDistribution): FeeDistributionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeDistribution",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FeeDistribution',
       value: FeeDistribution.encode(message).finish()
     };
   }
 };
 function createBaseFeeConfig(): FeeConfig {
   return {
-    feeAmount: "",
+    feeAmount: '',
     feeDistributions: []
   };
 }
 export const FeeConfig = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeConfig",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FeeConfig',
   encode(message: FeeConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.feeAmount !== "") {
+    if (message.feeAmount !== '') {
       writer.uint32(10).string(message.feeAmount);
     }
     for (const v of message.feeDistributions) {
@@ -194,22 +194,22 @@ export const FeeConfig = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.feeAmount = reader.string();
-          break;
-        case 2:
-          message.feeDistributions.push(FeeDistribution.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.feeAmount = reader.string();
+        break;
+      case 2:
+        message.feeDistributions.push(FeeDistribution.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<FeeConfig>): FeeConfig {
     const message = createBaseFeeConfig();
-    message.feeAmount = object.feeAmount ?? "";
+    message.feeAmount = object.feeAmount ?? '';
     message.feeDistributions = object.feeDistributions?.map(e => FeeDistribution.fromPartial(e)) || [];
     return message;
   },
@@ -223,7 +223,7 @@ export const FeeConfig = {
   },
   toAmino(message: FeeConfig): FeeConfigAmino {
     const obj: any = {};
-    obj.fee_amount = message.feeAmount === "" ? undefined : message.feeAmount;
+    obj.fee_amount = message.feeAmount === '' ? undefined : message.feeAmount;
     if (message.feeDistributions) {
       obj.fee_distributions = message.feeDistributions.map(e => e ? FeeDistribution.toAmino(e) : undefined);
     } else {
@@ -242,7 +242,7 @@ export const FeeConfig = {
   },
   toProtoMsg(message: FeeConfig): FeeConfigProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeConfig",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FeeConfig',
       value: FeeConfig.encode(message).finish()
     };
   }
@@ -253,7 +253,7 @@ function createBaseNFTFeeConfig(): NFTFeeConfig {
   };
 }
 export const NFTFeeConfig = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTFeeConfig",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTFeeConfig',
   encode(message: NFTFeeConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.schemaFee !== undefined) {
       FeeConfig.encode(message.schemaFee, writer.uint32(10).fork()).ldelim();
@@ -267,12 +267,12 @@ export const NFTFeeConfig = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.schemaFee = FeeConfig.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.schemaFee = FeeConfig.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -305,7 +305,7 @@ export const NFTFeeConfig = {
   },
   toProtoMsg(message: NFTFeeConfig): NFTFeeConfigProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTFeeConfig",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTFeeConfig',
       value: NFTFeeConfig.encode(message).finish()
     };
   }

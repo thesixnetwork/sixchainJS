@@ -1,6 +1,6 @@
 //@ts-nocheck
-import { Tendermint34Client, HttpEndpoint } from "@cosmjs/tendermint-rpc";
-import { QueryClient } from "@cosmjs/stargate";
+import { QueryClient } from '@cosmjs/stargate';
+import { HttpEndpoint,Tendermint34Client } from '@cosmjs/tendermint-rpc';
 export const createRPCQueryClient = async ({
   rpcEndpoint
 }: {
@@ -11,49 +11,46 @@ export const createRPCQueryClient = async ({
   return {
     cosmos: {
       auth: {
-        v1beta1: (await import("../cosmos/auth/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import('../cosmos/auth/v1beta1/query.rpc.Query')).createRpcQueryExtension(client)
       },
       authz: {
-        v1beta1: (await import("../cosmos/authz/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import('../cosmos/authz/v1beta1/query.rpc.Query')).createRpcQueryExtension(client)
       },
       bank: {
-        v1beta1: (await import("../cosmos/bank/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import('../cosmos/bank/v1beta1/query.rpc.Query')).createRpcQueryExtension(client)
       },
       distribution: {
-        v1beta1: (await import("../cosmos/distribution/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import('../cosmos/distribution/v1beta1/query.rpc.Query')).createRpcQueryExtension(client)
       },
       feegrant: {
-        v1beta1: (await import("../cosmos/feegrant/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import('../cosmos/feegrant/v1beta1/query.rpc.Query')).createRpcQueryExtension(client)
       },
       gov: {
-        v1beta1: (await import("../cosmos/gov/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import('../cosmos/gov/v1beta1/query.rpc.Query')).createRpcQueryExtension(client)
       },
       mint: {
-        v1beta1: (await import("../cosmos/mint/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import('../cosmos/mint/v1beta1/query.rpc.Query')).createRpcQueryExtension(client)
       },
       params: {
-        v1beta1: (await import("../cosmos/params/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import('../cosmos/params/v1beta1/query.rpc.Query')).createRpcQueryExtension(client)
       },
       staking: {
-        v1beta1: (await import("../cosmos/staking/v1beta1/query.rpc.Query")).createRpcQueryExtension(client),
-        v2beta1: (await import("../cosmos/staking/v2beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import('../cosmos/staking/v1beta1/query.rpc.Query')).createRpcQueryExtension(client)
       },
       tx: {
-        v1beta1: (await import("../cosmos/tx/v1beta1/service.rpc.Service")).createRpcQueryExtension(client)
+        v1beta1: (await import('../cosmos/tx/v1beta1/service.rpc.Service')).createRpcQueryExtension(client)
       },
       upgrade: {
-        v1beta1: (await import("../cosmos/upgrade/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import('../cosmos/upgrade/v1beta1/query.rpc.Query')).createRpcQueryExtension(client)
       }
     },
     thesixnetwork: {
-      sixnft: {
-        nftadmin: (await import("../nftadmin/query.rpc.Query")).createRpcQueryExtension(client),
-        nftmngr: (await import("../nftmngr/query.rpc.Query")).createRpcQueryExtension(client),
-        nftoracle: (await import("../nftoracle/query.rpc.Query")).createRpcQueryExtension(client)
-      },
       sixprotocol: {
-        protocoladmin: (await import("../protocoladmin/query.rpc.Query")).createRpcQueryExtension(client),
-        tokenmngr: (await import("../tokenmngr/v1/query.rpc.Query")).createRpcQueryExtension(client)
+        nftadmin: (await import('../nftadmin/query.rpc.Query')).createRpcQueryExtension(client),
+        nftmngr: (await import('../nftmngr/query.rpc.Query')).createRpcQueryExtension(client),
+        nftoracle: (await import('../nftoracle/query.rpc.Query')).createRpcQueryExtension(client),
+        protocoladmin: (await import('../protocoladmin/query.rpc.Query')).createRpcQueryExtension(client),
+        tokenmngr: (await import('../tokenmngr/query.rpc.Query')).createRpcQueryExtension(client)
       }
     }
   };

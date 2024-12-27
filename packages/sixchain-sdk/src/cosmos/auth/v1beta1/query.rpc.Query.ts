@@ -1,8 +1,9 @@
 //@ts-nocheck
-import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryAccountsRequest, QueryAccountsResponse, QueryAccountRequest, QueryAccountResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
+import { createProtobufRpcClient,QueryClient } from '@cosmjs/stargate';
+import * as _m0 from 'protobufjs/minimal';
+
+import { Rpc } from '../../../helpers';
+import { QueryAccountRequest, QueryAccountResponse, QueryAccountsRequest, QueryAccountsResponse, QueryParamsRequest, QueryParamsResponse } from './query';
 /** Query defines the gRPC querier service. */
 export interface Query {
   /**
@@ -28,17 +29,17 @@ export class QueryClientImpl implements Query {
     pagination: undefined
   }): Promise<QueryAccountsResponse> {
     const data = QueryAccountsRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.auth.v1beta1.Query", "Accounts", data);
+    const promise = this.rpc.request('cosmos.auth.v1beta1.Query', 'Accounts', data);
     return promise.then(data => QueryAccountsResponse.decode(new _m0.Reader(data)));
   }
   account(request: QueryAccountRequest): Promise<QueryAccountResponse> {
     const data = QueryAccountRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.auth.v1beta1.Query", "Account", data);
+    const promise = this.rpc.request('cosmos.auth.v1beta1.Query', 'Account', data);
     return promise.then(data => QueryAccountResponse.decode(new _m0.Reader(data)));
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.auth.v1beta1.Query", "Params", data);
+    const promise = this.rpc.request('cosmos.auth.v1beta1.Query', 'Params', data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
 }

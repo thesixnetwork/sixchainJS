@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Long, bytesFromBase64, base64FromBytes } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { base64FromBytes,bytesFromBase64, Long } from '../../../helpers';
 export interface ExtensionOptionsWeb3Tx {
   /**
    * typed data chain id used only in EIP712 Domain and should match
@@ -19,7 +20,7 @@ export interface ExtensionOptionsWeb3Tx {
   feePayerSig: Uint8Array;
 }
 export interface ExtensionOptionsWeb3TxProtoMsg {
-  typeUrl: "/ethermint.types.v1.ExtensionOptionsWeb3Tx";
+  typeUrl: '/ethermint.types.v1.ExtensionOptionsWeb3Tx';
   value: Uint8Array;
 }
 export interface ExtensionOptionsWeb3TxAmino {
@@ -40,7 +41,7 @@ export interface ExtensionOptionsWeb3TxAmino {
   fee_payer_sig?: string;
 }
 export interface ExtensionOptionsWeb3TxAminoMsg {
-  type: "/ethermint.types.v1.ExtensionOptionsWeb3Tx";
+  type: '/ethermint.types.v1.ExtensionOptionsWeb3Tx';
   value: ExtensionOptionsWeb3TxAmino;
 }
 export interface ExtensionOptionsWeb3TxSDKType {
@@ -51,17 +52,17 @@ export interface ExtensionOptionsWeb3TxSDKType {
 function createBaseExtensionOptionsWeb3Tx(): ExtensionOptionsWeb3Tx {
   return {
     typedDataChainId: Long.UZERO,
-    feePayer: "",
+    feePayer: '',
     feePayerSig: new Uint8Array()
   };
 }
 export const ExtensionOptionsWeb3Tx = {
-  typeUrl: "/ethermint.types.v1.ExtensionOptionsWeb3Tx",
+  typeUrl: '/ethermint.types.v1.ExtensionOptionsWeb3Tx',
   encode(message: ExtensionOptionsWeb3Tx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.typedDataChainId.isZero()) {
       writer.uint32(8).uint64(message.typedDataChainId);
     }
-    if (message.feePayer !== "") {
+    if (message.feePayer !== '') {
       writer.uint32(18).string(message.feePayer);
     }
     if (message.feePayerSig.length !== 0) {
@@ -76,18 +77,18 @@ export const ExtensionOptionsWeb3Tx = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.typedDataChainId = reader.uint64() as Long;
-          break;
-        case 2:
-          message.feePayer = reader.string();
-          break;
-        case 3:
-          message.feePayerSig = reader.bytes();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.typedDataChainId = reader.uint64() as Long;
+        break;
+      case 2:
+        message.feePayer = reader.string();
+        break;
+      case 3:
+        message.feePayerSig = reader.bytes();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -95,7 +96,7 @@ export const ExtensionOptionsWeb3Tx = {
   fromPartial(object: Partial<ExtensionOptionsWeb3Tx>): ExtensionOptionsWeb3Tx {
     const message = createBaseExtensionOptionsWeb3Tx();
     message.typedDataChainId = object.typedDataChainId !== undefined && object.typedDataChainId !== null ? Long.fromValue(object.typedDataChainId) : Long.UZERO;
-    message.feePayer = object.feePayer ?? "";
+    message.feePayer = object.feePayer ?? '';
     message.feePayerSig = object.feePayerSig ?? new Uint8Array();
     return message;
   },
@@ -114,8 +115,8 @@ export const ExtensionOptionsWeb3Tx = {
   },
   toAmino(message: ExtensionOptionsWeb3Tx): ExtensionOptionsWeb3TxAmino {
     const obj: any = {};
-    obj.typed_data_chain_id = !message.typedDataChainId.isZero() ? (message.typedDataChainId?.toString)() : undefined;
-    obj.fee_payer = message.feePayer === "" ? undefined : message.feePayer;
+    obj.typed_data_chain_id = !message.typedDataChainId.isZero() ? message.typedDataChainId?.toString() : undefined;
+    obj.fee_payer = message.feePayer === '' ? undefined : message.feePayer;
     obj.fee_payer_sig = message.feePayerSig ? base64FromBytes(message.feePayerSig) : undefined;
     return obj;
   },
@@ -130,7 +131,7 @@ export const ExtensionOptionsWeb3Tx = {
   },
   toProtoMsg(message: ExtensionOptionsWeb3Tx): ExtensionOptionsWeb3TxProtoMsg {
     return {
-      typeUrl: "/ethermint.types.v1.ExtensionOptionsWeb3Tx",
+      typeUrl: '/ethermint.types.v1.ExtensionOptionsWeb3Tx',
       value: ExtensionOptionsWeb3Tx.encode(message).finish()
     };
   }

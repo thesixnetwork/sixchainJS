@@ -1,13 +1,13 @@
 //@ts-nocheck
-import { MsgGrantPermission, MsgRevokePermission } from "./tx";
+import { MsgGrantPermission, MsgRevokePermission } from './tx';
 export const AminoConverter = {
-  "/thesixnetwork.sixnft.nftadmin.MsgGrantPermission": {
-    aminoType: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermission",
+  '/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission': {
+    aminoType: '/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission',
     toAmino: MsgGrantPermission.toAmino,
     fromAmino: MsgGrantPermission.fromAmino
   },
-  "/thesixnetwork.sixnft.nftadmin.MsgRevokePermission": {
-    aminoType: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermission",
+  '/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission': {
+    aminoType: '/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission',
     toAmino: MsgRevokePermission.toAmino,
     fromAmino: MsgRevokePermission.fromAmino
   }

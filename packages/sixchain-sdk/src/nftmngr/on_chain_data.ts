@@ -1,13 +1,14 @@
 //@ts-nocheck
-import { AttributeDefinition, AttributeDefinitionAmino, AttributeDefinitionSDKType } from "./attribute_definition";
-import { Action, ActionAmino, ActionSDKType } from "./action";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Action, ActionAmino, ActionSDKType } from './action';
+import { AttributeDefinition, AttributeDefinitionAmino, AttributeDefinitionSDKType } from './attribute_definition';
 export interface FlagStatus {
   statusName: string;
   statusValue: boolean;
 }
 export interface FlagStatusProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FlagStatus";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FlagStatus';
   value: Uint8Array;
 }
 export interface FlagStatusAmino {
@@ -15,7 +16,7 @@ export interface FlagStatusAmino {
   status_value?: boolean;
 }
 export interface FlagStatusAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.FlagStatus";
+  type: '/thesixnetwork.sixprotocol.nftmngr.FlagStatus';
   value: FlagStatusAmino;
 }
 export interface FlagStatusSDKType {
@@ -29,7 +30,7 @@ export interface OnChainData {
   status: FlagStatus[];
 }
 export interface OnChainDataProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.OnChainData";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OnChainData';
   value: Uint8Array;
 }
 export interface OnChainDataAmino {
@@ -39,7 +40,7 @@ export interface OnChainDataAmino {
   status?: FlagStatusAmino[];
 }
 export interface OnChainDataAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.OnChainData";
+  type: '/thesixnetwork.sixprotocol.nftmngr.OnChainData';
   value: OnChainDataAmino;
 }
 export interface OnChainDataSDKType {
@@ -50,14 +51,14 @@ export interface OnChainDataSDKType {
 }
 function createBaseFlagStatus(): FlagStatus {
   return {
-    statusName: "",
+    statusName: '',
     statusValue: false
   };
 }
 export const FlagStatus = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FlagStatus",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FlagStatus',
   encode(message: FlagStatus, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.statusName !== "") {
+    if (message.statusName !== '') {
       writer.uint32(10).string(message.statusName);
     }
     if (message.statusValue === true) {
@@ -72,22 +73,22 @@ export const FlagStatus = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.statusName = reader.string();
-          break;
-        case 2:
-          message.statusValue = reader.bool();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.statusName = reader.string();
+        break;
+      case 2:
+        message.statusValue = reader.bool();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<FlagStatus>): FlagStatus {
     const message = createBaseFlagStatus();
-    message.statusName = object.statusName ?? "";
+    message.statusName = object.statusName ?? '';
     message.statusValue = object.statusValue ?? false;
     return message;
   },
@@ -103,7 +104,7 @@ export const FlagStatus = {
   },
   toAmino(message: FlagStatus): FlagStatusAmino {
     const obj: any = {};
-    obj.status_name = message.statusName === "" ? undefined : message.statusName;
+    obj.status_name = message.statusName === '' ? undefined : message.statusName;
     obj.status_value = message.statusValue === false ? undefined : message.statusValue;
     return obj;
   },
@@ -118,7 +119,7 @@ export const FlagStatus = {
   },
   toProtoMsg(message: FlagStatus): FlagStatusProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.FlagStatus",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FlagStatus',
       value: FlagStatus.encode(message).finish()
     };
   }
@@ -132,7 +133,7 @@ function createBaseOnChainData(): OnChainData {
   };
 }
 export const OnChainData = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.OnChainData",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OnChainData',
   encode(message: OnChainData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.nftAttributes) {
       AttributeDefinition.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -155,21 +156,21 @@ export const OnChainData = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.nftAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
-          break;
-        case 2:
-          message.tokenAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
-          break;
-        case 3:
-          message.actions.push(Action.decode(reader, reader.uint32()));
-          break;
-        case 4:
-          message.status.push(FlagStatus.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.nftAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
+        break;
+      case 2:
+        message.tokenAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
+        break;
+      case 3:
+        message.actions.push(Action.decode(reader, reader.uint32()));
+        break;
+      case 4:
+        message.status.push(FlagStatus.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -225,7 +226,7 @@ export const OnChainData = {
   },
   toProtoMsg(message: OnChainData): OnChainDataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.OnChainData",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OnChainData',
       value: OnChainData.encode(message).finish()
     };
   }

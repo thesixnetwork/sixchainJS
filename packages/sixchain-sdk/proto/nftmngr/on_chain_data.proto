@@ -1,9 +1,8 @@
 syntax = "proto3";
-package thesixnetwork.sixnft.nftmngr;
+package thesixnetwork.sixprotocol.nftmngr;
 import "nftmngr/attribute_definition.proto";
 import "nftmngr/action.proto";
-import "nftmngr/nft_attribute_value.proto";
-option go_package = "github.com/thesixnetwork/sixnft/x/nftmngr/types";
+option go_package = "github.com/thesixnetwork/six-protocol/x/nftmngr/types";
 
 message FlagStatus {
   string status_name = 1;

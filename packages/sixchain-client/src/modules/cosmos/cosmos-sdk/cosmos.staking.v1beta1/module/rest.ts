@@ -273,6 +273,7 @@ export interface Stakingv1Beta1Validator {
   license_count?: string;
   license_mode?: boolean;
   enable_redelegation?: boolean;
+  special_mode?: boolean;
 }
 
 export interface Stakingv1Beta1ValidatorApproval {
@@ -460,9 +461,23 @@ export interface V1Beta1MsgBeginRedelegateResponse {
 export type V1Beta1MsgCreateValidatorResponse = object;
 
 /**
+ * MsgCreateWhitelistdelegatorResponse defines the Msg/MsgListCreateWhitelistDelegator response type.
+ */
+export interface V1Beta1MsgCreateWhitelistdelegatorResponse {
+  whitelist_delegator?: V1Beta1WhitelistDelegator;
+}
+
+/**
  * MsgDelegateResponse defines the Msg/Delegate response type.
  */
 export type V1Beta1MsgDelegateResponse = object;
+
+/**
+ * MsgCreateWhitelistdelegatorResponse defines the Msg/MsgListDeleteWhitelistDelegator response type.
+ */
+export interface V1Beta1MsgDeleteWhitelistdelegatorResponse {
+  whitelist_delegator?: V1Beta1WhitelistDelegator;
+}
 
 /**
  * MsgEditValidatorResponse defines the Msg/EditValidator response type.
@@ -675,6 +690,31 @@ export interface V1Beta1QueryValidatorsResponse {
 }
 
 /**
+ * QueryWhitelistdelegatorAllResponse is response type for the Query/AllWhiltelistDeleagator RPC method.
+ */
+export interface V1Beta1QueryWhitelistdelegatorAllResponse {
+  whitelist_delegator?: V1Beta1WhitelistDelegator[];
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
+}
+
+/**
+ * QueryWhitelistdelegatorResponse is response type for the Query/WhiltelistDeleagator RPC method.
+ */
+export interface V1Beta1QueryWhitelistdelegatorResponse {
+  whitelist_delegator?: V1Beta1WhitelistDelegator;
+}
+
+/**
 * Redelegation contains the list of a particular delegator's redelegating bonds
 from a particular source validator to a particular destination validator.
 */
@@ -765,6 +805,11 @@ export interface V1Beta1UnbondingDelegationEntry {
 
   /** balance defines the tokens to receive at completion. */
   balance?: string;
+}
+
+export interface V1Beta1WhitelistDelegator {
+  validator_address?: string;
+  delegator_address?: string[];
 }
 
 /**
@@ -1295,6 +1340,48 @@ pair.
       path: `/cosmos/staking/v1beta1/validators/${validator_addr}/unbonding_delegations`,
       method: "GET",
       query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryWhitelistdelegatorAll
+   * @summary Queries a list of DelegatorWhitelistdelegator items.
+   * @request GET:/cosmos/staking/v1beta1/whitelistdelegator
+   */
+  queryWhitelistdelegatorAll = (
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<V1Beta1QueryWhitelistdelegatorAllResponse, RpcStatus>({
+      path: `/cosmos/staking/v1beta1/whitelistdelegator`,
+      method: "GET",
+      query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryWhitelistdelegator
+   * @summary Queries a DelegatorWhitelistdelegator by index.
+   * @request GET:/cosmos/staking/v1beta1/whitelistdelegator/{validator}
+   */
+  queryWhitelistdelegator = (validator: string, params: RequestParams = {}) =>
+    this.request<V1Beta1QueryWhitelistdelegatorResponse, RpcStatus>({
+      path: `/cosmos/staking/v1beta1/whitelistdelegator/${validator}`,
+      method: "GET",
       format: "json",
       ...params,
     });

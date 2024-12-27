@@ -1,5 +1,5 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export enum AllowedActioner {
   ALLOWED_ACTIONER_ALL = 0,
   ALLOWED_ACTIONER_SYSTEM_ONLY = 1,
@@ -10,32 +10,32 @@ export const AllowedActionerSDKType = AllowedActioner;
 export const AllowedActionerAmino = AllowedActioner;
 export function allowedActionerFromJSON(object: any): AllowedActioner {
   switch (object) {
-    case 0:
-    case "ALLOWED_ACTIONER_ALL":
-      return AllowedActioner.ALLOWED_ACTIONER_ALL;
-    case 1:
-    case "ALLOWED_ACTIONER_SYSTEM_ONLY":
-      return AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY;
-    case 2:
-    case "ALLOWED_ACTIONER_USER_ONLY":
-      return AllowedActioner.ALLOWED_ACTIONER_USER_ONLY;
-    case -1:
-    case "UNRECOGNIZED":
-    default:
-      return AllowedActioner.UNRECOGNIZED;
+  case 0:
+  case 'ALLOWED_ACTIONER_ALL':
+    return AllowedActioner.ALLOWED_ACTIONER_ALL;
+  case 1:
+  case 'ALLOWED_ACTIONER_SYSTEM_ONLY':
+    return AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY;
+  case 2:
+  case 'ALLOWED_ACTIONER_USER_ONLY':
+    return AllowedActioner.ALLOWED_ACTIONER_USER_ONLY;
+  case -1:
+  case 'UNRECOGNIZED':
+  default:
+    return AllowedActioner.UNRECOGNIZED;
   }
 }
 export function allowedActionerToJSON(object: AllowedActioner): string {
   switch (object) {
-    case AllowedActioner.ALLOWED_ACTIONER_ALL:
-      return "ALLOWED_ACTIONER_ALL";
-    case AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY:
-      return "ALLOWED_ACTIONER_SYSTEM_ONLY";
-    case AllowedActioner.ALLOWED_ACTIONER_USER_ONLY:
-      return "ALLOWED_ACTIONER_USER_ONLY";
-    case AllowedActioner.UNRECOGNIZED:
-    default:
-      return "UNRECOGNIZED";
+  case AllowedActioner.ALLOWED_ACTIONER_ALL:
+    return 'ALLOWED_ACTIONER_ALL';
+  case AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY:
+    return 'ALLOWED_ACTIONER_SYSTEM_ONLY';
+  case AllowedActioner.ALLOWED_ACTIONER_USER_ONLY:
+    return 'ALLOWED_ACTIONER_USER_ONLY';
+  case AllowedActioner.UNRECOGNIZED:
+  default:
+    return 'UNRECOGNIZED';
   }
 }
 export interface ActionParams {
@@ -46,7 +46,7 @@ export interface ActionParams {
   defaultValue: string;
 }
 export interface ActionParamsProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParams";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionParams';
   value: Uint8Array;
 }
 export interface ActionParamsAmino {
@@ -57,7 +57,7 @@ export interface ActionParamsAmino {
   default_value?: string;
 }
 export interface ActionParamsAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.ActionParams";
+  type: '/thesixnetwork.sixprotocol.nftmngr.ActionParams';
   value: ActionParamsAmino;
 }
 export interface ActionParamsSDKType {
@@ -77,7 +77,7 @@ export interface Action {
   params?: ActionParams[];
 }
 export interface ActionProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.Action";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.Action';
   value: Uint8Array;
 }
 export interface ActionAmino {
@@ -90,7 +90,7 @@ export interface ActionAmino {
   params?: ActionParamsAmino[];
 }
 export interface ActionAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.Action";
+  type: '/thesixnetwork.sixprotocol.nftmngr.Action';
   value: ActionAmino;
 }
 export interface ActionSDKType {
@@ -104,29 +104,29 @@ export interface ActionSDKType {
 }
 function createBaseActionParams(): ActionParams {
   return {
-    name: "",
-    desc: "",
-    dataType: "",
+    name: '',
+    desc: '',
+    dataType: '',
     required: false,
-    defaultValue: ""
+    defaultValue: ''
   };
 }
 export const ActionParams = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParams",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionParams',
   encode(message: ActionParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(10).string(message.name);
     }
-    if (message.desc !== "") {
+    if (message.desc !== '') {
       writer.uint32(18).string(message.desc);
     }
-    if (message.dataType !== "") {
+    if (message.dataType !== '') {
       writer.uint32(26).string(message.dataType);
     }
     if (message.required === true) {
       writer.uint32(32).bool(message.required);
     }
-    if (message.defaultValue !== "") {
+    if (message.defaultValue !== '') {
       writer.uint32(42).string(message.defaultValue);
     }
     return writer;
@@ -138,35 +138,35 @@ export const ActionParams = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.name = reader.string();
-          break;
-        case 2:
-          message.desc = reader.string();
-          break;
-        case 3:
-          message.dataType = reader.string();
-          break;
-        case 4:
-          message.required = reader.bool();
-          break;
-        case 5:
-          message.defaultValue = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.name = reader.string();
+        break;
+      case 2:
+        message.desc = reader.string();
+        break;
+      case 3:
+        message.dataType = reader.string();
+        break;
+      case 4:
+        message.required = reader.bool();
+        break;
+      case 5:
+        message.defaultValue = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ActionParams>): ActionParams {
     const message = createBaseActionParams();
-    message.name = object.name ?? "";
-    message.desc = object.desc ?? "";
-    message.dataType = object.dataType ?? "";
+    message.name = object.name ?? '';
+    message.desc = object.desc ?? '';
+    message.dataType = object.dataType ?? '';
     message.required = object.required ?? false;
-    message.defaultValue = object.defaultValue ?? "";
+    message.defaultValue = object.defaultValue ?? '';
     return message;
   },
   fromAmino(object: ActionParamsAmino): ActionParams {
@@ -190,11 +190,11 @@ export const ActionParams = {
   },
   toAmino(message: ActionParams): ActionParamsAmino {
     const obj: any = {};
-    obj.name = message.name === "" ? undefined : message.name;
-    obj.desc = message.desc === "" ? undefined : message.desc;
-    obj.data_type = message.dataType === "" ? undefined : message.dataType;
+    obj.name = message.name === '' ? undefined : message.name;
+    obj.desc = message.desc === '' ? undefined : message.desc;
+    obj.data_type = message.dataType === '' ? undefined : message.dataType;
     obj.required = message.required === false ? undefined : message.required;
-    obj.default_value = message.defaultValue === "" ? undefined : message.defaultValue;
+    obj.default_value = message.defaultValue === '' ? undefined : message.defaultValue;
     return obj;
   },
   fromAminoMsg(object: ActionParamsAminoMsg): ActionParams {
@@ -208,35 +208,35 @@ export const ActionParams = {
   },
   toProtoMsg(message: ActionParams): ActionParamsProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParams",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionParams',
       value: ActionParams.encode(message).finish()
     };
   }
 };
 function createBaseAction(): Action {
   return {
-    name: "",
-    desc: "",
+    name: '',
+    desc: '',
     disable: false,
-    when: "",
+    when: '',
     then: [],
     allowedActioner: undefined,
     params: []
   };
 }
 export const Action = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.Action",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.Action',
   encode(message: Action, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(10).string(message.name);
     }
-    if (message.desc !== "") {
+    if (message.desc !== '') {
       writer.uint32(18).string(message.desc);
     }
     if (message.disable === true) {
       writer.uint32(24).bool(message.disable);
     }
-    if (message.when !== "") {
+    if (message.when !== '') {
       writer.uint32(34).string(message.when);
     }
     for (const v of message.then) {
@@ -257,40 +257,40 @@ export const Action = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.name = reader.string();
-          break;
-        case 2:
-          message.desc = reader.string();
-          break;
-        case 3:
-          message.disable = reader.bool();
-          break;
-        case 4:
-          message.when = reader.string();
-          break;
-        case 5:
-          message.then.push(reader.string());
-          break;
-        case 6:
-          message.allowedActioner = reader.int32() as any;
-          break;
-        case 7:
-          message.params.push(ActionParams.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.name = reader.string();
+        break;
+      case 2:
+        message.desc = reader.string();
+        break;
+      case 3:
+        message.disable = reader.bool();
+        break;
+      case 4:
+        message.when = reader.string();
+        break;
+      case 5:
+        message.then.push(reader.string());
+        break;
+      case 6:
+        message.allowedActioner = reader.int32() as any;
+        break;
+      case 7:
+        message.params.push(ActionParams.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Action>): Action {
     const message = createBaseAction();
-    message.name = object.name ?? "";
-    message.desc = object.desc ?? "";
+    message.name = object.name ?? '';
+    message.desc = object.desc ?? '';
     message.disable = object.disable ?? false;
-    message.when = object.when ?? "";
+    message.when = object.when ?? '';
     message.then = object.then?.map(e => e) || [];
     message.allowedActioner = object.allowedActioner ?? undefined;
     message.params = object.params?.map(e => ActionParams.fromPartial(e)) || [];
@@ -319,10 +319,10 @@ export const Action = {
   },
   toAmino(message: Action): ActionAmino {
     const obj: any = {};
-    obj.name = message.name === "" ? undefined : message.name;
-    obj.desc = message.desc === "" ? undefined : message.desc;
+    obj.name = message.name === '' ? undefined : message.name;
+    obj.desc = message.desc === '' ? undefined : message.desc;
     obj.disable = message.disable === false ? undefined : message.disable;
-    obj.when = message.when === "" ? undefined : message.when;
+    obj.when = message.when === '' ? undefined : message.when;
     if (message.then) {
       obj.then = message.then.map(e => e);
     } else {
@@ -347,7 +347,7 @@ export const Action = {
   },
   toProtoMsg(message: Action): ActionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.Action",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.Action',
       value: Action.encode(message).finish()
     };
   }

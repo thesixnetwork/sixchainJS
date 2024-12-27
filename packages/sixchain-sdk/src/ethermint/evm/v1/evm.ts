@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Long, bytesFromBase64, base64FromBytes } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { base64FromBytes,bytesFromBase64, Long } from '../../../helpers';
 /** Params defines the EVM module parameters */
 export interface Params {
   /**
@@ -23,7 +24,7 @@ export interface Params {
   allowUnprotectedTxs: boolean;
 }
 export interface ParamsProtoMsg {
-  typeUrl: "/ethermint.evm.v1.Params";
+  typeUrl: '/ethermint.evm.v1.Params';
   value: Uint8Array;
 }
 /** Params defines the EVM module parameters */
@@ -48,7 +49,7 @@ export interface ParamsAmino {
   allow_unprotected_txs?: boolean;
 }
 export interface ParamsAminoMsg {
-  type: "/ethermint.evm.v1.Params";
+  type: '/ethermint.evm.v1.Params';
   value: ParamsAmino;
 }
 /** Params defines the EVM module parameters */
@@ -102,7 +103,7 @@ export interface ChainConfig {
   mergeForkBlock: string;
 }
 export interface ChainConfigProtoMsg {
-  typeUrl: "/ethermint.evm.v1.ChainConfig";
+  typeUrl: '/ethermint.evm.v1.ChainConfig';
   value: Uint8Array;
 }
 /**
@@ -147,7 +148,7 @@ export interface ChainConfigAmino {
   merge_fork_block?: string;
 }
 export interface ChainConfigAminoMsg {
-  type: "/ethermint.evm.v1.ChainConfig";
+  type: '/ethermint.evm.v1.ChainConfig';
   value: ChainConfigAmino;
 }
 /**
@@ -178,7 +179,7 @@ export interface State {
   value: string;
 }
 export interface StateProtoMsg {
-  typeUrl: "/ethermint.evm.v1.State";
+  typeUrl: '/ethermint.evm.v1.State';
   value: Uint8Array;
 }
 /** State represents a single Storage key value pair item. */
@@ -187,7 +188,7 @@ export interface StateAmino {
   value?: string;
 }
 export interface StateAminoMsg {
-  type: "/ethermint.evm.v1.State";
+  type: '/ethermint.evm.v1.State';
   value: StateAmino;
 }
 /** State represents a single Storage key value pair item. */
@@ -205,7 +206,7 @@ export interface TransactionLogs {
   logs: Log[];
 }
 export interface TransactionLogsProtoMsg {
-  typeUrl: "/ethermint.evm.v1.TransactionLogs";
+  typeUrl: '/ethermint.evm.v1.TransactionLogs';
   value: Uint8Array;
 }
 /**
@@ -218,7 +219,7 @@ export interface TransactionLogsAmino {
   logs?: LogAmino[];
 }
 export interface TransactionLogsAminoMsg {
-  type: "/ethermint.evm.v1.TransactionLogs";
+  type: '/ethermint.evm.v1.TransactionLogs';
   value: TransactionLogsAmino;
 }
 /**
@@ -260,7 +261,7 @@ export interface Log {
   removed: boolean;
 }
 export interface LogProtoMsg {
-  typeUrl: "/ethermint.evm.v1.Log";
+  typeUrl: '/ethermint.evm.v1.Log';
   value: Uint8Array;
 }
 /**
@@ -293,7 +294,7 @@ export interface LogAmino {
   removed?: boolean;
 }
 export interface LogAminoMsg {
-  type: "/ethermint.evm.v1.Log";
+  type: '/ethermint.evm.v1.Log';
   value: LogAmino;
 }
 /**
@@ -335,7 +336,7 @@ export interface TxResult {
   gasUsed: Long;
 }
 export interface TxResultProtoMsg {
-  typeUrl: "/ethermint.evm.v1.TxResult";
+  typeUrl: '/ethermint.evm.v1.TxResult';
   value: Uint8Array;
 }
 /** TxResult stores results of Tx execution. */
@@ -361,7 +362,7 @@ export interface TxResultAmino {
   gas_used?: string;
 }
 export interface TxResultAminoMsg {
-  type: "/ethermint.evm.v1.TxResult";
+  type: '/ethermint.evm.v1.TxResult';
   value: TxResultAmino;
 }
 /** TxResult stores results of Tx execution. */
@@ -381,7 +382,7 @@ export interface AccessTuple {
   storageKeys: string[];
 }
 export interface AccessTupleProtoMsg {
-  typeUrl: "/ethermint.evm.v1.AccessTuple";
+  typeUrl: '/ethermint.evm.v1.AccessTuple';
   value: Uint8Array;
 }
 /** AccessTuple is the element type of an access list. */
@@ -392,7 +393,7 @@ export interface AccessTupleAmino {
   storage_keys: string[];
 }
 export interface AccessTupleAminoMsg {
-  type: "/ethermint.evm.v1.AccessTuple";
+  type: '/ethermint.evm.v1.AccessTuple';
   value: AccessTupleAmino;
 }
 /** AccessTuple is the element type of an access list. */
@@ -427,7 +428,7 @@ export interface TraceConfig {
   enableReturnData: boolean;
 }
 export interface TraceConfigProtoMsg {
-  typeUrl: "/ethermint.evm.v1.TraceConfig";
+  typeUrl: '/ethermint.evm.v1.TraceConfig';
   value: Uint8Array;
 }
 /** TraceConfig holds extra parameters to trace functions. */
@@ -457,7 +458,7 @@ export interface TraceConfigAmino {
   enable_return_data: boolean;
 }
 export interface TraceConfigAminoMsg {
-  type: "/ethermint.evm.v1.TraceConfig";
+  type: '/ethermint.evm.v1.TraceConfig';
   value: TraceConfigAmino;
 }
 /** TraceConfig holds extra parameters to trace functions. */
@@ -475,7 +476,7 @@ export interface TraceConfigSDKType {
 }
 function createBaseParams(): Params {
   return {
-    evmDenom: "",
+    evmDenom: '',
     enableCreate: false,
     enableCall: false,
     extraEips: [],
@@ -484,9 +485,9 @@ function createBaseParams(): Params {
   };
 }
 export const Params = {
-  typeUrl: "/ethermint.evm.v1.Params",
+  typeUrl: '/ethermint.evm.v1.Params',
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.evmDenom !== "") {
+    if (message.evmDenom !== '') {
       writer.uint32(10).string(message.evmDenom);
     }
     if (message.enableCreate === true) {
@@ -515,41 +516,41 @@ export const Params = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.evmDenom = reader.string();
-          break;
-        case 2:
-          message.enableCreate = reader.bool();
-          break;
-        case 3:
-          message.enableCall = reader.bool();
-          break;
-        case 4:
-          if ((tag & 7) === 2) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.extraEips.push(reader.int64() as Long);
-            }
-          } else {
+      case 1:
+        message.evmDenom = reader.string();
+        break;
+      case 2:
+        message.enableCreate = reader.bool();
+        break;
+      case 3:
+        message.enableCall = reader.bool();
+        break;
+      case 4:
+        if ((tag & 7) === 2) {
+          const end2 = reader.uint32() + reader.pos;
+          while (reader.pos < end2) {
             message.extraEips.push(reader.int64() as Long);
           }
-          break;
-        case 5:
-          message.chainConfig = ChainConfig.decode(reader, reader.uint32());
-          break;
-        case 6:
-          message.allowUnprotectedTxs = reader.bool();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+        } else {
+          message.extraEips.push(reader.int64() as Long);
+        }
+        break;
+      case 5:
+        message.chainConfig = ChainConfig.decode(reader, reader.uint32());
+        break;
+      case 6:
+        message.allowUnprotectedTxs = reader.bool();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
-    message.evmDenom = object.evmDenom ?? "";
+    message.evmDenom = object.evmDenom ?? '';
     message.enableCreate = object.enableCreate ?? false;
     message.enableCall = object.enableCall ?? false;
     message.extraEips = object.extraEips?.map(e => Long.fromValue(e)) || [];
@@ -579,7 +580,7 @@ export const Params = {
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.evm_denom = message.evmDenom === "" ? undefined : message.evmDenom;
+    obj.evm_denom = message.evmDenom === '' ? undefined : message.evmDenom;
     obj.enable_create = message.enableCreate === false ? undefined : message.enableCreate;
     obj.enable_call = message.enableCall === false ? undefined : message.enableCall;
     if (message.extraEips) {
@@ -602,80 +603,80 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: "/ethermint.evm.v1.Params",
+      typeUrl: '/ethermint.evm.v1.Params',
       value: Params.encode(message).finish()
     };
   }
 };
 function createBaseChainConfig(): ChainConfig {
   return {
-    homesteadBlock: "",
-    daoForkBlock: "",
+    homesteadBlock: '',
+    daoForkBlock: '',
     daoForkSupport: false,
-    eip150Block: "",
-    eip150Hash: "",
-    eip155Block: "",
-    eip158Block: "",
-    byzantiumBlock: "",
-    constantinopleBlock: "",
-    petersburgBlock: "",
-    istanbulBlock: "",
-    muirGlacierBlock: "",
-    berlinBlock: "",
-    londonBlock: "",
-    arrowGlacierBlock: "",
-    mergeForkBlock: ""
+    eip150Block: '',
+    eip150Hash: '',
+    eip155Block: '',
+    eip158Block: '',
+    byzantiumBlock: '',
+    constantinopleBlock: '',
+    petersburgBlock: '',
+    istanbulBlock: '',
+    muirGlacierBlock: '',
+    berlinBlock: '',
+    londonBlock: '',
+    arrowGlacierBlock: '',
+    mergeForkBlock: ''
   };
 }
 export const ChainConfig = {
-  typeUrl: "/ethermint.evm.v1.ChainConfig",
+  typeUrl: '/ethermint.evm.v1.ChainConfig',
   encode(message: ChainConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.homesteadBlock !== "") {
+    if (message.homesteadBlock !== '') {
       writer.uint32(10).string(message.homesteadBlock);
     }
-    if (message.daoForkBlock !== "") {
+    if (message.daoForkBlock !== '') {
       writer.uint32(18).string(message.daoForkBlock);
     }
     if (message.daoForkSupport === true) {
       writer.uint32(24).bool(message.daoForkSupport);
     }
-    if (message.eip150Block !== "") {
+    if (message.eip150Block !== '') {
       writer.uint32(34).string(message.eip150Block);
     }
-    if (message.eip150Hash !== "") {
+    if (message.eip150Hash !== '') {
       writer.uint32(42).string(message.eip150Hash);
     }
-    if (message.eip155Block !== "") {
+    if (message.eip155Block !== '') {
       writer.uint32(50).string(message.eip155Block);
     }
-    if (message.eip158Block !== "") {
+    if (message.eip158Block !== '') {
       writer.uint32(58).string(message.eip158Block);
     }
-    if (message.byzantiumBlock !== "") {
+    if (message.byzantiumBlock !== '') {
       writer.uint32(66).string(message.byzantiumBlock);
     }
-    if (message.constantinopleBlock !== "") {
+    if (message.constantinopleBlock !== '') {
       writer.uint32(74).string(message.constantinopleBlock);
     }
-    if (message.petersburgBlock !== "") {
+    if (message.petersburgBlock !== '') {
       writer.uint32(82).string(message.petersburgBlock);
     }
-    if (message.istanbulBlock !== "") {
+    if (message.istanbulBlock !== '') {
       writer.uint32(90).string(message.istanbulBlock);
     }
-    if (message.muirGlacierBlock !== "") {
+    if (message.muirGlacierBlock !== '') {
       writer.uint32(98).string(message.muirGlacierBlock);
     }
-    if (message.berlinBlock !== "") {
+    if (message.berlinBlock !== '') {
       writer.uint32(106).string(message.berlinBlock);
     }
-    if (message.londonBlock !== "") {
+    if (message.londonBlock !== '') {
       writer.uint32(138).string(message.londonBlock);
     }
-    if (message.arrowGlacierBlock !== "") {
+    if (message.arrowGlacierBlock !== '') {
       writer.uint32(146).string(message.arrowGlacierBlock);
     }
-    if (message.mergeForkBlock !== "") {
+    if (message.mergeForkBlock !== '') {
       writer.uint32(154).string(message.mergeForkBlock);
     }
     return writer;
@@ -687,79 +688,79 @@ export const ChainConfig = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.homesteadBlock = reader.string();
-          break;
-        case 2:
-          message.daoForkBlock = reader.string();
-          break;
-        case 3:
-          message.daoForkSupport = reader.bool();
-          break;
-        case 4:
-          message.eip150Block = reader.string();
-          break;
-        case 5:
-          message.eip150Hash = reader.string();
-          break;
-        case 6:
-          message.eip155Block = reader.string();
-          break;
-        case 7:
-          message.eip158Block = reader.string();
-          break;
-        case 8:
-          message.byzantiumBlock = reader.string();
-          break;
-        case 9:
-          message.constantinopleBlock = reader.string();
-          break;
-        case 10:
-          message.petersburgBlock = reader.string();
-          break;
-        case 11:
-          message.istanbulBlock = reader.string();
-          break;
-        case 12:
-          message.muirGlacierBlock = reader.string();
-          break;
-        case 13:
-          message.berlinBlock = reader.string();
-          break;
-        case 17:
-          message.londonBlock = reader.string();
-          break;
-        case 18:
-          message.arrowGlacierBlock = reader.string();
-          break;
-        case 19:
-          message.mergeForkBlock = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.homesteadBlock = reader.string();
+        break;
+      case 2:
+        message.daoForkBlock = reader.string();
+        break;
+      case 3:
+        message.daoForkSupport = reader.bool();
+        break;
+      case 4:
+        message.eip150Block = reader.string();
+        break;
+      case 5:
+        message.eip150Hash = reader.string();
+        break;
+      case 6:
+        message.eip155Block = reader.string();
+        break;
+      case 7:
+        message.eip158Block = reader.string();
+        break;
+      case 8:
+        message.byzantiumBlock = reader.string();
+        break;
+      case 9:
+        message.constantinopleBlock = reader.string();
+        break;
+      case 10:
+        message.petersburgBlock = reader.string();
+        break;
+      case 11:
+        message.istanbulBlock = reader.string();
+        break;
+      case 12:
+        message.muirGlacierBlock = reader.string();
+        break;
+      case 13:
+        message.berlinBlock = reader.string();
+        break;
+      case 17:
+        message.londonBlock = reader.string();
+        break;
+      case 18:
+        message.arrowGlacierBlock = reader.string();
+        break;
+      case 19:
+        message.mergeForkBlock = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ChainConfig>): ChainConfig {
     const message = createBaseChainConfig();
-    message.homesteadBlock = object.homesteadBlock ?? "";
-    message.daoForkBlock = object.daoForkBlock ?? "";
+    message.homesteadBlock = object.homesteadBlock ?? '';
+    message.daoForkBlock = object.daoForkBlock ?? '';
     message.daoForkSupport = object.daoForkSupport ?? false;
-    message.eip150Block = object.eip150Block ?? "";
-    message.eip150Hash = object.eip150Hash ?? "";
-    message.eip155Block = object.eip155Block ?? "";
-    message.eip158Block = object.eip158Block ?? "";
-    message.byzantiumBlock = object.byzantiumBlock ?? "";
-    message.constantinopleBlock = object.constantinopleBlock ?? "";
-    message.petersburgBlock = object.petersburgBlock ?? "";
-    message.istanbulBlock = object.istanbulBlock ?? "";
-    message.muirGlacierBlock = object.muirGlacierBlock ?? "";
-    message.berlinBlock = object.berlinBlock ?? "";
-    message.londonBlock = object.londonBlock ?? "";
-    message.arrowGlacierBlock = object.arrowGlacierBlock ?? "";
-    message.mergeForkBlock = object.mergeForkBlock ?? "";
+    message.eip150Block = object.eip150Block ?? '';
+    message.eip150Hash = object.eip150Hash ?? '';
+    message.eip155Block = object.eip155Block ?? '';
+    message.eip158Block = object.eip158Block ?? '';
+    message.byzantiumBlock = object.byzantiumBlock ?? '';
+    message.constantinopleBlock = object.constantinopleBlock ?? '';
+    message.petersburgBlock = object.petersburgBlock ?? '';
+    message.istanbulBlock = object.istanbulBlock ?? '';
+    message.muirGlacierBlock = object.muirGlacierBlock ?? '';
+    message.berlinBlock = object.berlinBlock ?? '';
+    message.londonBlock = object.londonBlock ?? '';
+    message.arrowGlacierBlock = object.arrowGlacierBlock ?? '';
+    message.mergeForkBlock = object.mergeForkBlock ?? '';
     return message;
   },
   fromAmino(object: ChainConfigAmino): ChainConfig {
@@ -816,22 +817,22 @@ export const ChainConfig = {
   },
   toAmino(message: ChainConfig): ChainConfigAmino {
     const obj: any = {};
-    obj.homestead_block = message.homesteadBlock === "" ? undefined : message.homesteadBlock;
-    obj.dao_fork_block = message.daoForkBlock === "" ? undefined : message.daoForkBlock;
+    obj.homestead_block = message.homesteadBlock === '' ? undefined : message.homesteadBlock;
+    obj.dao_fork_block = message.daoForkBlock === '' ? undefined : message.daoForkBlock;
     obj.dao_fork_support = message.daoForkSupport === false ? undefined : message.daoForkSupport;
-    obj.eip150_block = message.eip150Block === "" ? undefined : message.eip150Block;
-    obj.eip150_hash = message.eip150Hash === "" ? undefined : message.eip150Hash;
-    obj.eip155_block = message.eip155Block === "" ? undefined : message.eip155Block;
-    obj.eip158_block = message.eip158Block === "" ? undefined : message.eip158Block;
-    obj.byzantium_block = message.byzantiumBlock === "" ? undefined : message.byzantiumBlock;
-    obj.constantinople_block = message.constantinopleBlock === "" ? undefined : message.constantinopleBlock;
-    obj.petersburg_block = message.petersburgBlock === "" ? undefined : message.petersburgBlock;
-    obj.istanbul_block = message.istanbulBlock === "" ? undefined : message.istanbulBlock;
-    obj.muir_glacier_block = message.muirGlacierBlock === "" ? undefined : message.muirGlacierBlock;
-    obj.berlin_block = message.berlinBlock === "" ? undefined : message.berlinBlock;
-    obj.london_block = message.londonBlock === "" ? undefined : message.londonBlock;
-    obj.arrow_glacier_block = message.arrowGlacierBlock === "" ? undefined : message.arrowGlacierBlock;
-    obj.merge_fork_block = message.mergeForkBlock === "" ? undefined : message.mergeForkBlock;
+    obj.eip150_block = message.eip150Block === '' ? undefined : message.eip150Block;
+    obj.eip150_hash = message.eip150Hash === '' ? undefined : message.eip150Hash;
+    obj.eip155_block = message.eip155Block === '' ? undefined : message.eip155Block;
+    obj.eip158_block = message.eip158Block === '' ? undefined : message.eip158Block;
+    obj.byzantium_block = message.byzantiumBlock === '' ? undefined : message.byzantiumBlock;
+    obj.constantinople_block = message.constantinopleBlock === '' ? undefined : message.constantinopleBlock;
+    obj.petersburg_block = message.petersburgBlock === '' ? undefined : message.petersburgBlock;
+    obj.istanbul_block = message.istanbulBlock === '' ? undefined : message.istanbulBlock;
+    obj.muir_glacier_block = message.muirGlacierBlock === '' ? undefined : message.muirGlacierBlock;
+    obj.berlin_block = message.berlinBlock === '' ? undefined : message.berlinBlock;
+    obj.london_block = message.londonBlock === '' ? undefined : message.londonBlock;
+    obj.arrow_glacier_block = message.arrowGlacierBlock === '' ? undefined : message.arrowGlacierBlock;
+    obj.merge_fork_block = message.mergeForkBlock === '' ? undefined : message.mergeForkBlock;
     return obj;
   },
   fromAminoMsg(object: ChainConfigAminoMsg): ChainConfig {
@@ -845,24 +846,24 @@ export const ChainConfig = {
   },
   toProtoMsg(message: ChainConfig): ChainConfigProtoMsg {
     return {
-      typeUrl: "/ethermint.evm.v1.ChainConfig",
+      typeUrl: '/ethermint.evm.v1.ChainConfig',
       value: ChainConfig.encode(message).finish()
     };
   }
 };
 function createBaseState(): State {
   return {
-    key: "",
-    value: ""
+    key: '',
+    value: ''
   };
 }
 export const State = {
-  typeUrl: "/ethermint.evm.v1.State",
+  typeUrl: '/ethermint.evm.v1.State',
   encode(message: State, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.key !== "") {
+    if (message.key !== '') {
       writer.uint32(10).string(message.key);
     }
-    if (message.value !== "") {
+    if (message.value !== '') {
       writer.uint32(18).string(message.value);
     }
     return writer;
@@ -874,23 +875,23 @@ export const State = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.key = reader.string();
-          break;
-        case 2:
-          message.value = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.key = reader.string();
+        break;
+      case 2:
+        message.value = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<State>): State {
     const message = createBaseState();
-    message.key = object.key ?? "";
-    message.value = object.value ?? "";
+    message.key = object.key ?? '';
+    message.value = object.value ?? '';
     return message;
   },
   fromAmino(object: StateAmino): State {
@@ -905,8 +906,8 @@ export const State = {
   },
   toAmino(message: State): StateAmino {
     const obj: any = {};
-    obj.key = message.key === "" ? undefined : message.key;
-    obj.value = message.value === "" ? undefined : message.value;
+    obj.key = message.key === '' ? undefined : message.key;
+    obj.value = message.value === '' ? undefined : message.value;
     return obj;
   },
   fromAminoMsg(object: StateAminoMsg): State {
@@ -920,21 +921,21 @@ export const State = {
   },
   toProtoMsg(message: State): StateProtoMsg {
     return {
-      typeUrl: "/ethermint.evm.v1.State",
+      typeUrl: '/ethermint.evm.v1.State',
       value: State.encode(message).finish()
     };
   }
 };
 function createBaseTransactionLogs(): TransactionLogs {
   return {
-    hash: "",
+    hash: '',
     logs: []
   };
 }
 export const TransactionLogs = {
-  typeUrl: "/ethermint.evm.v1.TransactionLogs",
+  typeUrl: '/ethermint.evm.v1.TransactionLogs',
   encode(message: TransactionLogs, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.hash !== "") {
+    if (message.hash !== '') {
       writer.uint32(10).string(message.hash);
     }
     for (const v of message.logs) {
@@ -949,22 +950,22 @@ export const TransactionLogs = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.hash = reader.string();
-          break;
-        case 2:
-          message.logs.push(Log.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.hash = reader.string();
+        break;
+      case 2:
+        message.logs.push(Log.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<TransactionLogs>): TransactionLogs {
     const message = createBaseTransactionLogs();
-    message.hash = object.hash ?? "";
+    message.hash = object.hash ?? '';
     message.logs = object.logs?.map(e => Log.fromPartial(e)) || [];
     return message;
   },
@@ -978,7 +979,7 @@ export const TransactionLogs = {
   },
   toAmino(message: TransactionLogs): TransactionLogsAmino {
     const obj: any = {};
-    obj.hash = message.hash === "" ? undefined : message.hash;
+    obj.hash = message.hash === '' ? undefined : message.hash;
     if (message.logs) {
       obj.logs = message.logs.map(e => e ? Log.toAmino(e) : undefined);
     } else {
@@ -997,28 +998,28 @@ export const TransactionLogs = {
   },
   toProtoMsg(message: TransactionLogs): TransactionLogsProtoMsg {
     return {
-      typeUrl: "/ethermint.evm.v1.TransactionLogs",
+      typeUrl: '/ethermint.evm.v1.TransactionLogs',
       value: TransactionLogs.encode(message).finish()
     };
   }
 };
 function createBaseLog(): Log {
   return {
-    address: "",
+    address: '',
     topics: [],
     data: new Uint8Array(),
     blockNumber: Long.UZERO,
-    txHash: "",
+    txHash: '',
     txIndex: Long.UZERO,
-    blockHash: "",
+    blockHash: '',
     index: Long.UZERO,
     removed: false
   };
 }
 export const Log = {
-  typeUrl: "/ethermint.evm.v1.Log",
+  typeUrl: '/ethermint.evm.v1.Log',
   encode(message: Log, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     for (const v of message.topics) {
@@ -1030,13 +1031,13 @@ export const Log = {
     if (!message.blockNumber.isZero()) {
       writer.uint32(32).uint64(message.blockNumber);
     }
-    if (message.txHash !== "") {
+    if (message.txHash !== '') {
       writer.uint32(42).string(message.txHash);
     }
     if (!message.txIndex.isZero()) {
       writer.uint32(48).uint64(message.txIndex);
     }
-    if (message.blockHash !== "") {
+    if (message.blockHash !== '') {
       writer.uint32(58).string(message.blockHash);
     }
     if (!message.index.isZero()) {
@@ -1054,49 +1055,49 @@ export const Log = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.address = reader.string();
-          break;
-        case 2:
-          message.topics.push(reader.string());
-          break;
-        case 3:
-          message.data = reader.bytes();
-          break;
-        case 4:
-          message.blockNumber = reader.uint64() as Long;
-          break;
-        case 5:
-          message.txHash = reader.string();
-          break;
-        case 6:
-          message.txIndex = reader.uint64() as Long;
-          break;
-        case 7:
-          message.blockHash = reader.string();
-          break;
-        case 8:
-          message.index = reader.uint64() as Long;
-          break;
-        case 9:
-          message.removed = reader.bool();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.address = reader.string();
+        break;
+      case 2:
+        message.topics.push(reader.string());
+        break;
+      case 3:
+        message.data = reader.bytes();
+        break;
+      case 4:
+        message.blockNumber = reader.uint64() as Long;
+        break;
+      case 5:
+        message.txHash = reader.string();
+        break;
+      case 6:
+        message.txIndex = reader.uint64() as Long;
+        break;
+      case 7:
+        message.blockHash = reader.string();
+        break;
+      case 8:
+        message.index = reader.uint64() as Long;
+        break;
+      case 9:
+        message.removed = reader.bool();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Log>): Log {
     const message = createBaseLog();
-    message.address = object.address ?? "";
+    message.address = object.address ?? '';
     message.topics = object.topics?.map(e => e) || [];
     message.data = object.data ?? new Uint8Array();
     message.blockNumber = object.blockNumber !== undefined && object.blockNumber !== null ? Long.fromValue(object.blockNumber) : Long.UZERO;
-    message.txHash = object.txHash ?? "";
+    message.txHash = object.txHash ?? '';
     message.txIndex = object.txIndex !== undefined && object.txIndex !== null ? Long.fromValue(object.txIndex) : Long.UZERO;
-    message.blockHash = object.blockHash ?? "";
+    message.blockHash = object.blockHash ?? '';
     message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.UZERO;
     message.removed = object.removed ?? false;
     return message;
@@ -1132,18 +1133,18 @@ export const Log = {
   },
   toAmino(message: Log): LogAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
+    obj.address = message.address === '' ? undefined : message.address;
     if (message.topics) {
       obj.topics = message.topics.map(e => e);
     } else {
       obj.topics = message.topics;
     }
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
-    obj.block_number = message.blockNumber ? (message.blockNumber?.toString)() : "0";
-    obj.tx_hash = message.txHash ?? "";
-    obj.tx_index = message.txIndex ? (message.txIndex?.toString)() : "0";
-    obj.block_hash = message.blockHash ?? "";
-    obj.index = message.index ? (message.index?.toString)() : "0";
+    obj.block_number = message.blockNumber ? message.blockNumber?.toString() : '0';
+    obj.tx_hash = message.txHash ?? '';
+    obj.tx_index = message.txIndex ? message.txIndex?.toString() : '0';
+    obj.block_hash = message.blockHash ?? '';
+    obj.index = message.index ? message.index?.toString() : '0';
     obj.removed = message.removed === false ? undefined : message.removed;
     return obj;
   },
@@ -1158,14 +1159,14 @@ export const Log = {
   },
   toProtoMsg(message: Log): LogProtoMsg {
     return {
-      typeUrl: "/ethermint.evm.v1.Log",
+      typeUrl: '/ethermint.evm.v1.Log',
       value: Log.encode(message).finish()
     };
   }
 };
 function createBaseTxResult(): TxResult {
   return {
-    contractAddress: "",
+    contractAddress: '',
     bloom: new Uint8Array(),
     txLogs: TransactionLogs.fromPartial({}),
     ret: new Uint8Array(),
@@ -1174,9 +1175,9 @@ function createBaseTxResult(): TxResult {
   };
 }
 export const TxResult = {
-  typeUrl: "/ethermint.evm.v1.TxResult",
+  typeUrl: '/ethermint.evm.v1.TxResult',
   encode(message: TxResult, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.contractAddress !== "") {
+    if (message.contractAddress !== '') {
       writer.uint32(10).string(message.contractAddress);
     }
     if (message.bloom.length !== 0) {
@@ -1203,34 +1204,34 @@ export const TxResult = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.contractAddress = reader.string();
-          break;
-        case 2:
-          message.bloom = reader.bytes();
-          break;
-        case 3:
-          message.txLogs = TransactionLogs.decode(reader, reader.uint32());
-          break;
-        case 4:
-          message.ret = reader.bytes();
-          break;
-        case 5:
-          message.reverted = reader.bool();
-          break;
-        case 6:
-          message.gasUsed = reader.uint64() as Long;
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.contractAddress = reader.string();
+        break;
+      case 2:
+        message.bloom = reader.bytes();
+        break;
+      case 3:
+        message.txLogs = TransactionLogs.decode(reader, reader.uint32());
+        break;
+      case 4:
+        message.ret = reader.bytes();
+        break;
+      case 5:
+        message.reverted = reader.bool();
+        break;
+      case 6:
+        message.gasUsed = reader.uint64() as Long;
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<TxResult>): TxResult {
     const message = createBaseTxResult();
-    message.contractAddress = object.contractAddress ?? "";
+    message.contractAddress = object.contractAddress ?? '';
     message.bloom = object.bloom ?? new Uint8Array();
     message.txLogs = object.txLogs !== undefined && object.txLogs !== null ? TransactionLogs.fromPartial(object.txLogs) : undefined;
     message.ret = object.ret ?? new Uint8Array();
@@ -1262,12 +1263,12 @@ export const TxResult = {
   },
   toAmino(message: TxResult): TxResultAmino {
     const obj: any = {};
-    obj.contract_address = message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.contract_address = message.contractAddress === '' ? undefined : message.contractAddress;
     obj.bloom = message.bloom ? base64FromBytes(message.bloom) : undefined;
     obj.tx_logs = message.txLogs ? TransactionLogs.toAmino(message.txLogs) : undefined;
     obj.ret = message.ret ? base64FromBytes(message.ret) : undefined;
     obj.reverted = message.reverted === false ? undefined : message.reverted;
-    obj.gas_used = !message.gasUsed.isZero() ? (message.gasUsed?.toString)() : undefined;
+    obj.gas_used = !message.gasUsed.isZero() ? message.gasUsed?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: TxResultAminoMsg): TxResult {
@@ -1281,21 +1282,21 @@ export const TxResult = {
   },
   toProtoMsg(message: TxResult): TxResultProtoMsg {
     return {
-      typeUrl: "/ethermint.evm.v1.TxResult",
+      typeUrl: '/ethermint.evm.v1.TxResult',
       value: TxResult.encode(message).finish()
     };
   }
 };
 function createBaseAccessTuple(): AccessTuple {
   return {
-    address: "",
+    address: '',
     storageKeys: []
   };
 }
 export const AccessTuple = {
-  typeUrl: "/ethermint.evm.v1.AccessTuple",
+  typeUrl: '/ethermint.evm.v1.AccessTuple',
   encode(message: AccessTuple, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     for (const v of message.storageKeys) {
@@ -1310,22 +1311,22 @@ export const AccessTuple = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.address = reader.string();
-          break;
-        case 2:
-          message.storageKeys.push(reader.string());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.address = reader.string();
+        break;
+      case 2:
+        message.storageKeys.push(reader.string());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<AccessTuple>): AccessTuple {
     const message = createBaseAccessTuple();
-    message.address = object.address ?? "";
+    message.address = object.address ?? '';
     message.storageKeys = object.storageKeys?.map(e => e) || [];
     return message;
   },
@@ -1339,7 +1340,7 @@ export const AccessTuple = {
   },
   toAmino(message: AccessTuple): AccessTupleAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
+    obj.address = message.address === '' ? undefined : message.address;
     if (message.storageKeys) {
       obj.storage_keys = message.storageKeys.map(e => e);
     } else {
@@ -1358,15 +1359,15 @@ export const AccessTuple = {
   },
   toProtoMsg(message: AccessTuple): AccessTupleProtoMsg {
     return {
-      typeUrl: "/ethermint.evm.v1.AccessTuple",
+      typeUrl: '/ethermint.evm.v1.AccessTuple',
       value: AccessTuple.encode(message).finish()
     };
   }
 };
 function createBaseTraceConfig(): TraceConfig {
   return {
-    tracer: "",
-    timeout: "",
+    tracer: '',
+    timeout: '',
     reexec: Long.UZERO,
     disableStack: false,
     disableStorage: false,
@@ -1378,12 +1379,12 @@ function createBaseTraceConfig(): TraceConfig {
   };
 }
 export const TraceConfig = {
-  typeUrl: "/ethermint.evm.v1.TraceConfig",
+  typeUrl: '/ethermint.evm.v1.TraceConfig',
   encode(message: TraceConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.tracer !== "") {
+    if (message.tracer !== '') {
       writer.uint32(10).string(message.tracer);
     }
-    if (message.timeout !== "") {
+    if (message.timeout !== '') {
       writer.uint32(18).string(message.timeout);
     }
     if (!message.reexec.isZero()) {
@@ -1419,47 +1420,47 @@ export const TraceConfig = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.tracer = reader.string();
-          break;
-        case 2:
-          message.timeout = reader.string();
-          break;
-        case 3:
-          message.reexec = reader.uint64() as Long;
-          break;
-        case 5:
-          message.disableStack = reader.bool();
-          break;
-        case 6:
-          message.disableStorage = reader.bool();
-          break;
-        case 8:
-          message.debug = reader.bool();
-          break;
-        case 9:
-          message.limit = reader.int32();
-          break;
-        case 10:
-          message.overrides = ChainConfig.decode(reader, reader.uint32());
-          break;
-        case 11:
-          message.enableMemory = reader.bool();
-          break;
-        case 12:
-          message.enableReturnData = reader.bool();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.tracer = reader.string();
+        break;
+      case 2:
+        message.timeout = reader.string();
+        break;
+      case 3:
+        message.reexec = reader.uint64() as Long;
+        break;
+      case 5:
+        message.disableStack = reader.bool();
+        break;
+      case 6:
+        message.disableStorage = reader.bool();
+        break;
+      case 8:
+        message.debug = reader.bool();
+        break;
+      case 9:
+        message.limit = reader.int32();
+        break;
+      case 10:
+        message.overrides = ChainConfig.decode(reader, reader.uint32());
+        break;
+      case 11:
+        message.enableMemory = reader.bool();
+        break;
+      case 12:
+        message.enableReturnData = reader.bool();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<TraceConfig>): TraceConfig {
     const message = createBaseTraceConfig();
-    message.tracer = object.tracer ?? "";
-    message.timeout = object.timeout ?? "";
+    message.tracer = object.tracer ?? '';
+    message.timeout = object.timeout ?? '';
     message.reexec = object.reexec !== undefined && object.reexec !== null ? Long.fromValue(object.reexec) : Long.UZERO;
     message.disableStack = object.disableStack ?? false;
     message.disableStorage = object.disableStorage ?? false;
@@ -1506,9 +1507,9 @@ export const TraceConfig = {
   },
   toAmino(message: TraceConfig): TraceConfigAmino {
     const obj: any = {};
-    obj.tracer = message.tracer === "" ? undefined : message.tracer;
-    obj.timeout = message.timeout === "" ? undefined : message.timeout;
-    obj.reexec = !message.reexec.isZero() ? (message.reexec?.toString)() : undefined;
+    obj.tracer = message.tracer === '' ? undefined : message.tracer;
+    obj.timeout = message.timeout === '' ? undefined : message.timeout;
+    obj.reexec = !message.reexec.isZero() ? message.reexec?.toString() : undefined;
     obj.disable_stack = message.disableStack ?? false;
     obj.disable_storage = message.disableStorage ?? false;
     obj.debug = message.debug === false ? undefined : message.debug;
@@ -1529,7 +1530,7 @@ export const TraceConfig = {
   },
   toProtoMsg(message: TraceConfig): TraceConfigProtoMsg {
     return {
-      typeUrl: "/ethermint.evm.v1.TraceConfig",
+      typeUrl: '/ethermint.evm.v1.TraceConfig',
       value: TraceConfig.encode(message).finish()
     };
   }

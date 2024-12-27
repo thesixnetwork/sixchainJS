@@ -1,17 +1,18 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType } from "./mint";
-import * as _m0 from "protobufjs/minimal";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+import * as _m0 from 'protobufjs/minimal';
+
+import { base64FromBytes,bytesFromBase64 } from '../../../helpers';
+import { Params, ParamsAmino, ParamsSDKType } from './mint';
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
-  typeUrl: "/cosmos.mint.v1beta1.QueryParamsRequest";
+  typeUrl: '/cosmos.mint.v1beta1.QueryParamsRequest';
   value: Uint8Array;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
-  type: "cosmos-sdk/QueryParamsRequest";
+  type: 'cosmos-sdk/QueryParamsRequest';
   value: QueryParamsRequestAmino;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -22,7 +23,7 @@ export interface QueryParamsResponse {
   params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
-  typeUrl: "/cosmos.mint.v1beta1.QueryParamsResponse";
+  typeUrl: '/cosmos.mint.v1beta1.QueryParamsResponse';
   value: Uint8Array;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
@@ -31,7 +32,7 @@ export interface QueryParamsResponseAmino {
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
-  type: "cosmos-sdk/QueryParamsResponse";
+  type: 'cosmos-sdk/QueryParamsResponse';
   value: QueryParamsResponseAmino;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
@@ -41,13 +42,13 @@ export interface QueryParamsResponseSDKType {
 /** QueryInflationRequest is the request type for the Query/Inflation RPC method. */
 export interface QueryInflationRequest {}
 export interface QueryInflationRequestProtoMsg {
-  typeUrl: "/cosmos.mint.v1beta1.QueryInflationRequest";
+  typeUrl: '/cosmos.mint.v1beta1.QueryInflationRequest';
   value: Uint8Array;
 }
 /** QueryInflationRequest is the request type for the Query/Inflation RPC method. */
 export interface QueryInflationRequestAmino {}
 export interface QueryInflationRequestAminoMsg {
-  type: "cosmos-sdk/QueryInflationRequest";
+  type: 'cosmos-sdk/QueryInflationRequest';
   value: QueryInflationRequestAmino;
 }
 /** QueryInflationRequest is the request type for the Query/Inflation RPC method. */
@@ -61,7 +62,7 @@ export interface QueryInflationResponse {
   inflation: Uint8Array;
 }
 export interface QueryInflationResponseProtoMsg {
-  typeUrl: "/cosmos.mint.v1beta1.QueryInflationResponse";
+  typeUrl: '/cosmos.mint.v1beta1.QueryInflationResponse';
   value: Uint8Array;
 }
 /**
@@ -73,7 +74,7 @@ export interface QueryInflationResponseAmino {
   inflation?: string;
 }
 export interface QueryInflationResponseAminoMsg {
-  type: "cosmos-sdk/QueryInflationResponse";
+  type: 'cosmos-sdk/QueryInflationResponse';
   value: QueryInflationResponseAmino;
 }
 /**
@@ -89,7 +90,7 @@ export interface QueryInflationResponseSDKType {
  */
 export interface QueryAnnualProvisionsRequest {}
 export interface QueryAnnualProvisionsRequestProtoMsg {
-  typeUrl: "/cosmos.mint.v1beta1.QueryAnnualProvisionsRequest";
+  typeUrl: '/cosmos.mint.v1beta1.QueryAnnualProvisionsRequest';
   value: Uint8Array;
 }
 /**
@@ -98,7 +99,7 @@ export interface QueryAnnualProvisionsRequestProtoMsg {
  */
 export interface QueryAnnualProvisionsRequestAmino {}
 export interface QueryAnnualProvisionsRequestAminoMsg {
-  type: "cosmos-sdk/QueryAnnualProvisionsRequest";
+  type: 'cosmos-sdk/QueryAnnualProvisionsRequest';
   value: QueryAnnualProvisionsRequestAmino;
 }
 /**
@@ -115,7 +116,7 @@ export interface QueryAnnualProvisionsResponse {
   annualProvisions: Uint8Array;
 }
 export interface QueryAnnualProvisionsResponseProtoMsg {
-  typeUrl: "/cosmos.mint.v1beta1.QueryAnnualProvisionsResponse";
+  typeUrl: '/cosmos.mint.v1beta1.QueryAnnualProvisionsResponse';
   value: Uint8Array;
 }
 /**
@@ -127,7 +128,7 @@ export interface QueryAnnualProvisionsResponseAmino {
   annual_provisions?: string;
 }
 export interface QueryAnnualProvisionsResponseAminoMsg {
-  type: "cosmos-sdk/QueryAnnualProvisionsResponse";
+  type: 'cosmos-sdk/QueryAnnualProvisionsResponse';
   value: QueryAnnualProvisionsResponseAmino;
 }
 /**
@@ -141,7 +142,7 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
-  typeUrl: "/cosmos.mint.v1beta1.QueryParamsRequest",
+  typeUrl: '/cosmos.mint.v1beta1.QueryParamsRequest',
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -152,9 +153,9 @@ export const QueryParamsRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -176,7 +177,7 @@ export const QueryParamsRequest = {
   },
   toAminoMsg(message: QueryParamsRequest): QueryParamsRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryParamsRequest",
+      type: 'cosmos-sdk/QueryParamsRequest',
       value: QueryParamsRequest.toAmino(message)
     };
   },
@@ -188,7 +189,7 @@ export const QueryParamsRequest = {
   },
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
-      typeUrl: "/cosmos.mint.v1beta1.QueryParamsRequest",
+      typeUrl: '/cosmos.mint.v1beta1.QueryParamsRequest',
       value: QueryParamsRequest.encode(message).finish()
     };
   }
@@ -199,7 +200,7 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
   };
 }
 export const QueryParamsResponse = {
-  typeUrl: "/cosmos.mint.v1beta1.QueryParamsResponse",
+  typeUrl: '/cosmos.mint.v1beta1.QueryParamsResponse',
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -213,12 +214,12 @@ export const QueryParamsResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.params = Params.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.params = Params.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -245,7 +246,7 @@ export const QueryParamsResponse = {
   },
   toAminoMsg(message: QueryParamsResponse): QueryParamsResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryParamsResponse",
+      type: 'cosmos-sdk/QueryParamsResponse',
       value: QueryParamsResponse.toAmino(message)
     };
   },
@@ -257,7 +258,7 @@ export const QueryParamsResponse = {
   },
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.mint.v1beta1.QueryParamsResponse",
+      typeUrl: '/cosmos.mint.v1beta1.QueryParamsResponse',
       value: QueryParamsResponse.encode(message).finish()
     };
   }
@@ -266,7 +267,7 @@ function createBaseQueryInflationRequest(): QueryInflationRequest {
   return {};
 }
 export const QueryInflationRequest = {
-  typeUrl: "/cosmos.mint.v1beta1.QueryInflationRequest",
+  typeUrl: '/cosmos.mint.v1beta1.QueryInflationRequest',
   encode(_: QueryInflationRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -277,9 +278,9 @@ export const QueryInflationRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -301,7 +302,7 @@ export const QueryInflationRequest = {
   },
   toAminoMsg(message: QueryInflationRequest): QueryInflationRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryInflationRequest",
+      type: 'cosmos-sdk/QueryInflationRequest',
       value: QueryInflationRequest.toAmino(message)
     };
   },
@@ -313,7 +314,7 @@ export const QueryInflationRequest = {
   },
   toProtoMsg(message: QueryInflationRequest): QueryInflationRequestProtoMsg {
     return {
-      typeUrl: "/cosmos.mint.v1beta1.QueryInflationRequest",
+      typeUrl: '/cosmos.mint.v1beta1.QueryInflationRequest',
       value: QueryInflationRequest.encode(message).finish()
     };
   }
@@ -324,7 +325,7 @@ function createBaseQueryInflationResponse(): QueryInflationResponse {
   };
 }
 export const QueryInflationResponse = {
-  typeUrl: "/cosmos.mint.v1beta1.QueryInflationResponse",
+  typeUrl: '/cosmos.mint.v1beta1.QueryInflationResponse',
   encode(message: QueryInflationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.inflation.length !== 0) {
       writer.uint32(10).bytes(message.inflation);
@@ -338,12 +339,12 @@ export const QueryInflationResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.inflation = reader.bytes();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.inflation = reader.bytes();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -370,7 +371,7 @@ export const QueryInflationResponse = {
   },
   toAminoMsg(message: QueryInflationResponse): QueryInflationResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryInflationResponse",
+      type: 'cosmos-sdk/QueryInflationResponse',
       value: QueryInflationResponse.toAmino(message)
     };
   },
@@ -382,7 +383,7 @@ export const QueryInflationResponse = {
   },
   toProtoMsg(message: QueryInflationResponse): QueryInflationResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.mint.v1beta1.QueryInflationResponse",
+      typeUrl: '/cosmos.mint.v1beta1.QueryInflationResponse',
       value: QueryInflationResponse.encode(message).finish()
     };
   }
@@ -391,7 +392,7 @@ function createBaseQueryAnnualProvisionsRequest(): QueryAnnualProvisionsRequest 
   return {};
 }
 export const QueryAnnualProvisionsRequest = {
-  typeUrl: "/cosmos.mint.v1beta1.QueryAnnualProvisionsRequest",
+  typeUrl: '/cosmos.mint.v1beta1.QueryAnnualProvisionsRequest',
   encode(_: QueryAnnualProvisionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -402,9 +403,9 @@ export const QueryAnnualProvisionsRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -426,7 +427,7 @@ export const QueryAnnualProvisionsRequest = {
   },
   toAminoMsg(message: QueryAnnualProvisionsRequest): QueryAnnualProvisionsRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryAnnualProvisionsRequest",
+      type: 'cosmos-sdk/QueryAnnualProvisionsRequest',
       value: QueryAnnualProvisionsRequest.toAmino(message)
     };
   },
@@ -438,7 +439,7 @@ export const QueryAnnualProvisionsRequest = {
   },
   toProtoMsg(message: QueryAnnualProvisionsRequest): QueryAnnualProvisionsRequestProtoMsg {
     return {
-      typeUrl: "/cosmos.mint.v1beta1.QueryAnnualProvisionsRequest",
+      typeUrl: '/cosmos.mint.v1beta1.QueryAnnualProvisionsRequest',
       value: QueryAnnualProvisionsRequest.encode(message).finish()
     };
   }
@@ -449,7 +450,7 @@ function createBaseQueryAnnualProvisionsResponse(): QueryAnnualProvisionsRespons
   };
 }
 export const QueryAnnualProvisionsResponse = {
-  typeUrl: "/cosmos.mint.v1beta1.QueryAnnualProvisionsResponse",
+  typeUrl: '/cosmos.mint.v1beta1.QueryAnnualProvisionsResponse',
   encode(message: QueryAnnualProvisionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.annualProvisions.length !== 0) {
       writer.uint32(10).bytes(message.annualProvisions);
@@ -463,12 +464,12 @@ export const QueryAnnualProvisionsResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.annualProvisions = reader.bytes();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.annualProvisions = reader.bytes();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -495,7 +496,7 @@ export const QueryAnnualProvisionsResponse = {
   },
   toAminoMsg(message: QueryAnnualProvisionsResponse): QueryAnnualProvisionsResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryAnnualProvisionsResponse",
+      type: 'cosmos-sdk/QueryAnnualProvisionsResponse',
       value: QueryAnnualProvisionsResponse.toAmino(message)
     };
   },
@@ -507,7 +508,7 @@ export const QueryAnnualProvisionsResponse = {
   },
   toProtoMsg(message: QueryAnnualProvisionsResponse): QueryAnnualProvisionsResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.mint.v1beta1.QueryAnnualProvisionsResponse",
+      typeUrl: '/cosmos.mint.v1beta1.QueryAnnualProvisionsResponse',
       value: QueryAnnualProvisionsResponse.encode(message).finish()
     };
   }

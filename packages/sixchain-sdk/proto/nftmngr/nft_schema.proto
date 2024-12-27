@@ -1,10 +1,10 @@
 syntax = "proto3";
-package thesixnetwork.sixnft.nftmngr;
+package thesixnetwork.sixprotocol.nftmngr;
 
 import "nftmngr/on_chain_data.proto";
 import "nftmngr/origin_data.proto";
 
-option go_package = "github.com/thesixnetwork/sixnft/x/nftmngr/types";
+option go_package = "github.com/thesixnetwork/six-protocol/x/nftmngr/types";
 
 message NFTSchema {
   string code = 1;

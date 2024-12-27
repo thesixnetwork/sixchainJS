@@ -1,13 +1,14 @@
 //@ts-nocheck
-import { OpenseaDisplayOption, OpenseaDisplayOptionAmino, OpenseaDisplayOptionSDKType } from "./opensea_display_option";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { OpenseaDisplayOption, OpenseaDisplayOptionAmino, OpenseaDisplayOptionSDKType } from './opensea_display_option';
 export interface DisplayOption {
   boolTrueValue: string;
   boolFalseValue: string;
   opensea?: OpenseaDisplayOption;
 }
 export interface DisplayOptionProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.DisplayOption";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.DisplayOption';
   value: Uint8Array;
 }
 export interface DisplayOptionAmino {
@@ -16,7 +17,7 @@ export interface DisplayOptionAmino {
   opensea?: OpenseaDisplayOptionAmino;
 }
 export interface DisplayOptionAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.DisplayOption";
+  type: '/thesixnetwork.sixprotocol.nftmngr.DisplayOption';
   value: DisplayOptionAmino;
 }
 export interface DisplayOptionSDKType {
@@ -26,18 +27,18 @@ export interface DisplayOptionSDKType {
 }
 function createBaseDisplayOption(): DisplayOption {
   return {
-    boolTrueValue: "",
-    boolFalseValue: "",
+    boolTrueValue: '',
+    boolFalseValue: '',
     opensea: undefined
   };
 }
 export const DisplayOption = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.DisplayOption",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.DisplayOption',
   encode(message: DisplayOption, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.boolTrueValue !== "") {
+    if (message.boolTrueValue !== '') {
       writer.uint32(10).string(message.boolTrueValue);
     }
-    if (message.boolFalseValue !== "") {
+    if (message.boolFalseValue !== '') {
       writer.uint32(18).string(message.boolFalseValue);
     }
     if (message.opensea !== undefined) {
@@ -52,26 +53,26 @@ export const DisplayOption = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.boolTrueValue = reader.string();
-          break;
-        case 2:
-          message.boolFalseValue = reader.string();
-          break;
-        case 3:
-          message.opensea = OpenseaDisplayOption.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.boolTrueValue = reader.string();
+        break;
+      case 2:
+        message.boolFalseValue = reader.string();
+        break;
+      case 3:
+        message.opensea = OpenseaDisplayOption.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<DisplayOption>): DisplayOption {
     const message = createBaseDisplayOption();
-    message.boolTrueValue = object.boolTrueValue ?? "";
-    message.boolFalseValue = object.boolFalseValue ?? "";
+    message.boolTrueValue = object.boolTrueValue ?? '';
+    message.boolFalseValue = object.boolFalseValue ?? '';
     message.opensea = object.opensea !== undefined && object.opensea !== null ? OpenseaDisplayOption.fromPartial(object.opensea) : undefined;
     return message;
   },
@@ -90,8 +91,8 @@ export const DisplayOption = {
   },
   toAmino(message: DisplayOption): DisplayOptionAmino {
     const obj: any = {};
-    obj.bool_true_value = message.boolTrueValue === "" ? undefined : message.boolTrueValue;
-    obj.bool_false_value = message.boolFalseValue === "" ? undefined : message.boolFalseValue;
+    obj.bool_true_value = message.boolTrueValue === '' ? undefined : message.boolTrueValue;
+    obj.bool_false_value = message.boolFalseValue === '' ? undefined : message.boolFalseValue;
     obj.opensea = message.opensea ? OpenseaDisplayOption.toAmino(message.opensea) : undefined;
     return obj;
   },
@@ -106,7 +107,7 @@ export const DisplayOption = {
   },
   toProtoMsg(message: DisplayOption): DisplayOptionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.DisplayOption",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.DisplayOption',
       value: DisplayOption.encode(message).finish()
     };
   }

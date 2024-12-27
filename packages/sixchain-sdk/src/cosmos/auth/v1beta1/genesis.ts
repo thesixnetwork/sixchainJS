@@ -1,7 +1,8 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType } from "./auth";
-import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Any, AnyAmino, AnySDKType } from '../../../google/protobuf/any';
+import { Params, ParamsAmino, ParamsSDKType } from './auth';
 /** GenesisState defines the auth module's genesis state. */
 export interface GenesisState {
   /** params defines all the paramaters of the module. */
@@ -10,7 +11,7 @@ export interface GenesisState {
   accounts: Any[];
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/cosmos.auth.v1beta1.GenesisState";
+  typeUrl: '/cosmos.auth.v1beta1.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState defines the auth module's genesis state. */
@@ -21,7 +22,7 @@ export interface GenesisStateAmino {
   accounts?: AnyAmino[];
 }
 export interface GenesisStateAminoMsg {
-  type: "cosmos-sdk/GenesisState";
+  type: 'cosmos-sdk/GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState defines the auth module's genesis state. */
@@ -36,7 +37,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: "/cosmos.auth.v1beta1.GenesisState",
+  typeUrl: '/cosmos.auth.v1beta1.GenesisState',
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -53,15 +54,15 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.params = Params.decode(reader, reader.uint32());
-          break;
-        case 2:
-          message.accounts.push(Any.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.params = Params.decode(reader, reader.uint32());
+        break;
+      case 2:
+        message.accounts.push(Any.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -95,7 +96,7 @@ export const GenesisState = {
   },
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
-      type: "cosmos-sdk/GenesisState",
+      type: 'cosmos-sdk/GenesisState',
       value: GenesisState.toAmino(message)
     };
   },
@@ -107,7 +108,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/cosmos.auth.v1beta1.GenesisState",
+      typeUrl: '/cosmos.auth.v1beta1.GenesisState',
       value: GenesisState.encode(message).finish()
     };
   }

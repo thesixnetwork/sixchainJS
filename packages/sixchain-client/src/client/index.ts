@@ -1,2 +1,2 @@
-export * from "./Accounts"
-export * from "./SixDataChainConnector"
+export * from './Accounts';
+export * from './SixDataChainConnector';

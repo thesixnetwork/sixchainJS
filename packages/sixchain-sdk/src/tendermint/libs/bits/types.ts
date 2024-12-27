@@ -1,12 +1,13 @@
 //@ts-nocheck
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Long } from '../../../helpers';
 export interface BitArray {
   bits: Long;
   elems: Long[];
 }
 export interface BitArrayProtoMsg {
-  typeUrl: "/tendermint.libs.bits.BitArray";
+  typeUrl: '/tendermint.libs.bits.BitArray';
   value: Uint8Array;
 }
 export interface BitArrayAmino {
@@ -14,7 +15,7 @@ export interface BitArrayAmino {
   elems?: string[];
 }
 export interface BitArrayAminoMsg {
-  type: "/tendermint.libs.bits.BitArray";
+  type: '/tendermint.libs.bits.BitArray';
   value: BitArrayAmino;
 }
 export interface BitArraySDKType {
@@ -28,7 +29,7 @@ function createBaseBitArray(): BitArray {
   };
 }
 export const BitArray = {
-  typeUrl: "/tendermint.libs.bits.BitArray",
+  typeUrl: '/tendermint.libs.bits.BitArray',
   encode(message: BitArray, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.bits.isZero()) {
       writer.uint32(8).int64(message.bits);
@@ -47,22 +48,22 @@ export const BitArray = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.bits = reader.int64() as Long;
-          break;
-        case 2:
-          if ((tag & 7) === 2) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.elems.push(reader.uint64() as Long);
-            }
-          } else {
+      case 1:
+        message.bits = reader.int64() as Long;
+        break;
+      case 2:
+        if ((tag & 7) === 2) {
+          const end2 = reader.uint32() + reader.pos;
+          while (reader.pos < end2) {
             message.elems.push(reader.uint64() as Long);
           }
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+        } else {
+          message.elems.push(reader.uint64() as Long);
+        }
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -83,7 +84,7 @@ export const BitArray = {
   },
   toAmino(message: BitArray): BitArrayAmino {
     const obj: any = {};
-    obj.bits = !message.bits.isZero() ? (message.bits?.toString)() : undefined;
+    obj.bits = !message.bits.isZero() ? message.bits?.toString() : undefined;
     if (message.elems) {
       obj.elems = message.elems.map(e => e);
     } else {
@@ -102,7 +103,7 @@ export const BitArray = {
   },
   toProtoMsg(message: BitArray): BitArrayProtoMsg {
     return {
-      typeUrl: "/tendermint.libs.bits.BitArray",
+      typeUrl: '/tendermint.libs.bits.BitArray',
       value: BitArray.encode(message).finish()
     };
   }

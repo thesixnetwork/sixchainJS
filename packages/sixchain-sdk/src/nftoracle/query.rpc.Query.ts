@@ -1,8 +1,9 @@
 //@ts-nocheck
-import { Rpc } from "../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetMintRequestRequest, QueryGetMintRequestResponse, QueryAllMintRequestRequest, QueryAllMintRequestResponse, QueryGetActionRequestRequest, QueryGetActionRequestResponse, QueryAllActionRequestRequest, QueryAllActionRequestResponse, QueryGetCollectionOwnerRequestRequest, QueryGetCollectionOwnerRequestResponse, QueryAllCollectionOwnerRequestRequest, QueryAllCollectionOwnerRequestResponse, QueryGetOracleConfigRequest, QueryGetOracleConfigResponse, QueryGetActionSignerRequest, QueryGetActionSignerResponse, QueryAllActionSignerRequest, QueryAllActionSignerResponse, QueryGetBindedSignerRequest, QueryGetBindedSignerResponse, QueryGetActionSignerConfigRequest, QueryGetActionSignerConfigResponse, QueryAllActionSignerConfigRequest, QueryAllActionSignerConfigResponse, QueryGetSyncActionSignerRequest, QueryGetSyncActionSignerResponse, QueryAllSyncActionSignerRequest, QueryAllSyncActionSignerResponse } from "./query";
+import { createProtobufRpcClient,QueryClient } from '@cosmjs/stargate';
+import * as _m0 from 'protobufjs/minimal';
+
+import { Rpc } from '../helpers';
+import { QueryAllActionRequestRequest, QueryAllActionRequestResponse, QueryAllActionSignerConfigRequest, QueryAllActionSignerConfigResponse, QueryAllActionSignerRequest, QueryAllActionSignerResponse, QueryAllCollectionOwnerRequestRequest, QueryAllCollectionOwnerRequestResponse, QueryAllMintRequestRequest, QueryAllMintRequestResponse, QueryAllSyncActionSignerRequest, QueryAllSyncActionSignerResponse,QueryGetActionRequestRequest, QueryGetActionRequestResponse, QueryGetActionSignerConfigRequest, QueryGetActionSignerConfigResponse, QueryGetActionSignerRequest, QueryGetActionSignerResponse, QueryGetBindedSignerRequest, QueryGetBindedSignerResponse, QueryGetCollectionOwnerRequestRequest, QueryGetCollectionOwnerRequestResponse, QueryGetMintRequestRequest, QueryGetMintRequestResponse, QueryGetOracleConfigRequest, QueryGetOracleConfigResponse, QueryGetSyncActionSignerRequest, QueryGetSyncActionSignerResponse, QueryParamsRequest, QueryParamsResponse } from './query';
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -58,89 +59,89 @@ export class QueryClientImpl implements Query {
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "Params", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'Params', data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
   mintRequest(request: QueryGetMintRequestRequest): Promise<QueryGetMintRequestResponse> {
     const data = QueryGetMintRequestRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "MintRequest", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'MintRequest', data);
     return promise.then(data => QueryGetMintRequestResponse.decode(new _m0.Reader(data)));
   }
   mintRequestAll(request: QueryAllMintRequestRequest = {
     pagination: undefined
   }): Promise<QueryAllMintRequestResponse> {
     const data = QueryAllMintRequestRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "MintRequestAll", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'MintRequestAll', data);
     return promise.then(data => QueryAllMintRequestResponse.decode(new _m0.Reader(data)));
   }
   actionOracleRequest(request: QueryGetActionRequestRequest): Promise<QueryGetActionRequestResponse> {
     const data = QueryGetActionRequestRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionOracleRequest", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'ActionOracleRequest', data);
     return promise.then(data => QueryGetActionRequestResponse.decode(new _m0.Reader(data)));
   }
   actionRequestAll(request: QueryAllActionRequestRequest = {
     pagination: undefined
   }): Promise<QueryAllActionRequestResponse> {
     const data = QueryAllActionRequestRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionRequestAll", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'ActionRequestAll', data);
     return promise.then(data => QueryAllActionRequestResponse.decode(new _m0.Reader(data)));
   }
   collectionOwnerRequest(request: QueryGetCollectionOwnerRequestRequest): Promise<QueryGetCollectionOwnerRequestResponse> {
     const data = QueryGetCollectionOwnerRequestRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "CollectionOwnerRequest", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'CollectionOwnerRequest', data);
     return promise.then(data => QueryGetCollectionOwnerRequestResponse.decode(new _m0.Reader(data)));
   }
   collectionOwnerRequestAll(request: QueryAllCollectionOwnerRequestRequest = {
     pagination: undefined
   }): Promise<QueryAllCollectionOwnerRequestResponse> {
     const data = QueryAllCollectionOwnerRequestRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "CollectionOwnerRequestAll", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'CollectionOwnerRequestAll', data);
     return promise.then(data => QueryAllCollectionOwnerRequestResponse.decode(new _m0.Reader(data)));
   }
   oracleConfig(request: QueryGetOracleConfigRequest = {}): Promise<QueryGetOracleConfigResponse> {
     const data = QueryGetOracleConfigRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "OracleConfig", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'OracleConfig', data);
     return promise.then(data => QueryGetOracleConfigResponse.decode(new _m0.Reader(data)));
   }
   actionSigner(request: QueryGetActionSignerRequest): Promise<QueryGetActionSignerResponse> {
     const data = QueryGetActionSignerRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionSigner", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'ActionSigner', data);
     return promise.then(data => QueryGetActionSignerResponse.decode(new _m0.Reader(data)));
   }
   actionSignerAll(request: QueryAllActionSignerRequest = {
     pagination: undefined
   }): Promise<QueryAllActionSignerResponse> {
     const data = QueryAllActionSignerRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionSignerAll", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'ActionSignerAll', data);
     return promise.then(data => QueryAllActionSignerResponse.decode(new _m0.Reader(data)));
   }
   bindedSigner(request: QueryGetBindedSignerRequest): Promise<QueryGetBindedSignerResponse> {
     const data = QueryGetBindedSignerRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "BindedSigner", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'BindedSigner', data);
     return promise.then(data => QueryGetBindedSignerResponse.decode(new _m0.Reader(data)));
   }
   actionSignerConfig(request: QueryGetActionSignerConfigRequest): Promise<QueryGetActionSignerConfigResponse> {
     const data = QueryGetActionSignerConfigRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionSignerConfig", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'ActionSignerConfig', data);
     return promise.then(data => QueryGetActionSignerConfigResponse.decode(new _m0.Reader(data)));
   }
   actionSignerConfigAll(request: QueryAllActionSignerConfigRequest = {
     pagination: undefined
   }): Promise<QueryAllActionSignerConfigResponse> {
     const data = QueryAllActionSignerConfigRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionSignerConfigAll", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'ActionSignerConfigAll', data);
     return promise.then(data => QueryAllActionSignerConfigResponse.decode(new _m0.Reader(data)));
   }
   syncActionSigner(request: QueryGetSyncActionSignerRequest): Promise<QueryGetSyncActionSignerResponse> {
     const data = QueryGetSyncActionSignerRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "SyncActionSigner", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'SyncActionSigner', data);
     return promise.then(data => QueryGetSyncActionSignerResponse.decode(new _m0.Reader(data)));
   }
   syncActionSignerAll(request: QueryAllSyncActionSignerRequest = {
     pagination: undefined
   }): Promise<QueryAllSyncActionSignerResponse> {
     const data = QueryAllSyncActionSignerRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "SyncActionSignerAll", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftoracle.Query', 'SyncActionSignerAll', data);
     return promise.then(data => QueryAllSyncActionSignerResponse.decode(new _m0.Reader(data)));
   }
 }
