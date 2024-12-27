@@ -1,4 +1,4 @@
-import { SixDataChainConnector, BASE64, typesTxCosmosStaking, fee } from "../../sdk"
+import { SixDataChainConnector, BASE64, typesTxCosmosStaking, fee } from "@thesixnetwork/sixchain-client";
 import { Coin } from "@cosmjs/amino";
 import dotenv from "dotenv";
 dotenv.config();

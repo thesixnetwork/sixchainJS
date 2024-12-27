@@ -1,7 +1,5 @@
-import { SixDataChainConnector } from "../../../sdk/client";
-import { fee, ITxNFTmngr } from "../../../sdk";
+import { SixDataChainConnector, ITxNFTmngr  } from "@thesixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { BASE64 } from "../../../sdk/helper/base64";
 import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee";
 import { getConnectorConfig } from "../../client";
 import dotenv from "dotenv";
@@ -72,7 +70,7 @@ const readline = require("readline").createInterface({
 
 readline.question(
   `Are you sure you want to deploy ${schemaCode} to ${NETOWRK} (y/n)?`,
-  (answer) => {
+  (answer:any) => {
     if (
       answer === "y" ||
       answer === "Y" ||

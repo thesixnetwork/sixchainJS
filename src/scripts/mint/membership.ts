@@ -1,5 +1,4 @@
-import { SixDataChainConnector } from "../../sdk/client";
-import { fee, ITxNFTmngr } from "../../sdk";
+import { SixDataChainConnector, ITxNFTmngr, fee } from "@thesixnetwork/sixchain-client";
 import S_ZERO_YEAR from "../../resources/metadatas/membership/senior/nft-data_0_years.json";
 import S_THREE_YEAR from "../../resources/metadatas/membership/senior/nft-data_3_years.json";
 import S_FIVE_YEAR from "../../resources/metadatas/membership/senior/nft-data_5_years.json";
@@ -16,14 +15,14 @@ import moment from "moment";
 
 dotenv.config();
 
-const JUNIOR_TIER_FILE_NAME = {
+const JUNIOR_TIER_FILE_NAME: { [key: string]: any } = {
   "0": J_ZERO_YEAR,
   "3": J_THREE_YEAR,
   "5": J_FIVE_YEAR,
   "10": J_TEN_YEAR,
 };
 
-const SENIOR_TIER_FILE_NAME = {
+const SENIOR_TIER_FILE_NAME : { [key: string]: any } = {
   "0": S_ZERO_YEAR,
   "3": S_THREE_YEAR,
   "5": S_FIVE_YEAR,
@@ -51,7 +50,7 @@ async function generateNFTData(tier: string, tokenId: string, senior:boolean): P
   var today = moment().utc().format();
   var expire = moment().utc().add(Number(tier),'years').format()
 
-  tierFileName.onchain_attributes.forEach(attribute => {
+  tierFileName.onchain_attributes.forEach((attribute:any) => {
     if (attribute.name === "start_date" && attribute.string_attribute_value) {
       attribute.string_attribute_value.value = today;
     }

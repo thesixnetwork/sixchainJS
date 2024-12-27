@@ -1,6 +1,5 @@
-import { SixDataChainConnector } from "../../sdk/client";
+import { SixDataChainConnector, typesTxNFTManager, fee } from "@thesixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { typesTxNFTManager } from "../../sdk";
 import { GasPrice } from "@cosmjs/stargate/build/fee";
 import dotenv from "dotenv";
 import allAddress from "./all_address";
@@ -109,7 +108,7 @@ const readline = require("readline").createInterface({
 
 readline.question(
   `Are you sure you want to add System actioner to ${process.argv[2]} (y/n)?`,
-  (answer) => {
+  (answer:any) => {
     if (
       answer === "y" ||
       answer === "Y" ||

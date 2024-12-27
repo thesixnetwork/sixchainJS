@@ -1,5 +1,4 @@
-import { SixDataChainConnector } from "../../sdk/client";
-import { fee, ITxNFTmngr } from "../../sdk";
+import { SixDataChainConnector, ITxNFTmngr, fee  } from "@thesixnetwork/sixchain-client";
 import ZERO_YEAR from "../../resources/metadatas/lifestyle/nft-data_0_years.json";
 import THREE_YEAR from "../../resources/metadatas/lifestyle/nft-data_3_years.json";
 import FIVE_YEAR from "../../resources/metadatas/lifestyle/nft-data_5_years.json";
@@ -10,7 +9,7 @@ import moment from 'moment';
 
 dotenv.config();
 
-const TIER_FILE_NAME = {
+const TIER_FILE_NAME: { [key: string]: any } = {
   "0": ZERO_YEAR,
   "3": THREE_YEAR,
   "5": FIVE_YEAR,
@@ -34,7 +33,7 @@ async function generateNFTData(tier: string, tokenId: string): Promise<any> {
   var today = moment().utc().format();
   var expire = moment().utc().add(Number(tier),'years').format()
 
-  tierFileName.onchain_attributes.forEach(attribute => {
+  tierFileName.onchain_attributes.forEach((attribute:any) => {
     if (attribute.name === "start_date" && attribute.string_attribute_value) {
       attribute.string_attribute_value.value = today;
     }

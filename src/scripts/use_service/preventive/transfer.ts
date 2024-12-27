@@ -1,6 +1,5 @@
-import { SixDataChainConnector } from "../../../sdk/client";
+import { SixDataChainConnector, ITxNFTmngr, fee } from "@thesixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { ITxNFTmngr } from "../../../sdk";
 import NFTSchema from "../../../resources/schemas/preventive-nft-schema.json";
 import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";

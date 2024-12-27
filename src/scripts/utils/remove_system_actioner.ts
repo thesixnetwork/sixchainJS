@@ -1,11 +1,10 @@
-import { SixDataChainConnector } from "../../sdk/client";
+import { SixDataChainConnector, typesTxNFTManager, fee } from "@thesixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { typesTxNFTManager } from "../../sdk";
 import { GasPrice } from "@cosmjs/stargate/build/fee";
 import dotenv from "dotenv";
 // import list_recipient  from "./list_address"
 // import list_recipient_71_250 from "./list_address_71-250";
-const list_recipient_71_250 = []
+const list_recipient_71_250:Array<string> = []
 dotenv.config();
 
 const schemaCode = "TechSauce.GlobalSummit2023";
@@ -95,7 +94,7 @@ const readline = require("readline").createInterface({
 
 readline.question(
   `Are you sure you want to add System actioner ${schemaCode} to ${process.argv[2]} (y/n)?`,
-  (answer) => {
+  (answer:any) => {
     if (
       answer === "y" ||
       answer === "Y" ||

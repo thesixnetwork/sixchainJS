@@ -1,7 +1,6 @@
-import { SixDataChainConnector } from "../../sdk/client";
+import { SixDataChainConnector, typesTxBank, fee } from "@thesixnetwork/sixchain-client";
 import { StdFee } from "@cosmjs/stargate";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { typesTxBank } from "../../sdk";
 import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee";
 import { getConnectorConfig } from "../client";
 import dotenv from "dotenv";

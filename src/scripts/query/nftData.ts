@@ -1,5 +1,4 @@
-import { SixDataChainConnector } from "../../sdk/client";
-import { fee, ITxNFTmngr } from "../../sdk";
+import { SixDataChainConnector, fee } from "@thesixnetwork/sixchain-client";
 import { getConnectorConfig } from "../client";
 import dotenv from "dotenv";
 
@@ -32,7 +31,7 @@ const query = async (TOKEN_ID: number) => {
       isMinted = true;
     }
 
-  } catch (e) {
+  } catch (e:any) {
     console.log("token not found", e.error);
     token = null;
     isMinted = false;

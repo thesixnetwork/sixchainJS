@@ -1,6 +1,5 @@
-import { SixDataChainConnector } from "../../sdk/client";
+import { SixDataChainConnector, ITxNFTmngr, fee } from "@thesixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { fee, ITxNFTmngr } from "../../sdk";
 import { getConnectorConfig } from "../client";
 import dotenv from "dotenv";
 

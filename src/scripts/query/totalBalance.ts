@@ -1,4 +1,4 @@
-import { SixDataChainConnector } from "../../sdk/client";
+import { SixDataChainConnector } from "@thesixnetwork/sixchain-client";
 import dotenv from "dotenv";
 
 dotenv.config();

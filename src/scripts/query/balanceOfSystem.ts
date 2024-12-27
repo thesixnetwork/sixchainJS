@@ -1,4 +1,4 @@
-import { SixDataChainConnector } from "../../sdk/client";
+import { SixDataChainConnector } from "@thesixnetwork/sixchain-client";
 import { getConnectorConfig } from "../client";
 import list_all_recipient from "../utils/all_address";
 import fs from "fs";
@@ -22,7 +22,7 @@ const Balance = async () => {
     }
   );
 
-  let balances = {};
+  let balances:any = {};
   if (fs.existsSync("balances.json")) {
     balances = JSON.parse(fs.readFileSync("balances.json").toString());
   }
@@ -61,7 +61,7 @@ const Balance = async () => {
         // Write updated balances to JSON file
         fs.writeFileSync("balances.json", JSON.stringify(balances));
       }
-    } catch (e) {
+    } catch (e:any) {
       console.log("token not found", e.error);
     }
     records.push(token);

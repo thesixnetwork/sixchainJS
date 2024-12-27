@@ -1,11 +1,6 @@
+import { SixDataChainConnector, ITxNFTmngr, fee, BASE64, typesTxNFTManager } from "@thesixnetwork/sixchain-client";
 import newAttribute from "../../resources/utils/new-attribute.json";
 import divine_elite from "../../resources/schemas/divineelite-nft-schema.json";
-import {
-  BASE64,
-  SixDataChainConnector,
-  fee,
-  typesTxNFTManager,
-} from "../../sdk"; // from "@sixnetwork/six-data-chain-sdk";
 import { getConnectorConfig } from "../client";
 
 const main = async () => {
