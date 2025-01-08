@@ -42,7 +42,7 @@ const main = async () => {
     nft_schema_code: schemaCode,
     tokenId: TOKENID,
     action: "use_service",
-    ref_id,
+    ref_id: "",
     parameters: [{ name: "service_name", value: "service_1" }],
   };
 

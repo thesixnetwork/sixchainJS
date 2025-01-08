@@ -1,20 +1,13 @@
 import { SixDataChainConnector, ITxNFTmngr, fee } from "@thesixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { getConnectorConfig } from "../client";
+import { getConnectorConfig } from "../../client";
 import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";
+import { v4 as uuidv4 } from "uuid";
 dotenv.config();
 
 const main = async () => {
     const network = process.argv[2];
-    const propId = process.argv[3];
-    const schemaName = process.argv[4];
-
-    if (!propId || propId == "" || !schemaName || schemaName == ""){
-        throw new Error(
-            "Make sure to input proposal Id and Schema name"
-        );
-    }
 
     let msgArray: EncodeObject[] = [];
     if (!network) {
@@ -35,24 +28,43 @@ const main = async () => {
         gasPrice: GasPrice.fromString("1.25usix"),
     });
 
-    const voteCreateSchema: ITxNFTmngr.MsgVoteCreateVirtualSchema = {
+
+    let schema_name = "divineXmembership"
+    const ref_id = uuidv4();
+
+    const virualAction: ITxNFTmngr.MsgPerformVirtualAction = {
         creator: address,
-        id: propId,
-        nftSchemaCode: schemaName,
-        option: 2
+        nftSchemaName: schema_name,
+        action: "native_bridge",
+        parameters: [{
+            name: "amount",
+            value: "1"
+        }],
+        refId: ref_id,
+        tokenIdMap: [
+            {
+                nftSchemaName: "sixprotocol.divine_elite",
+                tokenId: "1"
+            },
+            {
+                nftSchemaName: "sixprotocol.membership",
+                tokenId: "5"
+            }
+        ]
     }
 
-    msgArray.push(rpcClient.nftmngrModule.msgVoteCreateVirtualSchema(voteCreateSchema))
+    msgArray.push(rpcClient.nftmngrModule.msgPerformVirtualAction(virualAction))
 
     try {
         const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(msgArray, {
             fee: "auto",
-            memo: "vote create virtual schema"
+            memo: "perfrom virtual action"
         })
         console.log(txResponse);
     } catch (err) {
         console.error("Transaction failed:", err);
     }
+
 }
 
 main().catch((err) => {

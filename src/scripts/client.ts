@@ -17,12 +17,12 @@ export const getSigner = async (
     case "fivenet":
       sixConnector.rpcUrl = "https://rpc1.fivenet.sixprotocol.net:443";
       return await sixConnector.accounts.mnemonicKeyToAccount(
-        process.env.ADDRESS_KLANG_MNEMONIC!,
+        process.env.FIVENET_MNEMONIC!,
       );
     case "sixnet":
       sixConnector.rpcUrl = "https://sixnet-rpc.sixprotocol.net:443";
       return await sixConnector.accounts.mnemonicKeyToAccount(
-        process.env.SCHEMA_OWNER_MNEMONIC!,
+        process.env.SIXNET_MNEMONIC!,
       );
     default:
       throw new Error("Invalid network");
@@ -43,13 +43,13 @@ export async function getConnectorConfig(
       return {
         rpcUrl: "https://rpc1.fivenet.sixprotocol.net:443",
         apiUrl: "https://api1.fivenet.sixprotocol.net:443",
-        mnemonic: process.env.SCHEMA_OWNER_MNEMONIC_FIVENET!,
+        mnemonic: process.env.FIVENET_MNEMONIC!,
       };
     case "sixnet":
       return {
         rpcUrl: "https://sixnet-rpc.sixprotocol.net:443",
         apiUrl: "https://sixnet-api.sixprotocol.net:443",
-        mnemonic: process.env.SCHEMA_OWNER_MNEMONIC!,
+        mnemonic: process.env.SIXNET_MNEMONIC!,
       };
     default:
       throw new Error("Invalid network");
