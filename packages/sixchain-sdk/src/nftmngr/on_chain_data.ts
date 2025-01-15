@@ -1,14 +1,15 @@
 //@ts-nocheck
-import { AttributeDefinition, AttributeDefinitionAmino, AttributeDefinitionSDKType } from "./attribute_definition";
-import { Action, ActionAmino, ActionSDKType } from "./action";
-import { VirtualAction, VirtualActionAmino, VirtualActionSDKType } from "./virtual_action";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Action, ActionAmino, ActionSDKType } from './action';
+import { AttributeDefinition, AttributeDefinitionAmino, AttributeDefinitionSDKType } from './attribute_definition';
+import { VirtualAction, VirtualActionAmino, VirtualActionSDKType } from './virtual_action';
 export interface FlagStatus {
   statusName: string;
   statusValue: boolean;
 }
 export interface FlagStatusProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.FlagStatus";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FlagStatus';
   value: Uint8Array;
 }
 export interface FlagStatusAmino {
@@ -16,7 +17,7 @@ export interface FlagStatusAmino {
   status_value?: boolean;
 }
 export interface FlagStatusAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.FlagStatus";
+  type: '/thesixnetwork.sixprotocol.nftmngr.FlagStatus';
   value: FlagStatusAmino;
 }
 export interface FlagStatusSDKType {
@@ -30,7 +31,7 @@ export interface OnChainData {
   status: FlagStatus[];
 }
 export interface OnChainDataProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OnChainData";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OnChainData';
   value: Uint8Array;
 }
 export interface OnChainDataAmino {
@@ -40,7 +41,7 @@ export interface OnChainDataAmino {
   status?: FlagStatusAmino[];
 }
 export interface OnChainDataAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.OnChainData";
+  type: '/thesixnetwork.sixprotocol.nftmngr.OnChainData';
   value: OnChainDataAmino;
 }
 export interface OnChainDataSDKType {
@@ -57,7 +58,7 @@ export interface OnChainDataResult {
   status: FlagStatus[];
 }
 export interface OnChainDataResultProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OnChainDataResult";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OnChainDataResult';
   value: Uint8Array;
 }
 export interface OnChainDataResultAmino {
@@ -68,7 +69,7 @@ export interface OnChainDataResultAmino {
   status?: FlagStatusAmino[];
 }
 export interface OnChainDataResultAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.OnChainDataResult";
+  type: '/thesixnetwork.sixprotocol.nftmngr.OnChainDataResult';
   value: OnChainDataResultAmino;
 }
 export interface OnChainDataResultSDKType {
@@ -80,14 +81,14 @@ export interface OnChainDataResultSDKType {
 }
 function createBaseFlagStatus(): FlagStatus {
   return {
-    statusName: "",
+    statusName: '',
     statusValue: false
   };
 }
 export const FlagStatus = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.FlagStatus",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FlagStatus',
   encode(message: FlagStatus, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.statusName !== "") {
+    if (message.statusName !== '') {
       writer.uint32(10).string(message.statusName);
     }
     if (message.statusValue === true) {
@@ -102,22 +103,22 @@ export const FlagStatus = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.statusName = reader.string();
-          break;
-        case 2:
-          message.statusValue = reader.bool();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.statusName = reader.string();
+        break;
+      case 2:
+        message.statusValue = reader.bool();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<FlagStatus>): FlagStatus {
     const message = createBaseFlagStatus();
-    message.statusName = object.statusName ?? "";
+    message.statusName = object.statusName ?? '';
     message.statusValue = object.statusValue ?? false;
     return message;
   },
@@ -133,7 +134,7 @@ export const FlagStatus = {
   },
   toAmino(message: FlagStatus): FlagStatusAmino {
     const obj: any = {};
-    obj.status_name = message.statusName === "" ? undefined : message.statusName;
+    obj.status_name = message.statusName === '' ? undefined : message.statusName;
     obj.status_value = message.statusValue === false ? undefined : message.statusValue;
     return obj;
   },
@@ -148,7 +149,7 @@ export const FlagStatus = {
   },
   toProtoMsg(message: FlagStatus): FlagStatusProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.FlagStatus",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FlagStatus',
       value: FlagStatus.encode(message).finish()
     };
   }
@@ -162,7 +163,7 @@ function createBaseOnChainData(): OnChainData {
   };
 }
 export const OnChainData = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OnChainData",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OnChainData',
   encode(message: OnChainData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.nftAttributes) {
       AttributeDefinition.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -185,21 +186,21 @@ export const OnChainData = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.nftAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
-          break;
-        case 2:
-          message.tokenAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
-          break;
-        case 3:
-          message.actions.push(Action.decode(reader, reader.uint32()));
-          break;
-        case 4:
-          message.status.push(FlagStatus.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.nftAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
+        break;
+      case 2:
+        message.tokenAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
+        break;
+      case 3:
+        message.actions.push(Action.decode(reader, reader.uint32()));
+        break;
+      case 4:
+        message.status.push(FlagStatus.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -255,7 +256,7 @@ export const OnChainData = {
   },
   toProtoMsg(message: OnChainData): OnChainDataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OnChainData",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OnChainData',
       value: OnChainData.encode(message).finish()
     };
   }
@@ -270,7 +271,7 @@ function createBaseOnChainDataResult(): OnChainDataResult {
   };
 }
 export const OnChainDataResult = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OnChainDataResult",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OnChainDataResult',
   encode(message: OnChainDataResult, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.nftAttributes) {
       AttributeDefinition.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -296,24 +297,24 @@ export const OnChainDataResult = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.nftAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
-          break;
-        case 2:
-          message.tokenAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
-          break;
-        case 3:
-          message.actions.push(Action.decode(reader, reader.uint32()));
-          break;
-        case 4:
-          message.virtualActions.push(VirtualAction.decode(reader, reader.uint32()));
-          break;
-        case 5:
-          message.status.push(FlagStatus.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.nftAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
+        break;
+      case 2:
+        message.tokenAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
+        break;
+      case 3:
+        message.actions.push(Action.decode(reader, reader.uint32()));
+        break;
+      case 4:
+        message.virtualActions.push(VirtualAction.decode(reader, reader.uint32()));
+        break;
+      case 5:
+        message.status.push(FlagStatus.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -376,7 +377,7 @@ export const OnChainDataResult = {
   },
   toProtoMsg(message: OnChainDataResult): OnChainDataResultProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OnChainDataResult",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OnChainDataResult',
       value: OnChainDataResult.encode(message).finish()
     };
   }

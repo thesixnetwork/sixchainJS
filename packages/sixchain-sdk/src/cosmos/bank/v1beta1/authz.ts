@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Coin, CoinAmino, CoinSDKType } from '../../base/v1beta1/coin';
 /**
  * SendAuthorization allows the grantee to spend up to spend_limit coins from
  * the granter's account.
@@ -8,11 +9,11 @@ import * as _m0 from "protobufjs/minimal";
  * Since: cosmos-sdk 0.43
  */
 export interface SendAuthorization {
-  $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
+  $typeUrl?: '/cosmos.bank.v1beta1.SendAuthorization';
   spendLimit: Coin[];
 }
 export interface SendAuthorizationProtoMsg {
-  typeUrl: "/cosmos.bank.v1beta1.SendAuthorization";
+  typeUrl: '/cosmos.bank.v1beta1.SendAuthorization';
   value: Uint8Array;
 }
 /**
@@ -25,7 +26,7 @@ export interface SendAuthorizationAmino {
   spend_limit?: CoinAmino[];
 }
 export interface SendAuthorizationAminoMsg {
-  type: "cosmos-sdk/SendAuthorization";
+  type: 'cosmos-sdk/SendAuthorization';
   value: SendAuthorizationAmino;
 }
 /**
@@ -35,17 +36,17 @@ export interface SendAuthorizationAminoMsg {
  * Since: cosmos-sdk 0.43
  */
 export interface SendAuthorizationSDKType {
-  $typeUrl?: "/cosmos.bank.v1beta1.SendAuthorization";
+  $typeUrl?: '/cosmos.bank.v1beta1.SendAuthorization';
   spend_limit: CoinSDKType[];
 }
 function createBaseSendAuthorization(): SendAuthorization {
   return {
-    $typeUrl: "/cosmos.bank.v1beta1.SendAuthorization",
+    $typeUrl: '/cosmos.bank.v1beta1.SendAuthorization',
     spendLimit: []
   };
 }
 export const SendAuthorization = {
-  typeUrl: "/cosmos.bank.v1beta1.SendAuthorization",
+  typeUrl: '/cosmos.bank.v1beta1.SendAuthorization',
   encode(message: SendAuthorization, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.spendLimit) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -59,12 +60,12 @@ export const SendAuthorization = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.spendLimit.push(Coin.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.spendLimit.push(Coin.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -93,7 +94,7 @@ export const SendAuthorization = {
   },
   toAminoMsg(message: SendAuthorization): SendAuthorizationAminoMsg {
     return {
-      type: "cosmos-sdk/SendAuthorization",
+      type: 'cosmos-sdk/SendAuthorization',
       value: SendAuthorization.toAmino(message)
     };
   },
@@ -105,7 +106,7 @@ export const SendAuthorization = {
   },
   toProtoMsg(message: SendAuthorization): SendAuthorizationProtoMsg {
     return {
-      typeUrl: "/cosmos.bank.v1beta1.SendAuthorization",
+      typeUrl: '/cosmos.bank.v1beta1.SendAuthorization',
       value: SendAuthorization.encode(message).finish()
     };
   }

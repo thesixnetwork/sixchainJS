@@ -1,7 +1,8 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType } from "./feemarket";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Long } from '../../../helpers';
+import { Params, ParamsAmino, ParamsSDKType } from './feemarket';
 /** GenesisState defines the feemarket module's genesis state. */
 export interface GenesisState {
   /** params defines all the paramaters of the module. */
@@ -13,7 +14,7 @@ export interface GenesisState {
   blockGas: Long;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/ethermint.feemarket.v2.GenesisState";
+  typeUrl: '/ethermint.feemarket.v2.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState defines the feemarket module's genesis state. */
@@ -27,7 +28,7 @@ export interface GenesisStateAmino {
   block_gas?: string;
 }
 export interface GenesisStateAminoMsg {
-  type: "/ethermint.feemarket.v2.GenesisState";
+  type: '/ethermint.feemarket.v2.GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState defines the feemarket module's genesis state. */
@@ -42,7 +43,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: "/ethermint.feemarket.v2.GenesisState",
+  typeUrl: '/ethermint.feemarket.v2.GenesisState',
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -59,15 +60,15 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.params = Params.decode(reader, reader.uint32());
-          break;
-        case 3:
-          message.blockGas = reader.uint64() as Long;
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.params = Params.decode(reader, reader.uint32());
+        break;
+      case 3:
+        message.blockGas = reader.uint64() as Long;
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -105,7 +106,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/ethermint.feemarket.v2.GenesisState",
+      typeUrl: '/ethermint.feemarket.v2.GenesisState',
       value: GenesisState.encode(message).finish()
     };
   }

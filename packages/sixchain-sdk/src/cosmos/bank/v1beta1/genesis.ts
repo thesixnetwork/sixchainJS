@@ -1,7 +1,8 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType, Metadata, MetadataAmino, MetadataSDKType } from "./bank";
-import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Coin, CoinAmino, CoinSDKType } from '../../base/v1beta1/coin';
+import { Metadata, MetadataAmino, MetadataSDKType,Params, ParamsAmino, ParamsSDKType } from './bank';
 /** GenesisState defines the bank module's genesis state. */
 export interface GenesisState {
   /** params defines all the paramaters of the module. */
@@ -17,7 +18,7 @@ export interface GenesisState {
   denomMetadata: Metadata[];
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/cosmos.bank.v1beta1.GenesisState";
+  typeUrl: '/cosmos.bank.v1beta1.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState defines the bank module's genesis state. */
@@ -35,7 +36,7 @@ export interface GenesisStateAmino {
   denom_metadata?: MetadataAmino[];
 }
 export interface GenesisStateAminoMsg {
-  type: "cosmos-sdk/GenesisState";
+  type: 'cosmos-sdk/GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState defines the bank module's genesis state. */
@@ -56,7 +57,7 @@ export interface Balance {
   coins: Coin[];
 }
 export interface BalanceProtoMsg {
-  typeUrl: "/cosmos.bank.v1beta1.Balance";
+  typeUrl: '/cosmos.bank.v1beta1.Balance';
   value: Uint8Array;
 }
 /**
@@ -70,7 +71,7 @@ export interface BalanceAmino {
   coins?: CoinAmino[];
 }
 export interface BalanceAminoMsg {
-  type: "cosmos-sdk/Balance";
+  type: 'cosmos-sdk/Balance';
   value: BalanceAmino;
 }
 /**
@@ -90,7 +91,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: "/cosmos.bank.v1beta1.GenesisState",
+  typeUrl: '/cosmos.bank.v1beta1.GenesisState',
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -113,21 +114,21 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.params = Params.decode(reader, reader.uint32());
-          break;
-        case 2:
-          message.balances.push(Balance.decode(reader, reader.uint32()));
-          break;
-        case 3:
-          message.supply.push(Coin.decode(reader, reader.uint32()));
-          break;
-        case 4:
-          message.denomMetadata.push(Metadata.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.params = Params.decode(reader, reader.uint32());
+        break;
+      case 2:
+        message.balances.push(Balance.decode(reader, reader.uint32()));
+        break;
+      case 3:
+        message.supply.push(Coin.decode(reader, reader.uint32()));
+        break;
+      case 4:
+        message.denomMetadata.push(Metadata.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -175,7 +176,7 @@ export const GenesisState = {
   },
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
-      type: "cosmos-sdk/GenesisState",
+      type: 'cosmos-sdk/GenesisState',
       value: GenesisState.toAmino(message)
     };
   },
@@ -187,21 +188,21 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/cosmos.bank.v1beta1.GenesisState",
+      typeUrl: '/cosmos.bank.v1beta1.GenesisState',
       value: GenesisState.encode(message).finish()
     };
   }
 };
 function createBaseBalance(): Balance {
   return {
-    address: "",
+    address: '',
     coins: []
   };
 }
 export const Balance = {
-  typeUrl: "/cosmos.bank.v1beta1.Balance",
+  typeUrl: '/cosmos.bank.v1beta1.Balance',
   encode(message: Balance, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     for (const v of message.coins) {
@@ -216,22 +217,22 @@ export const Balance = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.address = reader.string();
-          break;
-        case 2:
-          message.coins.push(Coin.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.address = reader.string();
+        break;
+      case 2:
+        message.coins.push(Coin.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Balance>): Balance {
     const message = createBaseBalance();
-    message.address = object.address ?? "";
+    message.address = object.address ?? '';
     message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
@@ -245,7 +246,7 @@ export const Balance = {
   },
   toAmino(message: Balance): BalanceAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
+    obj.address = message.address === '' ? undefined : message.address;
     if (message.coins) {
       obj.coins = message.coins.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
@@ -258,7 +259,7 @@ export const Balance = {
   },
   toAminoMsg(message: Balance): BalanceAminoMsg {
     return {
-      type: "cosmos-sdk/Balance",
+      type: 'cosmos-sdk/Balance',
       value: Balance.toAmino(message)
     };
   },
@@ -270,7 +271,7 @@ export const Balance = {
   },
   toProtoMsg(message: Balance): BalanceProtoMsg {
     return {
-      typeUrl: "/cosmos.bank.v1beta1.Balance",
+      typeUrl: '/cosmos.bank.v1beta1.Balance',
       value: Balance.encode(message).finish()
     };
   }

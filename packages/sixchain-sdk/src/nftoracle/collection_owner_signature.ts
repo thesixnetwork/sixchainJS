@@ -1,11 +1,11 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export interface CollectionOwnerSignature {
   signature: string;
   message: string;
 }
 export interface CollectionOwnerSignatureProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature";
+  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature';
   value: Uint8Array;
 }
 export interface CollectionOwnerSignatureAmino {
@@ -13,7 +13,7 @@ export interface CollectionOwnerSignatureAmino {
   message?: string;
 }
 export interface CollectionOwnerSignatureAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature";
+  type: '/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature';
   value: CollectionOwnerSignatureAmino;
 }
 export interface CollectionOwnerSignatureSDKType {
@@ -22,17 +22,17 @@ export interface CollectionOwnerSignatureSDKType {
 }
 function createBaseCollectionOwnerSignature(): CollectionOwnerSignature {
   return {
-    signature: "",
-    message: ""
+    signature: '',
+    message: ''
   };
 }
 export const CollectionOwnerSignature = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature",
+  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature',
   encode(message: CollectionOwnerSignature, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.signature !== "") {
+    if (message.signature !== '') {
       writer.uint32(10).string(message.signature);
     }
-    if (message.message !== "") {
+    if (message.message !== '') {
       writer.uint32(18).string(message.message);
     }
     return writer;
@@ -44,23 +44,23 @@ export const CollectionOwnerSignature = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.signature = reader.string();
-          break;
-        case 2:
-          message.message = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.signature = reader.string();
+        break;
+      case 2:
+        message.message = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<CollectionOwnerSignature>): CollectionOwnerSignature {
     const message = createBaseCollectionOwnerSignature();
-    message.signature = object.signature ?? "";
-    message.message = object.message ?? "";
+    message.signature = object.signature ?? '';
+    message.message = object.message ?? '';
     return message;
   },
   fromAmino(object: CollectionOwnerSignatureAmino): CollectionOwnerSignature {
@@ -75,8 +75,8 @@ export const CollectionOwnerSignature = {
   },
   toAmino(message: CollectionOwnerSignature): CollectionOwnerSignatureAmino {
     const obj: any = {};
-    obj.signature = message.signature === "" ? undefined : message.signature;
-    obj.message = message.message === "" ? undefined : message.message;
+    obj.signature = message.signature === '' ? undefined : message.signature;
+    obj.message = message.message === '' ? undefined : message.message;
     return obj;
   },
   fromAminoMsg(object: CollectionOwnerSignatureAminoMsg): CollectionOwnerSignature {
@@ -90,7 +90,7 @@ export const CollectionOwnerSignature = {
   },
   toProtoMsg(message: CollectionOwnerSignature): CollectionOwnerSignatureProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature",
+      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature',
       value: CollectionOwnerSignature.encode(message).finish()
     };
   }

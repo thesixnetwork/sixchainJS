@@ -1,7 +1,8 @@
 //@ts-nocheck
-import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { MsgSetValidatorApproval, MsgSetValidatorApprovalResponse, MsgCreateValidator, MsgCreateValidatorResponse, MsgEditValidator, MsgEditValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgUndelegate, MsgUndelegateResponse, MsgCreateWhitelistDelegator, MsgCreateWhitelistdelegatorResponse, MsgDeleteWhitelistDelegator, MsgDeleteWhitelistdelegatorResponse } from "./tx";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Rpc } from '../../../helpers';
+import { MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgCreateValidator, MsgCreateValidatorResponse, MsgCreateWhitelistDelegator, MsgCreateWhitelistdelegatorResponse, MsgDelegate, MsgDelegateResponse, MsgDeleteWhitelistDelegator, MsgDeleteWhitelistdelegatorResponse,MsgEditValidator, MsgEditValidatorResponse, MsgSetValidatorApproval, MsgSetValidatorApprovalResponse, MsgUndelegate, MsgUndelegateResponse } from './tx';
 /** Msg defines the staking Msg service. */
 export interface Msg {
   /** Set who allow to create validator */
@@ -45,42 +46,42 @@ export class MsgClientImpl implements Msg {
   }
   setValidatorApproval(request: MsgSetValidatorApproval): Promise<MsgSetValidatorApprovalResponse> {
     const data = MsgSetValidatorApproval.encode(request).finish();
-    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "SetValidatorApproval", data);
+    const promise = this.rpc.request('cosmos.staking.v1beta1.Msg', 'SetValidatorApproval', data);
     return promise.then(data => MsgSetValidatorApprovalResponse.decode(new _m0.Reader(data)));
   }
   createValidator(request: MsgCreateValidator): Promise<MsgCreateValidatorResponse> {
     const data = MsgCreateValidator.encode(request).finish();
-    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "CreateValidator", data);
+    const promise = this.rpc.request('cosmos.staking.v1beta1.Msg', 'CreateValidator', data);
     return promise.then(data => MsgCreateValidatorResponse.decode(new _m0.Reader(data)));
   }
   editValidator(request: MsgEditValidator): Promise<MsgEditValidatorResponse> {
     const data = MsgEditValidator.encode(request).finish();
-    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "EditValidator", data);
+    const promise = this.rpc.request('cosmos.staking.v1beta1.Msg', 'EditValidator', data);
     return promise.then(data => MsgEditValidatorResponse.decode(new _m0.Reader(data)));
   }
   delegate(request: MsgDelegate): Promise<MsgDelegateResponse> {
     const data = MsgDelegate.encode(request).finish();
-    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "Delegate", data);
+    const promise = this.rpc.request('cosmos.staking.v1beta1.Msg', 'Delegate', data);
     return promise.then(data => MsgDelegateResponse.decode(new _m0.Reader(data)));
   }
   beginRedelegate(request: MsgBeginRedelegate): Promise<MsgBeginRedelegateResponse> {
     const data = MsgBeginRedelegate.encode(request).finish();
-    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "BeginRedelegate", data);
+    const promise = this.rpc.request('cosmos.staking.v1beta1.Msg', 'BeginRedelegate', data);
     return promise.then(data => MsgBeginRedelegateResponse.decode(new _m0.Reader(data)));
   }
   undelegate(request: MsgUndelegate): Promise<MsgUndelegateResponse> {
     const data = MsgUndelegate.encode(request).finish();
-    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "Undelegate", data);
+    const promise = this.rpc.request('cosmos.staking.v1beta1.Msg', 'Undelegate', data);
     return promise.then(data => MsgUndelegateResponse.decode(new _m0.Reader(data)));
   }
   createWhitelistdelegator(request: MsgCreateWhitelistDelegator): Promise<MsgCreateWhitelistdelegatorResponse> {
     const data = MsgCreateWhitelistDelegator.encode(request).finish();
-    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "CreateWhitelistdelegator", data);
+    const promise = this.rpc.request('cosmos.staking.v1beta1.Msg', 'CreateWhitelistdelegator', data);
     return promise.then(data => MsgCreateWhitelistdelegatorResponse.decode(new _m0.Reader(data)));
   }
   deleteWhitelistdelegator(request: MsgDeleteWhitelistDelegator): Promise<MsgDeleteWhitelistdelegatorResponse> {
     const data = MsgDeleteWhitelistDelegator.encode(request).finish();
-    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "DeleteWhitelistdelegator", data);
+    const promise = this.rpc.request('cosmos.staking.v1beta1.Msg', 'DeleteWhitelistdelegator', data);
     return promise.then(data => MsgDeleteWhitelistdelegatorResponse.decode(new _m0.Reader(data)));
   }
 }

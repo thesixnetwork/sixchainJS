@@ -1,18 +1,19 @@
 //@ts-nocheck
-import { Coin, CoinAmino, CoinSDKType } from "../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Coin, CoinAmino, CoinSDKType } from '../cosmos/base/v1beta1/coin';
 export interface TokenBurn {
   amount: Coin;
 }
 export interface TokenBurnProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenBurn";
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.TokenBurn';
   value: Uint8Array;
 }
 export interface TokenBurnAmino {
   amount?: CoinAmino;
 }
 export interface TokenBurnAminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.TokenBurn";
+  type: '/thesixnetwork.sixprotocol.tokenmngr.TokenBurn';
   value: TokenBurnAmino;
 }
 export interface TokenBurnSDKType {
@@ -24,7 +25,7 @@ function createBaseTokenBurn(): TokenBurn {
   };
 }
 export const TokenBurn = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenBurn",
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.TokenBurn',
   encode(message: TokenBurn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
@@ -38,12 +39,12 @@ export const TokenBurn = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.amount = Coin.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.amount = Coin.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -76,7 +77,7 @@ export const TokenBurn = {
   },
   toProtoMsg(message: TokenBurn): TokenBurnProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenBurn",
+      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.TokenBurn',
       value: TokenBurn.encode(message).finish()
     };
   }

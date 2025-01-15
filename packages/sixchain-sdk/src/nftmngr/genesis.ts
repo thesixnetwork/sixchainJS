@@ -1,21 +1,22 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { NFTSchema, NFTSchemaAmino, NFTSchemaSDKType } from "./nft_schema";
-import { NftData, NftDataAmino, NftDataSDKType } from "./nft_data";
-import { ActionByRefId, ActionByRefIdAmino, ActionByRefIdSDKType } from "./action_by_ref_id";
-import { Organization, OrganizationAmino, OrganizationSDKType } from "./organization";
-import { NFTSchemaByContract, NFTSchemaByContractAmino, NFTSchemaByContractSDKType } from "./nft_schema_by_contract";
-import { NFTFeeConfig, NFTFeeConfigAmino, NFTFeeConfigSDKType } from "./nft_fee_config";
-import { NFTFeeBalance, NFTFeeBalanceAmino, NFTFeeBalanceSDKType } from "./nft_fee_balance";
-import { MetadataCreator, MetadataCreatorAmino, MetadataCreatorSDKType } from "./metadata_creator";
-import { NftCollection, NftCollectionAmino, NftCollectionSDKType } from "./nft_collection";
-import { ActionExecutor, ActionExecutorAmino, ActionExecutorSDKType } from "./action_executor";
-import { SchemaAttribute, SchemaAttributeAmino, SchemaAttributeSDKType } from "./schema_attribute";
-import { ActionOfSchema, ActionOfSchemaAmino, ActionOfSchemaSDKType } from "./action_of_schema";
-import { ExecutorOfSchema, ExecutorOfSchemaAmino, ExecutorOfSchemaSDKType } from "./executor_of_schema";
-import { VirtualAction, VirtualActionAmino, VirtualActionSDKType } from "./virtual_action";
-import { VirtualSchema, VirtualSchemaAmino, VirtualSchemaSDKType, VirtualSchemaProposal, VirtualSchemaProposalAmino, VirtualSchemaProposalSDKType, ActiveVirtualSchemaProposal, ActiveVirtualSchemaProposalAmino, ActiveVirtualSchemaProposalSDKType, InactiveVirtualSchemaProposal, InactiveVirtualSchemaProposalAmino, InactiveVirtualSchemaProposalSDKType } from "./virtual_schema";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { ActionByRefId, ActionByRefIdAmino, ActionByRefIdSDKType } from './action_by_ref_id';
+import { ActionExecutor, ActionExecutorAmino, ActionExecutorSDKType } from './action_executor';
+import { ActionOfSchema, ActionOfSchemaAmino, ActionOfSchemaSDKType } from './action_of_schema';
+import { ExecutorOfSchema, ExecutorOfSchemaAmino, ExecutorOfSchemaSDKType } from './executor_of_schema';
+import { MetadataCreator, MetadataCreatorAmino, MetadataCreatorSDKType } from './metadata_creator';
+import { NftCollection, NftCollectionAmino, NftCollectionSDKType } from './nft_collection';
+import { NftData, NftDataAmino, NftDataSDKType } from './nft_data';
+import { NFTFeeBalance, NFTFeeBalanceAmino, NFTFeeBalanceSDKType } from './nft_fee_balance';
+import { NFTFeeConfig, NFTFeeConfigAmino, NFTFeeConfigSDKType } from './nft_fee_config';
+import { NFTSchema, NFTSchemaAmino, NFTSchemaSDKType } from './nft_schema';
+import { NFTSchemaByContract, NFTSchemaByContractAmino, NFTSchemaByContractSDKType } from './nft_schema_by_contract';
+import { Organization, OrganizationAmino, OrganizationSDKType } from './organization';
+import { Params, ParamsAmino, ParamsSDKType } from './params';
+import { SchemaAttribute, SchemaAttributeAmino, SchemaAttributeSDKType } from './schema_attribute';
+import { VirtualAction, VirtualActionAmino, VirtualActionSDKType } from './virtual_action';
+import { ActiveVirtualSchemaProposal, ActiveVirtualSchemaProposalAmino, ActiveVirtualSchemaProposalSDKType, InactiveVirtualSchemaProposal, InactiveVirtualSchemaProposalAmino, InactiveVirtualSchemaProposalSDKType,VirtualSchema, VirtualSchemaAmino, VirtualSchemaProposal, VirtualSchemaProposalAmino, VirtualSchemaProposalSDKType, VirtualSchemaSDKType } from './virtual_schema';
 /** GenesisState defines the nftmngr module's genesis state. */
 export interface GenesisState {
   params: Params;
@@ -39,7 +40,7 @@ export interface GenesisState {
   inactiveVirtualSchemaProposalList: InactiveVirtualSchemaProposal[];
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.GenesisState";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState defines the nftmngr module's genesis state. */
@@ -65,7 +66,7 @@ export interface GenesisStateAmino {
   inactiveVirtualSchemaProposalList?: InactiveVirtualSchemaProposalAmino[];
 }
 export interface GenesisStateAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.GenesisState";
+  type: '/thesixnetwork.sixprotocol.nftmngr.GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState defines the nftmngr module's genesis state. */
@@ -114,7 +115,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.GenesisState",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.GenesisState',
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -182,66 +183,66 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.params = Params.decode(reader, reader.uint32());
-          break;
-        case 2:
-          message.nFTSchemaList.push(NFTSchema.decode(reader, reader.uint32()));
-          break;
-        case 3:
-          message.nftDataList.push(NftData.decode(reader, reader.uint32()));
-          break;
-        case 4:
-          message.actionByRefIdList.push(ActionByRefId.decode(reader, reader.uint32()));
-          break;
-        case 5:
-          message.organizationList.push(Organization.decode(reader, reader.uint32()));
-          break;
-        case 7:
-          message.nFTSchemaByContractList.push(NFTSchemaByContract.decode(reader, reader.uint32()));
-          break;
-        case 8:
-          message.nftFeeConfig = NFTFeeConfig.decode(reader, reader.uint32());
-          break;
-        case 9:
-          message.nFTFeeBalance = NFTFeeBalance.decode(reader, reader.uint32());
-          break;
-        case 10:
-          message.metadataCreatorList.push(MetadataCreator.decode(reader, reader.uint32()));
-          break;
-        case 11:
-          message.nftCollectionList.push(NftCollection.decode(reader, reader.uint32()));
-          break;
-        case 12:
-          message.actionExecutorList.push(ActionExecutor.decode(reader, reader.uint32()));
-          break;
-        case 13:
-          message.schemaAttributeList.push(SchemaAttribute.decode(reader, reader.uint32()));
-          break;
-        case 14:
-          message.actionOfSchemaList.push(ActionOfSchema.decode(reader, reader.uint32()));
-          break;
-        case 15:
-          message.executorOfSchemaList.push(ExecutorOfSchema.decode(reader, reader.uint32()));
-          break;
-        case 16:
-          message.virtualActionList.push(VirtualAction.decode(reader, reader.uint32()));
-          break;
-        case 17:
-          message.virtualSchemaList.push(VirtualSchema.decode(reader, reader.uint32()));
-          break;
-        case 19:
-          message.virtualSchemaProposalList.push(VirtualSchemaProposal.decode(reader, reader.uint32()));
-          break;
-        case 20:
-          message.activeVirtualSchemaProposalList.push(ActiveVirtualSchemaProposal.decode(reader, reader.uint32()));
-          break;
-        case 21:
-          message.inactiveVirtualSchemaProposalList.push(InactiveVirtualSchemaProposal.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.params = Params.decode(reader, reader.uint32());
+        break;
+      case 2:
+        message.nFTSchemaList.push(NFTSchema.decode(reader, reader.uint32()));
+        break;
+      case 3:
+        message.nftDataList.push(NftData.decode(reader, reader.uint32()));
+        break;
+      case 4:
+        message.actionByRefIdList.push(ActionByRefId.decode(reader, reader.uint32()));
+        break;
+      case 5:
+        message.organizationList.push(Organization.decode(reader, reader.uint32()));
+        break;
+      case 7:
+        message.nFTSchemaByContractList.push(NFTSchemaByContract.decode(reader, reader.uint32()));
+        break;
+      case 8:
+        message.nftFeeConfig = NFTFeeConfig.decode(reader, reader.uint32());
+        break;
+      case 9:
+        message.nFTFeeBalance = NFTFeeBalance.decode(reader, reader.uint32());
+        break;
+      case 10:
+        message.metadataCreatorList.push(MetadataCreator.decode(reader, reader.uint32()));
+        break;
+      case 11:
+        message.nftCollectionList.push(NftCollection.decode(reader, reader.uint32()));
+        break;
+      case 12:
+        message.actionExecutorList.push(ActionExecutor.decode(reader, reader.uint32()));
+        break;
+      case 13:
+        message.schemaAttributeList.push(SchemaAttribute.decode(reader, reader.uint32()));
+        break;
+      case 14:
+        message.actionOfSchemaList.push(ActionOfSchema.decode(reader, reader.uint32()));
+        break;
+      case 15:
+        message.executorOfSchemaList.push(ExecutorOfSchema.decode(reader, reader.uint32()));
+        break;
+      case 16:
+        message.virtualActionList.push(VirtualAction.decode(reader, reader.uint32()));
+        break;
+      case 17:
+        message.virtualSchemaList.push(VirtualSchema.decode(reader, reader.uint32()));
+        break;
+      case 19:
+        message.virtualSchemaProposalList.push(VirtualSchemaProposal.decode(reader, reader.uint32()));
+        break;
+      case 20:
+        message.activeVirtualSchemaProposalList.push(ActiveVirtualSchemaProposal.decode(reader, reader.uint32()));
+        break;
+      case 21:
+        message.inactiveVirtualSchemaProposalList.push(InactiveVirtualSchemaProposal.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -396,7 +397,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.GenesisState",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.GenesisState',
       value: GenesisState.encode(message).finish()
     };
   }

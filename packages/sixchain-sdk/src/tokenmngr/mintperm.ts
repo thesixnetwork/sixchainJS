@@ -1,12 +1,12 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export interface Mintperm {
   token: string;
   address: string;
   creator: string;
 }
 export interface MintpermProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Mintperm";
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Mintperm';
   value: Uint8Array;
 }
 export interface MintpermAmino {
@@ -15,7 +15,7 @@ export interface MintpermAmino {
   creator?: string;
 }
 export interface MintpermAminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.Mintperm";
+  type: '/thesixnetwork.sixprotocol.tokenmngr.Mintperm';
   value: MintpermAmino;
 }
 export interface MintpermSDKType {
@@ -25,21 +25,21 @@ export interface MintpermSDKType {
 }
 function createBaseMintperm(): Mintperm {
   return {
-    token: "",
-    address: "",
-    creator: ""
+    token: '',
+    address: '',
+    creator: ''
   };
 }
 export const Mintperm = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Mintperm",
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Mintperm',
   encode(message: Mintperm, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.token !== "") {
+    if (message.token !== '') {
       writer.uint32(10).string(message.token);
     }
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(18).string(message.address);
     }
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(26).string(message.creator);
     }
     return writer;
@@ -51,27 +51,27 @@ export const Mintperm = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.token = reader.string();
-          break;
-        case 2:
-          message.address = reader.string();
-          break;
-        case 3:
-          message.creator = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.token = reader.string();
+        break;
+      case 2:
+        message.address = reader.string();
+        break;
+      case 3:
+        message.creator = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Mintperm>): Mintperm {
     const message = createBaseMintperm();
-    message.token = object.token ?? "";
-    message.address = object.address ?? "";
-    message.creator = object.creator ?? "";
+    message.token = object.token ?? '';
+    message.address = object.address ?? '';
+    message.creator = object.creator ?? '';
     return message;
   },
   fromAmino(object: MintpermAmino): Mintperm {
@@ -89,9 +89,9 @@ export const Mintperm = {
   },
   toAmino(message: Mintperm): MintpermAmino {
     const obj: any = {};
-    obj.token = message.token === "" ? undefined : message.token;
-    obj.address = message.address === "" ? undefined : message.address;
-    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.token = message.token === '' ? undefined : message.token;
+    obj.address = message.address === '' ? undefined : message.address;
+    obj.creator = message.creator === '' ? undefined : message.creator;
     return obj;
   },
   fromAminoMsg(object: MintpermAminoMsg): Mintperm {
@@ -105,7 +105,7 @@ export const Mintperm = {
   },
   toProtoMsg(message: Mintperm): MintpermProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Mintperm",
+      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Mintperm',
       value: Mintperm.encode(message).finish()
     };
   }

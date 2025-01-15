@@ -1,7 +1,8 @@
 //@ts-nocheck
-import { Rpc } from "../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { MsgCreateNFTSchema, MsgCreateNFTSchemaResponse, MsgCreateMetadata, MsgCreateMetadataResponse, MsgPerformActionByAdmin, MsgPerformActionByAdminResponse, MsgAddAttribute, MsgAddAttributeResponse, MsgAddAction, MsgAddActionResponse, MsgSetBaseUri, MsgSetBaseUriResponse, MsgToggleAction, MsgToggleActionResponse, MsgChangeSchemaOwner, MsgChangeSchemaOwnerResponse, MsgResyncAttributes, MsgResyncAttributesResponse, MsgShowAttributes, MsgShowAttributesResponse, MsgSetFeeConfig, MsgSetFeeConfigResponse, MsgSetMintauth, MsgSetMintauthResponse, MsgChangeOrgOwner, MsgChangeOrgOwnerResponse, MsgSetUriRetrievalMethod, MsgSetUriRetrievalMethodResponse, MsgSetOriginChain, MsgSetOriginChainResponse, MsgSetOriginContract, MsgSetOriginContractResponse, MsgSetAttributeOveriding, MsgSetAttributeOveridingResponse, MsgSetMetadataFormat, MsgSetMetadataFormatResponse, MsgCreateActionExecutor, MsgCreateActionExecutorResponse, MsgDeleteActionExecutor, MsgDeleteActionExecutorResponse, MsgUpdateSchemaAttribute, MsgUpdateSchemaAttributeResponse, MsgUpdateAction, MsgUpdateActionResponse, MsgProposalVirtualSchema, MsgProposalVirtualSchemaResponse, MsgPerformVirtualAction, MsgPerformVirtualActionResponse, MsgVoteVirtualSchemaProposal, MsgVoteVirtualSchemaProposalResponse } from "./tx";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Rpc } from '../helpers';
+import { MsgAddAction, MsgAddActionResponse, MsgAddAttribute, MsgAddAttributeResponse, MsgChangeOrgOwner, MsgChangeOrgOwnerResponse, MsgChangeSchemaOwner, MsgChangeSchemaOwnerResponse, MsgCreateActionExecutor, MsgCreateActionExecutorResponse, MsgCreateMetadata, MsgCreateMetadataResponse, MsgCreateNFTSchema, MsgCreateNFTSchemaResponse, MsgDeleteActionExecutor, MsgDeleteActionExecutorResponse, MsgPerformActionByAdmin, MsgPerformActionByAdminResponse, MsgPerformVirtualAction, MsgPerformVirtualActionResponse, MsgProposalVirtualSchema, MsgProposalVirtualSchemaResponse, MsgResyncAttributes, MsgResyncAttributesResponse, MsgSetAttributeOveriding, MsgSetAttributeOveridingResponse, MsgSetBaseUri, MsgSetBaseUriResponse, MsgSetFeeConfig, MsgSetFeeConfigResponse, MsgSetMetadataFormat, MsgSetMetadataFormatResponse, MsgSetMintauth, MsgSetMintauthResponse, MsgSetOriginChain, MsgSetOriginChainResponse, MsgSetOriginContract, MsgSetOriginContractResponse, MsgSetUriRetrievalMethod, MsgSetUriRetrievalMethodResponse, MsgShowAttributes, MsgShowAttributesResponse, MsgToggleAction, MsgToggleActionResponse, MsgUpdateAction, MsgUpdateActionResponse, MsgUpdateSchemaAttribute, MsgUpdateSchemaAttributeResponse, MsgVoteVirtualSchemaProposal, MsgVoteVirtualSchemaProposalResponse } from './tx';
 /** Msg defines the Msg service. */
 export interface Msg {
   createNFTSchema(request: MsgCreateNFTSchema): Promise<MsgCreateNFTSchemaResponse>;
@@ -62,127 +63,127 @@ export class MsgClientImpl implements Msg {
   }
   createNFTSchema(request: MsgCreateNFTSchema): Promise<MsgCreateNFTSchemaResponse> {
     const data = MsgCreateNFTSchema.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "CreateNFTSchema", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'CreateNFTSchema', data);
     return promise.then(data => MsgCreateNFTSchemaResponse.decode(new _m0.Reader(data)));
   }
   createMetadata(request: MsgCreateMetadata): Promise<MsgCreateMetadataResponse> {
     const data = MsgCreateMetadata.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "CreateMetadata", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'CreateMetadata', data);
     return promise.then(data => MsgCreateMetadataResponse.decode(new _m0.Reader(data)));
   }
   performActionByAdmin(request: MsgPerformActionByAdmin): Promise<MsgPerformActionByAdminResponse> {
     const data = MsgPerformActionByAdmin.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "PerformActionByAdmin", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'PerformActionByAdmin', data);
     return promise.then(data => MsgPerformActionByAdminResponse.decode(new _m0.Reader(data)));
   }
   addAttribute(request: MsgAddAttribute): Promise<MsgAddAttributeResponse> {
     const data = MsgAddAttribute.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "AddAttribute", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'AddAttribute', data);
     return promise.then(data => MsgAddAttributeResponse.decode(new _m0.Reader(data)));
   }
   addAction(request: MsgAddAction): Promise<MsgAddActionResponse> {
     const data = MsgAddAction.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "AddAction", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'AddAction', data);
     return promise.then(data => MsgAddActionResponse.decode(new _m0.Reader(data)));
   }
   setBaseUri(request: MsgSetBaseUri): Promise<MsgSetBaseUriResponse> {
     const data = MsgSetBaseUri.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "SetBaseUri", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'SetBaseUri', data);
     return promise.then(data => MsgSetBaseUriResponse.decode(new _m0.Reader(data)));
   }
   toggleAction(request: MsgToggleAction): Promise<MsgToggleActionResponse> {
     const data = MsgToggleAction.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "ToggleAction", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'ToggleAction', data);
     return promise.then(data => MsgToggleActionResponse.decode(new _m0.Reader(data)));
   }
   changeSchemaOwner(request: MsgChangeSchemaOwner): Promise<MsgChangeSchemaOwnerResponse> {
     const data = MsgChangeSchemaOwner.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "ChangeSchemaOwner", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'ChangeSchemaOwner', data);
     return promise.then(data => MsgChangeSchemaOwnerResponse.decode(new _m0.Reader(data)));
   }
   resyncAttributes(request: MsgResyncAttributes): Promise<MsgResyncAttributesResponse> {
     const data = MsgResyncAttributes.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "ResyncAttributes", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'ResyncAttributes', data);
     return promise.then(data => MsgResyncAttributesResponse.decode(new _m0.Reader(data)));
   }
   showAttributes(request: MsgShowAttributes): Promise<MsgShowAttributesResponse> {
     const data = MsgShowAttributes.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "ShowAttributes", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'ShowAttributes', data);
     return promise.then(data => MsgShowAttributesResponse.decode(new _m0.Reader(data)));
   }
   setFeeConfig(request: MsgSetFeeConfig): Promise<MsgSetFeeConfigResponse> {
     const data = MsgSetFeeConfig.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "SetFeeConfig", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'SetFeeConfig', data);
     return promise.then(data => MsgSetFeeConfigResponse.decode(new _m0.Reader(data)));
   }
   setMintauth(request: MsgSetMintauth): Promise<MsgSetMintauthResponse> {
     const data = MsgSetMintauth.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "SetMintauth", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'SetMintauth', data);
     return promise.then(data => MsgSetMintauthResponse.decode(new _m0.Reader(data)));
   }
   changeOrgOwner(request: MsgChangeOrgOwner): Promise<MsgChangeOrgOwnerResponse> {
     const data = MsgChangeOrgOwner.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "ChangeOrgOwner", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'ChangeOrgOwner', data);
     return promise.then(data => MsgChangeOrgOwnerResponse.decode(new _m0.Reader(data)));
   }
   setUriRetrievalMethod(request: MsgSetUriRetrievalMethod): Promise<MsgSetUriRetrievalMethodResponse> {
     const data = MsgSetUriRetrievalMethod.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "SetUriRetrievalMethod", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'SetUriRetrievalMethod', data);
     return promise.then(data => MsgSetUriRetrievalMethodResponse.decode(new _m0.Reader(data)));
   }
   setOriginChain(request: MsgSetOriginChain): Promise<MsgSetOriginChainResponse> {
     const data = MsgSetOriginChain.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "SetOriginChain", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'SetOriginChain', data);
     return promise.then(data => MsgSetOriginChainResponse.decode(new _m0.Reader(data)));
   }
   setOriginContract(request: MsgSetOriginContract): Promise<MsgSetOriginContractResponse> {
     const data = MsgSetOriginContract.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "SetOriginContract", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'SetOriginContract', data);
     return promise.then(data => MsgSetOriginContractResponse.decode(new _m0.Reader(data)));
   }
   setAttributeOveriding(request: MsgSetAttributeOveriding): Promise<MsgSetAttributeOveridingResponse> {
     const data = MsgSetAttributeOveriding.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "SetAttributeOveriding", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'SetAttributeOveriding', data);
     return promise.then(data => MsgSetAttributeOveridingResponse.decode(new _m0.Reader(data)));
   }
   setMetadataFormat(request: MsgSetMetadataFormat): Promise<MsgSetMetadataFormatResponse> {
     const data = MsgSetMetadataFormat.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "SetMetadataFormat", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'SetMetadataFormat', data);
     return promise.then(data => MsgSetMetadataFormatResponse.decode(new _m0.Reader(data)));
   }
   createActionExecutor(request: MsgCreateActionExecutor): Promise<MsgCreateActionExecutorResponse> {
     const data = MsgCreateActionExecutor.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "CreateActionExecutor", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'CreateActionExecutor', data);
     return promise.then(data => MsgCreateActionExecutorResponse.decode(new _m0.Reader(data)));
   }
   deleteActionExecutor(request: MsgDeleteActionExecutor): Promise<MsgDeleteActionExecutorResponse> {
     const data = MsgDeleteActionExecutor.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "DeleteActionExecutor", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'DeleteActionExecutor', data);
     return promise.then(data => MsgDeleteActionExecutorResponse.decode(new _m0.Reader(data)));
   }
   updateSchemaAttribute(request: MsgUpdateSchemaAttribute): Promise<MsgUpdateSchemaAttributeResponse> {
     const data = MsgUpdateSchemaAttribute.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "UpdateSchemaAttribute", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'UpdateSchemaAttribute', data);
     return promise.then(data => MsgUpdateSchemaAttributeResponse.decode(new _m0.Reader(data)));
   }
   updateAction(request: MsgUpdateAction): Promise<MsgUpdateActionResponse> {
     const data = MsgUpdateAction.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "UpdateAction", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'UpdateAction', data);
     return promise.then(data => MsgUpdateActionResponse.decode(new _m0.Reader(data)));
   }
   proposalVirtualSchema(request: MsgProposalVirtualSchema): Promise<MsgProposalVirtualSchemaResponse> {
     const data = MsgProposalVirtualSchema.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "ProposalVirtualSchema", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'ProposalVirtualSchema', data);
     return promise.then(data => MsgProposalVirtualSchemaResponse.decode(new _m0.Reader(data)));
   }
   performVirtualAction(request: MsgPerformVirtualAction): Promise<MsgPerformVirtualActionResponse> {
     const data = MsgPerformVirtualAction.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "PerformVirtualAction", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'PerformVirtualAction', data);
     return promise.then(data => MsgPerformVirtualActionResponse.decode(new _m0.Reader(data)));
   }
   voteVirtualSchemaProposal(request: MsgVoteVirtualSchemaProposal): Promise<MsgVoteVirtualSchemaProposalResponse> {
     const data = MsgVoteVirtualSchemaProposal.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftmngr.Msg", "VoteVirtualSchemaProposal", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Msg', 'VoteVirtualSchemaProposal', data);
     return promise.then(data => MsgVoteVirtualSchemaProposalResponse.decode(new _m0.Reader(data)));
   }
 }

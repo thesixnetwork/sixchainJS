@@ -6,11 +6,11 @@ const main = async () => {
     sixConnector.rpcUrl = "http://localhost:80"
     const accountSigner = await sixConnector.accounts.privateKeyToAccount(mnemonic)
     const address = (await accountSigner.getAccounts())[0].address
-    const rpcClient = await sixDataChainConnector.connectRPCClient(accountSigner)
+    const rpcClient = await sixConnector.connectRPCClient(accountSigner)
 
     const encodeBase64NewAction = BASE64.encode(JSON.stringify(exampleNewAttribute))
 
-    const msg = await rpcClient.nftmngrModule.msgAddAction({
+    const msg = rpcClient.nftmngrModule.msgAddAction({
         creator: address,
         code: "buakaw99",
         base64NewAction: encodeBase64NewAction,

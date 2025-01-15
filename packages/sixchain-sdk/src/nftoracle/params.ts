@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Duration, DurationAmino, DurationSDKType } from "../google/protobuf/duration";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Duration, DurationAmino, DurationSDKType } from '../google/protobuf/duration';
 /** Params defines the parameters for the module. */
 export interface Params {
   mintRequestActiveDuration: Duration;
@@ -10,7 +11,7 @@ export interface Params {
   syncActionSignerActiveDuration: Duration;
 }
 export interface ParamsProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.Params";
+  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.Params';
   value: Uint8Array;
 }
 /** Params defines the parameters for the module. */
@@ -22,7 +23,7 @@ export interface ParamsAmino {
   sync_action_signer_active_duration?: DurationAmino;
 }
 export interface ParamsAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.Params";
+  type: '/thesixnetwork.sixprotocol.nftoracle.Params';
   value: ParamsAmino;
 }
 /** Params defines the parameters for the module. */
@@ -43,7 +44,7 @@ function createBaseParams(): Params {
   };
 }
 export const Params = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.Params",
+  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.Params',
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.mintRequestActiveDuration !== undefined) {
       Duration.encode(message.mintRequestActiveDuration, writer.uint32(10).fork()).ldelim();
@@ -69,24 +70,24 @@ export const Params = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.mintRequestActiveDuration = Duration.decode(reader, reader.uint32());
-          break;
-        case 2:
-          message.actionRequestActiveDuration = Duration.decode(reader, reader.uint32());
-          break;
-        case 3:
-          message.verifyRequestActiveDuration = Duration.decode(reader, reader.uint32());
-          break;
-        case 4:
-          message.actionSignerActiveDuration = Duration.decode(reader, reader.uint32());
-          break;
-        case 5:
-          message.syncActionSignerActiveDuration = Duration.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.mintRequestActiveDuration = Duration.decode(reader, reader.uint32());
+        break;
+      case 2:
+        message.actionRequestActiveDuration = Duration.decode(reader, reader.uint32());
+        break;
+      case 3:
+        message.verifyRequestActiveDuration = Duration.decode(reader, reader.uint32());
+        break;
+      case 4:
+        message.actionSignerActiveDuration = Duration.decode(reader, reader.uint32());
+        break;
+      case 5:
+        message.syncActionSignerActiveDuration = Duration.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -139,7 +140,7 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.Params",
+      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.Params',
       value: Params.encode(message).finish()
     };
   }

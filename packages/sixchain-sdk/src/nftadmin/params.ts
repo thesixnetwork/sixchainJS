@@ -1,15 +1,15 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 /** Params defines the parameters for the module. */
 export interface Params {}
 export interface ParamsProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Params";
+  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Params';
   value: Uint8Array;
 }
 /** Params defines the parameters for the module. */
 export interface ParamsAmino {}
 export interface ParamsAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftadmin.Params";
+  type: '/thesixnetwork.sixprotocol.nftadmin.Params';
   value: ParamsAmino;
 }
 /** Params defines the parameters for the module. */
@@ -18,7 +18,7 @@ function createBaseParams(): Params {
   return {};
 }
 export const Params = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Params",
+  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Params',
   encode(_: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -29,9 +29,9 @@ export const Params = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -59,7 +59,7 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Params",
+      typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Params',
       value: Params.encode(message).finish()
     };
   }

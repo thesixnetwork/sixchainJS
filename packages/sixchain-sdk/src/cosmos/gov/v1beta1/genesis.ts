@@ -1,7 +1,8 @@
 //@ts-nocheck
-import { Deposit, DepositAmino, DepositSDKType, Vote, VoteAmino, VoteSDKType, Proposal, ProposalAmino, ProposalSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType } from "./gov";
-import { Long } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Long } from '../../../helpers';
+import { Deposit, DepositAmino, DepositParams, DepositParamsAmino, DepositParamsSDKType, DepositSDKType, Proposal, ProposalAmino, ProposalSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType,Vote, VoteAmino, VoteSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType } from './gov';
 /** GenesisState defines the gov module's genesis state. */
 export interface GenesisState {
   /** starting_proposal_id is the ID of the starting proposal. */
@@ -20,7 +21,7 @@ export interface GenesisState {
   tallyParams: TallyParams;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/cosmos.gov.v1beta1.GenesisState";
+  typeUrl: '/cosmos.gov.v1beta1.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState defines the gov module's genesis state. */
@@ -41,7 +42,7 @@ export interface GenesisStateAmino {
   tally_params?: TallyParamsAmino;
 }
 export interface GenesisStateAminoMsg {
-  type: "cosmos-sdk/GenesisState";
+  type: 'cosmos-sdk/GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState defines the gov module's genesis state. */
@@ -66,7 +67,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: "/cosmos.gov.v1beta1.GenesisState",
+  typeUrl: '/cosmos.gov.v1beta1.GenesisState',
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.startingProposalId.isZero()) {
       writer.uint32(8).uint64(message.startingProposalId);
@@ -98,30 +99,30 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.startingProposalId = reader.uint64() as Long;
-          break;
-        case 2:
-          message.deposits.push(Deposit.decode(reader, reader.uint32()));
-          break;
-        case 3:
-          message.votes.push(Vote.decode(reader, reader.uint32()));
-          break;
-        case 4:
-          message.proposals.push(Proposal.decode(reader, reader.uint32()));
-          break;
-        case 5:
-          message.depositParams = DepositParams.decode(reader, reader.uint32());
-          break;
-        case 6:
-          message.votingParams = VotingParams.decode(reader, reader.uint32());
-          break;
-        case 7:
-          message.tallyParams = TallyParams.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.startingProposalId = reader.uint64() as Long;
+        break;
+      case 2:
+        message.deposits.push(Deposit.decode(reader, reader.uint32()));
+        break;
+      case 3:
+        message.votes.push(Vote.decode(reader, reader.uint32()));
+        break;
+      case 4:
+        message.proposals.push(Proposal.decode(reader, reader.uint32()));
+        break;
+      case 5:
+        message.depositParams = DepositParams.decode(reader, reader.uint32());
+        break;
+      case 6:
+        message.votingParams = VotingParams.decode(reader, reader.uint32());
+        break;
+      case 7:
+        message.tallyParams = TallyParams.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -184,7 +185,7 @@ export const GenesisState = {
   },
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
-      type: "cosmos-sdk/GenesisState",
+      type: 'cosmos-sdk/GenesisState',
       value: GenesisState.toAmino(message)
     };
   },
@@ -196,7 +197,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/cosmos.gov.v1beta1.GenesisState",
+      typeUrl: '/cosmos.gov.v1beta1.GenesisState',
       value: GenesisState.encode(message).finish()
     };
   }

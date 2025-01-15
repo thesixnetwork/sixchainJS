@@ -1,8 +1,9 @@
 //@ts-nocheck
-import { Rpc } from "../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetAuthorizationRequest, QueryGetAuthorizationResponse } from "./query";
+import { createProtobufRpcClient,QueryClient } from '@cosmjs/stargate';
+import * as _m0 from 'protobufjs/minimal';
+
+import { Rpc } from '../helpers';
+import { QueryGetAuthorizationRequest, QueryGetAuthorizationResponse,QueryParamsRequest, QueryParamsResponse } from './query';
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -19,12 +20,12 @@ export class QueryClientImpl implements Query {
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftadmin.Query", "Params", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftadmin.Query', 'Params', data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
   authorization(request: QueryGetAuthorizationRequest = {}): Promise<QueryGetAuthorizationResponse> {
     const data = QueryGetAuthorizationRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftadmin.Query", "Authorization", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftadmin.Query', 'Authorization', data);
     return promise.then(data => QueryGetAuthorizationResponse.decode(new _m0.Reader(data)));
   }
 }

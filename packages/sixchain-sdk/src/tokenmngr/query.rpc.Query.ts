@@ -1,8 +1,9 @@
 //@ts-nocheck
-import { Rpc } from "../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetTokenRequest, QueryGetTokenResponse, QueryAllTokenRequest, QueryAllTokenResponse, QueryGetMintpermRequest, QueryGetMintpermResponse, QueryAllMintpermRequest, QueryAllMintpermResponse, QueryGetOptionsRequest, QueryGetOptionsResponse, QueryBurnsRequest, QueryBurnsResponse, QueryGetTokenBurnRequest, QueryGetTokenBurnResponse, QueryAllTokenBurnRequest, QueryAllTokenBurnResponse } from "./query";
+import { createProtobufRpcClient,QueryClient } from '@cosmjs/stargate';
+import * as _m0 from 'protobufjs/minimal';
+
+import { Rpc } from '../helpers';
+import { QueryAllMintpermRequest, QueryAllMintpermResponse, QueryAllTokenBurnRequest, QueryAllTokenBurnResponse,QueryAllTokenRequest, QueryAllTokenResponse, QueryBurnsRequest, QueryBurnsResponse, QueryGetMintpermRequest, QueryGetMintpermResponse, QueryGetOptionsRequest, QueryGetOptionsResponse, QueryGetTokenBurnRequest, QueryGetTokenBurnResponse, QueryGetTokenRequest, QueryGetTokenResponse, QueryParamsRequest, QueryParamsResponse } from './query';
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -40,55 +41,55 @@ export class QueryClientImpl implements Query {
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "Params", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.tokenmngr.Query', 'Params', data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
   token(request: QueryGetTokenRequest): Promise<QueryGetTokenResponse> {
     const data = QueryGetTokenRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "Token", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.tokenmngr.Query', 'Token', data);
     return promise.then(data => QueryGetTokenResponse.decode(new _m0.Reader(data)));
   }
   tokenAll(request: QueryAllTokenRequest = {
     pagination: undefined
   }): Promise<QueryAllTokenResponse> {
     const data = QueryAllTokenRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "TokenAll", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.tokenmngr.Query', 'TokenAll', data);
     return promise.then(data => QueryAllTokenResponse.decode(new _m0.Reader(data)));
   }
   mintperm(request: QueryGetMintpermRequest): Promise<QueryGetMintpermResponse> {
     const data = QueryGetMintpermRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "Mintperm", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.tokenmngr.Query', 'Mintperm', data);
     return promise.then(data => QueryGetMintpermResponse.decode(new _m0.Reader(data)));
   }
   mintpermAll(request: QueryAllMintpermRequest = {
     pagination: undefined
   }): Promise<QueryAllMintpermResponse> {
     const data = QueryAllMintpermRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "MintpermAll", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.tokenmngr.Query', 'MintpermAll', data);
     return promise.then(data => QueryAllMintpermResponse.decode(new _m0.Reader(data)));
   }
   options(request: QueryGetOptionsRequest = {}): Promise<QueryGetOptionsResponse> {
     const data = QueryGetOptionsRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "Options", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.tokenmngr.Query', 'Options', data);
     return promise.then(data => QueryGetOptionsResponse.decode(new _m0.Reader(data)));
   }
   burns(request: QueryBurnsRequest = {
     pagination: undefined
   }): Promise<QueryBurnsResponse> {
     const data = QueryBurnsRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "Burns", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.tokenmngr.Query', 'Burns', data);
     return promise.then(data => QueryBurnsResponse.decode(new _m0.Reader(data)));
   }
   tokenBurn(request: QueryGetTokenBurnRequest): Promise<QueryGetTokenBurnResponse> {
     const data = QueryGetTokenBurnRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "TokenBurn", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.tokenmngr.Query', 'TokenBurn', data);
     return promise.then(data => QueryGetTokenBurnResponse.decode(new _m0.Reader(data)));
   }
   tokenBurnAll(request: QueryAllTokenBurnRequest = {
     pagination: undefined
   }): Promise<QueryAllTokenBurnResponse> {
     const data = QueryAllTokenBurnRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "TokenBurnAll", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.tokenmngr.Query', 'TokenBurnAll', data);
     return promise.then(data => QueryAllTokenBurnResponse.decode(new _m0.Reader(data)));
   }
 }

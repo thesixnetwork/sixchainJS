@@ -1,8 +1,9 @@
 //@ts-nocheck
-import { Rpc } from "../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetGroupRequest, QueryGetGroupResponse, QueryAllGroupRequest, QueryAllGroupResponse, QueryGetAdminRequest, QueryGetAdminResponse, QueryAllAdminRequest, QueryAllAdminResponse, QueryListAdminOfGroupRequest, QueryListAdminOfGroupResponse } from "./query";
+import { createProtobufRpcClient,QueryClient } from '@cosmjs/stargate';
+import * as _m0 from 'protobufjs/minimal';
+
+import { Rpc } from '../helpers';
+import { QueryAllAdminRequest, QueryAllAdminResponse, QueryAllGroupRequest, QueryAllGroupResponse, QueryGetAdminRequest, QueryGetAdminResponse, QueryGetGroupRequest, QueryGetGroupResponse, QueryListAdminOfGroupRequest, QueryListAdminOfGroupResponse,QueryParamsRequest, QueryParamsResponse } from './query';
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -31,36 +32,36 @@ export class QueryClientImpl implements Query {
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.protocoladmin.Query", "Params", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.protocoladmin.Query', 'Params', data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
   group(request: QueryGetGroupRequest): Promise<QueryGetGroupResponse> {
     const data = QueryGetGroupRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.protocoladmin.Query", "Group", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.protocoladmin.Query', 'Group', data);
     return promise.then(data => QueryGetGroupResponse.decode(new _m0.Reader(data)));
   }
   groupAll(request: QueryAllGroupRequest = {
     pagination: undefined
   }): Promise<QueryAllGroupResponse> {
     const data = QueryAllGroupRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.protocoladmin.Query", "GroupAll", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.protocoladmin.Query', 'GroupAll', data);
     return promise.then(data => QueryAllGroupResponse.decode(new _m0.Reader(data)));
   }
   admin(request: QueryGetAdminRequest): Promise<QueryGetAdminResponse> {
     const data = QueryGetAdminRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.protocoladmin.Query", "Admin", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.protocoladmin.Query', 'Admin', data);
     return promise.then(data => QueryGetAdminResponse.decode(new _m0.Reader(data)));
   }
   adminAll(request: QueryAllAdminRequest = {
     pagination: undefined
   }): Promise<QueryAllAdminResponse> {
     const data = QueryAllAdminRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.protocoladmin.Query", "AdminAll", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.protocoladmin.Query', 'AdminAll', data);
     return promise.then(data => QueryAllAdminResponse.decode(new _m0.Reader(data)));
   }
   listAdminOfGroup(request: QueryListAdminOfGroupRequest): Promise<QueryListAdminOfGroupResponse> {
     const data = QueryListAdminOfGroupRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.protocoladmin.Query", "ListAdminOfGroup", data);
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.protocoladmin.Query', 'ListAdminOfGroup', data);
     return promise.then(data => QueryListAdminOfGroupResponse.decode(new _m0.Reader(data)));
   }
 }

@@ -1,11 +1,11 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export interface NFTFeeBalance {
   /** map<int32, string> fee_balances = 1; */
   feeBalances: string[];
 }
 export interface NFTFeeBalanceProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTFeeBalance";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTFeeBalance';
   value: Uint8Array;
 }
 export interface NFTFeeBalanceAmino {
@@ -13,7 +13,7 @@ export interface NFTFeeBalanceAmino {
   fee_balances?: string[];
 }
 export interface NFTFeeBalanceAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.NFTFeeBalance";
+  type: '/thesixnetwork.sixprotocol.nftmngr.NFTFeeBalance';
   value: NFTFeeBalanceAmino;
 }
 export interface NFTFeeBalanceSDKType {
@@ -25,7 +25,7 @@ function createBaseNFTFeeBalance(): NFTFeeBalance {
   };
 }
 export const NFTFeeBalance = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTFeeBalance",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTFeeBalance',
   encode(message: NFTFeeBalance, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.feeBalances) {
       writer.uint32(10).string(v!);
@@ -39,12 +39,12 @@ export const NFTFeeBalance = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.feeBalances.push(reader.string());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.feeBalances.push(reader.string());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -79,7 +79,7 @@ export const NFTFeeBalance = {
   },
   toProtoMsg(message: NFTFeeBalance): NFTFeeBalanceProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTFeeBalance",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTFeeBalance',
       value: NFTFeeBalance.encode(message).finish()
     };
   }

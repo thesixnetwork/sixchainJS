@@ -1,7 +1,8 @@
 //@ts-nocheck
-import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { MsgSetWithdrawAddress, MsgSetWithdrawAddressResponse, MsgWithdrawDelegatorReward, MsgWithdrawDelegatorRewardResponse, MsgWithdrawValidatorCommission, MsgWithdrawValidatorCommissionResponse, MsgFundCommunityPool, MsgFundCommunityPoolResponse } from "./tx";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Rpc } from '../../../helpers';
+import { MsgFundCommunityPool, MsgFundCommunityPoolResponse,MsgSetWithdrawAddress, MsgSetWithdrawAddressResponse, MsgWithdrawDelegatorReward, MsgWithdrawDelegatorRewardResponse, MsgWithdrawValidatorCommission, MsgWithdrawValidatorCommissionResponse } from './tx';
 /** Msg defines the distribution Msg service. */
 export interface Msg {
   /**
@@ -36,22 +37,22 @@ export class MsgClientImpl implements Msg {
   }
   setWithdrawAddress(request: MsgSetWithdrawAddress): Promise<MsgSetWithdrawAddressResponse> {
     const data = MsgSetWithdrawAddress.encode(request).finish();
-    const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "SetWithdrawAddress", data);
+    const promise = this.rpc.request('cosmos.distribution.v1beta1.Msg', 'SetWithdrawAddress', data);
     return promise.then(data => MsgSetWithdrawAddressResponse.decode(new _m0.Reader(data)));
   }
   withdrawDelegatorReward(request: MsgWithdrawDelegatorReward): Promise<MsgWithdrawDelegatorRewardResponse> {
     const data = MsgWithdrawDelegatorReward.encode(request).finish();
-    const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "WithdrawDelegatorReward", data);
+    const promise = this.rpc.request('cosmos.distribution.v1beta1.Msg', 'WithdrawDelegatorReward', data);
     return promise.then(data => MsgWithdrawDelegatorRewardResponse.decode(new _m0.Reader(data)));
   }
   withdrawValidatorCommission(request: MsgWithdrawValidatorCommission): Promise<MsgWithdrawValidatorCommissionResponse> {
     const data = MsgWithdrawValidatorCommission.encode(request).finish();
-    const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "WithdrawValidatorCommission", data);
+    const promise = this.rpc.request('cosmos.distribution.v1beta1.Msg', 'WithdrawValidatorCommission', data);
     return promise.then(data => MsgWithdrawValidatorCommissionResponse.decode(new _m0.Reader(data)));
   }
   fundCommunityPool(request: MsgFundCommunityPool): Promise<MsgFundCommunityPoolResponse> {
     const data = MsgFundCommunityPool.encode(request).finish();
-    const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "FundCommunityPool", data);
+    const promise = this.rpc.request('cosmos.distribution.v1beta1.Msg', 'FundCommunityPool', data);
     return promise.then(data => MsgFundCommunityPoolResponse.decode(new _m0.Reader(data)));
   }
 }

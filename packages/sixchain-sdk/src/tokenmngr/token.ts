@@ -1,9 +1,10 @@
 //@ts-nocheck
-import { Coin, CoinAmino, CoinSDKType } from "../cosmos/base/v1beta1/coin";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Coin, CoinAmino, CoinSDKType } from '../cosmos/base/v1beta1/coin';
 /** @deprecated */
 export interface Token {
-  $typeUrl?: "/thesixnetwork.sixprotocol.tokenmngr.Token";
+  $typeUrl?: '/thesixnetwork.sixprotocol.tokenmngr.Token';
   name: string;
   base: string;
   maxSupply: Coin;
@@ -11,7 +12,7 @@ export interface Token {
   creator: string;
 }
 export interface TokenProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token";
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Token';
   value: Uint8Array;
 }
 /** @deprecated */
@@ -23,12 +24,12 @@ export interface TokenAmino {
   creator?: string;
 }
 export interface TokenAminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.Token";
+  type: '/thesixnetwork.sixprotocol.tokenmngr.Token';
   value: TokenAmino;
 }
 /** @deprecated */
 export interface TokenSDKType {
-  $typeUrl?: "/thesixnetwork.sixprotocol.tokenmngr.Token";
+  $typeUrl?: '/thesixnetwork.sixprotocol.tokenmngr.Token';
   name: string;
   base: string;
   maxSupply: CoinSDKType;
@@ -54,7 +55,7 @@ export interface DenomUnit {
   aliases: string[];
 }
 export interface DenomUnitProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.DenomUnit";
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.DenomUnit';
   value: Uint8Array;
 }
 /**
@@ -76,7 +77,7 @@ export interface DenomUnitAmino {
   aliases?: string[];
 }
 export interface DenomUnitAminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.DenomUnit";
+  type: '/thesixnetwork.sixprotocol.tokenmngr.DenomUnit';
   value: DenomUnitAmino;
 }
 /**
@@ -118,7 +119,7 @@ export interface Metadata {
   symbol: string;
 }
 export interface MetadataProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Metadata";
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Metadata';
   value: Uint8Array;
 }
 /**
@@ -151,7 +152,7 @@ export interface MetadataAmino {
   symbol?: string;
 }
 export interface MetadataAminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.Metadata";
+  type: '/thesixnetwork.sixprotocol.tokenmngr.Metadata';
   value: MetadataAmino;
 }
 /**
@@ -168,30 +169,30 @@ export interface MetadataSDKType {
 }
 function createBaseToken(): Token {
   return {
-    $typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token",
-    name: "",
-    base: "",
+    $typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Token',
+    name: '',
+    base: '',
     maxSupply: Coin.fromPartial({}),
-    mintee: "",
-    creator: ""
+    mintee: '',
+    creator: ''
   };
 }
 export const Token = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token",
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Token',
   encode(message: Token, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(10).string(message.name);
     }
-    if (message.base !== "") {
+    if (message.base !== '') {
       writer.uint32(18).string(message.base);
     }
     if (message.maxSupply !== undefined) {
       Coin.encode(message.maxSupply, writer.uint32(26).fork()).ldelim();
     }
-    if (message.mintee !== "") {
+    if (message.mintee !== '') {
       writer.uint32(34).string(message.mintee);
     }
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(42).string(message.creator);
     }
     return writer;
@@ -203,35 +204,35 @@ export const Token = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.name = reader.string();
-          break;
-        case 2:
-          message.base = reader.string();
-          break;
-        case 3:
-          message.maxSupply = Coin.decode(reader, reader.uint32());
-          break;
-        case 4:
-          message.mintee = reader.string();
-          break;
-        case 5:
-          message.creator = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.name = reader.string();
+        break;
+      case 2:
+        message.base = reader.string();
+        break;
+      case 3:
+        message.maxSupply = Coin.decode(reader, reader.uint32());
+        break;
+      case 4:
+        message.mintee = reader.string();
+        break;
+      case 5:
+        message.creator = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Token>): Token {
     const message = createBaseToken();
-    message.name = object.name ?? "";
-    message.base = object.base ?? "";
+    message.name = object.name ?? '';
+    message.base = object.base ?? '';
     message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Coin.fromPartial(object.maxSupply) : undefined;
-    message.mintee = object.mintee ?? "";
-    message.creator = object.creator ?? "";
+    message.mintee = object.mintee ?? '';
+    message.creator = object.creator ?? '';
     return message;
   },
   fromAmino(object: TokenAmino): Token {
@@ -255,11 +256,11 @@ export const Token = {
   },
   toAmino(message: Token): TokenAmino {
     const obj: any = {};
-    obj.name = message.name === "" ? undefined : message.name;
-    obj.base = message.base === "" ? undefined : message.base;
+    obj.name = message.name === '' ? undefined : message.name;
+    obj.base = message.base === '' ? undefined : message.base;
     obj.maxSupply = message.maxSupply ? Coin.toAmino(message.maxSupply) : undefined;
-    obj.mintee = message.mintee === "" ? undefined : message.mintee;
-    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.mintee = message.mintee === '' ? undefined : message.mintee;
+    obj.creator = message.creator === '' ? undefined : message.creator;
     return obj;
   },
   fromAminoMsg(object: TokenAminoMsg): Token {
@@ -273,22 +274,22 @@ export const Token = {
   },
   toProtoMsg(message: Token): TokenProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token",
+      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Token',
       value: Token.encode(message).finish()
     };
   }
 };
 function createBaseDenomUnit(): DenomUnit {
   return {
-    denom: "",
+    denom: '',
     exponent: 0,
     aliases: []
   };
 }
 export const DenomUnit = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.DenomUnit",
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.DenomUnit',
   encode(message: DenomUnit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.denom !== "") {
+    if (message.denom !== '') {
       writer.uint32(10).string(message.denom);
     }
     if (message.exponent !== 0) {
@@ -306,25 +307,25 @@ export const DenomUnit = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.denom = reader.string();
-          break;
-        case 2:
-          message.exponent = reader.uint32();
-          break;
-        case 3:
-          message.aliases.push(reader.string());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.denom = reader.string();
+        break;
+      case 2:
+        message.exponent = reader.uint32();
+        break;
+      case 3:
+        message.aliases.push(reader.string());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<DenomUnit>): DenomUnit {
     const message = createBaseDenomUnit();
-    message.denom = object.denom ?? "";
+    message.denom = object.denom ?? '';
     message.exponent = object.exponent ?? 0;
     message.aliases = object.aliases?.map(e => e) || [];
     return message;
@@ -342,7 +343,7 @@ export const DenomUnit = {
   },
   toAmino(message: DenomUnit): DenomUnitAmino {
     const obj: any = {};
-    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.denom = message.denom === '' ? undefined : message.denom;
     obj.exponent = message.exponent === 0 ? undefined : message.exponent;
     if (message.aliases) {
       obj.aliases = message.aliases.map(e => e);
@@ -362,40 +363,40 @@ export const DenomUnit = {
   },
   toProtoMsg(message: DenomUnit): DenomUnitProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.DenomUnit",
+      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.DenomUnit',
       value: DenomUnit.encode(message).finish()
     };
   }
 };
 function createBaseMetadata(): Metadata {
   return {
-    description: "",
+    description: '',
     denomUnits: [],
-    base: "",
-    display: "",
-    name: "",
-    symbol: ""
+    base: '',
+    display: '',
+    name: '',
+    symbol: ''
   };
 }
 export const Metadata = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Metadata",
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Metadata',
   encode(message: Metadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.description !== "") {
+    if (message.description !== '') {
       writer.uint32(10).string(message.description);
     }
     for (const v of message.denomUnits) {
       DenomUnit.encode(v!, writer.uint32(18).fork()).ldelim();
     }
-    if (message.base !== "") {
+    if (message.base !== '') {
       writer.uint32(26).string(message.base);
     }
-    if (message.display !== "") {
+    if (message.display !== '') {
       writer.uint32(34).string(message.display);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(42).string(message.name);
     }
-    if (message.symbol !== "") {
+    if (message.symbol !== '') {
       writer.uint32(50).string(message.symbol);
     }
     return writer;
@@ -407,39 +408,39 @@ export const Metadata = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.description = reader.string();
-          break;
-        case 2:
-          message.denomUnits.push(DenomUnit.decode(reader, reader.uint32()));
-          break;
-        case 3:
-          message.base = reader.string();
-          break;
-        case 4:
-          message.display = reader.string();
-          break;
-        case 5:
-          message.name = reader.string();
-          break;
-        case 6:
-          message.symbol = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.description = reader.string();
+        break;
+      case 2:
+        message.denomUnits.push(DenomUnit.decode(reader, reader.uint32()));
+        break;
+      case 3:
+        message.base = reader.string();
+        break;
+      case 4:
+        message.display = reader.string();
+        break;
+      case 5:
+        message.name = reader.string();
+        break;
+      case 6:
+        message.symbol = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Metadata>): Metadata {
     const message = createBaseMetadata();
-    message.description = object.description ?? "";
+    message.description = object.description ?? '';
     message.denomUnits = object.denomUnits?.map(e => DenomUnit.fromPartial(e)) || [];
-    message.base = object.base ?? "";
-    message.display = object.display ?? "";
-    message.name = object.name ?? "";
-    message.symbol = object.symbol ?? "";
+    message.base = object.base ?? '';
+    message.display = object.display ?? '';
+    message.name = object.name ?? '';
+    message.symbol = object.symbol ?? '';
     return message;
   },
   fromAmino(object: MetadataAmino): Metadata {
@@ -464,16 +465,16 @@ export const Metadata = {
   },
   toAmino(message: Metadata): MetadataAmino {
     const obj: any = {};
-    obj.description = message.description === "" ? undefined : message.description;
+    obj.description = message.description === '' ? undefined : message.description;
     if (message.denomUnits) {
       obj.denom_units = message.denomUnits.map(e => e ? DenomUnit.toAmino(e) : undefined);
     } else {
       obj.denom_units = message.denomUnits;
     }
-    obj.base = message.base === "" ? undefined : message.base;
-    obj.display = message.display === "" ? undefined : message.display;
-    obj.name = message.name === "" ? undefined : message.name;
-    obj.symbol = message.symbol === "" ? undefined : message.symbol;
+    obj.base = message.base === '' ? undefined : message.base;
+    obj.display = message.display === '' ? undefined : message.display;
+    obj.name = message.name === '' ? undefined : message.name;
+    obj.symbol = message.symbol === '' ? undefined : message.symbol;
     return obj;
   },
   fromAminoMsg(object: MetadataAminoMsg): Metadata {
@@ -487,7 +488,7 @@ export const Metadata = {
   },
   toProtoMsg(message: Metadata): MetadataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Metadata",
+      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Metadata',
       value: Metadata.encode(message).finish()
     };
   }

@@ -1,17 +1,18 @@
 //@ts-nocheck
-import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
-import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
-import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
-import * as nftadminTxRegistry from "../nftadmin/tx.registry";
-import * as nftmngrTxRegistry from "../nftmngr/tx.registry";
-import * as nftoracleTxRegistry from "../nftoracle/tx.registry";
-import * as protocoladminTxRegistry from "../protocoladmin/tx.registry";
-import * as tokenmngrTxRegistry from "../tokenmngr/tx.registry";
-import * as nftadminTxAmino from "../nftadmin/tx.amino";
-import * as nftmngrTxAmino from "../nftmngr/tx.amino";
-import * as nftoracleTxAmino from "../nftoracle/tx.amino";
-import * as protocoladminTxAmino from "../protocoladmin/tx.amino";
-import * as tokenmngrTxAmino from "../tokenmngr/tx.amino";
+import { GeneratedType, OfflineSigner,Registry } from '@cosmjs/proto-signing';
+import { AminoTypes, defaultRegistryTypes, SigningStargateClient } from '@cosmjs/stargate';
+import { HttpEndpoint } from '@cosmjs/tendermint-rpc';
+
+import * as nftadminTxAmino from '../nftadmin/tx.amino';
+import * as nftadminTxRegistry from '../nftadmin/tx.registry';
+import * as nftmngrTxAmino from '../nftmngr/tx.amino';
+import * as nftmngrTxRegistry from '../nftmngr/tx.registry';
+import * as nftoracleTxAmino from '../nftoracle/tx.amino';
+import * as nftoracleTxRegistry from '../nftoracle/tx.registry';
+import * as protocoladminTxAmino from '../protocoladmin/tx.amino';
+import * as protocoladminTxRegistry from '../protocoladmin/tx.registry';
+import * as tokenmngrTxAmino from '../tokenmngr/tx.amino';
+import * as tokenmngrTxRegistry from '../tokenmngr/tx.registry';
 export const thesixnetworkAminoConverters = {
   ...nftadminTxAmino.AminoConverter,
   ...nftmngrTxAmino.AminoConverter,

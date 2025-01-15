@@ -1,14 +1,15 @@
 //@ts-nocheck
-import { Coin, CoinAmino, CoinSDKType } from "../cosmos/base/v1beta1/coin";
-import { Long } from "../helpers";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Coin, CoinAmino, CoinSDKType } from '../cosmos/base/v1beta1/coin';
+import { Long } from '../helpers';
 export interface Burn {
   id: Long;
   creator: string;
   amount: Coin;
 }
 export interface BurnProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Burn";
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Burn';
   value: Uint8Array;
 }
 export interface BurnAmino {
@@ -17,7 +18,7 @@ export interface BurnAmino {
   amount?: CoinAmino;
 }
 export interface BurnAminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.Burn";
+  type: '/thesixnetwork.sixprotocol.tokenmngr.Burn';
   value: BurnAmino;
 }
 export interface BurnSDKType {
@@ -28,17 +29,17 @@ export interface BurnSDKType {
 function createBaseBurn(): Burn {
   return {
     id: Long.UZERO,
-    creator: "",
+    creator: '',
     amount: Coin.fromPartial({})
   };
 }
 export const Burn = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Burn",
+  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Burn',
   encode(message: Burn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
     }
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(18).string(message.creator);
     }
     if (message.amount !== undefined) {
@@ -53,18 +54,18 @@ export const Burn = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.id = reader.uint64() as Long;
-          break;
-        case 2:
-          message.creator = reader.string();
-          break;
-        case 3:
-          message.amount = Coin.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.id = reader.uint64() as Long;
+        break;
+      case 2:
+        message.creator = reader.string();
+        break;
+      case 3:
+        message.amount = Coin.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -72,7 +73,7 @@ export const Burn = {
   fromPartial(object: Partial<Burn>): Burn {
     const message = createBaseBurn();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
-    message.creator = object.creator ?? "";
+    message.creator = object.creator ?? '';
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
   },
@@ -92,7 +93,7 @@ export const Burn = {
   toAmino(message: Burn): BurnAmino {
     const obj: any = {};
     obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
-    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.creator = message.creator === '' ? undefined : message.creator;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
     return obj;
   },
@@ -107,7 +108,7 @@ export const Burn = {
   },
   toProtoMsg(message: Burn): BurnProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Burn",
+      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.Burn',
       value: Burn.encode(message).finish()
     };
   }

@@ -1,11 +1,11 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export interface MsgCreateGroup {
   creator: string;
   name: string;
 }
 export interface MsgCreateGroupProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroup";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroup';
   value: Uint8Array;
 }
 export interface MsgCreateGroupAmino {
@@ -13,7 +13,7 @@ export interface MsgCreateGroupAmino {
   name?: string;
 }
 export interface MsgCreateGroupAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroup";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroup';
   value: MsgCreateGroupAmino;
 }
 export interface MsgCreateGroupSDKType {
@@ -22,12 +22,12 @@ export interface MsgCreateGroupSDKType {
 }
 export interface MsgCreateGroupResponse {}
 export interface MsgCreateGroupResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroupResponse";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroupResponse';
   value: Uint8Array;
 }
 export interface MsgCreateGroupResponseAmino {}
 export interface MsgCreateGroupResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroupResponse";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroupResponse';
   value: MsgCreateGroupResponseAmino;
 }
 export interface MsgCreateGroupResponseSDKType {}
@@ -36,7 +36,7 @@ export interface MsgUpdateGroup {
   name: string;
 }
 export interface MsgUpdateGroupProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroup";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroup';
   value: Uint8Array;
 }
 export interface MsgUpdateGroupAmino {
@@ -44,7 +44,7 @@ export interface MsgUpdateGroupAmino {
   name?: string;
 }
 export interface MsgUpdateGroupAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroup";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroup';
   value: MsgUpdateGroupAmino;
 }
 export interface MsgUpdateGroupSDKType {
@@ -53,12 +53,12 @@ export interface MsgUpdateGroupSDKType {
 }
 export interface MsgUpdateGroupResponse {}
 export interface MsgUpdateGroupResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroupResponse";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroupResponse';
   value: Uint8Array;
 }
 export interface MsgUpdateGroupResponseAmino {}
 export interface MsgUpdateGroupResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroupResponse";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroupResponse';
   value: MsgUpdateGroupResponseAmino;
 }
 export interface MsgUpdateGroupResponseSDKType {}
@@ -67,7 +67,7 @@ export interface MsgDeleteGroup {
   name: string;
 }
 export interface MsgDeleteGroupProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroup";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroup';
   value: Uint8Array;
 }
 export interface MsgDeleteGroupAmino {
@@ -75,7 +75,7 @@ export interface MsgDeleteGroupAmino {
   name?: string;
 }
 export interface MsgDeleteGroupAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroup";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroup';
   value: MsgDeleteGroupAmino;
 }
 export interface MsgDeleteGroupSDKType {
@@ -84,12 +84,12 @@ export interface MsgDeleteGroupSDKType {
 }
 export interface MsgDeleteGroupResponse {}
 export interface MsgDeleteGroupResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroupResponse";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroupResponse';
   value: Uint8Array;
 }
 export interface MsgDeleteGroupResponseAmino {}
 export interface MsgDeleteGroupResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroupResponse";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroupResponse';
   value: MsgDeleteGroupResponseAmino;
 }
 export interface MsgDeleteGroupResponseSDKType {}
@@ -99,7 +99,7 @@ export interface MsgAddAdminToGroup {
   address: string;
 }
 export interface MsgAddAdminToGroupProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroup";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroup';
   value: Uint8Array;
 }
 export interface MsgAddAdminToGroupAmino {
@@ -108,7 +108,7 @@ export interface MsgAddAdminToGroupAmino {
   address?: string;
 }
 export interface MsgAddAdminToGroupAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroup";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroup';
   value: MsgAddAdminToGroupAmino;
 }
 export interface MsgAddAdminToGroupSDKType {
@@ -118,12 +118,12 @@ export interface MsgAddAdminToGroupSDKType {
 }
 export interface MsgAddAdminToGroupResponse {}
 export interface MsgAddAdminToGroupResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroupResponse";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroupResponse';
   value: Uint8Array;
 }
 export interface MsgAddAdminToGroupResponseAmino {}
 export interface MsgAddAdminToGroupResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroupResponse";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroupResponse';
   value: MsgAddAdminToGroupResponseAmino;
 }
 export interface MsgAddAdminToGroupResponseSDKType {}
@@ -133,7 +133,7 @@ export interface MsgRemoveAdminFromGroup {
   address: string;
 }
 export interface MsgRemoveAdminFromGroupProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroup";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroup';
   value: Uint8Array;
 }
 export interface MsgRemoveAdminFromGroupAmino {
@@ -142,7 +142,7 @@ export interface MsgRemoveAdminFromGroupAmino {
   address?: string;
 }
 export interface MsgRemoveAdminFromGroupAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroup";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroup';
   value: MsgRemoveAdminFromGroupAmino;
 }
 export interface MsgRemoveAdminFromGroupSDKType {
@@ -152,28 +152,28 @@ export interface MsgRemoveAdminFromGroupSDKType {
 }
 export interface MsgRemoveAdminFromGroupResponse {}
 export interface MsgRemoveAdminFromGroupResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroupResponse";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroupResponse';
   value: Uint8Array;
 }
 export interface MsgRemoveAdminFromGroupResponseAmino {}
 export interface MsgRemoveAdminFromGroupResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroupResponse";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroupResponse';
   value: MsgRemoveAdminFromGroupResponseAmino;
 }
 export interface MsgRemoveAdminFromGroupResponseSDKType {}
 function createBaseMsgCreateGroup(): MsgCreateGroup {
   return {
-    creator: "",
-    name: ""
+    creator: '',
+    name: ''
   };
 }
 export const MsgCreateGroup = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroup",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroup',
   encode(message: MsgCreateGroup, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(18).string(message.name);
     }
     return writer;
@@ -185,23 +185,23 @@ export const MsgCreateGroup = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.creator = reader.string();
-          break;
-        case 2:
-          message.name = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.creator = reader.string();
+        break;
+      case 2:
+        message.name = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgCreateGroup>): MsgCreateGroup {
     const message = createBaseMsgCreateGroup();
-    message.creator = object.creator ?? "";
-    message.name = object.name ?? "";
+    message.creator = object.creator ?? '';
+    message.name = object.name ?? '';
     return message;
   },
   fromAmino(object: MsgCreateGroupAmino): MsgCreateGroup {
@@ -216,8 +216,8 @@ export const MsgCreateGroup = {
   },
   toAmino(message: MsgCreateGroup): MsgCreateGroupAmino {
     const obj: any = {};
-    obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.name = message.name === "" ? undefined : message.name;
+    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.name = message.name === '' ? undefined : message.name;
     return obj;
   },
   fromAminoMsg(object: MsgCreateGroupAminoMsg): MsgCreateGroup {
@@ -231,7 +231,7 @@ export const MsgCreateGroup = {
   },
   toProtoMsg(message: MsgCreateGroup): MsgCreateGroupProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroup",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroup',
       value: MsgCreateGroup.encode(message).finish()
     };
   }
@@ -240,7 +240,7 @@ function createBaseMsgCreateGroupResponse(): MsgCreateGroupResponse {
   return {};
 }
 export const MsgCreateGroupResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroupResponse",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroupResponse',
   encode(_: MsgCreateGroupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -251,9 +251,9 @@ export const MsgCreateGroupResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -281,24 +281,24 @@ export const MsgCreateGroupResponse = {
   },
   toProtoMsg(message: MsgCreateGroupResponse): MsgCreateGroupResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroupResponse",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgCreateGroupResponse',
       value: MsgCreateGroupResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgUpdateGroup(): MsgUpdateGroup {
   return {
-    creator: "",
-    name: ""
+    creator: '',
+    name: ''
   };
 }
 export const MsgUpdateGroup = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroup",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroup',
   encode(message: MsgUpdateGroup, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(18).string(message.name);
     }
     return writer;
@@ -310,23 +310,23 @@ export const MsgUpdateGroup = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.creator = reader.string();
-          break;
-        case 2:
-          message.name = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.creator = reader.string();
+        break;
+      case 2:
+        message.name = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgUpdateGroup>): MsgUpdateGroup {
     const message = createBaseMsgUpdateGroup();
-    message.creator = object.creator ?? "";
-    message.name = object.name ?? "";
+    message.creator = object.creator ?? '';
+    message.name = object.name ?? '';
     return message;
   },
   fromAmino(object: MsgUpdateGroupAmino): MsgUpdateGroup {
@@ -341,8 +341,8 @@ export const MsgUpdateGroup = {
   },
   toAmino(message: MsgUpdateGroup): MsgUpdateGroupAmino {
     const obj: any = {};
-    obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.name = message.name === "" ? undefined : message.name;
+    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.name = message.name === '' ? undefined : message.name;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateGroupAminoMsg): MsgUpdateGroup {
@@ -356,7 +356,7 @@ export const MsgUpdateGroup = {
   },
   toProtoMsg(message: MsgUpdateGroup): MsgUpdateGroupProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroup",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroup',
       value: MsgUpdateGroup.encode(message).finish()
     };
   }
@@ -365,7 +365,7 @@ function createBaseMsgUpdateGroupResponse(): MsgUpdateGroupResponse {
   return {};
 }
 export const MsgUpdateGroupResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroupResponse",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroupResponse',
   encode(_: MsgUpdateGroupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -376,9 +376,9 @@ export const MsgUpdateGroupResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -406,24 +406,24 @@ export const MsgUpdateGroupResponse = {
   },
   toProtoMsg(message: MsgUpdateGroupResponse): MsgUpdateGroupResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroupResponse",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgUpdateGroupResponse',
       value: MsgUpdateGroupResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgDeleteGroup(): MsgDeleteGroup {
   return {
-    creator: "",
-    name: ""
+    creator: '',
+    name: ''
   };
 }
 export const MsgDeleteGroup = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroup",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroup',
   encode(message: MsgDeleteGroup, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(18).string(message.name);
     }
     return writer;
@@ -435,23 +435,23 @@ export const MsgDeleteGroup = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.creator = reader.string();
-          break;
-        case 2:
-          message.name = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.creator = reader.string();
+        break;
+      case 2:
+        message.name = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgDeleteGroup>): MsgDeleteGroup {
     const message = createBaseMsgDeleteGroup();
-    message.creator = object.creator ?? "";
-    message.name = object.name ?? "";
+    message.creator = object.creator ?? '';
+    message.name = object.name ?? '';
     return message;
   },
   fromAmino(object: MsgDeleteGroupAmino): MsgDeleteGroup {
@@ -466,8 +466,8 @@ export const MsgDeleteGroup = {
   },
   toAmino(message: MsgDeleteGroup): MsgDeleteGroupAmino {
     const obj: any = {};
-    obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.name = message.name === "" ? undefined : message.name;
+    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.name = message.name === '' ? undefined : message.name;
     return obj;
   },
   fromAminoMsg(object: MsgDeleteGroupAminoMsg): MsgDeleteGroup {
@@ -481,7 +481,7 @@ export const MsgDeleteGroup = {
   },
   toProtoMsg(message: MsgDeleteGroup): MsgDeleteGroupProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroup",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroup',
       value: MsgDeleteGroup.encode(message).finish()
     };
   }
@@ -490,7 +490,7 @@ function createBaseMsgDeleteGroupResponse(): MsgDeleteGroupResponse {
   return {};
 }
 export const MsgDeleteGroupResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroupResponse",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroupResponse',
   encode(_: MsgDeleteGroupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -501,9 +501,9 @@ export const MsgDeleteGroupResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -531,28 +531,28 @@ export const MsgDeleteGroupResponse = {
   },
   toProtoMsg(message: MsgDeleteGroupResponse): MsgDeleteGroupResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroupResponse",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgDeleteGroupResponse',
       value: MsgDeleteGroupResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgAddAdminToGroup(): MsgAddAdminToGroup {
   return {
-    creator: "",
-    name: "",
-    address: ""
+    creator: '',
+    name: '',
+    address: ''
   };
 }
 export const MsgAddAdminToGroup = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroup",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroup',
   encode(message: MsgAddAdminToGroup, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(18).string(message.name);
     }
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(26).string(message.address);
     }
     return writer;
@@ -564,27 +564,27 @@ export const MsgAddAdminToGroup = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.creator = reader.string();
-          break;
-        case 2:
-          message.name = reader.string();
-          break;
-        case 3:
-          message.address = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.creator = reader.string();
+        break;
+      case 2:
+        message.name = reader.string();
+        break;
+      case 3:
+        message.address = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgAddAdminToGroup>): MsgAddAdminToGroup {
     const message = createBaseMsgAddAdminToGroup();
-    message.creator = object.creator ?? "";
-    message.name = object.name ?? "";
-    message.address = object.address ?? "";
+    message.creator = object.creator ?? '';
+    message.name = object.name ?? '';
+    message.address = object.address ?? '';
     return message;
   },
   fromAmino(object: MsgAddAdminToGroupAmino): MsgAddAdminToGroup {
@@ -602,9 +602,9 @@ export const MsgAddAdminToGroup = {
   },
   toAmino(message: MsgAddAdminToGroup): MsgAddAdminToGroupAmino {
     const obj: any = {};
-    obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.name = message.name === "" ? undefined : message.name;
-    obj.address = message.address === "" ? undefined : message.address;
+    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.name = message.name === '' ? undefined : message.name;
+    obj.address = message.address === '' ? undefined : message.address;
     return obj;
   },
   fromAminoMsg(object: MsgAddAdminToGroupAminoMsg): MsgAddAdminToGroup {
@@ -618,7 +618,7 @@ export const MsgAddAdminToGroup = {
   },
   toProtoMsg(message: MsgAddAdminToGroup): MsgAddAdminToGroupProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroup",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroup',
       value: MsgAddAdminToGroup.encode(message).finish()
     };
   }
@@ -627,7 +627,7 @@ function createBaseMsgAddAdminToGroupResponse(): MsgAddAdminToGroupResponse {
   return {};
 }
 export const MsgAddAdminToGroupResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroupResponse",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroupResponse',
   encode(_: MsgAddAdminToGroupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -638,9 +638,9 @@ export const MsgAddAdminToGroupResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -668,28 +668,28 @@ export const MsgAddAdminToGroupResponse = {
   },
   toProtoMsg(message: MsgAddAdminToGroupResponse): MsgAddAdminToGroupResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroupResponse",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgAddAdminToGroupResponse',
       value: MsgAddAdminToGroupResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgRemoveAdminFromGroup(): MsgRemoveAdminFromGroup {
   return {
-    creator: "",
-    name: "",
-    address: ""
+    creator: '',
+    name: '',
+    address: ''
   };
 }
 export const MsgRemoveAdminFromGroup = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroup",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroup',
   encode(message: MsgRemoveAdminFromGroup, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(18).string(message.name);
     }
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(26).string(message.address);
     }
     return writer;
@@ -701,27 +701,27 @@ export const MsgRemoveAdminFromGroup = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.creator = reader.string();
-          break;
-        case 2:
-          message.name = reader.string();
-          break;
-        case 3:
-          message.address = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.creator = reader.string();
+        break;
+      case 2:
+        message.name = reader.string();
+        break;
+      case 3:
+        message.address = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgRemoveAdminFromGroup>): MsgRemoveAdminFromGroup {
     const message = createBaseMsgRemoveAdminFromGroup();
-    message.creator = object.creator ?? "";
-    message.name = object.name ?? "";
-    message.address = object.address ?? "";
+    message.creator = object.creator ?? '';
+    message.name = object.name ?? '';
+    message.address = object.address ?? '';
     return message;
   },
   fromAmino(object: MsgRemoveAdminFromGroupAmino): MsgRemoveAdminFromGroup {
@@ -739,9 +739,9 @@ export const MsgRemoveAdminFromGroup = {
   },
   toAmino(message: MsgRemoveAdminFromGroup): MsgRemoveAdminFromGroupAmino {
     const obj: any = {};
-    obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.name = message.name === "" ? undefined : message.name;
-    obj.address = message.address === "" ? undefined : message.address;
+    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.name = message.name === '' ? undefined : message.name;
+    obj.address = message.address === '' ? undefined : message.address;
     return obj;
   },
   fromAminoMsg(object: MsgRemoveAdminFromGroupAminoMsg): MsgRemoveAdminFromGroup {
@@ -755,7 +755,7 @@ export const MsgRemoveAdminFromGroup = {
   },
   toProtoMsg(message: MsgRemoveAdminFromGroup): MsgRemoveAdminFromGroupProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroup",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroup',
       value: MsgRemoveAdminFromGroup.encode(message).finish()
     };
   }
@@ -764,7 +764,7 @@ function createBaseMsgRemoveAdminFromGroupResponse(): MsgRemoveAdminFromGroupRes
   return {};
 }
 export const MsgRemoveAdminFromGroupResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroupResponse",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroupResponse',
   encode(_: MsgRemoveAdminFromGroupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -775,9 +775,9 @@ export const MsgRemoveAdminFromGroupResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -805,7 +805,7 @@ export const MsgRemoveAdminFromGroupResponse = {
   },
   toProtoMsg(message: MsgRemoveAdminFromGroupResponse): MsgRemoveAdminFromGroupResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroupResponse",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.MsgRemoveAdminFromGroupResponse',
       value: MsgRemoveAdminFromGroupResponse.encode(message).finish()
     };
   }

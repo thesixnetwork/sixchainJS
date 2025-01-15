@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { AllowedActioner, ActionParams, ActionParamsAmino, ActionParamsSDKType } from "./action";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { ActionParams, ActionParamsAmino, ActionParamsSDKType,AllowedActioner } from './action';
 /**
  * TODO:
  * 1. Policy of action (who can use action)
@@ -21,7 +22,7 @@ export interface VirtualAction {
   params?: ActionParams[];
 }
 export interface VirtualActionProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualAction";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualAction';
   value: Uint8Array;
 }
 /**
@@ -44,7 +45,7 @@ export interface VirtualActionAmino {
   params?: ActionParamsAmino[];
 }
 export interface VirtualActionAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.VirtualAction";
+  type: '/thesixnetwork.sixprotocol.nftmngr.VirtualAction';
   value: VirtualActionAmino;
 }
 /**
@@ -64,32 +65,32 @@ export interface VirtualActionSDKType {
 }
 function createBaseVirtualAction(): VirtualAction {
   return {
-    virtualNftSchemaCode: "",
-    name: "",
-    desc: "",
+    virtualNftSchemaCode: '',
+    name: '',
+    desc: '',
     disable: false,
-    when: "",
+    when: '',
     then: [],
     allowedActioner: undefined,
     params: []
   };
 }
 export const VirtualAction = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualAction",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualAction',
   encode(message: VirtualAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.virtualNftSchemaCode !== "") {
+    if (message.virtualNftSchemaCode !== '') {
       writer.uint32(10).string(message.virtualNftSchemaCode);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(18).string(message.name);
     }
-    if (message.desc !== "") {
+    if (message.desc !== '') {
       writer.uint32(26).string(message.desc);
     }
     if (message.disable === true) {
       writer.uint32(32).bool(message.disable);
     }
-    if (message.when !== "") {
+    if (message.when !== '') {
       writer.uint32(42).string(message.when);
     }
     for (const v of message.then) {
@@ -110,44 +111,44 @@ export const VirtualAction = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.virtualNftSchemaCode = reader.string();
-          break;
-        case 2:
-          message.name = reader.string();
-          break;
-        case 3:
-          message.desc = reader.string();
-          break;
-        case 4:
-          message.disable = reader.bool();
-          break;
-        case 5:
-          message.when = reader.string();
-          break;
-        case 6:
-          message.then.push(reader.string());
-          break;
-        case 7:
-          message.allowedActioner = reader.int32() as any;
-          break;
-        case 8:
-          message.params.push(ActionParams.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.virtualNftSchemaCode = reader.string();
+        break;
+      case 2:
+        message.name = reader.string();
+        break;
+      case 3:
+        message.desc = reader.string();
+        break;
+      case 4:
+        message.disable = reader.bool();
+        break;
+      case 5:
+        message.when = reader.string();
+        break;
+      case 6:
+        message.then.push(reader.string());
+        break;
+      case 7:
+        message.allowedActioner = reader.int32() as any;
+        break;
+      case 8:
+        message.params.push(ActionParams.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<VirtualAction>): VirtualAction {
     const message = createBaseVirtualAction();
-    message.virtualNftSchemaCode = object.virtualNftSchemaCode ?? "";
-    message.name = object.name ?? "";
-    message.desc = object.desc ?? "";
+    message.virtualNftSchemaCode = object.virtualNftSchemaCode ?? '';
+    message.name = object.name ?? '';
+    message.desc = object.desc ?? '';
     message.disable = object.disable ?? false;
-    message.when = object.when ?? "";
+    message.when = object.when ?? '';
     message.then = object.then?.map(e => e) || [];
     message.allowedActioner = object.allowedActioner ?? undefined;
     message.params = object.params?.map(e => ActionParams.fromPartial(e)) || [];
@@ -179,11 +180,11 @@ export const VirtualAction = {
   },
   toAmino(message: VirtualAction): VirtualActionAmino {
     const obj: any = {};
-    obj.virtualNftSchemaCode = message.virtualNftSchemaCode === "" ? undefined : message.virtualNftSchemaCode;
-    obj.name = message.name === "" ? undefined : message.name;
-    obj.desc = message.desc === "" ? undefined : message.desc;
+    obj.virtualNftSchemaCode = message.virtualNftSchemaCode === '' ? undefined : message.virtualNftSchemaCode;
+    obj.name = message.name === '' ? undefined : message.name;
+    obj.desc = message.desc === '' ? undefined : message.desc;
     obj.disable = message.disable === false ? undefined : message.disable;
-    obj.when = message.when === "" ? undefined : message.when;
+    obj.when = message.when === '' ? undefined : message.when;
     if (message.then) {
       obj.then = message.then.map(e => e);
     } else {
@@ -208,7 +209,7 @@ export const VirtualAction = {
   },
   toProtoMsg(message: VirtualAction): VirtualActionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualAction",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualAction',
       value: VirtualAction.encode(message).finish()
     };
   }

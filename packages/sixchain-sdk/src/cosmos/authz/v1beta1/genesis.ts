@@ -1,12 +1,13 @@
 //@ts-nocheck
-import { GrantAuthorization, GrantAuthorizationAmino, GrantAuthorizationSDKType } from "./authz";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { GrantAuthorization, GrantAuthorizationAmino, GrantAuthorizationSDKType } from './authz';
 /** GenesisState defines the authz module's genesis state. */
 export interface GenesisState {
   authorization: GrantAuthorization[];
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/cosmos.authz.v1beta1.GenesisState";
+  typeUrl: '/cosmos.authz.v1beta1.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState defines the authz module's genesis state. */
@@ -14,7 +15,7 @@ export interface GenesisStateAmino {
   authorization?: GrantAuthorizationAmino[];
 }
 export interface GenesisStateAminoMsg {
-  type: "cosmos-sdk/GenesisState";
+  type: 'cosmos-sdk/GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState defines the authz module's genesis state. */
@@ -27,7 +28,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: "/cosmos.authz.v1beta1.GenesisState",
+  typeUrl: '/cosmos.authz.v1beta1.GenesisState',
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.authorization) {
       GrantAuthorization.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -41,12 +42,12 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.authorization.push(GrantAuthorization.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.authorization.push(GrantAuthorization.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -75,7 +76,7 @@ export const GenesisState = {
   },
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
-      type: "cosmos-sdk/GenesisState",
+      type: 'cosmos-sdk/GenesisState',
       value: GenesisState.toAmino(message)
     };
   },
@@ -87,7 +88,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/cosmos.authz.v1beta1.GenesisState",
+      typeUrl: '/cosmos.authz.v1beta1.GenesisState',
       value: GenesisState.encode(message).finish()
     };
   }

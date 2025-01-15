@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Long } from "../../helpers";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Long } from '../../helpers';
 /**
  * A Duration represents a signed, fixed-length span of time represented
  * as a count of seconds and fractions of seconds at nanosecond
@@ -79,7 +80,7 @@ export interface Duration {
   nanos: number;
 }
 export interface DurationProtoMsg {
-  typeUrl: "/google.protobuf.Duration";
+  typeUrl: '/google.protobuf.Duration';
   value: Uint8Array;
 }
 /**
@@ -144,7 +145,7 @@ export interface DurationProtoMsg {
  */
 export type DurationAmino = string;
 export interface DurationAminoMsg {
-  type: "/google.protobuf.Duration";
+  type: '/google.protobuf.Duration';
   value: DurationAmino;
 }
 /**
@@ -218,7 +219,7 @@ function createBaseDuration(): Duration {
   };
 }
 export const Duration = {
-  typeUrl: "/google.protobuf.Duration",
+  typeUrl: '/google.protobuf.Duration',
   encode(message: Duration, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.seconds.isZero()) {
       writer.uint32(8).int64(message.seconds);
@@ -235,15 +236,15 @@ export const Duration = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.seconds = reader.int64() as Long;
-          break;
-        case 2:
-          message.nanos = reader.int32();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.seconds = reader.int64() as Long;
+        break;
+      case 2:
+        message.nanos = reader.int32();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -275,7 +276,7 @@ export const Duration = {
   },
   toProtoMsg(message: Duration): DurationProtoMsg {
     return {
-      typeUrl: "/google.protobuf.Duration",
+      typeUrl: '/google.protobuf.Duration',
       value: Duration.encode(message).finish()
     };
   }

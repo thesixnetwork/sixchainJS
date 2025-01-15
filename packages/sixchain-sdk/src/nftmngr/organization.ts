@@ -1,11 +1,11 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export interface Organization {
   name: string;
   owner: string;
 }
 export interface OrganizationProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Organization";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.Organization';
   value: Uint8Array;
 }
 export interface OrganizationAmino {
@@ -13,7 +13,7 @@ export interface OrganizationAmino {
   owner?: string;
 }
 export interface OrganizationAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.Organization";
+  type: '/thesixnetwork.sixprotocol.nftmngr.Organization';
   value: OrganizationAmino;
 }
 export interface OrganizationSDKType {
@@ -22,17 +22,17 @@ export interface OrganizationSDKType {
 }
 function createBaseOrganization(): Organization {
   return {
-    name: "",
-    owner: ""
+    name: '',
+    owner: ''
   };
 }
 export const Organization = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Organization",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.Organization',
   encode(message: Organization, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(10).string(message.name);
     }
-    if (message.owner !== "") {
+    if (message.owner !== '') {
       writer.uint32(18).string(message.owner);
     }
     return writer;
@@ -44,23 +44,23 @@ export const Organization = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.name = reader.string();
-          break;
-        case 2:
-          message.owner = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.name = reader.string();
+        break;
+      case 2:
+        message.owner = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Organization>): Organization {
     const message = createBaseOrganization();
-    message.name = object.name ?? "";
-    message.owner = object.owner ?? "";
+    message.name = object.name ?? '';
+    message.owner = object.owner ?? '';
     return message;
   },
   fromAmino(object: OrganizationAmino): Organization {
@@ -75,8 +75,8 @@ export const Organization = {
   },
   toAmino(message: Organization): OrganizationAmino {
     const obj: any = {};
-    obj.name = message.name === "" ? undefined : message.name;
-    obj.owner = message.owner === "" ? undefined : message.owner;
+    obj.name = message.name === '' ? undefined : message.name;
+    obj.owner = message.owner === '' ? undefined : message.owner;
     return obj;
   },
   fromAminoMsg(object: OrganizationAminoMsg): Organization {
@@ -90,7 +90,7 @@ export const Organization = {
   },
   toProtoMsg(message: Organization): OrganizationProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Organization",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.Organization',
       value: Organization.encode(message).finish()
     };
   }

@@ -1,5 +1,5 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export interface ActionByRefId {
   refId: string;
   creator: string;
@@ -8,7 +8,7 @@ export interface ActionByRefId {
   action: string;
 }
 export interface ActionByRefIdProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionByRefId";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionByRefId';
   value: Uint8Array;
 }
 export interface ActionByRefIdAmino {
@@ -19,7 +19,7 @@ export interface ActionByRefIdAmino {
   action?: string;
 }
 export interface ActionByRefIdAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.ActionByRefId";
+  type: '/thesixnetwork.sixprotocol.nftmngr.ActionByRefId';
   value: ActionByRefIdAmino;
 }
 export interface ActionByRefIdSDKType {
@@ -31,29 +31,29 @@ export interface ActionByRefIdSDKType {
 }
 function createBaseActionByRefId(): ActionByRefId {
   return {
-    refId: "",
-    creator: "",
-    nftSchemaCode: "",
-    tokenId: "",
-    action: ""
+    refId: '',
+    creator: '',
+    nftSchemaCode: '',
+    tokenId: '',
+    action: ''
   };
 }
 export const ActionByRefId = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionByRefId",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionByRefId',
   encode(message: ActionByRefId, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.refId !== "") {
+    if (message.refId !== '') {
       writer.uint32(10).string(message.refId);
     }
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(18).string(message.creator);
     }
-    if (message.nftSchemaCode !== "") {
+    if (message.nftSchemaCode !== '') {
       writer.uint32(26).string(message.nftSchemaCode);
     }
-    if (message.tokenId !== "") {
+    if (message.tokenId !== '') {
       writer.uint32(34).string(message.tokenId);
     }
-    if (message.action !== "") {
+    if (message.action !== '') {
       writer.uint32(42).string(message.action);
     }
     return writer;
@@ -65,35 +65,35 @@ export const ActionByRefId = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.refId = reader.string();
-          break;
-        case 2:
-          message.creator = reader.string();
-          break;
-        case 3:
-          message.nftSchemaCode = reader.string();
-          break;
-        case 4:
-          message.tokenId = reader.string();
-          break;
-        case 5:
-          message.action = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.refId = reader.string();
+        break;
+      case 2:
+        message.creator = reader.string();
+        break;
+      case 3:
+        message.nftSchemaCode = reader.string();
+        break;
+      case 4:
+        message.tokenId = reader.string();
+        break;
+      case 5:
+        message.action = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ActionByRefId>): ActionByRefId {
     const message = createBaseActionByRefId();
-    message.refId = object.refId ?? "";
-    message.creator = object.creator ?? "";
-    message.nftSchemaCode = object.nftSchemaCode ?? "";
-    message.tokenId = object.tokenId ?? "";
-    message.action = object.action ?? "";
+    message.refId = object.refId ?? '';
+    message.creator = object.creator ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? '';
+    message.tokenId = object.tokenId ?? '';
+    message.action = object.action ?? '';
     return message;
   },
   fromAmino(object: ActionByRefIdAmino): ActionByRefId {
@@ -117,11 +117,11 @@ export const ActionByRefId = {
   },
   toAmino(message: ActionByRefId): ActionByRefIdAmino {
     const obj: any = {};
-    obj.refId = message.refId === "" ? undefined : message.refId;
-    obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
-    obj.tokenId = message.tokenId === "" ? undefined : message.tokenId;
-    obj.action = message.action === "" ? undefined : message.action;
+    obj.refId = message.refId === '' ? undefined : message.refId;
+    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
+    obj.tokenId = message.tokenId === '' ? undefined : message.tokenId;
+    obj.action = message.action === '' ? undefined : message.action;
     return obj;
   },
   fromAminoMsg(object: ActionByRefIdAminoMsg): ActionByRefId {
@@ -135,7 +135,7 @@ export const ActionByRefId = {
   },
   toProtoMsg(message: ActionByRefId): ActionByRefIdProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionByRefId",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionByRefId',
       value: ActionByRefId.encode(message).finish()
     };
   }

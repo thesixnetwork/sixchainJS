@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { AttributeDefinition, AttributeDefinitionAmino, AttributeDefinitionSDKType } from "./attribute_definition";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { AttributeDefinition, AttributeDefinitionAmino, AttributeDefinitionSDKType } from './attribute_definition';
 export enum AttributeOverriding {
   ORIGIN = 0,
   CHAIN = 1,
@@ -10,27 +11,27 @@ export const AttributeOverridingSDKType = AttributeOverriding;
 export const AttributeOverridingAmino = AttributeOverriding;
 export function attributeOverridingFromJSON(object: any): AttributeOverriding {
   switch (object) {
-    case 0:
-    case "ORIGIN":
-      return AttributeOverriding.ORIGIN;
-    case 1:
-    case "CHAIN":
-      return AttributeOverriding.CHAIN;
-    case -1:
-    case "UNRECOGNIZED":
-    default:
-      return AttributeOverriding.UNRECOGNIZED;
+  case 0:
+  case 'ORIGIN':
+    return AttributeOverriding.ORIGIN;
+  case 1:
+  case 'CHAIN':
+    return AttributeOverriding.CHAIN;
+  case -1:
+  case 'UNRECOGNIZED':
+  default:
+    return AttributeOverriding.UNRECOGNIZED;
   }
 }
 export function attributeOverridingToJSON(object: AttributeOverriding): string {
   switch (object) {
-    case AttributeOverriding.ORIGIN:
-      return "ORIGIN";
-    case AttributeOverriding.CHAIN:
-      return "CHAIN";
-    case AttributeOverriding.UNRECOGNIZED:
-    default:
-      return "UNRECOGNIZED";
+  case AttributeOverriding.ORIGIN:
+    return 'ORIGIN';
+  case AttributeOverriding.CHAIN:
+    return 'CHAIN';
+  case AttributeOverriding.UNRECOGNIZED:
+  default:
+    return 'UNRECOGNIZED';
   }
 }
 export enum URIRetrievalMethod {
@@ -42,27 +43,27 @@ export const URIRetrievalMethodSDKType = URIRetrievalMethod;
 export const URIRetrievalMethodAmino = URIRetrievalMethod;
 export function uRIRetrievalMethodFromJSON(object: any): URIRetrievalMethod {
   switch (object) {
-    case 0:
-    case "BASE":
-      return URIRetrievalMethod.BASE;
-    case 1:
-    case "TOKEN":
-      return URIRetrievalMethod.TOKEN;
-    case -1:
-    case "UNRECOGNIZED":
-    default:
-      return URIRetrievalMethod.UNRECOGNIZED;
+  case 0:
+  case 'BASE':
+    return URIRetrievalMethod.BASE;
+  case 1:
+  case 'TOKEN':
+    return URIRetrievalMethod.TOKEN;
+  case -1:
+  case 'UNRECOGNIZED':
+  default:
+    return URIRetrievalMethod.UNRECOGNIZED;
   }
 }
 export function uRIRetrievalMethodToJSON(object: URIRetrievalMethod): string {
   switch (object) {
-    case URIRetrievalMethod.BASE:
-      return "BASE";
-    case URIRetrievalMethod.TOKEN:
-      return "TOKEN";
-    case URIRetrievalMethod.UNRECOGNIZED:
-    default:
-      return "UNRECOGNIZED";
+  case URIRetrievalMethod.BASE:
+    return 'BASE';
+  case URIRetrievalMethod.TOKEN:
+    return 'TOKEN';
+  case URIRetrievalMethod.UNRECOGNIZED:
+  default:
+    return 'UNRECOGNIZED';
   }
 }
 export interface OriginData {
@@ -75,7 +76,7 @@ export interface OriginData {
   uriRetrievalMethod: URIRetrievalMethod;
 }
 export interface OriginDataProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OriginData";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OriginData';
   value: Uint8Array;
 }
 export interface OriginDataAmino {
@@ -88,7 +89,7 @@ export interface OriginDataAmino {
   uri_retrieval_method?: URIRetrievalMethod;
 }
 export interface OriginDataAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.OriginData";
+  type: '/thesixnetwork.sixprotocol.nftmngr.OriginData';
   value: OriginDataAmino;
 }
 export interface OriginDataSDKType {
@@ -102,31 +103,31 @@ export interface OriginDataSDKType {
 }
 function createBaseOriginData(): OriginData {
   return {
-    originChain: "",
-    originContractAddress: "",
-    originBaseUri: "",
+    originChain: '',
+    originContractAddress: '',
+    originBaseUri: '',
     attributeOverriding: 0,
-    metadataFormat: "",
+    metadataFormat: '',
     originAttributes: [],
     uriRetrievalMethod: 0
   };
 }
 export const OriginData = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OriginData",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OriginData',
   encode(message: OriginData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.originChain !== "") {
+    if (message.originChain !== '') {
       writer.uint32(10).string(message.originChain);
     }
-    if (message.originContractAddress !== "") {
+    if (message.originContractAddress !== '') {
       writer.uint32(18).string(message.originContractAddress);
     }
-    if (message.originBaseUri !== "") {
+    if (message.originBaseUri !== '') {
       writer.uint32(26).string(message.originBaseUri);
     }
     if (message.attributeOverriding !== 0) {
       writer.uint32(32).int32(message.attributeOverriding);
     }
-    if (message.metadataFormat !== "") {
+    if (message.metadataFormat !== '') {
       writer.uint32(42).string(message.metadataFormat);
     }
     for (const v of message.originAttributes) {
@@ -144,41 +145,41 @@ export const OriginData = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.originChain = reader.string();
-          break;
-        case 2:
-          message.originContractAddress = reader.string();
-          break;
-        case 3:
-          message.originBaseUri = reader.string();
-          break;
-        case 4:
-          message.attributeOverriding = reader.int32() as any;
-          break;
-        case 5:
-          message.metadataFormat = reader.string();
-          break;
-        case 6:
-          message.originAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
-          break;
-        case 7:
-          message.uriRetrievalMethod = reader.int32() as any;
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.originChain = reader.string();
+        break;
+      case 2:
+        message.originContractAddress = reader.string();
+        break;
+      case 3:
+        message.originBaseUri = reader.string();
+        break;
+      case 4:
+        message.attributeOverriding = reader.int32() as any;
+        break;
+      case 5:
+        message.metadataFormat = reader.string();
+        break;
+      case 6:
+        message.originAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
+        break;
+      case 7:
+        message.uriRetrievalMethod = reader.int32() as any;
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<OriginData>): OriginData {
     const message = createBaseOriginData();
-    message.originChain = object.originChain ?? "";
-    message.originContractAddress = object.originContractAddress ?? "";
-    message.originBaseUri = object.originBaseUri ?? "";
+    message.originChain = object.originChain ?? '';
+    message.originContractAddress = object.originContractAddress ?? '';
+    message.originBaseUri = object.originBaseUri ?? '';
     message.attributeOverriding = object.attributeOverriding ?? 0;
-    message.metadataFormat = object.metadataFormat ?? "";
+    message.metadataFormat = object.metadataFormat ?? '';
     message.originAttributes = object.originAttributes?.map(e => AttributeDefinition.fromPartial(e)) || [];
     message.uriRetrievalMethod = object.uriRetrievalMethod ?? 0;
     return message;
@@ -208,11 +209,11 @@ export const OriginData = {
   },
   toAmino(message: OriginData): OriginDataAmino {
     const obj: any = {};
-    obj.origin_chain = message.originChain === "" ? undefined : message.originChain;
-    obj.origin_contract_address = message.originContractAddress === "" ? undefined : message.originContractAddress;
-    obj.origin_base_uri = message.originBaseUri === "" ? undefined : message.originBaseUri;
+    obj.origin_chain = message.originChain === '' ? undefined : message.originChain;
+    obj.origin_contract_address = message.originContractAddress === '' ? undefined : message.originContractAddress;
+    obj.origin_base_uri = message.originBaseUri === '' ? undefined : message.originBaseUri;
     obj.attribute_overriding = message.attributeOverriding === 0 ? undefined : message.attributeOverriding;
-    obj.metadata_format = message.metadataFormat === "" ? undefined : message.metadataFormat;
+    obj.metadata_format = message.metadataFormat === '' ? undefined : message.metadataFormat;
     if (message.originAttributes) {
       obj.origin_attributes = message.originAttributes.map(e => e ? AttributeDefinition.toAmino(e) : undefined);
     } else {
@@ -232,7 +233,7 @@ export const OriginData = {
   },
   toProtoMsg(message: OriginData): OriginDataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OriginData",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.OriginData',
       value: OriginData.encode(message).finish()
     };
   }

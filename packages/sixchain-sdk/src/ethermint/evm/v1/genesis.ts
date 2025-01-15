@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType, State, StateAmino, StateSDKType } from "./evm";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Params, ParamsAmino, ParamsSDKType, State, StateAmino, StateSDKType } from './evm';
 /** GenesisState defines the evm module's genesis state. */
 export interface GenesisState {
   /** accounts is an array containing the ethereum genesis accounts. */
@@ -9,7 +10,7 @@ export interface GenesisState {
   params: Params;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/ethermint.evm.v1.GenesisState";
+  typeUrl: '/ethermint.evm.v1.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState defines the evm module's genesis state. */
@@ -20,7 +21,7 @@ export interface GenesisStateAmino {
   params?: ParamsAmino;
 }
 export interface GenesisStateAminoMsg {
-  type: "/ethermint.evm.v1.GenesisState";
+  type: '/ethermint.evm.v1.GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState defines the evm module's genesis state. */
@@ -42,7 +43,7 @@ export interface GenesisAccount {
   storage: State[];
 }
 export interface GenesisAccountProtoMsg {
-  typeUrl: "/ethermint.evm.v1.GenesisAccount";
+  typeUrl: '/ethermint.evm.v1.GenesisAccount';
   value: Uint8Array;
 }
 /**
@@ -59,7 +60,7 @@ export interface GenesisAccountAmino {
   storage?: StateAmino[];
 }
 export interface GenesisAccountAminoMsg {
-  type: "/ethermint.evm.v1.GenesisAccount";
+  type: '/ethermint.evm.v1.GenesisAccount';
   value: GenesisAccountAmino;
 }
 /**
@@ -79,7 +80,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: "/ethermint.evm.v1.GenesisState",
+  typeUrl: '/ethermint.evm.v1.GenesisState',
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.accounts) {
       GenesisAccount.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -96,15 +97,15 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.accounts.push(GenesisAccount.decode(reader, reader.uint32()));
-          break;
-        case 2:
-          message.params = Params.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.accounts.push(GenesisAccount.decode(reader, reader.uint32()));
+        break;
+      case 2:
+        message.params = Params.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -144,25 +145,25 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/ethermint.evm.v1.GenesisState",
+      typeUrl: '/ethermint.evm.v1.GenesisState',
       value: GenesisState.encode(message).finish()
     };
   }
 };
 function createBaseGenesisAccount(): GenesisAccount {
   return {
-    address: "",
-    code: "",
+    address: '',
+    code: '',
     storage: []
   };
 }
 export const GenesisAccount = {
-  typeUrl: "/ethermint.evm.v1.GenesisAccount",
+  typeUrl: '/ethermint.evm.v1.GenesisAccount',
   encode(message: GenesisAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
-    if (message.code !== "") {
+    if (message.code !== '') {
       writer.uint32(18).string(message.code);
     }
     for (const v of message.storage) {
@@ -177,26 +178,26 @@ export const GenesisAccount = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.address = reader.string();
-          break;
-        case 2:
-          message.code = reader.string();
-          break;
-        case 3:
-          message.storage.push(State.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.address = reader.string();
+        break;
+      case 2:
+        message.code = reader.string();
+        break;
+      case 3:
+        message.storage.push(State.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<GenesisAccount>): GenesisAccount {
     const message = createBaseGenesisAccount();
-    message.address = object.address ?? "";
-    message.code = object.code ?? "";
+    message.address = object.address ?? '';
+    message.code = object.code ?? '';
     message.storage = object.storage?.map(e => State.fromPartial(e)) || [];
     return message;
   },
@@ -213,8 +214,8 @@ export const GenesisAccount = {
   },
   toAmino(message: GenesisAccount): GenesisAccountAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
-    obj.code = message.code === "" ? undefined : message.code;
+    obj.address = message.address === '' ? undefined : message.address;
+    obj.code = message.code === '' ? undefined : message.code;
     if (message.storage) {
       obj.storage = message.storage.map(e => e ? State.toAmino(e) : undefined);
     } else {
@@ -233,7 +234,7 @@ export const GenesisAccount = {
   },
   toProtoMsg(message: GenesisAccount): GenesisAccountProtoMsg {
     return {
-      typeUrl: "/ethermint.evm.v1.GenesisAccount",
+      typeUrl: '/ethermint.evm.v1.GenesisAccount',
       value: GenesisAccount.encode(message).finish()
     };
   }
