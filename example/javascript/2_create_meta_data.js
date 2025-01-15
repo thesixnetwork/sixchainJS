@@ -1,8 +1,5 @@
-const {
-  BASE64,
-  SixDataChainConnector,
-} = require("@thesixnetwork/sixchain-client");
-const exampleNFTData = require("./tmp/nft-metadata-example.json");
+import { BASE64, SixDataChainConnector } from "@thesixnetwork/sixchain-client";
+import exampleNFTData from "./tmp/nft-metadata-example.json";
 const main = async () => {
   const sixConnector = new SixDataChainConnector();
 

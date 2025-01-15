@@ -1,8 +1,5 @@
-const {
-  BASE64,
-  SixDataChainConnector,
-} = require("@thesixnetwork/sixchain-client");
-const exampleSchema = require("./tmp/nft-schema-example.json");
+import { BASE64, SixDataChainConnector } from "@thesixnetwork/sixchain-client";
+import exampleSchema from "./tmp/nft-schema-example.json";
 const main = async () => {
   const sixConnector = new SixDataChainConnector();
 
