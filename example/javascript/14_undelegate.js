@@ -1,4 +1,4 @@
-const { SixDataChainConnector } = require("@sixnetwork/six-data-chain-sdk");
+const { SixDataChainConnector } = require("@thesixnetwork/sixchain-client");
 
 const delegate = async() => {
     const sixConnector = new SixDataChainConnector()

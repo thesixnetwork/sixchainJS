@@ -1,4 +1,4 @@
-const { BASE64 , SixDataChainConnector } = require("@sixnetwork/six-data-chain-sdk");
+const { BASE64 , SixDataChainConnector } = require("@thesixnetwork/sixchain-client");
 const exampleNewAttriubte = require("./tmp/new-attribute.json")
 const mnemonic = ""
 const main = async () => {
