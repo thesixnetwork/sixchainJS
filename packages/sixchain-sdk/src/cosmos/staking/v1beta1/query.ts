@@ -1,19 +1,24 @@
 //@ts-nocheck
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { ValidatorApproval, ValidatorApprovalAmino, ValidatorApprovalSDKType, Validator, ValidatorAmino, ValidatorSDKType, DelegationResponse, DelegationResponseAmino, DelegationResponseSDKType, UnbondingDelegation, UnbondingDelegationAmino, UnbondingDelegationSDKType, RedelegationResponse, RedelegationResponseAmino, RedelegationResponseSDKType, HistoricalInfo, HistoricalInfoAmino, HistoricalInfoSDKType, Pool, PoolAmino, PoolSDKType, Params, ParamsAmino, ParamsSDKType } from "./staking";
+import { WhitelistDelegator, WhitelistDelegatorAmino, WhitelistDelegatorSDKType } from "./whitelist";
 import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+/** QueryValidatorApprovalRequest is request type for Query/ValidatorsApproval RPC method. */
 export interface QueryValidatorApprovalRequest {}
 export interface QueryValidatorApprovalRequestProtoMsg {
   typeUrl: "/cosmos.staking.v1beta1.QueryValidatorApprovalRequest";
   value: Uint8Array;
 }
+/** QueryValidatorApprovalRequest is request type for Query/ValidatorsApproval RPC method. */
 export interface QueryValidatorApprovalRequestAmino {}
 export interface QueryValidatorApprovalRequestAminoMsg {
   type: "cosmos-sdk/QueryValidatorApprovalRequest";
   value: QueryValidatorApprovalRequestAmino;
 }
+/** QueryValidatorApprovalRequest is request type for Query/ValidatorsApproval RPC method. */
 export interface QueryValidatorApprovalRequestSDKType {}
+/** QueryValidatorApprovalResponse is response type for the Query/ValidatorsApproval RPC method */
 export interface QueryValidatorApprovalResponse {
   validatorApproval: ValidatorApproval;
 }
@@ -21,6 +26,7 @@ export interface QueryValidatorApprovalResponseProtoMsg {
   typeUrl: "/cosmos.staking.v1beta1.QueryValidatorApprovalResponse";
   value: Uint8Array;
 }
+/** QueryValidatorApprovalResponse is response type for the Query/ValidatorsApproval RPC method */
 export interface QueryValidatorApprovalResponseAmino {
   validator_approval?: ValidatorApprovalAmino;
 }
@@ -28,6 +34,7 @@ export interface QueryValidatorApprovalResponseAminoMsg {
   type: "cosmos-sdk/QueryValidatorApprovalResponse";
   value: QueryValidatorApprovalResponseAmino;
 }
+/** QueryValidatorApprovalResponse is response type for the Query/ValidatorsApproval RPC method */
 export interface QueryValidatorApprovalResponseSDKType {
   validator_approval: ValidatorApprovalSDKType;
 }
@@ -879,6 +886,89 @@ export interface QueryParamsResponseAminoMsg {
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
   params: ParamsSDKType;
+}
+/** QueryGetWhitelistDelegatorRequest is request type for the Query/WhiltelistDeleagator RPC method. */
+export interface QueryGetWhitelistDelegatorRequest {
+  validator: string;
+}
+export interface QueryGetWhitelistDelegatorRequestProtoMsg {
+  typeUrl: "/cosmos.staking.v1beta1.QueryGetWhitelistDelegatorRequest";
+  value: Uint8Array;
+}
+/** QueryGetWhitelistDelegatorRequest is request type for the Query/WhiltelistDeleagator RPC method. */
+export interface QueryGetWhitelistDelegatorRequestAmino {
+  validator?: string;
+}
+export interface QueryGetWhitelistDelegatorRequestAminoMsg {
+  type: "cosmos-sdk/QueryGetWhitelistDelegatorRequest";
+  value: QueryGetWhitelistDelegatorRequestAmino;
+}
+/** QueryGetWhitelistDelegatorRequest is request type for the Query/WhiltelistDeleagator RPC method. */
+export interface QueryGetWhitelistDelegatorRequestSDKType {
+  validator: string;
+}
+/** QueryWhitelistdelegatorResponse is response type for the Query/WhiltelistDeleagator RPC method. */
+export interface QueryWhitelistdelegatorResponse {
+  whitelistDelegator: WhitelistDelegator;
+}
+export interface QueryWhitelistdelegatorResponseProtoMsg {
+  typeUrl: "/cosmos.staking.v1beta1.QueryWhitelistdelegatorResponse";
+  value: Uint8Array;
+}
+/** QueryWhitelistdelegatorResponse is response type for the Query/WhiltelistDeleagator RPC method. */
+export interface QueryWhitelistdelegatorResponseAmino {
+  whitelist_delegator?: WhitelistDelegatorAmino;
+}
+export interface QueryWhitelistdelegatorResponseAminoMsg {
+  type: "cosmos-sdk/QueryWhitelistdelegatorResponse";
+  value: QueryWhitelistdelegatorResponseAmino;
+}
+/** QueryWhitelistdelegatorResponse is response type for the Query/WhiltelistDeleagator RPC method. */
+export interface QueryWhitelistdelegatorResponseSDKType {
+  whitelist_delegator: WhitelistDelegatorSDKType;
+}
+/** QueryAllWhitelistDelegatorRequest is request type for the Query/AllWhiltelistDeleagator RPC method. */
+export interface QueryAllWhitelistDelegatorRequest {
+  pagination?: PageRequest;
+}
+export interface QueryAllWhitelistDelegatorRequestProtoMsg {
+  typeUrl: "/cosmos.staking.v1beta1.QueryAllWhitelistDelegatorRequest";
+  value: Uint8Array;
+}
+/** QueryAllWhitelistDelegatorRequest is request type for the Query/AllWhiltelistDeleagator RPC method. */
+export interface QueryAllWhitelistDelegatorRequestAmino {
+  pagination?: PageRequestAmino;
+}
+export interface QueryAllWhitelistDelegatorRequestAminoMsg {
+  type: "cosmos-sdk/QueryAllWhitelistDelegatorRequest";
+  value: QueryAllWhitelistDelegatorRequestAmino;
+}
+/** QueryAllWhitelistDelegatorRequest is request type for the Query/AllWhiltelistDeleagator RPC method. */
+export interface QueryAllWhitelistDelegatorRequestSDKType {
+  pagination?: PageRequestSDKType;
+}
+/** QueryWhitelistdelegatorAllResponse is response type for the Query/AllWhiltelistDeleagator RPC method. */
+export interface QueryWhitelistdelegatorAllResponse {
+  whitelistDelegator: WhitelistDelegator[];
+  pagination?: PageResponse;
+}
+export interface QueryWhitelistdelegatorAllResponseProtoMsg {
+  typeUrl: "/cosmos.staking.v1beta1.QueryWhitelistdelegatorAllResponse";
+  value: Uint8Array;
+}
+/** QueryWhitelistdelegatorAllResponse is response type for the Query/AllWhiltelistDeleagator RPC method. */
+export interface QueryWhitelistdelegatorAllResponseAmino {
+  whitelist_delegator?: WhitelistDelegatorAmino[];
+  pagination?: PageResponseAmino;
+}
+export interface QueryWhitelistdelegatorAllResponseAminoMsg {
+  type: "cosmos-sdk/QueryWhitelistdelegatorAllResponse";
+  value: QueryWhitelistdelegatorAllResponseAmino;
+}
+/** QueryWhitelistdelegatorAllResponse is response type for the Query/AllWhiltelistDeleagator RPC method. */
+export interface QueryWhitelistdelegatorAllResponseSDKType {
+  whitelist_delegator: WhitelistDelegatorSDKType[];
+  pagination?: PageResponseSDKType;
 }
 function createBaseQueryValidatorApprovalRequest(): QueryValidatorApprovalRequest {
   return {};
@@ -2809,7 +2899,7 @@ export const QueryHistoricalInfoRequest = {
   },
   toAmino(message: QueryHistoricalInfoRequest): QueryHistoricalInfoRequestAmino {
     const obj: any = {};
-    obj.height = !message.height.isZero() ? (message.height?.toString)() : undefined;
+    obj.height = !message.height.isZero() ? message.height?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryHistoricalInfoRequestAminoMsg): QueryHistoricalInfoRequest {
@@ -3150,6 +3240,296 @@ export const QueryParamsResponse = {
     return {
       typeUrl: "/cosmos.staking.v1beta1.QueryParamsResponse",
       value: QueryParamsResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryGetWhitelistDelegatorRequest(): QueryGetWhitelistDelegatorRequest {
+  return {
+    validator: ""
+  };
+}
+export const QueryGetWhitelistDelegatorRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryGetWhitelistDelegatorRequest",
+  encode(message: QueryGetWhitelistDelegatorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.validator !== "") {
+      writer.uint32(10).string(message.validator);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetWhitelistDelegatorRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryGetWhitelistDelegatorRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.validator = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryGetWhitelistDelegatorRequest>): QueryGetWhitelistDelegatorRequest {
+    const message = createBaseQueryGetWhitelistDelegatorRequest();
+    message.validator = object.validator ?? "";
+    return message;
+  },
+  fromAmino(object: QueryGetWhitelistDelegatorRequestAmino): QueryGetWhitelistDelegatorRequest {
+    const message = createBaseQueryGetWhitelistDelegatorRequest();
+    if (object.validator !== undefined && object.validator !== null) {
+      message.validator = object.validator;
+    }
+    return message;
+  },
+  toAmino(message: QueryGetWhitelistDelegatorRequest): QueryGetWhitelistDelegatorRequestAmino {
+    const obj: any = {};
+    obj.validator = message.validator === "" ? undefined : message.validator;
+    return obj;
+  },
+  fromAminoMsg(object: QueryGetWhitelistDelegatorRequestAminoMsg): QueryGetWhitelistDelegatorRequest {
+    return QueryGetWhitelistDelegatorRequest.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryGetWhitelistDelegatorRequest): QueryGetWhitelistDelegatorRequestAminoMsg {
+    return {
+      type: "cosmos-sdk/QueryGetWhitelistDelegatorRequest",
+      value: QueryGetWhitelistDelegatorRequest.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryGetWhitelistDelegatorRequestProtoMsg): QueryGetWhitelistDelegatorRequest {
+    return QueryGetWhitelistDelegatorRequest.decode(message.value);
+  },
+  toProto(message: QueryGetWhitelistDelegatorRequest): Uint8Array {
+    return QueryGetWhitelistDelegatorRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryGetWhitelistDelegatorRequest): QueryGetWhitelistDelegatorRequestProtoMsg {
+    return {
+      typeUrl: "/cosmos.staking.v1beta1.QueryGetWhitelistDelegatorRequest",
+      value: QueryGetWhitelistDelegatorRequest.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryWhitelistdelegatorResponse(): QueryWhitelistdelegatorResponse {
+  return {
+    whitelistDelegator: WhitelistDelegator.fromPartial({})
+  };
+}
+export const QueryWhitelistdelegatorResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryWhitelistdelegatorResponse",
+  encode(message: QueryWhitelistdelegatorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.whitelistDelegator !== undefined) {
+      WhitelistDelegator.encode(message.whitelistDelegator, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryWhitelistdelegatorResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryWhitelistdelegatorResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.whitelistDelegator = WhitelistDelegator.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryWhitelistdelegatorResponse>): QueryWhitelistdelegatorResponse {
+    const message = createBaseQueryWhitelistdelegatorResponse();
+    message.whitelistDelegator = object.whitelistDelegator !== undefined && object.whitelistDelegator !== null ? WhitelistDelegator.fromPartial(object.whitelistDelegator) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryWhitelistdelegatorResponseAmino): QueryWhitelistdelegatorResponse {
+    const message = createBaseQueryWhitelistdelegatorResponse();
+    if (object.whitelist_delegator !== undefined && object.whitelist_delegator !== null) {
+      message.whitelistDelegator = WhitelistDelegator.fromAmino(object.whitelist_delegator);
+    }
+    return message;
+  },
+  toAmino(message: QueryWhitelistdelegatorResponse): QueryWhitelistdelegatorResponseAmino {
+    const obj: any = {};
+    obj.whitelist_delegator = message.whitelistDelegator ? WhitelistDelegator.toAmino(message.whitelistDelegator) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryWhitelistdelegatorResponseAminoMsg): QueryWhitelistdelegatorResponse {
+    return QueryWhitelistdelegatorResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryWhitelistdelegatorResponse): QueryWhitelistdelegatorResponseAminoMsg {
+    return {
+      type: "cosmos-sdk/QueryWhitelistdelegatorResponse",
+      value: QueryWhitelistdelegatorResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryWhitelistdelegatorResponseProtoMsg): QueryWhitelistdelegatorResponse {
+    return QueryWhitelistdelegatorResponse.decode(message.value);
+  },
+  toProto(message: QueryWhitelistdelegatorResponse): Uint8Array {
+    return QueryWhitelistdelegatorResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryWhitelistdelegatorResponse): QueryWhitelistdelegatorResponseProtoMsg {
+    return {
+      typeUrl: "/cosmos.staking.v1beta1.QueryWhitelistdelegatorResponse",
+      value: QueryWhitelistdelegatorResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryAllWhitelistDelegatorRequest(): QueryAllWhitelistDelegatorRequest {
+  return {
+    pagination: undefined
+  };
+}
+export const QueryAllWhitelistDelegatorRequest = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryAllWhitelistDelegatorRequest",
+  encode(message: QueryAllWhitelistDelegatorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllWhitelistDelegatorRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryAllWhitelistDelegatorRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryAllWhitelistDelegatorRequest>): QueryAllWhitelistDelegatorRequest {
+    const message = createBaseQueryAllWhitelistDelegatorRequest();
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryAllWhitelistDelegatorRequestAmino): QueryAllWhitelistDelegatorRequest {
+    const message = createBaseQueryAllWhitelistDelegatorRequest();
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryAllWhitelistDelegatorRequest): QueryAllWhitelistDelegatorRequestAmino {
+    const obj: any = {};
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryAllWhitelistDelegatorRequestAminoMsg): QueryAllWhitelistDelegatorRequest {
+    return QueryAllWhitelistDelegatorRequest.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryAllWhitelistDelegatorRequest): QueryAllWhitelistDelegatorRequestAminoMsg {
+    return {
+      type: "cosmos-sdk/QueryAllWhitelistDelegatorRequest",
+      value: QueryAllWhitelistDelegatorRequest.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryAllWhitelistDelegatorRequestProtoMsg): QueryAllWhitelistDelegatorRequest {
+    return QueryAllWhitelistDelegatorRequest.decode(message.value);
+  },
+  toProto(message: QueryAllWhitelistDelegatorRequest): Uint8Array {
+    return QueryAllWhitelistDelegatorRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryAllWhitelistDelegatorRequest): QueryAllWhitelistDelegatorRequestProtoMsg {
+    return {
+      typeUrl: "/cosmos.staking.v1beta1.QueryAllWhitelistDelegatorRequest",
+      value: QueryAllWhitelistDelegatorRequest.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryWhitelistdelegatorAllResponse(): QueryWhitelistdelegatorAllResponse {
+  return {
+    whitelistDelegator: [],
+    pagination: undefined
+  };
+}
+export const QueryWhitelistdelegatorAllResponse = {
+  typeUrl: "/cosmos.staking.v1beta1.QueryWhitelistdelegatorAllResponse",
+  encode(message: QueryWhitelistdelegatorAllResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.whitelistDelegator) {
+      WhitelistDelegator.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryWhitelistdelegatorAllResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryWhitelistdelegatorAllResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.whitelistDelegator.push(WhitelistDelegator.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryWhitelistdelegatorAllResponse>): QueryWhitelistdelegatorAllResponse {
+    const message = createBaseQueryWhitelistdelegatorAllResponse();
+    message.whitelistDelegator = object.whitelistDelegator?.map(e => WhitelistDelegator.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryWhitelistdelegatorAllResponseAmino): QueryWhitelistdelegatorAllResponse {
+    const message = createBaseQueryWhitelistdelegatorAllResponse();
+    message.whitelistDelegator = object.whitelist_delegator?.map(e => WhitelistDelegator.fromAmino(e)) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryWhitelistdelegatorAllResponse): QueryWhitelistdelegatorAllResponseAmino {
+    const obj: any = {};
+    if (message.whitelistDelegator) {
+      obj.whitelist_delegator = message.whitelistDelegator.map(e => e ? WhitelistDelegator.toAmino(e) : undefined);
+    } else {
+      obj.whitelist_delegator = message.whitelistDelegator;
+    }
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryWhitelistdelegatorAllResponseAminoMsg): QueryWhitelistdelegatorAllResponse {
+    return QueryWhitelistdelegatorAllResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryWhitelistdelegatorAllResponse): QueryWhitelistdelegatorAllResponseAminoMsg {
+    return {
+      type: "cosmos-sdk/QueryWhitelistdelegatorAllResponse",
+      value: QueryWhitelistdelegatorAllResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryWhitelistdelegatorAllResponseProtoMsg): QueryWhitelistdelegatorAllResponse {
+    return QueryWhitelistdelegatorAllResponse.decode(message.value);
+  },
+  toProto(message: QueryWhitelistdelegatorAllResponse): Uint8Array {
+    return QueryWhitelistdelegatorAllResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryWhitelistdelegatorAllResponse): QueryWhitelistdelegatorAllResponseProtoMsg {
+    return {
+      typeUrl: "/cosmos.staking.v1beta1.QueryWhitelistdelegatorAllResponse",
+      value: QueryWhitelistdelegatorAllResponse.encode(message).finish()
     };
   }
 };

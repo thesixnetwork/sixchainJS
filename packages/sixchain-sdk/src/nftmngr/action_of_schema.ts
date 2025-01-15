@@ -7,7 +7,7 @@ export interface ActionOfSchema {
   index: Long;
 }
 export interface ActionOfSchemaProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionOfSchema";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema";
   value: Uint8Array;
 }
 export interface ActionOfSchemaAmino {
@@ -16,7 +16,7 @@ export interface ActionOfSchemaAmino {
   index?: string;
 }
 export interface ActionOfSchemaAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.ActionOfSchema";
+  type: "/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema";
   value: ActionOfSchemaAmino;
 }
 export interface ActionOfSchemaSDKType {
@@ -32,7 +32,7 @@ function createBaseActionOfSchema(): ActionOfSchema {
   };
 }
 export const ActionOfSchema = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionOfSchema",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema",
   encode(message: ActionOfSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -92,7 +92,7 @@ export const ActionOfSchema = {
     const obj: any = {};
     obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.name = message.name === "" ? undefined : message.name;
-    obj.index = !message.index.isZero() ? (message.index?.toString)() : undefined;
+    obj.index = !message.index.isZero() ? message.index?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ActionOfSchemaAminoMsg): ActionOfSchema {
@@ -106,7 +106,7 @@ export const ActionOfSchema = {
   },
   toProtoMsg(message: ActionOfSchema): ActionOfSchemaProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionOfSchema",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema",
       value: ActionOfSchema.encode(message).finish()
     };
   }

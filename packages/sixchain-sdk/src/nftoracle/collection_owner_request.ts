@@ -10,7 +10,7 @@ export interface OriginContractParam {
   requestExpire: Date;
 }
 export interface OriginContractParamProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.OriginContractParam";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractParam";
   value: Uint8Array;
 }
 export interface OriginContractParamAmino {
@@ -20,7 +20,7 @@ export interface OriginContractParamAmino {
   request_expire?: string;
 }
 export interface OriginContractParamAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.OriginContractParam";
+  type: "/thesixnetwork.sixprotocol.nftoracle.OriginContractParam";
   value: OriginContractParamAmino;
 }
 export interface OriginContractParamSDKType {
@@ -43,7 +43,7 @@ export interface CollectionOwnerRequest {
   expiredHeight: Long;
 }
 export interface CollectionOwnerRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.CollectionOwnerRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest";
   value: Uint8Array;
 }
 export interface CollectionOwnerRequestAmino {
@@ -60,7 +60,7 @@ export interface CollectionOwnerRequestAmino {
   expired_height?: string;
 }
 export interface CollectionOwnerRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.CollectionOwnerRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest";
   value: CollectionOwnerRequestAmino;
 }
 export interface CollectionOwnerRequestSDKType {
@@ -82,7 +82,7 @@ export interface OriginContractInfo {
   confirmers: string[];
 }
 export interface OriginContractInfoProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.OriginContractInfo";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo";
   value: Uint8Array;
 }
 export interface OriginContractInfoAmino {
@@ -91,7 +91,7 @@ export interface OriginContractInfoAmino {
   confirmers?: string[];
 }
 export interface OriginContractInfoAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.OriginContractInfo";
+  type: "/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo";
   value: OriginContractInfoAmino;
 }
 export interface OriginContractInfoSDKType {
@@ -108,7 +108,7 @@ function createBaseOriginContractParam(): OriginContractParam {
   };
 }
 export const OriginContractParam = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.OriginContractParam",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractParam",
   encode(message: OriginContractParam, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
@@ -193,7 +193,7 @@ export const OriginContractParam = {
   },
   toProtoMsg(message: OriginContractParam): OriginContractParamProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.OriginContractParam",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractParam",
       value: OriginContractParam.encode(message).finish()
     };
   }
@@ -214,7 +214,7 @@ function createBaseCollectionOwnerRequest(): CollectionOwnerRequest {
   };
 }
 export const CollectionOwnerRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.CollectionOwnerRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest",
   encode(message: CollectionOwnerRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -348,12 +348,12 @@ export const CollectionOwnerRequest = {
   },
   toAmino(message: CollectionOwnerRequest): CollectionOwnerRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.signer = message.signer === "" ? undefined : message.signer;
-    obj.required_confirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
+    obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
-    obj.current_confirm = !message.currentConfirm.isZero() ? (message.currentConfirm?.toString)() : undefined;
+    obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
     if (message.confirmers) {
       obj.confirmers = message.confirmers.map(e => e);
     } else {
@@ -366,7 +366,7 @@ export const CollectionOwnerRequest = {
     } else {
       obj.contract_info = message.contractInfo;
     }
-    obj.expired_height = !message.expiredHeight.isZero() ? (message.expiredHeight?.toString)() : undefined;
+    obj.expired_height = !message.expiredHeight.isZero() ? message.expiredHeight?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: CollectionOwnerRequestAminoMsg): CollectionOwnerRequest {
@@ -380,7 +380,7 @@ export const CollectionOwnerRequest = {
   },
   toProtoMsg(message: CollectionOwnerRequest): CollectionOwnerRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.CollectionOwnerRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest",
       value: CollectionOwnerRequest.encode(message).finish()
     };
   }
@@ -393,7 +393,7 @@ function createBaseOriginContractInfo(): OriginContractInfo {
   };
 }
 export const OriginContractInfo = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.OriginContractInfo",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo",
   encode(message: OriginContractInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.contractOriginDataInfo !== undefined) {
       OriginContractParam.encode(message.contractOriginDataInfo, writer.uint32(10).fork()).ldelim();
@@ -469,7 +469,7 @@ export const OriginContractInfo = {
   },
   toProtoMsg(message: OriginContractInfo): OriginContractInfoProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.OriginContractInfo",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo",
       value: OriginContractInfo.encode(message).finish()
     };
   }

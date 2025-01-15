@@ -45,7 +45,7 @@ export const options: TelescopeInput = {
         ]
       },
       typingsFormat : {
-        num64:"long"
+        num64:'long'
       }
     },
 

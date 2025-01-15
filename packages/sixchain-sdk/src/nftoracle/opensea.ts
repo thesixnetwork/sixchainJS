@@ -7,7 +7,7 @@ export interface Trait {
   maxValue: string;
 }
 export interface TraitProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.Trait";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.Trait";
   value: Uint8Array;
 }
 export interface TraitAmino {
@@ -17,7 +17,7 @@ export interface TraitAmino {
   max_value?: string;
 }
 export interface TraitAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.Trait";
+  type: "/thesixnetwork.sixprotocol.nftoracle.Trait";
   value: TraitAmino;
 }
 export interface TraitSDKType {
@@ -35,7 +35,7 @@ function createBaseTrait(): Trait {
   };
 }
 export const Trait = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.Trait",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.Trait",
   encode(message: Trait, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.traitType !== "") {
       writer.uint32(10).string(message.traitType);
@@ -120,7 +120,7 @@ export const Trait = {
   },
   toProtoMsg(message: Trait): TraitProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.Trait",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.Trait",
       value: Trait.encode(message).finish()
     };
   }

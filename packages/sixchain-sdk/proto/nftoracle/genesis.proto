@@ -1,5 +1,5 @@
 syntax = "proto3";
-package thesixnetwork.sixnft.nftoracle;
+package thesixnetwork.sixprotocol.nftoracle;
 
 import "gogoproto/gogo.proto";
 import "nftoracle/params.proto";
@@ -13,7 +13,7 @@ import "nftoracle/action_signer_config.proto";
 import "nftoracle/sync_action_signer.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
-option go_package = "github.com/thesixnetwork/sixnft/x/nftoracle/types";
+option go_package = "github.com/thesixnetwork/six-protocol/x/nftoracle/types";
 
 // GenesisState defines the nftoracle module's genesis state.
 message GenesisState {

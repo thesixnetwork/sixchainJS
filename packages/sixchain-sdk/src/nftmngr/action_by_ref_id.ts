@@ -8,7 +8,7 @@ export interface ActionByRefId {
   action: string;
 }
 export interface ActionByRefIdProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionByRefId";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionByRefId";
   value: Uint8Array;
 }
 export interface ActionByRefIdAmino {
@@ -19,7 +19,7 @@ export interface ActionByRefIdAmino {
   action?: string;
 }
 export interface ActionByRefIdAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.ActionByRefId";
+  type: "/thesixnetwork.sixprotocol.nftmngr.ActionByRefId";
   value: ActionByRefIdAmino;
 }
 export interface ActionByRefIdSDKType {
@@ -39,7 +39,7 @@ function createBaseActionByRefId(): ActionByRefId {
   };
 }
 export const ActionByRefId = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionByRefId",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionByRefId",
   encode(message: ActionByRefId, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.refId !== "") {
       writer.uint32(10).string(message.refId);
@@ -135,7 +135,7 @@ export const ActionByRefId = {
   },
   toProtoMsg(message: ActionByRefId): ActionByRefIdProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionByRefId",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionByRefId",
       value: ActionByRefId.encode(message).finish()
     };
   }

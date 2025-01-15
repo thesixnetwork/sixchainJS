@@ -245,6 +245,7 @@ export interface Validator {
   licenseCount: string;
   licenseMode: boolean;
   enableRedelegation: boolean;
+  specialMode: boolean;
 }
 export interface ValidatorProtoMsg {
   typeUrl: "/cosmos.staking.v1beta1.Validator";
@@ -292,6 +293,7 @@ export interface ValidatorAmino {
   license_count?: string;
   license_mode?: boolean;
   enable_redelegation?: boolean;
+  special_mode?: boolean;
 }
 export interface ValidatorAminoMsg {
   type: "cosmos-sdk/Validator";
@@ -325,6 +327,7 @@ export interface ValidatorSDKType {
   license_count: string;
   license_mode: boolean;
   enable_redelegation: boolean;
+  special_mode: boolean;
 }
 /** ValAddresses defines a repeated set of validator addresses. */
 export interface ValAddresses {
@@ -843,6 +846,7 @@ export interface PoolSDKType {
   not_bonded_tokens: string;
   bonded_tokens: string;
 }
+/** ValidatorApproval */
 export interface ValidatorApproval {
   approverAddress: string;
   enabled: boolean;
@@ -851,6 +855,7 @@ export interface ValidatorApprovalProtoMsg {
   typeUrl: "/cosmos.staking.v1beta1.ValidatorApproval";
   value: Uint8Array;
 }
+/** ValidatorApproval */
 export interface ValidatorApprovalAmino {
   approver_address?: string;
   enabled?: boolean;
@@ -859,6 +864,7 @@ export interface ValidatorApprovalAminoMsg {
   type: "cosmos-sdk/ValidatorApproval";
   value: ValidatorApprovalAmino;
 }
+/** ValidatorApproval */
 export interface ValidatorApprovalSDKType {
   approver_address: string;
   enabled: boolean;
@@ -1255,7 +1261,8 @@ function createBaseValidator(): Validator {
     maxLicense: "",
     licenseCount: "",
     licenseMode: false,
-    enableRedelegation: false
+    enableRedelegation: false,
+    specialMode: false
   };
 }
 export const Validator = {
@@ -1311,6 +1318,9 @@ export const Validator = {
     }
     if (message.enableRedelegation === true) {
       writer.uint32(136).bool(message.enableRedelegation);
+    }
+    if (message.specialMode === true) {
+      writer.uint32(144).bool(message.specialMode);
     }
     return writer;
   },
@@ -1372,6 +1382,9 @@ export const Validator = {
         case 17:
           message.enableRedelegation = reader.bool();
           break;
+        case 18:
+          message.specialMode = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1398,6 +1411,7 @@ export const Validator = {
     message.licenseCount = object.licenseCount ?? "";
     message.licenseMode = object.licenseMode ?? false;
     message.enableRedelegation = object.enableRedelegation ?? false;
+    message.specialMode = object.specialMode ?? false;
     return message;
   },
   fromAmino(object: ValidatorAmino): Validator {
@@ -1453,6 +1467,9 @@ export const Validator = {
     if (object.enable_redelegation !== undefined && object.enable_redelegation !== null) {
       message.enableRedelegation = object.enable_redelegation;
     }
+    if (object.special_mode !== undefined && object.special_mode !== null) {
+      message.specialMode = object.special_mode;
+    }
     return message;
   },
   toAmino(message: Validator): ValidatorAmino {
@@ -1464,7 +1481,7 @@ export const Validator = {
     obj.tokens = message.tokens === "" ? undefined : message.tokens;
     obj.delegator_shares = message.delegatorShares === "" ? undefined : message.delegatorShares;
     obj.description = message.description ? Description.toAmino(message.description) : undefined;
-    obj.unbonding_height = !message.unbondingHeight.isZero() ? (message.unbondingHeight?.toString)() : undefined;
+    obj.unbonding_height = !message.unbondingHeight.isZero() ? message.unbondingHeight?.toString() : undefined;
     obj.unbonding_time = message.unbondingTime ? Timestamp.toAmino(toTimestamp(message.unbondingTime)) : undefined;
     obj.commission = message.commission ? Commission.toAmino(message.commission) : undefined;
     obj.min_self_delegation = message.minSelfDelegation === "" ? undefined : message.minSelfDelegation;
@@ -1474,6 +1491,7 @@ export const Validator = {
     obj.license_count = message.licenseCount === "" ? undefined : message.licenseCount;
     obj.license_mode = message.licenseMode === false ? undefined : message.licenseMode;
     obj.enable_redelegation = message.enableRedelegation === false ? undefined : message.enableRedelegation;
+    obj.special_mode = message.specialMode === false ? undefined : message.specialMode;
     return obj;
   },
   fromAminoMsg(object: ValidatorAminoMsg): Validator {
@@ -2150,7 +2168,7 @@ export const UnbondingDelegationEntry = {
   },
   toAmino(message: UnbondingDelegationEntry): UnbondingDelegationEntryAmino {
     const obj: any = {};
-    obj.creation_height = !message.creationHeight.isZero() ? (message.creationHeight?.toString)() : undefined;
+    obj.creation_height = !message.creationHeight.isZero() ? message.creationHeight?.toString() : undefined;
     obj.completion_time = message.completionTime ? Timestamp.toAmino(toTimestamp(message.completionTime)) : undefined;
     obj.initial_balance = message.initialBalance === "" ? undefined : message.initialBalance;
     obj.balance = message.balance === "" ? undefined : message.balance;
@@ -2255,7 +2273,7 @@ export const RedelegationEntry = {
   },
   toAmino(message: RedelegationEntry): RedelegationEntryAmino {
     const obj: any = {};
-    obj.creation_height = !message.creationHeight.isZero() ? (message.creationHeight?.toString)() : undefined;
+    obj.creation_height = !message.creationHeight.isZero() ? message.creationHeight?.toString() : undefined;
     obj.completion_time = message.completionTime ? Timestamp.toAmino(toTimestamp(message.completionTime)) : undefined;
     obj.initial_balance = message.initialBalance === "" ? undefined : message.initialBalance;
     obj.shares_dst = message.sharesDst === "" ? undefined : message.sharesDst;

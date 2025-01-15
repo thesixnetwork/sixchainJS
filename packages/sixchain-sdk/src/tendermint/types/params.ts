@@ -405,9 +405,9 @@ export const BlockParams = {
   },
   toAmino(message: BlockParams): BlockParamsAmino {
     const obj: any = {};
-    obj.max_bytes = !message.maxBytes.isZero() ? (message.maxBytes?.toString)() : undefined;
-    obj.max_gas = !message.maxGas.isZero() ? (message.maxGas?.toString)() : undefined;
-    obj.time_iota_ms = !message.timeIotaMs.isZero() ? (message.timeIotaMs?.toString)() : undefined;
+    obj.max_bytes = !message.maxBytes.isZero() ? message.maxBytes?.toString() : undefined;
+    obj.max_gas = !message.maxGas.isZero() ? message.maxGas?.toString() : undefined;
+    obj.time_iota_ms = !message.timeIotaMs.isZero() ? message.timeIotaMs?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: BlockParamsAminoMsg): BlockParams {
@@ -492,9 +492,9 @@ export const EvidenceParams = {
   },
   toAmino(message: EvidenceParams): EvidenceParamsAmino {
     const obj: any = {};
-    obj.max_age_num_blocks = !message.maxAgeNumBlocks.isZero() ? (message.maxAgeNumBlocks?.toString)() : undefined;
+    obj.max_age_num_blocks = !message.maxAgeNumBlocks.isZero() ? message.maxAgeNumBlocks?.toString() : undefined;
     obj.max_age_duration = message.maxAgeDuration ? Duration.toAmino(message.maxAgeDuration) : undefined;
-    obj.max_bytes = !message.maxBytes.isZero() ? (message.maxBytes?.toString)() : undefined;
+    obj.max_bytes = !message.maxBytes.isZero() ? message.maxBytes?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: EvidenceParamsAminoMsg): EvidenceParams {
@@ -622,7 +622,7 @@ export const VersionParams = {
   },
   toAmino(message: VersionParams): VersionParamsAmino {
     const obj: any = {};
-    obj.app_version = !message.appVersion.isZero() ? (message.appVersion?.toString)() : undefined;
+    obj.app_version = !message.appVersion.isZero() ? message.appVersion?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: VersionParamsAminoMsg): VersionParams {
@@ -696,8 +696,8 @@ export const HashedParams = {
   },
   toAmino(message: HashedParams): HashedParamsAmino {
     const obj: any = {};
-    obj.block_max_bytes = !message.blockMaxBytes.isZero() ? (message.blockMaxBytes?.toString)() : undefined;
-    obj.block_max_gas = !message.blockMaxGas.isZero() ? (message.blockMaxGas?.toString)() : undefined;
+    obj.block_max_bytes = !message.blockMaxBytes.isZero() ? message.blockMaxBytes?.toString() : undefined;
+    obj.block_max_gas = !message.blockMaxGas.isZero() ? message.blockMaxGas?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: HashedParamsAminoMsg): HashedParams {

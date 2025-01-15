@@ -22,22 +22,19 @@ export const createRPCMsgClient = async ({
       v1beta1: new (await import("../cosmos/gov/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     staking: {
-      v1beta1: new (await import("../cosmos/staking/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc),
-      v2beta1: new (await import("../cosmos/staking/v2beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+      v1beta1: new (await import("../cosmos/staking/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     vesting: {
       v1beta1: new (await import("../cosmos/vesting/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     }
   },
   thesixnetwork: {
-    sixnft: {
+    sixprotocol: {
       nftadmin: new (await import("../nftadmin/tx.rpc.msg")).MsgClientImpl(rpc),
       nftmngr: new (await import("../nftmngr/tx.rpc.msg")).MsgClientImpl(rpc),
-      nftoracle: new (await import("../nftoracle/tx.rpc.msg")).MsgClientImpl(rpc)
-    },
-    sixprotocol: {
+      nftoracle: new (await import("../nftoracle/tx.rpc.msg")).MsgClientImpl(rpc),
       protocoladmin: new (await import("../protocoladmin/tx.rpc.msg")).MsgClientImpl(rpc),
-      tokenmngr: new (await import("../tokenmngr/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+      tokenmngr: new (await import("../tokenmngr/tx.rpc.msg")).MsgClientImpl(rpc)
     }
   }
 });

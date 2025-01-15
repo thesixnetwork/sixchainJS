@@ -27,7 +27,7 @@ export interface GenesisState {
   syncActionSignerCount: Long;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.GenesisState";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.GenesisState";
   value: Uint8Array;
 }
 /** GenesisState defines the nftoracle module's genesis state. */
@@ -47,7 +47,7 @@ export interface GenesisStateAmino {
   syncActionSignerCount?: string;
 }
 export interface GenesisStateAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.GenesisState";
+  type: "/thesixnetwork.sixprotocol.nftoracle.GenesisState";
   value: GenesisStateAmino;
 }
 /** GenesisState defines the nftoracle module's genesis state. */
@@ -84,7 +84,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.GenesisState",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.GenesisState",
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -234,19 +234,19 @@ export const GenesisState = {
     } else {
       obj.mintRequestList = message.mintRequestList;
     }
-    obj.mintRequestCount = !message.mintRequestCount.isZero() ? (message.mintRequestCount?.toString)() : undefined;
+    obj.mintRequestCount = !message.mintRequestCount.isZero() ? message.mintRequestCount?.toString() : undefined;
     if (message.actionRequestList) {
       obj.actionRequestList = message.actionRequestList.map(e => e ? ActionOracleRequest.toAmino(e) : undefined);
     } else {
       obj.actionRequestList = message.actionRequestList;
     }
-    obj.actionRequestCount = !message.actionRequestCount.isZero() ? (message.actionRequestCount?.toString)() : undefined;
+    obj.actionRequestCount = !message.actionRequestCount.isZero() ? message.actionRequestCount?.toString() : undefined;
     if (message.collectionOwnerRequestList) {
       obj.collectionOwnerRequestList = message.collectionOwnerRequestList.map(e => e ? CollectionOwnerRequest.toAmino(e) : undefined);
     } else {
       obj.collectionOwnerRequestList = message.collectionOwnerRequestList;
     }
-    obj.collectionOwnerRequestCount = !message.collectionOwnerRequestCount.isZero() ? (message.collectionOwnerRequestCount?.toString)() : undefined;
+    obj.collectionOwnerRequestCount = !message.collectionOwnerRequestCount.isZero() ? message.collectionOwnerRequestCount?.toString() : undefined;
     obj.oracle_config = message.oracleConfig ? OracleConfig.toAmino(message.oracleConfig) : undefined;
     if (message.actionSignerList) {
       obj.actionSignerList = message.actionSignerList.map(e => e ? ActionSigner.toAmino(e) : undefined);
@@ -268,7 +268,7 @@ export const GenesisState = {
     } else {
       obj.syncActionSignerList = message.syncActionSignerList;
     }
-    obj.syncActionSignerCount = !message.syncActionSignerCount.isZero() ? (message.syncActionSignerCount?.toString)() : undefined;
+    obj.syncActionSignerCount = !message.syncActionSignerCount.isZero() ? message.syncActionSignerCount?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -282,7 +282,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.GenesisState",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.GenesisState",
       value: GenesisState.encode(message).finish()
     };
   }

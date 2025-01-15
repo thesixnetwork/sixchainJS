@@ -5,7 +5,7 @@ import { bytesFromBase64, base64FromBytes } from "../helpers";
 export enum RequestStatus {
   PENDING = 0,
   SUCCESS_WITH_CONSENSUS = 1,
-  FAILED_WITHOUT_CONCENSUS = 2,
+  FAILED_WITHOUT_CONSENSUS = 2,
   EXPIRED = 3,
   FAILED_ON_EXECUTION = 4,
   FAILED_REJECT_BY_CONSENSUS = 5,
@@ -22,8 +22,8 @@ export function requestStatusFromJSON(object: any): RequestStatus {
     case "SUCCESS_WITH_CONSENSUS":
       return RequestStatus.SUCCESS_WITH_CONSENSUS;
     case 2:
-    case "FAILED_WITHOUT_CONCENSUS":
-      return RequestStatus.FAILED_WITHOUT_CONCENSUS;
+    case "FAILED_WITHOUT_CONSENSUS":
+      return RequestStatus.FAILED_WITHOUT_CONSENSUS;
     case 3:
     case "EXPIRED":
       return RequestStatus.EXPIRED;
@@ -45,8 +45,8 @@ export function requestStatusToJSON(object: RequestStatus): string {
       return "PENDING";
     case RequestStatus.SUCCESS_WITH_CONSENSUS:
       return "SUCCESS_WITH_CONSENSUS";
-    case RequestStatus.FAILED_WITHOUT_CONCENSUS:
-      return "FAILED_WITHOUT_CONCENSUS";
+    case RequestStatus.FAILED_WITHOUT_CONSENSUS:
+      return "FAILED_WITHOUT_CONSENSUS";
     case RequestStatus.EXPIRED:
       return "EXPIRED";
     case RequestStatus.FAILED_ON_EXECUTION:
@@ -64,7 +64,7 @@ export interface NftOriginData {
   traits: Trait[];
 }
 export interface NftOriginDataProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.NftOriginData";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.NftOriginData";
   value: Uint8Array;
 }
 export interface NftOriginDataAmino {
@@ -73,7 +73,7 @@ export interface NftOriginDataAmino {
   traits?: TraitAmino[];
 }
 export interface NftOriginDataAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.NftOriginData";
+  type: "/thesixnetwork.sixprotocol.nftoracle.NftOriginData";
   value: NftOriginDataAmino;
 }
 export interface NftOriginDataSDKType {
@@ -87,7 +87,7 @@ export interface DataHash {
   confirmers: string[];
 }
 export interface DataHashProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.DataHash";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.DataHash";
   value: Uint8Array;
 }
 export interface DataHashAmino {
@@ -96,7 +96,7 @@ export interface DataHashAmino {
   confirmers?: string[];
 }
 export interface DataHashAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.DataHash";
+  type: "/thesixnetwork.sixprotocol.nftoracle.DataHash";
   value: DataHashAmino;
 }
 export interface DataHashSDKType {
@@ -112,7 +112,7 @@ function createBaseNftOriginData(): NftOriginData {
   };
 }
 export const NftOriginData = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.NftOriginData",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.NftOriginData",
   encode(message: NftOriginData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.image !== "") {
       writer.uint32(10).string(message.image);
@@ -188,7 +188,7 @@ export const NftOriginData = {
   },
   toProtoMsg(message: NftOriginData): NftOriginDataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.NftOriginData",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.NftOriginData",
       value: NftOriginData.encode(message).finish()
     };
   }
@@ -201,7 +201,7 @@ function createBaseDataHash(): DataHash {
   };
 }
 export const DataHash = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.DataHash",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.DataHash",
   encode(message: DataHash, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.originData !== undefined) {
       NftOriginData.encode(message.originData, writer.uint32(10).fork()).ldelim();
@@ -277,7 +277,7 @@ export const DataHash = {
   },
   toProtoMsg(message: DataHash): DataHashProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.DataHash",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.DataHash",
       value: DataHash.encode(message).finish()
     };
   }

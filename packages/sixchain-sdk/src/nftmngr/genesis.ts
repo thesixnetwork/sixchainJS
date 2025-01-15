@@ -13,6 +13,8 @@ import { ActionExecutor, ActionExecutorAmino, ActionExecutorSDKType } from "./ac
 import { SchemaAttribute, SchemaAttributeAmino, SchemaAttributeSDKType } from "./schema_attribute";
 import { ActionOfSchema, ActionOfSchemaAmino, ActionOfSchemaSDKType } from "./action_of_schema";
 import { ExecutorOfSchema, ExecutorOfSchemaAmino, ExecutorOfSchemaSDKType } from "./executor_of_schema";
+import { VirtualAction, VirtualActionAmino, VirtualActionSDKType } from "./virtual_action";
+import { VirtualSchema, VirtualSchemaAmino, VirtualSchemaSDKType, VirtualSchemaProposal, VirtualSchemaProposalAmino, VirtualSchemaProposalSDKType, ActiveVirtualSchemaProposal, ActiveVirtualSchemaProposalAmino, ActiveVirtualSchemaProposalSDKType, InactiveVirtualSchemaProposal, InactiveVirtualSchemaProposalAmino, InactiveVirtualSchemaProposalSDKType } from "./virtual_schema";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the nftmngr module's genesis state. */
 export interface GenesisState {
@@ -30,9 +32,14 @@ export interface GenesisState {
   schemaAttributeList: SchemaAttribute[];
   actionOfSchemaList: ActionOfSchema[];
   executorOfSchemaList: ExecutorOfSchema[];
+  virtualActionList: VirtualAction[];
+  virtualSchemaList: VirtualSchema[];
+  virtualSchemaProposalList: VirtualSchemaProposal[];
+  activeVirtualSchemaProposalList: ActiveVirtualSchemaProposal[];
+  inactiveVirtualSchemaProposalList: InactiveVirtualSchemaProposal[];
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.GenesisState";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.GenesisState";
   value: Uint8Array;
 }
 /** GenesisState defines the nftmngr module's genesis state. */
@@ -51,9 +58,14 @@ export interface GenesisStateAmino {
   schemaAttributeList?: SchemaAttributeAmino[];
   actionOfSchemaList?: ActionOfSchemaAmino[];
   executorOfSchemaList?: ExecutorOfSchemaAmino[];
+  virtualActionList?: VirtualActionAmino[];
+  virtualSchemaList?: VirtualSchemaAmino[];
+  virtualSchemaProposalList?: VirtualSchemaProposalAmino[];
+  activeVirtualSchemaProposalList?: ActiveVirtualSchemaProposalAmino[];
+  inactiveVirtualSchemaProposalList?: InactiveVirtualSchemaProposalAmino[];
 }
 export interface GenesisStateAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.GenesisState";
+  type: "/thesixnetwork.sixprotocol.nftmngr.GenesisState";
   value: GenesisStateAmino;
 }
 /** GenesisState defines the nftmngr module's genesis state. */
@@ -72,6 +84,11 @@ export interface GenesisStateSDKType {
   schemaAttributeList: SchemaAttributeSDKType[];
   actionOfSchemaList: ActionOfSchemaSDKType[];
   executorOfSchemaList: ExecutorOfSchemaSDKType[];
+  virtualActionList: VirtualActionSDKType[];
+  virtualSchemaList: VirtualSchemaSDKType[];
+  virtualSchemaProposalList: VirtualSchemaProposalSDKType[];
+  activeVirtualSchemaProposalList: ActiveVirtualSchemaProposalSDKType[];
+  inactiveVirtualSchemaProposalList: InactiveVirtualSchemaProposalSDKType[];
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -88,11 +105,16 @@ function createBaseGenesisState(): GenesisState {
     actionExecutorList: [],
     schemaAttributeList: [],
     actionOfSchemaList: [],
-    executorOfSchemaList: []
+    executorOfSchemaList: [],
+    virtualActionList: [],
+    virtualSchemaList: [],
+    virtualSchemaProposalList: [],
+    activeVirtualSchemaProposalList: [],
+    inactiveVirtualSchemaProposalList: []
   };
 }
 export const GenesisState = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.GenesisState",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.GenesisState",
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -135,6 +157,21 @@ export const GenesisState = {
     }
     for (const v of message.executorOfSchemaList) {
       ExecutorOfSchema.encode(v!, writer.uint32(122).fork()).ldelim();
+    }
+    for (const v of message.virtualActionList) {
+      VirtualAction.encode(v!, writer.uint32(130).fork()).ldelim();
+    }
+    for (const v of message.virtualSchemaList) {
+      VirtualSchema.encode(v!, writer.uint32(138).fork()).ldelim();
+    }
+    for (const v of message.virtualSchemaProposalList) {
+      VirtualSchemaProposal.encode(v!, writer.uint32(154).fork()).ldelim();
+    }
+    for (const v of message.activeVirtualSchemaProposalList) {
+      ActiveVirtualSchemaProposal.encode(v!, writer.uint32(162).fork()).ldelim();
+    }
+    for (const v of message.inactiveVirtualSchemaProposalList) {
+      InactiveVirtualSchemaProposal.encode(v!, writer.uint32(170).fork()).ldelim();
     }
     return writer;
   },
@@ -187,6 +224,21 @@ export const GenesisState = {
         case 15:
           message.executorOfSchemaList.push(ExecutorOfSchema.decode(reader, reader.uint32()));
           break;
+        case 16:
+          message.virtualActionList.push(VirtualAction.decode(reader, reader.uint32()));
+          break;
+        case 17:
+          message.virtualSchemaList.push(VirtualSchema.decode(reader, reader.uint32()));
+          break;
+        case 19:
+          message.virtualSchemaProposalList.push(VirtualSchemaProposal.decode(reader, reader.uint32()));
+          break;
+        case 20:
+          message.activeVirtualSchemaProposalList.push(ActiveVirtualSchemaProposal.decode(reader, reader.uint32()));
+          break;
+        case 21:
+          message.inactiveVirtualSchemaProposalList.push(InactiveVirtualSchemaProposal.decode(reader, reader.uint32()));
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -210,6 +262,11 @@ export const GenesisState = {
     message.schemaAttributeList = object.schemaAttributeList?.map(e => SchemaAttribute.fromPartial(e)) || [];
     message.actionOfSchemaList = object.actionOfSchemaList?.map(e => ActionOfSchema.fromPartial(e)) || [];
     message.executorOfSchemaList = object.executorOfSchemaList?.map(e => ExecutorOfSchema.fromPartial(e)) || [];
+    message.virtualActionList = object.virtualActionList?.map(e => VirtualAction.fromPartial(e)) || [];
+    message.virtualSchemaList = object.virtualSchemaList?.map(e => VirtualSchema.fromPartial(e)) || [];
+    message.virtualSchemaProposalList = object.virtualSchemaProposalList?.map(e => VirtualSchemaProposal.fromPartial(e)) || [];
+    message.activeVirtualSchemaProposalList = object.activeVirtualSchemaProposalList?.map(e => ActiveVirtualSchemaProposal.fromPartial(e)) || [];
+    message.inactiveVirtualSchemaProposalList = object.inactiveVirtualSchemaProposalList?.map(e => InactiveVirtualSchemaProposal.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -234,6 +291,11 @@ export const GenesisState = {
     message.schemaAttributeList = object.schemaAttributeList?.map(e => SchemaAttribute.fromAmino(e)) || [];
     message.actionOfSchemaList = object.actionOfSchemaList?.map(e => ActionOfSchema.fromAmino(e)) || [];
     message.executorOfSchemaList = object.executorOfSchemaList?.map(e => ExecutorOfSchema.fromAmino(e)) || [];
+    message.virtualActionList = object.virtualActionList?.map(e => VirtualAction.fromAmino(e)) || [];
+    message.virtualSchemaList = object.virtualSchemaList?.map(e => VirtualSchema.fromAmino(e)) || [];
+    message.virtualSchemaProposalList = object.virtualSchemaProposalList?.map(e => VirtualSchemaProposal.fromAmino(e)) || [];
+    message.activeVirtualSchemaProposalList = object.activeVirtualSchemaProposalList?.map(e => ActiveVirtualSchemaProposal.fromAmino(e)) || [];
+    message.inactiveVirtualSchemaProposalList = object.inactiveVirtualSchemaProposalList?.map(e => InactiveVirtualSchemaProposal.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -296,6 +358,31 @@ export const GenesisState = {
     } else {
       obj.executorOfSchemaList = message.executorOfSchemaList;
     }
+    if (message.virtualActionList) {
+      obj.virtualActionList = message.virtualActionList.map(e => e ? VirtualAction.toAmino(e) : undefined);
+    } else {
+      obj.virtualActionList = message.virtualActionList;
+    }
+    if (message.virtualSchemaList) {
+      obj.virtualSchemaList = message.virtualSchemaList.map(e => e ? VirtualSchema.toAmino(e) : undefined);
+    } else {
+      obj.virtualSchemaList = message.virtualSchemaList;
+    }
+    if (message.virtualSchemaProposalList) {
+      obj.virtualSchemaProposalList = message.virtualSchemaProposalList.map(e => e ? VirtualSchemaProposal.toAmino(e) : undefined);
+    } else {
+      obj.virtualSchemaProposalList = message.virtualSchemaProposalList;
+    }
+    if (message.activeVirtualSchemaProposalList) {
+      obj.activeVirtualSchemaProposalList = message.activeVirtualSchemaProposalList.map(e => e ? ActiveVirtualSchemaProposal.toAmino(e) : undefined);
+    } else {
+      obj.activeVirtualSchemaProposalList = message.activeVirtualSchemaProposalList;
+    }
+    if (message.inactiveVirtualSchemaProposalList) {
+      obj.inactiveVirtualSchemaProposalList = message.inactiveVirtualSchemaProposalList.map(e => e ? InactiveVirtualSchemaProposal.toAmino(e) : undefined);
+    } else {
+      obj.inactiveVirtualSchemaProposalList = message.inactiveVirtualSchemaProposalList;
+    }
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -309,7 +396,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.GenesisState",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.GenesisState",
       value: GenesisState.encode(message).finish()
     };
   }

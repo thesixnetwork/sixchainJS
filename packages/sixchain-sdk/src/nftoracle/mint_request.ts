@@ -18,7 +18,7 @@ export interface MintRequest {
   expiredHeight: Long;
 }
 export interface MintRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.MintRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest";
   value: Uint8Array;
 }
 export interface MintRequestAmino {
@@ -36,7 +36,7 @@ export interface MintRequestAmino {
   expired_height?: string;
 }
 export interface MintRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.MintRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.MintRequest";
   value: MintRequestAmino;
 }
 export interface MintRequestSDKType {
@@ -68,7 +68,7 @@ function createBaseMintRequest(): MintRequest {
   };
 }
 export const MintRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.MintRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest",
   encode(message: MintRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -202,12 +202,12 @@ export const MintRequest = {
   },
   toAmino(message: MintRequest): MintRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     obj.nft_schema_code = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.token_id = message.tokenId === "" ? undefined : message.tokenId;
-    obj.required_confirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
+    obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
-    obj.current_confirm = !message.currentConfirm.isZero() ? (message.currentConfirm?.toString)() : undefined;
+    obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
     if (message.confirmers) {
       obj.confirmers = message.confirmers.map(e => e);
     } else {
@@ -220,7 +220,7 @@ export const MintRequest = {
     } else {
       obj.data_hashes = message.dataHashes;
     }
-    obj.expired_height = !message.expiredHeight.isZero() ? (message.expiredHeight?.toString)() : undefined;
+    obj.expired_height = !message.expiredHeight.isZero() ? message.expiredHeight?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MintRequestAminoMsg): MintRequest {
@@ -234,7 +234,7 @@ export const MintRequest = {
   },
   toProtoMsg(message: MintRequest): MintRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.MintRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest",
       value: MintRequest.encode(message).finish()
     };
   }

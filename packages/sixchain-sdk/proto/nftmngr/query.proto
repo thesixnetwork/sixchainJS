@@ -1,5 +1,5 @@
 syntax = "proto3";
-package thesixnetwork.sixnft.nftmngr;
+package thesixnetwork.sixprotocol.nftmngr;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
@@ -17,10 +17,12 @@ import "nftmngr/action_executor.proto";
 import "nftmngr/schema_attribute.proto";
 import "nftmngr/action_of_schema.proto";
 import "nftmngr/executor_of_schema.proto";
-// this line is used by starport scaffolding # 1
+import "nftmngr/virtual_action.proto";
 import "nftmngr/nft_data.proto";
+import "nftmngr/virtual_schema.proto";
+// this line is used by starport scaffolding # 1
 
-option go_package = "github.com/thesixnetwork/sixnft/x/nftmngr/types";
+option go_package = "github.com/thesixnetwork/six-protocol/x/nftmngr/types";
 
 // Query defines the gRPC querier service.
 service Query {
@@ -190,6 +192,55 @@ service Query {
         "/thesixnetwork/sixnft/nftmngr/executor_of_schema";
   }
 
+  // Queries a Virtual by index
+  rpc VirtualAction(QueryGetVirtualActionRequest)
+      returns (QueryGetVirtualActionResponse) {
+    option (google.api.http).get =
+        "/thesixnetwork/sixnft/nftmngr/virtual_action/{nftSchemaCode}";
+  }
+
+  // Queries a list of Virtual items.
+  rpc VirtualActionAll(QueryAllVirtualActionRequest)
+      returns (QueryAllVirtualActionResponse) {
+    option (google.api.http).get =
+        "/thesixnetwork/sixnft/nftmngr/virtual_action";
+  }
+
+  // Queries a VirtualSchema by index.
+  rpc VirtualSchema(QueryGetVirtualSchemaRequest)
+      returns (QueryGetVirtualSchemaResponse) {
+    option (google.api.http).get =
+        "/thesixnetwork/sixnft/nftmngr/virtual_schema/{nftSchemaCode}";
+  }
+
+  // Queries a list of VirtualSchema items.
+  rpc VirtualSchemaAll(QueryAllVirtualSchemaRequest)
+      returns (QueryAllVirtualSchemaResponse) {
+    option (google.api.http).get =
+        "/thesixnetwork/sixnft/nftmngr/virtual_schema";
+  }
+
+  // Queries a VirtualSchemaProposal by index.
+  rpc VirtualSchemaProposal(QueryGetVirtualSchemaProposalRequest)
+      returns (QueryGetVirtualSchemaProposalResponse) {
+    option (google.api.http).get =
+        "/thesixnetwork/sixnft/nftmngr/virtual_schema_proposal/{index}";
+  }
+
+  // Queries a list of VirtualSchemaProposal items.
+  rpc VirtualSchemaProposalAll(QueryAllVirtualSchemaProposalRequest)
+      returns (QueryAllVirtualSchemaProposalResponse) {
+    option (google.api.http).get =
+        "/thesixnetwork/sixnft/nftmngr/virtual_schema_proposal";
+  }
+
+  // Queries a list of ListActiveProposal items.
+  rpc ListActiveProposal(QueryListActiveProposalRequest)
+      returns (QueryListActiveProposalResponse) {
+    option (google.api.http).get =
+        "/thesixnetwork/six-protocol/nftmngr/list_active_proposal";
+  }
+
   // this line is used by starport scaffolding # 2
 }
 
@@ -205,7 +256,7 @@ message QueryParamsResponse {
 message QueryGetNFTSchemaRequest { string code = 1; }
 
 message QueryGetNFTSchemaResponse {
-  NFTSchema nFTSchema = 1 [ (gogoproto.nullable) = false ];
+  NFTSchemaQueryResult nFTSchema = 1 [ (gogoproto.nullable) = false ];
 }
 
 message QueryAllNFTSchemaRequest {
@@ -213,7 +264,7 @@ message QueryAllNFTSchemaRequest {
 }
 
 message QueryAllNFTSchemaResponse {
-  repeated NFTSchema nFTSchema = 1 [ (gogoproto.nullable) = false ];
+  repeated NFTSchemaQueryResult nFTSchema = 1 [ (gogoproto.nullable) = false ];
   cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
@@ -392,6 +443,63 @@ message QueryAllExecutorOfSchemaResponse {
   repeated ExecutorOfSchema executorOfSchema = 1
       [ (gogoproto.nullable) = false ];
   cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetVirtualActionRequest {
+  string nftSchemaCode = 1;
+  string name = 2;
+}
+
+message QueryGetVirtualActionResponse {
+  VirtualAction virtualAction = 1 [ (gogoproto.nullable) = false ];
+}
+
+message QueryAllVirtualActionRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllVirtualActionResponse {
+  repeated VirtualAction virtualAction = 1 [ (gogoproto.nullable) = false ];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetVirtualSchemaRequest { string nftSchemaCode = 1; }
+
+message QueryGetVirtualSchemaResponse {
+  VirtualSchema virtualSchema = 1 [ (gogoproto.nullable) = false ];
+}
+
+message QueryAllVirtualSchemaRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllVirtualSchemaResponse {
+  repeated VirtualSchema virtualSchema = 1 [ (gogoproto.nullable) = false ];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetVirtualSchemaProposalRequest { string index = 1; }
+
+message QueryGetVirtualSchemaProposalResponse {
+  VirtualSchemaProposal virtualSchemaProposal = 1
+      [ (gogoproto.nullable) = false ];
+}
+
+message QueryAllVirtualSchemaProposalRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllVirtualSchemaProposalResponse {
+  repeated VirtualSchemaProposal virtualSchemaProposal = 1
+      [ (gogoproto.nullable) = false ];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryListActiveProposalRequest {}
+
+message QueryListActiveProposalResponse {
+  repeated VirtualSchemaProposal virtualSchemaProposal = 1
+      [ (gogoproto.nullable) = false ];
 }
 
 // this line is used by starport scaffolding # 3

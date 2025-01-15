@@ -7,7 +7,7 @@ export interface _SetSignerParams {
   expiredAt: Date;
 }
 export interface _SetSignerParamsProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle._SetSignerParams";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle._SetSignerParams";
   value: Uint8Array;
 }
 export interface _SetSignerParamsAmino {
@@ -15,7 +15,7 @@ export interface _SetSignerParamsAmino {
   expired_at?: string;
 }
 export interface _SetSignerParamsAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle._SetSignerParams";
+  type: "/thesixnetwork.sixprotocol.nftoracle._SetSignerParams";
   value: _SetSignerParamsAmino;
 }
 export interface _SetSignerParamsSDKType {
@@ -28,7 +28,7 @@ export interface BindedSigner {
   actorCount: Long;
 }
 export interface BindedSignerProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.BindedSigner";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.BindedSigner";
   value: Uint8Array;
 }
 export interface BindedSignerAmino {
@@ -37,7 +37,7 @@ export interface BindedSignerAmino {
   actorCount?: string;
 }
 export interface BindedSignerAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.BindedSigner";
+  type: "/thesixnetwork.sixprotocol.nftoracle.BindedSigner";
   value: BindedSignerAmino;
 }
 export interface BindedSignerSDKType {
@@ -52,7 +52,7 @@ function createBase_SetSignerParams(): _SetSignerParams {
   };
 }
 export const _SetSignerParams = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle._SetSignerParams",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle._SetSignerParams",
   encode(message: _SetSignerParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.actorAddress !== "") {
       writer.uint32(10).string(message.actorAddress);
@@ -115,7 +115,7 @@ export const _SetSignerParams = {
   },
   toProtoMsg(message: _SetSignerParams): _SetSignerParamsProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle._SetSignerParams",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle._SetSignerParams",
       value: _SetSignerParams.encode(message).finish()
     };
   }
@@ -128,7 +128,7 @@ function createBaseBindedSigner(): BindedSigner {
   };
 }
 export const BindedSigner = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.BindedSigner",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.BindedSigner",
   encode(message: BindedSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.ownerAddress !== "") {
       writer.uint32(10).string(message.ownerAddress);
@@ -190,7 +190,7 @@ export const BindedSigner = {
     } else {
       obj.signers = message.signers;
     }
-    obj.actorCount = !message.actorCount.isZero() ? (message.actorCount?.toString)() : undefined;
+    obj.actorCount = !message.actorCount.isZero() ? message.actorCount?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: BindedSignerAminoMsg): BindedSigner {
@@ -204,7 +204,7 @@ export const BindedSigner = {
   },
   toProtoMsg(message: BindedSigner): BindedSignerProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.BindedSigner",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.BindedSigner",
       value: BindedSigner.encode(message).finish()
     };
   }

@@ -5,7 +5,7 @@ export interface MapTokenToMinter {
   minter: string;
 }
 export interface MapTokenToMinterProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MapTokenToMinter";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter";
   value: Uint8Array;
 }
 export interface MapTokenToMinterAmino {
@@ -13,7 +13,7 @@ export interface MapTokenToMinterAmino {
   minter?: string;
 }
 export interface MapTokenToMinterAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MapTokenToMinter";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter";
   value: MapTokenToMinterAmino;
 }
 export interface MapTokenToMinterSDKType {
@@ -25,7 +25,7 @@ export interface MetadataCreator {
   metadataMintedBy: MapTokenToMinter[];
 }
 export interface MetadataCreatorProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MetadataCreator";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MetadataCreator";
   value: Uint8Array;
 }
 export interface MetadataCreatorAmino {
@@ -33,7 +33,7 @@ export interface MetadataCreatorAmino {
   metadataMintedBy?: MapTokenToMinterAmino[];
 }
 export interface MetadataCreatorAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MetadataCreator";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MetadataCreator";
   value: MetadataCreatorAmino;
 }
 export interface MetadataCreatorSDKType {
@@ -47,7 +47,7 @@ function createBaseMapTokenToMinter(): MapTokenToMinter {
   };
 }
 export const MapTokenToMinter = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MapTokenToMinter",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter",
   encode(message: MapTokenToMinter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.tokenId !== "") {
       writer.uint32(10).string(message.tokenId);
@@ -110,7 +110,7 @@ export const MapTokenToMinter = {
   },
   toProtoMsg(message: MapTokenToMinter): MapTokenToMinterProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MapTokenToMinter",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter",
       value: MapTokenToMinter.encode(message).finish()
     };
   }
@@ -122,7 +122,7 @@ function createBaseMetadataCreator(): MetadataCreator {
   };
 }
 export const MetadataCreator = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MetadataCreator",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MetadataCreator",
   encode(message: MetadataCreator, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -187,7 +187,7 @@ export const MetadataCreator = {
   },
   toProtoMsg(message: MetadataCreator): MetadataCreatorProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MetadataCreator",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MetadataCreator",
       value: MetadataCreator.encode(message).finish()
     };
   }

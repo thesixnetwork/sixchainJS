@@ -1,10 +1,10 @@
 syntax = "proto3";
-package thesixnetwork.sixnft.nftoracle;
+package thesixnetwork.sixprotocol.nftoracle;
 import "nftoracle/request.proto";
 import "gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/thesixnetwork/sixnft/x/nftoracle/types";
+option go_package = "github.com/thesixnetwork/six-protocol/x/nftoracle/types";
 
 message OriginContractParam {
   string chain = 1;

@@ -1,9 +1,10 @@
 //@ts-nocheck
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgSetValidatorApproval, MsgSetValidatorApprovalResponse, MsgCreateValidator, MsgCreateValidatorResponse, MsgEditValidator, MsgEditValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgUndelegate, MsgUndelegateResponse } from "./tx";
+import { MsgSetValidatorApproval, MsgSetValidatorApprovalResponse, MsgCreateValidator, MsgCreateValidatorResponse, MsgEditValidator, MsgEditValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgUndelegate, MsgUndelegateResponse, MsgCreateWhitelistDelegator, MsgCreateWhitelistdelegatorResponse, MsgDeleteWhitelistDelegator, MsgDeleteWhitelistdelegatorResponse } from "./tx";
 /** Msg defines the staking Msg service. */
 export interface Msg {
+  /** Set who allow to create validator */
   setValidatorApproval(request: MsgSetValidatorApproval): Promise<MsgSetValidatorApprovalResponse>;
   /** CreateValidator defines a method for creating a new validator. */
   createValidator(request: MsgCreateValidator): Promise<MsgCreateValidatorResponse>;
@@ -24,6 +25,10 @@ export interface Msg {
    * delegate and a validator.
    */
   undelegate(request: MsgUndelegate): Promise<MsgUndelegateResponse>;
+  /** create white list for special delegator */
+  createWhitelistdelegator(request: MsgCreateWhitelistDelegator): Promise<MsgCreateWhitelistdelegatorResponse>;
+  /** delete white list for special delegator */
+  deleteWhitelistdelegator(request: MsgDeleteWhitelistDelegator): Promise<MsgDeleteWhitelistdelegatorResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -35,6 +40,8 @@ export class MsgClientImpl implements Msg {
     this.delegate = this.delegate.bind(this);
     this.beginRedelegate = this.beginRedelegate.bind(this);
     this.undelegate = this.undelegate.bind(this);
+    this.createWhitelistdelegator = this.createWhitelistdelegator.bind(this);
+    this.deleteWhitelistdelegator = this.deleteWhitelistdelegator.bind(this);
   }
   setValidatorApproval(request: MsgSetValidatorApproval): Promise<MsgSetValidatorApprovalResponse> {
     const data = MsgSetValidatorApproval.encode(request).finish();
@@ -65,5 +72,15 @@ export class MsgClientImpl implements Msg {
     const data = MsgUndelegate.encode(request).finish();
     const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "Undelegate", data);
     return promise.then(data => MsgUndelegateResponse.decode(new _m0.Reader(data)));
+  }
+  createWhitelistdelegator(request: MsgCreateWhitelistDelegator): Promise<MsgCreateWhitelistdelegatorResponse> {
+    const data = MsgCreateWhitelistDelegator.encode(request).finish();
+    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "CreateWhitelistdelegator", data);
+    return promise.then(data => MsgCreateWhitelistdelegatorResponse.decode(new _m0.Reader(data)));
+  }
+  deleteWhitelistdelegator(request: MsgDeleteWhitelistDelegator): Promise<MsgDeleteWhitelistdelegatorResponse> {
+    const data = MsgDeleteWhitelistDelegator.encode(request).finish();
+    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "DeleteWhitelistdelegator", data);
+    return promise.then(data => MsgDeleteWhitelistdelegatorResponse.decode(new _m0.Reader(data)));
   }
 }

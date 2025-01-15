@@ -8,7 +8,7 @@ export interface ActionParameter {
   value: string;
 }
 export interface ActionParameterProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionParameter";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionParameter";
   value: Uint8Array;
 }
 export interface ActionParameterAmino {
@@ -16,7 +16,7 @@ export interface ActionParameterAmino {
   value?: string;
 }
 export interface ActionParameterAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.ActionParameter";
+  type: "/thesixnetwork.sixprotocol.nftoracle.ActionParameter";
   value: ActionParameterAmino;
 }
 export interface ActionParameterSDKType {
@@ -33,7 +33,7 @@ export interface ActionOracleParam {
   onBehalfOf: string;
 }
 export interface ActionOracleParamProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionOracleParam";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam";
   value: Uint8Array;
 }
 export interface ActionOracleParamAmino {
@@ -46,7 +46,7 @@ export interface ActionOracleParamAmino {
   on_behalf_of?: string;
 }
 export interface ActionOracleParamAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.ActionOracleParam";
+  type: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam";
   value: ActionOracleParamAmino;
 }
 export interface ActionOracleParamSDKType {
@@ -77,7 +77,7 @@ export interface ActionOracleRequest {
   executionErrorMessage: string;
 }
 export interface ActionOracleRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionOracleRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest";
   value: Uint8Array;
 }
 export interface ActionOracleRequestAmino {
@@ -99,7 +99,7 @@ export interface ActionOracleRequestAmino {
   execution_error_message?: string;
 }
 export interface ActionOracleRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.ActionOracleRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest";
   value: ActionOracleRequestAmino;
 }
 export interface ActionOracleRequestSDKType {
@@ -127,7 +127,7 @@ function createBaseActionParameter(): ActionParameter {
   };
 }
 export const ActionParameter = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionParameter",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionParameter",
   encode(message: ActionParameter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -190,7 +190,7 @@ export const ActionParameter = {
   },
   toProtoMsg(message: ActionParameter): ActionParameterProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionParameter",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionParameter",
       value: ActionParameter.encode(message).finish()
     };
   }
@@ -207,7 +207,7 @@ function createBaseActionOracleParam(): ActionOracleParam {
   };
 }
 export const ActionOracleParam = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionOracleParam",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam",
   encode(message: ActionOracleParam, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -327,7 +327,7 @@ export const ActionOracleParam = {
   },
   toProtoMsg(message: ActionOracleParam): ActionOracleParamProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionOracleParam",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam",
       value: ActionOracleParam.encode(message).finish()
     };
   }
@@ -353,7 +353,7 @@ function createBaseActionOracleRequest(): ActionOracleRequest {
   };
 }
 export const ActionOracleRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionOracleRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest",
   encode(message: ActionOracleRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -535,7 +535,7 @@ export const ActionOracleRequest = {
   },
   toAmino(message: ActionOracleRequest): ActionOracleRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     obj.nft_schema_code = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.token_id = message.tokenId === "" ? undefined : message.tokenId;
     obj.action = message.action === "" ? undefined : message.action;
@@ -546,9 +546,9 @@ export const ActionOracleRequest = {
     }
     obj.caller = message.caller === "" ? undefined : message.caller;
     obj.ref_id = message.refId === "" ? undefined : message.refId;
-    obj.required_confirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
+    obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
-    obj.current_confirm = !message.currentConfirm.isZero() ? (message.currentConfirm?.toString)() : undefined;
+    obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
     if (message.confirmers) {
       obj.confirmers = message.confirmers.map(e => e);
     } else {
@@ -561,7 +561,7 @@ export const ActionOracleRequest = {
     } else {
       obj.data_hashes = message.dataHashes;
     }
-    obj.expired_height = !message.expiredHeight.isZero() ? (message.expiredHeight?.toString)() : undefined;
+    obj.expired_height = !message.expiredHeight.isZero() ? message.expiredHeight?.toString() : undefined;
     obj.execution_error_message = message.executionErrorMessage === "" ? undefined : message.executionErrorMessage;
     return obj;
   },
@@ -576,7 +576,7 @@ export const ActionOracleRequest = {
   },
   toProtoMsg(message: ActionOracleRequest): ActionOracleRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionOracleRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest",
       value: ActionOracleRequest.encode(message).finish()
     };
   }

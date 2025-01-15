@@ -6,7 +6,7 @@ export interface MsgGrantPermission {
   grantee: string;
 }
 export interface MsgGrantPermissionProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermission";
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission";
   value: Uint8Array;
 }
 export interface MsgGrantPermissionAmino {
@@ -15,7 +15,7 @@ export interface MsgGrantPermissionAmino {
   grantee?: string;
 }
 export interface MsgGrantPermissionAminoMsg {
-  type: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermission";
+  type: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission";
   value: MsgGrantPermissionAmino;
 }
 export interface MsgGrantPermissionSDKType {
@@ -27,14 +27,14 @@ export interface MsgGrantPermissionResponse {
   grantee: string;
 }
 export interface MsgGrantPermissionResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermissionResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermissionResponse";
   value: Uint8Array;
 }
 export interface MsgGrantPermissionResponseAmino {
   grantee?: string;
 }
 export interface MsgGrantPermissionResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermissionResponse";
+  type: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermissionResponse";
   value: MsgGrantPermissionResponseAmino;
 }
 export interface MsgGrantPermissionResponseSDKType {
@@ -46,7 +46,7 @@ export interface MsgRevokePermission {
   revokee: string;
 }
 export interface MsgRevokePermissionProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermission";
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission";
   value: Uint8Array;
 }
 export interface MsgRevokePermissionAmino {
@@ -55,7 +55,7 @@ export interface MsgRevokePermissionAmino {
   revokee?: string;
 }
 export interface MsgRevokePermissionAminoMsg {
-  type: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermission";
+  type: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission";
   value: MsgRevokePermissionAmino;
 }
 export interface MsgRevokePermissionSDKType {
@@ -67,14 +67,14 @@ export interface MsgRevokePermissionResponse {
   revokee: string;
 }
 export interface MsgRevokePermissionResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermissionResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermissionResponse";
   value: Uint8Array;
 }
 export interface MsgRevokePermissionResponseAmino {
   revokee?: string;
 }
 export interface MsgRevokePermissionResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermissionResponse";
+  type: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermissionResponse";
   value: MsgRevokePermissionResponseAmino;
 }
 export interface MsgRevokePermissionResponseSDKType {
@@ -88,7 +88,7 @@ function createBaseMsgGrantPermission(): MsgGrantPermission {
   };
 }
 export const MsgGrantPermission = {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermission",
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission",
   encode(message: MsgGrantPermission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -162,7 +162,7 @@ export const MsgGrantPermission = {
   },
   toProtoMsg(message: MsgGrantPermission): MsgGrantPermissionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermission",
+      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission",
       value: MsgGrantPermission.encode(message).finish()
     };
   }
@@ -173,7 +173,7 @@ function createBaseMsgGrantPermissionResponse(): MsgGrantPermissionResponse {
   };
 }
 export const MsgGrantPermissionResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermissionResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermissionResponse",
   encode(message: MsgGrantPermissionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.grantee !== "") {
       writer.uint32(10).string(message.grantee);
@@ -225,7 +225,7 @@ export const MsgGrantPermissionResponse = {
   },
   toProtoMsg(message: MsgGrantPermissionResponse): MsgGrantPermissionResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermissionResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermissionResponse",
       value: MsgGrantPermissionResponse.encode(message).finish()
     };
   }
@@ -238,7 +238,7 @@ function createBaseMsgRevokePermission(): MsgRevokePermission {
   };
 }
 export const MsgRevokePermission = {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermission",
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission",
   encode(message: MsgRevokePermission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -312,7 +312,7 @@ export const MsgRevokePermission = {
   },
   toProtoMsg(message: MsgRevokePermission): MsgRevokePermissionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermission",
+      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission",
       value: MsgRevokePermission.encode(message).finish()
     };
   }
@@ -323,7 +323,7 @@ function createBaseMsgRevokePermissionResponse(): MsgRevokePermissionResponse {
   };
 }
 export const MsgRevokePermissionResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermissionResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermissionResponse",
   encode(message: MsgRevokePermissionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.revokee !== "") {
       writer.uint32(10).string(message.revokee);
@@ -375,7 +375,7 @@ export const MsgRevokePermissionResponse = {
   },
   toProtoMsg(message: MsgRevokePermissionResponse): MsgRevokePermissionResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermissionResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermissionResponse",
       value: MsgRevokePermissionResponse.encode(message).finish()
     };
   }

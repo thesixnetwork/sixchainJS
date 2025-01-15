@@ -35,8 +35,7 @@ export const createRPCQueryClient = async ({
         v1beta1: (await import("../cosmos/params/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
       staking: {
-        v1beta1: (await import("../cosmos/staking/v1beta1/query.rpc.Query")).createRpcQueryExtension(client),
-        v2beta1: (await import("../cosmos/staking/v2beta1/query.rpc.Query")).createRpcQueryExtension(client)
+        v1beta1: (await import("../cosmos/staking/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
       tx: {
         v1beta1: (await import("../cosmos/tx/v1beta1/service.rpc.Service")).createRpcQueryExtension(client)

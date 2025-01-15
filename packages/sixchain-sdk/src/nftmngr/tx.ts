@@ -1,5 +1,8 @@
 //@ts-nocheck
+import { ProposalType, VirtualSchemaRegistryRequest, VirtualSchemaRegistryRequestAmino, VirtualSchemaRegistryRequestSDKType, RegistryStatus } from "./virtual_schema";
+import { Action, ActionAmino, ActionSDKType } from "./action";
 import { Any, AnyAmino, AnySDKType } from "../google/protobuf/any";
+import { VirtualAction, VirtualActionAmino, VirtualActionSDKType } from "./virtual_action";
 import * as _m0 from "protobufjs/minimal";
 export enum AttributeLocation {
   NFT_ATTRIBUTE = 0,
@@ -96,7 +99,7 @@ export interface MsgCreateNFTSchema {
   nftSchemaBase64: string;
 }
 export interface MsgCreateNFTSchemaProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchema";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateNFTSchema";
   value: Uint8Array;
 }
 export interface MsgCreateNFTSchemaAmino {
@@ -104,7 +107,7 @@ export interface MsgCreateNFTSchemaAmino {
   nftSchemaBase64?: string;
 }
 export interface MsgCreateNFTSchemaAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchema";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateNFTSchema";
   value: MsgCreateNFTSchemaAmino;
 }
 export interface MsgCreateNFTSchemaSDKType {
@@ -115,14 +118,14 @@ export interface MsgCreateNFTSchemaResponse {
   code: string;
 }
 export interface MsgCreateNFTSchemaResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchemaResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateNFTSchemaResponse";
   value: Uint8Array;
 }
 export interface MsgCreateNFTSchemaResponseAmino {
   code?: string;
 }
 export interface MsgCreateNFTSchemaResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchemaResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateNFTSchemaResponse";
   value: MsgCreateNFTSchemaResponseAmino;
 }
 export interface MsgCreateNFTSchemaResponseSDKType {
@@ -135,7 +138,7 @@ export interface MsgCreateMetadata {
   base64NFTData: string;
 }
 export interface MsgCreateMetadataProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMetadata";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateMetadata";
   value: Uint8Array;
 }
 export interface MsgCreateMetadataAmino {
@@ -145,7 +148,7 @@ export interface MsgCreateMetadataAmino {
   base64NFTData?: string;
 }
 export interface MsgCreateMetadataAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgCreateMetadata";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateMetadata";
   value: MsgCreateMetadataAmino;
 }
 export interface MsgCreateMetadataSDKType {
@@ -159,7 +162,7 @@ export interface MsgCreateMetadataResponse {
   tokenId: string;
 }
 export interface MsgCreateMetadataResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMetadataResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateMetadataResponse";
   value: Uint8Array;
 }
 export interface MsgCreateMetadataResponseAmino {
@@ -167,7 +170,7 @@ export interface MsgCreateMetadataResponseAmino {
   tokenId?: string;
 }
 export interface MsgCreateMetadataResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgCreateMetadataResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateMetadataResponse";
   value: MsgCreateMetadataResponseAmino;
 }
 export interface MsgCreateMetadataResponseSDKType {
@@ -179,7 +182,7 @@ export interface OpenseaAttribute {
   value?: Any;
 }
 export interface OpenseaAttributeProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.OpenseaAttribute";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OpenseaAttribute";
   value: Uint8Array;
 }
 export interface OpenseaAttributeAmino {
@@ -187,7 +190,7 @@ export interface OpenseaAttributeAmino {
   value?: AnyAmino;
 }
 export interface OpenseaAttributeAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.OpenseaAttribute";
+  type: "/thesixnetwork.sixprotocol.nftmngr.OpenseaAttribute";
   value: OpenseaAttributeAmino;
 }
 export interface OpenseaAttributeSDKType {
@@ -198,14 +201,14 @@ export interface UpdatedOpenseaAttributes {
   attributes: OpenseaAttribute[];
 }
 export interface UpdatedOpenseaAttributesProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.UpdatedOpenseaAttributes";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.UpdatedOpenseaAttributes";
   value: Uint8Array;
 }
 export interface UpdatedOpenseaAttributesAmino {
   attributes?: OpenseaAttributeAmino[];
 }
 export interface UpdatedOpenseaAttributesAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.UpdatedOpenseaAttributes";
+  type: "/thesixnetwork.sixprotocol.nftmngr.UpdatedOpenseaAttributes";
   value: UpdatedOpenseaAttributesAmino;
 }
 export interface UpdatedOpenseaAttributesSDKType {
@@ -215,14 +218,14 @@ export interface UpdatedOriginData {
   opensea?: UpdatedOpenseaAttributes;
 }
 export interface UpdatedOriginDataProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.UpdatedOriginData";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.UpdatedOriginData";
   value: Uint8Array;
 }
 export interface UpdatedOriginDataAmino {
   opensea?: UpdatedOpenseaAttributesAmino;
 }
 export interface UpdatedOriginDataAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.UpdatedOriginData";
+  type: "/thesixnetwork.sixprotocol.nftmngr.UpdatedOriginData";
   value: UpdatedOriginDataAmino;
 }
 export interface UpdatedOriginDataSDKType {
@@ -234,7 +237,7 @@ export interface ActionParameter {
   value: string;
 }
 export interface ActionParameterProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParameter";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionParameter";
   value: Uint8Array;
 }
 /** ActionParameter */
@@ -243,7 +246,7 @@ export interface ActionParameterAmino {
   value?: string;
 }
 export interface ActionParameterAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.ActionParameter";
+  type: "/thesixnetwork.sixprotocol.nftmngr.ActionParameter";
   value: ActionParameterAmino;
 }
 /** ActionParameter */
@@ -260,7 +263,7 @@ export interface MsgPerformActionByAdmin {
   parameters: ActionParameter[];
 }
 export interface MsgPerformActionByAdminProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdmin";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformActionByAdmin";
   value: Uint8Array;
 }
 export interface MsgPerformActionByAdminAmino {
@@ -272,7 +275,7 @@ export interface MsgPerformActionByAdminAmino {
   parameters?: ActionParameterAmino[];
 }
 export interface MsgPerformActionByAdminAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdmin";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformActionByAdmin";
   value: MsgPerformActionByAdminAmino;
 }
 export interface MsgPerformActionByAdminSDKType {
@@ -288,7 +291,7 @@ export interface MsgPerformActionByAdminResponse {
   tokenId: string;
 }
 export interface MsgPerformActionByAdminResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdminResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformActionByAdminResponse";
   value: Uint8Array;
 }
 export interface MsgPerformActionByAdminResponseAmino {
@@ -296,7 +299,7 @@ export interface MsgPerformActionByAdminResponseAmino {
   token_id?: string;
 }
 export interface MsgPerformActionByAdminResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdminResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformActionByAdminResponse";
   value: MsgPerformActionByAdminResponseAmino;
 }
 export interface MsgPerformActionByAdminResponseSDKType {
@@ -310,7 +313,7 @@ export interface MsgAddAttribute {
   base64NewAttriuteDefenition: string;
 }
 export interface MsgAddAttributeProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddAttribute";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAttribute";
   value: Uint8Array;
 }
 export interface MsgAddAttributeAmino {
@@ -320,7 +323,7 @@ export interface MsgAddAttributeAmino {
   base64NewAttriuteDefenition?: string;
 }
 export interface MsgAddAttributeAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgAddAttribute";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAttribute";
   value: MsgAddAttributeAmino;
 }
 export interface MsgAddAttributeSDKType {
@@ -334,7 +337,7 @@ export interface MsgAddAttributeResponse {
   name: string;
 }
 export interface MsgAddAttributeResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddAttributeResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAttributeResponse";
   value: Uint8Array;
 }
 export interface MsgAddAttributeResponseAmino {
@@ -342,7 +345,7 @@ export interface MsgAddAttributeResponseAmino {
   name?: string;
 }
 export interface MsgAddAttributeResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgAddAttributeResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAttributeResponse";
   value: MsgAddAttributeResponseAmino;
 }
 export interface MsgAddAttributeResponseSDKType {
@@ -355,7 +358,7 @@ export interface MsgAddAction {
   base64NewAction: string;
 }
 export interface MsgAddActionProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddAction";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAction";
   value: Uint8Array;
 }
 export interface MsgAddActionAmino {
@@ -364,7 +367,7 @@ export interface MsgAddActionAmino {
   base64NewAction?: string;
 }
 export interface MsgAddActionAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgAddAction";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAction";
   value: MsgAddActionAmino;
 }
 export interface MsgAddActionSDKType {
@@ -377,7 +380,7 @@ export interface MsgAddActionResponse {
   name: string;
 }
 export interface MsgAddActionResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddActionResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddActionResponse";
   value: Uint8Array;
 }
 export interface MsgAddActionResponseAmino {
@@ -385,7 +388,7 @@ export interface MsgAddActionResponseAmino {
   name?: string;
 }
 export interface MsgAddActionResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgAddActionResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgAddActionResponse";
   value: MsgAddActionResponseAmino;
 }
 export interface MsgAddActionResponseSDKType {
@@ -398,7 +401,7 @@ export interface MsgSetBaseUri {
   newBaseUri: string;
 }
 export interface MsgSetBaseUriProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetBaseUri";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetBaseUri";
   value: Uint8Array;
 }
 export interface MsgSetBaseUriAmino {
@@ -407,7 +410,7 @@ export interface MsgSetBaseUriAmino {
   newBaseUri?: string;
 }
 export interface MsgSetBaseUriAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetBaseUri";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetBaseUri";
   value: MsgSetBaseUriAmino;
 }
 export interface MsgSetBaseUriSDKType {
@@ -420,7 +423,7 @@ export interface MsgSetBaseUriResponse {
   uri: string;
 }
 export interface MsgSetBaseUriResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetBaseUriResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetBaseUriResponse";
   value: Uint8Array;
 }
 export interface MsgSetBaseUriResponseAmino {
@@ -428,7 +431,7 @@ export interface MsgSetBaseUriResponseAmino {
   uri?: string;
 }
 export interface MsgSetBaseUriResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetBaseUriResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetBaseUriResponse";
   value: MsgSetBaseUriResponseAmino;
 }
 export interface MsgSetBaseUriResponseSDKType {
@@ -442,7 +445,7 @@ export interface MsgToggleAction {
   status: boolean;
 }
 export interface MsgToggleActionProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgToggleAction";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgToggleAction";
   value: Uint8Array;
 }
 export interface MsgToggleActionAmino {
@@ -452,7 +455,7 @@ export interface MsgToggleActionAmino {
   status?: boolean;
 }
 export interface MsgToggleActionAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgToggleAction";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgToggleAction";
   value: MsgToggleActionAmino;
 }
 export interface MsgToggleActionSDKType {
@@ -467,7 +470,7 @@ export interface MsgToggleActionResponse {
   status: boolean;
 }
 export interface MsgToggleActionResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgToggleActionResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgToggleActionResponse";
   value: Uint8Array;
 }
 export interface MsgToggleActionResponseAmino {
@@ -476,7 +479,7 @@ export interface MsgToggleActionResponseAmino {
   status?: boolean;
 }
 export interface MsgToggleActionResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgToggleActionResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgToggleActionResponse";
   value: MsgToggleActionResponseAmino;
 }
 export interface MsgToggleActionResponseSDKType {
@@ -490,7 +493,7 @@ export interface MsgChangeSchemaOwner {
   newOwner: string;
 }
 export interface MsgChangeSchemaOwnerProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeSchemaOwner";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeSchemaOwner";
   value: Uint8Array;
 }
 export interface MsgChangeSchemaOwnerAmino {
@@ -499,7 +502,7 @@ export interface MsgChangeSchemaOwnerAmino {
   newOwner?: string;
 }
 export interface MsgChangeSchemaOwnerAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgChangeSchemaOwner";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeSchemaOwner";
   value: MsgChangeSchemaOwnerAmino;
 }
 export interface MsgChangeSchemaOwnerSDKType {
@@ -512,7 +515,7 @@ export interface MsgChangeSchemaOwnerResponse {
   newOwner: string;
 }
 export interface MsgChangeSchemaOwnerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeSchemaOwnerResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeSchemaOwnerResponse";
   value: Uint8Array;
 }
 export interface MsgChangeSchemaOwnerResponseAmino {
@@ -520,7 +523,7 @@ export interface MsgChangeSchemaOwnerResponseAmino {
   newOwner?: string;
 }
 export interface MsgChangeSchemaOwnerResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgChangeSchemaOwnerResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeSchemaOwnerResponse";
   value: MsgChangeSchemaOwnerResponseAmino;
 }
 export interface MsgChangeSchemaOwnerResponseSDKType {
@@ -532,7 +535,7 @@ export interface MsgResyncAttributesResponse {
   tokenId: string;
 }
 export interface MsgResyncAttributesResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgResyncAttributesResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgResyncAttributesResponse";
   value: Uint8Array;
 }
 export interface MsgResyncAttributesResponseAmino {
@@ -540,7 +543,7 @@ export interface MsgResyncAttributesResponseAmino {
   tokenId?: string;
 }
 export interface MsgResyncAttributesResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgResyncAttributesResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgResyncAttributesResponse";
   value: MsgResyncAttributesResponseAmino;
 }
 export interface MsgResyncAttributesResponseSDKType {
@@ -554,7 +557,7 @@ export interface MsgShowAttributes {
   attributeNames: string[];
 }
 export interface MsgShowAttributesProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgShowAttributes";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgShowAttributes";
   value: Uint8Array;
 }
 export interface MsgShowAttributesAmino {
@@ -564,7 +567,7 @@ export interface MsgShowAttributesAmino {
   attributeNames?: string[];
 }
 export interface MsgShowAttributesAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgShowAttributes";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgShowAttributes";
   value: MsgShowAttributesAmino;
 }
 export interface MsgShowAttributesSDKType {
@@ -577,14 +580,14 @@ export interface MsgShowAttributesResponse {
   nftSchema: string;
 }
 export interface MsgShowAttributesResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgShowAttributesResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgShowAttributesResponse";
   value: Uint8Array;
 }
 export interface MsgShowAttributesResponseAmino {
   nftSchema?: string;
 }
 export interface MsgShowAttributesResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgShowAttributesResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgShowAttributesResponse";
   value: MsgShowAttributesResponseAmino;
 }
 export interface MsgShowAttributesResponseSDKType {
@@ -596,7 +599,7 @@ export interface MsgResyncAttributes {
   tokenId: string;
 }
 export interface MsgResyncAttributesProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgResyncAttributes";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgResyncAttributes";
   value: Uint8Array;
 }
 export interface MsgResyncAttributesAmino {
@@ -605,7 +608,7 @@ export interface MsgResyncAttributesAmino {
   tokenId?: string;
 }
 export interface MsgResyncAttributesAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgResyncAttributes";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgResyncAttributes";
   value: MsgResyncAttributesAmino;
 }
 export interface MsgResyncAttributesSDKType {
@@ -619,7 +622,7 @@ export interface MsgSetFeeConfig {
   feeSubject: FeeSubject;
 }
 export interface MsgSetFeeConfigProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetFeeConfig";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetFeeConfig";
   value: Uint8Array;
 }
 export interface MsgSetFeeConfigAmino {
@@ -628,7 +631,7 @@ export interface MsgSetFeeConfigAmino {
   feeSubject?: FeeSubject;
 }
 export interface MsgSetFeeConfigAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetFeeConfig";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetFeeConfig";
   value: MsgSetFeeConfigAmino;
 }
 export interface MsgSetFeeConfigSDKType {
@@ -638,12 +641,12 @@ export interface MsgSetFeeConfigSDKType {
 }
 export interface MsgSetFeeConfigResponse {}
 export interface MsgSetFeeConfigResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetFeeConfigResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetFeeConfigResponse";
   value: Uint8Array;
 }
 export interface MsgSetFeeConfigResponseAmino {}
 export interface MsgSetFeeConfigResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetFeeConfigResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetFeeConfigResponse";
   value: MsgSetFeeConfigResponseAmino;
 }
 export interface MsgSetFeeConfigResponseSDKType {}
@@ -653,7 +656,7 @@ export interface MsgSetMintauth {
   authorizeTo: AuthorizeTo;
 }
 export interface MsgSetMintauthProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauth";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMintauth";
   value: Uint8Array;
 }
 export interface MsgSetMintauthAmino {
@@ -662,7 +665,7 @@ export interface MsgSetMintauthAmino {
   authorizeTo?: AuthorizeTo;
 }
 export interface MsgSetMintauthAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauth";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMintauth";
   value: MsgSetMintauthAmino;
 }
 export interface MsgSetMintauthSDKType {
@@ -674,14 +677,14 @@ export interface MsgSetMintauthResponse {
   nftSchemaCode: string;
 }
 export interface MsgSetMintauthResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauthResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMintauthResponse";
   value: Uint8Array;
 }
 export interface MsgSetMintauthResponseAmino {
   nftSchemaCode?: string;
 }
 export interface MsgSetMintauthResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauthResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMintauthResponse";
   value: MsgSetMintauthResponseAmino;
 }
 export interface MsgSetMintauthResponseSDKType {
@@ -693,7 +696,7 @@ export interface MsgChangeOrgOwner {
   toNewOwner: string;
 }
 export interface MsgChangeOrgOwnerProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeOrgOwner";
   value: Uint8Array;
 }
 export interface MsgChangeOrgOwnerAmino {
@@ -702,7 +705,7 @@ export interface MsgChangeOrgOwnerAmino {
   toNewOwner?: string;
 }
 export interface MsgChangeOrgOwnerAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeOrgOwner";
   value: MsgChangeOrgOwnerAmino;
 }
 export interface MsgChangeOrgOwnerSDKType {
@@ -716,7 +719,7 @@ export interface MsgChangeOrgOwnerResponse {
   newOwner: string;
 }
 export interface MsgChangeOrgOwnerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwnerResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeOrgOwnerResponse";
   value: Uint8Array;
 }
 export interface MsgChangeOrgOwnerResponseAmino {
@@ -725,7 +728,7 @@ export interface MsgChangeOrgOwnerResponseAmino {
   newOwner?: string;
 }
 export interface MsgChangeOrgOwnerResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwnerResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeOrgOwnerResponse";
   value: MsgChangeOrgOwnerResponseAmino;
 }
 export interface MsgChangeOrgOwnerResponseSDKType {
@@ -739,7 +742,7 @@ export interface MsgSetUriRetrievalMethod {
   newMethod: number;
 }
 export interface MsgSetUriRetrievalMethodProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetUriRetrievalMethod";
   value: Uint8Array;
 }
 export interface MsgSetUriRetrievalMethodAmino {
@@ -748,7 +751,7 @@ export interface MsgSetUriRetrievalMethodAmino {
   newMethod?: number;
 }
 export interface MsgSetUriRetrievalMethodAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetUriRetrievalMethod";
   value: MsgSetUriRetrievalMethodAmino;
 }
 export interface MsgSetUriRetrievalMethodSDKType {
@@ -761,7 +764,7 @@ export interface MsgSetUriRetrievalMethodResponse {
   newMethod: string;
 }
 export interface MsgSetUriRetrievalMethodResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethodResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetUriRetrievalMethodResponse";
   value: Uint8Array;
 }
 export interface MsgSetUriRetrievalMethodResponseAmino {
@@ -769,7 +772,7 @@ export interface MsgSetUriRetrievalMethodResponseAmino {
   newMethod?: string;
 }
 export interface MsgSetUriRetrievalMethodResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethodResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetUriRetrievalMethodResponse";
   value: MsgSetUriRetrievalMethodResponseAmino;
 }
 export interface MsgSetUriRetrievalMethodResponseSDKType {
@@ -782,7 +785,7 @@ export interface MsgSetOriginChain {
   newOriginChain: string;
 }
 export interface MsgSetOriginChainProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginChain";
   value: Uint8Array;
 }
 export interface MsgSetOriginChainAmino {
@@ -791,7 +794,7 @@ export interface MsgSetOriginChainAmino {
   newOriginChain?: string;
 }
 export interface MsgSetOriginChainAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginChain";
   value: MsgSetOriginChainAmino;
 }
 export interface MsgSetOriginChainSDKType {
@@ -804,7 +807,7 @@ export interface MsgSetOriginChainResponse {
   newOriginChain: string;
 }
 export interface MsgSetOriginChainResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChainResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginChainResponse";
   value: Uint8Array;
 }
 export interface MsgSetOriginChainResponseAmino {
@@ -812,7 +815,7 @@ export interface MsgSetOriginChainResponseAmino {
   newOriginChain?: string;
 }
 export interface MsgSetOriginChainResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChainResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginChainResponse";
   value: MsgSetOriginChainResponseAmino;
 }
 export interface MsgSetOriginChainResponseSDKType {
@@ -825,7 +828,7 @@ export interface MsgSetOriginContract {
   newContractAddress: string;
 }
 export interface MsgSetOriginContractProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginContract";
   value: Uint8Array;
 }
 export interface MsgSetOriginContractAmino {
@@ -834,7 +837,7 @@ export interface MsgSetOriginContractAmino {
   newContractAddress?: string;
 }
 export interface MsgSetOriginContractAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginContract";
   value: MsgSetOriginContractAmino;
 }
 export interface MsgSetOriginContractSDKType {
@@ -847,7 +850,7 @@ export interface MsgSetOriginContractResponse {
   newContractAddress: string;
 }
 export interface MsgSetOriginContractResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContractResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginContractResponse";
   value: Uint8Array;
 }
 export interface MsgSetOriginContractResponseAmino {
@@ -855,7 +858,7 @@ export interface MsgSetOriginContractResponseAmino {
   newContractAddress?: string;
 }
 export interface MsgSetOriginContractResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContractResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginContractResponse";
   value: MsgSetOriginContractResponseAmino;
 }
 export interface MsgSetOriginContractResponseSDKType {
@@ -868,7 +871,7 @@ export interface MsgSetAttributeOveriding {
   newOveridingType: number;
 }
 export interface MsgSetAttributeOveridingProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetAttributeOveriding";
   value: Uint8Array;
 }
 export interface MsgSetAttributeOveridingAmino {
@@ -877,7 +880,7 @@ export interface MsgSetAttributeOveridingAmino {
   newOveridingType?: number;
 }
 export interface MsgSetAttributeOveridingAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetAttributeOveriding";
   value: MsgSetAttributeOveridingAmino;
 }
 export interface MsgSetAttributeOveridingSDKType {
@@ -890,7 +893,7 @@ export interface MsgSetAttributeOveridingResponse {
   newOveriding: string;
 }
 export interface MsgSetAttributeOveridingResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveridingResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetAttributeOveridingResponse";
   value: Uint8Array;
 }
 export interface MsgSetAttributeOveridingResponseAmino {
@@ -898,7 +901,7 @@ export interface MsgSetAttributeOveridingResponseAmino {
   newOveriding?: string;
 }
 export interface MsgSetAttributeOveridingResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveridingResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetAttributeOveridingResponse";
   value: MsgSetAttributeOveridingResponseAmino;
 }
 export interface MsgSetAttributeOveridingResponseSDKType {
@@ -911,7 +914,7 @@ export interface MsgSetMetadataFormat {
   newFormat: string;
 }
 export interface MsgSetMetadataFormatProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMetadataFormat";
   value: Uint8Array;
 }
 export interface MsgSetMetadataFormatAmino {
@@ -920,7 +923,7 @@ export interface MsgSetMetadataFormatAmino {
   newFormat?: string;
 }
 export interface MsgSetMetadataFormatAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMetadataFormat";
   value: MsgSetMetadataFormatAmino;
 }
 export interface MsgSetMetadataFormatSDKType {
@@ -933,7 +936,7 @@ export interface MsgSetMetadataFormatResponse {
   newFormat: string;
 }
 export interface MsgSetMetadataFormatResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormatResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMetadataFormatResponse";
   value: Uint8Array;
 }
 export interface MsgSetMetadataFormatResponseAmino {
@@ -941,7 +944,7 @@ export interface MsgSetMetadataFormatResponseAmino {
   newFormat?: string;
 }
 export interface MsgSetMetadataFormatResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormatResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMetadataFormatResponse";
   value: MsgSetMetadataFormatResponseAmino;
 }
 export interface MsgSetMetadataFormatResponseSDKType {
@@ -954,7 +957,7 @@ export interface MsgCreateActionExecutor {
   executorAddress: string;
 }
 export interface MsgCreateActionExecutorProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateActionExecutor";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateActionExecutor";
   value: Uint8Array;
 }
 export interface MsgCreateActionExecutorAmino {
@@ -963,7 +966,7 @@ export interface MsgCreateActionExecutorAmino {
   executorAddress?: string;
 }
 export interface MsgCreateActionExecutorAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgCreateActionExecutor";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateActionExecutor";
   value: MsgCreateActionExecutorAmino;
 }
 export interface MsgCreateActionExecutorSDKType {
@@ -976,7 +979,7 @@ export interface MsgCreateActionExecutorResponse {
   executorAddress: string;
 }
 export interface MsgCreateActionExecutorResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateActionExecutorResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateActionExecutorResponse";
   value: Uint8Array;
 }
 export interface MsgCreateActionExecutorResponseAmino {
@@ -984,7 +987,7 @@ export interface MsgCreateActionExecutorResponseAmino {
   executorAddress?: string;
 }
 export interface MsgCreateActionExecutorResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgCreateActionExecutorResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateActionExecutorResponse";
   value: MsgCreateActionExecutorResponseAmino;
 }
 export interface MsgCreateActionExecutorResponseSDKType {
@@ -997,7 +1000,7 @@ export interface MsgUpdateActionExecutor {
   executorAddress: string;
 }
 export interface MsgUpdateActionExecutorProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionExecutor";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionExecutor";
   value: Uint8Array;
 }
 export interface MsgUpdateActionExecutorAmino {
@@ -1006,7 +1009,7 @@ export interface MsgUpdateActionExecutorAmino {
   executorAddress?: string;
 }
 export interface MsgUpdateActionExecutorAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionExecutor";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionExecutor";
   value: MsgUpdateActionExecutorAmino;
 }
 export interface MsgUpdateActionExecutorSDKType {
@@ -1019,7 +1022,7 @@ export interface MsgUpdateActionExecutorResponse {
   executorAddress: string;
 }
 export interface MsgUpdateActionExecutorResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionExecutorResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionExecutorResponse";
   value: Uint8Array;
 }
 export interface MsgUpdateActionExecutorResponseAmino {
@@ -1027,7 +1030,7 @@ export interface MsgUpdateActionExecutorResponseAmino {
   executorAddress?: string;
 }
 export interface MsgUpdateActionExecutorResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionExecutorResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionExecutorResponse";
   value: MsgUpdateActionExecutorResponseAmino;
 }
 export interface MsgUpdateActionExecutorResponseSDKType {
@@ -1040,7 +1043,7 @@ export interface MsgDeleteActionExecutor {
   executorAddress: string;
 }
 export interface MsgDeleteActionExecutorProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgDeleteActionExecutor";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteActionExecutor";
   value: Uint8Array;
 }
 export interface MsgDeleteActionExecutorAmino {
@@ -1049,7 +1052,7 @@ export interface MsgDeleteActionExecutorAmino {
   executorAddress?: string;
 }
 export interface MsgDeleteActionExecutorAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgDeleteActionExecutor";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteActionExecutor";
   value: MsgDeleteActionExecutorAmino;
 }
 export interface MsgDeleteActionExecutorSDKType {
@@ -1062,7 +1065,7 @@ export interface MsgDeleteActionExecutorResponse {
   executorAddress: string;
 }
 export interface MsgDeleteActionExecutorResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgDeleteActionExecutorResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteActionExecutorResponse";
   value: Uint8Array;
 }
 export interface MsgDeleteActionExecutorResponseAmino {
@@ -1070,7 +1073,7 @@ export interface MsgDeleteActionExecutorResponseAmino {
   executorAddress?: string;
 }
 export interface MsgDeleteActionExecutorResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgDeleteActionExecutorResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteActionExecutorResponse";
   value: MsgDeleteActionExecutorResponseAmino;
 }
 export interface MsgDeleteActionExecutorResponseSDKType {
@@ -1083,7 +1086,7 @@ export interface MsgUpdateSchemaAttribute {
   base64UpdateAttriuteDefenition: string;
 }
 export interface MsgUpdateSchemaAttributeProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateSchemaAttribute";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateSchemaAttribute";
   value: Uint8Array;
 }
 export interface MsgUpdateSchemaAttributeAmino {
@@ -1092,7 +1095,7 @@ export interface MsgUpdateSchemaAttributeAmino {
   Base64UpdateAttriuteDefenition?: string;
 }
 export interface MsgUpdateSchemaAttributeAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgUpdateSchemaAttribute";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateSchemaAttribute";
   value: MsgUpdateSchemaAttributeAmino;
 }
 export interface MsgUpdateSchemaAttributeSDKType {
@@ -1105,7 +1108,7 @@ export interface MsgUpdateSchemaAttributeResponse {
   name: string;
 }
 export interface MsgUpdateSchemaAttributeResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateSchemaAttributeResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateSchemaAttributeResponse";
   value: Uint8Array;
 }
 export interface MsgUpdateSchemaAttributeResponseAmino {
@@ -1113,7 +1116,7 @@ export interface MsgUpdateSchemaAttributeResponseAmino {
   name?: string;
 }
 export interface MsgUpdateSchemaAttributeResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgUpdateSchemaAttributeResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateSchemaAttributeResponse";
   value: MsgUpdateSchemaAttributeResponseAmino;
 }
 export interface MsgUpdateSchemaAttributeResponseSDKType {
@@ -1126,7 +1129,7 @@ export interface MsgUpdateAction {
   base64UpdateAction: string;
 }
 export interface MsgUpdateActionProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateAction";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateAction";
   value: Uint8Array;
 }
 export interface MsgUpdateActionAmino {
@@ -1135,7 +1138,7 @@ export interface MsgUpdateActionAmino {
   base64UpdateAction?: string;
 }
 export interface MsgUpdateActionAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgUpdateAction";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateAction";
   value: MsgUpdateActionAmino;
 }
 export interface MsgUpdateActionSDKType {
@@ -1148,7 +1151,7 @@ export interface MsgUpdateActionResponse {
   name: string;
 }
 export interface MsgUpdateActionResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionResponse";
   value: Uint8Array;
 }
 export interface MsgUpdateActionResponseAmino {
@@ -1156,13 +1159,303 @@ export interface MsgUpdateActionResponseAmino {
   name?: string;
 }
 export interface MsgUpdateActionResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionResponse";
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionResponse";
   value: MsgUpdateActionResponseAmino;
 }
 export interface MsgUpdateActionResponseSDKType {
   nftSchemaCode: string;
   name: string;
 }
+export interface MsgCreateVirtualAction {
+  creator: string;
+  nftSchemaCode: string;
+  newActions: Action[];
+}
+export interface MsgCreateVirtualActionProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateVirtualAction";
+  value: Uint8Array;
+}
+export interface MsgCreateVirtualActionAmino {
+  creator?: string;
+  nftSchemaCode?: string;
+  newActions?: ActionAmino[];
+}
+export interface MsgCreateVirtualActionAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateVirtualAction";
+  value: MsgCreateVirtualActionAmino;
+}
+export interface MsgCreateVirtualActionSDKType {
+  creator: string;
+  nftSchemaCode: string;
+  newActions: ActionSDKType[];
+}
+export interface MsgCreateVirtualActionResponse {
+  nftSchemaCode: string;
+  virtualAction: VirtualAction[];
+}
+export interface MsgCreateVirtualActionResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateVirtualActionResponse";
+  value: Uint8Array;
+}
+export interface MsgCreateVirtualActionResponseAmino {
+  nftSchemaCode?: string;
+  virtualAction?: VirtualActionAmino[];
+}
+export interface MsgCreateVirtualActionResponseAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateVirtualActionResponse";
+  value: MsgCreateVirtualActionResponseAmino;
+}
+export interface MsgCreateVirtualActionResponseSDKType {
+  nftSchemaCode: string;
+  virtualAction: VirtualActionSDKType[];
+}
+export interface MsgUpdateVirtualAction {
+  creator: string;
+  nftSchemaCode: string;
+  newActions: Action[];
+}
+export interface MsgUpdateVirtualActionProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateVirtualAction";
+  value: Uint8Array;
+}
+export interface MsgUpdateVirtualActionAmino {
+  creator?: string;
+  nftSchemaCode?: string;
+  newActions?: ActionAmino[];
+}
+export interface MsgUpdateVirtualActionAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateVirtualAction";
+  value: MsgUpdateVirtualActionAmino;
+}
+export interface MsgUpdateVirtualActionSDKType {
+  creator: string;
+  nftSchemaCode: string;
+  newActions: ActionSDKType[];
+}
+export interface MsgUpdateVirtualActionResponse {
+  nftSchemaCode: string;
+  virtualAction: VirtualAction[];
+}
+export interface MsgUpdateVirtualActionResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateVirtualActionResponse";
+  value: Uint8Array;
+}
+export interface MsgUpdateVirtualActionResponseAmino {
+  nftSchemaCode?: string;
+  virtualAction?: VirtualActionAmino[];
+}
+export interface MsgUpdateVirtualActionResponseAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateVirtualActionResponse";
+  value: MsgUpdateVirtualActionResponseAmino;
+}
+export interface MsgUpdateVirtualActionResponseSDKType {
+  nftSchemaCode: string;
+  virtualAction: VirtualActionSDKType[];
+}
+export interface MsgDeleteVirtualAction {
+  creator: string;
+  nftSchemaCode: string;
+  name: string;
+}
+export interface MsgDeleteVirtualActionProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteVirtualAction";
+  value: Uint8Array;
+}
+export interface MsgDeleteVirtualActionAmino {
+  creator?: string;
+  nftSchemaCode?: string;
+  name?: string;
+}
+export interface MsgDeleteVirtualActionAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteVirtualAction";
+  value: MsgDeleteVirtualActionAmino;
+}
+export interface MsgDeleteVirtualActionSDKType {
+  creator: string;
+  nftSchemaCode: string;
+  name: string;
+}
+export interface MsgDeleteVirtualActionResponse {
+  creator: string;
+  status: string;
+}
+export interface MsgDeleteVirtualActionResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteVirtualActionResponse";
+  value: Uint8Array;
+}
+export interface MsgDeleteVirtualActionResponseAmino {
+  creator?: string;
+  status?: string;
+}
+export interface MsgDeleteVirtualActionResponseAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteVirtualActionResponse";
+  value: MsgDeleteVirtualActionResponseAmino;
+}
+export interface MsgDeleteVirtualActionResponseSDKType {
+  creator: string;
+  status: string;
+}
+export interface MsgPerformVirtualAction {
+  creator: string;
+  nftSchemaName: string;
+  tokenIdMap: TokenIdMap[];
+  action: string;
+  refId: string;
+  parameters: ActionParameter[];
+}
+export interface MsgPerformVirtualActionProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformVirtualAction";
+  value: Uint8Array;
+}
+export interface MsgPerformVirtualActionAmino {
+  creator?: string;
+  nftSchemaName?: string;
+  tokenIdMap?: TokenIdMapAmino[];
+  action?: string;
+  refId?: string;
+  parameters?: ActionParameterAmino[];
+}
+export interface MsgPerformVirtualActionAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformVirtualAction";
+  value: MsgPerformVirtualActionAmino;
+}
+export interface MsgPerformVirtualActionSDKType {
+  creator: string;
+  nftSchemaName: string;
+  tokenIdMap: TokenIdMapSDKType[];
+  action: string;
+  refId: string;
+  parameters: ActionParameterSDKType[];
+}
+export interface MsgPerformVirtualActionResponse {
+  nftSchemaName: string;
+}
+export interface MsgPerformVirtualActionResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformVirtualActionResponse";
+  value: Uint8Array;
+}
+export interface MsgPerformVirtualActionResponseAmino {
+  nftSchemaName?: string;
+}
+export interface MsgPerformVirtualActionResponseAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformVirtualActionResponse";
+  value: MsgPerformVirtualActionResponseAmino;
+}
+export interface MsgPerformVirtualActionResponseSDKType {
+  nftSchemaName: string;
+}
+export interface TokenIdMap {
+  nftSchemaName: string;
+  tokenId: string;
+}
+export interface TokenIdMapProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.TokenIdMap";
+  value: Uint8Array;
+}
+export interface TokenIdMapAmino {
+  nftSchemaName?: string;
+  tokenId?: string;
+}
+export interface TokenIdMapAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.TokenIdMap";
+  value: TokenIdMapAmino;
+}
+export interface TokenIdMapSDKType {
+  nftSchemaName: string;
+  tokenId: string;
+}
+export interface MsgProposalVirtualSchema {
+  creator: string;
+  virtualNftSchemaCode: string;
+  proposalType: ProposalType;
+  registry: VirtualSchemaRegistryRequest[];
+  actions: Action[];
+  enable: boolean;
+}
+export interface MsgProposalVirtualSchemaProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgProposalVirtualSchema";
+  value: Uint8Array;
+}
+export interface MsgProposalVirtualSchemaAmino {
+  creator?: string;
+  virtualNftSchemaCode?: string;
+  proposalType?: ProposalType;
+  registry?: VirtualSchemaRegistryRequestAmino[];
+  actions?: ActionAmino[];
+  enable?: boolean;
+}
+export interface MsgProposalVirtualSchemaAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgProposalVirtualSchema";
+  value: MsgProposalVirtualSchemaAmino;
+}
+export interface MsgProposalVirtualSchemaSDKType {
+  creator: string;
+  virtualNftSchemaCode: string;
+  proposalType: ProposalType;
+  registry: VirtualSchemaRegistryRequestSDKType[];
+  actions: ActionSDKType[];
+  enable: boolean;
+}
+export interface MsgProposalVirtualSchemaResponse {
+  id: string;
+  virtualNftSchemaCode: string;
+  proposalType: ProposalType;
+}
+export interface MsgProposalVirtualSchemaResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgProposalVirtualSchemaResponse";
+  value: Uint8Array;
+}
+export interface MsgProposalVirtualSchemaResponseAmino {
+  id?: string;
+  virtualNftSchemaCode?: string;
+  proposalType?: ProposalType;
+}
+export interface MsgProposalVirtualSchemaResponseAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgProposalVirtualSchemaResponse";
+  value: MsgProposalVirtualSchemaResponseAmino;
+}
+export interface MsgProposalVirtualSchemaResponseSDKType {
+  id: string;
+  virtualNftSchemaCode: string;
+  proposalType: ProposalType;
+}
+export interface MsgVoteVirtualSchemaProposal {
+  creator: string;
+  id: string;
+  nftSchemaCode: string;
+  option: RegistryStatus;
+}
+export interface MsgVoteVirtualSchemaProposalProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgVoteVirtualSchemaProposal";
+  value: Uint8Array;
+}
+export interface MsgVoteVirtualSchemaProposalAmino {
+  creator?: string;
+  id?: string;
+  nftSchemaCode?: string;
+  option?: RegistryStatus;
+}
+export interface MsgVoteVirtualSchemaProposalAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgVoteVirtualSchemaProposal";
+  value: MsgVoteVirtualSchemaProposalAmino;
+}
+export interface MsgVoteVirtualSchemaProposalSDKType {
+  creator: string;
+  id: string;
+  nftSchemaCode: string;
+  option: RegistryStatus;
+}
+export interface MsgVoteVirtualSchemaProposalResponse {}
+export interface MsgVoteVirtualSchemaProposalResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgVoteVirtualSchemaProposalResponse";
+  value: Uint8Array;
+}
+export interface MsgVoteVirtualSchemaProposalResponseAmino {}
+export interface MsgVoteVirtualSchemaProposalResponseAminoMsg {
+  type: "/thesixnetwork.sixprotocol.nftmngr.MsgVoteVirtualSchemaProposalResponse";
+  value: MsgVoteVirtualSchemaProposalResponseAmino;
+}
+export interface MsgVoteVirtualSchemaProposalResponseSDKType {}
 function createBaseMsgCreateNFTSchema(): MsgCreateNFTSchema {
   return {
     creator: "",
@@ -1170,7 +1463,7 @@ function createBaseMsgCreateNFTSchema(): MsgCreateNFTSchema {
   };
 }
 export const MsgCreateNFTSchema = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchema",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateNFTSchema",
   encode(message: MsgCreateNFTSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -1233,7 +1526,7 @@ export const MsgCreateNFTSchema = {
   },
   toProtoMsg(message: MsgCreateNFTSchema): MsgCreateNFTSchemaProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchema",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateNFTSchema",
       value: MsgCreateNFTSchema.encode(message).finish()
     };
   }
@@ -1244,7 +1537,7 @@ function createBaseMsgCreateNFTSchemaResponse(): MsgCreateNFTSchemaResponse {
   };
 }
 export const MsgCreateNFTSchemaResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchemaResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateNFTSchemaResponse",
   encode(message: MsgCreateNFTSchemaResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.code !== "") {
       writer.uint32(10).string(message.code);
@@ -1296,7 +1589,7 @@ export const MsgCreateNFTSchemaResponse = {
   },
   toProtoMsg(message: MsgCreateNFTSchemaResponse): MsgCreateNFTSchemaResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchemaResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateNFTSchemaResponse",
       value: MsgCreateNFTSchemaResponse.encode(message).finish()
     };
   }
@@ -1310,7 +1603,7 @@ function createBaseMsgCreateMetadata(): MsgCreateMetadata {
   };
 }
 export const MsgCreateMetadata = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMetadata",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateMetadata",
   encode(message: MsgCreateMetadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -1395,7 +1688,7 @@ export const MsgCreateMetadata = {
   },
   toProtoMsg(message: MsgCreateMetadata): MsgCreateMetadataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMetadata",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateMetadata",
       value: MsgCreateMetadata.encode(message).finish()
     };
   }
@@ -1407,7 +1700,7 @@ function createBaseMsgCreateMetadataResponse(): MsgCreateMetadataResponse {
   };
 }
 export const MsgCreateMetadataResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMetadataResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateMetadataResponse",
   encode(message: MsgCreateMetadataResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -1470,7 +1763,7 @@ export const MsgCreateMetadataResponse = {
   },
   toProtoMsg(message: MsgCreateMetadataResponse): MsgCreateMetadataResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMetadataResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateMetadataResponse",
       value: MsgCreateMetadataResponse.encode(message).finish()
     };
   }
@@ -1482,7 +1775,7 @@ function createBaseOpenseaAttribute(): OpenseaAttribute {
   };
 }
 export const OpenseaAttribute = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.OpenseaAttribute",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OpenseaAttribute",
   encode(message: OpenseaAttribute, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.traitType !== "") {
       writer.uint32(10).string(message.traitType);
@@ -1545,7 +1838,7 @@ export const OpenseaAttribute = {
   },
   toProtoMsg(message: OpenseaAttribute): OpenseaAttributeProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.OpenseaAttribute",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OpenseaAttribute",
       value: OpenseaAttribute.encode(message).finish()
     };
   }
@@ -1556,7 +1849,7 @@ function createBaseUpdatedOpenseaAttributes(): UpdatedOpenseaAttributes {
   };
 }
 export const UpdatedOpenseaAttributes = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.UpdatedOpenseaAttributes",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.UpdatedOpenseaAttributes",
   encode(message: UpdatedOpenseaAttributes, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.attributes) {
       OpenseaAttribute.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1610,7 +1903,7 @@ export const UpdatedOpenseaAttributes = {
   },
   toProtoMsg(message: UpdatedOpenseaAttributes): UpdatedOpenseaAttributesProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.UpdatedOpenseaAttributes",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.UpdatedOpenseaAttributes",
       value: UpdatedOpenseaAttributes.encode(message).finish()
     };
   }
@@ -1621,7 +1914,7 @@ function createBaseUpdatedOriginData(): UpdatedOriginData {
   };
 }
 export const UpdatedOriginData = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.UpdatedOriginData",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.UpdatedOriginData",
   encode(message: UpdatedOriginData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.opensea !== undefined) {
       UpdatedOpenseaAttributes.encode(message.opensea, writer.uint32(10).fork()).ldelim();
@@ -1673,7 +1966,7 @@ export const UpdatedOriginData = {
   },
   toProtoMsg(message: UpdatedOriginData): UpdatedOriginDataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.UpdatedOriginData",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.UpdatedOriginData",
       value: UpdatedOriginData.encode(message).finish()
     };
   }
@@ -1685,7 +1978,7 @@ function createBaseActionParameter(): ActionParameter {
   };
 }
 export const ActionParameter = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParameter",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionParameter",
   encode(message: ActionParameter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -1748,7 +2041,7 @@ export const ActionParameter = {
   },
   toProtoMsg(message: ActionParameter): ActionParameterProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParameter",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionParameter",
       value: ActionParameter.encode(message).finish()
     };
   }
@@ -1764,7 +2057,7 @@ function createBaseMsgPerformActionByAdmin(): MsgPerformActionByAdmin {
   };
 }
 export const MsgPerformActionByAdmin = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdmin",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformActionByAdmin",
   encode(message: MsgPerformActionByAdmin, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -1873,7 +2166,7 @@ export const MsgPerformActionByAdmin = {
   },
   toProtoMsg(message: MsgPerformActionByAdmin): MsgPerformActionByAdminProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdmin",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformActionByAdmin",
       value: MsgPerformActionByAdmin.encode(message).finish()
     };
   }
@@ -1885,7 +2178,7 @@ function createBaseMsgPerformActionByAdminResponse(): MsgPerformActionByAdminRes
   };
 }
 export const MsgPerformActionByAdminResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdminResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformActionByAdminResponse",
   encode(message: MsgPerformActionByAdminResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -1948,7 +2241,7 @@ export const MsgPerformActionByAdminResponse = {
   },
   toProtoMsg(message: MsgPerformActionByAdminResponse): MsgPerformActionByAdminResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdminResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformActionByAdminResponse",
       value: MsgPerformActionByAdminResponse.encode(message).finish()
     };
   }
@@ -1962,7 +2255,7 @@ function createBaseMsgAddAttribute(): MsgAddAttribute {
   };
 }
 export const MsgAddAttribute = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddAttribute",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAttribute",
   encode(message: MsgAddAttribute, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -2047,7 +2340,7 @@ export const MsgAddAttribute = {
   },
   toProtoMsg(message: MsgAddAttribute): MsgAddAttributeProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddAttribute",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAttribute",
       value: MsgAddAttribute.encode(message).finish()
     };
   }
@@ -2059,7 +2352,7 @@ function createBaseMsgAddAttributeResponse(): MsgAddAttributeResponse {
   };
 }
 export const MsgAddAttributeResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddAttributeResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAttributeResponse",
   encode(message: MsgAddAttributeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.code !== "") {
       writer.uint32(10).string(message.code);
@@ -2122,7 +2415,7 @@ export const MsgAddAttributeResponse = {
   },
   toProtoMsg(message: MsgAddAttributeResponse): MsgAddAttributeResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddAttributeResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAttributeResponse",
       value: MsgAddAttributeResponse.encode(message).finish()
     };
   }
@@ -2135,7 +2428,7 @@ function createBaseMsgAddAction(): MsgAddAction {
   };
 }
 export const MsgAddAction = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddAction",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAction",
   encode(message: MsgAddAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -2209,7 +2502,7 @@ export const MsgAddAction = {
   },
   toProtoMsg(message: MsgAddAction): MsgAddActionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddAction",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddAction",
       value: MsgAddAction.encode(message).finish()
     };
   }
@@ -2221,7 +2514,7 @@ function createBaseMsgAddActionResponse(): MsgAddActionResponse {
   };
 }
 export const MsgAddActionResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddActionResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddActionResponse",
   encode(message: MsgAddActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.code !== "") {
       writer.uint32(10).string(message.code);
@@ -2284,7 +2577,7 @@ export const MsgAddActionResponse = {
   },
   toProtoMsg(message: MsgAddActionResponse): MsgAddActionResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgAddActionResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgAddActionResponse",
       value: MsgAddActionResponse.encode(message).finish()
     };
   }
@@ -2297,7 +2590,7 @@ function createBaseMsgSetBaseUri(): MsgSetBaseUri {
   };
 }
 export const MsgSetBaseUri = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetBaseUri",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetBaseUri",
   encode(message: MsgSetBaseUri, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -2371,7 +2664,7 @@ export const MsgSetBaseUri = {
   },
   toProtoMsg(message: MsgSetBaseUri): MsgSetBaseUriProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetBaseUri",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetBaseUri",
       value: MsgSetBaseUri.encode(message).finish()
     };
   }
@@ -2383,7 +2676,7 @@ function createBaseMsgSetBaseUriResponse(): MsgSetBaseUriResponse {
   };
 }
 export const MsgSetBaseUriResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetBaseUriResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetBaseUriResponse",
   encode(message: MsgSetBaseUriResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.code !== "") {
       writer.uint32(10).string(message.code);
@@ -2446,7 +2739,7 @@ export const MsgSetBaseUriResponse = {
   },
   toProtoMsg(message: MsgSetBaseUriResponse): MsgSetBaseUriResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetBaseUriResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetBaseUriResponse",
       value: MsgSetBaseUriResponse.encode(message).finish()
     };
   }
@@ -2460,7 +2753,7 @@ function createBaseMsgToggleAction(): MsgToggleAction {
   };
 }
 export const MsgToggleAction = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgToggleAction",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgToggleAction",
   encode(message: MsgToggleAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -2545,7 +2838,7 @@ export const MsgToggleAction = {
   },
   toProtoMsg(message: MsgToggleAction): MsgToggleActionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgToggleAction",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgToggleAction",
       value: MsgToggleAction.encode(message).finish()
     };
   }
@@ -2558,7 +2851,7 @@ function createBaseMsgToggleActionResponse(): MsgToggleActionResponse {
   };
 }
 export const MsgToggleActionResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgToggleActionResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgToggleActionResponse",
   encode(message: MsgToggleActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.code !== "") {
       writer.uint32(10).string(message.code);
@@ -2632,7 +2925,7 @@ export const MsgToggleActionResponse = {
   },
   toProtoMsg(message: MsgToggleActionResponse): MsgToggleActionResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgToggleActionResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgToggleActionResponse",
       value: MsgToggleActionResponse.encode(message).finish()
     };
   }
@@ -2645,7 +2938,7 @@ function createBaseMsgChangeSchemaOwner(): MsgChangeSchemaOwner {
   };
 }
 export const MsgChangeSchemaOwner = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeSchemaOwner",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeSchemaOwner",
   encode(message: MsgChangeSchemaOwner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -2719,7 +3012,7 @@ export const MsgChangeSchemaOwner = {
   },
   toProtoMsg(message: MsgChangeSchemaOwner): MsgChangeSchemaOwnerProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeSchemaOwner",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeSchemaOwner",
       value: MsgChangeSchemaOwner.encode(message).finish()
     };
   }
@@ -2731,7 +3024,7 @@ function createBaseMsgChangeSchemaOwnerResponse(): MsgChangeSchemaOwnerResponse 
   };
 }
 export const MsgChangeSchemaOwnerResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeSchemaOwnerResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeSchemaOwnerResponse",
   encode(message: MsgChangeSchemaOwnerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -2794,7 +3087,7 @@ export const MsgChangeSchemaOwnerResponse = {
   },
   toProtoMsg(message: MsgChangeSchemaOwnerResponse): MsgChangeSchemaOwnerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeSchemaOwnerResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeSchemaOwnerResponse",
       value: MsgChangeSchemaOwnerResponse.encode(message).finish()
     };
   }
@@ -2806,7 +3099,7 @@ function createBaseMsgResyncAttributesResponse(): MsgResyncAttributesResponse {
   };
 }
 export const MsgResyncAttributesResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgResyncAttributesResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgResyncAttributesResponse",
   encode(message: MsgResyncAttributesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -2869,7 +3162,7 @@ export const MsgResyncAttributesResponse = {
   },
   toProtoMsg(message: MsgResyncAttributesResponse): MsgResyncAttributesResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgResyncAttributesResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgResyncAttributesResponse",
       value: MsgResyncAttributesResponse.encode(message).finish()
     };
   }
@@ -2883,7 +3176,7 @@ function createBaseMsgShowAttributes(): MsgShowAttributes {
   };
 }
 export const MsgShowAttributes = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgShowAttributes",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgShowAttributes",
   encode(message: MsgShowAttributes, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -2970,7 +3263,7 @@ export const MsgShowAttributes = {
   },
   toProtoMsg(message: MsgShowAttributes): MsgShowAttributesProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgShowAttributes",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgShowAttributes",
       value: MsgShowAttributes.encode(message).finish()
     };
   }
@@ -2981,7 +3274,7 @@ function createBaseMsgShowAttributesResponse(): MsgShowAttributesResponse {
   };
 }
 export const MsgShowAttributesResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgShowAttributesResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgShowAttributesResponse",
   encode(message: MsgShowAttributesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchema !== "") {
       writer.uint32(10).string(message.nftSchema);
@@ -3033,7 +3326,7 @@ export const MsgShowAttributesResponse = {
   },
   toProtoMsg(message: MsgShowAttributesResponse): MsgShowAttributesResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgShowAttributesResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgShowAttributesResponse",
       value: MsgShowAttributesResponse.encode(message).finish()
     };
   }
@@ -3046,7 +3339,7 @@ function createBaseMsgResyncAttributes(): MsgResyncAttributes {
   };
 }
 export const MsgResyncAttributes = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgResyncAttributes",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgResyncAttributes",
   encode(message: MsgResyncAttributes, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -3120,7 +3413,7 @@ export const MsgResyncAttributes = {
   },
   toProtoMsg(message: MsgResyncAttributes): MsgResyncAttributesProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgResyncAttributes",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgResyncAttributes",
       value: MsgResyncAttributes.encode(message).finish()
     };
   }
@@ -3133,7 +3426,7 @@ function createBaseMsgSetFeeConfig(): MsgSetFeeConfig {
   };
 }
 export const MsgSetFeeConfig = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetFeeConfig",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetFeeConfig",
   encode(message: MsgSetFeeConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -3207,7 +3500,7 @@ export const MsgSetFeeConfig = {
   },
   toProtoMsg(message: MsgSetFeeConfig): MsgSetFeeConfigProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetFeeConfig",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetFeeConfig",
       value: MsgSetFeeConfig.encode(message).finish()
     };
   }
@@ -3216,7 +3509,7 @@ function createBaseMsgSetFeeConfigResponse(): MsgSetFeeConfigResponse {
   return {};
 }
 export const MsgSetFeeConfigResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetFeeConfigResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetFeeConfigResponse",
   encode(_: MsgSetFeeConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -3257,7 +3550,7 @@ export const MsgSetFeeConfigResponse = {
   },
   toProtoMsg(message: MsgSetFeeConfigResponse): MsgSetFeeConfigResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetFeeConfigResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetFeeConfigResponse",
       value: MsgSetFeeConfigResponse.encode(message).finish()
     };
   }
@@ -3270,7 +3563,7 @@ function createBaseMsgSetMintauth(): MsgSetMintauth {
   };
 }
 export const MsgSetMintauth = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauth",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMintauth",
   encode(message: MsgSetMintauth, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -3344,7 +3637,7 @@ export const MsgSetMintauth = {
   },
   toProtoMsg(message: MsgSetMintauth): MsgSetMintauthProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauth",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMintauth",
       value: MsgSetMintauth.encode(message).finish()
     };
   }
@@ -3355,7 +3648,7 @@ function createBaseMsgSetMintauthResponse(): MsgSetMintauthResponse {
   };
 }
 export const MsgSetMintauthResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauthResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMintauthResponse",
   encode(message: MsgSetMintauthResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -3407,7 +3700,7 @@ export const MsgSetMintauthResponse = {
   },
   toProtoMsg(message: MsgSetMintauthResponse): MsgSetMintauthResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauthResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMintauthResponse",
       value: MsgSetMintauthResponse.encode(message).finish()
     };
   }
@@ -3420,7 +3713,7 @@ function createBaseMsgChangeOrgOwner(): MsgChangeOrgOwner {
   };
 }
 export const MsgChangeOrgOwner = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeOrgOwner",
   encode(message: MsgChangeOrgOwner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -3494,7 +3787,7 @@ export const MsgChangeOrgOwner = {
   },
   toProtoMsg(message: MsgChangeOrgOwner): MsgChangeOrgOwnerProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeOrgOwner",
       value: MsgChangeOrgOwner.encode(message).finish()
     };
   }
@@ -3507,7 +3800,7 @@ function createBaseMsgChangeOrgOwnerResponse(): MsgChangeOrgOwnerResponse {
   };
 }
 export const MsgChangeOrgOwnerResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwnerResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeOrgOwnerResponse",
   encode(message: MsgChangeOrgOwnerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.orgName !== "") {
       writer.uint32(10).string(message.orgName);
@@ -3581,7 +3874,7 @@ export const MsgChangeOrgOwnerResponse = {
   },
   toProtoMsg(message: MsgChangeOrgOwnerResponse): MsgChangeOrgOwnerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwnerResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgChangeOrgOwnerResponse",
       value: MsgChangeOrgOwnerResponse.encode(message).finish()
     };
   }
@@ -3594,7 +3887,7 @@ function createBaseMsgSetUriRetrievalMethod(): MsgSetUriRetrievalMethod {
   };
 }
 export const MsgSetUriRetrievalMethod = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetUriRetrievalMethod",
   encode(message: MsgSetUriRetrievalMethod, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -3668,7 +3961,7 @@ export const MsgSetUriRetrievalMethod = {
   },
   toProtoMsg(message: MsgSetUriRetrievalMethod): MsgSetUriRetrievalMethodProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetUriRetrievalMethod",
       value: MsgSetUriRetrievalMethod.encode(message).finish()
     };
   }
@@ -3680,7 +3973,7 @@ function createBaseMsgSetUriRetrievalMethodResponse(): MsgSetUriRetrievalMethodR
   };
 }
 export const MsgSetUriRetrievalMethodResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethodResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetUriRetrievalMethodResponse",
   encode(message: MsgSetUriRetrievalMethodResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.schemaCode !== "") {
       writer.uint32(10).string(message.schemaCode);
@@ -3743,7 +4036,7 @@ export const MsgSetUriRetrievalMethodResponse = {
   },
   toProtoMsg(message: MsgSetUriRetrievalMethodResponse): MsgSetUriRetrievalMethodResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethodResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetUriRetrievalMethodResponse",
       value: MsgSetUriRetrievalMethodResponse.encode(message).finish()
     };
   }
@@ -3756,7 +4049,7 @@ function createBaseMsgSetOriginChain(): MsgSetOriginChain {
   };
 }
 export const MsgSetOriginChain = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginChain",
   encode(message: MsgSetOriginChain, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -3830,7 +4123,7 @@ export const MsgSetOriginChain = {
   },
   toProtoMsg(message: MsgSetOriginChain): MsgSetOriginChainProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginChain",
       value: MsgSetOriginChain.encode(message).finish()
     };
   }
@@ -3842,7 +4135,7 @@ function createBaseMsgSetOriginChainResponse(): MsgSetOriginChainResponse {
   };
 }
 export const MsgSetOriginChainResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChainResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginChainResponse",
   encode(message: MsgSetOriginChainResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.schemaCode !== "") {
       writer.uint32(10).string(message.schemaCode);
@@ -3905,7 +4198,7 @@ export const MsgSetOriginChainResponse = {
   },
   toProtoMsg(message: MsgSetOriginChainResponse): MsgSetOriginChainResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChainResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginChainResponse",
       value: MsgSetOriginChainResponse.encode(message).finish()
     };
   }
@@ -3918,7 +4211,7 @@ function createBaseMsgSetOriginContract(): MsgSetOriginContract {
   };
 }
 export const MsgSetOriginContract = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginContract",
   encode(message: MsgSetOriginContract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -3992,7 +4285,7 @@ export const MsgSetOriginContract = {
   },
   toProtoMsg(message: MsgSetOriginContract): MsgSetOriginContractProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginContract",
       value: MsgSetOriginContract.encode(message).finish()
     };
   }
@@ -4004,7 +4297,7 @@ function createBaseMsgSetOriginContractResponse(): MsgSetOriginContractResponse 
   };
 }
 export const MsgSetOriginContractResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContractResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginContractResponse",
   encode(message: MsgSetOriginContractResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.schemaCode !== "") {
       writer.uint32(10).string(message.schemaCode);
@@ -4067,7 +4360,7 @@ export const MsgSetOriginContractResponse = {
   },
   toProtoMsg(message: MsgSetOriginContractResponse): MsgSetOriginContractResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContractResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetOriginContractResponse",
       value: MsgSetOriginContractResponse.encode(message).finish()
     };
   }
@@ -4080,7 +4373,7 @@ function createBaseMsgSetAttributeOveriding(): MsgSetAttributeOveriding {
   };
 }
 export const MsgSetAttributeOveriding = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetAttributeOveriding",
   encode(message: MsgSetAttributeOveriding, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -4154,7 +4447,7 @@ export const MsgSetAttributeOveriding = {
   },
   toProtoMsg(message: MsgSetAttributeOveriding): MsgSetAttributeOveridingProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetAttributeOveriding",
       value: MsgSetAttributeOveriding.encode(message).finish()
     };
   }
@@ -4166,7 +4459,7 @@ function createBaseMsgSetAttributeOveridingResponse(): MsgSetAttributeOveridingR
   };
 }
 export const MsgSetAttributeOveridingResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveridingResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetAttributeOveridingResponse",
   encode(message: MsgSetAttributeOveridingResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.schemaCode !== "") {
       writer.uint32(10).string(message.schemaCode);
@@ -4229,7 +4522,7 @@ export const MsgSetAttributeOveridingResponse = {
   },
   toProtoMsg(message: MsgSetAttributeOveridingResponse): MsgSetAttributeOveridingResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveridingResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetAttributeOveridingResponse",
       value: MsgSetAttributeOveridingResponse.encode(message).finish()
     };
   }
@@ -4242,7 +4535,7 @@ function createBaseMsgSetMetadataFormat(): MsgSetMetadataFormat {
   };
 }
 export const MsgSetMetadataFormat = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMetadataFormat",
   encode(message: MsgSetMetadataFormat, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -4316,7 +4609,7 @@ export const MsgSetMetadataFormat = {
   },
   toProtoMsg(message: MsgSetMetadataFormat): MsgSetMetadataFormatProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMetadataFormat",
       value: MsgSetMetadataFormat.encode(message).finish()
     };
   }
@@ -4328,7 +4621,7 @@ function createBaseMsgSetMetadataFormatResponse(): MsgSetMetadataFormatResponse 
   };
 }
 export const MsgSetMetadataFormatResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormatResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMetadataFormatResponse",
   encode(message: MsgSetMetadataFormatResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.schemaCode !== "") {
       writer.uint32(10).string(message.schemaCode);
@@ -4391,7 +4684,7 @@ export const MsgSetMetadataFormatResponse = {
   },
   toProtoMsg(message: MsgSetMetadataFormatResponse): MsgSetMetadataFormatResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormatResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgSetMetadataFormatResponse",
       value: MsgSetMetadataFormatResponse.encode(message).finish()
     };
   }
@@ -4404,7 +4697,7 @@ function createBaseMsgCreateActionExecutor(): MsgCreateActionExecutor {
   };
 }
 export const MsgCreateActionExecutor = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateActionExecutor",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateActionExecutor",
   encode(message: MsgCreateActionExecutor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -4478,7 +4771,7 @@ export const MsgCreateActionExecutor = {
   },
   toProtoMsg(message: MsgCreateActionExecutor): MsgCreateActionExecutorProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateActionExecutor",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateActionExecutor",
       value: MsgCreateActionExecutor.encode(message).finish()
     };
   }
@@ -4490,7 +4783,7 @@ function createBaseMsgCreateActionExecutorResponse(): MsgCreateActionExecutorRes
   };
 }
 export const MsgCreateActionExecutorResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateActionExecutorResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateActionExecutorResponse",
   encode(message: MsgCreateActionExecutorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -4553,7 +4846,7 @@ export const MsgCreateActionExecutorResponse = {
   },
   toProtoMsg(message: MsgCreateActionExecutorResponse): MsgCreateActionExecutorResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateActionExecutorResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateActionExecutorResponse",
       value: MsgCreateActionExecutorResponse.encode(message).finish()
     };
   }
@@ -4566,7 +4859,7 @@ function createBaseMsgUpdateActionExecutor(): MsgUpdateActionExecutor {
   };
 }
 export const MsgUpdateActionExecutor = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionExecutor",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionExecutor",
   encode(message: MsgUpdateActionExecutor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -4640,7 +4933,7 @@ export const MsgUpdateActionExecutor = {
   },
   toProtoMsg(message: MsgUpdateActionExecutor): MsgUpdateActionExecutorProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionExecutor",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionExecutor",
       value: MsgUpdateActionExecutor.encode(message).finish()
     };
   }
@@ -4652,7 +4945,7 @@ function createBaseMsgUpdateActionExecutorResponse(): MsgUpdateActionExecutorRes
   };
 }
 export const MsgUpdateActionExecutorResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionExecutorResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionExecutorResponse",
   encode(message: MsgUpdateActionExecutorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -4715,7 +5008,7 @@ export const MsgUpdateActionExecutorResponse = {
   },
   toProtoMsg(message: MsgUpdateActionExecutorResponse): MsgUpdateActionExecutorResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionExecutorResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionExecutorResponse",
       value: MsgUpdateActionExecutorResponse.encode(message).finish()
     };
   }
@@ -4728,7 +5021,7 @@ function createBaseMsgDeleteActionExecutor(): MsgDeleteActionExecutor {
   };
 }
 export const MsgDeleteActionExecutor = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgDeleteActionExecutor",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteActionExecutor",
   encode(message: MsgDeleteActionExecutor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -4802,7 +5095,7 @@ export const MsgDeleteActionExecutor = {
   },
   toProtoMsg(message: MsgDeleteActionExecutor): MsgDeleteActionExecutorProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgDeleteActionExecutor",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteActionExecutor",
       value: MsgDeleteActionExecutor.encode(message).finish()
     };
   }
@@ -4814,7 +5107,7 @@ function createBaseMsgDeleteActionExecutorResponse(): MsgDeleteActionExecutorRes
   };
 }
 export const MsgDeleteActionExecutorResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgDeleteActionExecutorResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteActionExecutorResponse",
   encode(message: MsgDeleteActionExecutorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -4877,7 +5170,7 @@ export const MsgDeleteActionExecutorResponse = {
   },
   toProtoMsg(message: MsgDeleteActionExecutorResponse): MsgDeleteActionExecutorResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgDeleteActionExecutorResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteActionExecutorResponse",
       value: MsgDeleteActionExecutorResponse.encode(message).finish()
     };
   }
@@ -4890,7 +5183,7 @@ function createBaseMsgUpdateSchemaAttribute(): MsgUpdateSchemaAttribute {
   };
 }
 export const MsgUpdateSchemaAttribute = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateSchemaAttribute",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateSchemaAttribute",
   encode(message: MsgUpdateSchemaAttribute, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -4964,7 +5257,7 @@ export const MsgUpdateSchemaAttribute = {
   },
   toProtoMsg(message: MsgUpdateSchemaAttribute): MsgUpdateSchemaAttributeProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateSchemaAttribute",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateSchemaAttribute",
       value: MsgUpdateSchemaAttribute.encode(message).finish()
     };
   }
@@ -4976,7 +5269,7 @@ function createBaseMsgUpdateSchemaAttributeResponse(): MsgUpdateSchemaAttributeR
   };
 }
 export const MsgUpdateSchemaAttributeResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateSchemaAttributeResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateSchemaAttributeResponse",
   encode(message: MsgUpdateSchemaAttributeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -5039,7 +5332,7 @@ export const MsgUpdateSchemaAttributeResponse = {
   },
   toProtoMsg(message: MsgUpdateSchemaAttributeResponse): MsgUpdateSchemaAttributeResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateSchemaAttributeResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateSchemaAttributeResponse",
       value: MsgUpdateSchemaAttributeResponse.encode(message).finish()
     };
   }
@@ -5052,7 +5345,7 @@ function createBaseMsgUpdateAction(): MsgUpdateAction {
   };
 }
 export const MsgUpdateAction = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateAction",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateAction",
   encode(message: MsgUpdateAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -5126,7 +5419,7 @@ export const MsgUpdateAction = {
   },
   toProtoMsg(message: MsgUpdateAction): MsgUpdateActionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateAction",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateAction",
       value: MsgUpdateAction.encode(message).finish()
     };
   }
@@ -5138,7 +5431,7 @@ function createBaseMsgUpdateActionResponse(): MsgUpdateActionResponse {
   };
 }
 export const MsgUpdateActionResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionResponse",
   encode(message: MsgUpdateActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -5201,8 +5494,1130 @@ export const MsgUpdateActionResponse = {
   },
   toProtoMsg(message: MsgUpdateActionResponse): MsgUpdateActionResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgUpdateActionResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateActionResponse",
       value: MsgUpdateActionResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCreateVirtualAction(): MsgCreateVirtualAction {
+  return {
+    creator: "",
+    nftSchemaCode: "",
+    newActions: []
+  };
+}
+export const MsgCreateVirtualAction = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateVirtualAction",
+  encode(message: MsgCreateVirtualAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(18).string(message.nftSchemaCode);
+    }
+    for (const v of message.newActions) {
+      Action.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVirtualAction {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateVirtualAction();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.newActions.push(Action.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateVirtualAction>): MsgCreateVirtualAction {
+    const message = createBaseMsgCreateVirtualAction();
+    message.creator = object.creator ?? "";
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.newActions = object.newActions?.map(e => Action.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: MsgCreateVirtualActionAmino): MsgCreateVirtualAction {
+    const message = createBaseMsgCreateVirtualAction();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    message.newActions = object.newActions?.map(e => Action.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgCreateVirtualAction): MsgCreateVirtualActionAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.newActions) {
+      obj.newActions = message.newActions.map(e => e ? Action.toAmino(e) : undefined);
+    } else {
+      obj.newActions = message.newActions;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateVirtualActionAminoMsg): MsgCreateVirtualAction {
+    return MsgCreateVirtualAction.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateVirtualActionProtoMsg): MsgCreateVirtualAction {
+    return MsgCreateVirtualAction.decode(message.value);
+  },
+  toProto(message: MsgCreateVirtualAction): Uint8Array {
+    return MsgCreateVirtualAction.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateVirtualAction): MsgCreateVirtualActionProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateVirtualAction",
+      value: MsgCreateVirtualAction.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCreateVirtualActionResponse(): MsgCreateVirtualActionResponse {
+  return {
+    nftSchemaCode: "",
+    virtualAction: []
+  };
+}
+export const MsgCreateVirtualActionResponse = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateVirtualActionResponse",
+  encode(message: MsgCreateVirtualActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(10).string(message.nftSchemaCode);
+    }
+    for (const v of message.virtualAction) {
+      VirtualAction.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVirtualActionResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateVirtualActionResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.virtualAction.push(VirtualAction.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateVirtualActionResponse>): MsgCreateVirtualActionResponse {
+    const message = createBaseMsgCreateVirtualActionResponse();
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.virtualAction = object.virtualAction?.map(e => VirtualAction.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: MsgCreateVirtualActionResponseAmino): MsgCreateVirtualActionResponse {
+    const message = createBaseMsgCreateVirtualActionResponse();
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    message.virtualAction = object.virtualAction?.map(e => VirtualAction.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgCreateVirtualActionResponse): MsgCreateVirtualActionResponseAmino {
+    const obj: any = {};
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.virtualAction) {
+      obj.virtualAction = message.virtualAction.map(e => e ? VirtualAction.toAmino(e) : undefined);
+    } else {
+      obj.virtualAction = message.virtualAction;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateVirtualActionResponseAminoMsg): MsgCreateVirtualActionResponse {
+    return MsgCreateVirtualActionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateVirtualActionResponseProtoMsg): MsgCreateVirtualActionResponse {
+    return MsgCreateVirtualActionResponse.decode(message.value);
+  },
+  toProto(message: MsgCreateVirtualActionResponse): Uint8Array {
+    return MsgCreateVirtualActionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateVirtualActionResponse): MsgCreateVirtualActionResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgCreateVirtualActionResponse",
+      value: MsgCreateVirtualActionResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUpdateVirtualAction(): MsgUpdateVirtualAction {
+  return {
+    creator: "",
+    nftSchemaCode: "",
+    newActions: []
+  };
+}
+export const MsgUpdateVirtualAction = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateVirtualAction",
+  encode(message: MsgUpdateVirtualAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(18).string(message.nftSchemaCode);
+    }
+    for (const v of message.newActions) {
+      Action.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateVirtualAction {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateVirtualAction();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.newActions.push(Action.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUpdateVirtualAction>): MsgUpdateVirtualAction {
+    const message = createBaseMsgUpdateVirtualAction();
+    message.creator = object.creator ?? "";
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.newActions = object.newActions?.map(e => Action.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: MsgUpdateVirtualActionAmino): MsgUpdateVirtualAction {
+    const message = createBaseMsgUpdateVirtualAction();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    message.newActions = object.newActions?.map(e => Action.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgUpdateVirtualAction): MsgUpdateVirtualActionAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.newActions) {
+      obj.newActions = message.newActions.map(e => e ? Action.toAmino(e) : undefined);
+    } else {
+      obj.newActions = message.newActions;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateVirtualActionAminoMsg): MsgUpdateVirtualAction {
+    return MsgUpdateVirtualAction.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUpdateVirtualActionProtoMsg): MsgUpdateVirtualAction {
+    return MsgUpdateVirtualAction.decode(message.value);
+  },
+  toProto(message: MsgUpdateVirtualAction): Uint8Array {
+    return MsgUpdateVirtualAction.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateVirtualAction): MsgUpdateVirtualActionProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateVirtualAction",
+      value: MsgUpdateVirtualAction.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUpdateVirtualActionResponse(): MsgUpdateVirtualActionResponse {
+  return {
+    nftSchemaCode: "",
+    virtualAction: []
+  };
+}
+export const MsgUpdateVirtualActionResponse = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateVirtualActionResponse",
+  encode(message: MsgUpdateVirtualActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(10).string(message.nftSchemaCode);
+    }
+    for (const v of message.virtualAction) {
+      VirtualAction.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateVirtualActionResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateVirtualActionResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.virtualAction.push(VirtualAction.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUpdateVirtualActionResponse>): MsgUpdateVirtualActionResponse {
+    const message = createBaseMsgUpdateVirtualActionResponse();
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.virtualAction = object.virtualAction?.map(e => VirtualAction.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: MsgUpdateVirtualActionResponseAmino): MsgUpdateVirtualActionResponse {
+    const message = createBaseMsgUpdateVirtualActionResponse();
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    message.virtualAction = object.virtualAction?.map(e => VirtualAction.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgUpdateVirtualActionResponse): MsgUpdateVirtualActionResponseAmino {
+    const obj: any = {};
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.virtualAction) {
+      obj.virtualAction = message.virtualAction.map(e => e ? VirtualAction.toAmino(e) : undefined);
+    } else {
+      obj.virtualAction = message.virtualAction;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateVirtualActionResponseAminoMsg): MsgUpdateVirtualActionResponse {
+    return MsgUpdateVirtualActionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUpdateVirtualActionResponseProtoMsg): MsgUpdateVirtualActionResponse {
+    return MsgUpdateVirtualActionResponse.decode(message.value);
+  },
+  toProto(message: MsgUpdateVirtualActionResponse): Uint8Array {
+    return MsgUpdateVirtualActionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateVirtualActionResponse): MsgUpdateVirtualActionResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgUpdateVirtualActionResponse",
+      value: MsgUpdateVirtualActionResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgDeleteVirtualAction(): MsgDeleteVirtualAction {
+  return {
+    creator: "",
+    nftSchemaCode: "",
+    name: ""
+  };
+}
+export const MsgDeleteVirtualAction = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteVirtualAction",
+  encode(message: MsgDeleteVirtualAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(18).string(message.nftSchemaCode);
+    }
+    if (message.name !== "") {
+      writer.uint32(26).string(message.name);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeleteVirtualAction {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteVirtualAction();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.name = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgDeleteVirtualAction>): MsgDeleteVirtualAction {
+    const message = createBaseMsgDeleteVirtualAction();
+    message.creator = object.creator ?? "";
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.name = object.name ?? "";
+    return message;
+  },
+  fromAmino(object: MsgDeleteVirtualActionAmino): MsgDeleteVirtualAction {
+    const message = createBaseMsgDeleteVirtualAction();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    if (object.name !== undefined && object.name !== null) {
+      message.name = object.name;
+    }
+    return message;
+  },
+  toAmino(message: MsgDeleteVirtualAction): MsgDeleteVirtualActionAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.name = message.name === "" ? undefined : message.name;
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteVirtualActionAminoMsg): MsgDeleteVirtualAction {
+    return MsgDeleteVirtualAction.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDeleteVirtualActionProtoMsg): MsgDeleteVirtualAction {
+    return MsgDeleteVirtualAction.decode(message.value);
+  },
+  toProto(message: MsgDeleteVirtualAction): Uint8Array {
+    return MsgDeleteVirtualAction.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteVirtualAction): MsgDeleteVirtualActionProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteVirtualAction",
+      value: MsgDeleteVirtualAction.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgDeleteVirtualActionResponse(): MsgDeleteVirtualActionResponse {
+  return {
+    creator: "",
+    status: ""
+  };
+}
+export const MsgDeleteVirtualActionResponse = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteVirtualActionResponse",
+  encode(message: MsgDeleteVirtualActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.status !== "") {
+      writer.uint32(18).string(message.status);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeleteVirtualActionResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteVirtualActionResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.status = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgDeleteVirtualActionResponse>): MsgDeleteVirtualActionResponse {
+    const message = createBaseMsgDeleteVirtualActionResponse();
+    message.creator = object.creator ?? "";
+    message.status = object.status ?? "";
+    return message;
+  },
+  fromAmino(object: MsgDeleteVirtualActionResponseAmino): MsgDeleteVirtualActionResponse {
+    const message = createBaseMsgDeleteVirtualActionResponse();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.status !== undefined && object.status !== null) {
+      message.status = object.status;
+    }
+    return message;
+  },
+  toAmino(message: MsgDeleteVirtualActionResponse): MsgDeleteVirtualActionResponseAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.status = message.status === "" ? undefined : message.status;
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteVirtualActionResponseAminoMsg): MsgDeleteVirtualActionResponse {
+    return MsgDeleteVirtualActionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDeleteVirtualActionResponseProtoMsg): MsgDeleteVirtualActionResponse {
+    return MsgDeleteVirtualActionResponse.decode(message.value);
+  },
+  toProto(message: MsgDeleteVirtualActionResponse): Uint8Array {
+    return MsgDeleteVirtualActionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteVirtualActionResponse): MsgDeleteVirtualActionResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgDeleteVirtualActionResponse",
+      value: MsgDeleteVirtualActionResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgPerformVirtualAction(): MsgPerformVirtualAction {
+  return {
+    creator: "",
+    nftSchemaName: "",
+    tokenIdMap: [],
+    action: "",
+    refId: "",
+    parameters: []
+  };
+}
+export const MsgPerformVirtualAction = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformVirtualAction",
+  encode(message: MsgPerformVirtualAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.nftSchemaName !== "") {
+      writer.uint32(18).string(message.nftSchemaName);
+    }
+    for (const v of message.tokenIdMap) {
+      TokenIdMap.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.action !== "") {
+      writer.uint32(34).string(message.action);
+    }
+    if (message.refId !== "") {
+      writer.uint32(42).string(message.refId);
+    }
+    for (const v of message.parameters) {
+      ActionParameter.encode(v!, writer.uint32(50).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgPerformVirtualAction {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgPerformVirtualAction();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.nftSchemaName = reader.string();
+          break;
+        case 3:
+          message.tokenIdMap.push(TokenIdMap.decode(reader, reader.uint32()));
+          break;
+        case 4:
+          message.action = reader.string();
+          break;
+        case 5:
+          message.refId = reader.string();
+          break;
+        case 6:
+          message.parameters.push(ActionParameter.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgPerformVirtualAction>): MsgPerformVirtualAction {
+    const message = createBaseMsgPerformVirtualAction();
+    message.creator = object.creator ?? "";
+    message.nftSchemaName = object.nftSchemaName ?? "";
+    message.tokenIdMap = object.tokenIdMap?.map(e => TokenIdMap.fromPartial(e)) || [];
+    message.action = object.action ?? "";
+    message.refId = object.refId ?? "";
+    message.parameters = object.parameters?.map(e => ActionParameter.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: MsgPerformVirtualActionAmino): MsgPerformVirtualAction {
+    const message = createBaseMsgPerformVirtualAction();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.nftSchemaName !== undefined && object.nftSchemaName !== null) {
+      message.nftSchemaName = object.nftSchemaName;
+    }
+    message.tokenIdMap = object.tokenIdMap?.map(e => TokenIdMap.fromAmino(e)) || [];
+    if (object.action !== undefined && object.action !== null) {
+      message.action = object.action;
+    }
+    if (object.refId !== undefined && object.refId !== null) {
+      message.refId = object.refId;
+    }
+    message.parameters = object.parameters?.map(e => ActionParameter.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgPerformVirtualAction): MsgPerformVirtualActionAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.nftSchemaName = message.nftSchemaName === "" ? undefined : message.nftSchemaName;
+    if (message.tokenIdMap) {
+      obj.tokenIdMap = message.tokenIdMap.map(e => e ? TokenIdMap.toAmino(e) : undefined);
+    } else {
+      obj.tokenIdMap = message.tokenIdMap;
+    }
+    obj.action = message.action === "" ? undefined : message.action;
+    obj.refId = message.refId === "" ? undefined : message.refId;
+    if (message.parameters) {
+      obj.parameters = message.parameters.map(e => e ? ActionParameter.toAmino(e) : undefined);
+    } else {
+      obj.parameters = message.parameters;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgPerformVirtualActionAminoMsg): MsgPerformVirtualAction {
+    return MsgPerformVirtualAction.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgPerformVirtualActionProtoMsg): MsgPerformVirtualAction {
+    return MsgPerformVirtualAction.decode(message.value);
+  },
+  toProto(message: MsgPerformVirtualAction): Uint8Array {
+    return MsgPerformVirtualAction.encode(message).finish();
+  },
+  toProtoMsg(message: MsgPerformVirtualAction): MsgPerformVirtualActionProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformVirtualAction",
+      value: MsgPerformVirtualAction.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgPerformVirtualActionResponse(): MsgPerformVirtualActionResponse {
+  return {
+    nftSchemaName: ""
+  };
+}
+export const MsgPerformVirtualActionResponse = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformVirtualActionResponse",
+  encode(message: MsgPerformVirtualActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.nftSchemaName !== "") {
+      writer.uint32(18).string(message.nftSchemaName);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgPerformVirtualActionResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgPerformVirtualActionResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 2:
+          message.nftSchemaName = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgPerformVirtualActionResponse>): MsgPerformVirtualActionResponse {
+    const message = createBaseMsgPerformVirtualActionResponse();
+    message.nftSchemaName = object.nftSchemaName ?? "";
+    return message;
+  },
+  fromAmino(object: MsgPerformVirtualActionResponseAmino): MsgPerformVirtualActionResponse {
+    const message = createBaseMsgPerformVirtualActionResponse();
+    if (object.nftSchemaName !== undefined && object.nftSchemaName !== null) {
+      message.nftSchemaName = object.nftSchemaName;
+    }
+    return message;
+  },
+  toAmino(message: MsgPerformVirtualActionResponse): MsgPerformVirtualActionResponseAmino {
+    const obj: any = {};
+    obj.nftSchemaName = message.nftSchemaName === "" ? undefined : message.nftSchemaName;
+    return obj;
+  },
+  fromAminoMsg(object: MsgPerformVirtualActionResponseAminoMsg): MsgPerformVirtualActionResponse {
+    return MsgPerformVirtualActionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgPerformVirtualActionResponseProtoMsg): MsgPerformVirtualActionResponse {
+    return MsgPerformVirtualActionResponse.decode(message.value);
+  },
+  toProto(message: MsgPerformVirtualActionResponse): Uint8Array {
+    return MsgPerformVirtualActionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgPerformVirtualActionResponse): MsgPerformVirtualActionResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgPerformVirtualActionResponse",
+      value: MsgPerformVirtualActionResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseTokenIdMap(): TokenIdMap {
+  return {
+    nftSchemaName: "",
+    tokenId: ""
+  };
+}
+export const TokenIdMap = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.TokenIdMap",
+  encode(message: TokenIdMap, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.nftSchemaName !== "") {
+      writer.uint32(10).string(message.nftSchemaName);
+    }
+    if (message.tokenId !== "") {
+      writer.uint32(18).string(message.tokenId);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): TokenIdMap {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTokenIdMap();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.nftSchemaName = reader.string();
+          break;
+        case 2:
+          message.tokenId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<TokenIdMap>): TokenIdMap {
+    const message = createBaseTokenIdMap();
+    message.nftSchemaName = object.nftSchemaName ?? "";
+    message.tokenId = object.tokenId ?? "";
+    return message;
+  },
+  fromAmino(object: TokenIdMapAmino): TokenIdMap {
+    const message = createBaseTokenIdMap();
+    if (object.nftSchemaName !== undefined && object.nftSchemaName !== null) {
+      message.nftSchemaName = object.nftSchemaName;
+    }
+    if (object.tokenId !== undefined && object.tokenId !== null) {
+      message.tokenId = object.tokenId;
+    }
+    return message;
+  },
+  toAmino(message: TokenIdMap): TokenIdMapAmino {
+    const obj: any = {};
+    obj.nftSchemaName = message.nftSchemaName === "" ? undefined : message.nftSchemaName;
+    obj.tokenId = message.tokenId === "" ? undefined : message.tokenId;
+    return obj;
+  },
+  fromAminoMsg(object: TokenIdMapAminoMsg): TokenIdMap {
+    return TokenIdMap.fromAmino(object.value);
+  },
+  fromProtoMsg(message: TokenIdMapProtoMsg): TokenIdMap {
+    return TokenIdMap.decode(message.value);
+  },
+  toProto(message: TokenIdMap): Uint8Array {
+    return TokenIdMap.encode(message).finish();
+  },
+  toProtoMsg(message: TokenIdMap): TokenIdMapProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.TokenIdMap",
+      value: TokenIdMap.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgProposalVirtualSchema(): MsgProposalVirtualSchema {
+  return {
+    creator: "",
+    virtualNftSchemaCode: "",
+    proposalType: 0,
+    registry: [],
+    actions: [],
+    enable: false
+  };
+}
+export const MsgProposalVirtualSchema = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgProposalVirtualSchema",
+  encode(message: MsgProposalVirtualSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.virtualNftSchemaCode !== "") {
+      writer.uint32(18).string(message.virtualNftSchemaCode);
+    }
+    if (message.proposalType !== 0) {
+      writer.uint32(24).int32(message.proposalType);
+    }
+    for (const v of message.registry) {
+      VirtualSchemaRegistryRequest.encode(v!, writer.uint32(34).fork()).ldelim();
+    }
+    for (const v of message.actions) {
+      Action.encode(v!, writer.uint32(42).fork()).ldelim();
+    }
+    if (message.enable === true) {
+      writer.uint32(48).bool(message.enable);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgProposalVirtualSchema {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgProposalVirtualSchema();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.virtualNftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.proposalType = reader.int32() as any;
+          break;
+        case 4:
+          message.registry.push(VirtualSchemaRegistryRequest.decode(reader, reader.uint32()));
+          break;
+        case 5:
+          message.actions.push(Action.decode(reader, reader.uint32()));
+          break;
+        case 6:
+          message.enable = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgProposalVirtualSchema>): MsgProposalVirtualSchema {
+    const message = createBaseMsgProposalVirtualSchema();
+    message.creator = object.creator ?? "";
+    message.virtualNftSchemaCode = object.virtualNftSchemaCode ?? "";
+    message.proposalType = object.proposalType ?? 0;
+    message.registry = object.registry?.map(e => VirtualSchemaRegistryRequest.fromPartial(e)) || [];
+    message.actions = object.actions?.map(e => Action.fromPartial(e)) || [];
+    message.enable = object.enable ?? false;
+    return message;
+  },
+  fromAmino(object: MsgProposalVirtualSchemaAmino): MsgProposalVirtualSchema {
+    const message = createBaseMsgProposalVirtualSchema();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.virtualNftSchemaCode !== undefined && object.virtualNftSchemaCode !== null) {
+      message.virtualNftSchemaCode = object.virtualNftSchemaCode;
+    }
+    if (object.proposalType !== undefined && object.proposalType !== null) {
+      message.proposalType = object.proposalType;
+    }
+    message.registry = object.registry?.map(e => VirtualSchemaRegistryRequest.fromAmino(e)) || [];
+    message.actions = object.actions?.map(e => Action.fromAmino(e)) || [];
+    if (object.enable !== undefined && object.enable !== null) {
+      message.enable = object.enable;
+    }
+    return message;
+  },
+  toAmino(message: MsgProposalVirtualSchema): MsgProposalVirtualSchemaAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.virtualNftSchemaCode = message.virtualNftSchemaCode === "" ? undefined : message.virtualNftSchemaCode;
+    obj.proposalType = message.proposalType === 0 ? undefined : message.proposalType;
+    if (message.registry) {
+      obj.registry = message.registry.map(e => e ? VirtualSchemaRegistryRequest.toAmino(e) : undefined);
+    } else {
+      obj.registry = message.registry;
+    }
+    if (message.actions) {
+      obj.actions = message.actions.map(e => e ? Action.toAmino(e) : undefined);
+    } else {
+      obj.actions = message.actions;
+    }
+    obj.enable = message.enable === false ? undefined : message.enable;
+    return obj;
+  },
+  fromAminoMsg(object: MsgProposalVirtualSchemaAminoMsg): MsgProposalVirtualSchema {
+    return MsgProposalVirtualSchema.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgProposalVirtualSchemaProtoMsg): MsgProposalVirtualSchema {
+    return MsgProposalVirtualSchema.decode(message.value);
+  },
+  toProto(message: MsgProposalVirtualSchema): Uint8Array {
+    return MsgProposalVirtualSchema.encode(message).finish();
+  },
+  toProtoMsg(message: MsgProposalVirtualSchema): MsgProposalVirtualSchemaProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgProposalVirtualSchema",
+      value: MsgProposalVirtualSchema.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgProposalVirtualSchemaResponse(): MsgProposalVirtualSchemaResponse {
+  return {
+    id: "",
+    virtualNftSchemaCode: "",
+    proposalType: 0
+  };
+}
+export const MsgProposalVirtualSchemaResponse = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgProposalVirtualSchemaResponse",
+  encode(message: MsgProposalVirtualSchemaResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    if (message.virtualNftSchemaCode !== "") {
+      writer.uint32(18).string(message.virtualNftSchemaCode);
+    }
+    if (message.proposalType !== 0) {
+      writer.uint32(24).int32(message.proposalType);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgProposalVirtualSchemaResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgProposalVirtualSchemaResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.id = reader.string();
+          break;
+        case 2:
+          message.virtualNftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.proposalType = reader.int32() as any;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgProposalVirtualSchemaResponse>): MsgProposalVirtualSchemaResponse {
+    const message = createBaseMsgProposalVirtualSchemaResponse();
+    message.id = object.id ?? "";
+    message.virtualNftSchemaCode = object.virtualNftSchemaCode ?? "";
+    message.proposalType = object.proposalType ?? 0;
+    return message;
+  },
+  fromAmino(object: MsgProposalVirtualSchemaResponseAmino): MsgProposalVirtualSchemaResponse {
+    const message = createBaseMsgProposalVirtualSchemaResponse();
+    if (object.id !== undefined && object.id !== null) {
+      message.id = object.id;
+    }
+    if (object.virtualNftSchemaCode !== undefined && object.virtualNftSchemaCode !== null) {
+      message.virtualNftSchemaCode = object.virtualNftSchemaCode;
+    }
+    if (object.proposalType !== undefined && object.proposalType !== null) {
+      message.proposalType = object.proposalType;
+    }
+    return message;
+  },
+  toAmino(message: MsgProposalVirtualSchemaResponse): MsgProposalVirtualSchemaResponseAmino {
+    const obj: any = {};
+    obj.id = message.id === "" ? undefined : message.id;
+    obj.virtualNftSchemaCode = message.virtualNftSchemaCode === "" ? undefined : message.virtualNftSchemaCode;
+    obj.proposalType = message.proposalType === 0 ? undefined : message.proposalType;
+    return obj;
+  },
+  fromAminoMsg(object: MsgProposalVirtualSchemaResponseAminoMsg): MsgProposalVirtualSchemaResponse {
+    return MsgProposalVirtualSchemaResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgProposalVirtualSchemaResponseProtoMsg): MsgProposalVirtualSchemaResponse {
+    return MsgProposalVirtualSchemaResponse.decode(message.value);
+  },
+  toProto(message: MsgProposalVirtualSchemaResponse): Uint8Array {
+    return MsgProposalVirtualSchemaResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgProposalVirtualSchemaResponse): MsgProposalVirtualSchemaResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgProposalVirtualSchemaResponse",
+      value: MsgProposalVirtualSchemaResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgVoteVirtualSchemaProposal(): MsgVoteVirtualSchemaProposal {
+  return {
+    creator: "",
+    id: "",
+    nftSchemaCode: "",
+    option: 0
+  };
+}
+export const MsgVoteVirtualSchemaProposal = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgVoteVirtualSchemaProposal",
+  encode(message: MsgVoteVirtualSchemaProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.id !== "") {
+      writer.uint32(18).string(message.id);
+    }
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(26).string(message.nftSchemaCode);
+    }
+    if (message.option !== 0) {
+      writer.uint32(32).int32(message.option);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteVirtualSchemaProposal {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgVoteVirtualSchemaProposal();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.id = reader.string();
+          break;
+        case 3:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 4:
+          message.option = reader.int32() as any;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgVoteVirtualSchemaProposal>): MsgVoteVirtualSchemaProposal {
+    const message = createBaseMsgVoteVirtualSchemaProposal();
+    message.creator = object.creator ?? "";
+    message.id = object.id ?? "";
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.option = object.option ?? 0;
+    return message;
+  },
+  fromAmino(object: MsgVoteVirtualSchemaProposalAmino): MsgVoteVirtualSchemaProposal {
+    const message = createBaseMsgVoteVirtualSchemaProposal();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.id !== undefined && object.id !== null) {
+      message.id = object.id;
+    }
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    if (object.option !== undefined && object.option !== null) {
+      message.option = object.option;
+    }
+    return message;
+  },
+  toAmino(message: MsgVoteVirtualSchemaProposal): MsgVoteVirtualSchemaProposalAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.id = message.id === "" ? undefined : message.id;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.option = message.option === 0 ? undefined : message.option;
+    return obj;
+  },
+  fromAminoMsg(object: MsgVoteVirtualSchemaProposalAminoMsg): MsgVoteVirtualSchemaProposal {
+    return MsgVoteVirtualSchemaProposal.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgVoteVirtualSchemaProposalProtoMsg): MsgVoteVirtualSchemaProposal {
+    return MsgVoteVirtualSchemaProposal.decode(message.value);
+  },
+  toProto(message: MsgVoteVirtualSchemaProposal): Uint8Array {
+    return MsgVoteVirtualSchemaProposal.encode(message).finish();
+  },
+  toProtoMsg(message: MsgVoteVirtualSchemaProposal): MsgVoteVirtualSchemaProposalProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgVoteVirtualSchemaProposal",
+      value: MsgVoteVirtualSchemaProposal.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgVoteVirtualSchemaProposalResponse(): MsgVoteVirtualSchemaProposalResponse {
+  return {};
+}
+export const MsgVoteVirtualSchemaProposalResponse = {
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgVoteVirtualSchemaProposalResponse",
+  encode(_: MsgVoteVirtualSchemaProposalResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteVirtualSchemaProposalResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgVoteVirtualSchemaProposalResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgVoteVirtualSchemaProposalResponse>): MsgVoteVirtualSchemaProposalResponse {
+    const message = createBaseMsgVoteVirtualSchemaProposalResponse();
+    return message;
+  },
+  fromAmino(_: MsgVoteVirtualSchemaProposalResponseAmino): MsgVoteVirtualSchemaProposalResponse {
+    const message = createBaseMsgVoteVirtualSchemaProposalResponse();
+    return message;
+  },
+  toAmino(_: MsgVoteVirtualSchemaProposalResponse): MsgVoteVirtualSchemaProposalResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgVoteVirtualSchemaProposalResponseAminoMsg): MsgVoteVirtualSchemaProposalResponse {
+    return MsgVoteVirtualSchemaProposalResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgVoteVirtualSchemaProposalResponseProtoMsg): MsgVoteVirtualSchemaProposalResponse {
+    return MsgVoteVirtualSchemaProposalResponse.decode(message.value);
+  },
+  toProto(message: MsgVoteVirtualSchemaProposalResponse): Uint8Array {
+    return MsgVoteVirtualSchemaProposalResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgVoteVirtualSchemaProposalResponse): MsgVoteVirtualSchemaProposalResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MsgVoteVirtualSchemaProposalResponse",
+      value: MsgVoteVirtualSchemaProposalResponse.encode(message).finish()
     };
   }
 };

@@ -150,7 +150,7 @@ export const MsgCreateVestingAccount = {
     } else {
       obj.amount = message.amount;
     }
-    obj.end_time = !message.endTime.isZero() ? (message.endTime?.toString)() : undefined;
+    obj.end_time = !message.endTime.isZero() ? message.endTime?.toString() : undefined;
     obj.delayed = message.delayed === false ? undefined : message.delayed;
     return obj;
   },

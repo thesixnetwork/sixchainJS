@@ -10,7 +10,7 @@ export interface Params {
   syncActionSignerActiveDuration: Duration;
 }
 export interface ParamsProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.Params";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.Params";
   value: Uint8Array;
 }
 /** Params defines the parameters for the module. */
@@ -22,7 +22,7 @@ export interface ParamsAmino {
   sync_action_signer_active_duration?: DurationAmino;
 }
 export interface ParamsAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.Params";
+  type: "/thesixnetwork.sixprotocol.nftoracle.Params";
   value: ParamsAmino;
 }
 /** Params defines the parameters for the module. */
@@ -43,7 +43,7 @@ function createBaseParams(): Params {
   };
 }
 export const Params = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.Params",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.Params",
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.mintRequestActiveDuration !== undefined) {
       Duration.encode(message.mintRequestActiveDuration, writer.uint32(10).fork()).ldelim();
@@ -139,7 +139,7 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.Params",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.Params",
       value: Params.encode(message).finish()
     };
   }

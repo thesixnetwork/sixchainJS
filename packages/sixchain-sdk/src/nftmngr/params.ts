@@ -3,13 +3,13 @@ import * as _m0 from "protobufjs/minimal";
 /** Params defines the parameters for the module. */
 export interface Params {}
 export interface ParamsProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.Params";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Params";
   value: Uint8Array;
 }
 /** Params defines the parameters for the module. */
 export interface ParamsAmino {}
 export interface ParamsAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.Params";
+  type: "/thesixnetwork.sixprotocol.nftmngr.Params";
   value: ParamsAmino;
 }
 /** Params defines the parameters for the module. */
@@ -18,7 +18,7 @@ function createBaseParams(): Params {
   return {};
 }
 export const Params = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.Params",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Params",
   encode(_: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -59,7 +59,7 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.Params",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Params",
       value: Params.encode(message).finish()
     };
   }

@@ -4,14 +4,14 @@ export interface OracleConfig {
   minimumConfirmation: number;
 }
 export interface OracleConfigProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.OracleConfig";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OracleConfig";
   value: Uint8Array;
 }
 export interface OracleConfigAmino {
   minimum_confirmation?: number;
 }
 export interface OracleConfigAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.OracleConfig";
+  type: "/thesixnetwork.sixprotocol.nftoracle.OracleConfig";
   value: OracleConfigAmino;
 }
 export interface OracleConfigSDKType {
@@ -23,7 +23,7 @@ function createBaseOracleConfig(): OracleConfig {
   };
 }
 export const OracleConfig = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.OracleConfig",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OracleConfig",
   encode(message: OracleConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.minimumConfirmation !== 0) {
       writer.uint32(8).int32(message.minimumConfirmation);
@@ -75,7 +75,7 @@ export const OracleConfig = {
   },
   toProtoMsg(message: OracleConfig): OracleConfigProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.OracleConfig",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OracleConfig",
       value: OracleConfig.encode(message).finish()
     };
   }
