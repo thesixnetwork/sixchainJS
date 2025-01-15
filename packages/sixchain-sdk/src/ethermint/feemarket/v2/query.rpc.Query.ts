@@ -1,9 +1,8 @@
 //@ts-nocheck
-import { createProtobufRpcClient,QueryClient } from '@cosmjs/stargate';
-import * as _m0 from 'protobufjs/minimal';
-
-import { Rpc } from '../../../helpers';
-import { QueryBaseFeeRequest, QueryBaseFeeResponse, QueryBlockGasRequest, QueryBlockGasResponse,QueryParamsRequest, QueryParamsResponse } from './query';
+import { Rpc } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
+import { QueryParamsRequest, QueryParamsResponse, QueryBaseFeeRequest, QueryBaseFeeResponse, QueryBlockGasRequest, QueryBlockGasResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Params queries the parameters of x/feemarket module. */
@@ -23,17 +22,17 @@ export class QueryClientImpl implements Query {
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
-    const promise = this.rpc.request('ethermint.feemarket.v2.Query', 'Params', data);
+    const promise = this.rpc.request("ethermint.feemarket.v2.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
   baseFee(request: QueryBaseFeeRequest = {}): Promise<QueryBaseFeeResponse> {
     const data = QueryBaseFeeRequest.encode(request).finish();
-    const promise = this.rpc.request('ethermint.feemarket.v2.Query', 'BaseFee', data);
+    const promise = this.rpc.request("ethermint.feemarket.v2.Query", "BaseFee", data);
     return promise.then(data => QueryBaseFeeResponse.decode(new _m0.Reader(data)));
   }
   blockGas(request: QueryBlockGasRequest = {}): Promise<QueryBlockGasResponse> {
     const data = QueryBlockGasRequest.encode(request).finish();
-    const promise = this.rpc.request('ethermint.feemarket.v2.Query', 'BlockGas', data);
+    const promise = this.rpc.request("ethermint.feemarket.v2.Query", "BlockGas", data);
     return promise.then(data => QueryBlockGasResponse.decode(new _m0.Reader(data)));
   }
 }

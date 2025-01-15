@@ -1,23 +1,22 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from '../cosmos/base/query/v1beta1/pagination';
-import { Burn, BurnAmino, BurnSDKType } from './burn';
-import { Mintperm, MintpermAmino, MintpermSDKType } from './mintperm';
-import { Options, OptionsAmino, OptionsSDKType } from './options';
-import { Params, ParamsAmino, ParamsSDKType } from './params';
-import { Token, TokenAmino, TokenSDKType } from './token';
-import { TokenBurn, TokenBurnAmino, TokenBurnSDKType } from './token_burn';
+import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../cosmos/base/query/v1beta1/pagination";
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Token, TokenAmino, TokenSDKType } from "./token";
+import { Mintperm, MintpermAmino, MintpermSDKType } from "./mintperm";
+import { Options, OptionsAmino, OptionsSDKType } from "./options";
+import { Burn, BurnAmino, BurnSDKType } from "./burn";
+import { TokenBurn, TokenBurnAmino, TokenBurnSDKType } from "./token_burn";
+import * as _m0 from "protobufjs/minimal";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryParamsRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsRequest";
   value: Uint8Array;
 }
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryParamsRequest';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsRequest";
   value: QueryParamsRequestAmino;
 }
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
@@ -28,7 +27,7 @@ export interface QueryParamsResponse {
   params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryParamsResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsResponse";
   value: Uint8Array;
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
@@ -37,7 +36,7 @@ export interface QueryParamsResponseAmino {
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryParamsResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsResponse";
   value: QueryParamsResponseAmino;
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
@@ -48,14 +47,14 @@ export interface QueryGetTokenRequest {
   name: string;
 }
 export interface QueryGetTokenRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenRequest";
   value: Uint8Array;
 }
 export interface QueryGetTokenRequestAmino {
   name?: string;
 }
 export interface QueryGetTokenRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenRequest';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenRequest";
   value: QueryGetTokenRequestAmino;
 }
 export interface QueryGetTokenRequestSDKType {
@@ -65,14 +64,14 @@ export interface QueryGetTokenResponse {
   token: Token;
 }
 export interface QueryGetTokenResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenResponse";
   value: Uint8Array;
 }
 export interface QueryGetTokenResponseAmino {
   token?: TokenAmino;
 }
 export interface QueryGetTokenResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenResponse";
   value: QueryGetTokenResponseAmino;
 }
 export interface QueryGetTokenResponseSDKType {
@@ -82,14 +81,14 @@ export interface QueryAllTokenRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllTokenRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenRequest";
   value: Uint8Array;
 }
 export interface QueryAllTokenRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllTokenRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenRequest';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenRequest";
   value: QueryAllTokenRequestAmino;
 }
 export interface QueryAllTokenRequestSDKType {
@@ -100,7 +99,7 @@ export interface QueryAllTokenResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllTokenResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenResponse";
   value: Uint8Array;
 }
 export interface QueryAllTokenResponseAmino {
@@ -108,7 +107,7 @@ export interface QueryAllTokenResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllTokenResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenResponse";
   value: QueryAllTokenResponseAmino;
 }
 export interface QueryAllTokenResponseSDKType {
@@ -120,7 +119,7 @@ export interface QueryGetMintpermRequest {
   address: string;
 }
 export interface QueryGetMintpermRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermRequest";
   value: Uint8Array;
 }
 export interface QueryGetMintpermRequestAmino {
@@ -128,7 +127,7 @@ export interface QueryGetMintpermRequestAmino {
   address?: string;
 }
 export interface QueryGetMintpermRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermRequest';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermRequest";
   value: QueryGetMintpermRequestAmino;
 }
 export interface QueryGetMintpermRequestSDKType {
@@ -139,14 +138,14 @@ export interface QueryGetMintpermResponse {
   mintperm: Mintperm;
 }
 export interface QueryGetMintpermResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermResponse";
   value: Uint8Array;
 }
 export interface QueryGetMintpermResponseAmino {
   mintperm?: MintpermAmino;
 }
 export interface QueryGetMintpermResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermResponse";
   value: QueryGetMintpermResponseAmino;
 }
 export interface QueryGetMintpermResponseSDKType {
@@ -156,14 +155,14 @@ export interface QueryAllMintpermRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllMintpermRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermRequest";
   value: Uint8Array;
 }
 export interface QueryAllMintpermRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllMintpermRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermRequest';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermRequest";
   value: QueryAllMintpermRequestAmino;
 }
 export interface QueryAllMintpermRequestSDKType {
@@ -174,7 +173,7 @@ export interface QueryAllMintpermResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllMintpermResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermResponse";
   value: Uint8Array;
 }
 export interface QueryAllMintpermResponseAmino {
@@ -182,7 +181,7 @@ export interface QueryAllMintpermResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllMintpermResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermResponse";
   value: QueryAllMintpermResponseAmino;
 }
 export interface QueryAllMintpermResponseSDKType {
@@ -191,12 +190,12 @@ export interface QueryAllMintpermResponseSDKType {
 }
 export interface QueryGetOptionsRequest {}
 export interface QueryGetOptionsRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsRequest";
   value: Uint8Array;
 }
 export interface QueryGetOptionsRequestAmino {}
 export interface QueryGetOptionsRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsRequest';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsRequest";
   value: QueryGetOptionsRequestAmino;
 }
 export interface QueryGetOptionsRequestSDKType {}
@@ -204,14 +203,14 @@ export interface QueryGetOptionsResponse {
   options: Options;
 }
 export interface QueryGetOptionsResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsResponse";
   value: Uint8Array;
 }
 export interface QueryGetOptionsResponseAmino {
   Options?: OptionsAmino;
 }
 export interface QueryGetOptionsResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsResponse";
   value: QueryGetOptionsResponseAmino;
 }
 export interface QueryGetOptionsResponseSDKType {
@@ -221,14 +220,14 @@ export interface QueryBurnsRequest {
   pagination?: PageRequest;
 }
 export interface QueryBurnsRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsRequest";
   value: Uint8Array;
 }
 export interface QueryBurnsRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryBurnsRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsRequest';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsRequest";
   value: QueryBurnsRequestAmino;
 }
 export interface QueryBurnsRequestSDKType {
@@ -241,7 +240,7 @@ export interface QueryBurnsResponse {
   pagination?: PageResponse;
 }
 export interface QueryBurnsResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponse";
   value: Uint8Array;
 }
 export interface QueryBurnsResponseAmino {
@@ -251,7 +250,7 @@ export interface QueryBurnsResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryBurnsResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponse";
   value: QueryBurnsResponseAmino;
 }
 export interface QueryBurnsResponseSDKType {
@@ -262,14 +261,14 @@ export interface QueryGetTokenBurnRequest {
   token: string;
 }
 export interface QueryGetTokenBurnRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnRequest";
   value: Uint8Array;
 }
 export interface QueryGetTokenBurnRequestAmino {
   token?: string;
 }
 export interface QueryGetTokenBurnRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnRequest';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnRequest";
   value: QueryGetTokenBurnRequestAmino;
 }
 export interface QueryGetTokenBurnRequestSDKType {
@@ -279,14 +278,14 @@ export interface QueryGetTokenBurnResponse {
   tokenBurn: TokenBurn;
 }
 export interface QueryGetTokenBurnResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponse";
   value: Uint8Array;
 }
 export interface QueryGetTokenBurnResponseAmino {
   tokenBurn?: TokenBurnAmino;
 }
 export interface QueryGetTokenBurnResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponse";
   value: QueryGetTokenBurnResponseAmino;
 }
 export interface QueryGetTokenBurnResponseSDKType {
@@ -296,14 +295,14 @@ export interface QueryAllTokenBurnRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllTokenBurnRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnRequest";
   value: Uint8Array;
 }
 export interface QueryAllTokenBurnRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllTokenBurnRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnRequest';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnRequest";
   value: QueryAllTokenBurnRequestAmino;
 }
 export interface QueryAllTokenBurnRequestSDKType {
@@ -314,7 +313,7 @@ export interface QueryAllTokenBurnResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllTokenBurnResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponse";
   value: Uint8Array;
 }
 export interface QueryAllTokenBurnResponseAmino {
@@ -322,7 +321,7 @@ export interface QueryAllTokenBurnResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllTokenBurnResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponse";
   value: QueryAllTokenBurnResponseAmino;
 }
 export interface QueryAllTokenBurnResponseSDKType {
@@ -333,7 +332,7 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryParamsRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsRequest",
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -344,9 +343,9 @@ export const QueryParamsRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -374,7 +373,7 @@ export const QueryParamsRequest = {
   },
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryParamsRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsRequest",
       value: QueryParamsRequest.encode(message).finish()
     };
   }
@@ -385,7 +384,7 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
   };
 }
 export const QueryParamsResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryParamsResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsResponse",
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -399,12 +398,12 @@ export const QueryParamsResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.params = Params.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -437,20 +436,20 @@ export const QueryParamsResponse = {
   },
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryParamsResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsResponse",
       value: QueryParamsResponse.encode(message).finish()
     };
   }
 };
 function createBaseQueryGetTokenRequest(): QueryGetTokenRequest {
   return {
-    name: ''
+    name: ""
   };
 }
 export const QueryGetTokenRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenRequest",
   encode(message: QueryGetTokenRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     return writer;
@@ -462,19 +461,19 @@ export const QueryGetTokenRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.name = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.name = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<QueryGetTokenRequest>): QueryGetTokenRequest {
     const message = createBaseQueryGetTokenRequest();
-    message.name = object.name ?? '';
+    message.name = object.name ?? "";
     return message;
   },
   fromAmino(object: QueryGetTokenRequestAmino): QueryGetTokenRequest {
@@ -486,7 +485,7 @@ export const QueryGetTokenRequest = {
   },
   toAmino(message: QueryGetTokenRequest): QueryGetTokenRequestAmino {
     const obj: any = {};
-    obj.name = message.name === '' ? undefined : message.name;
+    obj.name = message.name === "" ? undefined : message.name;
     return obj;
   },
   fromAminoMsg(object: QueryGetTokenRequestAminoMsg): QueryGetTokenRequest {
@@ -500,7 +499,7 @@ export const QueryGetTokenRequest = {
   },
   toProtoMsg(message: QueryGetTokenRequest): QueryGetTokenRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenRequest",
       value: QueryGetTokenRequest.encode(message).finish()
     };
   }
@@ -511,7 +510,7 @@ function createBaseQueryGetTokenResponse(): QueryGetTokenResponse {
   };
 }
 export const QueryGetTokenResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenResponse",
   encode(message: QueryGetTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.token !== undefined) {
       Token.encode(message.token, writer.uint32(10).fork()).ldelim();
@@ -525,12 +524,12 @@ export const QueryGetTokenResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.token = Token.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.token = Token.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -563,7 +562,7 @@ export const QueryGetTokenResponse = {
   },
   toProtoMsg(message: QueryGetTokenResponse): QueryGetTokenResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenResponse",
       value: QueryGetTokenResponse.encode(message).finish()
     };
   }
@@ -574,7 +573,7 @@ function createBaseQueryAllTokenRequest(): QueryAllTokenRequest {
   };
 }
 export const QueryAllTokenRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenRequest",
   encode(message: QueryAllTokenRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -588,12 +587,12 @@ export const QueryAllTokenRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.pagination = PageRequest.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -626,7 +625,7 @@ export const QueryAllTokenRequest = {
   },
   toProtoMsg(message: QueryAllTokenRequest): QueryAllTokenRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenRequest",
       value: QueryAllTokenRequest.encode(message).finish()
     };
   }
@@ -638,7 +637,7 @@ function createBaseQueryAllTokenResponse(): QueryAllTokenResponse {
   };
 }
 export const QueryAllTokenResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenResponse",
   encode(message: QueryAllTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.token) {
       Token.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -655,15 +654,15 @@ export const QueryAllTokenResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.token.push(Token.decode(reader, reader.uint32()));
-        break;
-      case 2:
-        message.pagination = PageResponse.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.token.push(Token.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -703,24 +702,24 @@ export const QueryAllTokenResponse = {
   },
   toProtoMsg(message: QueryAllTokenResponse): QueryAllTokenResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenResponse",
       value: QueryAllTokenResponse.encode(message).finish()
     };
   }
 };
 function createBaseQueryGetMintpermRequest(): QueryGetMintpermRequest {
   return {
-    token: '',
-    address: ''
+    token: "",
+    address: ""
   };
 }
 export const QueryGetMintpermRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermRequest",
   encode(message: QueryGetMintpermRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.token !== '') {
+    if (message.token !== "") {
       writer.uint32(10).string(message.token);
     }
-    if (message.address !== '') {
+    if (message.address !== "") {
       writer.uint32(18).string(message.address);
     }
     return writer;
@@ -732,23 +731,23 @@ export const QueryGetMintpermRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.token = reader.string();
-        break;
-      case 2:
-        message.address = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.token = reader.string();
+          break;
+        case 2:
+          message.address = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<QueryGetMintpermRequest>): QueryGetMintpermRequest {
     const message = createBaseQueryGetMintpermRequest();
-    message.token = object.token ?? '';
-    message.address = object.address ?? '';
+    message.token = object.token ?? "";
+    message.address = object.address ?? "";
     return message;
   },
   fromAmino(object: QueryGetMintpermRequestAmino): QueryGetMintpermRequest {
@@ -763,8 +762,8 @@ export const QueryGetMintpermRequest = {
   },
   toAmino(message: QueryGetMintpermRequest): QueryGetMintpermRequestAmino {
     const obj: any = {};
-    obj.token = message.token === '' ? undefined : message.token;
-    obj.address = message.address === '' ? undefined : message.address;
+    obj.token = message.token === "" ? undefined : message.token;
+    obj.address = message.address === "" ? undefined : message.address;
     return obj;
   },
   fromAminoMsg(object: QueryGetMintpermRequestAminoMsg): QueryGetMintpermRequest {
@@ -778,7 +777,7 @@ export const QueryGetMintpermRequest = {
   },
   toProtoMsg(message: QueryGetMintpermRequest): QueryGetMintpermRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermRequest",
       value: QueryGetMintpermRequest.encode(message).finish()
     };
   }
@@ -789,7 +788,7 @@ function createBaseQueryGetMintpermResponse(): QueryGetMintpermResponse {
   };
 }
 export const QueryGetMintpermResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermResponse",
   encode(message: QueryGetMintpermResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.mintperm !== undefined) {
       Mintperm.encode(message.mintperm, writer.uint32(10).fork()).ldelim();
@@ -803,12 +802,12 @@ export const QueryGetMintpermResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.mintperm = Mintperm.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.mintperm = Mintperm.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -841,7 +840,7 @@ export const QueryGetMintpermResponse = {
   },
   toProtoMsg(message: QueryGetMintpermResponse): QueryGetMintpermResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermResponse",
       value: QueryGetMintpermResponse.encode(message).finish()
     };
   }
@@ -852,7 +851,7 @@ function createBaseQueryAllMintpermRequest(): QueryAllMintpermRequest {
   };
 }
 export const QueryAllMintpermRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermRequest",
   encode(message: QueryAllMintpermRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -866,12 +865,12 @@ export const QueryAllMintpermRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.pagination = PageRequest.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -904,7 +903,7 @@ export const QueryAllMintpermRequest = {
   },
   toProtoMsg(message: QueryAllMintpermRequest): QueryAllMintpermRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermRequest",
       value: QueryAllMintpermRequest.encode(message).finish()
     };
   }
@@ -916,7 +915,7 @@ function createBaseQueryAllMintpermResponse(): QueryAllMintpermResponse {
   };
 }
 export const QueryAllMintpermResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermResponse",
   encode(message: QueryAllMintpermResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.mintperm) {
       Mintperm.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -933,15 +932,15 @@ export const QueryAllMintpermResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.mintperm.push(Mintperm.decode(reader, reader.uint32()));
-        break;
-      case 2:
-        message.pagination = PageResponse.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.mintperm.push(Mintperm.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -981,7 +980,7 @@ export const QueryAllMintpermResponse = {
   },
   toProtoMsg(message: QueryAllMintpermResponse): QueryAllMintpermResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermResponse",
       value: QueryAllMintpermResponse.encode(message).finish()
     };
   }
@@ -990,7 +989,7 @@ function createBaseQueryGetOptionsRequest(): QueryGetOptionsRequest {
   return {};
 }
 export const QueryGetOptionsRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsRequest",
   encode(_: QueryGetOptionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1001,9 +1000,9 @@ export const QueryGetOptionsRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1031,7 +1030,7 @@ export const QueryGetOptionsRequest = {
   },
   toProtoMsg(message: QueryGetOptionsRequest): QueryGetOptionsRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsRequest",
       value: QueryGetOptionsRequest.encode(message).finish()
     };
   }
@@ -1042,7 +1041,7 @@ function createBaseQueryGetOptionsResponse(): QueryGetOptionsResponse {
   };
 }
 export const QueryGetOptionsResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsResponse",
   encode(message: QueryGetOptionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.options !== undefined) {
       Options.encode(message.options, writer.uint32(10).fork()).ldelim();
@@ -1056,12 +1055,12 @@ export const QueryGetOptionsResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.options = Options.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.options = Options.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1094,7 +1093,7 @@ export const QueryGetOptionsResponse = {
   },
   toProtoMsg(message: QueryGetOptionsResponse): QueryGetOptionsResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsResponse",
       value: QueryGetOptionsResponse.encode(message).finish()
     };
   }
@@ -1105,7 +1104,7 @@ function createBaseQueryBurnsRequest(): QueryBurnsRequest {
   };
 }
 export const QueryBurnsRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsRequest",
   encode(message: QueryBurnsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -1119,12 +1118,12 @@ export const QueryBurnsRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.pagination = PageRequest.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1157,7 +1156,7 @@ export const QueryBurnsRequest = {
   },
   toProtoMsg(message: QueryBurnsRequest): QueryBurnsRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsRequest",
       value: QueryBurnsRequest.encode(message).finish()
     };
   }
@@ -1169,7 +1168,7 @@ function createBaseQueryBurnsResponse(): QueryBurnsResponse {
   };
 }
 export const QueryBurnsResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponse",
   encode(message: QueryBurnsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.burn) {
       Burn.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1186,15 +1185,15 @@ export const QueryBurnsResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.burn.push(Burn.decode(reader, reader.uint32()));
-        break;
-      case 2:
-        message.pagination = PageResponse.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.burn.push(Burn.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1234,20 +1233,20 @@ export const QueryBurnsResponse = {
   },
   toProtoMsg(message: QueryBurnsResponse): QueryBurnsResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponse",
       value: QueryBurnsResponse.encode(message).finish()
     };
   }
 };
 function createBaseQueryGetTokenBurnRequest(): QueryGetTokenBurnRequest {
   return {
-    token: ''
+    token: ""
   };
 }
 export const QueryGetTokenBurnRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnRequest",
   encode(message: QueryGetTokenBurnRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.token !== '') {
+    if (message.token !== "") {
       writer.uint32(10).string(message.token);
     }
     return writer;
@@ -1259,19 +1258,19 @@ export const QueryGetTokenBurnRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.token = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.token = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<QueryGetTokenBurnRequest>): QueryGetTokenBurnRequest {
     const message = createBaseQueryGetTokenBurnRequest();
-    message.token = object.token ?? '';
+    message.token = object.token ?? "";
     return message;
   },
   fromAmino(object: QueryGetTokenBurnRequestAmino): QueryGetTokenBurnRequest {
@@ -1283,7 +1282,7 @@ export const QueryGetTokenBurnRequest = {
   },
   toAmino(message: QueryGetTokenBurnRequest): QueryGetTokenBurnRequestAmino {
     const obj: any = {};
-    obj.token = message.token === '' ? undefined : message.token;
+    obj.token = message.token === "" ? undefined : message.token;
     return obj;
   },
   fromAminoMsg(object: QueryGetTokenBurnRequestAminoMsg): QueryGetTokenBurnRequest {
@@ -1297,7 +1296,7 @@ export const QueryGetTokenBurnRequest = {
   },
   toProtoMsg(message: QueryGetTokenBurnRequest): QueryGetTokenBurnRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnRequest",
       value: QueryGetTokenBurnRequest.encode(message).finish()
     };
   }
@@ -1308,7 +1307,7 @@ function createBaseQueryGetTokenBurnResponse(): QueryGetTokenBurnResponse {
   };
 }
 export const QueryGetTokenBurnResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponse",
   encode(message: QueryGetTokenBurnResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.tokenBurn !== undefined) {
       TokenBurn.encode(message.tokenBurn, writer.uint32(10).fork()).ldelim();
@@ -1322,12 +1321,12 @@ export const QueryGetTokenBurnResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.tokenBurn = TokenBurn.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.tokenBurn = TokenBurn.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1360,7 +1359,7 @@ export const QueryGetTokenBurnResponse = {
   },
   toProtoMsg(message: QueryGetTokenBurnResponse): QueryGetTokenBurnResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponse",
       value: QueryGetTokenBurnResponse.encode(message).finish()
     };
   }
@@ -1371,7 +1370,7 @@ function createBaseQueryAllTokenBurnRequest(): QueryAllTokenBurnRequest {
   };
 }
 export const QueryAllTokenBurnRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnRequest",
   encode(message: QueryAllTokenBurnRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -1385,12 +1384,12 @@ export const QueryAllTokenBurnRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.pagination = PageRequest.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1423,7 +1422,7 @@ export const QueryAllTokenBurnRequest = {
   },
   toProtoMsg(message: QueryAllTokenBurnRequest): QueryAllTokenBurnRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnRequest",
       value: QueryAllTokenBurnRequest.encode(message).finish()
     };
   }
@@ -1435,7 +1434,7 @@ function createBaseQueryAllTokenBurnResponse(): QueryAllTokenBurnResponse {
   };
 }
 export const QueryAllTokenBurnResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponse",
   encode(message: QueryAllTokenBurnResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.tokenBurn) {
       TokenBurn.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1452,15 +1451,15 @@ export const QueryAllTokenBurnResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.tokenBurn.push(TokenBurn.decode(reader, reader.uint32()));
-        break;
-      case 2:
-        message.pagination = PageResponse.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.tokenBurn.push(TokenBurn.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1500,7 +1499,7 @@ export const QueryAllTokenBurnResponse = {
   },
   toProtoMsg(message: QueryAllTokenBurnResponse): QueryAllTokenBurnResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponse",
       value: QueryAllTokenBurnResponse.encode(message).finish()
     };
   }

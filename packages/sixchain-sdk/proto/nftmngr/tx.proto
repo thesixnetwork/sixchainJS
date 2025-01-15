@@ -20,7 +20,8 @@ option go_package = "github.com/thesixnetwork/six-protocol/x/nftmngr/types";
 service Msg {
   rpc CreateNFTSchema(MsgCreateNFTSchema) returns (MsgCreateNFTSchemaResponse);
   rpc CreateMetadata(MsgCreateMetadata) returns (MsgCreateMetadataResponse);
-  rpc PerformActionByAdmin(MsgPerformActionByAdmin) returns (MsgPerformActionByAdminResponse);
+  rpc PerformActionByAdmin(MsgPerformActionByAdmin)
+      returns (MsgPerformActionByAdminResponse);
   rpc AddAttribute(MsgAddAttribute) returns (MsgAddAttributeResponse);
   rpc AddAction(MsgAddAction) returns (MsgAddActionResponse);
   rpc SetBaseUri(MsgSetBaseUri) returns (MsgSetBaseUriResponse);
@@ -33,8 +34,6 @@ service Msg {
   rpc SetFeeConfig(MsgSetFeeConfig) returns (MsgSetFeeConfigResponse);
   rpc SetMintauth(MsgSetMintauth) returns (MsgSetMintauthResponse);
   rpc ChangeOrgOwner(MsgChangeOrgOwner) returns (MsgChangeOrgOwnerResponse);
-  rpc CreateMultiMetadata(MsgCreateMultiMetadata)
-      returns (MsgCreateMultiMetadataResponse);
   rpc SetUriRetrievalMethod(MsgSetUriRetrievalMethod)
       returns (MsgSetUriRetrievalMethodResponse);
   rpc SetOriginChain(MsgSetOriginChain) returns (MsgSetOriginChainResponse);
@@ -51,22 +50,13 @@ service Msg {
   rpc UpdateSchemaAttribute(MsgUpdateSchemaAttribute)
       returns (MsgUpdateSchemaAttributeResponse);
   rpc UpdateAction(MsgUpdateAction) returns (MsgUpdateActionResponse);
-  rpc CreateVirtualAction(MsgCreateVirtualAction)
-      returns (MsgCreateVirtualActionResponse);
-  rpc UpdateVirtualAction(MsgUpdateVirtualAction)
-      returns (MsgUpdateVirtualActionResponse);
-  rpc DeleteVirtualAction(MsgDeleteVirtualAction)
-      returns (MsgDeleteVirtualActionResponse);
-  rpc CreateVirtualSchemaProposal(MsgCreateVirtualSchemaProposal)
-      returns (MsgCreateVirtualSchemaResponse);
-  rpc DeleteVirtualSchema(MsgDeleteVirtualSchema)
-      returns (MsgDeleteVirtualSchemaResponse);
-  rpc VoteCreateVirtualSchema(MsgVoteCreateVirtualSchema)
-      returns (MsgVoteCreateVirtualSchemaResponse);
-  rpc DisableVirtualSchemaProposal(MsgDisableVirtualSchemaProposal)
-      returns (MsgDisableVirtualSchemaProposalResponse);
-  rpc PerformVirtualAction(MsgPerformVirtualAction) returns (MsgPerformVirtualActionResponse);
-// this line is used by starport scaffolding # proto/tx/rpc
+  rpc ProposalVirtualSchema(MsgProposalVirtualSchema)
+      returns (MsgProposalVirtualSchemaResponse);
+  rpc PerformVirtualAction(MsgPerformVirtualAction)
+      returns (MsgPerformVirtualActionResponse);
+  rpc VoteVirtualSchemaProposal(MsgVoteVirtualSchemaProposal)
+      returns (MsgVoteVirtualSchemaProposalResponse);
+  // this line is used by starport scaffolding # proto/tx/rpc
 }
 
 enum AttributeLocation {
@@ -96,18 +86,6 @@ message MsgCreateMetadata {
 message MsgCreateMetadataResponse {
   string nftSchemaCode = 1;
   string tokenId = 2;
-}
-
-message MsgCreateMultiMetadata {
-  string creator = 1;
-  string nftSchemaCode = 2;
-  repeated string tokenId = 3;
-  string base64NFTData = 4;
-}
-
-message MsgCreateMultiMetadataResponse {
-  string nftSchemaCode = 1;
-  repeated string tokenId = 2;
 }
 
 message OpenseaAttribute {
@@ -218,7 +196,9 @@ message MsgResyncAttributes {
   string tokenId = 3;
 }
 
-enum FeeSubject { CREATE_NFT_SCHEMA = 0; }
+enum FeeSubject {
+  CREATE_NFT_SCHEMA = 0;
+}
 
 message MsgSetFeeConfig {
   string creator = 1;
@@ -388,45 +368,6 @@ message MsgDeleteVirtualActionResponse {
   string status = 2;
 }
 
-message MsgCreateVirtualSchemaProposal {
-  string creator = 1;
-  string virtualNftSchemaCode = 2;
-  repeated VirtualSchemaRegistryRequest registry = 3
-      [ (gogoproto.nullable) = false ];
-}
-
-message MsgCreateVirtualSchemaResponse {
-  string id = 1;
-  string virtualNftSchemaCode = 2;
-  
-}
-
-message MsgDeleteVirtualSchema {
-  string creator = 1;
-  string virtualNftSchemaCode = 2;
-}
-message MsgDeleteVirtualSchemaResponse {}
-
-message MsgVoteCreateVirtualSchema {
-  string creator = 1;
-  string id = 2;
-  string nftSchemaCode = 3;
-  RegistryStatus option = 4;
-}
-
-message MsgVoteCreateVirtualSchemaResponse {}
-
-message MsgDisableVirtualSchemaProposal {
-  string creator = 1;
-  string virtualNftSchemaCode = 2;
-  string proposalExpiredBlock = 3;
-}
-
-message MsgDisableVirtualSchemaProposalResponse {
-  string creator = 1;
-  string proposalId = 2;
-}
-
 message MsgPerformVirtualAction {
   string creator = 1;
   string nftSchemaName = 2;
@@ -436,12 +377,35 @@ message MsgPerformVirtualAction {
   repeated ActionParameter parameters = 6;
 }
 
-message MsgPerformVirtualActionResponse {
-  string nftSchemaName = 2;
-}
+message MsgPerformVirtualActionResponse { string nftSchemaName = 2; }
 
 message TokenIdMap {
   string nftSchemaName = 1;
   string tokenId = 2;
 }
+
+message MsgProposalVirtualSchema {
+  string creator = 1;
+  string virtualNftSchemaCode = 2;
+  ProposalType proposalType = 3;
+  repeated VirtualSchemaRegistryRequest registry = 4;
+  repeated Action actions = 5;
+  bool enable = 6;
+}
+
+message MsgProposalVirtualSchemaResponse {
+  string id = 1;
+  string virtualNftSchemaCode = 2;
+  ProposalType proposalType = 3;
+}
+
+message MsgVoteVirtualSchemaProposal {
+  string creator = 1;
+  string id = 2;
+  string nftSchemaCode = 3;
+  RegistryStatus option = 4;
+}
+
+message MsgVoteVirtualSchemaProposalResponse {}
+
 // this line is used by starport scaffolding # proto/tx/message

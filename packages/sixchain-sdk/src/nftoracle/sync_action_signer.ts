@@ -1,9 +1,8 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Timestamp } from '../google/protobuf/timestamp';
-import { base64FromBytes,bytesFromBase64, fromTimestamp, Long, toTimestamp } from '../helpers';
-import { RequestStatus } from './request';
+import { RequestStatus } from "./request";
+import { Timestamp } from "../google/protobuf/timestamp";
+import { Long, toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface SyncActionSigner {
   id: Long;
   chain: string;
@@ -22,7 +21,7 @@ export interface SyncActionSigner {
   executionErrorMessage: string;
 }
 export interface SyncActionSignerProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner';
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner";
   value: Uint8Array;
 }
 export interface SyncActionSignerAmino {
@@ -43,7 +42,7 @@ export interface SyncActionSignerAmino {
   execution_error_message?: string;
 }
 export interface SyncActionSignerAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner';
+  type: "/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner";
   value: SyncActionSignerAmino;
 }
 export interface SyncActionSignerSDKType {
@@ -72,7 +71,7 @@ export interface ParameterSyncSignerByOracle {
   expireEpoch: string;
 }
 export interface ParameterSyncSignerByOracleProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle';
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle";
   value: Uint8Array;
 }
 export interface ParameterSyncSignerByOracleAmino {
@@ -85,7 +84,7 @@ export interface ParameterSyncSignerByOracleAmino {
   expire_epoch?: string;
 }
 export interface ParameterSyncSignerByOracleAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle';
+  type: "/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle";
   value: ParameterSyncSignerByOracleAmino;
 }
 export interface ParameterSyncSignerByOracleSDKType {
@@ -100,7 +99,7 @@ export interface ContractInfoHash {
   confirmers: string[];
 }
 export interface ContractInfoHashProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash';
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash";
   value: Uint8Array;
 }
 export interface ContractInfoHashAmino {
@@ -109,7 +108,7 @@ export interface ContractInfoHashAmino {
   confirmers?: string[];
 }
 export interface ContractInfoHashAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash';
+  type: "/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash";
   value: ContractInfoHashAmino;
 }
 export interface ContractInfoHashSDKType {
@@ -120,10 +119,10 @@ export interface ContractInfoHashSDKType {
 function createBaseSyncActionSigner(): SyncActionSigner {
   return {
     id: Long.UZERO,
-    chain: '',
-    actorAddress: '',
-    ownerAddress: '',
-    caller: '',
+    chain: "",
+    actorAddress: "",
+    ownerAddress: "",
+    caller: "",
     requiredConfirm: Long.UZERO,
     status: 0,
     currentConfirm: Long.UZERO,
@@ -132,25 +131,25 @@ function createBaseSyncActionSigner(): SyncActionSigner {
     validUntil: new Date(),
     dataHashes: [],
     expiredHeight: Long.ZERO,
-    executionErrorMessage: ''
+    executionErrorMessage: ""
   };
 }
 export const SyncActionSigner = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner',
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner",
   encode(message: SyncActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
     }
-    if (message.chain !== '') {
+    if (message.chain !== "") {
       writer.uint32(18).string(message.chain);
     }
-    if (message.actorAddress !== '') {
+    if (message.actorAddress !== "") {
       writer.uint32(26).string(message.actorAddress);
     }
-    if (message.ownerAddress !== '') {
+    if (message.ownerAddress !== "") {
       writer.uint32(34).string(message.ownerAddress);
     }
-    if (message.caller !== '') {
+    if (message.caller !== "") {
       writer.uint32(42).string(message.caller);
     }
     if (!message.requiredConfirm.isZero()) {
@@ -177,7 +176,7 @@ export const SyncActionSigner = {
     if (!message.expiredHeight.isZero()) {
       writer.uint32(104).int64(message.expiredHeight);
     }
-    if (message.executionErrorMessage !== '') {
+    if (message.executionErrorMessage !== "") {
       writer.uint32(114).string(message.executionErrorMessage);
     }
     return writer;
@@ -189,51 +188,51 @@ export const SyncActionSigner = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.id = reader.uint64() as Long;
-        break;
-      case 2:
-        message.chain = reader.string();
-        break;
-      case 3:
-        message.actorAddress = reader.string();
-        break;
-      case 4:
-        message.ownerAddress = reader.string();
-        break;
-      case 5:
-        message.caller = reader.string();
-        break;
-      case 6:
-        message.requiredConfirm = reader.uint64() as Long;
-        break;
-      case 7:
-        message.status = reader.int32() as any;
-        break;
-      case 8:
-        message.currentConfirm = reader.uint64() as Long;
-        break;
-      case 9:
-        message.confirmers.push(reader.string());
-        break;
-      case 10:
-        message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      case 11:
-        message.validUntil = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      case 12:
-        message.dataHashes.push(ContractInfoHash.decode(reader, reader.uint32()));
-        break;
-      case 13:
-        message.expiredHeight = reader.int64() as Long;
-        break;
-      case 14:
-        message.executionErrorMessage = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.id = reader.uint64() as Long;
+          break;
+        case 2:
+          message.chain = reader.string();
+          break;
+        case 3:
+          message.actorAddress = reader.string();
+          break;
+        case 4:
+          message.ownerAddress = reader.string();
+          break;
+        case 5:
+          message.caller = reader.string();
+          break;
+        case 6:
+          message.requiredConfirm = reader.uint64() as Long;
+          break;
+        case 7:
+          message.status = reader.int32() as any;
+          break;
+        case 8:
+          message.currentConfirm = reader.uint64() as Long;
+          break;
+        case 9:
+          message.confirmers.push(reader.string());
+          break;
+        case 10:
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 11:
+          message.validUntil = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 12:
+          message.dataHashes.push(ContractInfoHash.decode(reader, reader.uint32()));
+          break;
+        case 13:
+          message.expiredHeight = reader.int64() as Long;
+          break;
+        case 14:
+          message.executionErrorMessage = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -241,10 +240,10 @@ export const SyncActionSigner = {
   fromPartial(object: Partial<SyncActionSigner>): SyncActionSigner {
     const message = createBaseSyncActionSigner();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
-    message.chain = object.chain ?? '';
-    message.actorAddress = object.actorAddress ?? '';
-    message.ownerAddress = object.ownerAddress ?? '';
-    message.caller = object.caller ?? '';
+    message.chain = object.chain ?? "";
+    message.actorAddress = object.actorAddress ?? "";
+    message.ownerAddress = object.ownerAddress ?? "";
+    message.caller = object.caller ?? "";
     message.requiredConfirm = object.requiredConfirm !== undefined && object.requiredConfirm !== null ? Long.fromValue(object.requiredConfirm) : Long.UZERO;
     message.status = object.status ?? 0;
     message.currentConfirm = object.currentConfirm !== undefined && object.currentConfirm !== null ? Long.fromValue(object.currentConfirm) : Long.UZERO;
@@ -253,7 +252,7 @@ export const SyncActionSigner = {
     message.validUntil = object.validUntil ?? undefined;
     message.dataHashes = object.dataHashes?.map(e => ContractInfoHash.fromPartial(e)) || [];
     message.expiredHeight = object.expiredHeight !== undefined && object.expiredHeight !== null ? Long.fromValue(object.expiredHeight) : Long.ZERO;
-    message.executionErrorMessage = object.executionErrorMessage ?? '';
+    message.executionErrorMessage = object.executionErrorMessage ?? "";
     return message;
   },
   fromAmino(object: SyncActionSignerAmino): SyncActionSigner {
@@ -301,10 +300,10 @@ export const SyncActionSigner = {
   toAmino(message: SyncActionSigner): SyncActionSignerAmino {
     const obj: any = {};
     obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
-    obj.chain = message.chain === '' ? undefined : message.chain;
-    obj.actor_address = message.actorAddress === '' ? undefined : message.actorAddress;
-    obj.owner_address = message.ownerAddress === '' ? undefined : message.ownerAddress;
-    obj.caller = message.caller === '' ? undefined : message.caller;
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    obj.actor_address = message.actorAddress === "" ? undefined : message.actorAddress;
+    obj.owner_address = message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.caller = message.caller === "" ? undefined : message.caller;
     obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
     obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
@@ -321,7 +320,7 @@ export const SyncActionSigner = {
       obj.data_hashes = message.dataHashes;
     }
     obj.expired_height = !message.expiredHeight.isZero() ? message.expiredHeight?.toString() : undefined;
-    obj.execution_error_message = message.executionErrorMessage === '' ? undefined : message.executionErrorMessage;
+    obj.execution_error_message = message.executionErrorMessage === "" ? undefined : message.executionErrorMessage;
     return obj;
   },
   fromAminoMsg(object: SyncActionSignerAminoMsg): SyncActionSigner {
@@ -335,32 +334,32 @@ export const SyncActionSigner = {
   },
   toProtoMsg(message: SyncActionSigner): SyncActionSignerProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner',
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner",
       value: SyncActionSigner.encode(message).finish()
     };
   }
 };
 function createBaseParameterSyncSignerByOracle(): ParameterSyncSignerByOracle {
   return {
-    chain: '',
-    ownerAddress: '',
-    actorAddress: '',
-    expireEpoch: ''
+    chain: "",
+    ownerAddress: "",
+    actorAddress: "",
+    expireEpoch: ""
   };
 }
 export const ParameterSyncSignerByOracle = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle',
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle",
   encode(message: ParameterSyncSignerByOracle, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.chain !== '') {
+    if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
     }
-    if (message.ownerAddress !== '') {
+    if (message.ownerAddress !== "") {
       writer.uint32(18).string(message.ownerAddress);
     }
-    if (message.actorAddress !== '') {
+    if (message.actorAddress !== "") {
       writer.uint32(26).string(message.actorAddress);
     }
-    if (message.expireEpoch !== '') {
+    if (message.expireEpoch !== "") {
       writer.uint32(34).string(message.expireEpoch);
     }
     return writer;
@@ -372,31 +371,31 @@ export const ParameterSyncSignerByOracle = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.chain = reader.string();
-        break;
-      case 2:
-        message.ownerAddress = reader.string();
-        break;
-      case 3:
-        message.actorAddress = reader.string();
-        break;
-      case 4:
-        message.expireEpoch = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.chain = reader.string();
+          break;
+        case 2:
+          message.ownerAddress = reader.string();
+          break;
+        case 3:
+          message.actorAddress = reader.string();
+          break;
+        case 4:
+          message.expireEpoch = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ParameterSyncSignerByOracle>): ParameterSyncSignerByOracle {
     const message = createBaseParameterSyncSignerByOracle();
-    message.chain = object.chain ?? '';
-    message.ownerAddress = object.ownerAddress ?? '';
-    message.actorAddress = object.actorAddress ?? '';
-    message.expireEpoch = object.expireEpoch ?? '';
+    message.chain = object.chain ?? "";
+    message.ownerAddress = object.ownerAddress ?? "";
+    message.actorAddress = object.actorAddress ?? "";
+    message.expireEpoch = object.expireEpoch ?? "";
     return message;
   },
   fromAmino(object: ParameterSyncSignerByOracleAmino): ParameterSyncSignerByOracle {
@@ -417,10 +416,10 @@ export const ParameterSyncSignerByOracle = {
   },
   toAmino(message: ParameterSyncSignerByOracle): ParameterSyncSignerByOracleAmino {
     const obj: any = {};
-    obj.chain = message.chain === '' ? undefined : message.chain;
-    obj.owner_address = message.ownerAddress === '' ? undefined : message.ownerAddress;
-    obj.actor_address = message.actorAddress === '' ? undefined : message.actorAddress;
-    obj.expire_epoch = message.expireEpoch === '' ? undefined : message.expireEpoch;
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    obj.owner_address = message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.actor_address = message.actorAddress === "" ? undefined : message.actorAddress;
+    obj.expire_epoch = message.expireEpoch === "" ? undefined : message.expireEpoch;
     return obj;
   },
   fromAminoMsg(object: ParameterSyncSignerByOracleAminoMsg): ParameterSyncSignerByOracle {
@@ -434,7 +433,7 @@ export const ParameterSyncSignerByOracle = {
   },
   toProtoMsg(message: ParameterSyncSignerByOracle): ParameterSyncSignerByOracleProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle',
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle",
       value: ParameterSyncSignerByOracle.encode(message).finish()
     };
   }
@@ -447,7 +446,7 @@ function createBaseContractInfoHash(): ContractInfoHash {
   };
 }
 export const ContractInfoHash = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash',
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash",
   encode(message: ContractInfoHash, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.contractParam !== undefined) {
       ParameterSyncSignerByOracle.encode(message.contractParam, writer.uint32(10).fork()).ldelim();
@@ -467,18 +466,18 @@ export const ContractInfoHash = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.contractParam = ParameterSyncSignerByOracle.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.hash = reader.bytes();
-        break;
-      case 3:
-        message.confirmers.push(reader.string());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.contractParam = ParameterSyncSignerByOracle.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.hash = reader.bytes();
+          break;
+        case 3:
+          message.confirmers.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -523,7 +522,7 @@ export const ContractInfoHash = {
   },
   toProtoMsg(message: ContractInfoHash): ContractInfoHashProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash',
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash",
       value: ContractInfoHash.encode(message).finish()
     };
   }

@@ -1,8 +1,7 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { base64FromBytes,bytesFromBase64, Long } from '../../../helpers';
-import { Delegation, DelegationAmino, DelegationSDKType, Params, ParamsAmino, ParamsSDKType, Redelegation, RedelegationAmino, RedelegationSDKType,UnbondingDelegation, UnbondingDelegationAmino, UnbondingDelegationSDKType, Validator, ValidatorAmino, ValidatorApproval, ValidatorApprovalAmino, ValidatorApprovalSDKType, ValidatorSDKType } from './staking';
+import { Params, ParamsAmino, ParamsSDKType, ValidatorApproval, ValidatorApprovalAmino, ValidatorApprovalSDKType, Validator, ValidatorAmino, ValidatorSDKType, Delegation, DelegationAmino, DelegationSDKType, UnbondingDelegation, UnbondingDelegationAmino, UnbondingDelegationSDKType, Redelegation, RedelegationAmino, RedelegationSDKType } from "./staking";
+import { Long, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisState {
   /** params defines all the paramaters of related to deposit. */
@@ -30,7 +29,7 @@ export interface GenesisState {
   exported: boolean;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: '/cosmos.staking.v1beta1.GenesisState';
+  typeUrl: "/cosmos.staking.v1beta1.GenesisState";
   value: Uint8Array;
 }
 /** GenesisState defines the staking module's genesis state. */
@@ -60,7 +59,7 @@ export interface GenesisStateAmino {
   exported?: boolean;
 }
 export interface GenesisStateAminoMsg {
-  type: 'cosmos-sdk/GenesisState';
+  type: "cosmos-sdk/GenesisState";
   value: GenesisStateAmino;
 }
 /** GenesisState defines the staking module's genesis state. */
@@ -83,7 +82,7 @@ export interface LastValidatorPower {
   power: Long;
 }
 export interface LastValidatorPowerProtoMsg {
-  typeUrl: '/cosmos.staking.v1beta1.LastValidatorPower';
+  typeUrl: "/cosmos.staking.v1beta1.LastValidatorPower";
   value: Uint8Array;
 }
 /** LastValidatorPower required for validator set update logic. */
@@ -94,7 +93,7 @@ export interface LastValidatorPowerAmino {
   power?: string;
 }
 export interface LastValidatorPowerAminoMsg {
-  type: 'cosmos-sdk/LastValidatorPower';
+  type: "cosmos-sdk/LastValidatorPower";
   value: LastValidatorPowerAmino;
 }
 /** LastValidatorPower required for validator set update logic. */
@@ -116,7 +115,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: '/cosmos.staking.v1beta1.GenesisState',
+  typeUrl: "/cosmos.staking.v1beta1.GenesisState",
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -154,36 +153,36 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.params = Params.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.lastTotalPower = reader.bytes();
-        break;
-      case 3:
-        message.lastValidatorPowers.push(LastValidatorPower.decode(reader, reader.uint32()));
-        break;
-      case 4:
-        message.validatorApproval = ValidatorApproval.decode(reader, reader.uint32());
-        break;
-      case 5:
-        message.validators.push(Validator.decode(reader, reader.uint32()));
-        break;
-      case 6:
-        message.delegations.push(Delegation.decode(reader, reader.uint32()));
-        break;
-      case 7:
-        message.unbondingDelegations.push(UnbondingDelegation.decode(reader, reader.uint32()));
-        break;
-      case 8:
-        message.redelegations.push(Redelegation.decode(reader, reader.uint32()));
-        break;
-      case 9:
-        message.exported = reader.bool();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.lastTotalPower = reader.bytes();
+          break;
+        case 3:
+          message.lastValidatorPowers.push(LastValidatorPower.decode(reader, reader.uint32()));
+          break;
+        case 4:
+          message.validatorApproval = ValidatorApproval.decode(reader, reader.uint32());
+          break;
+        case 5:
+          message.validators.push(Validator.decode(reader, reader.uint32()));
+          break;
+        case 6:
+          message.delegations.push(Delegation.decode(reader, reader.uint32()));
+          break;
+        case 7:
+          message.unbondingDelegations.push(UnbondingDelegation.decode(reader, reader.uint32()));
+          break;
+        case 8:
+          message.redelegations.push(Redelegation.decode(reader, reader.uint32()));
+          break;
+        case 9:
+          message.exported = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -260,7 +259,7 @@ export const GenesisState = {
   },
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
-      type: 'cosmos-sdk/GenesisState',
+      type: "cosmos-sdk/GenesisState",
       value: GenesisState.toAmino(message)
     };
   },
@@ -272,21 +271,21 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: '/cosmos.staking.v1beta1.GenesisState',
+      typeUrl: "/cosmos.staking.v1beta1.GenesisState",
       value: GenesisState.encode(message).finish()
     };
   }
 };
 function createBaseLastValidatorPower(): LastValidatorPower {
   return {
-    address: '',
+    address: "",
     power: Long.ZERO
   };
 }
 export const LastValidatorPower = {
-  typeUrl: '/cosmos.staking.v1beta1.LastValidatorPower',
+  typeUrl: "/cosmos.staking.v1beta1.LastValidatorPower",
   encode(message: LastValidatorPower, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address !== '') {
+    if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
     if (!message.power.isZero()) {
@@ -301,22 +300,22 @@ export const LastValidatorPower = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.address = reader.string();
-        break;
-      case 2:
-        message.power = reader.int64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.address = reader.string();
+          break;
+        case 2:
+          message.power = reader.int64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<LastValidatorPower>): LastValidatorPower {
     const message = createBaseLastValidatorPower();
-    message.address = object.address ?? '';
+    message.address = object.address ?? "";
     message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;
     return message;
   },
@@ -332,7 +331,7 @@ export const LastValidatorPower = {
   },
   toAmino(message: LastValidatorPower): LastValidatorPowerAmino {
     const obj: any = {};
-    obj.address = message.address === '' ? undefined : message.address;
+    obj.address = message.address === "" ? undefined : message.address;
     obj.power = !message.power.isZero() ? message.power?.toString() : undefined;
     return obj;
   },
@@ -341,7 +340,7 @@ export const LastValidatorPower = {
   },
   toAminoMsg(message: LastValidatorPower): LastValidatorPowerAminoMsg {
     return {
-      type: 'cosmos-sdk/LastValidatorPower',
+      type: "cosmos-sdk/LastValidatorPower",
       value: LastValidatorPower.toAmino(message)
     };
   },
@@ -353,7 +352,7 @@ export const LastValidatorPower = {
   },
   toProtoMsg(message: LastValidatorPower): LastValidatorPowerProtoMsg {
     return {
-      typeUrl: '/cosmos.staking.v1beta1.LastValidatorPower',
+      typeUrl: "/cosmos.staking.v1beta1.LastValidatorPower",
       value: LastValidatorPower.encode(message).finish()
     };
   }

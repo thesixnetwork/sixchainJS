@@ -1,11 +1,11 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
+import * as _m0 from "protobufjs/minimal";
 export interface MapTokenToMinter {
   tokenId: string;
   minter: string;
 }
 export interface MapTokenToMinterProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter";
   value: Uint8Array;
 }
 export interface MapTokenToMinterAmino {
@@ -13,7 +13,7 @@ export interface MapTokenToMinterAmino {
   minter?: string;
 }
 export interface MapTokenToMinterAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter';
+  type: "/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter";
   value: MapTokenToMinterAmino;
 }
 export interface MapTokenToMinterSDKType {
@@ -25,7 +25,7 @@ export interface MetadataCreator {
   metadataMintedBy: MapTokenToMinter[];
 }
 export interface MetadataCreatorProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.MetadataCreator';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MetadataCreator";
   value: Uint8Array;
 }
 export interface MetadataCreatorAmino {
@@ -33,7 +33,7 @@ export interface MetadataCreatorAmino {
   metadataMintedBy?: MapTokenToMinterAmino[];
 }
 export interface MetadataCreatorAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.MetadataCreator';
+  type: "/thesixnetwork.sixprotocol.nftmngr.MetadataCreator";
   value: MetadataCreatorAmino;
 }
 export interface MetadataCreatorSDKType {
@@ -42,17 +42,17 @@ export interface MetadataCreatorSDKType {
 }
 function createBaseMapTokenToMinter(): MapTokenToMinter {
   return {
-    tokenId: '',
-    minter: ''
+    tokenId: "",
+    minter: ""
   };
 }
 export const MapTokenToMinter = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter",
   encode(message: MapTokenToMinter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.tokenId !== '') {
+    if (message.tokenId !== "") {
       writer.uint32(10).string(message.tokenId);
     }
-    if (message.minter !== '') {
+    if (message.minter !== "") {
       writer.uint32(18).string(message.minter);
     }
     return writer;
@@ -64,23 +64,23 @@ export const MapTokenToMinter = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.tokenId = reader.string();
-        break;
-      case 2:
-        message.minter = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.tokenId = reader.string();
+          break;
+        case 2:
+          message.minter = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MapTokenToMinter>): MapTokenToMinter {
     const message = createBaseMapTokenToMinter();
-    message.tokenId = object.tokenId ?? '';
-    message.minter = object.minter ?? '';
+    message.tokenId = object.tokenId ?? "";
+    message.minter = object.minter ?? "";
     return message;
   },
   fromAmino(object: MapTokenToMinterAmino): MapTokenToMinter {
@@ -95,8 +95,8 @@ export const MapTokenToMinter = {
   },
   toAmino(message: MapTokenToMinter): MapTokenToMinterAmino {
     const obj: any = {};
-    obj.token_id = message.tokenId === '' ? undefined : message.tokenId;
-    obj.minter = message.minter === '' ? undefined : message.minter;
+    obj.token_id = message.tokenId === "" ? undefined : message.tokenId;
+    obj.minter = message.minter === "" ? undefined : message.minter;
     return obj;
   },
   fromAminoMsg(object: MapTokenToMinterAminoMsg): MapTokenToMinter {
@@ -110,21 +110,21 @@ export const MapTokenToMinter = {
   },
   toProtoMsg(message: MapTokenToMinter): MapTokenToMinterProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MapTokenToMinter",
       value: MapTokenToMinter.encode(message).finish()
     };
   }
 };
 function createBaseMetadataCreator(): MetadataCreator {
   return {
-    nftSchemaCode: '',
+    nftSchemaCode: "",
     metadataMintedBy: []
   };
 }
 export const MetadataCreator = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.MetadataCreator',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MetadataCreator",
   encode(message: MetadataCreator, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
     for (const v of message.metadataMintedBy) {
@@ -139,22 +139,22 @@ export const MetadataCreator = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 2:
-        message.metadataMintedBy.push(MapTokenToMinter.decode(reader, reader.uint32()));
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.metadataMintedBy.push(MapTokenToMinter.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MetadataCreator>): MetadataCreator {
     const message = createBaseMetadataCreator();
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.metadataMintedBy = object.metadataMintedBy?.map(e => MapTokenToMinter.fromPartial(e)) || [];
     return message;
   },
@@ -168,7 +168,7 @@ export const MetadataCreator = {
   },
   toAmino(message: MetadataCreator): MetadataCreatorAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     if (message.metadataMintedBy) {
       obj.metadataMintedBy = message.metadataMintedBy.map(e => e ? MapTokenToMinter.toAmino(e) : undefined);
     } else {
@@ -187,7 +187,7 @@ export const MetadataCreator = {
   },
   toProtoMsg(message: MetadataCreator): MetadataCreatorProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.MetadataCreator',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.MetadataCreator",
       value: MetadataCreator.encode(message).finish()
     };
   }

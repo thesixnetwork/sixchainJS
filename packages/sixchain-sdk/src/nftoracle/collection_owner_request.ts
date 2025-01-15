@@ -1,9 +1,8 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Timestamp } from '../google/protobuf/timestamp';
-import { base64FromBytes,bytesFromBase64, fromTimestamp, Long, toTimestamp } from '../helpers';
-import { RequestStatus } from './request';
+import { Timestamp } from "../google/protobuf/timestamp";
+import { RequestStatus } from "./request";
+import { Long, toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface OriginContractParam {
   chain: string;
   contractAddress: string;
@@ -11,7 +10,7 @@ export interface OriginContractParam {
   requestExpire: Date;
 }
 export interface OriginContractParamProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.OriginContractParam';
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractParam";
   value: Uint8Array;
 }
 export interface OriginContractParamAmino {
@@ -21,7 +20,7 @@ export interface OriginContractParamAmino {
   request_expire?: string;
 }
 export interface OriginContractParamAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.OriginContractParam';
+  type: "/thesixnetwork.sixprotocol.nftoracle.OriginContractParam";
   value: OriginContractParamAmino;
 }
 export interface OriginContractParamSDKType {
@@ -44,7 +43,7 @@ export interface CollectionOwnerRequest {
   expiredHeight: Long;
 }
 export interface CollectionOwnerRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest";
   value: Uint8Array;
 }
 export interface CollectionOwnerRequestAmino {
@@ -61,7 +60,7 @@ export interface CollectionOwnerRequestAmino {
   expired_height?: string;
 }
 export interface CollectionOwnerRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest';
+  type: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest";
   value: CollectionOwnerRequestAmino;
 }
 export interface CollectionOwnerRequestSDKType {
@@ -83,7 +82,7 @@ export interface OriginContractInfo {
   confirmers: string[];
 }
 export interface OriginContractInfoProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo';
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo";
   value: Uint8Array;
 }
 export interface OriginContractInfoAmino {
@@ -92,7 +91,7 @@ export interface OriginContractInfoAmino {
   confirmers?: string[];
 }
 export interface OriginContractInfoAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo';
+  type: "/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo";
   value: OriginContractInfoAmino;
 }
 export interface OriginContractInfoSDKType {
@@ -102,22 +101,22 @@ export interface OriginContractInfoSDKType {
 }
 function createBaseOriginContractParam(): OriginContractParam {
   return {
-    chain: '',
-    contractAddress: '',
-    contractOwner: '',
+    chain: "",
+    contractAddress: "",
+    contractOwner: "",
     requestExpire: new Date()
   };
 }
 export const OriginContractParam = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.OriginContractParam',
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractParam",
   encode(message: OriginContractParam, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.chain !== '') {
+    if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
     }
-    if (message.contractAddress !== '') {
+    if (message.contractAddress !== "") {
       writer.uint32(18).string(message.contractAddress);
     }
-    if (message.contractOwner !== '') {
+    if (message.contractOwner !== "") {
       writer.uint32(26).string(message.contractOwner);
     }
     if (message.requestExpire !== undefined) {
@@ -132,30 +131,30 @@ export const OriginContractParam = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.chain = reader.string();
-        break;
-      case 2:
-        message.contractAddress = reader.string();
-        break;
-      case 3:
-        message.contractOwner = reader.string();
-        break;
-      case 4:
-        message.requestExpire = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.chain = reader.string();
+          break;
+        case 2:
+          message.contractAddress = reader.string();
+          break;
+        case 3:
+          message.contractOwner = reader.string();
+          break;
+        case 4:
+          message.requestExpire = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<OriginContractParam>): OriginContractParam {
     const message = createBaseOriginContractParam();
-    message.chain = object.chain ?? '';
-    message.contractAddress = object.contractAddress ?? '';
-    message.contractOwner = object.contractOwner ?? '';
+    message.chain = object.chain ?? "";
+    message.contractAddress = object.contractAddress ?? "";
+    message.contractOwner = object.contractOwner ?? "";
     message.requestExpire = object.requestExpire ?? undefined;
     return message;
   },
@@ -177,9 +176,9 @@ export const OriginContractParam = {
   },
   toAmino(message: OriginContractParam): OriginContractParamAmino {
     const obj: any = {};
-    obj.chain = message.chain === '' ? undefined : message.chain;
-    obj.contract_address = message.contractAddress === '' ? undefined : message.contractAddress;
-    obj.contract_owner = message.contractOwner === '' ? undefined : message.contractOwner;
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    obj.contract_address = message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.contract_owner = message.contractOwner === "" ? undefined : message.contractOwner;
     obj.request_expire = message.requestExpire ? Timestamp.toAmino(toTimestamp(message.requestExpire)) : undefined;
     return obj;
   },
@@ -194,7 +193,7 @@ export const OriginContractParam = {
   },
   toProtoMsg(message: OriginContractParam): OriginContractParamProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.OriginContractParam',
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractParam",
       value: OriginContractParam.encode(message).finish()
     };
   }
@@ -202,8 +201,8 @@ export const OriginContractParam = {
 function createBaseCollectionOwnerRequest(): CollectionOwnerRequest {
   return {
     id: Long.UZERO,
-    nftSchemaCode: '',
-    signer: '',
+    nftSchemaCode: "",
+    signer: "",
     requiredConfirm: Long.UZERO,
     status: 0,
     currentConfirm: Long.UZERO,
@@ -215,15 +214,15 @@ function createBaseCollectionOwnerRequest(): CollectionOwnerRequest {
   };
 }
 export const CollectionOwnerRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest",
   encode(message: CollectionOwnerRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
     }
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(18).string(message.nftSchemaCode);
     }
-    if (message.signer !== '') {
+    if (message.signer !== "") {
       writer.uint32(26).string(message.signer);
     }
     if (!message.requiredConfirm.isZero()) {
@@ -259,42 +258,42 @@ export const CollectionOwnerRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.id = reader.uint64() as Long;
-        break;
-      case 2:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 3:
-        message.signer = reader.string();
-        break;
-      case 4:
-        message.requiredConfirm = reader.uint64() as Long;
-        break;
-      case 5:
-        message.status = reader.int32() as any;
-        break;
-      case 6:
-        message.currentConfirm = reader.uint64() as Long;
-        break;
-      case 7:
-        message.confirmers.push(reader.string());
-        break;
-      case 8:
-        message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      case 9:
-        message.validUntil = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      case 10:
-        message.contractInfo.push(OriginContractInfo.decode(reader, reader.uint32()));
-        break;
-      case 11:
-        message.expiredHeight = reader.int64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.id = reader.uint64() as Long;
+          break;
+        case 2:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.signer = reader.string();
+          break;
+        case 4:
+          message.requiredConfirm = reader.uint64() as Long;
+          break;
+        case 5:
+          message.status = reader.int32() as any;
+          break;
+        case 6:
+          message.currentConfirm = reader.uint64() as Long;
+          break;
+        case 7:
+          message.confirmers.push(reader.string());
+          break;
+        case 8:
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 9:
+          message.validUntil = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 10:
+          message.contractInfo.push(OriginContractInfo.decode(reader, reader.uint32()));
+          break;
+        case 11:
+          message.expiredHeight = reader.int64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -302,8 +301,8 @@ export const CollectionOwnerRequest = {
   fromPartial(object: Partial<CollectionOwnerRequest>): CollectionOwnerRequest {
     const message = createBaseCollectionOwnerRequest();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
-    message.signer = object.signer ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.signer = object.signer ?? "";
     message.requiredConfirm = object.requiredConfirm !== undefined && object.requiredConfirm !== null ? Long.fromValue(object.requiredConfirm) : Long.UZERO;
     message.status = object.status ?? 0;
     message.currentConfirm = object.currentConfirm !== undefined && object.currentConfirm !== null ? Long.fromValue(object.currentConfirm) : Long.UZERO;
@@ -350,8 +349,8 @@ export const CollectionOwnerRequest = {
   toAmino(message: CollectionOwnerRequest): CollectionOwnerRequestAmino {
     const obj: any = {};
     obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
-    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
-    obj.signer = message.signer === '' ? undefined : message.signer;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.signer = message.signer === "" ? undefined : message.signer;
     obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
     obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
@@ -381,7 +380,7 @@ export const CollectionOwnerRequest = {
   },
   toProtoMsg(message: CollectionOwnerRequest): CollectionOwnerRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerRequest",
       value: CollectionOwnerRequest.encode(message).finish()
     };
   }
@@ -394,7 +393,7 @@ function createBaseOriginContractInfo(): OriginContractInfo {
   };
 }
 export const OriginContractInfo = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo',
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo",
   encode(message: OriginContractInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.contractOriginDataInfo !== undefined) {
       OriginContractParam.encode(message.contractOriginDataInfo, writer.uint32(10).fork()).ldelim();
@@ -414,18 +413,18 @@ export const OriginContractInfo = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.contractOriginDataInfo = OriginContractParam.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.hash = reader.bytes();
-        break;
-      case 3:
-        message.confirmers.push(reader.string());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.contractOriginDataInfo = OriginContractParam.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.hash = reader.bytes();
+          break;
+        case 3:
+          message.confirmers.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -470,7 +469,7 @@ export const OriginContractInfo = {
   },
   toProtoMsg(message: OriginContractInfo): OriginContractInfoProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo',
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.OriginContractInfo",
       value: OriginContractInfo.encode(message).finish()
     };
   }

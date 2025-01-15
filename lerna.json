@@ -2,14 +2,8 @@
   "lerna": "6",
   "conventionalCommits": true,
   "npmClient": "yarn",
-  "npmClientArgs": [
-    "--no-lockfile"
-  ],
-  "packages": [
-    "src/*",
-    "example/*",
-    "packages/*"
-  ],
+  "npmClientArgs": ["--no-lockfile"],
+  "packages": ["src/*", "example/*", "packages/*"],
   "version": "independent",
   "registry": "https://registry.npmjs.org",
   "command": {
@@ -22,5 +16,7 @@
       "allowBranch": "main",
       "message": "chore(release): publish"
     }
-  }
+  },
+  "useWorkspaces": true
 }
+

@@ -20,7 +20,6 @@ import "nftmngr/executor_of_schema.proto";
 import "nftmngr/virtual_action.proto";
 import "nftmngr/nft_data.proto";
 import "nftmngr/virtual_schema.proto";
-import "nftmngr/disable_virtual_schema.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/thesixnetwork/six-protocol/x/nftmngr/types";
@@ -221,20 +220,6 @@ service Query {
         "/thesixnetwork/sixnft/nftmngr/virtual_schema";
   }
 
-  // Queries a DisableVirtualSchema by index.
-  rpc DisableVirtualSchema(QueryGetDisableVirtualSchemaRequest)
-      returns (QueryGetDisableVirtualSchemaResponse) {
-    option (google.api.http).get =
-        "/thesixnetwork/sixnft/nftmngr/disable_virtual_schema/{index}";
-  }
-
-  // Queries a list of DisableVirtualSchema items.
-  rpc DisableVirtualSchemaAll(QueryAllDisableVirtualSchemaRequest)
-      returns (QueryAllDisableVirtualSchemaResponse) {
-    option (google.api.http).get =
-        "/thesixnetwork/sixnft/nftmngr/disable_virtual_schema";
-  }
-
   // Queries a VirtualSchemaProposal by index.
   rpc VirtualSchemaProposal(QueryGetVirtualSchemaProposalRequest)
       returns (QueryGetVirtualSchemaProposalResponse) {
@@ -247,6 +232,13 @@ service Query {
       returns (QueryAllVirtualSchemaProposalResponse) {
     option (google.api.http).get =
         "/thesixnetwork/sixnft/nftmngr/virtual_schema_proposal";
+  }
+
+  // Queries a list of ListActiveProposal items.
+  rpc ListActiveProposal(QueryListActiveProposalRequest)
+      returns (QueryListActiveProposalResponse) {
+    option (google.api.http).get =
+        "/thesixnetwork/six-protocol/nftmngr/list_active_proposal";
   }
 
   // this line is used by starport scaffolding # 2
@@ -264,7 +256,7 @@ message QueryParamsResponse {
 message QueryGetNFTSchemaRequest { string code = 1; }
 
 message QueryGetNFTSchemaResponse {
-  NFTSchema nFTSchema = 1 [ (gogoproto.nullable) = false ];
+  NFTSchemaQueryResult nFTSchema = 1 [ (gogoproto.nullable) = false ];
 }
 
 message QueryAllNFTSchemaRequest {
@@ -272,7 +264,7 @@ message QueryAllNFTSchemaRequest {
 }
 
 message QueryAllNFTSchemaResponse {
-  repeated NFTSchema nFTSchema = 1 [ (gogoproto.nullable) = false ];
+  repeated NFTSchemaQueryResult nFTSchema = 1 [ (gogoproto.nullable) = false ];
   cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
@@ -486,23 +478,6 @@ message QueryAllVirtualSchemaResponse {
   cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
-message QueryGetDisableVirtualSchemaRequest { string index = 1; }
-
-message QueryGetDisableVirtualSchemaResponse {
-  DisableVirtualSchema disableVirtualSchema = 1
-      [ (gogoproto.nullable) = false ];
-}
-
-message QueryAllDisableVirtualSchemaRequest {
-  cosmos.base.query.v1beta1.PageRequest pagination = 1;
-}
-
-message QueryAllDisableVirtualSchemaResponse {
-  repeated DisableVirtualSchema disableVirtualSchema = 1
-      [ (gogoproto.nullable) = false ];
-  cosmos.base.query.v1beta1.PageResponse pagination = 2;
-}
-
 message QueryGetVirtualSchemaProposalRequest { string index = 1; }
 
 message QueryGetVirtualSchemaProposalResponse {
@@ -520,38 +495,11 @@ message QueryAllVirtualSchemaProposalResponse {
   cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
-message QueryGetActiveVirtualSchemaProposalRequest { string index = 1; }
+message QueryListActiveProposalRequest {}
 
-message QueryGetActiveVirtualSchemaProposalResponse {
-  ActiveVirtualSchemaProposal activeVirtualSchemaProposal = 1
+message QueryListActiveProposalResponse {
+  repeated VirtualSchemaProposal virtualSchemaProposal = 1
       [ (gogoproto.nullable) = false ];
-}
-
-message QueryAllActiveVirtualSchemaProposalRequest {
-  cosmos.base.query.v1beta1.PageRequest pagination = 1;
-}
-
-message QueryAllActiveVirtualSchemaProposalResponse {
-  repeated ActiveVirtualSchemaProposal activeVirtualSchemaProposal = 1
-      [ (gogoproto.nullable) = false ];
-  cosmos.base.query.v1beta1.PageResponse pagination = 2;
-}
-
-message QueryGetInactiveVirtualSchemaProposalRequest { string index = 1; }
-
-message QueryGetInactiveVirtualSchemaProposalResponse {
-  InactiveVirtualSchemaProposal inactiveVirtualSchemaProposal = 1
-      [ (gogoproto.nullable) = false ];
-}
-
-message QueryAllInactiveVirtualSchemaProposalRequest {
-  cosmos.base.query.v1beta1.PageRequest pagination = 1;
-}
-
-message QueryAllInactiveVirtualSchemaProposalResponse {
-  repeated InactiveVirtualSchemaProposal inactiveVirtualSchemaProposal = 1
-      [ (gogoproto.nullable) = false ];
-  cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
 // this line is used by starport scaffolding # 3

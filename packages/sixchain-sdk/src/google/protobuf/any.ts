@@ -1,5 +1,5 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
+import * as _m0 from "protobufjs/minimal";
 /**
  * `Any` contains an arbitrary serialized protocol buffer message along with a
  * URL that describes the type of the serialized message.
@@ -82,7 +82,7 @@ import * as _m0 from 'protobufjs/minimal';
  *     }
  */
 export interface Any {
-  $typeUrl?: '/google.protobuf.Any' | string;
+  $typeUrl?: "/google.protobuf.Any" | string;
   /**
    * A URL/resource name that uniquely identifies the type of the serialized
    * protocol buffer message. This string must contain at least
@@ -117,7 +117,7 @@ export interface Any {
   value: Uint8Array;
 }
 export interface AnyProtoMsg {
-  typeUrl: '/google.protobuf.Any';
+  typeUrl: "/google.protobuf.Any";
   value: Uint8Array;
 }
 /**
@@ -321,21 +321,21 @@ export interface AnyAminoMsg {
  *     }
  */
 export interface AnySDKType {
-  $typeUrl?: '/google.protobuf.Any' | string;
+  $typeUrl?: "/google.protobuf.Any" | string;
   type_url: string;
   value: Uint8Array;
 }
 function createBaseAny(): Any {
   return {
-    $typeUrl: '/google.protobuf.Any',
-    typeUrl: '',
+    $typeUrl: "/google.protobuf.Any",
+    typeUrl: "",
     value: new Uint8Array()
   };
 }
 export const Any = {
-  typeUrl: '/google.protobuf.Any',
+  typeUrl: "/google.protobuf.Any",
   encode(message: Any, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.typeUrl !== '') {
+    if (message.typeUrl !== "") {
       writer.uint32(10).string(message.typeUrl);
     }
     if (message.value.length !== 0) {
@@ -350,22 +350,22 @@ export const Any = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.typeUrl = reader.string();
-        break;
-      case 2:
-        message.value = reader.bytes();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.typeUrl = reader.string();
+          break;
+        case 2:
+          message.value = reader.bytes();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Any>): Any {
     const message = createBaseAny();
-    message.typeUrl = object.typeUrl ?? '';
+    message.typeUrl = object.typeUrl ?? "";
     message.value = object.value ?? new Uint8Array();
     return message;
   },
@@ -392,7 +392,7 @@ export const Any = {
   },
   toProtoMsg(message: Any): AnyProtoMsg {
     return {
-      typeUrl: '/google.protobuf.Any',
+      typeUrl: "/google.protobuf.Any",
       value: Any.encode(message).finish()
     };
   }

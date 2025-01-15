@@ -1,8 +1,7 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Coin, CoinAmino, CoinSDKType } from '../cosmos/base/v1beta1/coin';
-import { Long } from '../helpers';
+import { Coin, CoinAmino, CoinSDKType } from "../cosmos/base/v1beta1/coin";
+import { Long } from "../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface MsgCreateToken {
   creator: string;
   name: string;
@@ -11,7 +10,7 @@ export interface MsgCreateToken {
   mintee: string;
 }
 export interface MsgCreateTokenProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken";
   value: Uint8Array;
 }
 export interface MsgCreateTokenAmino {
@@ -22,7 +21,7 @@ export interface MsgCreateTokenAmino {
   mintee?: string;
 }
 export interface MsgCreateTokenAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken";
   value: MsgCreateTokenAmino;
 }
 export interface MsgCreateTokenSDKType {
@@ -34,12 +33,12 @@ export interface MsgCreateTokenSDKType {
 }
 export interface MsgCreateTokenResponse {}
 export interface MsgCreateTokenResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateTokenResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateTokenResponse";
   value: Uint8Array;
 }
 export interface MsgCreateTokenResponseAmino {}
 export interface MsgCreateTokenResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateTokenResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateTokenResponse";
   value: MsgCreateTokenResponseAmino;
 }
 export interface MsgCreateTokenResponseSDKType {}
@@ -50,7 +49,7 @@ export interface MsgUpdateToken {
   mintee: string;
 }
 export interface MsgUpdateTokenProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken";
   value: Uint8Array;
 }
 export interface MsgUpdateTokenAmino {
@@ -60,7 +59,7 @@ export interface MsgUpdateTokenAmino {
   mintee?: string;
 }
 export interface MsgUpdateTokenAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken";
   value: MsgUpdateTokenAmino;
 }
 export interface MsgUpdateTokenSDKType {
@@ -71,12 +70,12 @@ export interface MsgUpdateTokenSDKType {
 }
 export interface MsgUpdateTokenResponse {}
 export interface MsgUpdateTokenResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateTokenResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateTokenResponse";
   value: Uint8Array;
 }
 export interface MsgUpdateTokenResponseAmino {}
 export interface MsgUpdateTokenResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateTokenResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateTokenResponse";
   value: MsgUpdateTokenResponseAmino;
 }
 export interface MsgUpdateTokenResponseSDKType {}
@@ -85,7 +84,7 @@ export interface MsgDeleteToken {
   name: string;
 }
 export interface MsgDeleteTokenProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken";
   value: Uint8Array;
 }
 export interface MsgDeleteTokenAmino {
@@ -93,7 +92,7 @@ export interface MsgDeleteTokenAmino {
   name?: string;
 }
 export interface MsgDeleteTokenAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken";
   value: MsgDeleteTokenAmino;
 }
 export interface MsgDeleteTokenSDKType {
@@ -102,12 +101,12 @@ export interface MsgDeleteTokenSDKType {
 }
 export interface MsgDeleteTokenResponse {}
 export interface MsgDeleteTokenResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteTokenResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteTokenResponse";
   value: Uint8Array;
 }
 export interface MsgDeleteTokenResponseAmino {}
 export interface MsgDeleteTokenResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteTokenResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteTokenResponse";
   value: MsgDeleteTokenResponseAmino;
 }
 export interface MsgDeleteTokenResponseSDKType {}
@@ -117,7 +116,7 @@ export interface MsgCreateMintperm {
   address: string;
 }
 export interface MsgCreateMintpermProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm";
   value: Uint8Array;
 }
 export interface MsgCreateMintpermAmino {
@@ -126,7 +125,7 @@ export interface MsgCreateMintpermAmino {
   address?: string;
 }
 export interface MsgCreateMintpermAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm";
   value: MsgCreateMintpermAmino;
 }
 export interface MsgCreateMintpermSDKType {
@@ -136,12 +135,12 @@ export interface MsgCreateMintpermSDKType {
 }
 export interface MsgCreateMintpermResponse {}
 export interface MsgCreateMintpermResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintpermResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintpermResponse";
   value: Uint8Array;
 }
 export interface MsgCreateMintpermResponseAmino {}
 export interface MsgCreateMintpermResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintpermResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintpermResponse";
   value: MsgCreateMintpermResponseAmino;
 }
 export interface MsgCreateMintpermResponseSDKType {}
@@ -151,7 +150,7 @@ export interface MsgUpdateMintperm {
   address: string;
 }
 export interface MsgUpdateMintpermProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm";
   value: Uint8Array;
 }
 export interface MsgUpdateMintpermAmino {
@@ -160,7 +159,7 @@ export interface MsgUpdateMintpermAmino {
   address?: string;
 }
 export interface MsgUpdateMintpermAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm";
   value: MsgUpdateMintpermAmino;
 }
 export interface MsgUpdateMintpermSDKType {
@@ -170,12 +169,12 @@ export interface MsgUpdateMintpermSDKType {
 }
 export interface MsgUpdateMintpermResponse {}
 export interface MsgUpdateMintpermResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintpermResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintpermResponse";
   value: Uint8Array;
 }
 export interface MsgUpdateMintpermResponseAmino {}
 export interface MsgUpdateMintpermResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintpermResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintpermResponse";
   value: MsgUpdateMintpermResponseAmino;
 }
 export interface MsgUpdateMintpermResponseSDKType {}
@@ -185,7 +184,7 @@ export interface MsgDeleteMintperm {
   address: string;
 }
 export interface MsgDeleteMintpermProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm";
   value: Uint8Array;
 }
 export interface MsgDeleteMintpermAmino {
@@ -194,7 +193,7 @@ export interface MsgDeleteMintpermAmino {
   address?: string;
 }
 export interface MsgDeleteMintpermAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm";
   value: MsgDeleteMintpermAmino;
 }
 export interface MsgDeleteMintpermSDKType {
@@ -204,12 +203,12 @@ export interface MsgDeleteMintpermSDKType {
 }
 export interface MsgDeleteMintpermResponse {}
 export interface MsgDeleteMintpermResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintpermResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintpermResponse";
   value: Uint8Array;
 }
 export interface MsgDeleteMintpermResponseAmino {}
 export interface MsgDeleteMintpermResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintpermResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintpermResponse";
   value: MsgDeleteMintpermResponseAmino;
 }
 export interface MsgDeleteMintpermResponseSDKType {}
@@ -218,7 +217,7 @@ export interface MsgMint {
   amount: Coin;
 }
 export interface MsgMintProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgMint';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgMint";
   value: Uint8Array;
 }
 export interface MsgMintAmino {
@@ -226,7 +225,7 @@ export interface MsgMintAmino {
   amount?: CoinAmino;
 }
 export interface MsgMintAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgMint';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgMint";
   value: MsgMintAmino;
 }
 export interface MsgMintSDKType {
@@ -235,12 +234,12 @@ export interface MsgMintSDKType {
 }
 export interface MsgMintResponse {}
 export interface MsgMintResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgMintResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgMintResponse";
   value: Uint8Array;
 }
 export interface MsgMintResponseAmino {}
 export interface MsgMintResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgMintResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgMintResponse";
   value: MsgMintResponseAmino;
 }
 export interface MsgMintResponseSDKType {}
@@ -249,7 +248,7 @@ export interface MsgBurn {
   amount: Coin;
 }
 export interface MsgBurnProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgBurn';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn";
   value: Uint8Array;
 }
 export interface MsgBurnAmino {
@@ -257,7 +256,7 @@ export interface MsgBurnAmino {
   amount?: CoinAmino;
 }
 export interface MsgBurnAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgBurn';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn";
   value: MsgBurnAmino;
 }
 export interface MsgBurnSDKType {
@@ -268,14 +267,14 @@ export interface MsgBurnResponse {
   id: Long;
 }
 export interface MsgBurnResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse";
   value: Uint8Array;
 }
 export interface MsgBurnResponseAmino {
   id?: string;
 }
 export interface MsgBurnResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse";
   value: MsgBurnResponseAmino;
 }
 export interface MsgBurnResponseSDKType {
@@ -286,7 +285,7 @@ export interface MsgCreateOptions {
   defaultMintee: string;
 }
 export interface MsgCreateOptionsProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions";
   value: Uint8Array;
 }
 export interface MsgCreateOptionsAmino {
@@ -294,7 +293,7 @@ export interface MsgCreateOptionsAmino {
   defaultMintee?: string;
 }
 export interface MsgCreateOptionsAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions";
   value: MsgCreateOptionsAmino;
 }
 export interface MsgCreateOptionsSDKType {
@@ -303,12 +302,12 @@ export interface MsgCreateOptionsSDKType {
 }
 export interface MsgCreateOptionsResponse {}
 export interface MsgCreateOptionsResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptionsResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptionsResponse";
   value: Uint8Array;
 }
 export interface MsgCreateOptionsResponseAmino {}
 export interface MsgCreateOptionsResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptionsResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptionsResponse";
   value: MsgCreateOptionsResponseAmino;
 }
 export interface MsgCreateOptionsResponseSDKType {}
@@ -317,7 +316,7 @@ export interface MsgUpdateOptions {
   defaultMintee: string;
 }
 export interface MsgUpdateOptionsProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions";
   value: Uint8Array;
 }
 export interface MsgUpdateOptionsAmino {
@@ -325,7 +324,7 @@ export interface MsgUpdateOptionsAmino {
   defaultMintee?: string;
 }
 export interface MsgUpdateOptionsAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions";
   value: MsgUpdateOptionsAmino;
 }
 export interface MsgUpdateOptionsSDKType {
@@ -334,12 +333,12 @@ export interface MsgUpdateOptionsSDKType {
 }
 export interface MsgUpdateOptionsResponse {}
 export interface MsgUpdateOptionsResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptionsResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptionsResponse";
   value: Uint8Array;
 }
 export interface MsgUpdateOptionsResponseAmino {}
 export interface MsgUpdateOptionsResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptionsResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptionsResponse";
   value: MsgUpdateOptionsResponseAmino;
 }
 export interface MsgUpdateOptionsResponseSDKType {}
@@ -347,14 +346,14 @@ export interface MsgDeleteOptions {
   creator: string;
 }
 export interface MsgDeleteOptionsProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions";
   value: Uint8Array;
 }
 export interface MsgDeleteOptionsAmino {
   creator?: string;
 }
 export interface MsgDeleteOptionsAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions";
   value: MsgDeleteOptionsAmino;
 }
 export interface MsgDeleteOptionsSDKType {
@@ -362,12 +361,12 @@ export interface MsgDeleteOptionsSDKType {
 }
 export interface MsgDeleteOptionsResponse {}
 export interface MsgDeleteOptionsResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptionsResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptionsResponse";
   value: Uint8Array;
 }
 export interface MsgDeleteOptionsResponseAmino {}
 export interface MsgDeleteOptionsResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptionsResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptionsResponse";
   value: MsgDeleteOptionsResponseAmino;
 }
 export interface MsgDeleteOptionsResponseSDKType {}
@@ -377,7 +376,7 @@ export interface MsgWrapToken {
   receiver: string;
 }
 export interface MsgWrapTokenProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken";
   value: Uint8Array;
 }
 export interface MsgWrapTokenAmino {
@@ -386,7 +385,7 @@ export interface MsgWrapTokenAmino {
   receiver?: string;
 }
 export interface MsgWrapTokenAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken";
   value: MsgWrapTokenAmino;
 }
 export interface MsgWrapTokenSDKType {
@@ -398,14 +397,14 @@ export interface MsgWrapTokenResponse {
   amount: Coin;
 }
 export interface MsgWrapTokenResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse";
   value: Uint8Array;
 }
 export interface MsgWrapTokenResponseAmino {
   amount?: CoinAmino;
 }
 export interface MsgWrapTokenResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse";
   value: MsgWrapTokenResponseAmino;
 }
 export interface MsgWrapTokenResponseSDKType {
@@ -417,7 +416,7 @@ export interface MsgUnwrapToken {
   receiver: string;
 }
 export interface MsgUnwrapTokenProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken";
   value: Uint8Array;
 }
 export interface MsgUnwrapTokenAmino {
@@ -426,7 +425,7 @@ export interface MsgUnwrapTokenAmino {
   receiver?: string;
 }
 export interface MsgUnwrapTokenAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken";
   value: MsgUnwrapTokenAmino;
 }
 export interface MsgUnwrapTokenSDKType {
@@ -438,14 +437,14 @@ export interface MsgUnwrapTokenResponse {
   amount: Coin;
 }
 export interface MsgUnwrapTokenResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse";
   value: Uint8Array;
 }
 export interface MsgUnwrapTokenResponseAmino {
   amount?: CoinAmino;
 }
 export interface MsgUnwrapTokenResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse";
   value: MsgUnwrapTokenResponseAmino;
 }
 export interface MsgUnwrapTokenResponseSDKType {
@@ -457,7 +456,7 @@ export interface MsgSendWrapToken {
   amount: Coin;
 }
 export interface MsgSendWrapTokenProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken";
   value: Uint8Array;
 }
 export interface MsgSendWrapTokenAmino {
@@ -466,7 +465,7 @@ export interface MsgSendWrapTokenAmino {
   amount?: CoinAmino;
 }
 export interface MsgSendWrapTokenAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken";
   value: MsgSendWrapTokenAmino;
 }
 export interface MsgSendWrapTokenSDKType {
@@ -479,7 +478,7 @@ export interface MsgSendWrapTokenResponse {
   amount: string;
 }
 export interface MsgSendWrapTokenResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse";
   value: Uint8Array;
 }
 export interface MsgSendWrapTokenResponseAmino {
@@ -487,7 +486,7 @@ export interface MsgSendWrapTokenResponseAmino {
   amount?: string;
 }
 export interface MsgSendWrapTokenResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse";
   value: MsgSendWrapTokenResponseAmino;
 }
 export interface MsgSendWrapTokenResponseSDKType {
@@ -496,29 +495,29 @@ export interface MsgSendWrapTokenResponseSDKType {
 }
 function createBaseMsgCreateToken(): MsgCreateToken {
   return {
-    creator: '',
-    name: '',
+    creator: "",
+    name: "",
     maxSupply: Coin.fromPartial({}),
-    denomMetaData: '',
-    mintee: ''
+    denomMetaData: "",
+    mintee: ""
   };
 }
 export const MsgCreateToken = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken",
   encode(message: MsgCreateToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
     if (message.maxSupply !== undefined) {
       Coin.encode(message.maxSupply, writer.uint32(26).fork()).ldelim();
     }
-    if (message.denomMetaData !== '') {
+    if (message.denomMetaData !== "") {
       writer.uint32(34).string(message.denomMetaData);
     }
-    if (message.mintee !== '') {
+    if (message.mintee !== "") {
       writer.uint32(42).string(message.mintee);
     }
     return writer;
@@ -530,35 +529,35 @@ export const MsgCreateToken = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.name = reader.string();
-        break;
-      case 3:
-        message.maxSupply = Coin.decode(reader, reader.uint32());
-        break;
-      case 4:
-        message.denomMetaData = reader.string();
-        break;
-      case 5:
-        message.mintee = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.name = reader.string();
+          break;
+        case 3:
+          message.maxSupply = Coin.decode(reader, reader.uint32());
+          break;
+        case 4:
+          message.denomMetaData = reader.string();
+          break;
+        case 5:
+          message.mintee = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgCreateToken>): MsgCreateToken {
     const message = createBaseMsgCreateToken();
-    message.creator = object.creator ?? '';
-    message.name = object.name ?? '';
+    message.creator = object.creator ?? "";
+    message.name = object.name ?? "";
     message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Coin.fromPartial(object.maxSupply) : undefined;
-    message.denomMetaData = object.denomMetaData ?? '';
-    message.mintee = object.mintee ?? '';
+    message.denomMetaData = object.denomMetaData ?? "";
+    message.mintee = object.mintee ?? "";
     return message;
   },
   fromAmino(object: MsgCreateTokenAmino): MsgCreateToken {
@@ -582,11 +581,11 @@ export const MsgCreateToken = {
   },
   toAmino(message: MsgCreateToken): MsgCreateTokenAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
-    obj.name = message.name === '' ? undefined : message.name;
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.name = message.name === "" ? undefined : message.name;
     obj.maxSupply = message.maxSupply ? Coin.toAmino(message.maxSupply) : undefined;
-    obj.denomMetaData = message.denomMetaData === '' ? undefined : message.denomMetaData;
-    obj.mintee = message.mintee === '' ? undefined : message.mintee;
+    obj.denomMetaData = message.denomMetaData === "" ? undefined : message.denomMetaData;
+    obj.mintee = message.mintee === "" ? undefined : message.mintee;
     return obj;
   },
   fromAminoMsg(object: MsgCreateTokenAminoMsg): MsgCreateToken {
@@ -600,7 +599,7 @@ export const MsgCreateToken = {
   },
   toProtoMsg(message: MsgCreateToken): MsgCreateTokenProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken",
       value: MsgCreateToken.encode(message).finish()
     };
   }
@@ -609,7 +608,7 @@ function createBaseMsgCreateTokenResponse(): MsgCreateTokenResponse {
   return {};
 }
 export const MsgCreateTokenResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateTokenResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateTokenResponse",
   encode(_: MsgCreateTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -620,9 +619,9 @@ export const MsgCreateTokenResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -650,32 +649,32 @@ export const MsgCreateTokenResponse = {
   },
   toProtoMsg(message: MsgCreateTokenResponse): MsgCreateTokenResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateTokenResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateTokenResponse",
       value: MsgCreateTokenResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgUpdateToken(): MsgUpdateToken {
   return {
-    creator: '',
-    name: '',
+    creator: "",
+    name: "",
     maxSupply: Coin.fromPartial({}),
-    mintee: ''
+    mintee: ""
   };
 }
 export const MsgUpdateToken = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken",
   encode(message: MsgUpdateToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
     if (message.maxSupply !== undefined) {
       Coin.encode(message.maxSupply, writer.uint32(34).fork()).ldelim();
     }
-    if (message.mintee !== '') {
+    if (message.mintee !== "") {
       writer.uint32(42).string(message.mintee);
     }
     return writer;
@@ -687,31 +686,31 @@ export const MsgUpdateToken = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.name = reader.string();
-        break;
-      case 4:
-        message.maxSupply = Coin.decode(reader, reader.uint32());
-        break;
-      case 5:
-        message.mintee = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.name = reader.string();
+          break;
+        case 4:
+          message.maxSupply = Coin.decode(reader, reader.uint32());
+          break;
+        case 5:
+          message.mintee = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgUpdateToken>): MsgUpdateToken {
     const message = createBaseMsgUpdateToken();
-    message.creator = object.creator ?? '';
-    message.name = object.name ?? '';
+    message.creator = object.creator ?? "";
+    message.name = object.name ?? "";
     message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Coin.fromPartial(object.maxSupply) : undefined;
-    message.mintee = object.mintee ?? '';
+    message.mintee = object.mintee ?? "";
     return message;
   },
   fromAmino(object: MsgUpdateTokenAmino): MsgUpdateToken {
@@ -732,10 +731,10 @@ export const MsgUpdateToken = {
   },
   toAmino(message: MsgUpdateToken): MsgUpdateTokenAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
-    obj.name = message.name === '' ? undefined : message.name;
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.name = message.name === "" ? undefined : message.name;
     obj.maxSupply = message.maxSupply ? Coin.toAmino(message.maxSupply) : undefined;
-    obj.mintee = message.mintee === '' ? undefined : message.mintee;
+    obj.mintee = message.mintee === "" ? undefined : message.mintee;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateTokenAminoMsg): MsgUpdateToken {
@@ -749,7 +748,7 @@ export const MsgUpdateToken = {
   },
   toProtoMsg(message: MsgUpdateToken): MsgUpdateTokenProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken",
       value: MsgUpdateToken.encode(message).finish()
     };
   }
@@ -758,7 +757,7 @@ function createBaseMsgUpdateTokenResponse(): MsgUpdateTokenResponse {
   return {};
 }
 export const MsgUpdateTokenResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateTokenResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateTokenResponse",
   encode(_: MsgUpdateTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -769,9 +768,9 @@ export const MsgUpdateTokenResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -799,24 +798,24 @@ export const MsgUpdateTokenResponse = {
   },
   toProtoMsg(message: MsgUpdateTokenResponse): MsgUpdateTokenResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateTokenResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateTokenResponse",
       value: MsgUpdateTokenResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgDeleteToken(): MsgDeleteToken {
   return {
-    creator: '',
-    name: ''
+    creator: "",
+    name: ""
   };
 }
 export const MsgDeleteToken = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken",
   encode(message: MsgDeleteToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
     return writer;
@@ -828,23 +827,23 @@ export const MsgDeleteToken = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.name = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.name = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgDeleteToken>): MsgDeleteToken {
     const message = createBaseMsgDeleteToken();
-    message.creator = object.creator ?? '';
-    message.name = object.name ?? '';
+    message.creator = object.creator ?? "";
+    message.name = object.name ?? "";
     return message;
   },
   fromAmino(object: MsgDeleteTokenAmino): MsgDeleteToken {
@@ -859,8 +858,8 @@ export const MsgDeleteToken = {
   },
   toAmino(message: MsgDeleteToken): MsgDeleteTokenAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
-    obj.name = message.name === '' ? undefined : message.name;
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.name = message.name === "" ? undefined : message.name;
     return obj;
   },
   fromAminoMsg(object: MsgDeleteTokenAminoMsg): MsgDeleteToken {
@@ -874,7 +873,7 @@ export const MsgDeleteToken = {
   },
   toProtoMsg(message: MsgDeleteToken): MsgDeleteTokenProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken",
       value: MsgDeleteToken.encode(message).finish()
     };
   }
@@ -883,7 +882,7 @@ function createBaseMsgDeleteTokenResponse(): MsgDeleteTokenResponse {
   return {};
 }
 export const MsgDeleteTokenResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteTokenResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteTokenResponse",
   encode(_: MsgDeleteTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -894,9 +893,9 @@ export const MsgDeleteTokenResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -924,28 +923,28 @@ export const MsgDeleteTokenResponse = {
   },
   toProtoMsg(message: MsgDeleteTokenResponse): MsgDeleteTokenResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteTokenResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteTokenResponse",
       value: MsgDeleteTokenResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgCreateMintperm(): MsgCreateMintperm {
   return {
-    creator: '',
-    token: '',
-    address: ''
+    creator: "",
+    token: "",
+    address: ""
   };
 }
 export const MsgCreateMintperm = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm",
   encode(message: MsgCreateMintperm, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.token !== '') {
+    if (message.token !== "") {
       writer.uint32(18).string(message.token);
     }
-    if (message.address !== '') {
+    if (message.address !== "") {
       writer.uint32(26).string(message.address);
     }
     return writer;
@@ -957,27 +956,27 @@ export const MsgCreateMintperm = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.token = reader.string();
-        break;
-      case 3:
-        message.address = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.token = reader.string();
+          break;
+        case 3:
+          message.address = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgCreateMintperm>): MsgCreateMintperm {
     const message = createBaseMsgCreateMintperm();
-    message.creator = object.creator ?? '';
-    message.token = object.token ?? '';
-    message.address = object.address ?? '';
+    message.creator = object.creator ?? "";
+    message.token = object.token ?? "";
+    message.address = object.address ?? "";
     return message;
   },
   fromAmino(object: MsgCreateMintpermAmino): MsgCreateMintperm {
@@ -995,9 +994,9 @@ export const MsgCreateMintperm = {
   },
   toAmino(message: MsgCreateMintperm): MsgCreateMintpermAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
-    obj.token = message.token === '' ? undefined : message.token;
-    obj.address = message.address === '' ? undefined : message.address;
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.token = message.token === "" ? undefined : message.token;
+    obj.address = message.address === "" ? undefined : message.address;
     return obj;
   },
   fromAminoMsg(object: MsgCreateMintpermAminoMsg): MsgCreateMintperm {
@@ -1011,7 +1010,7 @@ export const MsgCreateMintperm = {
   },
   toProtoMsg(message: MsgCreateMintperm): MsgCreateMintpermProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm",
       value: MsgCreateMintperm.encode(message).finish()
     };
   }
@@ -1020,7 +1019,7 @@ function createBaseMsgCreateMintpermResponse(): MsgCreateMintpermResponse {
   return {};
 }
 export const MsgCreateMintpermResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintpermResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintpermResponse",
   encode(_: MsgCreateMintpermResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1031,9 +1030,9 @@ export const MsgCreateMintpermResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1061,28 +1060,28 @@ export const MsgCreateMintpermResponse = {
   },
   toProtoMsg(message: MsgCreateMintpermResponse): MsgCreateMintpermResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintpermResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintpermResponse",
       value: MsgCreateMintpermResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgUpdateMintperm(): MsgUpdateMintperm {
   return {
-    creator: '',
-    token: '',
-    address: ''
+    creator: "",
+    token: "",
+    address: ""
   };
 }
 export const MsgUpdateMintperm = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm",
   encode(message: MsgUpdateMintperm, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.token !== '') {
+    if (message.token !== "") {
       writer.uint32(18).string(message.token);
     }
-    if (message.address !== '') {
+    if (message.address !== "") {
       writer.uint32(26).string(message.address);
     }
     return writer;
@@ -1094,27 +1093,27 @@ export const MsgUpdateMintperm = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.token = reader.string();
-        break;
-      case 3:
-        message.address = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.token = reader.string();
+          break;
+        case 3:
+          message.address = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgUpdateMintperm>): MsgUpdateMintperm {
     const message = createBaseMsgUpdateMintperm();
-    message.creator = object.creator ?? '';
-    message.token = object.token ?? '';
-    message.address = object.address ?? '';
+    message.creator = object.creator ?? "";
+    message.token = object.token ?? "";
+    message.address = object.address ?? "";
     return message;
   },
   fromAmino(object: MsgUpdateMintpermAmino): MsgUpdateMintperm {
@@ -1132,9 +1131,9 @@ export const MsgUpdateMintperm = {
   },
   toAmino(message: MsgUpdateMintperm): MsgUpdateMintpermAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
-    obj.token = message.token === '' ? undefined : message.token;
-    obj.address = message.address === '' ? undefined : message.address;
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.token = message.token === "" ? undefined : message.token;
+    obj.address = message.address === "" ? undefined : message.address;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateMintpermAminoMsg): MsgUpdateMintperm {
@@ -1148,7 +1147,7 @@ export const MsgUpdateMintperm = {
   },
   toProtoMsg(message: MsgUpdateMintperm): MsgUpdateMintpermProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm",
       value: MsgUpdateMintperm.encode(message).finish()
     };
   }
@@ -1157,7 +1156,7 @@ function createBaseMsgUpdateMintpermResponse(): MsgUpdateMintpermResponse {
   return {};
 }
 export const MsgUpdateMintpermResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintpermResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintpermResponse",
   encode(_: MsgUpdateMintpermResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1168,9 +1167,9 @@ export const MsgUpdateMintpermResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1198,28 +1197,28 @@ export const MsgUpdateMintpermResponse = {
   },
   toProtoMsg(message: MsgUpdateMintpermResponse): MsgUpdateMintpermResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintpermResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintpermResponse",
       value: MsgUpdateMintpermResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgDeleteMintperm(): MsgDeleteMintperm {
   return {
-    creator: '',
-    token: '',
-    address: ''
+    creator: "",
+    token: "",
+    address: ""
   };
 }
 export const MsgDeleteMintperm = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm",
   encode(message: MsgDeleteMintperm, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.token !== '') {
+    if (message.token !== "") {
       writer.uint32(18).string(message.token);
     }
-    if (message.address !== '') {
+    if (message.address !== "") {
       writer.uint32(26).string(message.address);
     }
     return writer;
@@ -1231,27 +1230,27 @@ export const MsgDeleteMintperm = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.token = reader.string();
-        break;
-      case 3:
-        message.address = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.token = reader.string();
+          break;
+        case 3:
+          message.address = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgDeleteMintperm>): MsgDeleteMintperm {
     const message = createBaseMsgDeleteMintperm();
-    message.creator = object.creator ?? '';
-    message.token = object.token ?? '';
-    message.address = object.address ?? '';
+    message.creator = object.creator ?? "";
+    message.token = object.token ?? "";
+    message.address = object.address ?? "";
     return message;
   },
   fromAmino(object: MsgDeleteMintpermAmino): MsgDeleteMintperm {
@@ -1269,9 +1268,9 @@ export const MsgDeleteMintperm = {
   },
   toAmino(message: MsgDeleteMintperm): MsgDeleteMintpermAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
-    obj.token = message.token === '' ? undefined : message.token;
-    obj.address = message.address === '' ? undefined : message.address;
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.token = message.token === "" ? undefined : message.token;
+    obj.address = message.address === "" ? undefined : message.address;
     return obj;
   },
   fromAminoMsg(object: MsgDeleteMintpermAminoMsg): MsgDeleteMintperm {
@@ -1285,7 +1284,7 @@ export const MsgDeleteMintperm = {
   },
   toProtoMsg(message: MsgDeleteMintperm): MsgDeleteMintpermProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm",
       value: MsgDeleteMintperm.encode(message).finish()
     };
   }
@@ -1294,7 +1293,7 @@ function createBaseMsgDeleteMintpermResponse(): MsgDeleteMintpermResponse {
   return {};
 }
 export const MsgDeleteMintpermResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintpermResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintpermResponse",
   encode(_: MsgDeleteMintpermResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1305,9 +1304,9 @@ export const MsgDeleteMintpermResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1335,21 +1334,21 @@ export const MsgDeleteMintpermResponse = {
   },
   toProtoMsg(message: MsgDeleteMintpermResponse): MsgDeleteMintpermResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintpermResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintpermResponse",
       value: MsgDeleteMintpermResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgMint(): MsgMint {
   return {
-    creator: '',
+    creator: "",
     amount: Coin.fromPartial({})
   };
 }
 export const MsgMint = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgMint',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgMint",
   encode(message: MsgMint, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
     if (message.amount !== undefined) {
@@ -1364,22 +1363,22 @@ export const MsgMint = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.amount = Coin.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgMint>): MsgMint {
     const message = createBaseMsgMint();
-    message.creator = object.creator ?? '';
+    message.creator = object.creator ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
   },
@@ -1395,7 +1394,7 @@ export const MsgMint = {
   },
   toAmino(message: MsgMint): MsgMintAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.creator = message.creator === "" ? undefined : message.creator;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
     return obj;
   },
@@ -1410,7 +1409,7 @@ export const MsgMint = {
   },
   toProtoMsg(message: MsgMint): MsgMintProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgMint',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgMint",
       value: MsgMint.encode(message).finish()
     };
   }
@@ -1419,7 +1418,7 @@ function createBaseMsgMintResponse(): MsgMintResponse {
   return {};
 }
 export const MsgMintResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgMintResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgMintResponse",
   encode(_: MsgMintResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1430,9 +1429,9 @@ export const MsgMintResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1460,21 +1459,21 @@ export const MsgMintResponse = {
   },
   toProtoMsg(message: MsgMintResponse): MsgMintResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgMintResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgMintResponse",
       value: MsgMintResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgBurn(): MsgBurn {
   return {
-    creator: '',
+    creator: "",
     amount: Coin.fromPartial({})
   };
 }
 export const MsgBurn = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgBurn',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn",
   encode(message: MsgBurn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
     if (message.amount !== undefined) {
@@ -1489,22 +1488,22 @@ export const MsgBurn = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.amount = Coin.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgBurn>): MsgBurn {
     const message = createBaseMsgBurn();
-    message.creator = object.creator ?? '';
+    message.creator = object.creator ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
   },
@@ -1520,7 +1519,7 @@ export const MsgBurn = {
   },
   toAmino(message: MsgBurn): MsgBurnAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.creator = message.creator === "" ? undefined : message.creator;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
     return obj;
   },
@@ -1535,7 +1534,7 @@ export const MsgBurn = {
   },
   toProtoMsg(message: MsgBurn): MsgBurnProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgBurn',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn",
       value: MsgBurn.encode(message).finish()
     };
   }
@@ -1546,7 +1545,7 @@ function createBaseMsgBurnResponse(): MsgBurnResponse {
   };
 }
 export const MsgBurnResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse",
   encode(message: MsgBurnResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -1560,12 +1559,12 @@ export const MsgBurnResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.id = reader.uint64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.id = reader.uint64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1598,24 +1597,24 @@ export const MsgBurnResponse = {
   },
   toProtoMsg(message: MsgBurnResponse): MsgBurnResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse",
       value: MsgBurnResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgCreateOptions(): MsgCreateOptions {
   return {
-    creator: '',
-    defaultMintee: ''
+    creator: "",
+    defaultMintee: ""
   };
 }
 export const MsgCreateOptions = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions",
   encode(message: MsgCreateOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.defaultMintee !== '') {
+    if (message.defaultMintee !== "") {
       writer.uint32(18).string(message.defaultMintee);
     }
     return writer;
@@ -1627,23 +1626,23 @@ export const MsgCreateOptions = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.defaultMintee = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.defaultMintee = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgCreateOptions>): MsgCreateOptions {
     const message = createBaseMsgCreateOptions();
-    message.creator = object.creator ?? '';
-    message.defaultMintee = object.defaultMintee ?? '';
+    message.creator = object.creator ?? "";
+    message.defaultMintee = object.defaultMintee ?? "";
     return message;
   },
   fromAmino(object: MsgCreateOptionsAmino): MsgCreateOptions {
@@ -1658,8 +1657,8 @@ export const MsgCreateOptions = {
   },
   toAmino(message: MsgCreateOptions): MsgCreateOptionsAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
-    obj.defaultMintee = message.defaultMintee === '' ? undefined : message.defaultMintee;
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.defaultMintee = message.defaultMintee === "" ? undefined : message.defaultMintee;
     return obj;
   },
   fromAminoMsg(object: MsgCreateOptionsAminoMsg): MsgCreateOptions {
@@ -1673,7 +1672,7 @@ export const MsgCreateOptions = {
   },
   toProtoMsg(message: MsgCreateOptions): MsgCreateOptionsProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions",
       value: MsgCreateOptions.encode(message).finish()
     };
   }
@@ -1682,7 +1681,7 @@ function createBaseMsgCreateOptionsResponse(): MsgCreateOptionsResponse {
   return {};
 }
 export const MsgCreateOptionsResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptionsResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptionsResponse",
   encode(_: MsgCreateOptionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1693,9 +1692,9 @@ export const MsgCreateOptionsResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1723,24 +1722,24 @@ export const MsgCreateOptionsResponse = {
   },
   toProtoMsg(message: MsgCreateOptionsResponse): MsgCreateOptionsResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptionsResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptionsResponse",
       value: MsgCreateOptionsResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgUpdateOptions(): MsgUpdateOptions {
   return {
-    creator: '',
-    defaultMintee: ''
+    creator: "",
+    defaultMintee: ""
   };
 }
 export const MsgUpdateOptions = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions",
   encode(message: MsgUpdateOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.defaultMintee !== '') {
+    if (message.defaultMintee !== "") {
       writer.uint32(18).string(message.defaultMintee);
     }
     return writer;
@@ -1752,23 +1751,23 @@ export const MsgUpdateOptions = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.defaultMintee = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.defaultMintee = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgUpdateOptions>): MsgUpdateOptions {
     const message = createBaseMsgUpdateOptions();
-    message.creator = object.creator ?? '';
-    message.defaultMintee = object.defaultMintee ?? '';
+    message.creator = object.creator ?? "";
+    message.defaultMintee = object.defaultMintee ?? "";
     return message;
   },
   fromAmino(object: MsgUpdateOptionsAmino): MsgUpdateOptions {
@@ -1783,8 +1782,8 @@ export const MsgUpdateOptions = {
   },
   toAmino(message: MsgUpdateOptions): MsgUpdateOptionsAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
-    obj.defaultMintee = message.defaultMintee === '' ? undefined : message.defaultMintee;
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.defaultMintee = message.defaultMintee === "" ? undefined : message.defaultMintee;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateOptionsAminoMsg): MsgUpdateOptions {
@@ -1798,7 +1797,7 @@ export const MsgUpdateOptions = {
   },
   toProtoMsg(message: MsgUpdateOptions): MsgUpdateOptionsProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions",
       value: MsgUpdateOptions.encode(message).finish()
     };
   }
@@ -1807,7 +1806,7 @@ function createBaseMsgUpdateOptionsResponse(): MsgUpdateOptionsResponse {
   return {};
 }
 export const MsgUpdateOptionsResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptionsResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptionsResponse",
   encode(_: MsgUpdateOptionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1818,9 +1817,9 @@ export const MsgUpdateOptionsResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1848,20 +1847,20 @@ export const MsgUpdateOptionsResponse = {
   },
   toProtoMsg(message: MsgUpdateOptionsResponse): MsgUpdateOptionsResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptionsResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptionsResponse",
       value: MsgUpdateOptionsResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgDeleteOptions(): MsgDeleteOptions {
   return {
-    creator: ''
+    creator: ""
   };
 }
 export const MsgDeleteOptions = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions",
   encode(message: MsgDeleteOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
     return writer;
@@ -1873,19 +1872,19 @@ export const MsgDeleteOptions = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgDeleteOptions>): MsgDeleteOptions {
     const message = createBaseMsgDeleteOptions();
-    message.creator = object.creator ?? '';
+    message.creator = object.creator ?? "";
     return message;
   },
   fromAmino(object: MsgDeleteOptionsAmino): MsgDeleteOptions {
@@ -1897,7 +1896,7 @@ export const MsgDeleteOptions = {
   },
   toAmino(message: MsgDeleteOptions): MsgDeleteOptionsAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;
   },
   fromAminoMsg(object: MsgDeleteOptionsAminoMsg): MsgDeleteOptions {
@@ -1911,7 +1910,7 @@ export const MsgDeleteOptions = {
   },
   toProtoMsg(message: MsgDeleteOptions): MsgDeleteOptionsProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions",
       value: MsgDeleteOptions.encode(message).finish()
     };
   }
@@ -1920,7 +1919,7 @@ function createBaseMsgDeleteOptionsResponse(): MsgDeleteOptionsResponse {
   return {};
 }
 export const MsgDeleteOptionsResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptionsResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptionsResponse",
   encode(_: MsgDeleteOptionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1931,9 +1930,9 @@ export const MsgDeleteOptionsResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1961,28 +1960,28 @@ export const MsgDeleteOptionsResponse = {
   },
   toProtoMsg(message: MsgDeleteOptionsResponse): MsgDeleteOptionsResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptionsResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptionsResponse",
       value: MsgDeleteOptionsResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgWrapToken(): MsgWrapToken {
   return {
-    creator: '',
+    creator: "",
     amount: Coin.fromPartial({}),
-    receiver: ''
+    receiver: ""
   };
 }
 export const MsgWrapToken = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken",
   encode(message: MsgWrapToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
     }
-    if (message.receiver !== '') {
+    if (message.receiver !== "") {
       writer.uint32(26).string(message.receiver);
     }
     return writer;
@@ -1994,27 +1993,27 @@ export const MsgWrapToken = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.amount = Coin.decode(reader, reader.uint32());
-        break;
-      case 3:
-        message.receiver = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        case 3:
+          message.receiver = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgWrapToken>): MsgWrapToken {
     const message = createBaseMsgWrapToken();
-    message.creator = object.creator ?? '';
+    message.creator = object.creator ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
-    message.receiver = object.receiver ?? '';
+    message.receiver = object.receiver ?? "";
     return message;
   },
   fromAmino(object: MsgWrapTokenAmino): MsgWrapToken {
@@ -2032,9 +2031,9 @@ export const MsgWrapToken = {
   },
   toAmino(message: MsgWrapToken): MsgWrapTokenAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.creator = message.creator === "" ? undefined : message.creator;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
-    obj.receiver = message.receiver === '' ? undefined : message.receiver;
+    obj.receiver = message.receiver === "" ? undefined : message.receiver;
     return obj;
   },
   fromAminoMsg(object: MsgWrapTokenAminoMsg): MsgWrapToken {
@@ -2048,7 +2047,7 @@ export const MsgWrapToken = {
   },
   toProtoMsg(message: MsgWrapToken): MsgWrapTokenProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken",
       value: MsgWrapToken.encode(message).finish()
     };
   }
@@ -2059,7 +2058,7 @@ function createBaseMsgWrapTokenResponse(): MsgWrapTokenResponse {
   };
 }
 export const MsgWrapTokenResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse",
   encode(message: MsgWrapTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
@@ -2073,12 +2072,12 @@ export const MsgWrapTokenResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.amount = Coin.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -2111,28 +2110,28 @@ export const MsgWrapTokenResponse = {
   },
   toProtoMsg(message: MsgWrapTokenResponse): MsgWrapTokenResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse",
       value: MsgWrapTokenResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgUnwrapToken(): MsgUnwrapToken {
   return {
-    creator: '',
+    creator: "",
     amount: Coin.fromPartial({}),
-    receiver: ''
+    receiver: ""
   };
 }
 export const MsgUnwrapToken = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken",
   encode(message: MsgUnwrapToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
     }
-    if (message.receiver !== '') {
+    if (message.receiver !== "") {
       writer.uint32(26).string(message.receiver);
     }
     return writer;
@@ -2144,27 +2143,27 @@ export const MsgUnwrapToken = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.amount = Coin.decode(reader, reader.uint32());
-        break;
-      case 3:
-        message.receiver = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        case 3:
+          message.receiver = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgUnwrapToken>): MsgUnwrapToken {
     const message = createBaseMsgUnwrapToken();
-    message.creator = object.creator ?? '';
+    message.creator = object.creator ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
-    message.receiver = object.receiver ?? '';
+    message.receiver = object.receiver ?? "";
     return message;
   },
   fromAmino(object: MsgUnwrapTokenAmino): MsgUnwrapToken {
@@ -2182,9 +2181,9 @@ export const MsgUnwrapToken = {
   },
   toAmino(message: MsgUnwrapToken): MsgUnwrapTokenAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.creator = message.creator === "" ? undefined : message.creator;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
-    obj.receiver = message.receiver === '' ? undefined : message.receiver;
+    obj.receiver = message.receiver === "" ? undefined : message.receiver;
     return obj;
   },
   fromAminoMsg(object: MsgUnwrapTokenAminoMsg): MsgUnwrapToken {
@@ -2198,7 +2197,7 @@ export const MsgUnwrapToken = {
   },
   toProtoMsg(message: MsgUnwrapToken): MsgUnwrapTokenProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken",
       value: MsgUnwrapToken.encode(message).finish()
     };
   }
@@ -2209,7 +2208,7 @@ function createBaseMsgUnwrapTokenResponse(): MsgUnwrapTokenResponse {
   };
 }
 export const MsgUnwrapTokenResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse",
   encode(message: MsgUnwrapTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
@@ -2223,12 +2222,12 @@ export const MsgUnwrapTokenResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.amount = Coin.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -2261,25 +2260,25 @@ export const MsgUnwrapTokenResponse = {
   },
   toProtoMsg(message: MsgUnwrapTokenResponse): MsgUnwrapTokenResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse",
       value: MsgUnwrapTokenResponse.encode(message).finish()
     };
   }
 };
 function createBaseMsgSendWrapToken(): MsgSendWrapToken {
   return {
-    creator: '',
-    ethAddress: '',
+    creator: "",
+    ethAddress: "",
     amount: Coin.fromPartial({})
   };
 }
 export const MsgSendWrapToken = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken",
   encode(message: MsgSendWrapToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.ethAddress !== '') {
+    if (message.ethAddress !== "") {
       writer.uint32(18).string(message.ethAddress);
     }
     if (message.amount !== undefined) {
@@ -2294,26 +2293,26 @@ export const MsgSendWrapToken = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.creator = reader.string();
-        break;
-      case 2:
-        message.ethAddress = reader.string();
-        break;
-      case 3:
-        message.amount = Coin.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.ethAddress = reader.string();
+          break;
+        case 3:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgSendWrapToken>): MsgSendWrapToken {
     const message = createBaseMsgSendWrapToken();
-    message.creator = object.creator ?? '';
-    message.ethAddress = object.ethAddress ?? '';
+    message.creator = object.creator ?? "";
+    message.ethAddress = object.ethAddress ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
   },
@@ -2332,8 +2331,8 @@ export const MsgSendWrapToken = {
   },
   toAmino(message: MsgSendWrapToken): MsgSendWrapTokenAmino {
     const obj: any = {};
-    obj.creator = message.creator === '' ? undefined : message.creator;
-    obj.ethAddress = message.ethAddress === '' ? undefined : message.ethAddress;
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.ethAddress = message.ethAddress === "" ? undefined : message.ethAddress;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
     return obj;
   },
@@ -2348,24 +2347,24 @@ export const MsgSendWrapToken = {
   },
   toProtoMsg(message: MsgSendWrapToken): MsgSendWrapTokenProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken",
       value: MsgSendWrapToken.encode(message).finish()
     };
   }
 };
 function createBaseMsgSendWrapTokenResponse(): MsgSendWrapTokenResponse {
   return {
-    receiver: '',
-    amount: ''
+    receiver: "",
+    amount: ""
   };
 }
 export const MsgSendWrapTokenResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse",
   encode(message: MsgSendWrapTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.receiver !== '') {
+    if (message.receiver !== "") {
       writer.uint32(10).string(message.receiver);
     }
-    if (message.amount !== '') {
+    if (message.amount !== "") {
       writer.uint32(18).string(message.amount);
     }
     return writer;
@@ -2377,23 +2376,23 @@ export const MsgSendWrapTokenResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.receiver = reader.string();
-        break;
-      case 2:
-        message.amount = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.receiver = reader.string();
+          break;
+        case 2:
+          message.amount = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<MsgSendWrapTokenResponse>): MsgSendWrapTokenResponse {
     const message = createBaseMsgSendWrapTokenResponse();
-    message.receiver = object.receiver ?? '';
-    message.amount = object.amount ?? '';
+    message.receiver = object.receiver ?? "";
+    message.amount = object.amount ?? "";
     return message;
   },
   fromAmino(object: MsgSendWrapTokenResponseAmino): MsgSendWrapTokenResponse {
@@ -2408,8 +2407,8 @@ export const MsgSendWrapTokenResponse = {
   },
   toAmino(message: MsgSendWrapTokenResponse): MsgSendWrapTokenResponseAmino {
     const obj: any = {};
-    obj.receiver = message.receiver === '' ? undefined : message.receiver;
-    obj.amount = message.amount === '' ? undefined : message.amount;
+    obj.receiver = message.receiver === "" ? undefined : message.receiver;
+    obj.amount = message.amount === "" ? undefined : message.amount;
     return obj;
   },
   fromAminoMsg(object: MsgSendWrapTokenResponseAminoMsg): MsgSendWrapTokenResponse {
@@ -2423,7 +2422,7 @@ export const MsgSendWrapTokenResponse = {
   },
   toProtoMsg(message: MsgSendWrapTokenResponse): MsgSendWrapTokenResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse",
       value: MsgSendWrapTokenResponse.encode(message).finish()
     };
   }

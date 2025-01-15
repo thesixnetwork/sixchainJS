@@ -38,7 +38,7 @@ const main = async () => {
         action: "native_bridge",
         parameters: [{
             name: "amount",
-            value: "1"
+            value: "10"
         }],
         refId: ref_id,
         tokenIdMap: [

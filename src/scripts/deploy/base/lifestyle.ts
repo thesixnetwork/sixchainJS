@@ -21,6 +21,7 @@ const org_name = process.env.ORG_NAME
 let schemaCode: string;
 schemaCode = `${org_name}.${_name}`;
 exmapleSchema.code = schemaCode;
+exmapleSchema.code = "divineXmembership";
 
 export const Deploy = async () => {
   if (!NETOWRK) {

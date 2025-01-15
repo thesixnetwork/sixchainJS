@@ -1,14 +1,13 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Long } from '../helpers';
+import { Long } from "../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface ActionOfSchema {
   nftSchemaCode: string;
   name: string;
   index: Long;
 }
 export interface ActionOfSchemaProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema";
   value: Uint8Array;
 }
 export interface ActionOfSchemaAmino {
@@ -17,7 +16,7 @@ export interface ActionOfSchemaAmino {
   index?: string;
 }
 export interface ActionOfSchemaAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema';
+  type: "/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema";
   value: ActionOfSchemaAmino;
 }
 export interface ActionOfSchemaSDKType {
@@ -27,18 +26,18 @@ export interface ActionOfSchemaSDKType {
 }
 function createBaseActionOfSchema(): ActionOfSchema {
   return {
-    nftSchemaCode: '',
-    name: '',
+    nftSchemaCode: "",
+    name: "",
     index: Long.UZERO
   };
 }
 export const ActionOfSchema = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema",
   encode(message: ActionOfSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
     if (!message.index.isZero()) {
@@ -53,26 +52,26 @@ export const ActionOfSchema = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 2:
-        message.name = reader.string();
-        break;
-      case 3:
-        message.index = reader.uint64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.name = reader.string();
+          break;
+        case 3:
+          message.index = reader.uint64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ActionOfSchema>): ActionOfSchema {
     const message = createBaseActionOfSchema();
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
-    message.name = object.name ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.name = object.name ?? "";
     message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.UZERO;
     return message;
   },
@@ -91,8 +90,8 @@ export const ActionOfSchema = {
   },
   toAmino(message: ActionOfSchema): ActionOfSchemaAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
-    obj.name = message.name === '' ? undefined : message.name;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.name = message.name === "" ? undefined : message.name;
     obj.index = !message.index.isZero() ? message.index?.toString() : undefined;
     return obj;
   },
@@ -107,7 +106,7 @@ export const ActionOfSchema = {
   },
   toProtoMsg(message: ActionOfSchema): ActionOfSchemaProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionOfSchema",
       value: ActionOfSchema.encode(message).finish()
     };
   }

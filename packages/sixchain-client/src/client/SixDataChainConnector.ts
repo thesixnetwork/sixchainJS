@@ -8,11 +8,11 @@ import * as distributionModuleGenerate from '../modules/cosmos/cosmos-sdk/cosmos
 import * as cosmosstakingLegacyModuleGenerate from '../modules/cosmos/cosmos-sdk/cosmos.staking.v1beta1/module/index';
 import * as cosmosstakingModuleGenerate from '../modules/cosmos/cosmos-sdk/cosmos.staking.v1beta1/module/index';
 import * as cosmosTx from '../modules/cosmos/cosmos-sdk/cosmos.tx.v1beta1/module/index';
-import * as protocoladminModuleGenerate from '../modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.protocoladmin/module/index';
-import * as tokenmngrModuleGenerate from '../modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.tokenmngr/module/index';
 import * as nftadminModuleGenerate from '../modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.nftadmin/module/index';
 import * as nftmngrModuleGenerate from '../modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.nftmngr/module/index';
 import * as nftoracleModuleGenerate from '../modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.nftoracle/module/';
+import * as protocoladminModuleGenerate from '../modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.protocoladmin/module/index';
+import * as tokenmngrModuleGenerate from '../modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.tokenmngr/module/index';
 import { Accounts } from './Accounts';
 
 type Module = {

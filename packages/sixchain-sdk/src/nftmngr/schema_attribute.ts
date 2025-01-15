@@ -1,7 +1,6 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { BooleanAttributeValue, BooleanAttributeValueAmino, BooleanAttributeValueSDKType, FloatAttributeValue, FloatAttributeValueAmino, FloatAttributeValueSDKType,NumberAttributeValue, NumberAttributeValueAmino, NumberAttributeValueSDKType, StringAttributeValue, StringAttributeValueAmino, StringAttributeValueSDKType } from './nft_attribute_value';
+import { NumberAttributeValue, NumberAttributeValueAmino, NumberAttributeValueSDKType, StringAttributeValue, StringAttributeValueAmino, StringAttributeValueSDKType, BooleanAttributeValue, BooleanAttributeValueAmino, BooleanAttributeValueSDKType, FloatAttributeValue, FloatAttributeValueAmino, FloatAttributeValueSDKType } from "./nft_attribute_value";
+import * as _m0 from "protobufjs/minimal";
 export interface SchemaAttribute {
   nftSchemaCode: string;
   name: string;
@@ -10,7 +9,7 @@ export interface SchemaAttribute {
   creator: string;
 }
 export interface SchemaAttributeProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute";
   value: Uint8Array;
 }
 export interface SchemaAttributeAmino {
@@ -21,7 +20,7 @@ export interface SchemaAttributeAmino {
   creator?: string;
 }
 export interface SchemaAttributeAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute';
+  type: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute";
   value: SchemaAttributeAmino;
 }
 export interface SchemaAttributeSDKType {
@@ -38,7 +37,7 @@ export interface SchemaAttributeValue {
   floatAttributeValue?: FloatAttributeValue;
 }
 export interface SchemaAttributeValueProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue";
   value: Uint8Array;
 }
 export interface SchemaAttributeValueAmino {
@@ -48,7 +47,7 @@ export interface SchemaAttributeValueAmino {
   float_attribute_value?: FloatAttributeValueAmino;
 }
 export interface SchemaAttributeValueAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue';
+  type: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue";
   value: SchemaAttributeValueAmino;
 }
 export interface SchemaAttributeValueSDKType {
@@ -59,29 +58,29 @@ export interface SchemaAttributeValueSDKType {
 }
 function createBaseSchemaAttribute(): SchemaAttribute {
   return {
-    nftSchemaCode: '',
-    name: '',
-    dataType: '',
+    nftSchemaCode: "",
+    name: "",
+    dataType: "",
     currentValue: undefined,
-    creator: ''
+    creator: ""
   };
 }
 export const SchemaAttribute = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute",
   encode(message: SchemaAttribute, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
-    if (message.dataType !== '') {
+    if (message.dataType !== "") {
       writer.uint32(26).string(message.dataType);
     }
     if (message.currentValue !== undefined) {
       SchemaAttributeValue.encode(message.currentValue, writer.uint32(34).fork()).ldelim();
     }
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(42).string(message.creator);
     }
     return writer;
@@ -93,35 +92,35 @@ export const SchemaAttribute = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 2:
-        message.name = reader.string();
-        break;
-      case 3:
-        message.dataType = reader.string();
-        break;
-      case 4:
-        message.currentValue = SchemaAttributeValue.decode(reader, reader.uint32());
-        break;
-      case 5:
-        message.creator = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.name = reader.string();
+          break;
+        case 3:
+          message.dataType = reader.string();
+          break;
+        case 4:
+          message.currentValue = SchemaAttributeValue.decode(reader, reader.uint32());
+          break;
+        case 5:
+          message.creator = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<SchemaAttribute>): SchemaAttribute {
     const message = createBaseSchemaAttribute();
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
-    message.name = object.name ?? '';
-    message.dataType = object.dataType ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.name = object.name ?? "";
+    message.dataType = object.dataType ?? "";
     message.currentValue = object.currentValue !== undefined && object.currentValue !== null ? SchemaAttributeValue.fromPartial(object.currentValue) : undefined;
-    message.creator = object.creator ?? '';
+    message.creator = object.creator ?? "";
     return message;
   },
   fromAmino(object: SchemaAttributeAmino): SchemaAttribute {
@@ -145,11 +144,11 @@ export const SchemaAttribute = {
   },
   toAmino(message: SchemaAttribute): SchemaAttributeAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
-    obj.name = message.name === '' ? undefined : message.name;
-    obj.data_type = message.dataType === '' ? undefined : message.dataType;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.name = message.name === "" ? undefined : message.name;
+    obj.data_type = message.dataType === "" ? undefined : message.dataType;
     obj.current_value = message.currentValue ? SchemaAttributeValue.toAmino(message.currentValue) : undefined;
-    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;
   },
   fromAminoMsg(object: SchemaAttributeAminoMsg): SchemaAttribute {
@@ -163,7 +162,7 @@ export const SchemaAttribute = {
   },
   toProtoMsg(message: SchemaAttribute): SchemaAttributeProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute",
       value: SchemaAttribute.encode(message).finish()
     };
   }
@@ -177,7 +176,7 @@ function createBaseSchemaAttributeValue(): SchemaAttributeValue {
   };
 }
 export const SchemaAttributeValue = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue",
   encode(message: SchemaAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.numberAttributeValue !== undefined) {
       NumberAttributeValue.encode(message.numberAttributeValue, writer.uint32(10).fork()).ldelim();
@@ -200,21 +199,21 @@ export const SchemaAttributeValue = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.numberAttributeValue = NumberAttributeValue.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.stringAttributeValue = StringAttributeValue.decode(reader, reader.uint32());
-        break;
-      case 3:
-        message.booleanAttributeValue = BooleanAttributeValue.decode(reader, reader.uint32());
-        break;
-      case 4:
-        message.floatAttributeValue = FloatAttributeValue.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.numberAttributeValue = NumberAttributeValue.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.stringAttributeValue = StringAttributeValue.decode(reader, reader.uint32());
+          break;
+        case 3:
+          message.booleanAttributeValue = BooleanAttributeValue.decode(reader, reader.uint32());
+          break;
+        case 4:
+          message.floatAttributeValue = FloatAttributeValue.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -262,7 +261,7 @@ export const SchemaAttributeValue = {
   },
   toProtoMsg(message: SchemaAttributeValue): SchemaAttributeValueProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue",
       value: SchemaAttributeValue.encode(message).finish()
     };
   }
