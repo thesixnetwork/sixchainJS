@@ -14,13 +14,13 @@ import * as _m0 from "protobufjs/minimal";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryParamsRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryParamsRequest";
   value: Uint8Array;
 }
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryParamsRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryParamsRequest";
   value: QueryParamsRequestAmino;
 }
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
@@ -31,7 +31,7 @@ export interface QueryParamsResponse {
   params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryParamsResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryParamsResponse";
   value: Uint8Array;
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
@@ -40,7 +40,7 @@ export interface QueryParamsResponseAmino {
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryParamsResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryParamsResponse";
   value: QueryParamsResponseAmino;
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
@@ -51,14 +51,14 @@ export interface QueryGetMintRequestRequest {
   id: Long;
 }
 export interface QueryGetMintRequestRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetMintRequestRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetMintRequestRequest";
   value: Uint8Array;
 }
 export interface QueryGetMintRequestRequestAmino {
   id?: string;
 }
 export interface QueryGetMintRequestRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetMintRequestRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetMintRequestRequest";
   value: QueryGetMintRequestRequestAmino;
 }
 export interface QueryGetMintRequestRequestSDKType {
@@ -68,14 +68,14 @@ export interface QueryGetMintRequestResponse {
   mintRequest: MintRequest;
 }
 export interface QueryGetMintRequestResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetMintRequestResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetMintRequestResponse";
   value: Uint8Array;
 }
 export interface QueryGetMintRequestResponseAmino {
   MintRequest?: MintRequestAmino;
 }
 export interface QueryGetMintRequestResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetMintRequestResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetMintRequestResponse";
   value: QueryGetMintRequestResponseAmino;
 }
 export interface QueryGetMintRequestResponseSDKType {
@@ -85,14 +85,14 @@ export interface QueryAllMintRequestRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllMintRequestRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllMintRequestRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllMintRequestRequest";
   value: Uint8Array;
 }
 export interface QueryAllMintRequestRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllMintRequestRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllMintRequestRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllMintRequestRequest";
   value: QueryAllMintRequestRequestAmino;
 }
 export interface QueryAllMintRequestRequestSDKType {
@@ -103,7 +103,7 @@ export interface QueryAllMintRequestResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllMintRequestResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllMintRequestResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllMintRequestResponse";
   value: Uint8Array;
 }
 export interface QueryAllMintRequestResponseAmino {
@@ -111,7 +111,7 @@ export interface QueryAllMintRequestResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllMintRequestResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllMintRequestResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllMintRequestResponse";
   value: QueryAllMintRequestResponseAmino;
 }
 export interface QueryAllMintRequestResponseSDKType {
@@ -122,14 +122,14 @@ export interface QueryGetActionRequestRequest {
   id: Long;
 }
 export interface QueryGetActionRequestRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionRequestRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionRequestRequest";
   value: Uint8Array;
 }
 export interface QueryGetActionRequestRequestAmino {
   id?: string;
 }
 export interface QueryGetActionRequestRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetActionRequestRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionRequestRequest";
   value: QueryGetActionRequestRequestAmino;
 }
 export interface QueryGetActionRequestRequestSDKType {
@@ -139,14 +139,14 @@ export interface QueryGetActionRequestResponse {
   actionOracleRequest: ActionOracleRequest;
 }
 export interface QueryGetActionRequestResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionRequestResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionRequestResponse";
   value: Uint8Array;
 }
 export interface QueryGetActionRequestResponseAmino {
   ActionOracleRequest?: ActionOracleRequestAmino;
 }
 export interface QueryGetActionRequestResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetActionRequestResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionRequestResponse";
   value: QueryGetActionRequestResponseAmino;
 }
 export interface QueryGetActionRequestResponseSDKType {
@@ -156,14 +156,14 @@ export interface QueryAllActionRequestRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllActionRequestRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionRequestRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionRequestRequest";
   value: Uint8Array;
 }
 export interface QueryAllActionRequestRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllActionRequestRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllActionRequestRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionRequestRequest";
   value: QueryAllActionRequestRequestAmino;
 }
 export interface QueryAllActionRequestRequestSDKType {
@@ -174,7 +174,7 @@ export interface QueryAllActionRequestResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllActionRequestResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionRequestResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionRequestResponse";
   value: Uint8Array;
 }
 export interface QueryAllActionRequestResponseAmino {
@@ -182,7 +182,7 @@ export interface QueryAllActionRequestResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllActionRequestResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllActionRequestResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionRequestResponse";
   value: QueryAllActionRequestResponseAmino;
 }
 export interface QueryAllActionRequestResponseSDKType {
@@ -193,14 +193,14 @@ export interface QueryGetCollectionOwnerRequestRequest {
   id: Long;
 }
 export interface QueryGetCollectionOwnerRequestRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetCollectionOwnerRequestRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetCollectionOwnerRequestRequest";
   value: Uint8Array;
 }
 export interface QueryGetCollectionOwnerRequestRequestAmino {
   id?: string;
 }
 export interface QueryGetCollectionOwnerRequestRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetCollectionOwnerRequestRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetCollectionOwnerRequestRequest";
   value: QueryGetCollectionOwnerRequestRequestAmino;
 }
 export interface QueryGetCollectionOwnerRequestRequestSDKType {
@@ -210,14 +210,14 @@ export interface QueryGetCollectionOwnerRequestResponse {
   collectionOwnerRequest: CollectionOwnerRequest;
 }
 export interface QueryGetCollectionOwnerRequestResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetCollectionOwnerRequestResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetCollectionOwnerRequestResponse";
   value: Uint8Array;
 }
 export interface QueryGetCollectionOwnerRequestResponseAmino {
   CollectionOwnerRequest?: CollectionOwnerRequestAmino;
 }
 export interface QueryGetCollectionOwnerRequestResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetCollectionOwnerRequestResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetCollectionOwnerRequestResponse";
   value: QueryGetCollectionOwnerRequestResponseAmino;
 }
 export interface QueryGetCollectionOwnerRequestResponseSDKType {
@@ -227,14 +227,14 @@ export interface QueryAllCollectionOwnerRequestRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllCollectionOwnerRequestRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllCollectionOwnerRequestRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllCollectionOwnerRequestRequest";
   value: Uint8Array;
 }
 export interface QueryAllCollectionOwnerRequestRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllCollectionOwnerRequestRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllCollectionOwnerRequestRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllCollectionOwnerRequestRequest";
   value: QueryAllCollectionOwnerRequestRequestAmino;
 }
 export interface QueryAllCollectionOwnerRequestRequestSDKType {
@@ -245,7 +245,7 @@ export interface QueryAllCollectionOwnerRequestResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllCollectionOwnerRequestResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllCollectionOwnerRequestResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllCollectionOwnerRequestResponse";
   value: Uint8Array;
 }
 export interface QueryAllCollectionOwnerRequestResponseAmino {
@@ -253,7 +253,7 @@ export interface QueryAllCollectionOwnerRequestResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllCollectionOwnerRequestResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllCollectionOwnerRequestResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllCollectionOwnerRequestResponse";
   value: QueryAllCollectionOwnerRequestResponseAmino;
 }
 export interface QueryAllCollectionOwnerRequestResponseSDKType {
@@ -262,12 +262,12 @@ export interface QueryAllCollectionOwnerRequestResponseSDKType {
 }
 export interface QueryGetOracleConfigRequest {}
 export interface QueryGetOracleConfigRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetOracleConfigRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetOracleConfigRequest";
   value: Uint8Array;
 }
 export interface QueryGetOracleConfigRequestAmino {}
 export interface QueryGetOracleConfigRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetOracleConfigRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetOracleConfigRequest";
   value: QueryGetOracleConfigRequestAmino;
 }
 export interface QueryGetOracleConfigRequestSDKType {}
@@ -275,14 +275,14 @@ export interface QueryGetOracleConfigResponse {
   oracleConfig: OracleConfig;
 }
 export interface QueryGetOracleConfigResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetOracleConfigResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetOracleConfigResponse";
   value: Uint8Array;
 }
 export interface QueryGetOracleConfigResponseAmino {
   OracleConfig?: OracleConfigAmino;
 }
 export interface QueryGetOracleConfigResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetOracleConfigResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetOracleConfigResponse";
   value: QueryGetOracleConfigResponseAmino;
 }
 export interface QueryGetOracleConfigResponseSDKType {
@@ -293,7 +293,7 @@ export interface QueryGetActionSignerRequest {
   ownerAddress: string;
 }
 export interface QueryGetActionSignerRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerRequest";
   value: Uint8Array;
 }
 export interface QueryGetActionSignerRequestAmino {
@@ -301,7 +301,7 @@ export interface QueryGetActionSignerRequestAmino {
   ownerAddress?: string;
 }
 export interface QueryGetActionSignerRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerRequest";
   value: QueryGetActionSignerRequestAmino;
 }
 export interface QueryGetActionSignerRequestSDKType {
@@ -312,14 +312,14 @@ export interface QueryGetActionSignerResponse {
   actionSigner: ActionSigner;
 }
 export interface QueryGetActionSignerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerResponse";
   value: Uint8Array;
 }
 export interface QueryGetActionSignerResponseAmino {
   actionSigner?: ActionSignerAmino;
 }
 export interface QueryGetActionSignerResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerResponse";
   value: QueryGetActionSignerResponseAmino;
 }
 export interface QueryGetActionSignerResponseSDKType {
@@ -329,14 +329,14 @@ export interface QueryAllActionSignerRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllActionSignerRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerRequest";
   value: Uint8Array;
 }
 export interface QueryAllActionSignerRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllActionSignerRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerRequest";
   value: QueryAllActionSignerRequestAmino;
 }
 export interface QueryAllActionSignerRequestSDKType {
@@ -347,7 +347,7 @@ export interface QueryAllActionSignerResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllActionSignerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerResponse";
   value: Uint8Array;
 }
 export interface QueryAllActionSignerResponseAmino {
@@ -355,7 +355,7 @@ export interface QueryAllActionSignerResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllActionSignerResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerResponse";
   value: QueryAllActionSignerResponseAmino;
 }
 export interface QueryAllActionSignerResponseSDKType {
@@ -366,14 +366,14 @@ export interface QueryGetBindedSignerRequest {
   ownerAddress: string;
 }
 export interface QueryGetBindedSignerRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetBindedSignerRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetBindedSignerRequest";
   value: Uint8Array;
 }
 export interface QueryGetBindedSignerRequestAmino {
   ownerAddress?: string;
 }
 export interface QueryGetBindedSignerRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetBindedSignerRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetBindedSignerRequest";
   value: QueryGetBindedSignerRequestAmino;
 }
 export interface QueryGetBindedSignerRequestSDKType {
@@ -383,14 +383,14 @@ export interface QueryGetBindedSignerResponse {
   bindedSigner: BindedSigner;
 }
 export interface QueryGetBindedSignerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetBindedSignerResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetBindedSignerResponse";
   value: Uint8Array;
 }
 export interface QueryGetBindedSignerResponseAmino {
   bindedSigner?: BindedSignerAmino;
 }
 export interface QueryGetBindedSignerResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetBindedSignerResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetBindedSignerResponse";
   value: QueryGetBindedSignerResponseAmino;
 }
 export interface QueryGetBindedSignerResponseSDKType {
@@ -400,14 +400,14 @@ export interface QueryGetActionSignerConfigRequest {
   chain: string;
 }
 export interface QueryGetActionSignerConfigRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerConfigRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerConfigRequest";
   value: Uint8Array;
 }
 export interface QueryGetActionSignerConfigRequestAmino {
   chain?: string;
 }
 export interface QueryGetActionSignerConfigRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerConfigRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerConfigRequest";
   value: QueryGetActionSignerConfigRequestAmino;
 }
 export interface QueryGetActionSignerConfigRequestSDKType {
@@ -417,14 +417,14 @@ export interface QueryGetActionSignerConfigResponse {
   actionSignerConfig: ActionSignerConfig;
 }
 export interface QueryGetActionSignerConfigResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerConfigResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerConfigResponse";
   value: Uint8Array;
 }
 export interface QueryGetActionSignerConfigResponseAmino {
   actionSignerConfig?: ActionSignerConfigAmino;
 }
 export interface QueryGetActionSignerConfigResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerConfigResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerConfigResponse";
   value: QueryGetActionSignerConfigResponseAmino;
 }
 export interface QueryGetActionSignerConfigResponseSDKType {
@@ -434,14 +434,14 @@ export interface QueryAllActionSignerConfigRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllActionSignerConfigRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerConfigRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerConfigRequest";
   value: Uint8Array;
 }
 export interface QueryAllActionSignerConfigRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllActionSignerConfigRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerConfigRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerConfigRequest";
   value: QueryAllActionSignerConfigRequestAmino;
 }
 export interface QueryAllActionSignerConfigRequestSDKType {
@@ -452,7 +452,7 @@ export interface QueryAllActionSignerConfigResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllActionSignerConfigResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerConfigResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerConfigResponse";
   value: Uint8Array;
 }
 export interface QueryAllActionSignerConfigResponseAmino {
@@ -460,7 +460,7 @@ export interface QueryAllActionSignerConfigResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllActionSignerConfigResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerConfigResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerConfigResponse";
   value: QueryAllActionSignerConfigResponseAmino;
 }
 export interface QueryAllActionSignerConfigResponseSDKType {
@@ -471,14 +471,14 @@ export interface QueryGetSyncActionSignerRequest {
   id: Long;
 }
 export interface QueryGetSyncActionSignerRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetSyncActionSignerRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetSyncActionSignerRequest";
   value: Uint8Array;
 }
 export interface QueryGetSyncActionSignerRequestAmino {
   id?: string;
 }
 export interface QueryGetSyncActionSignerRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetSyncActionSignerRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetSyncActionSignerRequest";
   value: QueryGetSyncActionSignerRequestAmino;
 }
 export interface QueryGetSyncActionSignerRequestSDKType {
@@ -488,14 +488,14 @@ export interface QueryGetSyncActionSignerResponse {
   syncActionSigner: SyncActionSigner;
 }
 export interface QueryGetSyncActionSignerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetSyncActionSignerResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetSyncActionSignerResponse";
   value: Uint8Array;
 }
 export interface QueryGetSyncActionSignerResponseAmino {
   SyncActionSigner?: SyncActionSignerAmino;
 }
 export interface QueryGetSyncActionSignerResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryGetSyncActionSignerResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryGetSyncActionSignerResponse";
   value: QueryGetSyncActionSignerResponseAmino;
 }
 export interface QueryGetSyncActionSignerResponseSDKType {
@@ -505,14 +505,14 @@ export interface QueryAllSyncActionSignerRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllSyncActionSignerRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllSyncActionSignerRequest";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllSyncActionSignerRequest";
   value: Uint8Array;
 }
 export interface QueryAllSyncActionSignerRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllSyncActionSignerRequestAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllSyncActionSignerRequest";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllSyncActionSignerRequest";
   value: QueryAllSyncActionSignerRequestAmino;
 }
 export interface QueryAllSyncActionSignerRequestSDKType {
@@ -523,7 +523,7 @@ export interface QueryAllSyncActionSignerResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllSyncActionSignerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllSyncActionSignerResponse";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllSyncActionSignerResponse";
   value: Uint8Array;
 }
 export interface QueryAllSyncActionSignerResponseAmino {
@@ -531,7 +531,7 @@ export interface QueryAllSyncActionSignerResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllSyncActionSignerResponseAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.QueryAllSyncActionSignerResponse";
+  type: "/thesixnetwork.sixprotocol.nftoracle.QueryAllSyncActionSignerResponse";
   value: QueryAllSyncActionSignerResponseAmino;
 }
 export interface QueryAllSyncActionSignerResponseSDKType {
@@ -542,7 +542,7 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryParamsRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryParamsRequest",
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -583,7 +583,7 @@ export const QueryParamsRequest = {
   },
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryParamsRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryParamsRequest",
       value: QueryParamsRequest.encode(message).finish()
     };
   }
@@ -594,7 +594,7 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
   };
 }
 export const QueryParamsResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryParamsResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryParamsResponse",
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -646,7 +646,7 @@ export const QueryParamsResponse = {
   },
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryParamsResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryParamsResponse",
       value: QueryParamsResponse.encode(message).finish()
     };
   }
@@ -657,7 +657,7 @@ function createBaseQueryGetMintRequestRequest(): QueryGetMintRequestRequest {
   };
 }
 export const QueryGetMintRequestRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetMintRequestRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetMintRequestRequest",
   encode(message: QueryGetMintRequestRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -695,7 +695,7 @@ export const QueryGetMintRequestRequest = {
   },
   toAmino(message: QueryGetMintRequestRequest): QueryGetMintRequestRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryGetMintRequestRequestAminoMsg): QueryGetMintRequestRequest {
@@ -709,7 +709,7 @@ export const QueryGetMintRequestRequest = {
   },
   toProtoMsg(message: QueryGetMintRequestRequest): QueryGetMintRequestRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetMintRequestRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetMintRequestRequest",
       value: QueryGetMintRequestRequest.encode(message).finish()
     };
   }
@@ -720,7 +720,7 @@ function createBaseQueryGetMintRequestResponse(): QueryGetMintRequestResponse {
   };
 }
 export const QueryGetMintRequestResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetMintRequestResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetMintRequestResponse",
   encode(message: QueryGetMintRequestResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.mintRequest !== undefined) {
       MintRequest.encode(message.mintRequest, writer.uint32(10).fork()).ldelim();
@@ -772,7 +772,7 @@ export const QueryGetMintRequestResponse = {
   },
   toProtoMsg(message: QueryGetMintRequestResponse): QueryGetMintRequestResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetMintRequestResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetMintRequestResponse",
       value: QueryGetMintRequestResponse.encode(message).finish()
     };
   }
@@ -783,7 +783,7 @@ function createBaseQueryAllMintRequestRequest(): QueryAllMintRequestRequest {
   };
 }
 export const QueryAllMintRequestRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllMintRequestRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllMintRequestRequest",
   encode(message: QueryAllMintRequestRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -835,7 +835,7 @@ export const QueryAllMintRequestRequest = {
   },
   toProtoMsg(message: QueryAllMintRequestRequest): QueryAllMintRequestRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllMintRequestRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllMintRequestRequest",
       value: QueryAllMintRequestRequest.encode(message).finish()
     };
   }
@@ -847,7 +847,7 @@ function createBaseQueryAllMintRequestResponse(): QueryAllMintRequestResponse {
   };
 }
 export const QueryAllMintRequestResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllMintRequestResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllMintRequestResponse",
   encode(message: QueryAllMintRequestResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.mintRequest) {
       MintRequest.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -912,7 +912,7 @@ export const QueryAllMintRequestResponse = {
   },
   toProtoMsg(message: QueryAllMintRequestResponse): QueryAllMintRequestResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllMintRequestResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllMintRequestResponse",
       value: QueryAllMintRequestResponse.encode(message).finish()
     };
   }
@@ -923,7 +923,7 @@ function createBaseQueryGetActionRequestRequest(): QueryGetActionRequestRequest 
   };
 }
 export const QueryGetActionRequestRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionRequestRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionRequestRequest",
   encode(message: QueryGetActionRequestRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -961,7 +961,7 @@ export const QueryGetActionRequestRequest = {
   },
   toAmino(message: QueryGetActionRequestRequest): QueryGetActionRequestRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryGetActionRequestRequestAminoMsg): QueryGetActionRequestRequest {
@@ -975,7 +975,7 @@ export const QueryGetActionRequestRequest = {
   },
   toProtoMsg(message: QueryGetActionRequestRequest): QueryGetActionRequestRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionRequestRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionRequestRequest",
       value: QueryGetActionRequestRequest.encode(message).finish()
     };
   }
@@ -986,7 +986,7 @@ function createBaseQueryGetActionRequestResponse(): QueryGetActionRequestRespons
   };
 }
 export const QueryGetActionRequestResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionRequestResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionRequestResponse",
   encode(message: QueryGetActionRequestResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.actionOracleRequest !== undefined) {
       ActionOracleRequest.encode(message.actionOracleRequest, writer.uint32(10).fork()).ldelim();
@@ -1038,7 +1038,7 @@ export const QueryGetActionRequestResponse = {
   },
   toProtoMsg(message: QueryGetActionRequestResponse): QueryGetActionRequestResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionRequestResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionRequestResponse",
       value: QueryGetActionRequestResponse.encode(message).finish()
     };
   }
@@ -1049,7 +1049,7 @@ function createBaseQueryAllActionRequestRequest(): QueryAllActionRequestRequest 
   };
 }
 export const QueryAllActionRequestRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionRequestRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionRequestRequest",
   encode(message: QueryAllActionRequestRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -1101,7 +1101,7 @@ export const QueryAllActionRequestRequest = {
   },
   toProtoMsg(message: QueryAllActionRequestRequest): QueryAllActionRequestRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionRequestRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionRequestRequest",
       value: QueryAllActionRequestRequest.encode(message).finish()
     };
   }
@@ -1113,7 +1113,7 @@ function createBaseQueryAllActionRequestResponse(): QueryAllActionRequestRespons
   };
 }
 export const QueryAllActionRequestResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionRequestResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionRequestResponse",
   encode(message: QueryAllActionRequestResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.actionOracleRequest) {
       ActionOracleRequest.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1178,7 +1178,7 @@ export const QueryAllActionRequestResponse = {
   },
   toProtoMsg(message: QueryAllActionRequestResponse): QueryAllActionRequestResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionRequestResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionRequestResponse",
       value: QueryAllActionRequestResponse.encode(message).finish()
     };
   }
@@ -1189,7 +1189,7 @@ function createBaseQueryGetCollectionOwnerRequestRequest(): QueryGetCollectionOw
   };
 }
 export const QueryGetCollectionOwnerRequestRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetCollectionOwnerRequestRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetCollectionOwnerRequestRequest",
   encode(message: QueryGetCollectionOwnerRequestRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -1227,7 +1227,7 @@ export const QueryGetCollectionOwnerRequestRequest = {
   },
   toAmino(message: QueryGetCollectionOwnerRequestRequest): QueryGetCollectionOwnerRequestRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryGetCollectionOwnerRequestRequestAminoMsg): QueryGetCollectionOwnerRequestRequest {
@@ -1241,7 +1241,7 @@ export const QueryGetCollectionOwnerRequestRequest = {
   },
   toProtoMsg(message: QueryGetCollectionOwnerRequestRequest): QueryGetCollectionOwnerRequestRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetCollectionOwnerRequestRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetCollectionOwnerRequestRequest",
       value: QueryGetCollectionOwnerRequestRequest.encode(message).finish()
     };
   }
@@ -1252,7 +1252,7 @@ function createBaseQueryGetCollectionOwnerRequestResponse(): QueryGetCollectionO
   };
 }
 export const QueryGetCollectionOwnerRequestResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetCollectionOwnerRequestResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetCollectionOwnerRequestResponse",
   encode(message: QueryGetCollectionOwnerRequestResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.collectionOwnerRequest !== undefined) {
       CollectionOwnerRequest.encode(message.collectionOwnerRequest, writer.uint32(10).fork()).ldelim();
@@ -1304,7 +1304,7 @@ export const QueryGetCollectionOwnerRequestResponse = {
   },
   toProtoMsg(message: QueryGetCollectionOwnerRequestResponse): QueryGetCollectionOwnerRequestResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetCollectionOwnerRequestResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetCollectionOwnerRequestResponse",
       value: QueryGetCollectionOwnerRequestResponse.encode(message).finish()
     };
   }
@@ -1315,7 +1315,7 @@ function createBaseQueryAllCollectionOwnerRequestRequest(): QueryAllCollectionOw
   };
 }
 export const QueryAllCollectionOwnerRequestRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllCollectionOwnerRequestRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllCollectionOwnerRequestRequest",
   encode(message: QueryAllCollectionOwnerRequestRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -1367,7 +1367,7 @@ export const QueryAllCollectionOwnerRequestRequest = {
   },
   toProtoMsg(message: QueryAllCollectionOwnerRequestRequest): QueryAllCollectionOwnerRequestRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllCollectionOwnerRequestRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllCollectionOwnerRequestRequest",
       value: QueryAllCollectionOwnerRequestRequest.encode(message).finish()
     };
   }
@@ -1379,7 +1379,7 @@ function createBaseQueryAllCollectionOwnerRequestResponse(): QueryAllCollectionO
   };
 }
 export const QueryAllCollectionOwnerRequestResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllCollectionOwnerRequestResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllCollectionOwnerRequestResponse",
   encode(message: QueryAllCollectionOwnerRequestResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.collectionOwnerRequest) {
       CollectionOwnerRequest.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1444,7 +1444,7 @@ export const QueryAllCollectionOwnerRequestResponse = {
   },
   toProtoMsg(message: QueryAllCollectionOwnerRequestResponse): QueryAllCollectionOwnerRequestResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllCollectionOwnerRequestResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllCollectionOwnerRequestResponse",
       value: QueryAllCollectionOwnerRequestResponse.encode(message).finish()
     };
   }
@@ -1453,7 +1453,7 @@ function createBaseQueryGetOracleConfigRequest(): QueryGetOracleConfigRequest {
   return {};
 }
 export const QueryGetOracleConfigRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetOracleConfigRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetOracleConfigRequest",
   encode(_: QueryGetOracleConfigRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -1494,7 +1494,7 @@ export const QueryGetOracleConfigRequest = {
   },
   toProtoMsg(message: QueryGetOracleConfigRequest): QueryGetOracleConfigRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetOracleConfigRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetOracleConfigRequest",
       value: QueryGetOracleConfigRequest.encode(message).finish()
     };
   }
@@ -1505,7 +1505,7 @@ function createBaseQueryGetOracleConfigResponse(): QueryGetOracleConfigResponse 
   };
 }
 export const QueryGetOracleConfigResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetOracleConfigResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetOracleConfigResponse",
   encode(message: QueryGetOracleConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.oracleConfig !== undefined) {
       OracleConfig.encode(message.oracleConfig, writer.uint32(10).fork()).ldelim();
@@ -1557,7 +1557,7 @@ export const QueryGetOracleConfigResponse = {
   },
   toProtoMsg(message: QueryGetOracleConfigResponse): QueryGetOracleConfigResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetOracleConfigResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetOracleConfigResponse",
       value: QueryGetOracleConfigResponse.encode(message).finish()
     };
   }
@@ -1569,7 +1569,7 @@ function createBaseQueryGetActionSignerRequest(): QueryGetActionSignerRequest {
   };
 }
 export const QueryGetActionSignerRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerRequest",
   encode(message: QueryGetActionSignerRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.actorAddress !== "") {
       writer.uint32(10).string(message.actorAddress);
@@ -1632,7 +1632,7 @@ export const QueryGetActionSignerRequest = {
   },
   toProtoMsg(message: QueryGetActionSignerRequest): QueryGetActionSignerRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerRequest",
       value: QueryGetActionSignerRequest.encode(message).finish()
     };
   }
@@ -1643,7 +1643,7 @@ function createBaseQueryGetActionSignerResponse(): QueryGetActionSignerResponse 
   };
 }
 export const QueryGetActionSignerResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerResponse",
   encode(message: QueryGetActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.actionSigner !== undefined) {
       ActionSigner.encode(message.actionSigner, writer.uint32(10).fork()).ldelim();
@@ -1695,7 +1695,7 @@ export const QueryGetActionSignerResponse = {
   },
   toProtoMsg(message: QueryGetActionSignerResponse): QueryGetActionSignerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerResponse",
       value: QueryGetActionSignerResponse.encode(message).finish()
     };
   }
@@ -1706,7 +1706,7 @@ function createBaseQueryAllActionSignerRequest(): QueryAllActionSignerRequest {
   };
 }
 export const QueryAllActionSignerRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerRequest",
   encode(message: QueryAllActionSignerRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -1758,7 +1758,7 @@ export const QueryAllActionSignerRequest = {
   },
   toProtoMsg(message: QueryAllActionSignerRequest): QueryAllActionSignerRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerRequest",
       value: QueryAllActionSignerRequest.encode(message).finish()
     };
   }
@@ -1770,7 +1770,7 @@ function createBaseQueryAllActionSignerResponse(): QueryAllActionSignerResponse 
   };
 }
 export const QueryAllActionSignerResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerResponse",
   encode(message: QueryAllActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.actionSigner) {
       ActionSigner.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1835,7 +1835,7 @@ export const QueryAllActionSignerResponse = {
   },
   toProtoMsg(message: QueryAllActionSignerResponse): QueryAllActionSignerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerResponse",
       value: QueryAllActionSignerResponse.encode(message).finish()
     };
   }
@@ -1846,7 +1846,7 @@ function createBaseQueryGetBindedSignerRequest(): QueryGetBindedSignerRequest {
   };
 }
 export const QueryGetBindedSignerRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetBindedSignerRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetBindedSignerRequest",
   encode(message: QueryGetBindedSignerRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.ownerAddress !== "") {
       writer.uint32(10).string(message.ownerAddress);
@@ -1898,7 +1898,7 @@ export const QueryGetBindedSignerRequest = {
   },
   toProtoMsg(message: QueryGetBindedSignerRequest): QueryGetBindedSignerRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetBindedSignerRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetBindedSignerRequest",
       value: QueryGetBindedSignerRequest.encode(message).finish()
     };
   }
@@ -1909,7 +1909,7 @@ function createBaseQueryGetBindedSignerResponse(): QueryGetBindedSignerResponse 
   };
 }
 export const QueryGetBindedSignerResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetBindedSignerResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetBindedSignerResponse",
   encode(message: QueryGetBindedSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.bindedSigner !== undefined) {
       BindedSigner.encode(message.bindedSigner, writer.uint32(10).fork()).ldelim();
@@ -1961,7 +1961,7 @@ export const QueryGetBindedSignerResponse = {
   },
   toProtoMsg(message: QueryGetBindedSignerResponse): QueryGetBindedSignerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetBindedSignerResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetBindedSignerResponse",
       value: QueryGetBindedSignerResponse.encode(message).finish()
     };
   }
@@ -1972,7 +1972,7 @@ function createBaseQueryGetActionSignerConfigRequest(): QueryGetActionSignerConf
   };
 }
 export const QueryGetActionSignerConfigRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerConfigRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerConfigRequest",
   encode(message: QueryGetActionSignerConfigRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
@@ -2024,7 +2024,7 @@ export const QueryGetActionSignerConfigRequest = {
   },
   toProtoMsg(message: QueryGetActionSignerConfigRequest): QueryGetActionSignerConfigRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerConfigRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerConfigRequest",
       value: QueryGetActionSignerConfigRequest.encode(message).finish()
     };
   }
@@ -2035,7 +2035,7 @@ function createBaseQueryGetActionSignerConfigResponse(): QueryGetActionSignerCon
   };
 }
 export const QueryGetActionSignerConfigResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerConfigResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerConfigResponse",
   encode(message: QueryGetActionSignerConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.actionSignerConfig !== undefined) {
       ActionSignerConfig.encode(message.actionSignerConfig, writer.uint32(10).fork()).ldelim();
@@ -2087,7 +2087,7 @@ export const QueryGetActionSignerConfigResponse = {
   },
   toProtoMsg(message: QueryGetActionSignerConfigResponse): QueryGetActionSignerConfigResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetActionSignerConfigResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetActionSignerConfigResponse",
       value: QueryGetActionSignerConfigResponse.encode(message).finish()
     };
   }
@@ -2098,7 +2098,7 @@ function createBaseQueryAllActionSignerConfigRequest(): QueryAllActionSignerConf
   };
 }
 export const QueryAllActionSignerConfigRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerConfigRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerConfigRequest",
   encode(message: QueryAllActionSignerConfigRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -2150,7 +2150,7 @@ export const QueryAllActionSignerConfigRequest = {
   },
   toProtoMsg(message: QueryAllActionSignerConfigRequest): QueryAllActionSignerConfigRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerConfigRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerConfigRequest",
       value: QueryAllActionSignerConfigRequest.encode(message).finish()
     };
   }
@@ -2162,7 +2162,7 @@ function createBaseQueryAllActionSignerConfigResponse(): QueryAllActionSignerCon
   };
 }
 export const QueryAllActionSignerConfigResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerConfigResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerConfigResponse",
   encode(message: QueryAllActionSignerConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.actionSignerConfig) {
       ActionSignerConfig.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2227,7 +2227,7 @@ export const QueryAllActionSignerConfigResponse = {
   },
   toProtoMsg(message: QueryAllActionSignerConfigResponse): QueryAllActionSignerConfigResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllActionSignerConfigResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllActionSignerConfigResponse",
       value: QueryAllActionSignerConfigResponse.encode(message).finish()
     };
   }
@@ -2238,7 +2238,7 @@ function createBaseQueryGetSyncActionSignerRequest(): QueryGetSyncActionSignerRe
   };
 }
 export const QueryGetSyncActionSignerRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetSyncActionSignerRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetSyncActionSignerRequest",
   encode(message: QueryGetSyncActionSignerRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -2276,7 +2276,7 @@ export const QueryGetSyncActionSignerRequest = {
   },
   toAmino(message: QueryGetSyncActionSignerRequest): QueryGetSyncActionSignerRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryGetSyncActionSignerRequestAminoMsg): QueryGetSyncActionSignerRequest {
@@ -2290,7 +2290,7 @@ export const QueryGetSyncActionSignerRequest = {
   },
   toProtoMsg(message: QueryGetSyncActionSignerRequest): QueryGetSyncActionSignerRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetSyncActionSignerRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetSyncActionSignerRequest",
       value: QueryGetSyncActionSignerRequest.encode(message).finish()
     };
   }
@@ -2301,7 +2301,7 @@ function createBaseQueryGetSyncActionSignerResponse(): QueryGetSyncActionSignerR
   };
 }
 export const QueryGetSyncActionSignerResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetSyncActionSignerResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetSyncActionSignerResponse",
   encode(message: QueryGetSyncActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.syncActionSigner !== undefined) {
       SyncActionSigner.encode(message.syncActionSigner, writer.uint32(10).fork()).ldelim();
@@ -2353,7 +2353,7 @@ export const QueryGetSyncActionSignerResponse = {
   },
   toProtoMsg(message: QueryGetSyncActionSignerResponse): QueryGetSyncActionSignerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryGetSyncActionSignerResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryGetSyncActionSignerResponse",
       value: QueryGetSyncActionSignerResponse.encode(message).finish()
     };
   }
@@ -2364,7 +2364,7 @@ function createBaseQueryAllSyncActionSignerRequest(): QueryAllSyncActionSignerRe
   };
 }
 export const QueryAllSyncActionSignerRequest = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllSyncActionSignerRequest",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllSyncActionSignerRequest",
   encode(message: QueryAllSyncActionSignerRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -2416,7 +2416,7 @@ export const QueryAllSyncActionSignerRequest = {
   },
   toProtoMsg(message: QueryAllSyncActionSignerRequest): QueryAllSyncActionSignerRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllSyncActionSignerRequest",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllSyncActionSignerRequest",
       value: QueryAllSyncActionSignerRequest.encode(message).finish()
     };
   }
@@ -2428,7 +2428,7 @@ function createBaseQueryAllSyncActionSignerResponse(): QueryAllSyncActionSignerR
   };
 }
 export const QueryAllSyncActionSignerResponse = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllSyncActionSignerResponse",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllSyncActionSignerResponse",
   encode(message: QueryAllSyncActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.syncActionSigner) {
       SyncActionSigner.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2493,7 +2493,7 @@ export const QueryAllSyncActionSignerResponse = {
   },
   toProtoMsg(message: QueryAllSyncActionSignerResponse): QueryAllSyncActionSignerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.QueryAllSyncActionSignerResponse",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.QueryAllSyncActionSignerResponse",
       value: QueryAllSyncActionSignerResponse.encode(message).finish()
     };
   }

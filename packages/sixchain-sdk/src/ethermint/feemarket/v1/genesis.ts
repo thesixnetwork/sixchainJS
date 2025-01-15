@@ -91,7 +91,7 @@ export const GenesisState = {
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
-    obj.block_gas = !message.blockGas.isZero() ? (message.blockGas?.toString)() : undefined;
+    obj.block_gas = !message.blockGas.isZero() ? message.blockGas?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {

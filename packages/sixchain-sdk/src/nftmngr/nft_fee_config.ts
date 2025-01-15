@@ -43,7 +43,7 @@ export interface FeeDistribution {
   portion: number;
 }
 export interface FeeDistributionProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeDistribution";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.FeeDistribution";
   value: Uint8Array;
 }
 export interface FeeDistributionAmino {
@@ -51,7 +51,7 @@ export interface FeeDistributionAmino {
   portion?: number;
 }
 export interface FeeDistributionAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.FeeDistribution";
+  type: "/thesixnetwork.sixprotocol.nftmngr.FeeDistribution";
   value: FeeDistributionAmino;
 }
 export interface FeeDistributionSDKType {
@@ -63,7 +63,7 @@ export interface FeeConfig {
   feeDistributions: FeeDistribution[];
 }
 export interface FeeConfigProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeConfig";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.FeeConfig";
   value: Uint8Array;
 }
 export interface FeeConfigAmino {
@@ -71,7 +71,7 @@ export interface FeeConfigAmino {
   fee_distributions?: FeeDistributionAmino[];
 }
 export interface FeeConfigAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.FeeConfig";
+  type: "/thesixnetwork.sixprotocol.nftmngr.FeeConfig";
   value: FeeConfigAmino;
 }
 export interface FeeConfigSDKType {
@@ -82,14 +82,14 @@ export interface NFTFeeConfig {
   schemaFee?: FeeConfig;
 }
 export interface NFTFeeConfigProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTFeeConfig";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTFeeConfig";
   value: Uint8Array;
 }
 export interface NFTFeeConfigAmino {
   schema_fee?: FeeConfigAmino;
 }
 export interface NFTFeeConfigAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.NFTFeeConfig";
+  type: "/thesixnetwork.sixprotocol.nftmngr.NFTFeeConfig";
   value: NFTFeeConfigAmino;
 }
 export interface NFTFeeConfigSDKType {
@@ -102,7 +102,7 @@ function createBaseFeeDistribution(): FeeDistribution {
   };
 }
 export const FeeDistribution = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeDistribution",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.FeeDistribution",
   encode(message: FeeDistribution, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.method !== 0) {
       writer.uint32(8).int32(message.method);
@@ -165,7 +165,7 @@ export const FeeDistribution = {
   },
   toProtoMsg(message: FeeDistribution): FeeDistributionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeDistribution",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.FeeDistribution",
       value: FeeDistribution.encode(message).finish()
     };
   }
@@ -177,7 +177,7 @@ function createBaseFeeConfig(): FeeConfig {
   };
 }
 export const FeeConfig = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeConfig",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.FeeConfig",
   encode(message: FeeConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.feeAmount !== "") {
       writer.uint32(10).string(message.feeAmount);
@@ -242,7 +242,7 @@ export const FeeConfig = {
   },
   toProtoMsg(message: FeeConfig): FeeConfigProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.FeeConfig",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.FeeConfig",
       value: FeeConfig.encode(message).finish()
     };
   }
@@ -253,7 +253,7 @@ function createBaseNFTFeeConfig(): NFTFeeConfig {
   };
 }
 export const NFTFeeConfig = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTFeeConfig",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTFeeConfig",
   encode(message: NFTFeeConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.schemaFee !== undefined) {
       FeeConfig.encode(message.schemaFee, writer.uint32(10).fork()).ldelim();
@@ -305,7 +305,7 @@ export const NFTFeeConfig = {
   },
   toProtoMsg(message: NFTFeeConfig): NFTFeeConfigProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTFeeConfig",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTFeeConfig",
       value: NFTFeeConfig.encode(message).finish()
     };
   }

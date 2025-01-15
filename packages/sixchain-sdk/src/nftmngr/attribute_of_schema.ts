@@ -6,7 +6,7 @@ export interface AttributeOfSchema {
   schemaAttributes: SchemaAttribute[];
 }
 export interface AttributeOfSchemaProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.AttributeOfSchema";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeOfSchema";
   value: Uint8Array;
 }
 export interface AttributeOfSchemaAmino {
@@ -14,7 +14,7 @@ export interface AttributeOfSchemaAmino {
   schemaAttributes?: SchemaAttributeAmino[];
 }
 export interface AttributeOfSchemaAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.AttributeOfSchema";
+  type: "/thesixnetwork.sixprotocol.nftmngr.AttributeOfSchema";
   value: AttributeOfSchemaAmino;
 }
 export interface AttributeOfSchemaSDKType {
@@ -28,7 +28,7 @@ function createBaseAttributeOfSchema(): AttributeOfSchema {
   };
 }
 export const AttributeOfSchema = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.AttributeOfSchema",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeOfSchema",
   encode(message: AttributeOfSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -93,7 +93,7 @@ export const AttributeOfSchema = {
   },
   toProtoMsg(message: AttributeOfSchema): AttributeOfSchemaProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.AttributeOfSchema",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeOfSchema",
       value: AttributeOfSchema.encode(message).finish()
     };
   }

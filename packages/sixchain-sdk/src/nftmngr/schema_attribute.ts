@@ -9,7 +9,7 @@ export interface SchemaAttribute {
   creator: string;
 }
 export interface SchemaAttributeProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.SchemaAttribute";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute";
   value: Uint8Array;
 }
 export interface SchemaAttributeAmino {
@@ -20,7 +20,7 @@ export interface SchemaAttributeAmino {
   creator?: string;
 }
 export interface SchemaAttributeAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.SchemaAttribute";
+  type: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute";
   value: SchemaAttributeAmino;
 }
 export interface SchemaAttributeSDKType {
@@ -37,7 +37,7 @@ export interface SchemaAttributeValue {
   floatAttributeValue?: FloatAttributeValue;
 }
 export interface SchemaAttributeValueProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.SchemaAttributeValue";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue";
   value: Uint8Array;
 }
 export interface SchemaAttributeValueAmino {
@@ -47,7 +47,7 @@ export interface SchemaAttributeValueAmino {
   float_attribute_value?: FloatAttributeValueAmino;
 }
 export interface SchemaAttributeValueAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.SchemaAttributeValue";
+  type: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue";
   value: SchemaAttributeValueAmino;
 }
 export interface SchemaAttributeValueSDKType {
@@ -66,7 +66,7 @@ function createBaseSchemaAttribute(): SchemaAttribute {
   };
 }
 export const SchemaAttribute = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.SchemaAttribute",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute",
   encode(message: SchemaAttribute, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -162,7 +162,7 @@ export const SchemaAttribute = {
   },
   toProtoMsg(message: SchemaAttribute): SchemaAttributeProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.SchemaAttribute",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttribute",
       value: SchemaAttribute.encode(message).finish()
     };
   }
@@ -176,7 +176,7 @@ function createBaseSchemaAttributeValue(): SchemaAttributeValue {
   };
 }
 export const SchemaAttributeValue = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.SchemaAttributeValue",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue",
   encode(message: SchemaAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.numberAttributeValue !== undefined) {
       NumberAttributeValue.encode(message.numberAttributeValue, writer.uint32(10).fork()).ldelim();
@@ -261,7 +261,7 @@ export const SchemaAttributeValue = {
   },
   toProtoMsg(message: SchemaAttributeValue): SchemaAttributeValueProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.SchemaAttributeValue",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.SchemaAttributeValue",
       value: SchemaAttributeValue.encode(message).finish()
     };
   }

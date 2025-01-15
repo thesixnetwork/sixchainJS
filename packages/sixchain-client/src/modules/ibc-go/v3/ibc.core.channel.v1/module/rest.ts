@@ -10,6 +10,38 @@
  */
 
 /**
+* Channel defines pipeline for exactly-once packet delivery between specific
+modules on separate blockchains, which has at least one end capable of
+sending packets and one end capable of receiving packets.
+*/
+export interface Channelv1Channel {
+  /**
+   * State defines if a channel is in one of the following states:
+   * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
+   *
+   *  - STATE_UNINITIALIZED_UNSPECIFIED: Default State
+   *  - STATE_INIT: A channel has just started the opening handshake.
+   *  - STATE_TRYOPEN: A channel has acknowledged the handshake step on the counterparty chain.
+   *  - STATE_OPEN: A channel has completed the handshake. Open channels are
+   * ready to send and receive packets.
+   *  - STATE_CLOSED: A channel has been closed and can no longer be used to send or receive
+   * packets.
+   */
+  state?: V1State;
+
+  /**
+   * - ORDER_NONE_UNSPECIFIED: zero-value for channel ordering
+   *  - ORDER_UNORDERED: packets can be delivered in any order, which may differ from the order in
+   * which they were sent.
+   *  - ORDER_ORDERED: packets are delivered exactly in the order which they were sent
+   */
+  ordering?: V1Order;
+  counterparty?: V1Counterparty;
+  connection_hops?: string[];
+  version?: string;
+}
+
+/**
 * `Any` contains an arbitrary serialized protocol buffer message along with a
 URL that describes the type of the serialized message.
 
@@ -131,38 +163,6 @@ export interface RpcStatus {
   code?: number;
   message?: string;
   details?: ProtobufAny[];
-}
-
-/**
-* Channel defines pipeline for exactly-once packet delivery between specific
-modules on separate blockchains, which has at least one end capable of
-sending packets and one end capable of receiving packets.
-*/
-export interface V1Channel {
-  /**
-   * State defines if a channel is in one of the following states:
-   * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
-   *
-   *  - STATE_UNINITIALIZED_UNSPECIFIED: Default State
-   *  - STATE_INIT: A channel has just started the opening handshake.
-   *  - STATE_TRYOPEN: A channel has acknowledged the handshake step on the counterparty chain.
-   *  - STATE_OPEN: A channel has completed the handshake. Open channels are
-   * ready to send and receive packets.
-   *  - STATE_CLOSED: A channel has been closed and can no longer be used to send or receive
-   * packets.
-   */
-  state?: V1State;
-
-  /**
-   * - ORDER_NONE_UNSPECIFIED: zero-value for channel ordering
-   *  - ORDER_UNORDERED: packets can be delivered in any order, which may differ from the order in
-   * which they were sent.
-   *  - ORDER_ORDERED: packets are delivered exactly in the order which they were sent
-   */
-  ordering?: V1Order;
-  counterparty?: V1Counterparty;
-  connection_hops?: string[];
-  version?: string;
 }
 
 export interface V1Counterparty {
@@ -609,7 +609,7 @@ export interface V1QueryChannelResponse {
    * modules on separate blockchains, which has at least one end capable of
    * sending packets and one end capable of receiving packets.
    */
-  channel?: V1Channel;
+  channel?: Channelv1Channel;
 
   /** @format byte */
   proof?: string;

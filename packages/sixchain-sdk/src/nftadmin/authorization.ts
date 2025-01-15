@@ -6,7 +6,7 @@ export interface Authorization {
   permissions?: Permissions;
 }
 export interface AuthorizationProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.Authorization";
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Authorization";
   value: Uint8Array;
 }
 export interface AuthorizationAmino {
@@ -14,7 +14,7 @@ export interface AuthorizationAmino {
   permissions?: PermissionsAmino;
 }
 export interface AuthorizationAminoMsg {
-  type: "/thesixnetwork.sixnft.nftadmin.Authorization";
+  type: "/thesixnetwork.sixprotocol.nftadmin.Authorization";
   value: AuthorizationAmino;
 }
 export interface AuthorizationSDKType {
@@ -28,7 +28,7 @@ function createBaseAuthorization(): Authorization {
   };
 }
 export const Authorization = {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.Authorization",
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Authorization",
   encode(message: Authorization, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.rootAdmin !== "") {
       writer.uint32(10).string(message.rootAdmin);
@@ -91,7 +91,7 @@ export const Authorization = {
   },
   toProtoMsg(message: Authorization): AuthorizationProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftadmin.Authorization",
+      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Authorization",
       value: Authorization.encode(message).finish()
     };
   }

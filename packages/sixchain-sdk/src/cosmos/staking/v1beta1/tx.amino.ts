@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgSetValidatorApproval, MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate } from "./tx";
+import { MsgSetValidatorApproval, MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate, MsgCreateWhitelistDelegator, MsgDeleteWhitelistDelegator } from "./tx";
 export const AminoConverter = {
   "/cosmos.staking.v1beta1.MsgSetValidatorApproval": {
     aminoType: "cosmos-sdk/MsgSetValidatorApproval",
@@ -30,5 +30,15 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgUndelegate",
     toAmino: MsgUndelegate.toAmino,
     fromAmino: MsgUndelegate.fromAmino
+  },
+  "/cosmos.staking.v1beta1.MsgCreateWhitelistDelegator": {
+    aminoType: "cosmos-sdk/MsgCreateWhitelistDelegator",
+    toAmino: MsgCreateWhitelistDelegator.toAmino,
+    fromAmino: MsgCreateWhitelistDelegator.fromAmino
+  },
+  "/cosmos.staking.v1beta1.MsgDeleteWhitelistDelegator": {
+    aminoType: "cosmos-sdk/MsgDeleteWhitelistDelegator",
+    toAmino: MsgDeleteWhitelistDelegator.toAmino,
+    fromAmino: MsgDeleteWhitelistDelegator.fromAmino
   }
 };

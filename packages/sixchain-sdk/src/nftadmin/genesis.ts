@@ -8,7 +8,7 @@ export interface GenesisState {
   authorization?: Authorization;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.GenesisState";
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.GenesisState";
   value: Uint8Array;
 }
 /** GenesisState defines the nftadmin module's genesis state. */
@@ -17,7 +17,7 @@ export interface GenesisStateAmino {
   authorization?: AuthorizationAmino;
 }
 export interface GenesisStateAminoMsg {
-  type: "/thesixnetwork.sixnft.nftadmin.GenesisState";
+  type: "/thesixnetwork.sixprotocol.nftadmin.GenesisState";
   value: GenesisStateAmino;
 }
 /** GenesisState defines the nftadmin module's genesis state. */
@@ -32,7 +32,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.GenesisState",
+  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.GenesisState",
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -95,7 +95,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftadmin.GenesisState",
+      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.GenesisState",
       value: GenesisState.encode(message).finish()
     };
   }

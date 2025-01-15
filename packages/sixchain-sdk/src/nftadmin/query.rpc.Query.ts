@@ -19,12 +19,12 @@ export class QueryClientImpl implements Query {
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftadmin.Query", "Params", data);
+    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftadmin.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
   authorization(request: QueryGetAuthorizationRequest = {}): Promise<QueryGetAuthorizationResponse> {
     const data = QueryGetAuthorizationRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftadmin.Query", "Authorization", data);
+    const promise = this.rpc.request("thesixnetwork.sixprotocol.nftadmin.Query", "Authorization", data);
     return promise.then(data => QueryGetAuthorizationResponse.decode(new _m0.Reader(data)));
   }
 }

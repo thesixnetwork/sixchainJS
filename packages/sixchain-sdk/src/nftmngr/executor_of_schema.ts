@@ -5,7 +5,7 @@ export interface ExecutorOfSchema {
   executorAddress: string[];
 }
 export interface ExecutorOfSchemaProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ExecutorOfSchema";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema";
   value: Uint8Array;
 }
 export interface ExecutorOfSchemaAmino {
@@ -13,7 +13,7 @@ export interface ExecutorOfSchemaAmino {
   executorAddress?: string[];
 }
 export interface ExecutorOfSchemaAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.ExecutorOfSchema";
+  type: "/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema";
   value: ExecutorOfSchemaAmino;
 }
 export interface ExecutorOfSchemaSDKType {
@@ -27,7 +27,7 @@ function createBaseExecutorOfSchema(): ExecutorOfSchema {
   };
 }
 export const ExecutorOfSchema = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ExecutorOfSchema",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema",
   encode(message: ExecutorOfSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -92,7 +92,7 @@ export const ExecutorOfSchema = {
   },
   toProtoMsg(message: ExecutorOfSchema): ExecutorOfSchemaProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.ExecutorOfSchema",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema",
       value: ExecutorOfSchema.encode(message).finish()
     };
   }

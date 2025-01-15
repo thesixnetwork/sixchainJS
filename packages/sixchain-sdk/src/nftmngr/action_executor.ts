@@ -6,7 +6,7 @@ export interface ActionExecutor {
   creator: string;
 }
 export interface ActionExecutorProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionExecutor";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutor";
   value: Uint8Array;
 }
 export interface ActionExecutorAmino {
@@ -15,7 +15,7 @@ export interface ActionExecutorAmino {
   creator?: string;
 }
 export interface ActionExecutorAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.ActionExecutor";
+  type: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutor";
   value: ActionExecutorAmino;
 }
 export interface ActionExecutorSDKType {
@@ -28,7 +28,7 @@ export interface ActionExecutorBySchema {
   executorAddress: string[];
 }
 export interface ActionExecutorBySchemaProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionExecutorBySchema";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema";
   value: Uint8Array;
 }
 export interface ActionExecutorBySchemaAmino {
@@ -36,7 +36,7 @@ export interface ActionExecutorBySchemaAmino {
   executorAddress?: string[];
 }
 export interface ActionExecutorBySchemaAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.ActionExecutorBySchema";
+  type: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema";
   value: ActionExecutorBySchemaAmino;
 }
 export interface ActionExecutorBySchemaSDKType {
@@ -51,7 +51,7 @@ function createBaseActionExecutor(): ActionExecutor {
   };
 }
 export const ActionExecutor = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionExecutor",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutor",
   encode(message: ActionExecutor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -125,7 +125,7 @@ export const ActionExecutor = {
   },
   toProtoMsg(message: ActionExecutor): ActionExecutorProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionExecutor",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutor",
       value: ActionExecutor.encode(message).finish()
     };
   }
@@ -137,7 +137,7 @@ function createBaseActionExecutorBySchema(): ActionExecutorBySchema {
   };
 }
 export const ActionExecutorBySchema = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionExecutorBySchema",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema",
   encode(message: ActionExecutorBySchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -202,7 +202,7 @@ export const ActionExecutorBySchema = {
   },
   toProtoMsg(message: ActionExecutorBySchema): ActionExecutorBySchemaProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionExecutorBySchema",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema",
       value: ActionExecutorBySchema.encode(message).finish()
     };
   }

@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { Reader, util, configure, Writer } from "protobufjs/minimal";
 import { Timestamp } from "../../../google/protobuf/timestamp";
-import * as Long from "long";
+import Long from "long";
 import {
   PageRequest,
   PageResponse,

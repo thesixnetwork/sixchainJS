@@ -2,7 +2,7 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryValidatorApprovalRequest, QueryValidatorApprovalResponse, QueryValidatorsRequest, QueryValidatorsResponse, QueryValidatorRequest, QueryValidatorResponse, QueryValidatorDelegationsRequest, QueryValidatorDelegationsResponse, QueryValidatorUnbondingDelegationsRequest, QueryValidatorUnbondingDelegationsResponse, QueryDelegationRequest, QueryDelegationResponse, QueryUnbondingDelegationRequest, QueryUnbondingDelegationResponse, QueryDelegatorDelegationsRequest, QueryDelegatorDelegationsResponse, QueryDelegatorUnbondingDelegationsRequest, QueryDelegatorUnbondingDelegationsResponse, QueryRedelegationsRequest, QueryRedelegationsResponse, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorValidatorRequest, QueryDelegatorValidatorResponse, QueryHistoricalInfoRequest, QueryHistoricalInfoResponse, QueryPoolRequest, QueryPoolResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
+import { QueryValidatorApprovalRequest, QueryValidatorApprovalResponse, QueryValidatorsRequest, QueryValidatorsResponse, QueryValidatorRequest, QueryValidatorResponse, QueryValidatorDelegationsRequest, QueryValidatorDelegationsResponse, QueryValidatorUnbondingDelegationsRequest, QueryValidatorUnbondingDelegationsResponse, QueryDelegationRequest, QueryDelegationResponse, QueryUnbondingDelegationRequest, QueryUnbondingDelegationResponse, QueryDelegatorDelegationsRequest, QueryDelegatorDelegationsResponse, QueryDelegatorUnbondingDelegationsRequest, QueryDelegatorUnbondingDelegationsResponse, QueryRedelegationsRequest, QueryRedelegationsResponse, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorValidatorRequest, QueryDelegatorValidatorResponse, QueryHistoricalInfoRequest, QueryHistoricalInfoResponse, QueryPoolRequest, QueryPoolResponse, QueryParamsRequest, QueryParamsResponse, QueryGetWhitelistDelegatorRequest, QueryWhitelistdelegatorResponse, QueryAllWhitelistDelegatorRequest, QueryWhitelistdelegatorAllResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Validators queries all validators that match the given status. */
@@ -47,6 +47,10 @@ export interface Query {
   pool(request?: QueryPoolRequest): Promise<QueryPoolResponse>;
   /** Parameters queries the staking parameters. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
+  /** Queries a DelegatorWhitelistdelegator by index. */
+  whitelistdelegator(request: QueryGetWhitelistDelegatorRequest): Promise<QueryWhitelistdelegatorResponse>;
+  /** Queries a list of DelegatorWhitelistdelegator items. */
+  whitelistdelegatorAll(request?: QueryAllWhitelistDelegatorRequest): Promise<QueryWhitelistdelegatorAllResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -67,6 +71,8 @@ export class QueryClientImpl implements Query {
     this.historicalInfo = this.historicalInfo.bind(this);
     this.pool = this.pool.bind(this);
     this.params = this.params.bind(this);
+    this.whitelistdelegator = this.whitelistdelegator.bind(this);
+    this.whitelistdelegatorAll = this.whitelistdelegatorAll.bind(this);
   }
   validatorApproval(request: QueryValidatorApprovalRequest = {}): Promise<QueryValidatorApprovalResponse> {
     const data = QueryValidatorApprovalRequest.encode(request).finish();
@@ -143,6 +149,18 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("cosmos.staking.v1beta1.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
+  whitelistdelegator(request: QueryGetWhitelistDelegatorRequest): Promise<QueryWhitelistdelegatorResponse> {
+    const data = QueryGetWhitelistDelegatorRequest.encode(request).finish();
+    const promise = this.rpc.request("cosmos.staking.v1beta1.Query", "Whitelistdelegator", data);
+    return promise.then(data => QueryWhitelistdelegatorResponse.decode(new _m0.Reader(data)));
+  }
+  whitelistdelegatorAll(request: QueryAllWhitelistDelegatorRequest = {
+    pagination: undefined
+  }): Promise<QueryWhitelistdelegatorAllResponse> {
+    const data = QueryAllWhitelistDelegatorRequest.encode(request).finish();
+    const promise = this.rpc.request("cosmos.staking.v1beta1.Query", "WhitelistdelegatorAll", data);
+    return promise.then(data => QueryWhitelistdelegatorAllResponse.decode(new _m0.Reader(data)));
+  }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -192,6 +210,12 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
       return queryService.params(request);
+    },
+    whitelistdelegator(request: QueryGetWhitelistDelegatorRequest): Promise<QueryWhitelistdelegatorResponse> {
+      return queryService.whitelistdelegator(request);
+    },
+    whitelistdelegatorAll(request?: QueryAllWhitelistDelegatorRequest): Promise<QueryWhitelistdelegatorAllResponse> {
+      return queryService.whitelistdelegatorAll(request);
     }
   };
 };

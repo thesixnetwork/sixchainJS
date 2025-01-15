@@ -285,7 +285,6 @@ export interface Vote {
   type: SignedMsgType;
   height: Long;
   round: number;
-  /** zero if vote is nil. */
   blockId: BlockID;
   timestamp: Date;
   validatorAddress: Uint8Array;
@@ -304,7 +303,6 @@ export interface VoteAmino {
   type?: SignedMsgType;
   height?: string;
   round?: number;
-  /** zero if vote is nil. */
   block_id?: BlockIDAmino;
   timestamp?: string;
   validator_address?: string;
@@ -940,7 +938,7 @@ export const Header = {
     const obj: any = {};
     obj.version = message.version ? Consensus.toAmino(message.version) : undefined;
     obj.chain_id = message.chainId === "" ? undefined : message.chainId;
-    obj.height = !message.height.isZero() ? (message.height?.toString)() : undefined;
+    obj.height = !message.height.isZero() ? message.height?.toString() : undefined;
     obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : undefined;
     obj.last_block_id = message.lastBlockId ? BlockID.toAmino(message.lastBlockId) : undefined;
     obj.last_commit_hash = message.lastCommitHash ? base64FromBytes(message.lastCommitHash) : undefined;
@@ -1157,7 +1155,7 @@ export const Vote = {
   toAmino(message: Vote): VoteAmino {
     const obj: any = {};
     obj.type = message.type === 0 ? undefined : message.type;
-    obj.height = !message.height.isZero() ? (message.height?.toString)() : undefined;
+    obj.height = !message.height.isZero() ? message.height?.toString() : undefined;
     obj.round = message.round === 0 ? undefined : message.round;
     obj.block_id = message.blockId ? BlockID.toAmino(message.blockId) : undefined;
     obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
@@ -1257,7 +1255,7 @@ export const Commit = {
   },
   toAmino(message: Commit): CommitAmino {
     const obj: any = {};
-    obj.height = !message.height.isZero() ? (message.height?.toString)() : undefined;
+    obj.height = !message.height.isZero() ? message.height?.toString() : undefined;
     obj.round = message.round === 0 ? undefined : message.round;
     obj.block_id = message.blockId ? BlockID.toAmino(message.blockId) : undefined;
     if (message.signatures) {
@@ -1493,7 +1491,7 @@ export const Proposal = {
   toAmino(message: Proposal): ProposalAmino {
     const obj: any = {};
     obj.type = message.type === 0 ? undefined : message.type;
-    obj.height = !message.height.isZero() ? (message.height?.toString)() : undefined;
+    obj.height = !message.height.isZero() ? message.height?.toString() : undefined;
     obj.round = message.round === 0 ? undefined : message.round;
     obj.pol_round = message.polRound === 0 ? undefined : message.polRound;
     obj.block_id = message.blockId ? BlockID.toAmino(message.blockId) : undefined;
@@ -1745,9 +1743,9 @@ export const BlockMeta = {
   toAmino(message: BlockMeta): BlockMetaAmino {
     const obj: any = {};
     obj.block_id = message.blockId ? BlockID.toAmino(message.blockId) : undefined;
-    obj.block_size = !message.blockSize.isZero() ? (message.blockSize?.toString)() : undefined;
+    obj.block_size = !message.blockSize.isZero() ? message.blockSize?.toString() : undefined;
     obj.header = message.header ? Header.toAmino(message.header) : undefined;
-    obj.num_txs = !message.numTxs.isZero() ? (message.numTxs?.toString)() : undefined;
+    obj.num_txs = !message.numTxs.isZero() ? message.numTxs?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: BlockMetaAminoMsg): BlockMeta {

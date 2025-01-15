@@ -75,7 +75,7 @@ export interface OriginData {
   uriRetrievalMethod: URIRetrievalMethod;
 }
 export interface OriginDataProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.OriginData";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OriginData";
   value: Uint8Array;
 }
 export interface OriginDataAmino {
@@ -88,7 +88,7 @@ export interface OriginDataAmino {
   uri_retrieval_method?: URIRetrievalMethod;
 }
 export interface OriginDataAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.OriginData";
+  type: "/thesixnetwork.sixprotocol.nftmngr.OriginData";
   value: OriginDataAmino;
 }
 export interface OriginDataSDKType {
@@ -112,7 +112,7 @@ function createBaseOriginData(): OriginData {
   };
 }
 export const OriginData = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.OriginData",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OriginData",
   encode(message: OriginData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.originChain !== "") {
       writer.uint32(10).string(message.originChain);
@@ -232,7 +232,7 @@ export const OriginData = {
   },
   toProtoMsg(message: OriginData): OriginDataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.OriginData",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OriginData",
       value: OriginData.encode(message).finish()
     };
   }

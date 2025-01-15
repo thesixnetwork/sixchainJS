@@ -45,7 +45,7 @@ export interface NftData {
   onchainAttributes: NftAttributeValue[];
 }
 export interface NftDataProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NftData";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NftData";
   value: Uint8Array;
 }
 export interface NftDataAmino {
@@ -60,7 +60,7 @@ export interface NftDataAmino {
   onchain_attributes?: NftAttributeValueAmino[];
 }
 export interface NftDataAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.NftData";
+  type: "/thesixnetwork.sixprotocol.nftmngr.NftData";
   value: NftDataAmino;
 }
 export interface NftDataSDKType {
@@ -88,7 +88,7 @@ function createBaseNftData(): NftData {
   };
 }
 export const NftData = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NftData",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NftData",
   encode(message: NftData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -232,7 +232,7 @@ export const NftData = {
   },
   toProtoMsg(message: NftData): NftDataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.NftData",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NftData",
       value: NftData.encode(message).finish()
     };
   }

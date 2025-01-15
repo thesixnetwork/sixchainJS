@@ -1,8 +1,8 @@
 syntax = "proto3";
-package thesixnetwork.sixnft.nftmngr;
+package thesixnetwork.sixprotocol.nftmngr;
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/thesixnetwork/sixnft/x/nftmngr/types";
+option go_package = "github.com/thesixnetwork/six-protocol/x/nftmngr/types";
 
 enum AllowedActioner {
   ALLOWED_ACTIONER_ALL = 0;

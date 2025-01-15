@@ -8,7 +8,7 @@ export interface NftCollection {
   nftDatas: NftData[];
 }
 export interface NftCollectionProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NftCollection";
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NftCollection";
   value: Uint8Array;
 }
 export interface NftCollectionAmino {
@@ -17,7 +17,7 @@ export interface NftCollectionAmino {
   nftDatas?: NftDataAmino[];
 }
 export interface NftCollectionAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.NftCollection";
+  type: "/thesixnetwork.sixprotocol.nftmngr.NftCollection";
   value: NftCollectionAmino;
 }
 export interface NftCollectionSDKType {
@@ -33,7 +33,7 @@ function createBaseNftCollection(): NftCollection {
   };
 }
 export const NftCollection = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NftCollection",
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NftCollection",
   encode(message: NftCollection, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
@@ -90,7 +90,7 @@ export const NftCollection = {
   toAmino(message: NftCollection): NftCollectionAmino {
     const obj: any = {};
     obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
-    obj.total = !message.total.isZero() ? (message.total?.toString)() : undefined;
+    obj.total = !message.total.isZero() ? message.total?.toString() : undefined;
     if (message.nftDatas) {
       obj.nftDatas = message.nftDatas.map(e => e ? NftData.toAmino(e) : undefined);
     } else {
@@ -109,7 +109,7 @@ export const NftCollection = {
   },
   toProtoMsg(message: NftCollection): NftCollectionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.NftCollection",
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NftCollection",
       value: NftCollection.encode(message).finish()
     };
   }

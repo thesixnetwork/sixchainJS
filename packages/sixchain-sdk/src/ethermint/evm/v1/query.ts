@@ -1064,7 +1064,7 @@ export const QueryAccountResponse = {
     const obj: any = {};
     obj.balance = message.balance === "" ? undefined : message.balance;
     obj.code_hash = message.codeHash === "" ? undefined : message.codeHash;
-    obj.nonce = !message.nonce.isZero() ? (message.nonce?.toString)() : undefined;
+    obj.nonce = !message.nonce.isZero() ? message.nonce?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryAccountResponseAminoMsg): QueryAccountResponse {
@@ -1213,8 +1213,8 @@ export const QueryCosmosAccountResponse = {
   toAmino(message: QueryCosmosAccountResponse): QueryCosmosAccountResponseAmino {
     const obj: any = {};
     obj.cosmos_address = message.cosmosAddress === "" ? undefined : message.cosmosAddress;
-    obj.sequence = !message.sequence.isZero() ? (message.sequence?.toString)() : undefined;
-    obj.account_number = !message.accountNumber.isZero() ? (message.accountNumber?.toString)() : undefined;
+    obj.sequence = !message.sequence.isZero() ? message.sequence?.toString() : undefined;
+    obj.account_number = !message.accountNumber.isZero() ? message.accountNumber?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryCosmosAccountResponseAminoMsg): QueryCosmosAccountResponse {
@@ -1363,8 +1363,8 @@ export const QueryValidatorAccountResponse = {
   toAmino(message: QueryValidatorAccountResponse): QueryValidatorAccountResponseAmino {
     const obj: any = {};
     obj.account_address = message.accountAddress === "" ? undefined : message.accountAddress;
-    obj.sequence = !message.sequence.isZero() ? (message.sequence?.toString)() : undefined;
-    obj.account_number = !message.accountNumber.isZero() ? (message.accountNumber?.toString)() : undefined;
+    obj.sequence = !message.sequence.isZero() ? message.sequence?.toString() : undefined;
+    obj.account_number = !message.accountNumber.isZero() ? message.accountNumber?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryValidatorAccountResponseAminoMsg): QueryValidatorAccountResponse {
@@ -2094,7 +2094,7 @@ export const EthCallRequest = {
   toAmino(message: EthCallRequest): EthCallRequestAmino {
     const obj: any = {};
     obj.args = message.args ? base64FromBytes(message.args) : undefined;
-    obj.gas_cap = !message.gasCap.isZero() ? (message.gasCap?.toString)() : undefined;
+    obj.gas_cap = !message.gasCap.isZero() ? message.gasCap?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: EthCallRequestAminoMsg): EthCallRequest {
@@ -2180,7 +2180,7 @@ export const EthCallWithOverrideRequest = {
   toAmino(message: EthCallWithOverrideRequest): EthCallWithOverrideRequestAmino {
     const obj: any = {};
     obj.args = message.args ? base64FromBytes(message.args) : undefined;
-    obj.gas_cap = !message.gasCap.isZero() ? (message.gasCap?.toString)() : undefined;
+    obj.gas_cap = !message.gasCap.isZero() ? message.gasCap?.toString() : undefined;
     obj.overrides = message.overrides ? StateOverride.toAmino(message.overrides) : undefined;
     return obj;
   },
@@ -2244,7 +2244,7 @@ export const EstimateGasResponse = {
   },
   toAmino(message: EstimateGasResponse): EstimateGasResponseAmino {
     const obj: any = {};
-    obj.gas = !message.gas.isZero() ? (message.gas?.toString)() : undefined;
+    obj.gas = !message.gas.isZero() ? message.gas?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: EstimateGasResponseAminoMsg): EstimateGasResponse {
@@ -2367,7 +2367,7 @@ export const QueryTraceTxRequest = {
     } else {
       obj.predecessors = message.predecessors;
     }
-    obj.block_number = !message.blockNumber.isZero() ? (message.blockNumber?.toString)() : undefined;
+    obj.block_number = !message.blockNumber.isZero() ? message.blockNumber?.toString() : undefined;
     obj.block_hash = message.blockHash === "" ? undefined : message.blockHash;
     obj.block_time = message.blockTime ? Timestamp.toAmino(toTimestamp(message.blockTime)) : undefined;
     return obj;
@@ -2455,7 +2455,7 @@ export const QueryTraceCallRequest = {
   toAmino(message: QueryTraceCallRequest): QueryTraceCallRequestAmino {
     const obj: any = {};
     obj.args = message.args ? base64FromBytes(message.args) : undefined;
-    obj.gas_cap = !message.gasCap.isZero() ? (message.gasCap?.toString)() : undefined;
+    obj.gas_cap = !message.gasCap.isZero() ? message.gasCap?.toString() : undefined;
     obj.config = message.config ? TraceCallConfig.toAmino(message.config) : undefined;
     return obj;
   },
@@ -2630,7 +2630,7 @@ export const QueryTraceBlockRequest = {
       obj.txs = message.txs;
     }
     obj.trace_config = message.traceConfig ? TraceConfig.toAmino(message.traceConfig) : undefined;
-    obj.block_number = !message.blockNumber.isZero() ? (message.blockNumber?.toString)() : undefined;
+    obj.block_number = !message.blockNumber.isZero() ? message.blockNumber?.toString() : undefined;
     obj.block_hash = message.blockHash === "" ? undefined : message.blockHash;
     obj.block_time = message.blockTime ? Timestamp.toAmino(toTimestamp(message.blockTime)) : undefined;
     return obj;
@@ -3087,7 +3087,7 @@ export const OverrideAccount = {
   },
   toAmino(message: OverrideAccount): OverrideAccountAmino {
     const obj: any = {};
-    obj.nonce = !message.nonce.isZero() ? (message.nonce?.toString)() : undefined;
+    obj.nonce = !message.nonce.isZero() ? message.nonce?.toString() : undefined;
     obj.code = message.code ? base64FromBytes(message.code) : undefined;
     obj.balance = message.balance === "" ? undefined : message.balance;
     obj.state = {};
@@ -3397,8 +3397,8 @@ export const BlockOverrides = {
     const obj: any = {};
     obj.number = message.number === "" ? undefined : message.number;
     obj.defficulty = message.defficulty === "" ? undefined : message.defficulty;
-    obj.time = !message.time.isZero() ? (message.time?.toString)() : undefined;
-    obj.gas_limit = !message.gasLimit.isZero() ? (message.gasLimit?.toString)() : undefined;
+    obj.time = !message.time.isZero() ? message.time?.toString() : undefined;
+    obj.gas_limit = !message.gasLimit.isZero() ? message.gasLimit?.toString() : undefined;
     obj.coinbase = message.coinbase === "" ? undefined : message.coinbase;
     obj.random = message.random === "" ? undefined : message.random;
     obj.base_fee = message.baseFee === "" ? undefined : message.baseFee;

@@ -114,7 +114,7 @@ export const ExtensionOptionsWeb3Tx = {
   },
   toAmino(message: ExtensionOptionsWeb3Tx): ExtensionOptionsWeb3TxAmino {
     const obj: any = {};
-    obj.typed_data_chain_id = !message.typedDataChainId.isZero() ? (message.typedDataChainId?.toString)() : undefined;
+    obj.typed_data_chain_id = !message.typedDataChainId.isZero() ? message.typedDataChainId?.toString() : undefined;
     obj.fee_payer = message.feePayer === "" ? undefined : message.feePayer;
     obj.fee_payer_sig = message.feePayerSig ? base64FromBytes(message.feePayerSig) : undefined;
     return obj;

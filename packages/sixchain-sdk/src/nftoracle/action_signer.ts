@@ -43,7 +43,7 @@ export interface ActionSigner {
   creationFlow: CreationFlow;
 }
 export interface ActionSignerProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionSigner";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionSigner";
   value: Uint8Array;
 }
 export interface ActionSignerAmino {
@@ -55,7 +55,7 @@ export interface ActionSignerAmino {
   creation_flow?: CreationFlow;
 }
 export interface ActionSignerAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.ActionSigner";
+  type: "/thesixnetwork.sixprotocol.nftoracle.ActionSigner";
   value: ActionSignerAmino;
 }
 export interface ActionSignerSDKType {
@@ -71,7 +71,7 @@ export interface SetSignerSignature {
   message: string;
 }
 export interface SetSignerSignatureProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.SetSignerSignature";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SetSignerSignature";
   value: Uint8Array;
 }
 export interface SetSignerSignatureAmino {
@@ -79,7 +79,7 @@ export interface SetSignerSignatureAmino {
   message?: string;
 }
 export interface SetSignerSignatureAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.SetSignerSignature";
+  type: "/thesixnetwork.sixprotocol.nftoracle.SetSignerSignature";
   value: SetSignerSignatureAmino;
 }
 export interface SetSignerSignatureSDKType {
@@ -92,7 +92,7 @@ export interface SetSignerParams {
   expiredAt: Date;
 }
 export interface SetSignerParamsProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.SetSignerParams";
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SetSignerParams";
   value: Uint8Array;
 }
 export interface SetSignerParamsAmino {
@@ -101,7 +101,7 @@ export interface SetSignerParamsAmino {
   expired_at?: string;
 }
 export interface SetSignerParamsAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.SetSignerParams";
+  type: "/thesixnetwork.sixprotocol.nftoracle.SetSignerParams";
   value: SetSignerParamsAmino;
 }
 export interface SetSignerParamsSDKType {
@@ -120,7 +120,7 @@ function createBaseActionSigner(): ActionSigner {
   };
 }
 export const ActionSigner = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionSigner",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionSigner",
   encode(message: ActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.actorAddress !== "") {
       writer.uint32(10).string(message.actorAddress);
@@ -227,7 +227,7 @@ export const ActionSigner = {
   },
   toProtoMsg(message: ActionSigner): ActionSignerProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionSigner",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionSigner",
       value: ActionSigner.encode(message).finish()
     };
   }
@@ -239,7 +239,7 @@ function createBaseSetSignerSignature(): SetSignerSignature {
   };
 }
 export const SetSignerSignature = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.SetSignerSignature",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SetSignerSignature",
   encode(message: SetSignerSignature, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.signature !== "") {
       writer.uint32(10).string(message.signature);
@@ -302,7 +302,7 @@ export const SetSignerSignature = {
   },
   toProtoMsg(message: SetSignerSignature): SetSignerSignatureProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.SetSignerSignature",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SetSignerSignature",
       value: SetSignerSignature.encode(message).finish()
     };
   }
@@ -315,7 +315,7 @@ function createBaseSetSignerParams(): SetSignerParams {
   };
 }
 export const SetSignerParams = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.SetSignerParams",
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SetSignerParams",
   encode(message: SetSignerParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.ownerAddress !== "") {
       writer.uint32(10).string(message.ownerAddress);
@@ -389,7 +389,7 @@ export const SetSignerParams = {
   },
   toProtoMsg(message: SetSignerParams): SetSignerParamsProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.SetSignerParams",
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SetSignerParams",
       value: SetSignerParams.encode(message).finish()
     };
   }

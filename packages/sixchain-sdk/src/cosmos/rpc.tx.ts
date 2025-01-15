@@ -22,8 +22,7 @@ export const createRPCMsgClient = async ({
       v1beta1: new (await import("./gov/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     staking: {
-      v1beta1: new (await import("./staking/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc),
-      v2beta1: new (await import("./staking/v2beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+      v1beta1: new (await import("./staking/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     vesting: {
       v1beta1: new (await import("./vesting/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)

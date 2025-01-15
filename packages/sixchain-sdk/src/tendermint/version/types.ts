@@ -126,7 +126,7 @@ export const App = {
   },
   toAmino(message: App): AppAmino {
     const obj: any = {};
-    obj.protocol = !message.protocol.isZero() ? (message.protocol?.toString)() : undefined;
+    obj.protocol = !message.protocol.isZero() ? message.protocol?.toString() : undefined;
     obj.software = message.software === "" ? undefined : message.software;
     return obj;
   },
@@ -201,8 +201,8 @@ export const Consensus = {
   },
   toAmino(message: Consensus): ConsensusAmino {
     const obj: any = {};
-    obj.block = !message.block.isZero() ? (message.block?.toString)() : undefined;
-    obj.app = !message.app.isZero() ? (message.app?.toString)() : undefined;
+    obj.block = !message.block.isZero() ? message.block?.toString() : undefined;
+    obj.app = !message.app.isZero() ? message.app?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ConsensusAminoMsg): Consensus {
