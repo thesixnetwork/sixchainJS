@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { Reader, util, configure, Writer } from "protobufjs/minimal";
-import Long from "long";
+import * as Long from "long";
 import { Params } from "../nftoracle/params";
 import { MintRequest } from "../nftoracle/mint_request";
 import {

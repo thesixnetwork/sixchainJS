@@ -3,7 +3,7 @@ import { createProtobufRpcClient,QueryClient } from '@cosmjs/stargate';
 import * as _m0 from 'protobufjs/minimal';
 
 import { Rpc } from '../helpers';
-import { QueryAllActionByRefIdRequest, QueryAllActionByRefIdResponse, QueryAllActionExecutorRequest, QueryAllActionExecutorResponse, QueryAllActionOfSchemaRequest, QueryAllActionOfSchemaResponse, QueryAllExecutorOfSchemaRequest, QueryAllExecutorOfSchemaResponse, QueryAllMetadataCreatorRequest, QueryAllMetadataCreatorResponse, QueryAllNftDataRequest, QueryAllNftDataResponse, QueryAllNFTSchemaByContractRequest, QueryAllNFTSchemaByContractResponse, QueryAllNFTSchemaRequest, QueryAllNFTSchemaResponse, QueryAllOrganizationRequest, QueryAllOrganizationResponse, QueryAllSchemaAttributeRequest, QueryAllSchemaAttributeResponse, QueryAllVirtualActionRequest, QueryAllVirtualActionResponse, QueryAllVirtualSchemaProposalRequest, QueryAllVirtualSchemaProposalResponse, QueryAllVirtualSchemaRequest, QueryAllVirtualSchemaResponse, QueryGetActionByRefIdRequest, QueryGetActionByRefIdResponse, QueryGetActionExecutorRequest, QueryGetActionExecutorResponse, QueryGetActionOfSchemaRequest, QueryGetActionOfSchemaResponse, QueryGetExecutorOfSchemaRequest, QueryGetExecutorOfSchemaResponse, QueryGetMetadataCreatorRequest, QueryGetMetadataCreatorResponse, QueryGetNftCollectionRequest, QueryGetNftCollectionResponse, QueryGetNftDataRequest, QueryGetNftDataResponse, QueryGetNFTFeeBalanceRequest, QueryGetNFTFeeBalanceResponse, QueryGetNFTFeeConfigRequest, QueryGetNFTFeeConfigResponse, QueryGetNFTSchemaByContractRequest, QueryGetNFTSchemaByContractResponse, QueryGetNFTSchemaRequest, QueryGetNFTSchemaResponse, QueryGetOrganizationRequest, QueryGetOrganizationResponse, QueryGetSchemaAttributeRequest, QueryGetSchemaAttributeResponse, QueryGetVirtualActionRequest, QueryGetVirtualActionResponse, QueryGetVirtualSchemaProposalRequest, QueryGetVirtualSchemaProposalResponse, QueryGetVirtualSchemaRequest, QueryGetVirtualSchemaResponse, QueryListActiveProposalRequest, QueryListActiveProposalResponse,QueryListAttributeBySchemaRequest, QueryListAttributeBySchemaResponse, QueryParamsRequest, QueryParamsResponse } from './query';
+import { QueryAllActionByRefIdRequest, QueryAllActionByRefIdResponse, QueryAllActionExecutorRequest, QueryAllActionExecutorResponse, QueryAllActionOfSchemaRequest, QueryAllActionOfSchemaResponse, QueryAllExecutorOfSchemaRequest, QueryAllExecutorOfSchemaResponse, QueryAllLockSchemaFeeRequest, QueryAllLockSchemaFeeResponse,QueryAllMetadataCreatorRequest, QueryAllMetadataCreatorResponse, QueryAllNftDataRequest, QueryAllNftDataResponse, QueryAllNFTSchemaByContractRequest, QueryAllNFTSchemaByContractResponse, QueryAllNFTSchemaRequest, QueryAllNFTSchemaResponse, QueryAllOrganizationRequest, QueryAllOrganizationResponse, QueryAllSchemaAttributeRequest, QueryAllSchemaAttributeResponse, QueryAllVirtualActionRequest, QueryAllVirtualActionResponse, QueryAllVirtualSchemaProposalRequest, QueryAllVirtualSchemaProposalResponse, QueryAllVirtualSchemaRequest, QueryAllVirtualSchemaResponse, QueryGetActionByRefIdRequest, QueryGetActionByRefIdResponse, QueryGetActionExecutorRequest, QueryGetActionExecutorResponse, QueryGetActionOfSchemaRequest, QueryGetActionOfSchemaResponse, QueryGetExecutorOfSchemaRequest, QueryGetExecutorOfSchemaResponse, QueryGetLockSchemaFeeRequest, QueryGetLockSchemaFeeResponse, QueryGetMetadataCreatorRequest, QueryGetMetadataCreatorResponse, QueryGetNftCollectionRequest, QueryGetNftCollectionResponse, QueryGetNftDataRequest, QueryGetNftDataResponse, QueryGetNFTFeeBalanceRequest, QueryGetNFTFeeBalanceResponse, QueryGetNFTFeeConfigRequest, QueryGetNFTFeeConfigResponse, QueryGetNFTSchemaByContractRequest, QueryGetNFTSchemaByContractResponse, QueryGetNFTSchemaRequest, QueryGetNFTSchemaResponse, QueryGetOrganizationRequest, QueryGetOrganizationResponse, QueryGetSchemaAttributeRequest, QueryGetSchemaAttributeResponse, QueryGetVirtualActionRequest, QueryGetVirtualActionResponse, QueryGetVirtualSchemaProposalRequest, QueryGetVirtualSchemaProposalResponse, QueryGetVirtualSchemaRequest, QueryGetVirtualSchemaResponse, QueryListActiveProposalRequest, QueryListActiveProposalResponse, QueryListAttributeBySchemaRequest, QueryListAttributeBySchemaResponse, QueryParamsRequest, QueryParamsResponse } from './query';
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -45,7 +45,7 @@ export interface Query {
   /** Queries a SchemaAttribute by index. */
   schemaAttribute(request: QueryGetSchemaAttributeRequest): Promise<QueryGetSchemaAttributeResponse>;
   /** Queries a list of SchemaAttribute items. */
-  schemaAttributeAll(request?: QueryAllSchemaAttributeRequest): Promise<QueryAllSchemaAttributeResponse>;
+  schemaAttributeAll(request: QueryAllSchemaAttributeRequest): Promise<QueryAllSchemaAttributeResponse>;
   /** Queries a list of ListAttributeBySchema items. */
   listAttributeBySchema(request: QueryListAttributeBySchemaRequest): Promise<QueryListAttributeBySchemaResponse>;
   /** Queries a ActionOfSchema by index. */
@@ -59,7 +59,7 @@ export interface Query {
   /** Queries a Virtual by index */
   virtualAction(request: QueryGetVirtualActionRequest): Promise<QueryGetVirtualActionResponse>;
   /** Queries a list of Virtual items. */
-  virtualActionAll(request?: QueryAllVirtualActionRequest): Promise<QueryAllVirtualActionResponse>;
+  virtualActionAll(request: QueryAllVirtualActionRequest): Promise<QueryAllVirtualActionResponse>;
   /** Queries a VirtualSchema by index. */
   virtualSchema(request: QueryGetVirtualSchemaRequest): Promise<QueryGetVirtualSchemaResponse>;
   /** Queries a list of VirtualSchema items. */
@@ -70,6 +70,10 @@ export interface Query {
   virtualSchemaProposalAll(request?: QueryAllVirtualSchemaProposalRequest): Promise<QueryAllVirtualSchemaProposalResponse>;
   /** Queries a list of ListActiveProposal items. */
   listActiveProposal(request?: QueryListActiveProposalRequest): Promise<QueryListActiveProposalResponse>;
+  /** Queries a LockSchemaFee by index. */
+  lockSchemaFee(request: QueryGetLockSchemaFeeRequest): Promise<QueryGetLockSchemaFeeResponse>;
+  /** Queries a list of LockSchemaFee items. */
+  lockSchemaFeeAll(request?: QueryAllLockSchemaFeeRequest): Promise<QueryAllLockSchemaFeeResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -107,6 +111,8 @@ export class QueryClientImpl implements Query {
     this.virtualSchemaProposal = this.virtualSchemaProposal.bind(this);
     this.virtualSchemaProposalAll = this.virtualSchemaProposalAll.bind(this);
     this.listActiveProposal = this.listActiveProposal.bind(this);
+    this.lockSchemaFee = this.lockSchemaFee.bind(this);
+    this.lockSchemaFeeAll = this.lockSchemaFeeAll.bind(this);
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
@@ -215,9 +221,7 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Query', 'SchemaAttribute', data);
     return promise.then(data => QueryGetSchemaAttributeResponse.decode(new _m0.Reader(data)));
   }
-  schemaAttributeAll(request: QueryAllSchemaAttributeRequest = {
-    pagination: undefined
-  }): Promise<QueryAllSchemaAttributeResponse> {
+  schemaAttributeAll(request: QueryAllSchemaAttributeRequest): Promise<QueryAllSchemaAttributeResponse> {
     const data = QueryAllSchemaAttributeRequest.encode(request).finish();
     const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Query', 'SchemaAttributeAll', data);
     return promise.then(data => QueryAllSchemaAttributeResponse.decode(new _m0.Reader(data)));
@@ -256,9 +260,7 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Query', 'VirtualAction', data);
     return promise.then(data => QueryGetVirtualActionResponse.decode(new _m0.Reader(data)));
   }
-  virtualActionAll(request: QueryAllVirtualActionRequest = {
-    pagination: undefined
-  }): Promise<QueryAllVirtualActionResponse> {
+  virtualActionAll(request: QueryAllVirtualActionRequest): Promise<QueryAllVirtualActionResponse> {
     const data = QueryAllVirtualActionRequest.encode(request).finish();
     const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Query', 'VirtualActionAll', data);
     return promise.then(data => QueryAllVirtualActionResponse.decode(new _m0.Reader(data)));
@@ -291,6 +293,18 @@ export class QueryClientImpl implements Query {
     const data = QueryListActiveProposalRequest.encode(request).finish();
     const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Query', 'ListActiveProposal', data);
     return promise.then(data => QueryListActiveProposalResponse.decode(new _m0.Reader(data)));
+  }
+  lockSchemaFee(request: QueryGetLockSchemaFeeRequest): Promise<QueryGetLockSchemaFeeResponse> {
+    const data = QueryGetLockSchemaFeeRequest.encode(request).finish();
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Query', 'LockSchemaFee', data);
+    return promise.then(data => QueryGetLockSchemaFeeResponse.decode(new _m0.Reader(data)));
+  }
+  lockSchemaFeeAll(request: QueryAllLockSchemaFeeRequest = {
+    pagination: undefined
+  }): Promise<QueryAllLockSchemaFeeResponse> {
+    const data = QueryAllLockSchemaFeeRequest.encode(request).finish();
+    const promise = this.rpc.request('thesixnetwork.sixprotocol.nftmngr.Query', 'LockSchemaFeeAll', data);
+    return promise.then(data => QueryAllLockSchemaFeeResponse.decode(new _m0.Reader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
@@ -354,7 +368,7 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     schemaAttribute(request: QueryGetSchemaAttributeRequest): Promise<QueryGetSchemaAttributeResponse> {
       return queryService.schemaAttribute(request);
     },
-    schemaAttributeAll(request?: QueryAllSchemaAttributeRequest): Promise<QueryAllSchemaAttributeResponse> {
+    schemaAttributeAll(request: QueryAllSchemaAttributeRequest): Promise<QueryAllSchemaAttributeResponse> {
       return queryService.schemaAttributeAll(request);
     },
     listAttributeBySchema(request: QueryListAttributeBySchemaRequest): Promise<QueryListAttributeBySchemaResponse> {
@@ -375,7 +389,7 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     virtualAction(request: QueryGetVirtualActionRequest): Promise<QueryGetVirtualActionResponse> {
       return queryService.virtualAction(request);
     },
-    virtualActionAll(request?: QueryAllVirtualActionRequest): Promise<QueryAllVirtualActionResponse> {
+    virtualActionAll(request: QueryAllVirtualActionRequest): Promise<QueryAllVirtualActionResponse> {
       return queryService.virtualActionAll(request);
     },
     virtualSchema(request: QueryGetVirtualSchemaRequest): Promise<QueryGetVirtualSchemaResponse> {
@@ -392,6 +406,12 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     listActiveProposal(request?: QueryListActiveProposalRequest): Promise<QueryListActiveProposalResponse> {
       return queryService.listActiveProposal(request);
+    },
+    lockSchemaFee(request: QueryGetLockSchemaFeeRequest): Promise<QueryGetLockSchemaFeeResponse> {
+      return queryService.lockSchemaFee(request);
+    },
+    lockSchemaFeeAll(request?: QueryAllLockSchemaFeeRequest): Promise<QueryAllLockSchemaFeeResponse> {
+      return queryService.lockSchemaFeeAll(request);
     }
   };
 };

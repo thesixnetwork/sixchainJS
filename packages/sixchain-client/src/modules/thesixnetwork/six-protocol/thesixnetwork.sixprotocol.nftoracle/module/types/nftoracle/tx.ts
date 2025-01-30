@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { Reader, util, configure, Writer } from "protobufjs/minimal";
-import Long from "long";
+import * as Long from "long";
 
 export const protobufPackage = "thesixnetwork.sixprotocol.nftoracle";
 

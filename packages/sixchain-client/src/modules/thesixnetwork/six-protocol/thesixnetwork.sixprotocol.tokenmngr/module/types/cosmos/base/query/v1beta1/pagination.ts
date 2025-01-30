@@ -1,5 +1,5 @@
 /* eslint-disable */
-import Long from "long";
+import * as Long from "long";
 import { util, configure, Writer, Reader } from "protobufjs/minimal";
 
 export const protobufPackage = "cosmos.base.query.v1beta1";
@@ -38,11 +38,7 @@ export interface PageRequest {
    * is set.
    */
   count_total: boolean;
-  /**
-   * reverse is set to true if results are to be returned in the descending order.
-   *
-   * Since: cosmos-sdk 0.43
-   */
+  /** reverse is set to true if results are to be returned in the descending order. */
   reverse: boolean;
 }
 

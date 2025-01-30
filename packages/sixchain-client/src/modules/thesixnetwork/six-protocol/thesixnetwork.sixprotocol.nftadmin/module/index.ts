@@ -1,26 +1,25 @@
 // THIS FILE IS GENERATED AUTOMATICALLY. DO NOT MODIFY.
 
-import { StdFee } from '@cosmjs/launchpad';
-import {EncodeObject, OfflineSigner, Registry } from '@cosmjs/proto-signing';
-import { SigningStargateClient, SigningStargateClientOptions} from '@cosmjs/stargate';
-
-import { Api } from './rest';
-import { MsgRevokePermission } from './types/nftadmin/tx';
-import { MsgGrantPermission } from './types/nftadmin/tx';
+import { StdFee } from "@cosmjs/launchpad";
+import { SigningStargateClient, SigningStargateClientOptions} from "@cosmjs/stargate";
+import { Registry, OfflineSigner, EncodeObject, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
+import { Api } from "./rest";
+import { MsgGrantPermission } from "./types/nftadmin/tx";
+import { MsgRevokePermission } from "./types/nftadmin/tx";
 
 
 const types = [
-  ['/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission', MsgRevokePermission],
-  ['/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission', MsgGrantPermission],
+  ["/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission", MsgGrantPermission],
+  ["/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission", MsgRevokePermission],
   
 ];
-export const MissingWalletError = new Error('wallet is required');
+export const MissingWalletError = new Error("wallet is required");
 
 export const registry = new Registry(<any>types);
 
 const defaultFee = {
   amount: [],
-  gas: '200000',
+  gas: "200000",
 };
 
 interface TxClientOptions {
@@ -28,11 +27,11 @@ interface TxClientOptions {
 }
 
 export interface SignAndBroadcastOptions {
-  fee: StdFee | 'auto',
+  fee: StdFee | "auto",
   memo?: string
 }
 
-const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions = { addr: 'http://localhost:26657' }, options?: SigningStargateClientOptions) => {
+const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions = { addr: "http://localhost:26657" }, options?: SigningStargateClientOptions) => {
   if (!wallet) throw MissingWalletError;
   let client;
   if (addr) {
@@ -43,9 +42,9 @@ const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions =
   const { address } = (await wallet.getAccounts())[0];
 
   return {
-    signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ''}) => client.signAndBroadcast(address, msgs, fee,memo),
-    msgRevokePermission: (data: MsgRevokePermission): EncodeObject => ({ typeUrl: '/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission', value: MsgRevokePermission.fromPartial( data ) }),
-    msgGrantPermission: (data: MsgGrantPermission): EncodeObject => ({ typeUrl: '/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission', value: MsgGrantPermission.fromPartial( data ) }),
+    signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ""}) => client.signAndBroadcast(address, msgs, fee,memo),
+    msgGrantPermission: (data: MsgGrantPermission): EncodeObject => ({ typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission", value: MsgGrantPermission.fromPartial( data ) }),
+    msgRevokePermission: (data: MsgRevokePermission): EncodeObject => ({ typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission", value: MsgRevokePermission.fromPartial( data ) }),
     
   };
 };
@@ -54,11 +53,11 @@ interface QueryClientOptions {
   addr: string
 }
 
-const queryClient = async ({ addr: addr }: QueryClientOptions = { addr: 'http://localhost:1317' }) => {
+const queryClient = async ({ addr: addr }: QueryClientOptions = { addr: "http://localhost:1317" }) => {
   return new Api({ baseUrl: addr });
 };
 
 export {
-  queryClient,
   txClient,
+  queryClient,
 };

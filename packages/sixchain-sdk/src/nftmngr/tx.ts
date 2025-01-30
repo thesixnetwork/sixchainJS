@@ -3,6 +3,7 @@ import * as _m0 from 'protobufjs/minimal';
 
 import { Any, AnyAmino, AnySDKType } from '../google/protobuf/any';
 import { Action, ActionAmino, ActionSDKType } from './action';
+import { FeeConfig, FeeConfigAmino, FeeConfigSDKType } from './nft_fee_config';
 import { VirtualAction, VirtualActionAmino, VirtualActionSDKType } from './virtual_action';
 import { ProposalType, RegistryStatus,VirtualSchemaRegistryRequest, VirtualSchemaRegistryRequestAmino, VirtualSchemaRegistryRequestSDKType } from './virtual_schema';
 export enum AttributeLocation {
@@ -65,32 +66,6 @@ export function authorizeToToJSON(object: AuthorizeTo): string {
   case AuthorizeTo.ALL:
     return 'ALL';
   case AuthorizeTo.UNRECOGNIZED:
-  default:
-    return 'UNRECOGNIZED';
-  }
-}
-export enum FeeSubject {
-  CREATE_NFT_SCHEMA = 0,
-  UNRECOGNIZED = -1,
-}
-export const FeeSubjectSDKType = FeeSubject;
-export const FeeSubjectAmino = FeeSubject;
-export function feeSubjectFromJSON(object: any): FeeSubject {
-  switch (object) {
-  case 0:
-  case 'CREATE_NFT_SCHEMA':
-    return FeeSubject.CREATE_NFT_SCHEMA;
-  case -1:
-  case 'UNRECOGNIZED':
-  default:
-    return FeeSubject.UNRECOGNIZED;
-  }
-}
-export function feeSubjectToJSON(object: FeeSubject): string {
-  switch (object) {
-  case FeeSubject.CREATE_NFT_SCHEMA:
-    return 'CREATE_NFT_SCHEMA';
-  case FeeSubject.UNRECOGNIZED:
   default:
     return 'UNRECOGNIZED';
   }
@@ -619,8 +594,7 @@ export interface MsgResyncAttributesSDKType {
 }
 export interface MsgSetFeeConfig {
   creator: string;
-  newFeeConfigBase64: string;
-  feeSubject: FeeSubject;
+  feeConfig?: FeeConfig;
 }
 export interface MsgSetFeeConfigProtoMsg {
   typeUrl: '/thesixnetwork.sixprotocol.nftmngr.MsgSetFeeConfig';
@@ -628,8 +602,7 @@ export interface MsgSetFeeConfigProtoMsg {
 }
 export interface MsgSetFeeConfigAmino {
   creator?: string;
-  newFeeConfigBase64?: string;
-  feeSubject?: FeeSubject;
+  feeConfig?: FeeConfigAmino;
 }
 export interface MsgSetFeeConfigAminoMsg {
   type: '/thesixnetwork.sixprotocol.nftmngr.MsgSetFeeConfig';
@@ -637,8 +610,7 @@ export interface MsgSetFeeConfigAminoMsg {
 }
 export interface MsgSetFeeConfigSDKType {
   creator: string;
-  newFeeConfigBase64: string;
-  feeSubject: FeeSubject;
+  feeConfig?: FeeConfigSDKType;
 }
 export interface MsgSetFeeConfigResponse {}
 export interface MsgSetFeeConfigResponseProtoMsg {
@@ -1371,6 +1343,7 @@ export interface MsgProposalVirtualSchema {
   proposalType: ProposalType;
   registry: VirtualSchemaRegistryRequest[];
   actions: Action[];
+  executors: string[];
   enable: boolean;
 }
 export interface MsgProposalVirtualSchemaProtoMsg {
@@ -1383,6 +1356,7 @@ export interface MsgProposalVirtualSchemaAmino {
   proposalType?: ProposalType;
   registry?: VirtualSchemaRegistryRequestAmino[];
   actions?: ActionAmino[];
+  executors?: string[];
   enable?: boolean;
 }
 export interface MsgProposalVirtualSchemaAminoMsg {
@@ -1395,6 +1369,7 @@ export interface MsgProposalVirtualSchemaSDKType {
   proposalType: ProposalType;
   registry: VirtualSchemaRegistryRequestSDKType[];
   actions: ActionSDKType[];
+  executors: string[];
   enable: boolean;
 }
 export interface MsgProposalVirtualSchemaResponse {
@@ -3422,8 +3397,7 @@ export const MsgResyncAttributes = {
 function createBaseMsgSetFeeConfig(): MsgSetFeeConfig {
   return {
     creator: '',
-    newFeeConfigBase64: '',
-    feeSubject: 0
+    feeConfig: undefined
   };
 }
 export const MsgSetFeeConfig = {
@@ -3432,11 +3406,8 @@ export const MsgSetFeeConfig = {
     if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
-    if (message.newFeeConfigBase64 !== '') {
-      writer.uint32(18).string(message.newFeeConfigBase64);
-    }
-    if (message.feeSubject !== 0) {
-      writer.uint32(24).int32(message.feeSubject);
+    if (message.feeConfig !== undefined) {
+      FeeConfig.encode(message.feeConfig, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
@@ -3451,10 +3422,7 @@ export const MsgSetFeeConfig = {
         message.creator = reader.string();
         break;
       case 2:
-        message.newFeeConfigBase64 = reader.string();
-        break;
-      case 3:
-        message.feeSubject = reader.int32() as any;
+        message.feeConfig = FeeConfig.decode(reader, reader.uint32());
         break;
       default:
         reader.skipType(tag & 7);
@@ -3466,8 +3434,7 @@ export const MsgSetFeeConfig = {
   fromPartial(object: Partial<MsgSetFeeConfig>): MsgSetFeeConfig {
     const message = createBaseMsgSetFeeConfig();
     message.creator = object.creator ?? '';
-    message.newFeeConfigBase64 = object.newFeeConfigBase64 ?? '';
-    message.feeSubject = object.feeSubject ?? 0;
+    message.feeConfig = object.feeConfig !== undefined && object.feeConfig !== null ? FeeConfig.fromPartial(object.feeConfig) : undefined;
     return message;
   },
   fromAmino(object: MsgSetFeeConfigAmino): MsgSetFeeConfig {
@@ -3475,19 +3442,15 @@ export const MsgSetFeeConfig = {
     if (object.creator !== undefined && object.creator !== null) {
       message.creator = object.creator;
     }
-    if (object.newFeeConfigBase64 !== undefined && object.newFeeConfigBase64 !== null) {
-      message.newFeeConfigBase64 = object.newFeeConfigBase64;
-    }
-    if (object.feeSubject !== undefined && object.feeSubject !== null) {
-      message.feeSubject = object.feeSubject;
+    if (object.feeConfig !== undefined && object.feeConfig !== null) {
+      message.feeConfig = FeeConfig.fromAmino(object.feeConfig);
     }
     return message;
   },
   toAmino(message: MsgSetFeeConfig): MsgSetFeeConfigAmino {
     const obj: any = {};
     obj.creator = message.creator === '' ? undefined : message.creator;
-    obj.newFeeConfigBase64 = message.newFeeConfigBase64 === '' ? undefined : message.newFeeConfigBase64;
-    obj.feeSubject = message.feeSubject === 0 ? undefined : message.feeSubject;
+    obj.feeConfig = message.feeConfig ? FeeConfig.toAmino(message.feeConfig) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgSetFeeConfigAminoMsg): MsgSetFeeConfig {
@@ -6266,6 +6229,7 @@ function createBaseMsgProposalVirtualSchema(): MsgProposalVirtualSchema {
     proposalType: 0,
     registry: [],
     actions: [],
+    executors: [],
     enable: false
   };
 }
@@ -6287,8 +6251,11 @@ export const MsgProposalVirtualSchema = {
     for (const v of message.actions) {
       Action.encode(v!, writer.uint32(42).fork()).ldelim();
     }
+    for (const v of message.executors) {
+      writer.uint32(50).string(v!);
+    }
     if (message.enable === true) {
-      writer.uint32(48).bool(message.enable);
+      writer.uint32(56).bool(message.enable);
     }
     return writer;
   },
@@ -6315,6 +6282,9 @@ export const MsgProposalVirtualSchema = {
         message.actions.push(Action.decode(reader, reader.uint32()));
         break;
       case 6:
+        message.executors.push(reader.string());
+        break;
+      case 7:
         message.enable = reader.bool();
         break;
       default:
@@ -6331,6 +6301,7 @@ export const MsgProposalVirtualSchema = {
     message.proposalType = object.proposalType ?? 0;
     message.registry = object.registry?.map(e => VirtualSchemaRegistryRequest.fromPartial(e)) || [];
     message.actions = object.actions?.map(e => Action.fromPartial(e)) || [];
+    message.executors = object.executors?.map(e => e) || [];
     message.enable = object.enable ?? false;
     return message;
   },
@@ -6347,6 +6318,7 @@ export const MsgProposalVirtualSchema = {
     }
     message.registry = object.registry?.map(e => VirtualSchemaRegistryRequest.fromAmino(e)) || [];
     message.actions = object.actions?.map(e => Action.fromAmino(e)) || [];
+    message.executors = object.executors?.map(e => e) || [];
     if (object.enable !== undefined && object.enable !== null) {
       message.enable = object.enable;
     }
@@ -6366,6 +6338,11 @@ export const MsgProposalVirtualSchema = {
       obj.actions = message.actions.map(e => e ? Action.toAmino(e) : undefined);
     } else {
       obj.actions = message.actions;
+    }
+    if (message.executors) {
+      obj.executors = message.executors.map(e => e);
+    } else {
+      obj.executors = message.executors;
     }
     obj.enable = message.enable === false ? undefined : message.enable;
     return obj;

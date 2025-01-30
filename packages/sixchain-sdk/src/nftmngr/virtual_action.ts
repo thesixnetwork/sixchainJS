@@ -2,11 +2,6 @@
 import * as _m0 from 'protobufjs/minimal';
 
 import { ActionParams, ActionParamsAmino, ActionParamsSDKType,AllowedActioner } from './action';
-/**
- * TODO:
- * 1. Policy of action (who can use action)
- * 2. Proposal to enable and disable action
- */
 export interface VirtualAction {
   virtualNftSchemaCode: string;
   name: string;
@@ -14,10 +9,7 @@ export interface VirtualAction {
   disable: boolean;
   when: string;
   then: string[];
-  /**
-   * NOTE: Policy of virtual action
-   * TODO: [chore] Combine enable/disable to change virtual schema.
-   */
+  /** NOTE: Policy of virtual action */
   allowedActioner?: AllowedActioner;
   params?: ActionParams[];
 }
@@ -25,11 +17,6 @@ export interface VirtualActionProtoMsg {
   typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualAction';
   value: Uint8Array;
 }
-/**
- * TODO:
- * 1. Policy of action (who can use action)
- * 2. Proposal to enable and disable action
- */
 export interface VirtualActionAmino {
   virtualNftSchemaCode?: string;
   name?: string;
@@ -37,10 +24,7 @@ export interface VirtualActionAmino {
   disable?: boolean;
   when?: string;
   then?: string[];
-  /**
-   * NOTE: Policy of virtual action
-   * TODO: [chore] Combine enable/disable to change virtual schema.
-   */
+  /** NOTE: Policy of virtual action */
   allowed_actioner?: AllowedActioner;
   params?: ActionParamsAmino[];
 }
@@ -48,11 +32,6 @@ export interface VirtualActionAminoMsg {
   type: '/thesixnetwork.sixprotocol.nftmngr.VirtualAction';
   value: VirtualActionAmino;
 }
-/**
- * TODO:
- * 1. Policy of action (who can use action)
- * 2. Proposal to enable and disable action
- */
 export interface VirtualActionSDKType {
   virtualNftSchemaCode: string;
   name: string;

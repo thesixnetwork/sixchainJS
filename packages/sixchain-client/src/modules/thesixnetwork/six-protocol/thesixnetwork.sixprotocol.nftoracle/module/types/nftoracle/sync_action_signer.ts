@@ -5,7 +5,7 @@ import {
   requestStatusToJSON,
 } from "../nftoracle/request";
 import { Timestamp } from "../google/protobuf/timestamp";
-import Long from "long";
+import * as Long from "long";
 import { util, configure, Writer, Reader } from "protobufjs/minimal";
 
 export const protobufPackage = "thesixnetwork.sixprotocol.nftoracle";
@@ -34,6 +34,7 @@ export interface ParameterSyncSignerByOracle {
   owner_address: string;
   /** get from smart contract */
   actor_address: string;
+  /** get from smart contract */
   expire_epoch: string;
 }
 

@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { Reader, util, configure, Writer } from "protobufjs/minimal";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import Long from "long";
+import * as Long from "long";
 import { Header } from "../../tendermint/types/types";
 import { ProofOps } from "../../tendermint/crypto/proof";
 import {

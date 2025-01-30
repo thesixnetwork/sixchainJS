@@ -31,7 +31,7 @@ const main = async () => {
     gasPrice: GasPrice.fromString("1.25usix"),
   });
 
-  let schema_name = "divineXmembership";
+  let schema_name = "sixprotocol.medical";
   const ref_id = uuidv4();
 
   const virualAction: ITxNFTmngr.MsgPerformVirtualAction = {
@@ -48,6 +48,14 @@ const main = async () => {
       {
         nftSchemaName: "sixprotocol.membership",
         tokenId: "5",
+      },
+      {
+        nftSchemaName: "sixprotocol.preventive",
+        tokenId: "3",
+      },
+      {
+        nftSchemaName: "sixprotocol.lifestyle",
+        tokenId: "6",
       },
     ],
   };

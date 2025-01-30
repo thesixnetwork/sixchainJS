@@ -6,6 +6,7 @@ import { ActionByRefId, ActionByRefIdAmino, ActionByRefIdSDKType } from './actio
 import { ActionExecutor, ActionExecutorAmino, ActionExecutorSDKType } from './action_executor';
 import { ActionOfSchema, ActionOfSchemaAmino, ActionOfSchemaSDKType } from './action_of_schema';
 import { ExecutorOfSchema, ExecutorOfSchemaAmino, ExecutorOfSchemaSDKType } from './executor_of_schema';
+import { LockSchemaFee, LockSchemaFeeAmino, LockSchemaFeeSDKType } from './lock_schema_fee';
 import { MetadataCreator, MetadataCreatorAmino, MetadataCreatorSDKType } from './metadata_creator';
 import { NftData, NftDataAmino, NftDataSDKType } from './nft_data';
 import { NFTFeeBalance, NFTFeeBalanceAmino, NFTFeeBalanceSDKType } from './nft_fee_balance';
@@ -696,6 +697,7 @@ export interface QueryGetSchemaAttributeResponseSDKType {
   schemaAttribute: SchemaAttributeSDKType;
 }
 export interface QueryAllSchemaAttributeRequest {
+  nftSchemaCode: string;
   pagination?: PageRequest;
 }
 export interface QueryAllSchemaAttributeRequestProtoMsg {
@@ -703,6 +705,7 @@ export interface QueryAllSchemaAttributeRequestProtoMsg {
   value: Uint8Array;
 }
 export interface QueryAllSchemaAttributeRequestAmino {
+  nftSchemaCode?: string;
   pagination?: PageRequestAmino;
 }
 export interface QueryAllSchemaAttributeRequestAminoMsg {
@@ -710,6 +713,7 @@ export interface QueryAllSchemaAttributeRequestAminoMsg {
   value: QueryAllSchemaAttributeRequestAmino;
 }
 export interface QueryAllSchemaAttributeRequestSDKType {
+  nftSchemaCode: string;
   pagination?: PageRequestSDKType;
 }
 export interface QueryAllSchemaAttributeResponse {
@@ -949,6 +953,7 @@ export interface QueryGetVirtualActionResponseSDKType {
   virtualAction: VirtualActionSDKType;
 }
 export interface QueryAllVirtualActionRequest {
+  nftSchemaCode: string;
   pagination?: PageRequest;
 }
 export interface QueryAllVirtualActionRequestProtoMsg {
@@ -956,6 +961,7 @@ export interface QueryAllVirtualActionRequestProtoMsg {
   value: Uint8Array;
 }
 export interface QueryAllVirtualActionRequestAmino {
+  nftSchemaCode?: string;
   pagination?: PageRequestAmino;
 }
 export interface QueryAllVirtualActionRequestAminoMsg {
@@ -963,6 +969,7 @@ export interface QueryAllVirtualActionRequestAminoMsg {
   value: QueryAllVirtualActionRequestAmino;
 }
 export interface QueryAllVirtualActionRequestSDKType {
+  nftSchemaCode: string;
   pagination?: PageRequestSDKType;
 }
 export interface QueryAllVirtualActionResponse {
@@ -1154,6 +1161,77 @@ export interface QueryListActiveProposalResponseAminoMsg {
 }
 export interface QueryListActiveProposalResponseSDKType {
   virtualSchemaProposal: VirtualSchemaProposalSDKType[];
+}
+export interface QueryGetLockSchemaFeeRequest {
+  index: string;
+}
+export interface QueryGetLockSchemaFeeRequestProtoMsg {
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryGetLockSchemaFeeRequest';
+  value: Uint8Array;
+}
+export interface QueryGetLockSchemaFeeRequestAmino {
+  index?: string;
+}
+export interface QueryGetLockSchemaFeeRequestAminoMsg {
+  type: '/thesixnetwork.sixprotocol.nftmngr.QueryGetLockSchemaFeeRequest';
+  value: QueryGetLockSchemaFeeRequestAmino;
+}
+export interface QueryGetLockSchemaFeeRequestSDKType {
+  index: string;
+}
+export interface QueryGetLockSchemaFeeResponse {
+  lockSchemaFee: LockSchemaFee;
+}
+export interface QueryGetLockSchemaFeeResponseProtoMsg {
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryGetLockSchemaFeeResponse';
+  value: Uint8Array;
+}
+export interface QueryGetLockSchemaFeeResponseAmino {
+  lockSchemaFee?: LockSchemaFeeAmino;
+}
+export interface QueryGetLockSchemaFeeResponseAminoMsg {
+  type: '/thesixnetwork.sixprotocol.nftmngr.QueryGetLockSchemaFeeResponse';
+  value: QueryGetLockSchemaFeeResponseAmino;
+}
+export interface QueryGetLockSchemaFeeResponseSDKType {
+  lockSchemaFee: LockSchemaFeeSDKType;
+}
+export interface QueryAllLockSchemaFeeRequest {
+  pagination?: PageRequest;
+}
+export interface QueryAllLockSchemaFeeRequestProtoMsg {
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryAllLockSchemaFeeRequest';
+  value: Uint8Array;
+}
+export interface QueryAllLockSchemaFeeRequestAmino {
+  pagination?: PageRequestAmino;
+}
+export interface QueryAllLockSchemaFeeRequestAminoMsg {
+  type: '/thesixnetwork.sixprotocol.nftmngr.QueryAllLockSchemaFeeRequest';
+  value: QueryAllLockSchemaFeeRequestAmino;
+}
+export interface QueryAllLockSchemaFeeRequestSDKType {
+  pagination?: PageRequestSDKType;
+}
+export interface QueryAllLockSchemaFeeResponse {
+  lockSchemaFee: LockSchemaFee[];
+  pagination?: PageResponse;
+}
+export interface QueryAllLockSchemaFeeResponseProtoMsg {
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryAllLockSchemaFeeResponse';
+  value: Uint8Array;
+}
+export interface QueryAllLockSchemaFeeResponseAmino {
+  lockSchemaFee?: LockSchemaFeeAmino[];
+  pagination?: PageResponseAmino;
+}
+export interface QueryAllLockSchemaFeeResponseAminoMsg {
+  type: '/thesixnetwork.sixprotocol.nftmngr.QueryAllLockSchemaFeeResponse';
+  value: QueryAllLockSchemaFeeResponseAmino;
+}
+export interface QueryAllLockSchemaFeeResponseSDKType {
+  lockSchemaFee: LockSchemaFeeSDKType[];
+  pagination?: PageResponseSDKType;
 }
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
@@ -3696,14 +3774,18 @@ export const QueryGetSchemaAttributeResponse = {
 };
 function createBaseQueryAllSchemaAttributeRequest(): QueryAllSchemaAttributeRequest {
   return {
+    nftSchemaCode: '',
     pagination: undefined
   };
 }
 export const QueryAllSchemaAttributeRequest = {
   typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryAllSchemaAttributeRequest',
   encode(message: QueryAllSchemaAttributeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.nftSchemaCode !== '') {
+      writer.uint32(10).string(message.nftSchemaCode);
+    }
     if (message.pagination !== undefined) {
-      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+      PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
@@ -3715,6 +3797,9 @@ export const QueryAllSchemaAttributeRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       case 1:
+        message.nftSchemaCode = reader.string();
+        break;
+      case 2:
         message.pagination = PageRequest.decode(reader, reader.uint32());
         break;
       default:
@@ -3726,11 +3811,15 @@ export const QueryAllSchemaAttributeRequest = {
   },
   fromPartial(object: Partial<QueryAllSchemaAttributeRequest>): QueryAllSchemaAttributeRequest {
     const message = createBaseQueryAllSchemaAttributeRequest();
+    message.nftSchemaCode = object.nftSchemaCode ?? '';
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryAllSchemaAttributeRequestAmino): QueryAllSchemaAttributeRequest {
     const message = createBaseQueryAllSchemaAttributeRequest();
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
@@ -3738,6 +3827,7 @@ export const QueryAllSchemaAttributeRequest = {
   },
   toAmino(message: QueryAllSchemaAttributeRequest): QueryAllSchemaAttributeRequestAmino {
     const obj: any = {};
+    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
@@ -4646,14 +4736,18 @@ export const QueryGetVirtualActionResponse = {
 };
 function createBaseQueryAllVirtualActionRequest(): QueryAllVirtualActionRequest {
   return {
+    nftSchemaCode: '',
     pagination: undefined
   };
 }
 export const QueryAllVirtualActionRequest = {
   typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryAllVirtualActionRequest',
   encode(message: QueryAllVirtualActionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.nftSchemaCode !== '') {
+      writer.uint32(10).string(message.nftSchemaCode);
+    }
     if (message.pagination !== undefined) {
-      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+      PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
@@ -4665,6 +4759,9 @@ export const QueryAllVirtualActionRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       case 1:
+        message.nftSchemaCode = reader.string();
+        break;
+      case 2:
         message.pagination = PageRequest.decode(reader, reader.uint32());
         break;
       default:
@@ -4676,11 +4773,15 @@ export const QueryAllVirtualActionRequest = {
   },
   fromPartial(object: Partial<QueryAllVirtualActionRequest>): QueryAllVirtualActionRequest {
     const message = createBaseQueryAllVirtualActionRequest();
+    message.nftSchemaCode = object.nftSchemaCode ?? '';
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryAllVirtualActionRequestAmino): QueryAllVirtualActionRequest {
     const message = createBaseQueryAllVirtualActionRequest();
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
@@ -4688,6 +4789,7 @@ export const QueryAllVirtualActionRequest = {
   },
   toAmino(message: QueryAllVirtualActionRequest): QueryAllVirtualActionRequestAmino {
     const obj: any = {};
+    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
@@ -5428,6 +5530,272 @@ export const QueryListActiveProposalResponse = {
     return {
       typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryListActiveProposalResponse',
       value: QueryListActiveProposalResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryGetLockSchemaFeeRequest(): QueryGetLockSchemaFeeRequest {
+  return {
+    index: ''
+  };
+}
+export const QueryGetLockSchemaFeeRequest = {
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryGetLockSchemaFeeRequest',
+  encode(message: QueryGetLockSchemaFeeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.index !== '') {
+      writer.uint32(10).string(message.index);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetLockSchemaFeeRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryGetLockSchemaFeeRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+      case 1:
+        message.index = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryGetLockSchemaFeeRequest>): QueryGetLockSchemaFeeRequest {
+    const message = createBaseQueryGetLockSchemaFeeRequest();
+    message.index = object.index ?? '';
+    return message;
+  },
+  fromAmino(object: QueryGetLockSchemaFeeRequestAmino): QueryGetLockSchemaFeeRequest {
+    const message = createBaseQueryGetLockSchemaFeeRequest();
+    if (object.index !== undefined && object.index !== null) {
+      message.index = object.index;
+    }
+    return message;
+  },
+  toAmino(message: QueryGetLockSchemaFeeRequest): QueryGetLockSchemaFeeRequestAmino {
+    const obj: any = {};
+    obj.index = message.index === '' ? undefined : message.index;
+    return obj;
+  },
+  fromAminoMsg(object: QueryGetLockSchemaFeeRequestAminoMsg): QueryGetLockSchemaFeeRequest {
+    return QueryGetLockSchemaFeeRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryGetLockSchemaFeeRequestProtoMsg): QueryGetLockSchemaFeeRequest {
+    return QueryGetLockSchemaFeeRequest.decode(message.value);
+  },
+  toProto(message: QueryGetLockSchemaFeeRequest): Uint8Array {
+    return QueryGetLockSchemaFeeRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryGetLockSchemaFeeRequest): QueryGetLockSchemaFeeRequestProtoMsg {
+    return {
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryGetLockSchemaFeeRequest',
+      value: QueryGetLockSchemaFeeRequest.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryGetLockSchemaFeeResponse(): QueryGetLockSchemaFeeResponse {
+  return {
+    lockSchemaFee: LockSchemaFee.fromPartial({})
+  };
+}
+export const QueryGetLockSchemaFeeResponse = {
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryGetLockSchemaFeeResponse',
+  encode(message: QueryGetLockSchemaFeeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.lockSchemaFee !== undefined) {
+      LockSchemaFee.encode(message.lockSchemaFee, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetLockSchemaFeeResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryGetLockSchemaFeeResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+      case 1:
+        message.lockSchemaFee = LockSchemaFee.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryGetLockSchemaFeeResponse>): QueryGetLockSchemaFeeResponse {
+    const message = createBaseQueryGetLockSchemaFeeResponse();
+    message.lockSchemaFee = object.lockSchemaFee !== undefined && object.lockSchemaFee !== null ? LockSchemaFee.fromPartial(object.lockSchemaFee) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryGetLockSchemaFeeResponseAmino): QueryGetLockSchemaFeeResponse {
+    const message = createBaseQueryGetLockSchemaFeeResponse();
+    if (object.lockSchemaFee !== undefined && object.lockSchemaFee !== null) {
+      message.lockSchemaFee = LockSchemaFee.fromAmino(object.lockSchemaFee);
+    }
+    return message;
+  },
+  toAmino(message: QueryGetLockSchemaFeeResponse): QueryGetLockSchemaFeeResponseAmino {
+    const obj: any = {};
+    obj.lockSchemaFee = message.lockSchemaFee ? LockSchemaFee.toAmino(message.lockSchemaFee) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryGetLockSchemaFeeResponseAminoMsg): QueryGetLockSchemaFeeResponse {
+    return QueryGetLockSchemaFeeResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryGetLockSchemaFeeResponseProtoMsg): QueryGetLockSchemaFeeResponse {
+    return QueryGetLockSchemaFeeResponse.decode(message.value);
+  },
+  toProto(message: QueryGetLockSchemaFeeResponse): Uint8Array {
+    return QueryGetLockSchemaFeeResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryGetLockSchemaFeeResponse): QueryGetLockSchemaFeeResponseProtoMsg {
+    return {
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryGetLockSchemaFeeResponse',
+      value: QueryGetLockSchemaFeeResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryAllLockSchemaFeeRequest(): QueryAllLockSchemaFeeRequest {
+  return {
+    pagination: undefined
+  };
+}
+export const QueryAllLockSchemaFeeRequest = {
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryAllLockSchemaFeeRequest',
+  encode(message: QueryAllLockSchemaFeeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllLockSchemaFeeRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryAllLockSchemaFeeRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+      case 1:
+        message.pagination = PageRequest.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryAllLockSchemaFeeRequest>): QueryAllLockSchemaFeeRequest {
+    const message = createBaseQueryAllLockSchemaFeeRequest();
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryAllLockSchemaFeeRequestAmino): QueryAllLockSchemaFeeRequest {
+    const message = createBaseQueryAllLockSchemaFeeRequest();
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryAllLockSchemaFeeRequest): QueryAllLockSchemaFeeRequestAmino {
+    const obj: any = {};
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryAllLockSchemaFeeRequestAminoMsg): QueryAllLockSchemaFeeRequest {
+    return QueryAllLockSchemaFeeRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryAllLockSchemaFeeRequestProtoMsg): QueryAllLockSchemaFeeRequest {
+    return QueryAllLockSchemaFeeRequest.decode(message.value);
+  },
+  toProto(message: QueryAllLockSchemaFeeRequest): Uint8Array {
+    return QueryAllLockSchemaFeeRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryAllLockSchemaFeeRequest): QueryAllLockSchemaFeeRequestProtoMsg {
+    return {
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryAllLockSchemaFeeRequest',
+      value: QueryAllLockSchemaFeeRequest.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryAllLockSchemaFeeResponse(): QueryAllLockSchemaFeeResponse {
+  return {
+    lockSchemaFee: [],
+    pagination: undefined
+  };
+}
+export const QueryAllLockSchemaFeeResponse = {
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryAllLockSchemaFeeResponse',
+  encode(message: QueryAllLockSchemaFeeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.lockSchemaFee) {
+      LockSchemaFee.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllLockSchemaFeeResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryAllLockSchemaFeeResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+      case 1:
+        message.lockSchemaFee.push(LockSchemaFee.decode(reader, reader.uint32()));
+        break;
+      case 2:
+        message.pagination = PageResponse.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryAllLockSchemaFeeResponse>): QueryAllLockSchemaFeeResponse {
+    const message = createBaseQueryAllLockSchemaFeeResponse();
+    message.lockSchemaFee = object.lockSchemaFee?.map(e => LockSchemaFee.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryAllLockSchemaFeeResponseAmino): QueryAllLockSchemaFeeResponse {
+    const message = createBaseQueryAllLockSchemaFeeResponse();
+    message.lockSchemaFee = object.lockSchemaFee?.map(e => LockSchemaFee.fromAmino(e)) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryAllLockSchemaFeeResponse): QueryAllLockSchemaFeeResponseAmino {
+    const obj: any = {};
+    if (message.lockSchemaFee) {
+      obj.lockSchemaFee = message.lockSchemaFee.map(e => e ? LockSchemaFee.toAmino(e) : undefined);
+    } else {
+      obj.lockSchemaFee = message.lockSchemaFee;
+    }
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryAllLockSchemaFeeResponseAminoMsg): QueryAllLockSchemaFeeResponse {
+    return QueryAllLockSchemaFeeResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryAllLockSchemaFeeResponseProtoMsg): QueryAllLockSchemaFeeResponse {
+    return QueryAllLockSchemaFeeResponse.decode(message.value);
+  },
+  toProto(message: QueryAllLockSchemaFeeResponse): Uint8Array {
+    return QueryAllLockSchemaFeeResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryAllLockSchemaFeeResponse): QueryAllLockSchemaFeeResponseProtoMsg {
+    return {
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.QueryAllLockSchemaFeeResponse',
+      value: QueryAllLockSchemaFeeResponse.encode(message).finish()
     };
   }
 };

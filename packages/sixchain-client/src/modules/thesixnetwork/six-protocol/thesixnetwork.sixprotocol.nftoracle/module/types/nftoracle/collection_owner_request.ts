@@ -5,7 +5,7 @@ import {
   requestStatusToJSON,
 } from "../nftoracle/request";
 import { Timestamp } from "../google/protobuf/timestamp";
-import Long from "long";
+import * as Long from "long";
 import { util, configure, Writer, Reader } from "protobufjs/minimal";
 
 export const protobufPackage = "thesixnetwork.sixprotocol.nftoracle";

@@ -35,14 +35,14 @@ const main = async () => {
         gasPrice: GasPrice.fromString("1.25usix"),
     });
 
-    const voteCreateSchema: ITxNFTmngr.MsgVoteCreateVirtualSchema = {
+    const voteCreateSchema: ITxNFTmngr.MsgVoteVirtualSchemaProposal = {
         creator: address,
         id: propId,
         nftSchemaCode: schemaName,
         option: 2
     }
 
-    msgArray.push(rpcClient.nftmngrModule.msgVoteCreateVirtualSchema(voteCreateSchema))
+    msgArray.push(rpcClient.nftmngrModule.msgVoteVirtualSchemaProposal(voteCreateSchema))
 
     try {
         const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(msgArray, {

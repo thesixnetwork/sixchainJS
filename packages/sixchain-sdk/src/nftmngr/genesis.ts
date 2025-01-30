@@ -5,6 +5,7 @@ import { ActionByRefId, ActionByRefIdAmino, ActionByRefIdSDKType } from './actio
 import { ActionExecutor, ActionExecutorAmino, ActionExecutorSDKType } from './action_executor';
 import { ActionOfSchema, ActionOfSchemaAmino, ActionOfSchemaSDKType } from './action_of_schema';
 import { ExecutorOfSchema, ExecutorOfSchemaAmino, ExecutorOfSchemaSDKType } from './executor_of_schema';
+import { LockSchemaFee, LockSchemaFeeAmino, LockSchemaFeeSDKType } from './lock_schema_fee';
 import { MetadataCreator, MetadataCreatorAmino, MetadataCreatorSDKType } from './metadata_creator';
 import { NftCollection, NftCollectionAmino, NftCollectionSDKType } from './nft_collection';
 import { NftData, NftDataAmino, NftDataSDKType } from './nft_data';
@@ -38,6 +39,7 @@ export interface GenesisState {
   virtualSchemaProposalList: VirtualSchemaProposal[];
   activeVirtualSchemaProposalList: ActiveVirtualSchemaProposal[];
   inactiveVirtualSchemaProposalList: InactiveVirtualSchemaProposal[];
+  lockSchemaFeeList: LockSchemaFee[];
 }
 export interface GenesisStateProtoMsg {
   typeUrl: '/thesixnetwork.sixprotocol.nftmngr.GenesisState';
@@ -64,6 +66,7 @@ export interface GenesisStateAmino {
   virtualSchemaProposalList?: VirtualSchemaProposalAmino[];
   activeVirtualSchemaProposalList?: ActiveVirtualSchemaProposalAmino[];
   inactiveVirtualSchemaProposalList?: InactiveVirtualSchemaProposalAmino[];
+  lockSchemaFeeList?: LockSchemaFeeAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: '/thesixnetwork.sixprotocol.nftmngr.GenesisState';
@@ -90,6 +93,7 @@ export interface GenesisStateSDKType {
   virtualSchemaProposalList: VirtualSchemaProposalSDKType[];
   activeVirtualSchemaProposalList: ActiveVirtualSchemaProposalSDKType[];
   inactiveVirtualSchemaProposalList: InactiveVirtualSchemaProposalSDKType[];
+  lockSchemaFeeList: LockSchemaFeeSDKType[];
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -111,7 +115,8 @@ function createBaseGenesisState(): GenesisState {
     virtualSchemaList: [],
     virtualSchemaProposalList: [],
     activeVirtualSchemaProposalList: [],
-    inactiveVirtualSchemaProposalList: []
+    inactiveVirtualSchemaProposalList: [],
+    lockSchemaFeeList: []
   };
 }
 export const GenesisState = {
@@ -173,6 +178,9 @@ export const GenesisState = {
     }
     for (const v of message.inactiveVirtualSchemaProposalList) {
       InactiveVirtualSchemaProposal.encode(v!, writer.uint32(170).fork()).ldelim();
+    }
+    for (const v of message.lockSchemaFeeList) {
+      LockSchemaFee.encode(v!, writer.uint32(178).fork()).ldelim();
     }
     return writer;
   },
@@ -240,6 +248,9 @@ export const GenesisState = {
       case 21:
         message.inactiveVirtualSchemaProposalList.push(InactiveVirtualSchemaProposal.decode(reader, reader.uint32()));
         break;
+      case 22:
+        message.lockSchemaFeeList.push(LockSchemaFee.decode(reader, reader.uint32()));
+        break;
       default:
         reader.skipType(tag & 7);
         break;
@@ -268,6 +279,7 @@ export const GenesisState = {
     message.virtualSchemaProposalList = object.virtualSchemaProposalList?.map(e => VirtualSchemaProposal.fromPartial(e)) || [];
     message.activeVirtualSchemaProposalList = object.activeVirtualSchemaProposalList?.map(e => ActiveVirtualSchemaProposal.fromPartial(e)) || [];
     message.inactiveVirtualSchemaProposalList = object.inactiveVirtualSchemaProposalList?.map(e => InactiveVirtualSchemaProposal.fromPartial(e)) || [];
+    message.lockSchemaFeeList = object.lockSchemaFeeList?.map(e => LockSchemaFee.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -297,6 +309,7 @@ export const GenesisState = {
     message.virtualSchemaProposalList = object.virtualSchemaProposalList?.map(e => VirtualSchemaProposal.fromAmino(e)) || [];
     message.activeVirtualSchemaProposalList = object.activeVirtualSchemaProposalList?.map(e => ActiveVirtualSchemaProposal.fromAmino(e)) || [];
     message.inactiveVirtualSchemaProposalList = object.inactiveVirtualSchemaProposalList?.map(e => InactiveVirtualSchemaProposal.fromAmino(e)) || [];
+    message.lockSchemaFeeList = object.lockSchemaFeeList?.map(e => LockSchemaFee.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -383,6 +396,11 @@ export const GenesisState = {
       obj.inactiveVirtualSchemaProposalList = message.inactiveVirtualSchemaProposalList.map(e => e ? InactiveVirtualSchemaProposal.toAmino(e) : undefined);
     } else {
       obj.inactiveVirtualSchemaProposalList = message.inactiveVirtualSchemaProposalList;
+    }
+    if (message.lockSchemaFeeList) {
+      obj.lockSchemaFeeList = message.lockSchemaFeeList.map(e => e ? LockSchemaFee.toAmino(e) : undefined);
+    } else {
+      obj.lockSchemaFeeList = message.lockSchemaFeeList;
     }
     return obj;
   },

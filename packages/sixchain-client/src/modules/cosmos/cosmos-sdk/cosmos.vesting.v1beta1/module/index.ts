@@ -1,24 +1,23 @@
 // THIS FILE IS GENERATED AUTOMATICALLY. DO NOT MODIFY.
 
-import { StdFee } from '@cosmjs/launchpad';
-import {EncodeObject, OfflineSigner, Registry } from '@cosmjs/proto-signing';
-import { SigningStargateClient, SigningStargateClientOptions} from '@cosmjs/stargate';
-
-import { Api } from './rest';
-import { MsgCreateVestingAccount } from './types/cosmos/vesting/v1beta1/tx';
+import { StdFee } from "@cosmjs/launchpad";
+import { SigningStargateClient, SigningStargateClientOptions} from "@cosmjs/stargate";
+import { Registry, OfflineSigner, EncodeObject, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
+import { Api } from "./rest";
+import { MsgCreateVestingAccount } from "./types/cosmos/vesting/v1beta1/tx";
 
 
 const types = [
-  ['/cosmos.vesting.v1beta1.MsgCreateVestingAccount', MsgCreateVestingAccount],
+  ["/cosmos.vesting.v1beta1.MsgCreateVestingAccount", MsgCreateVestingAccount],
   
 ];
-export const MissingWalletError = new Error('wallet is required');
+export const MissingWalletError = new Error("wallet is required");
 
 export const registry = new Registry(<any>types);
 
 const defaultFee = {
   amount: [],
-  gas: '200000',
+  gas: "200000",
 };
 
 interface TxClientOptions {
@@ -26,11 +25,11 @@ interface TxClientOptions {
 }
 
 export interface SignAndBroadcastOptions {
-  fee: StdFee | 'auto',
+  fee: StdFee | "auto",
   memo?: string
 }
 
-const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions = { addr: 'http://localhost:26657' }, options?: SigningStargateClientOptions) => {
+const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions = { addr: "http://localhost:26657" }, options?: SigningStargateClientOptions) => {
   if (!wallet) throw MissingWalletError;
   let client;
   if (addr) {
@@ -41,8 +40,8 @@ const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions =
   const { address } = (await wallet.getAccounts())[0];
 
   return {
-    signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ''}) => client.signAndBroadcast(address, msgs, fee,memo),
-    msgCreateVestingAccount: (data: MsgCreateVestingAccount): EncodeObject => ({ typeUrl: '/cosmos.vesting.v1beta1.MsgCreateVestingAccount', value: MsgCreateVestingAccount.fromPartial( data ) }),
+    signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ""}) => client.signAndBroadcast(address, msgs, fee,memo),
+    msgCreateVestingAccount: (data: MsgCreateVestingAccount): EncodeObject => ({ typeUrl: "/cosmos.vesting.v1beta1.MsgCreateVestingAccount", value: MsgCreateVestingAccount.fromPartial( data ) }),
     
   };
 };
@@ -51,11 +50,11 @@ interface QueryClientOptions {
   addr: string
 }
 
-const queryClient = async ({ addr: addr }: QueryClientOptions = { addr: 'http://localhost:1317' }) => {
+const queryClient = async ({ addr: addr }: QueryClientOptions = { addr: "http://localhost:1317" }) => {
   return new Api({ baseUrl: addr });
 };
 
 export {
-  queryClient,
   txClient,
+  queryClient,
 };
