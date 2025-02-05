@@ -73,3 +73,15 @@ Replace
 ```typescript
 client = await SigningStargateClient.connectWithSigner(addr, wallet, { registry, ...options});
 ```
+
+Find
+
+```typescript
+import * as Long from "long";
+```
+
+Replace
+
+```typescript
+import Long from "long";
+```
