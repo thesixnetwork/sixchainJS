@@ -1,4 +1,4 @@
-import { SixDataChainConnector, BASE64, typesTxNFTManager, fee } from "@thesixnetwork/sixchain-client";
+import { SixDataChainConnector, BASE64, typesTxNFTManager, fee } from "@sixnetwork/sixchain-client";
 import nft_schema from "../resource/nft-schema-example.json";
 import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee"
 import dotenv from "dotenv";

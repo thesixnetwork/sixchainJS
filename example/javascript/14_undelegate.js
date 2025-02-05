@@ -1,4 +1,4 @@
-import { SixDataChainConnector } from "@thesixnetwork/sixchain-client";
+import { SixDataChainConnector } from "@sixnetwork/sixchain-client";
 
 const delegate = async () => {
   const sixConnector = new SixDataChainConnector();

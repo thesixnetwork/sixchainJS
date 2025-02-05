@@ -1,4 +1,4 @@
-import { SixDataChainConnector } from "@thesixnetwork/sixchain-client";
+import { SixDataChainConnector } from "@sixnetwork/sixchain-client";
 
 const main = async() => {
     const sixConnector = new SixDataChainConnector("http://127.0.0.1")

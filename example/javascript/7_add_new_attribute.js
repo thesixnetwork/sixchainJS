@@ -1,4 +1,4 @@
-import { BASE64, SixDataChainConnector } from "@thesixnetwork/sixchain-client";
+import { BASE64, SixDataChainConnector } from "@sixnetwork/sixchain-client";
 import exampleNewAttriubte from "./tmp/new-attribute.json";
 const mnemonic = ""
 const main = async () => {

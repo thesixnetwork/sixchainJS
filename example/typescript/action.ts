@@ -1,4 +1,4 @@
-import { SixDataChainConnector, typesTxNFTManager, fee} from "@thesixnetwork/sixchain-client";
+import { SixDataChainConnector, typesTxNFTManager, fee} from "@sixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import exampleNFTData from "../resource/nft-metadata-example.json";
 

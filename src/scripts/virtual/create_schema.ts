@@ -1,9 +1,9 @@
-import { SixDataChainConnector, ITxNFTmngr, fee } from "@thesixnetwork/sixchain-client";
+import { SixDataChainConnector, ITxNFTmngr, fee } from "@sixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "../client";
 import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";
-import { AllowedActioner } from "@thesixnetwork/sixchain-client/modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.nftmngr/module/types/nftmngr/action";
+import { AllowedActioner } from "@sixnetwork/sixchain-client/modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.nftmngr/module/types/nftmngr/action";
 dotenv.config();
 
 const main = async () => {

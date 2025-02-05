@@ -1,4 +1,4 @@
-import { SixDataChainConnector, typesTxBank, fee } from "@thesixnetwork/sixchain-client";
+import { SixDataChainConnector, typesTxBank, fee } from "@sixnetwork/sixchain-client";
 import { StdFee } from "@cosmjs/stargate";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee";

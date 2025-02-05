@@ -1,4 +1,4 @@
-import { BASE64, SixDataChainConnector } from "@thesixnetwork/sixchain-client";
+import { BASE64, SixDataChainConnector } from "@sixnetwork/sixchain-client";
 import exampleNFTData from "./tmp/nft-metadata-example.json";
 const main = async () => {
   const sixConnector = new SixDataChainConnector();
