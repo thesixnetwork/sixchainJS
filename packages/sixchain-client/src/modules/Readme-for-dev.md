@@ -5,7 +5,10 @@
 - 3 search all remove
 
 ```typescript
-
+if (util.Long !== Long) {
+  util.Long = Long as any;
+  configure();
+}
 ```
 
 - 4 export SignAndBroadcastOptions in all sixnft/{module name}/module/index

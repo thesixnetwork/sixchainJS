@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { Reader, util, configure, Writer } from "protobufjs/minimal";
-import Long from "long";
+import * as Long from "long";
 import { Channel, Packet } from "../../../../ibc/core/channel/v1/channel";
 import { Height } from "../../../../ibc/core/client/v1/client";
 
