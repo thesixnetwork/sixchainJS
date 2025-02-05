@@ -10,7 +10,10 @@
     "sourceMap": false,
     "declaration": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "rootDir": "src/",
+    "outDir": "dist",
   },
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules"],
+  "include": ["src/**/*.ts"],
 }

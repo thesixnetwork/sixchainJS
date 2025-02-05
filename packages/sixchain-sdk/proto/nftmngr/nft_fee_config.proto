@@ -1,7 +1,7 @@
 syntax = "proto3";
-package thesixnetwork.sixnft.nftmngr;
+package thesixnetwork.sixprotocol.nftmngr;
 
-option go_package = "github.com/thesixnetwork/sixnft/x/nftmngr/types";
+option go_package = "github.com/thesixnetwork/six-protocol/x/nftmngr/types";
 
 enum FeeDistributionMethod {
   BURN = 0;
@@ -20,3 +20,5 @@ message FeeConfig {
 }
 
 message NFTFeeConfig { FeeConfig schema_fee = 1; }
+
+enum FeeSubject { CREATE_NFT_SCHEMA = 0; }

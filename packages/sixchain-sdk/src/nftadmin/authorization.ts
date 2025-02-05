@@ -1,12 +1,13 @@
 //@ts-nocheck
-import { Permissions, PermissionsAmino, PermissionsSDKType } from "./permissions";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Permissions, PermissionsAmino, PermissionsSDKType } from './permissions';
 export interface Authorization {
   rootAdmin: string;
   permissions?: Permissions;
 }
 export interface AuthorizationProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.Authorization";
+  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Authorization';
   value: Uint8Array;
 }
 export interface AuthorizationAmino {
@@ -14,7 +15,7 @@ export interface AuthorizationAmino {
   permissions?: PermissionsAmino;
 }
 export interface AuthorizationAminoMsg {
-  type: "/thesixnetwork.sixnft.nftadmin.Authorization";
+  type: '/thesixnetwork.sixprotocol.nftadmin.Authorization';
   value: AuthorizationAmino;
 }
 export interface AuthorizationSDKType {
@@ -23,14 +24,14 @@ export interface AuthorizationSDKType {
 }
 function createBaseAuthorization(): Authorization {
   return {
-    rootAdmin: "",
+    rootAdmin: '',
     permissions: undefined
   };
 }
 export const Authorization = {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.Authorization",
+  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Authorization',
   encode(message: Authorization, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.rootAdmin !== "") {
+    if (message.rootAdmin !== '') {
       writer.uint32(10).string(message.rootAdmin);
     }
     if (message.permissions !== undefined) {
@@ -45,22 +46,22 @@ export const Authorization = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.rootAdmin = reader.string();
-          break;
-        case 2:
-          message.permissions = Permissions.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.rootAdmin = reader.string();
+        break;
+      case 2:
+        message.permissions = Permissions.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Authorization>): Authorization {
     const message = createBaseAuthorization();
-    message.rootAdmin = object.rootAdmin ?? "";
+    message.rootAdmin = object.rootAdmin ?? '';
     message.permissions = object.permissions !== undefined && object.permissions !== null ? Permissions.fromPartial(object.permissions) : undefined;
     return message;
   },
@@ -76,7 +77,7 @@ export const Authorization = {
   },
   toAmino(message: Authorization): AuthorizationAmino {
     const obj: any = {};
-    obj.root_admin = message.rootAdmin === "" ? undefined : message.rootAdmin;
+    obj.root_admin = message.rootAdmin === '' ? undefined : message.rootAdmin;
     obj.permissions = message.permissions ? Permissions.toAmino(message.permissions) : undefined;
     return obj;
   },
@@ -91,7 +92,7 @@ export const Authorization = {
   },
   toProtoMsg(message: Authorization): AuthorizationProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftadmin.Authorization",
+      typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Authorization',
       value: Authorization.encode(message).finish()
     };
   }

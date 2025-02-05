@@ -15,11 +15,14 @@ import {
   PageRequest,
   PageResponse,
 } from "../../../cosmos/base/query/v1beta1/pagination";
+import { WhitelistDelegator } from "../../../cosmos/staking/v1beta1/whitelist";
 
 export const protobufPackage = "cosmos.staking.v1beta1";
 
+/** QueryValidatorApprovalRequest is request type for Query/ValidatorsApproval RPC method. */
 export interface QueryValidatorApprovalRequest {}
 
+/** QueryValidatorApprovalResponse is response type for the Query/ValidatorsApproval RPC method */
 export interface QueryValidatorApprovalResponse {
   validator_approval: ValidatorApproval | undefined;
 }
@@ -272,6 +275,27 @@ export interface QueryParamsRequest {}
 export interface QueryParamsResponse {
   /** params holds all the parameters of this module. */
   params: Params | undefined;
+}
+
+/** QueryGetWhitelistDelegatorRequest is request type for the Query/WhiltelistDeleagator RPC method. */
+export interface QueryGetWhitelistDelegatorRequest {
+  validator: string;
+}
+
+/** QueryWhitelistdelegatorResponse is response type for the Query/WhiltelistDeleagator RPC method. */
+export interface QueryWhitelistdelegatorResponse {
+  whitelist_delegator: WhitelistDelegator | undefined;
+}
+
+/** QueryAllWhitelistDelegatorRequest is request type for the Query/AllWhiltelistDeleagator RPC method. */
+export interface QueryAllWhitelistDelegatorRequest {
+  pagination: PageRequest | undefined;
+}
+
+/** QueryWhitelistdelegatorAllResponse is response type for the Query/AllWhiltelistDeleagator RPC method. */
+export interface QueryWhitelistdelegatorAllResponse {
+  whitelist_delegator: WhitelistDelegator[];
+  pagination: PageResponse | undefined;
 }
 
 const baseQueryValidatorApprovalRequest: object = {};
@@ -2788,6 +2812,344 @@ export const QueryParamsResponse = {
   },
 };
 
+const baseQueryGetWhitelistDelegatorRequest: object = { validator: "" };
+
+export const QueryGetWhitelistDelegatorRequest = {
+  encode(
+    message: QueryGetWhitelistDelegatorRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.validator !== "") {
+      writer.uint32(10).string(message.validator);
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryGetWhitelistDelegatorRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryGetWhitelistDelegatorRequest,
+    } as QueryGetWhitelistDelegatorRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.validator = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryGetWhitelistDelegatorRequest {
+    const message = {
+      ...baseQueryGetWhitelistDelegatorRequest,
+    } as QueryGetWhitelistDelegatorRequest;
+    if (object.validator !== undefined && object.validator !== null) {
+      message.validator = String(object.validator);
+    } else {
+      message.validator = "";
+    }
+    return message;
+  },
+
+  toJSON(message: QueryGetWhitelistDelegatorRequest): unknown {
+    const obj: any = {};
+    message.validator !== undefined && (obj.validator = message.validator);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryGetWhitelistDelegatorRequest>
+  ): QueryGetWhitelistDelegatorRequest {
+    const message = {
+      ...baseQueryGetWhitelistDelegatorRequest,
+    } as QueryGetWhitelistDelegatorRequest;
+    if (object.validator !== undefined && object.validator !== null) {
+      message.validator = object.validator;
+    } else {
+      message.validator = "";
+    }
+    return message;
+  },
+};
+
+const baseQueryWhitelistdelegatorResponse: object = {};
+
+export const QueryWhitelistdelegatorResponse = {
+  encode(
+    message: QueryWhitelistdelegatorResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.whitelist_delegator !== undefined) {
+      WhitelistDelegator.encode(
+        message.whitelist_delegator,
+        writer.uint32(10).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryWhitelistdelegatorResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryWhitelistdelegatorResponse,
+    } as QueryWhitelistdelegatorResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.whitelist_delegator = WhitelistDelegator.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryWhitelistdelegatorResponse {
+    const message = {
+      ...baseQueryWhitelistdelegatorResponse,
+    } as QueryWhitelistdelegatorResponse;
+    if (
+      object.whitelist_delegator !== undefined &&
+      object.whitelist_delegator !== null
+    ) {
+      message.whitelist_delegator = WhitelistDelegator.fromJSON(
+        object.whitelist_delegator
+      );
+    } else {
+      message.whitelist_delegator = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryWhitelistdelegatorResponse): unknown {
+    const obj: any = {};
+    message.whitelist_delegator !== undefined &&
+      (obj.whitelist_delegator = message.whitelist_delegator
+        ? WhitelistDelegator.toJSON(message.whitelist_delegator)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryWhitelistdelegatorResponse>
+  ): QueryWhitelistdelegatorResponse {
+    const message = {
+      ...baseQueryWhitelistdelegatorResponse,
+    } as QueryWhitelistdelegatorResponse;
+    if (
+      object.whitelist_delegator !== undefined &&
+      object.whitelist_delegator !== null
+    ) {
+      message.whitelist_delegator = WhitelistDelegator.fromPartial(
+        object.whitelist_delegator
+      );
+    } else {
+      message.whitelist_delegator = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryAllWhitelistDelegatorRequest: object = {};
+
+export const QueryAllWhitelistDelegatorRequest = {
+  encode(
+    message: QueryAllWhitelistDelegatorRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryAllWhitelistDelegatorRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryAllWhitelistDelegatorRequest,
+    } as QueryAllWhitelistDelegatorRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryAllWhitelistDelegatorRequest {
+    const message = {
+      ...baseQueryAllWhitelistDelegatorRequest,
+    } as QueryAllWhitelistDelegatorRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryAllWhitelistDelegatorRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageRequest.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryAllWhitelistDelegatorRequest>
+  ): QueryAllWhitelistDelegatorRequest {
+    const message = {
+      ...baseQueryAllWhitelistDelegatorRequest,
+    } as QueryAllWhitelistDelegatorRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryWhitelistdelegatorAllResponse: object = {};
+
+export const QueryWhitelistdelegatorAllResponse = {
+  encode(
+    message: QueryWhitelistdelegatorAllResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    for (const v of message.whitelist_delegator) {
+      WhitelistDelegator.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryWhitelistdelegatorAllResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseQueryWhitelistdelegatorAllResponse,
+    } as QueryWhitelistdelegatorAllResponse;
+    message.whitelist_delegator = [];
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.whitelist_delegator.push(
+            WhitelistDelegator.decode(reader, reader.uint32())
+          );
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryWhitelistdelegatorAllResponse {
+    const message = {
+      ...baseQueryWhitelistdelegatorAllResponse,
+    } as QueryWhitelistdelegatorAllResponse;
+    message.whitelist_delegator = [];
+    if (
+      object.whitelist_delegator !== undefined &&
+      object.whitelist_delegator !== null
+    ) {
+      for (const e of object.whitelist_delegator) {
+        message.whitelist_delegator.push(WhitelistDelegator.fromJSON(e));
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryWhitelistdelegatorAllResponse): unknown {
+    const obj: any = {};
+    if (message.whitelist_delegator) {
+      obj.whitelist_delegator = message.whitelist_delegator.map((e) =>
+        e ? WhitelistDelegator.toJSON(e) : undefined
+      );
+    } else {
+      obj.whitelist_delegator = [];
+    }
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageResponse.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryWhitelistdelegatorAllResponse>
+  ): QueryWhitelistdelegatorAllResponse {
+    const message = {
+      ...baseQueryWhitelistdelegatorAllResponse,
+    } as QueryWhitelistdelegatorAllResponse;
+    message.whitelist_delegator = [];
+    if (
+      object.whitelist_delegator !== undefined &&
+      object.whitelist_delegator !== null
+    ) {
+      for (const e of object.whitelist_delegator) {
+        message.whitelist_delegator.push(WhitelistDelegator.fromPartial(e));
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Validators queries all validators that match the given status. */
@@ -2852,6 +3214,14 @@ export interface Query {
   Pool(request: QueryPoolRequest): Promise<QueryPoolResponse>;
   /** Parameters queries the staking parameters. */
   Params(request: QueryParamsRequest): Promise<QueryParamsResponse>;
+  /** Queries a DelegatorWhitelistdelegator by index. */
+  Whitelistdelegator(
+    request: QueryGetWhitelistDelegatorRequest
+  ): Promise<QueryWhitelistdelegatorResponse>;
+  /** Queries a list of DelegatorWhitelistdelegator items. */
+  WhitelistdelegatorAll(
+    request: QueryAllWhitelistDelegatorRequest
+  ): Promise<QueryWhitelistdelegatorAllResponse>;
 }
 
 export class QueryClientImpl implements Query {
@@ -3061,6 +3431,34 @@ export class QueryClientImpl implements Query {
       data
     );
     return promise.then((data) => QueryParamsResponse.decode(new Reader(data)));
+  }
+
+  Whitelistdelegator(
+    request: QueryGetWhitelistDelegatorRequest
+  ): Promise<QueryWhitelistdelegatorResponse> {
+    const data = QueryGetWhitelistDelegatorRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "cosmos.staking.v1beta1.Query",
+      "Whitelistdelegator",
+      data
+    );
+    return promise.then((data) =>
+      QueryWhitelistdelegatorResponse.decode(new Reader(data))
+    );
+  }
+
+  WhitelistdelegatorAll(
+    request: QueryAllWhitelistDelegatorRequest
+  ): Promise<QueryWhitelistdelegatorAllResponse> {
+    const data = QueryAllWhitelistDelegatorRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "cosmos.staking.v1beta1.Query",
+      "WhitelistdelegatorAll",
+      data
+    );
+    return promise.then((data) =>
+      QueryWhitelistdelegatorAllResponse.decode(new Reader(data))
+    );
   }
 }
 

@@ -1,10 +1,10 @@
 syntax = "proto3";
-package thesixnetwork.sixnft.nftmngr;
+package thesixnetwork.sixprotocol.nftmngr;
 
 import "nftmngr/on_chain_data.proto";
 import "nftmngr/origin_data.proto";
 
-option go_package = "github.com/thesixnetwork/sixnft/x/nftmngr/types";
+option go_package = "github.com/thesixnetwork/six-protocol/x/nftmngr/types";
 
 message NFTSchema {
   string code = 1;
@@ -27,4 +27,15 @@ message NFTSchemaINPUT {
   OnChainData onchain_data = 7;
   bool isVerified = 8;
   string mint_authorization = 9;
+}
+
+message NFTSchemaQueryResult {
+  string code = 1;
+  string name = 2;
+  string owner = 3;
+  string description = 4;
+  OriginData origin_data = 5;
+  OnChainDataResult onchain_data = 6;
+  bool isVerified = 7;
+  string mint_authorization = 8;
 }

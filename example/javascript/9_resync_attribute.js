@@ -1,13 +1,13 @@
-const { SixDataChainConnector } = require("@sixnetwork/six-data-chain-sdk");
+import { SixDataChainConnector } from "@thesixnetwork/sixchain-client";
 const mnemonic = ""
 const main = async () => {
     const sixConnector = new SixDataChainConnector()
     sixConnector.rpcUrl = "http://localhost:80"
     const accountSigner = await sixConnector.accounts.privateKeyToAccount(mnemonic)
     const address = (await accountSigner.getAccounts())[0].address
-    const rpcClient = await sixDataChainConnector.connectRPCClient(accountSigner)
+    const rpcClient = await sixConnector.connectRPCClient(accountSigner)
 
-    const msg = await rpcClient.nftmngrModule.msgResyncAttributes({
+    const msg = rpcClient.nftmngrModule.msgResyncAttributes({
         creator: address,
         nftSchemaCode: "test_nft_schema_code",
         tokenId:"0"

@@ -1,17 +1,17 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export interface AddressList {
   addresses: string[];
 }
 export interface AddressListProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.AddressList";
+  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.AddressList';
   value: Uint8Array;
 }
 export interface AddressListAmino {
   addresses?: string[];
 }
 export interface AddressListAminoMsg {
-  type: "/thesixnetwork.sixnft.nftadmin.AddressList";
+  type: '/thesixnetwork.sixprotocol.nftadmin.AddressList';
   value: AddressListAmino;
 }
 export interface AddressListSDKType {
@@ -22,7 +22,7 @@ export interface Permission {
   addresses?: AddressList;
 }
 export interface PermissionProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.Permission";
+  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Permission';
   value: Uint8Array;
 }
 export interface PermissionAmino {
@@ -30,7 +30,7 @@ export interface PermissionAmino {
   addresses?: AddressListAmino;
 }
 export interface PermissionAminoMsg {
-  type: "/thesixnetwork.sixnft.nftadmin.Permission";
+  type: '/thesixnetwork.sixprotocol.nftadmin.Permission';
   value: PermissionAmino;
 }
 export interface PermissionSDKType {
@@ -41,14 +41,14 @@ export interface Permissions {
   permissions: Permission[];
 }
 export interface PermissionsProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.Permissions";
+  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Permissions';
   value: Uint8Array;
 }
 export interface PermissionsAmino {
   permissions?: PermissionAmino[];
 }
 export interface PermissionsAminoMsg {
-  type: "/thesixnetwork.sixnft.nftadmin.Permissions";
+  type: '/thesixnetwork.sixprotocol.nftadmin.Permissions';
   value: PermissionsAmino;
 }
 export interface PermissionsSDKType {
@@ -60,7 +60,7 @@ function createBaseAddressList(): AddressList {
   };
 }
 export const AddressList = {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.AddressList",
+  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.AddressList',
   encode(message: AddressList, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.addresses) {
       writer.uint32(10).string(v!);
@@ -74,12 +74,12 @@ export const AddressList = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.addresses.push(reader.string());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.addresses.push(reader.string());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -114,21 +114,21 @@ export const AddressList = {
   },
   toProtoMsg(message: AddressList): AddressListProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftadmin.AddressList",
+      typeUrl: '/thesixnetwork.sixprotocol.nftadmin.AddressList',
       value: AddressList.encode(message).finish()
     };
   }
 };
 function createBasePermission(): Permission {
   return {
-    name: "",
+    name: '',
     addresses: undefined
   };
 }
 export const Permission = {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.Permission",
+  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Permission',
   encode(message: Permission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(10).string(message.name);
     }
     if (message.addresses !== undefined) {
@@ -143,22 +143,22 @@ export const Permission = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.name = reader.string();
-          break;
-        case 2:
-          message.addresses = AddressList.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.name = reader.string();
+        break;
+      case 2:
+        message.addresses = AddressList.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Permission>): Permission {
     const message = createBasePermission();
-    message.name = object.name ?? "";
+    message.name = object.name ?? '';
     message.addresses = object.addresses !== undefined && object.addresses !== null ? AddressList.fromPartial(object.addresses) : undefined;
     return message;
   },
@@ -174,7 +174,7 @@ export const Permission = {
   },
   toAmino(message: Permission): PermissionAmino {
     const obj: any = {};
-    obj.name = message.name === "" ? undefined : message.name;
+    obj.name = message.name === '' ? undefined : message.name;
     obj.addresses = message.addresses ? AddressList.toAmino(message.addresses) : undefined;
     return obj;
   },
@@ -189,7 +189,7 @@ export const Permission = {
   },
   toProtoMsg(message: Permission): PermissionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftadmin.Permission",
+      typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Permission',
       value: Permission.encode(message).finish()
     };
   }
@@ -200,7 +200,7 @@ function createBasePermissions(): Permissions {
   };
 }
 export const Permissions = {
-  typeUrl: "/thesixnetwork.sixnft.nftadmin.Permissions",
+  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Permissions',
   encode(message: Permissions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.permissions) {
       Permission.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -214,12 +214,12 @@ export const Permissions = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.permissions.push(Permission.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.permissions.push(Permission.decode(reader, reader.uint32()));
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -254,7 +254,7 @@ export const Permissions = {
   },
   toProtoMsg(message: Permissions): PermissionsProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftadmin.Permissions",
+      typeUrl: '/thesixnetwork.sixprotocol.nftadmin.Permissions',
       value: Permissions.encode(message).finish()
     };
   }

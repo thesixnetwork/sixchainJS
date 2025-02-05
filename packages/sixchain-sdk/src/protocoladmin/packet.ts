@@ -1,17 +1,17 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export interface ProtocoladminPacketData {
   noData?: NoData;
 }
 export interface ProtocoladminPacketDataProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.ProtocoladminPacketData";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.ProtocoladminPacketData';
   value: Uint8Array;
 }
 export interface ProtocoladminPacketDataAmino {
   noData?: NoDataAmino;
 }
 export interface ProtocoladminPacketDataAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.ProtocoladminPacketData";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.ProtocoladminPacketData';
   value: ProtocoladminPacketDataAmino;
 }
 export interface ProtocoladminPacketDataSDKType {
@@ -19,12 +19,12 @@ export interface ProtocoladminPacketDataSDKType {
 }
 export interface NoData {}
 export interface NoDataProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.NoData";
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.NoData';
   value: Uint8Array;
 }
 export interface NoDataAmino {}
 export interface NoDataAminoMsg {
-  type: "/thesixnetwork.sixprotocol.protocoladmin.NoData";
+  type: '/thesixnetwork.sixprotocol.protocoladmin.NoData';
   value: NoDataAmino;
 }
 export interface NoDataSDKType {}
@@ -34,7 +34,7 @@ function createBaseProtocoladminPacketData(): ProtocoladminPacketData {
   };
 }
 export const ProtocoladminPacketData = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.ProtocoladminPacketData",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.ProtocoladminPacketData',
   encode(message: ProtocoladminPacketData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.noData !== undefined) {
       NoData.encode(message.noData, writer.uint32(10).fork()).ldelim();
@@ -48,12 +48,12 @@ export const ProtocoladminPacketData = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.noData = NoData.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.noData = NoData.decode(reader, reader.uint32());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -86,7 +86,7 @@ export const ProtocoladminPacketData = {
   },
   toProtoMsg(message: ProtocoladminPacketData): ProtocoladminPacketDataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.ProtocoladminPacketData",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.ProtocoladminPacketData',
       value: ProtocoladminPacketData.encode(message).finish()
     };
   }
@@ -95,7 +95,7 @@ function createBaseNoData(): NoData {
   return {};
 }
 export const NoData = {
-  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.NoData",
+  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.NoData',
   encode(_: NoData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -106,9 +106,9 @@ export const NoData = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -136,7 +136,7 @@ export const NoData = {
   },
   toProtoMsg(message: NoData): NoDataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.NoData",
+      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.NoData',
       value: NoData.encode(message).finish()
     };
   }

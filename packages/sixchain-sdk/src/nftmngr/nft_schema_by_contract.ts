@@ -1,11 +1,11 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export interface NFTSchemaByContract {
   originContractAddress: string;
   schemaCodes: string[];
 }
 export interface NFTSchemaByContractProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTSchemaByContract";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaByContract';
   value: Uint8Array;
 }
 export interface NFTSchemaByContractAmino {
@@ -13,7 +13,7 @@ export interface NFTSchemaByContractAmino {
   schemaCodes?: string[];
 }
 export interface NFTSchemaByContractAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.NFTSchemaByContract";
+  type: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaByContract';
   value: NFTSchemaByContractAmino;
 }
 export interface NFTSchemaByContractSDKType {
@@ -22,14 +22,14 @@ export interface NFTSchemaByContractSDKType {
 }
 function createBaseNFTSchemaByContract(): NFTSchemaByContract {
   return {
-    originContractAddress: "",
+    originContractAddress: '',
     schemaCodes: []
   };
 }
 export const NFTSchemaByContract = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTSchemaByContract",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaByContract',
   encode(message: NFTSchemaByContract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.originContractAddress !== "") {
+    if (message.originContractAddress !== '') {
       writer.uint32(10).string(message.originContractAddress);
     }
     for (const v of message.schemaCodes) {
@@ -44,22 +44,22 @@ export const NFTSchemaByContract = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.originContractAddress = reader.string();
-          break;
-        case 2:
-          message.schemaCodes.push(reader.string());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.originContractAddress = reader.string();
+        break;
+      case 2:
+        message.schemaCodes.push(reader.string());
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<NFTSchemaByContract>): NFTSchemaByContract {
     const message = createBaseNFTSchemaByContract();
-    message.originContractAddress = object.originContractAddress ?? "";
+    message.originContractAddress = object.originContractAddress ?? '';
     message.schemaCodes = object.schemaCodes?.map(e => e) || [];
     return message;
   },
@@ -73,7 +73,7 @@ export const NFTSchemaByContract = {
   },
   toAmino(message: NFTSchemaByContract): NFTSchemaByContractAmino {
     const obj: any = {};
-    obj.originContractAddress = message.originContractAddress === "" ? undefined : message.originContractAddress;
+    obj.originContractAddress = message.originContractAddress === '' ? undefined : message.originContractAddress;
     if (message.schemaCodes) {
       obj.schemaCodes = message.schemaCodes.map(e => e);
     } else {
@@ -92,7 +92,7 @@ export const NFTSchemaByContract = {
   },
   toProtoMsg(message: NFTSchemaByContract): NFTSchemaByContractProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTSchemaByContract",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaByContract',
       value: NFTSchemaByContract.encode(message).finish()
     };
   }

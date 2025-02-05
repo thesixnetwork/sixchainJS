@@ -1,10 +1,10 @@
 syntax = "proto3";
-package thesixnetwork.sixnft.nftoracle;
+package thesixnetwork.sixprotocol.nftoracle;
 import "nftoracle/request.proto";
 import "gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/thesixnetwork/sixnft/x/nftoracle/types";
+option go_package = "github.com/thesixnetwork/six-protocol/x/nftoracle/types";
 
 message SyncActionSigner {
   uint64 id = 1;
@@ -29,7 +29,7 @@ message ParameterSyncSignerByOracle {
   string chain = 1;
   string owner_address = 2; // get from smart contract
   string actor_address = 3; // get from smart contract
-  string expire_epoch = 4; // get from smart contract
+  string expire_epoch = 4;  // get from smart contract
 }
 
 message ContractInfoHash {

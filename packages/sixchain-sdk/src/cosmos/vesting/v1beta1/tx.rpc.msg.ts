@@ -1,7 +1,8 @@
 //@ts-nocheck
-import { Rpc } from "../../../helpers";
-import * as _m0 from "protobufjs/minimal";
-import { MsgCreateVestingAccount, MsgCreateVestingAccountResponse } from "./tx";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Rpc } from '../../../helpers';
+import { MsgCreateVestingAccount, MsgCreateVestingAccountResponse } from './tx';
 /** Msg defines the bank Msg service. */
 export interface Msg {
   /**
@@ -18,7 +19,7 @@ export class MsgClientImpl implements Msg {
   }
   createVestingAccount(request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponse> {
     const data = MsgCreateVestingAccount.encode(request).finish();
-    const promise = this.rpc.request("cosmos.vesting.v1beta1.Msg", "CreateVestingAccount", data);
+    const promise = this.rpc.request('cosmos.vesting.v1beta1.Msg', 'CreateVestingAccount', data);
     return promise.then(data => MsgCreateVestingAccountResponse.decode(new _m0.Reader(data)));
   }
 }

@@ -1,17 +1,17 @@
 //@ts-nocheck
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
 export interface OracleConfig {
   minimumConfirmation: number;
 }
 export interface OracleConfigProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.OracleConfig";
+  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.OracleConfig';
   value: Uint8Array;
 }
 export interface OracleConfigAmino {
   minimum_confirmation?: number;
 }
 export interface OracleConfigAminoMsg {
-  type: "/thesixnetwork.sixnft.nftoracle.OracleConfig";
+  type: '/thesixnetwork.sixprotocol.nftoracle.OracleConfig';
   value: OracleConfigAmino;
 }
 export interface OracleConfigSDKType {
@@ -23,7 +23,7 @@ function createBaseOracleConfig(): OracleConfig {
   };
 }
 export const OracleConfig = {
-  typeUrl: "/thesixnetwork.sixnft.nftoracle.OracleConfig",
+  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.OracleConfig',
   encode(message: OracleConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.minimumConfirmation !== 0) {
       writer.uint32(8).int32(message.minimumConfirmation);
@@ -37,12 +37,12 @@ export const OracleConfig = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.minimumConfirmation = reader.int32();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.minimumConfirmation = reader.int32();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -75,7 +75,7 @@ export const OracleConfig = {
   },
   toProtoMsg(message: OracleConfig): OracleConfigProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftoracle.OracleConfig",
+      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.OracleConfig',
       value: OracleConfig.encode(message).finish()
     };
   }

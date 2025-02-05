@@ -1,9 +1,10 @@
 //@ts-nocheck
-import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
-import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
-import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
-import * as ethermintEvmV1TxRegistry from "./evm/v1/tx.registry";
-import * as ethermintEvmV1TxAmino from "./evm/v1/tx.amino";
+import { GeneratedType, OfflineSigner,Registry } from '@cosmjs/proto-signing';
+import { AminoTypes, defaultRegistryTypes, SigningStargateClient } from '@cosmjs/stargate';
+import { HttpEndpoint } from '@cosmjs/tendermint-rpc';
+
+import * as ethermintEvmV1TxAmino from './evm/v1/tx.amino';
+import * as ethermintEvmV1TxRegistry from './evm/v1/tx.registry';
 export const ethermintAminoConverters = {
   ...ethermintEvmV1TxAmino.AminoConverter
 };

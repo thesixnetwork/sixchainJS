@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Long } from "../helpers";
-import * as _m0 from "protobufjs/minimal";
+import * as _m0 from 'protobufjs/minimal';
+
+import { Long } from '../helpers';
 export interface NftAttributeValue {
   name: string;
   numberAttributeValue?: NumberAttributeValue;
@@ -10,7 +11,7 @@ export interface NftAttributeValue {
   hiddenToMarketplace: boolean;
 }
 export interface NftAttributeValueProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NftAttributeValue";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NftAttributeValue';
   value: Uint8Array;
 }
 export interface NftAttributeValueAmino {
@@ -22,7 +23,7 @@ export interface NftAttributeValueAmino {
   hidden_to_marketplace?: boolean;
 }
 export interface NftAttributeValueAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.NftAttributeValue";
+  type: '/thesixnetwork.sixprotocol.nftmngr.NftAttributeValue';
   value: NftAttributeValueAmino;
 }
 export interface NftAttributeValueSDKType {
@@ -37,14 +38,14 @@ export interface NumberAttributeValue {
   value: Long;
 }
 export interface NumberAttributeValueProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NumberAttributeValue";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NumberAttributeValue';
   value: Uint8Array;
 }
 export interface NumberAttributeValueAmino {
   value?: string;
 }
 export interface NumberAttributeValueAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.NumberAttributeValue";
+  type: '/thesixnetwork.sixprotocol.nftmngr.NumberAttributeValue';
   value: NumberAttributeValueAmino;
 }
 export interface NumberAttributeValueSDKType {
@@ -54,14 +55,14 @@ export interface StringAttributeValue {
   value: string;
 }
 export interface StringAttributeValueProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.StringAttributeValue";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.StringAttributeValue';
   value: Uint8Array;
 }
 export interface StringAttributeValueAmino {
   value?: string;
 }
 export interface StringAttributeValueAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.StringAttributeValue";
+  type: '/thesixnetwork.sixprotocol.nftmngr.StringAttributeValue';
   value: StringAttributeValueAmino;
 }
 export interface StringAttributeValueSDKType {
@@ -71,14 +72,14 @@ export interface BooleanAttributeValue {
   value: boolean;
 }
 export interface BooleanAttributeValueProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.BooleanAttributeValue";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.BooleanAttributeValue';
   value: Uint8Array;
 }
 export interface BooleanAttributeValueAmino {
   value?: boolean;
 }
 export interface BooleanAttributeValueAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.BooleanAttributeValue";
+  type: '/thesixnetwork.sixprotocol.nftmngr.BooleanAttributeValue';
   value: BooleanAttributeValueAmino;
 }
 export interface BooleanAttributeValueSDKType {
@@ -88,14 +89,14 @@ export interface FloatAttributeValue {
   value: number;
 }
 export interface FloatAttributeValueProtoMsg {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FloatAttributeValue";
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FloatAttributeValue';
   value: Uint8Array;
 }
 export interface FloatAttributeValueAmino {
   value?: number;
 }
 export interface FloatAttributeValueAminoMsg {
-  type: "/thesixnetwork.sixnft.nftmngr.FloatAttributeValue";
+  type: '/thesixnetwork.sixprotocol.nftmngr.FloatAttributeValue';
   value: FloatAttributeValueAmino;
 }
 export interface FloatAttributeValueSDKType {
@@ -103,7 +104,7 @@ export interface FloatAttributeValueSDKType {
 }
 function createBaseNftAttributeValue(): NftAttributeValue {
   return {
-    name: "",
+    name: '',
     numberAttributeValue: undefined,
     stringAttributeValue: undefined,
     booleanAttributeValue: undefined,
@@ -112,9 +113,9 @@ function createBaseNftAttributeValue(): NftAttributeValue {
   };
 }
 export const NftAttributeValue = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NftAttributeValue",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NftAttributeValue',
   encode(message: NftAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(10).string(message.name);
     }
     if (message.numberAttributeValue !== undefined) {
@@ -141,34 +142,34 @@ export const NftAttributeValue = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.name = reader.string();
-          break;
-        case 2:
-          message.numberAttributeValue = NumberAttributeValue.decode(reader, reader.uint32());
-          break;
-        case 3:
-          message.stringAttributeValue = StringAttributeValue.decode(reader, reader.uint32());
-          break;
-        case 4:
-          message.booleanAttributeValue = BooleanAttributeValue.decode(reader, reader.uint32());
-          break;
-        case 5:
-          message.floatAttributeValue = FloatAttributeValue.decode(reader, reader.uint32());
-          break;
-        case 6:
-          message.hiddenToMarketplace = reader.bool();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.name = reader.string();
+        break;
+      case 2:
+        message.numberAttributeValue = NumberAttributeValue.decode(reader, reader.uint32());
+        break;
+      case 3:
+        message.stringAttributeValue = StringAttributeValue.decode(reader, reader.uint32());
+        break;
+      case 4:
+        message.booleanAttributeValue = BooleanAttributeValue.decode(reader, reader.uint32());
+        break;
+      case 5:
+        message.floatAttributeValue = FloatAttributeValue.decode(reader, reader.uint32());
+        break;
+      case 6:
+        message.hiddenToMarketplace = reader.bool();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<NftAttributeValue>): NftAttributeValue {
     const message = createBaseNftAttributeValue();
-    message.name = object.name ?? "";
+    message.name = object.name ?? '';
     message.numberAttributeValue = object.numberAttributeValue !== undefined && object.numberAttributeValue !== null ? NumberAttributeValue.fromPartial(object.numberAttributeValue) : undefined;
     message.stringAttributeValue = object.stringAttributeValue !== undefined && object.stringAttributeValue !== null ? StringAttributeValue.fromPartial(object.stringAttributeValue) : undefined;
     message.booleanAttributeValue = object.booleanAttributeValue !== undefined && object.booleanAttributeValue !== null ? BooleanAttributeValue.fromPartial(object.booleanAttributeValue) : undefined;
@@ -200,7 +201,7 @@ export const NftAttributeValue = {
   },
   toAmino(message: NftAttributeValue): NftAttributeValueAmino {
     const obj: any = {};
-    obj.name = message.name === "" ? undefined : message.name;
+    obj.name = message.name === '' ? undefined : message.name;
     obj.number_attribute_value = message.numberAttributeValue ? NumberAttributeValue.toAmino(message.numberAttributeValue) : undefined;
     obj.string_attribute_value = message.stringAttributeValue ? StringAttributeValue.toAmino(message.stringAttributeValue) : undefined;
     obj.boolean_attribute_value = message.booleanAttributeValue ? BooleanAttributeValue.toAmino(message.booleanAttributeValue) : undefined;
@@ -219,7 +220,7 @@ export const NftAttributeValue = {
   },
   toProtoMsg(message: NftAttributeValue): NftAttributeValueProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.NftAttributeValue",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NftAttributeValue',
       value: NftAttributeValue.encode(message).finish()
     };
   }
@@ -230,7 +231,7 @@ function createBaseNumberAttributeValue(): NumberAttributeValue {
   };
 }
 export const NumberAttributeValue = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.NumberAttributeValue",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NumberAttributeValue',
   encode(message: NumberAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.value.isZero()) {
       writer.uint32(8).uint64(message.value);
@@ -244,12 +245,12 @@ export const NumberAttributeValue = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.value = reader.uint64() as Long;
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.value = reader.uint64() as Long;
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -268,7 +269,7 @@ export const NumberAttributeValue = {
   },
   toAmino(message: NumberAttributeValue): NumberAttributeValueAmino {
     const obj: any = {};
-    obj.value = !message.value.isZero() ? (message.value?.toString)() : undefined;
+    obj.value = !message.value.isZero() ? message.value?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: NumberAttributeValueAminoMsg): NumberAttributeValue {
@@ -282,20 +283,20 @@ export const NumberAttributeValue = {
   },
   toProtoMsg(message: NumberAttributeValue): NumberAttributeValueProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.NumberAttributeValue",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NumberAttributeValue',
       value: NumberAttributeValue.encode(message).finish()
     };
   }
 };
 function createBaseStringAttributeValue(): StringAttributeValue {
   return {
-    value: ""
+    value: ''
   };
 }
 export const StringAttributeValue = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.StringAttributeValue",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.StringAttributeValue',
   encode(message: StringAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.value !== "") {
+    if (message.value !== '') {
       writer.uint32(10).string(message.value);
     }
     return writer;
@@ -307,19 +308,19 @@ export const StringAttributeValue = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.value = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.value = reader.string();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<StringAttributeValue>): StringAttributeValue {
     const message = createBaseStringAttributeValue();
-    message.value = object.value ?? "";
+    message.value = object.value ?? '';
     return message;
   },
   fromAmino(object: StringAttributeValueAmino): StringAttributeValue {
@@ -331,7 +332,7 @@ export const StringAttributeValue = {
   },
   toAmino(message: StringAttributeValue): StringAttributeValueAmino {
     const obj: any = {};
-    obj.value = message.value === "" ? undefined : message.value;
+    obj.value = message.value === '' ? undefined : message.value;
     return obj;
   },
   fromAminoMsg(object: StringAttributeValueAminoMsg): StringAttributeValue {
@@ -345,7 +346,7 @@ export const StringAttributeValue = {
   },
   toProtoMsg(message: StringAttributeValue): StringAttributeValueProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.StringAttributeValue",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.StringAttributeValue',
       value: StringAttributeValue.encode(message).finish()
     };
   }
@@ -356,7 +357,7 @@ function createBaseBooleanAttributeValue(): BooleanAttributeValue {
   };
 }
 export const BooleanAttributeValue = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.BooleanAttributeValue",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.BooleanAttributeValue',
   encode(message: BooleanAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.value === true) {
       writer.uint32(8).bool(message.value);
@@ -370,12 +371,12 @@ export const BooleanAttributeValue = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.value = reader.bool();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.value = reader.bool();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -408,7 +409,7 @@ export const BooleanAttributeValue = {
   },
   toProtoMsg(message: BooleanAttributeValue): BooleanAttributeValueProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.BooleanAttributeValue",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.BooleanAttributeValue',
       value: BooleanAttributeValue.encode(message).finish()
     };
   }
@@ -419,7 +420,7 @@ function createBaseFloatAttributeValue(): FloatAttributeValue {
   };
 }
 export const FloatAttributeValue = {
-  typeUrl: "/thesixnetwork.sixnft.nftmngr.FloatAttributeValue",
+  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FloatAttributeValue',
   encode(message: FloatAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.value !== 0) {
       writer.uint32(9).double(message.value);
@@ -433,12 +434,12 @@ export const FloatAttributeValue = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.value = reader.double();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
+      case 1:
+        message.value = reader.double();
+        break;
+      default:
+        reader.skipType(tag & 7);
+        break;
       }
     }
     return message;
@@ -471,7 +472,7 @@ export const FloatAttributeValue = {
   },
   toProtoMsg(message: FloatAttributeValue): FloatAttributeValueProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixnft.nftmngr.FloatAttributeValue",
+      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.FloatAttributeValue',
       value: FloatAttributeValue.encode(message).finish()
     };
   }

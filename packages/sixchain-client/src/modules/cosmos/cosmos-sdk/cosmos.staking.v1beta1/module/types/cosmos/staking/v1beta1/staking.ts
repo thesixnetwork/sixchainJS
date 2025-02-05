@@ -143,6 +143,7 @@ export interface Validator {
   license_count: string;
   license_mode: boolean;
   enable_redelegation: boolean;
+  special_mode: boolean;
 }
 
 /** ValAddresses defines a repeated set of validator addresses. */
@@ -300,6 +301,7 @@ export interface Pool {
   bonded_tokens: string;
 }
 
+/** ValidatorApproval */
 export interface ValidatorApproval {
   approver_address: string;
   enabled: boolean;
@@ -737,6 +739,7 @@ const baseValidator: object = {
   license_count: "",
   license_mode: false,
   enable_redelegation: false,
+  special_mode: false,
 };
 
 export const Validator = {
@@ -797,6 +800,9 @@ export const Validator = {
     }
     if (message.enable_redelegation === true) {
       writer.uint32(136).bool(message.enable_redelegation);
+    }
+    if (message.special_mode === true) {
+      writer.uint32(144).bool(message.special_mode);
     }
     return writer;
   },
@@ -860,6 +866,9 @@ export const Validator = {
           break;
         case 17:
           message.enable_redelegation = reader.bool();
+          break;
+        case 18:
+          message.special_mode = reader.bool();
           break;
         default:
           reader.skipType(tag & 7);
@@ -977,6 +986,11 @@ export const Validator = {
     } else {
       message.enable_redelegation = false;
     }
+    if (object.special_mode !== undefined && object.special_mode !== null) {
+      message.special_mode = Boolean(object.special_mode);
+    } else {
+      message.special_mode = false;
+    }
     return message;
   },
 
@@ -1023,6 +1037,8 @@ export const Validator = {
       (obj.license_mode = message.license_mode);
     message.enable_redelegation !== undefined &&
       (obj.enable_redelegation = message.enable_redelegation);
+    message.special_mode !== undefined &&
+      (obj.special_mode = message.special_mode);
     return obj;
   },
 
@@ -1133,6 +1149,11 @@ export const Validator = {
       message.enable_redelegation = object.enable_redelegation;
     } else {
       message.enable_redelegation = false;
+    }
+    if (object.special_mode !== undefined && object.special_mode !== null) {
+      message.special_mode = object.special_mode;
+    } else {
+      message.special_mode = false;
     }
     return message;
   },
