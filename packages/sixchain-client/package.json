@@ -1,6 +1,6 @@
 {
   "name": "@sixnetwork/sixchain-client",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "SIX Protocol sdk",
   "author": "sixnetwork <hamdee@six.network>",
   "homepage": "https://github.com/thesixnetwork/sixchain-sdk",
