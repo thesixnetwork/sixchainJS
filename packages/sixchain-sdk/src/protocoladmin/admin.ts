@@ -1,11 +1,11 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
+import * as _m0 from "protobufjs/minimal";
 export interface Admin {
   group: string;
   admin: string;
 }
 export interface AdminProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.Admin';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.Admin";
   value: Uint8Array;
 }
 export interface AdminAmino {
@@ -13,7 +13,7 @@ export interface AdminAmino {
   admin?: string;
 }
 export interface AdminAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.Admin';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.Admin";
   value: AdminAmino;
 }
 export interface AdminSDKType {
@@ -22,17 +22,17 @@ export interface AdminSDKType {
 }
 function createBaseAdmin(): Admin {
   return {
-    group: '',
-    admin: ''
+    group: "",
+    admin: ""
   };
 }
 export const Admin = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.Admin',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.Admin",
   encode(message: Admin, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.group !== '') {
+    if (message.group !== "") {
       writer.uint32(10).string(message.group);
     }
-    if (message.admin !== '') {
+    if (message.admin !== "") {
       writer.uint32(18).string(message.admin);
     }
     return writer;
@@ -44,23 +44,23 @@ export const Admin = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.group = reader.string();
-        break;
-      case 2:
-        message.admin = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.group = reader.string();
+          break;
+        case 2:
+          message.admin = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Admin>): Admin {
     const message = createBaseAdmin();
-    message.group = object.group ?? '';
-    message.admin = object.admin ?? '';
+    message.group = object.group ?? "";
+    message.admin = object.admin ?? "";
     return message;
   },
   fromAmino(object: AdminAmino): Admin {
@@ -75,8 +75,8 @@ export const Admin = {
   },
   toAmino(message: Admin): AdminAmino {
     const obj: any = {};
-    obj.group = message.group === '' ? undefined : message.group;
-    obj.admin = message.admin === '' ? undefined : message.admin;
+    obj.group = message.group === "" ? undefined : message.group;
+    obj.admin = message.admin === "" ? undefined : message.admin;
     return obj;
   },
   fromAminoMsg(object: AdminAminoMsg): Admin {
@@ -90,7 +90,7 @@ export const Admin = {
   },
   toProtoMsg(message: Admin): AdminProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.Admin',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.Admin",
       value: Admin.encode(message).finish()
     };
   }

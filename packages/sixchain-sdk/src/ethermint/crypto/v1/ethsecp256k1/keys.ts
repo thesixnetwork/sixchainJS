@@ -1,7 +1,6 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { base64FromBytes,bytesFromBase64 } from '../../../../helpers';
+import * as _m0 from "protobufjs/minimal";
+import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
 /**
  * PubKey defines a type alias for an ecdsa.PublicKey that implements
  * Tendermint's PubKey interface. It represents the 33-byte compressed public
@@ -11,7 +10,7 @@ export interface PubKey {
   key: Uint8Array;
 }
 export interface PubKeyProtoMsg {
-  typeUrl: '/ethermint.crypto.v1.ethsecp256k1.PubKey';
+  typeUrl: "/ethermint.crypto.v1.ethsecp256k1.PubKey";
   value: Uint8Array;
 }
 /**
@@ -23,7 +22,7 @@ export interface PubKeyAmino {
   key?: string;
 }
 export interface PubKeyAminoMsg {
-  type: '/ethermint.crypto.v1.ethsecp256k1.PubKey';
+  type: "/ethermint.crypto.v1.ethsecp256k1.PubKey";
   value: PubKeyAmino;
 }
 /**
@@ -42,7 +41,7 @@ export interface PrivKey {
   key: Uint8Array;
 }
 export interface PrivKeyProtoMsg {
-  typeUrl: '/ethermint.crypto.v1.ethsecp256k1.PrivKey';
+  typeUrl: "/ethermint.crypto.v1.ethsecp256k1.PrivKey";
   value: Uint8Array;
 }
 /**
@@ -53,7 +52,7 @@ export interface PrivKeyAmino {
   key?: string;
 }
 export interface PrivKeyAminoMsg {
-  type: '/ethermint.crypto.v1.ethsecp256k1.PrivKey';
+  type: "/ethermint.crypto.v1.ethsecp256k1.PrivKey";
   value: PrivKeyAmino;
 }
 /**
@@ -69,7 +68,7 @@ function createBasePubKey(): PubKey {
   };
 }
 export const PubKey = {
-  typeUrl: '/ethermint.crypto.v1.ethsecp256k1.PubKey',
+  typeUrl: "/ethermint.crypto.v1.ethsecp256k1.PubKey",
   encode(message: PubKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -83,12 +82,12 @@ export const PubKey = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.key = reader.bytes();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.key = reader.bytes();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -121,7 +120,7 @@ export const PubKey = {
   },
   toProtoMsg(message: PubKey): PubKeyProtoMsg {
     return {
-      typeUrl: '/ethermint.crypto.v1.ethsecp256k1.PubKey',
+      typeUrl: "/ethermint.crypto.v1.ethsecp256k1.PubKey",
       value: PubKey.encode(message).finish()
     };
   }
@@ -132,7 +131,7 @@ function createBasePrivKey(): PrivKey {
   };
 }
 export const PrivKey = {
-  typeUrl: '/ethermint.crypto.v1.ethsecp256k1.PrivKey',
+  typeUrl: "/ethermint.crypto.v1.ethsecp256k1.PrivKey",
   encode(message: PrivKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -146,12 +145,12 @@ export const PrivKey = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.key = reader.bytes();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.key = reader.bytes();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -184,7 +183,7 @@ export const PrivKey = {
   },
   toProtoMsg(message: PrivKey): PrivKeyProtoMsg {
     return {
-      typeUrl: '/ethermint.crypto.v1.ethsecp256k1.PrivKey',
+      typeUrl: "/ethermint.crypto.v1.ethsecp256k1.PrivKey",
       value: PrivKey.encode(message).finish()
     };
   }

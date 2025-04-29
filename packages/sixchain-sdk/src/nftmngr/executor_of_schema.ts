@@ -1,11 +1,11 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
+import * as _m0 from "protobufjs/minimal";
 export interface ExecutorOfSchema {
   nftSchemaCode: string;
   executorAddress: string[];
 }
 export interface ExecutorOfSchemaProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema";
   value: Uint8Array;
 }
 export interface ExecutorOfSchemaAmino {
@@ -13,7 +13,7 @@ export interface ExecutorOfSchemaAmino {
   executorAddress?: string[];
 }
 export interface ExecutorOfSchemaAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema';
+  type: "/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema";
   value: ExecutorOfSchemaAmino;
 }
 export interface ExecutorOfSchemaSDKType {
@@ -22,14 +22,14 @@ export interface ExecutorOfSchemaSDKType {
 }
 function createBaseExecutorOfSchema(): ExecutorOfSchema {
   return {
-    nftSchemaCode: '',
+    nftSchemaCode: "",
     executorAddress: []
   };
 }
 export const ExecutorOfSchema = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema",
   encode(message: ExecutorOfSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
     for (const v of message.executorAddress) {
@@ -44,22 +44,22 @@ export const ExecutorOfSchema = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 2:
-        message.executorAddress.push(reader.string());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.executorAddress.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ExecutorOfSchema>): ExecutorOfSchema {
     const message = createBaseExecutorOfSchema();
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.executorAddress = object.executorAddress?.map(e => e) || [];
     return message;
   },
@@ -73,7 +73,7 @@ export const ExecutorOfSchema = {
   },
   toAmino(message: ExecutorOfSchema): ExecutorOfSchemaAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     if (message.executorAddress) {
       obj.executorAddress = message.executorAddress.map(e => e);
     } else {
@@ -92,7 +92,7 @@ export const ExecutorOfSchema = {
   },
   toProtoMsg(message: ExecutorOfSchema): ExecutorOfSchemaProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ExecutorOfSchema",
       value: ExecutorOfSchema.encode(message).finish()
     };
   }

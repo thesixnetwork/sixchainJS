@@ -1,8 +1,7 @@
 //@ts-nocheck
-import { Decimal } from '@cosmjs/math';
-import * as _m0 from 'protobufjs/minimal';
-
-import { Long } from '../../../helpers';
+import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
+import { Decimal } from "@cosmjs/math";
 /** Params defines the EVM module parameters */
 export interface Params {
   /** no base fee forces the EIP-1559 base fee to 0 (needed for 0 price calls) */
@@ -30,7 +29,7 @@ export interface Params {
   minGasMultiplier: string;
 }
 export interface ParamsProtoMsg {
-  typeUrl: '/ethermint.feemarket.v1.Params';
+  typeUrl: "/ethermint.feemarket.v1.Params";
   value: Uint8Array;
 }
 /** Params defines the EVM module parameters */
@@ -60,7 +59,7 @@ export interface ParamsAmino {
   min_gas_multiplier?: string;
 }
 export interface ParamsAminoMsg {
-  type: '/ethermint.feemarket.v1.Params';
+  type: "/ethermint.feemarket.v1.Params";
   value: ParamsAmino;
 }
 /** Params defines the EVM module parameters */
@@ -79,13 +78,13 @@ function createBaseParams(): Params {
     baseFeeChangeDenominator: 0,
     elasticityMultiplier: 0,
     enableHeight: Long.ZERO,
-    baseFee: '',
-    minGasPrice: '',
-    minGasMultiplier: ''
+    baseFee: "",
+    minGasPrice: "",
+    minGasMultiplier: ""
   };
 }
 export const Params = {
-  typeUrl: '/ethermint.feemarket.v1.Params',
+  typeUrl: "/ethermint.feemarket.v1.Params",
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.noBaseFee === true) {
       writer.uint32(8).bool(message.noBaseFee);
@@ -99,13 +98,13 @@ export const Params = {
     if (!message.enableHeight.isZero()) {
       writer.uint32(40).int64(message.enableHeight);
     }
-    if (message.baseFee !== '') {
+    if (message.baseFee !== "") {
       writer.uint32(50).string(message.baseFee);
     }
-    if (message.minGasPrice !== '') {
+    if (message.minGasPrice !== "") {
       writer.uint32(58).string(Decimal.fromUserInput(message.minGasPrice, 18).atomics);
     }
-    if (message.minGasMultiplier !== '') {
+    if (message.minGasMultiplier !== "") {
       writer.uint32(66).string(Decimal.fromUserInput(message.minGasMultiplier, 18).atomics);
     }
     return writer;
@@ -117,30 +116,30 @@ export const Params = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.noBaseFee = reader.bool();
-        break;
-      case 2:
-        message.baseFeeChangeDenominator = reader.uint32();
-        break;
-      case 3:
-        message.elasticityMultiplier = reader.uint32();
-        break;
-      case 5:
-        message.enableHeight = reader.int64() as Long;
-        break;
-      case 6:
-        message.baseFee = reader.string();
-        break;
-      case 7:
-        message.minGasPrice = Decimal.fromAtomics(reader.string(), 18).toString();
-        break;
-      case 8:
-        message.minGasMultiplier = Decimal.fromAtomics(reader.string(), 18).toString();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.noBaseFee = reader.bool();
+          break;
+        case 2:
+          message.baseFeeChangeDenominator = reader.uint32();
+          break;
+        case 3:
+          message.elasticityMultiplier = reader.uint32();
+          break;
+        case 5:
+          message.enableHeight = reader.int64() as Long;
+          break;
+        case 6:
+          message.baseFee = reader.string();
+          break;
+        case 7:
+          message.minGasPrice = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        case 8:
+          message.minGasMultiplier = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -151,9 +150,9 @@ export const Params = {
     message.baseFeeChangeDenominator = object.baseFeeChangeDenominator ?? 0;
     message.elasticityMultiplier = object.elasticityMultiplier ?? 0;
     message.enableHeight = object.enableHeight !== undefined && object.enableHeight !== null ? Long.fromValue(object.enableHeight) : Long.ZERO;
-    message.baseFee = object.baseFee ?? '';
-    message.minGasPrice = object.minGasPrice ?? '';
-    message.minGasMultiplier = object.minGasMultiplier ?? '';
+    message.baseFee = object.baseFee ?? "";
+    message.minGasPrice = object.minGasPrice ?? "";
+    message.minGasMultiplier = object.minGasMultiplier ?? "";
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
@@ -186,10 +185,10 @@ export const Params = {
     obj.no_base_fee = message.noBaseFee === false ? undefined : message.noBaseFee;
     obj.base_fee_change_denominator = message.baseFeeChangeDenominator === 0 ? undefined : message.baseFeeChangeDenominator;
     obj.elasticity_multiplier = message.elasticityMultiplier === 0 ? undefined : message.elasticityMultiplier;
-    obj.enable_height = !message.enableHeight.isZero() ? message.enableHeight?.toString() : undefined;
-    obj.base_fee = message.baseFee === '' ? undefined : message.baseFee;
-    obj.min_gas_price = message.minGasPrice === '' ? undefined : message.minGasPrice;
-    obj.min_gas_multiplier = message.minGasMultiplier === '' ? undefined : message.minGasMultiplier;
+    obj.enable_height = !message.enableHeight.isZero() ? (message.enableHeight?.toString)() : undefined;
+    obj.base_fee = message.baseFee === "" ? undefined : message.baseFee;
+    obj.min_gas_price = message.minGasPrice === "" ? undefined : message.minGasPrice;
+    obj.min_gas_multiplier = message.minGasMultiplier === "" ? undefined : message.minGasMultiplier;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {
@@ -203,7 +202,7 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: '/ethermint.feemarket.v1.Params',
+      typeUrl: "/ethermint.feemarket.v1.Params",
       value: Params.encode(message).finish()
     };
   }

@@ -1,12 +1,12 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
+import * as _m0 from "protobufjs/minimal";
 export interface ActionExecutor {
   nftSchemaCode: string;
   executorAddress: string;
   creator: string;
 }
 export interface ActionExecutorProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionExecutor';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutor";
   value: Uint8Array;
 }
 export interface ActionExecutorAmino {
@@ -15,7 +15,7 @@ export interface ActionExecutorAmino {
   creator?: string;
 }
 export interface ActionExecutorAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.ActionExecutor';
+  type: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutor";
   value: ActionExecutorAmino;
 }
 export interface ActionExecutorSDKType {
@@ -28,7 +28,7 @@ export interface ActionExecutorBySchema {
   executorAddress: string[];
 }
 export interface ActionExecutorBySchemaProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema";
   value: Uint8Array;
 }
 export interface ActionExecutorBySchemaAmino {
@@ -36,7 +36,7 @@ export interface ActionExecutorBySchemaAmino {
   executorAddress?: string[];
 }
 export interface ActionExecutorBySchemaAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema';
+  type: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema";
   value: ActionExecutorBySchemaAmino;
 }
 export interface ActionExecutorBySchemaSDKType {
@@ -45,21 +45,21 @@ export interface ActionExecutorBySchemaSDKType {
 }
 function createBaseActionExecutor(): ActionExecutor {
   return {
-    nftSchemaCode: '',
-    executorAddress: '',
-    creator: ''
+    nftSchemaCode: "",
+    executorAddress: "",
+    creator: ""
   };
 }
 export const ActionExecutor = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionExecutor',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutor",
   encode(message: ActionExecutor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
-    if (message.executorAddress !== '') {
+    if (message.executorAddress !== "") {
       writer.uint32(18).string(message.executorAddress);
     }
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(26).string(message.creator);
     }
     return writer;
@@ -71,27 +71,27 @@ export const ActionExecutor = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 2:
-        message.executorAddress = reader.string();
-        break;
-      case 3:
-        message.creator = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.executorAddress = reader.string();
+          break;
+        case 3:
+          message.creator = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ActionExecutor>): ActionExecutor {
     const message = createBaseActionExecutor();
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
-    message.executorAddress = object.executorAddress ?? '';
-    message.creator = object.creator ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.executorAddress = object.executorAddress ?? "";
+    message.creator = object.creator ?? "";
     return message;
   },
   fromAmino(object: ActionExecutorAmino): ActionExecutor {
@@ -109,9 +109,9 @@ export const ActionExecutor = {
   },
   toAmino(message: ActionExecutor): ActionExecutorAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
-    obj.executorAddress = message.executorAddress === '' ? undefined : message.executorAddress;
-    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.executorAddress = message.executorAddress === "" ? undefined : message.executorAddress;
+    obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;
   },
   fromAminoMsg(object: ActionExecutorAminoMsg): ActionExecutor {
@@ -125,21 +125,21 @@ export const ActionExecutor = {
   },
   toProtoMsg(message: ActionExecutor): ActionExecutorProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionExecutor',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutor",
       value: ActionExecutor.encode(message).finish()
     };
   }
 };
 function createBaseActionExecutorBySchema(): ActionExecutorBySchema {
   return {
-    nftSchemaCode: '',
+    nftSchemaCode: "",
     executorAddress: []
   };
 }
 export const ActionExecutorBySchema = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema",
   encode(message: ActionExecutorBySchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
     for (const v of message.executorAddress) {
@@ -154,22 +154,22 @@ export const ActionExecutorBySchema = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 2:
-        message.executorAddress.push(reader.string());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.executorAddress.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ActionExecutorBySchema>): ActionExecutorBySchema {
     const message = createBaseActionExecutorBySchema();
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.executorAddress = object.executorAddress?.map(e => e) || [];
     return message;
   },
@@ -183,7 +183,7 @@ export const ActionExecutorBySchema = {
   },
   toAmino(message: ActionExecutorBySchema): ActionExecutorBySchemaAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     if (message.executorAddress) {
       obj.executorAddress = message.executorAddress.map(e => e);
     } else {
@@ -202,7 +202,7 @@ export const ActionExecutorBySchema = {
   },
   toProtoMsg(message: ActionExecutorBySchema): ActionExecutorBySchemaProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionExecutorBySchema",
       value: ActionExecutorBySchema.encode(message).finish()
     };
   }

@@ -1,15 +1,14 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Timestamp } from '../google/protobuf/timestamp';
-import { fromTimestamp,Long, toTimestamp } from '../helpers';
-import { DataHash, DataHashAmino, DataHashSDKType,RequestStatus } from './request';
+import { Timestamp } from "../google/protobuf/timestamp";
+import { RequestStatus, DataHash, DataHashAmino, DataHashSDKType } from "./request";
+import { Long, toTimestamp, fromTimestamp } from "../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface ActionParameter {
   name: string;
   value: string;
 }
 export interface ActionParameterProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionParameter';
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionParameter";
   value: Uint8Array;
 }
 export interface ActionParameterAmino {
@@ -17,7 +16,7 @@ export interface ActionParameterAmino {
   value?: string;
 }
 export interface ActionParameterAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.ActionParameter';
+  type: "/thesixnetwork.sixprotocol.nftoracle.ActionParameter";
   value: ActionParameterAmino;
 }
 export interface ActionParameterSDKType {
@@ -34,7 +33,7 @@ export interface ActionOracleParam {
   onBehalfOf: string;
 }
 export interface ActionOracleParamProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam';
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam";
   value: Uint8Array;
 }
 export interface ActionOracleParamAmino {
@@ -47,7 +46,7 @@ export interface ActionOracleParamAmino {
   on_behalf_of?: string;
 }
 export interface ActionOracleParamAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam';
+  type: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam";
   value: ActionOracleParamAmino;
 }
 export interface ActionOracleParamSDKType {
@@ -78,7 +77,7 @@ export interface ActionOracleRequest {
   executionErrorMessage: string;
 }
 export interface ActionOracleRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest";
   value: Uint8Array;
 }
 export interface ActionOracleRequestAmino {
@@ -100,7 +99,7 @@ export interface ActionOracleRequestAmino {
   execution_error_message?: string;
 }
 export interface ActionOracleRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest';
+  type: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest";
   value: ActionOracleRequestAmino;
 }
 export interface ActionOracleRequestSDKType {
@@ -123,17 +122,17 @@ export interface ActionOracleRequestSDKType {
 }
 function createBaseActionParameter(): ActionParameter {
   return {
-    name: '',
-    value: ''
+    name: "",
+    value: ""
   };
 }
 export const ActionParameter = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionParameter',
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionParameter",
   encode(message: ActionParameter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
-    if (message.value !== '') {
+    if (message.value !== "") {
       writer.uint32(18).string(message.value);
     }
     return writer;
@@ -145,23 +144,23 @@ export const ActionParameter = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.name = reader.string();
-        break;
-      case 2:
-        message.value = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.name = reader.string();
+          break;
+        case 2:
+          message.value = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ActionParameter>): ActionParameter {
     const message = createBaseActionParameter();
-    message.name = object.name ?? '';
-    message.value = object.value ?? '';
+    message.name = object.name ?? "";
+    message.value = object.value ?? "";
     return message;
   },
   fromAmino(object: ActionParameterAmino): ActionParameter {
@@ -176,8 +175,8 @@ export const ActionParameter = {
   },
   toAmino(message: ActionParameter): ActionParameterAmino {
     const obj: any = {};
-    obj.name = message.name === '' ? undefined : message.name;
-    obj.value = message.value === '' ? undefined : message.value;
+    obj.name = message.name === "" ? undefined : message.name;
+    obj.value = message.value === "" ? undefined : message.value;
     return obj;
   },
   fromAminoMsg(object: ActionParameterAminoMsg): ActionParameter {
@@ -191,44 +190,44 @@ export const ActionParameter = {
   },
   toProtoMsg(message: ActionParameter): ActionParameterProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionParameter',
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionParameter",
       value: ActionParameter.encode(message).finish()
     };
   }
 };
 function createBaseActionOracleParam(): ActionOracleParam {
   return {
-    nftSchemaCode: '',
-    tokenId: '',
-    action: '',
+    nftSchemaCode: "",
+    tokenId: "",
+    action: "",
     params: [],
-    refId: '',
+    refId: "",
     expiredAt: new Date(),
-    onBehalfOf: ''
+    onBehalfOf: ""
   };
 }
 export const ActionOracleParam = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam',
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam",
   encode(message: ActionOracleParam, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
-    if (message.tokenId !== '') {
+    if (message.tokenId !== "") {
       writer.uint32(18).string(message.tokenId);
     }
-    if (message.action !== '') {
+    if (message.action !== "") {
       writer.uint32(26).string(message.action);
     }
     for (const v of message.params) {
       ActionParameter.encode(v!, writer.uint32(34).fork()).ldelim();
     }
-    if (message.refId !== '') {
+    if (message.refId !== "") {
       writer.uint32(42).string(message.refId);
     }
     if (message.expiredAt !== undefined) {
       Timestamp.encode(toTimestamp(message.expiredAt), writer.uint32(50).fork()).ldelim();
     }
-    if (message.onBehalfOf !== '') {
+    if (message.onBehalfOf !== "") {
       writer.uint32(58).string(message.onBehalfOf);
     }
     return writer;
@@ -240,43 +239,43 @@ export const ActionOracleParam = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 2:
-        message.tokenId = reader.string();
-        break;
-      case 3:
-        message.action = reader.string();
-        break;
-      case 4:
-        message.params.push(ActionParameter.decode(reader, reader.uint32()));
-        break;
-      case 5:
-        message.refId = reader.string();
-        break;
-      case 6:
-        message.expiredAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      case 7:
-        message.onBehalfOf = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.tokenId = reader.string();
+          break;
+        case 3:
+          message.action = reader.string();
+          break;
+        case 4:
+          message.params.push(ActionParameter.decode(reader, reader.uint32()));
+          break;
+        case 5:
+          message.refId = reader.string();
+          break;
+        case 6:
+          message.expiredAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 7:
+          message.onBehalfOf = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ActionOracleParam>): ActionOracleParam {
     const message = createBaseActionOracleParam();
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
-    message.tokenId = object.tokenId ?? '';
-    message.action = object.action ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId ?? "";
+    message.action = object.action ?? "";
     message.params = object.params?.map(e => ActionParameter.fromPartial(e)) || [];
-    message.refId = object.refId ?? '';
+    message.refId = object.refId ?? "";
     message.expiredAt = object.expiredAt ?? undefined;
-    message.onBehalfOf = object.onBehalfOf ?? '';
+    message.onBehalfOf = object.onBehalfOf ?? "";
     return message;
   },
   fromAmino(object: ActionOracleParamAmino): ActionOracleParam {
@@ -304,17 +303,17 @@ export const ActionOracleParam = {
   },
   toAmino(message: ActionOracleParam): ActionOracleParamAmino {
     const obj: any = {};
-    obj.nft_schema_code = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
-    obj.token_id = message.tokenId === '' ? undefined : message.tokenId;
-    obj.action = message.action === '' ? undefined : message.action;
+    obj.nft_schema_code = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.token_id = message.tokenId === "" ? undefined : message.tokenId;
+    obj.action = message.action === "" ? undefined : message.action;
     if (message.params) {
       obj.params = message.params.map(e => e ? ActionParameter.toAmino(e) : undefined);
     } else {
       obj.params = message.params;
     }
-    obj.ref_id = message.refId === '' ? undefined : message.refId;
+    obj.ref_id = message.refId === "" ? undefined : message.refId;
     obj.expired_at = message.expiredAt ? Timestamp.toAmino(toTimestamp(message.expiredAt)) : undefined;
-    obj.on_behalf_of = message.onBehalfOf === '' ? undefined : message.onBehalfOf;
+    obj.on_behalf_of = message.onBehalfOf === "" ? undefined : message.onBehalfOf;
     return obj;
   },
   fromAminoMsg(object: ActionOracleParamAminoMsg): ActionOracleParam {
@@ -328,7 +327,7 @@ export const ActionOracleParam = {
   },
   toProtoMsg(message: ActionOracleParam): ActionOracleParamProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam',
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleParam",
       value: ActionOracleParam.encode(message).finish()
     };
   }
@@ -336,12 +335,12 @@ export const ActionOracleParam = {
 function createBaseActionOracleRequest(): ActionOracleRequest {
   return {
     id: Long.UZERO,
-    nftSchemaCode: '',
-    tokenId: '',
-    action: '',
+    nftSchemaCode: "",
+    tokenId: "",
+    action: "",
     params: [],
-    caller: '',
-    refId: '',
+    caller: "",
+    refId: "",
     requiredConfirm: Long.UZERO,
     status: 0,
     currentConfirm: Long.UZERO,
@@ -350,31 +349,31 @@ function createBaseActionOracleRequest(): ActionOracleRequest {
     validUntil: new Date(),
     dataHashes: [],
     expiredHeight: Long.ZERO,
-    executionErrorMessage: ''
+    executionErrorMessage: ""
   };
 }
 export const ActionOracleRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest",
   encode(message: ActionOracleRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
     }
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(18).string(message.nftSchemaCode);
     }
-    if (message.tokenId !== '') {
+    if (message.tokenId !== "") {
       writer.uint32(26).string(message.tokenId);
     }
-    if (message.action !== '') {
+    if (message.action !== "") {
       writer.uint32(34).string(message.action);
     }
     for (const v of message.params) {
       ActionParameter.encode(v!, writer.uint32(42).fork()).ldelim();
     }
-    if (message.caller !== '') {
+    if (message.caller !== "") {
       writer.uint32(50).string(message.caller);
     }
-    if (message.refId !== '') {
+    if (message.refId !== "") {
       writer.uint32(58).string(message.refId);
     }
     if (!message.requiredConfirm.isZero()) {
@@ -401,7 +400,7 @@ export const ActionOracleRequest = {
     if (!message.expiredHeight.isZero()) {
       writer.uint32(120).int64(message.expiredHeight);
     }
-    if (message.executionErrorMessage !== '') {
+    if (message.executionErrorMessage !== "") {
       writer.uint32(130).string(message.executionErrorMessage);
     }
     return writer;
@@ -413,57 +412,57 @@ export const ActionOracleRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.id = reader.uint64() as Long;
-        break;
-      case 2:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 3:
-        message.tokenId = reader.string();
-        break;
-      case 4:
-        message.action = reader.string();
-        break;
-      case 5:
-        message.params.push(ActionParameter.decode(reader, reader.uint32()));
-        break;
-      case 6:
-        message.caller = reader.string();
-        break;
-      case 7:
-        message.refId = reader.string();
-        break;
-      case 8:
-        message.requiredConfirm = reader.uint64() as Long;
-        break;
-      case 9:
-        message.status = reader.int32() as any;
-        break;
-      case 10:
-        message.currentConfirm = reader.uint64() as Long;
-        break;
-      case 11:
-        message.confirmers.push(reader.string());
-        break;
-      case 12:
-        message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      case 13:
-        message.validUntil = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      case 14:
-        message.dataHashes.push(DataHash.decode(reader, reader.uint32()));
-        break;
-      case 15:
-        message.expiredHeight = reader.int64() as Long;
-        break;
-      case 16:
-        message.executionErrorMessage = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.id = reader.uint64() as Long;
+          break;
+        case 2:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.tokenId = reader.string();
+          break;
+        case 4:
+          message.action = reader.string();
+          break;
+        case 5:
+          message.params.push(ActionParameter.decode(reader, reader.uint32()));
+          break;
+        case 6:
+          message.caller = reader.string();
+          break;
+        case 7:
+          message.refId = reader.string();
+          break;
+        case 8:
+          message.requiredConfirm = reader.uint64() as Long;
+          break;
+        case 9:
+          message.status = reader.int32() as any;
+          break;
+        case 10:
+          message.currentConfirm = reader.uint64() as Long;
+          break;
+        case 11:
+          message.confirmers.push(reader.string());
+          break;
+        case 12:
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 13:
+          message.validUntil = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 14:
+          message.dataHashes.push(DataHash.decode(reader, reader.uint32()));
+          break;
+        case 15:
+          message.expiredHeight = reader.int64() as Long;
+          break;
+        case 16:
+          message.executionErrorMessage = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -471,12 +470,12 @@ export const ActionOracleRequest = {
   fromPartial(object: Partial<ActionOracleRequest>): ActionOracleRequest {
     const message = createBaseActionOracleRequest();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
-    message.tokenId = object.tokenId ?? '';
-    message.action = object.action ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId ?? "";
+    message.action = object.action ?? "";
     message.params = object.params?.map(e => ActionParameter.fromPartial(e)) || [];
-    message.caller = object.caller ?? '';
-    message.refId = object.refId ?? '';
+    message.caller = object.caller ?? "";
+    message.refId = object.refId ?? "";
     message.requiredConfirm = object.requiredConfirm !== undefined && object.requiredConfirm !== null ? Long.fromValue(object.requiredConfirm) : Long.UZERO;
     message.status = object.status ?? 0;
     message.currentConfirm = object.currentConfirm !== undefined && object.currentConfirm !== null ? Long.fromValue(object.currentConfirm) : Long.UZERO;
@@ -485,7 +484,7 @@ export const ActionOracleRequest = {
     message.validUntil = object.validUntil ?? undefined;
     message.dataHashes = object.dataHashes?.map(e => DataHash.fromPartial(e)) || [];
     message.expiredHeight = object.expiredHeight !== undefined && object.expiredHeight !== null ? Long.fromValue(object.expiredHeight) : Long.ZERO;
-    message.executionErrorMessage = object.executionErrorMessage ?? '';
+    message.executionErrorMessage = object.executionErrorMessage ?? "";
     return message;
   },
   fromAmino(object: ActionOracleRequestAmino): ActionOracleRequest {
@@ -536,20 +535,20 @@ export const ActionOracleRequest = {
   },
   toAmino(message: ActionOracleRequest): ActionOracleRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
-    obj.nft_schema_code = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
-    obj.token_id = message.tokenId === '' ? undefined : message.tokenId;
-    obj.action = message.action === '' ? undefined : message.action;
+    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.nft_schema_code = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.token_id = message.tokenId === "" ? undefined : message.tokenId;
+    obj.action = message.action === "" ? undefined : message.action;
     if (message.params) {
       obj.params = message.params.map(e => e ? ActionParameter.toAmino(e) : undefined);
     } else {
       obj.params = message.params;
     }
-    obj.caller = message.caller === '' ? undefined : message.caller;
-    obj.ref_id = message.refId === '' ? undefined : message.refId;
-    obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
+    obj.caller = message.caller === "" ? undefined : message.caller;
+    obj.ref_id = message.refId === "" ? undefined : message.refId;
+    obj.required_confirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
-    obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
+    obj.current_confirm = !message.currentConfirm.isZero() ? (message.currentConfirm?.toString)() : undefined;
     if (message.confirmers) {
       obj.confirmers = message.confirmers.map(e => e);
     } else {
@@ -562,8 +561,8 @@ export const ActionOracleRequest = {
     } else {
       obj.data_hashes = message.dataHashes;
     }
-    obj.expired_height = !message.expiredHeight.isZero() ? message.expiredHeight?.toString() : undefined;
-    obj.execution_error_message = message.executionErrorMessage === '' ? undefined : message.executionErrorMessage;
+    obj.expired_height = !message.expiredHeight.isZero() ? (message.expiredHeight?.toString)() : undefined;
+    obj.execution_error_message = message.executionErrorMessage === "" ? undefined : message.executionErrorMessage;
     return obj;
   },
   fromAminoMsg(object: ActionOracleRequestAminoMsg): ActionOracleRequest {
@@ -577,7 +576,7 @@ export const ActionOracleRequest = {
   },
   toProtoMsg(message: ActionOracleRequest): ActionOracleRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionOracleRequest",
       value: ActionOracleRequest.encode(message).finish()
     };
   }

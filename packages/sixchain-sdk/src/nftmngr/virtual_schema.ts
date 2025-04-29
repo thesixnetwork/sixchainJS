@@ -1,9 +1,8 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Timestamp } from '../google/protobuf/timestamp';
-import { fromTimestamp,toTimestamp } from '../helpers';
-import { Action, ActionAmino, ActionSDKType } from './action';
+import { Action, ActionAmino, ActionSDKType } from "./action";
+import { Timestamp } from "../google/protobuf/timestamp";
+import * as _m0 from "protobufjs/minimal";
+import { toTimestamp, fromTimestamp } from "../helpers";
 export enum RegistryStatus {
   PENDING = 0,
   REJECT = 1,
@@ -14,32 +13,32 @@ export const RegistryStatusSDKType = RegistryStatus;
 export const RegistryStatusAmino = RegistryStatus;
 export function registryStatusFromJSON(object: any): RegistryStatus {
   switch (object) {
-  case 0:
-  case 'PENDING':
-    return RegistryStatus.PENDING;
-  case 1:
-  case 'REJECT':
-    return RegistryStatus.REJECT;
-  case 2:
-  case 'ACCEPT':
-    return RegistryStatus.ACCEPT;
-  case -1:
-  case 'UNRECOGNIZED':
-  default:
-    return RegistryStatus.UNRECOGNIZED;
+    case 0:
+    case "PENDING":
+      return RegistryStatus.PENDING;
+    case 1:
+    case "REJECT":
+      return RegistryStatus.REJECT;
+    case 2:
+    case "ACCEPT":
+      return RegistryStatus.ACCEPT;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return RegistryStatus.UNRECOGNIZED;
   }
 }
 export function registryStatusToJSON(object: RegistryStatus): string {
   switch (object) {
-  case RegistryStatus.PENDING:
-    return 'PENDING';
-  case RegistryStatus.REJECT:
-    return 'REJECT';
-  case RegistryStatus.ACCEPT:
-    return 'ACCEPT';
-  case RegistryStatus.UNRECOGNIZED:
-  default:
-    return 'UNRECOGNIZED';
+    case RegistryStatus.PENDING:
+      return "PENDING";
+    case RegistryStatus.REJECT:
+      return "REJECT";
+    case RegistryStatus.ACCEPT:
+      return "ACCEPT";
+    case RegistryStatus.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
   }
 }
 export enum ProposalType {
@@ -51,27 +50,27 @@ export const ProposalTypeSDKType = ProposalType;
 export const ProposalTypeAmino = ProposalType;
 export function proposalTypeFromJSON(object: any): ProposalType {
   switch (object) {
-  case 0:
-  case 'CREATE':
-    return ProposalType.CREATE;
-  case 1:
-  case 'EDIT':
-    return ProposalType.EDIT;
-  case -1:
-  case 'UNRECOGNIZED':
-  default:
-    return ProposalType.UNRECOGNIZED;
+    case 0:
+    case "CREATE":
+      return ProposalType.CREATE;
+    case 1:
+    case "EDIT":
+      return ProposalType.EDIT;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return ProposalType.UNRECOGNIZED;
   }
 }
 export function proposalTypeToJSON(object: ProposalType): string {
   switch (object) {
-  case ProposalType.CREATE:
-    return 'CREATE';
-  case ProposalType.EDIT:
-    return 'EDIT';
-  case ProposalType.UNRECOGNIZED:
-  default:
-    return 'UNRECOGNIZED';
+    case ProposalType.CREATE:
+      return "CREATE";
+    case ProposalType.EDIT:
+      return "EDIT";
+    case ProposalType.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
   }
 }
 export interface VirtualSchemaProposal {
@@ -85,7 +84,7 @@ export interface VirtualSchemaProposal {
   votingEndTime: Date;
 }
 export interface VirtualSchemaProposalProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposal';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposal";
   value: Uint8Array;
 }
 export interface VirtualSchemaProposalAmino {
@@ -99,7 +98,7 @@ export interface VirtualSchemaProposalAmino {
   votingEndTime?: string;
 }
 export interface VirtualSchemaProposalAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposal';
+  type: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposal";
   value: VirtualSchemaProposalAmino;
 }
 export interface VirtualSchemaProposalSDKType {
@@ -120,7 +119,7 @@ export interface VirtualSchemaProposalRequest {
   enable: boolean;
 }
 export interface VirtualSchemaProposalRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposalRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposalRequest";
   value: Uint8Array;
 }
 export interface VirtualSchemaProposalRequestAmino {
@@ -131,7 +130,7 @@ export interface VirtualSchemaProposalRequestAmino {
   enable?: boolean;
 }
 export interface VirtualSchemaProposalRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposalRequest';
+  type: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposalRequest";
   value: VirtualSchemaProposalRequestAmino;
 }
 export interface VirtualSchemaProposalRequestSDKType {
@@ -147,7 +146,7 @@ export interface VirtualSchema {
   enable: boolean;
 }
 export interface VirtualSchemaProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchema';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchema";
   value: Uint8Array;
 }
 export interface VirtualSchemaAmino {
@@ -156,7 +155,7 @@ export interface VirtualSchemaAmino {
   enable?: boolean;
 }
 export interface VirtualSchemaAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchema';
+  type: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchema";
   value: VirtualSchemaAmino;
 }
 export interface VirtualSchemaSDKType {
@@ -169,7 +168,7 @@ export interface VirtualSchemaRegistry {
   decision: RegistryStatus;
 }
 export interface VirtualSchemaRegistryProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistry';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistry";
   value: Uint8Array;
 }
 export interface VirtualSchemaRegistryAmino {
@@ -177,7 +176,7 @@ export interface VirtualSchemaRegistryAmino {
   decision?: RegistryStatus;
 }
 export interface VirtualSchemaRegistryAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistry';
+  type: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistry";
   value: VirtualSchemaRegistryAmino;
 }
 export interface VirtualSchemaRegistrySDKType {
@@ -188,14 +187,14 @@ export interface VirtualSchemaRegistryRequest {
   nftSchemaCode: string;
 }
 export interface VirtualSchemaRegistryRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistryRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistryRequest";
   value: Uint8Array;
 }
 export interface VirtualSchemaRegistryRequestAmino {
   nftSchemaCode?: string;
 }
 export interface VirtualSchemaRegistryRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistryRequest';
+  type: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistryRequest";
   value: VirtualSchemaRegistryRequestAmino;
 }
 export interface VirtualSchemaRegistryRequestSDKType {
@@ -205,14 +204,14 @@ export interface ActiveVirtualSchemaProposal {
   id: string;
 }
 export interface ActiveVirtualSchemaProposalProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActiveVirtualSchemaProposal';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActiveVirtualSchemaProposal";
   value: Uint8Array;
 }
 export interface ActiveVirtualSchemaProposalAmino {
   id?: string;
 }
 export interface ActiveVirtualSchemaProposalAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.ActiveVirtualSchemaProposal';
+  type: "/thesixnetwork.sixprotocol.nftmngr.ActiveVirtualSchemaProposal";
   value: ActiveVirtualSchemaProposalAmino;
 }
 export interface ActiveVirtualSchemaProposalSDKType {
@@ -222,14 +221,14 @@ export interface InactiveVirtualSchemaProposal {
   id: string;
 }
 export interface InactiveVirtualSchemaProposalProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.InactiveVirtualSchemaProposal';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.InactiveVirtualSchemaProposal";
   value: Uint8Array;
 }
 export interface InactiveVirtualSchemaProposalAmino {
   id?: string;
 }
 export interface InactiveVirtualSchemaProposalAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.InactiveVirtualSchemaProposal';
+  type: "/thesixnetwork.sixprotocol.nftmngr.InactiveVirtualSchemaProposal";
   value: InactiveVirtualSchemaProposalAmino;
 }
 export interface InactiveVirtualSchemaProposalSDKType {
@@ -237,7 +236,7 @@ export interface InactiveVirtualSchemaProposalSDKType {
 }
 function createBaseVirtualSchemaProposal(): VirtualSchemaProposal {
   return {
-    id: '',
+    id: "",
     proposalType: 0,
     virtualSchema: undefined,
     actions: [],
@@ -248,9 +247,9 @@ function createBaseVirtualSchemaProposal(): VirtualSchemaProposal {
   };
 }
 export const VirtualSchemaProposal = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposal',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposal",
   encode(message: VirtualSchemaProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== '') {
+    if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
     if (message.proposalType !== 0) {
@@ -283,40 +282,40 @@ export const VirtualSchemaProposal = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.id = reader.string();
-        break;
-      case 2:
-        message.proposalType = reader.int32() as any;
-        break;
-      case 3:
-        message.virtualSchema = VirtualSchema.decode(reader, reader.uint32());
-        break;
-      case 4:
-        message.actions.push(Action.decode(reader, reader.uint32()));
-        break;
-      case 5:
-        message.executors.push(reader.string());
-        break;
-      case 6:
-        message.submitTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      case 7:
-        message.votingStartTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      case 8:
-        message.votingEndTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.id = reader.string();
+          break;
+        case 2:
+          message.proposalType = reader.int32() as any;
+          break;
+        case 3:
+          message.virtualSchema = VirtualSchema.decode(reader, reader.uint32());
+          break;
+        case 4:
+          message.actions.push(Action.decode(reader, reader.uint32()));
+          break;
+        case 5:
+          message.executors.push(reader.string());
+          break;
+        case 6:
+          message.submitTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 7:
+          message.votingStartTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 8:
+          message.votingEndTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<VirtualSchemaProposal>): VirtualSchemaProposal {
     const message = createBaseVirtualSchemaProposal();
-    message.id = object.id ?? '';
+    message.id = object.id ?? "";
     message.proposalType = object.proposalType ?? 0;
     message.virtualSchema = object.virtualSchema !== undefined && object.virtualSchema !== null ? VirtualSchema.fromPartial(object.virtualSchema) : undefined;
     message.actions = object.actions?.map(e => Action.fromPartial(e)) || [];
@@ -352,7 +351,7 @@ export const VirtualSchemaProposal = {
   },
   toAmino(message: VirtualSchemaProposal): VirtualSchemaProposalAmino {
     const obj: any = {};
-    obj.id = message.id === '' ? undefined : message.id;
+    obj.id = message.id === "" ? undefined : message.id;
     obj.proposalType = message.proposalType === 0 ? undefined : message.proposalType;
     obj.virtualSchema = message.virtualSchema ? VirtualSchema.toAmino(message.virtualSchema) : undefined;
     if (message.actions) {
@@ -381,14 +380,14 @@ export const VirtualSchemaProposal = {
   },
   toProtoMsg(message: VirtualSchemaProposal): VirtualSchemaProposalProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposal',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposal",
       value: VirtualSchemaProposal.encode(message).finish()
     };
   }
 };
 function createBaseVirtualSchemaProposalRequest(): VirtualSchemaProposalRequest {
   return {
-    virtualSchemaCode: '',
+    virtualSchemaCode: "",
     virtualSchemaRegistry: [],
     actions: [],
     executors: [],
@@ -396,9 +395,9 @@ function createBaseVirtualSchemaProposalRequest(): VirtualSchemaProposalRequest 
   };
 }
 export const VirtualSchemaProposalRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposalRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposalRequest",
   encode(message: VirtualSchemaProposalRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.virtualSchemaCode !== '') {
+    if (message.virtualSchemaCode !== "") {
       writer.uint32(10).string(message.virtualSchemaCode);
     }
     for (const v of message.virtualSchemaRegistry) {
@@ -422,31 +421,31 @@ export const VirtualSchemaProposalRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.virtualSchemaCode = reader.string();
-        break;
-      case 2:
-        message.virtualSchemaRegistry.push(reader.string());
-        break;
-      case 3:
-        message.actions.push(Action.decode(reader, reader.uint32()));
-        break;
-      case 4:
-        message.executors.push(reader.string());
-        break;
-      case 5:
-        message.enable = reader.bool();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.virtualSchemaCode = reader.string();
+          break;
+        case 2:
+          message.virtualSchemaRegistry.push(reader.string());
+          break;
+        case 3:
+          message.actions.push(Action.decode(reader, reader.uint32()));
+          break;
+        case 4:
+          message.executors.push(reader.string());
+          break;
+        case 5:
+          message.enable = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<VirtualSchemaProposalRequest>): VirtualSchemaProposalRequest {
     const message = createBaseVirtualSchemaProposalRequest();
-    message.virtualSchemaCode = object.virtualSchemaCode ?? '';
+    message.virtualSchemaCode = object.virtualSchemaCode ?? "";
     message.virtualSchemaRegistry = object.virtualSchemaRegistry?.map(e => e) || [];
     message.actions = object.actions?.map(e => Action.fromPartial(e)) || [];
     message.executors = object.executors?.map(e => e) || [];
@@ -468,7 +467,7 @@ export const VirtualSchemaProposalRequest = {
   },
   toAmino(message: VirtualSchemaProposalRequest): VirtualSchemaProposalRequestAmino {
     const obj: any = {};
-    obj.virtualSchemaCode = message.virtualSchemaCode === '' ? undefined : message.virtualSchemaCode;
+    obj.virtualSchemaCode = message.virtualSchemaCode === "" ? undefined : message.virtualSchemaCode;
     if (message.virtualSchemaRegistry) {
       obj.virtualSchemaRegistry = message.virtualSchemaRegistry.map(e => e);
     } else {
@@ -498,22 +497,22 @@ export const VirtualSchemaProposalRequest = {
   },
   toProtoMsg(message: VirtualSchemaProposalRequest): VirtualSchemaProposalRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposalRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaProposalRequest",
       value: VirtualSchemaProposalRequest.encode(message).finish()
     };
   }
 };
 function createBaseVirtualSchema(): VirtualSchema {
   return {
-    virtualNftSchemaCode: '',
+    virtualNftSchemaCode: "",
     registry: [],
     enable: false
   };
 }
 export const VirtualSchema = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchema',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchema",
   encode(message: VirtualSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.virtualNftSchemaCode !== '') {
+    if (message.virtualNftSchemaCode !== "") {
       writer.uint32(10).string(message.virtualNftSchemaCode);
     }
     for (const v of message.registry) {
@@ -531,25 +530,25 @@ export const VirtualSchema = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.virtualNftSchemaCode = reader.string();
-        break;
-      case 2:
-        message.registry.push(VirtualSchemaRegistry.decode(reader, reader.uint32()));
-        break;
-      case 3:
-        message.enable = reader.bool();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.virtualNftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.registry.push(VirtualSchemaRegistry.decode(reader, reader.uint32()));
+          break;
+        case 3:
+          message.enable = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<VirtualSchema>): VirtualSchema {
     const message = createBaseVirtualSchema();
-    message.virtualNftSchemaCode = object.virtualNftSchemaCode ?? '';
+    message.virtualNftSchemaCode = object.virtualNftSchemaCode ?? "";
     message.registry = object.registry?.map(e => VirtualSchemaRegistry.fromPartial(e)) || [];
     message.enable = object.enable ?? false;
     return message;
@@ -567,7 +566,7 @@ export const VirtualSchema = {
   },
   toAmino(message: VirtualSchema): VirtualSchemaAmino {
     const obj: any = {};
-    obj.virtualNftSchemaCode = message.virtualNftSchemaCode === '' ? undefined : message.virtualNftSchemaCode;
+    obj.virtualNftSchemaCode = message.virtualNftSchemaCode === "" ? undefined : message.virtualNftSchemaCode;
     if (message.registry) {
       obj.registry = message.registry.map(e => e ? VirtualSchemaRegistry.toAmino(e) : undefined);
     } else {
@@ -587,21 +586,21 @@ export const VirtualSchema = {
   },
   toProtoMsg(message: VirtualSchema): VirtualSchemaProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchema',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchema",
       value: VirtualSchema.encode(message).finish()
     };
   }
 };
 function createBaseVirtualSchemaRegistry(): VirtualSchemaRegistry {
   return {
-    nftSchemaCode: '',
+    nftSchemaCode: "",
     decision: 0
   };
 }
 export const VirtualSchemaRegistry = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistry',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistry",
   encode(message: VirtualSchemaRegistry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
     if (message.decision !== 0) {
@@ -616,22 +615,22 @@ export const VirtualSchemaRegistry = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 2:
-        message.decision = reader.int32() as any;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.decision = reader.int32() as any;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<VirtualSchemaRegistry>): VirtualSchemaRegistry {
     const message = createBaseVirtualSchemaRegistry();
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.decision = object.decision ?? 0;
     return message;
   },
@@ -647,7 +646,7 @@ export const VirtualSchemaRegistry = {
   },
   toAmino(message: VirtualSchemaRegistry): VirtualSchemaRegistryAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.decision = message.decision === 0 ? undefined : message.decision;
     return obj;
   },
@@ -662,20 +661,20 @@ export const VirtualSchemaRegistry = {
   },
   toProtoMsg(message: VirtualSchemaRegistry): VirtualSchemaRegistryProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistry',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistry",
       value: VirtualSchemaRegistry.encode(message).finish()
     };
   }
 };
 function createBaseVirtualSchemaRegistryRequest(): VirtualSchemaRegistryRequest {
   return {
-    nftSchemaCode: ''
+    nftSchemaCode: ""
   };
 }
 export const VirtualSchemaRegistryRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistryRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistryRequest",
   encode(message: VirtualSchemaRegistryRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
     return writer;
@@ -687,19 +686,19 @@ export const VirtualSchemaRegistryRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.nftSchemaCode = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<VirtualSchemaRegistryRequest>): VirtualSchemaRegistryRequest {
     const message = createBaseVirtualSchemaRegistryRequest();
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
     return message;
   },
   fromAmino(object: VirtualSchemaRegistryRequestAmino): VirtualSchemaRegistryRequest {
@@ -711,7 +710,7 @@ export const VirtualSchemaRegistryRequest = {
   },
   toAmino(message: VirtualSchemaRegistryRequest): VirtualSchemaRegistryRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     return obj;
   },
   fromAminoMsg(object: VirtualSchemaRegistryRequestAminoMsg): VirtualSchemaRegistryRequest {
@@ -725,20 +724,20 @@ export const VirtualSchemaRegistryRequest = {
   },
   toProtoMsg(message: VirtualSchemaRegistryRequest): VirtualSchemaRegistryRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistryRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.VirtualSchemaRegistryRequest",
       value: VirtualSchemaRegistryRequest.encode(message).finish()
     };
   }
 };
 function createBaseActiveVirtualSchemaProposal(): ActiveVirtualSchemaProposal {
   return {
-    id: ''
+    id: ""
   };
 }
 export const ActiveVirtualSchemaProposal = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActiveVirtualSchemaProposal',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActiveVirtualSchemaProposal",
   encode(message: ActiveVirtualSchemaProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== '') {
+    if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
     return writer;
@@ -750,19 +749,19 @@ export const ActiveVirtualSchemaProposal = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.id = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.id = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ActiveVirtualSchemaProposal>): ActiveVirtualSchemaProposal {
     const message = createBaseActiveVirtualSchemaProposal();
-    message.id = object.id ?? '';
+    message.id = object.id ?? "";
     return message;
   },
   fromAmino(object: ActiveVirtualSchemaProposalAmino): ActiveVirtualSchemaProposal {
@@ -774,7 +773,7 @@ export const ActiveVirtualSchemaProposal = {
   },
   toAmino(message: ActiveVirtualSchemaProposal): ActiveVirtualSchemaProposalAmino {
     const obj: any = {};
-    obj.id = message.id === '' ? undefined : message.id;
+    obj.id = message.id === "" ? undefined : message.id;
     return obj;
   },
   fromAminoMsg(object: ActiveVirtualSchemaProposalAminoMsg): ActiveVirtualSchemaProposal {
@@ -788,20 +787,20 @@ export const ActiveVirtualSchemaProposal = {
   },
   toProtoMsg(message: ActiveVirtualSchemaProposal): ActiveVirtualSchemaProposalProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.ActiveVirtualSchemaProposal',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActiveVirtualSchemaProposal",
       value: ActiveVirtualSchemaProposal.encode(message).finish()
     };
   }
 };
 function createBaseInactiveVirtualSchemaProposal(): InactiveVirtualSchemaProposal {
   return {
-    id: ''
+    id: ""
   };
 }
 export const InactiveVirtualSchemaProposal = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.InactiveVirtualSchemaProposal',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.InactiveVirtualSchemaProposal",
   encode(message: InactiveVirtualSchemaProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== '') {
+    if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
     return writer;
@@ -813,19 +812,19 @@ export const InactiveVirtualSchemaProposal = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.id = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.id = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<InactiveVirtualSchemaProposal>): InactiveVirtualSchemaProposal {
     const message = createBaseInactiveVirtualSchemaProposal();
-    message.id = object.id ?? '';
+    message.id = object.id ?? "";
     return message;
   },
   fromAmino(object: InactiveVirtualSchemaProposalAmino): InactiveVirtualSchemaProposal {
@@ -837,7 +836,7 @@ export const InactiveVirtualSchemaProposal = {
   },
   toAmino(message: InactiveVirtualSchemaProposal): InactiveVirtualSchemaProposalAmino {
     const obj: any = {};
-    obj.id = message.id === '' ? undefined : message.id;
+    obj.id = message.id === "" ? undefined : message.id;
     return obj;
   },
   fromAminoMsg(object: InactiveVirtualSchemaProposalAminoMsg): InactiveVirtualSchemaProposal {
@@ -851,7 +850,7 @@ export const InactiveVirtualSchemaProposal = {
   },
   toProtoMsg(message: InactiveVirtualSchemaProposal): InactiveVirtualSchemaProposalProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.InactiveVirtualSchemaProposal',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.InactiveVirtualSchemaProposal",
       value: InactiveVirtualSchemaProposal.encode(message).finish()
     };
   }
