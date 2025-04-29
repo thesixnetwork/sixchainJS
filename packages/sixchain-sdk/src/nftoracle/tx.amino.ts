@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgCreateMintRequest, MsgSubmitMintResponse, MsgCreateActionRequest, MsgSubmitActionResponse, MsgCreateVerifyCollectionOwnerRequest, MsgSubmitVerifyCollectionOwner, MsgSetMinimumConfirmation } from "./tx";
+import { MsgCreateMintRequest, MsgSubmitMintResponse, MsgCreateActionRequest, MsgSubmitActionResponse, MsgCreateVerifyCollectionOwnerRequest, MsgSubmitVerifyCollectionOwner, MsgSetMinimumConfirmation, MsgCreateActionSigner, MsgUpdateActionSigner, MsgDeleteActionSigner, MsgCreateActionSignerConfig, MsgUpdateActionSignerConfig, MsgDeleteActionSignerConfig, MsgCreateSyncActionSigner, MsgSubmitSyncActionSigner } from "./tx";
 export const AminoConverter = {
   "/thesixnetwork.sixnft.nftoracle.MsgCreateMintRequest": {
     aminoType: "/thesixnetwork.sixnft.nftoracle.MsgCreateMintRequest",
@@ -35,5 +35,45 @@ export const AminoConverter = {
     aminoType: "/thesixnetwork.sixnft.nftoracle.MsgSetMinimumConfirmation",
     toAmino: MsgSetMinimumConfirmation.toAmino,
     fromAmino: MsgSetMinimumConfirmation.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSigner": {
+    aminoType: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSigner",
+    toAmino: MsgCreateActionSigner.toAmino,
+    fromAmino: MsgCreateActionSigner.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSigner": {
+    aminoType: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSigner",
+    toAmino: MsgUpdateActionSigner.toAmino,
+    fromAmino: MsgUpdateActionSigner.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSigner": {
+    aminoType: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSigner",
+    toAmino: MsgDeleteActionSigner.toAmino,
+    fromAmino: MsgDeleteActionSigner.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfig": {
+    aminoType: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfig",
+    toAmino: MsgCreateActionSignerConfig.toAmino,
+    fromAmino: MsgCreateActionSignerConfig.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfig": {
+    aminoType: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfig",
+    toAmino: MsgUpdateActionSignerConfig.toAmino,
+    fromAmino: MsgUpdateActionSignerConfig.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfig": {
+    aminoType: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfig",
+    toAmino: MsgDeleteActionSignerConfig.toAmino,
+    fromAmino: MsgDeleteActionSignerConfig.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSigner": {
+    aminoType: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSigner",
+    toAmino: MsgCreateSyncActionSigner.toAmino,
+    fromAmino: MsgCreateSyncActionSigner.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSigner": {
+    aminoType: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSigner",
+    toAmino: MsgSubmitSyncActionSigner.toAmino,
+    fromAmino: MsgSubmitSyncActionSigner.fromAmino
   }
 };

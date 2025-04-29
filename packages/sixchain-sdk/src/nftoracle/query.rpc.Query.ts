@@ -2,7 +2,7 @@
 import { Rpc } from "../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetMintRequestRequest, QueryGetMintRequestResponse, QueryAllMintRequestRequest, QueryAllMintRequestResponse, QueryGetActionRequestRequest, QueryGetActionRequestResponse, QueryAllActionRequestRequest, QueryAllActionRequestResponse, QueryGetCollectionOwnerRequestRequest, QueryGetCollectionOwnerRequestResponse, QueryAllCollectionOwnerRequestRequest, QueryAllCollectionOwnerRequestResponse, QueryGetOracleConfigRequest, QueryGetOracleConfigResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryGetMintRequestRequest, QueryGetMintRequestResponse, QueryAllMintRequestRequest, QueryAllMintRequestResponse, QueryGetActionRequestRequest, QueryGetActionRequestResponse, QueryAllActionRequestRequest, QueryAllActionRequestResponse, QueryGetCollectionOwnerRequestRequest, QueryGetCollectionOwnerRequestResponse, QueryAllCollectionOwnerRequestRequest, QueryAllCollectionOwnerRequestResponse, QueryGetOracleConfigRequest, QueryGetOracleConfigResponse, QueryGetActionSignerRequest, QueryGetActionSignerResponse, QueryAllActionSignerRequest, QueryAllActionSignerResponse, QueryGetBindedSignerRequest, QueryGetBindedSignerResponse, QueryGetActionSignerConfigRequest, QueryGetActionSignerConfigResponse, QueryAllActionSignerConfigRequest, QueryAllActionSignerConfigResponse, QueryGetSyncActionSignerRequest, QueryGetSyncActionSignerResponse, QueryAllSyncActionSignerRequest, QueryAllSyncActionSignerResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -12,7 +12,7 @@ export interface Query {
   /** Queries a list of MintRequest items. */
   mintRequestAll(request?: QueryAllMintRequestRequest): Promise<QueryAllMintRequestResponse>;
   /** Queries a ActionRequest by id. */
-  actionRequest(request: QueryGetActionRequestRequest): Promise<QueryGetActionRequestResponse>;
+  actionOracleRequest(request: QueryGetActionRequestRequest): Promise<QueryGetActionRequestResponse>;
   /** Queries a list of ActionRequest items. */
   actionRequestAll(request?: QueryAllActionRequestRequest): Promise<QueryAllActionRequestResponse>;
   /** Queries a CollectionOwnerRequest by id. */
@@ -21,6 +21,20 @@ export interface Query {
   collectionOwnerRequestAll(request?: QueryAllCollectionOwnerRequestRequest): Promise<QueryAllCollectionOwnerRequestResponse>;
   /** Queries a OracleConfig by index. */
   oracleConfig(request?: QueryGetOracleConfigRequest): Promise<QueryGetOracleConfigResponse>;
+  /** Queries a ActionSigner by index. */
+  actionSigner(request: QueryGetActionSignerRequest): Promise<QueryGetActionSignerResponse>;
+  /** Queries a list of ActionSigner items. */
+  actionSignerAll(request?: QueryAllActionSignerRequest): Promise<QueryAllActionSignerResponse>;
+  /** Queries a BindedSigner by index. */
+  bindedSigner(request: QueryGetBindedSignerRequest): Promise<QueryGetBindedSignerResponse>;
+  /** Queries a ActionSignerConfig by index. */
+  actionSignerConfig(request: QueryGetActionSignerConfigRequest): Promise<QueryGetActionSignerConfigResponse>;
+  /** Queries a list of ActionSignerConfig items. */
+  actionSignerConfigAll(request?: QueryAllActionSignerConfigRequest): Promise<QueryAllActionSignerConfigResponse>;
+  /** Queries a SyncActionSigner by id. */
+  syncActionSigner(request: QueryGetSyncActionSignerRequest): Promise<QueryGetSyncActionSignerResponse>;
+  /** Queries a list of SyncActionSigner items. */
+  syncActionSignerAll(request?: QueryAllSyncActionSignerRequest): Promise<QueryAllSyncActionSignerResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -29,11 +43,18 @@ export class QueryClientImpl implements Query {
     this.params = this.params.bind(this);
     this.mintRequest = this.mintRequest.bind(this);
     this.mintRequestAll = this.mintRequestAll.bind(this);
-    this.actionRequest = this.actionRequest.bind(this);
+    this.actionOracleRequest = this.actionOracleRequest.bind(this);
     this.actionRequestAll = this.actionRequestAll.bind(this);
     this.collectionOwnerRequest = this.collectionOwnerRequest.bind(this);
     this.collectionOwnerRequestAll = this.collectionOwnerRequestAll.bind(this);
     this.oracleConfig = this.oracleConfig.bind(this);
+    this.actionSigner = this.actionSigner.bind(this);
+    this.actionSignerAll = this.actionSignerAll.bind(this);
+    this.bindedSigner = this.bindedSigner.bind(this);
+    this.actionSignerConfig = this.actionSignerConfig.bind(this);
+    this.actionSignerConfigAll = this.actionSignerConfigAll.bind(this);
+    this.syncActionSigner = this.syncActionSigner.bind(this);
+    this.syncActionSignerAll = this.syncActionSignerAll.bind(this);
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
@@ -52,9 +73,9 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "MintRequestAll", data);
     return promise.then(data => QueryAllMintRequestResponse.decode(new _m0.Reader(data)));
   }
-  actionRequest(request: QueryGetActionRequestRequest): Promise<QueryGetActionRequestResponse> {
+  actionOracleRequest(request: QueryGetActionRequestRequest): Promise<QueryGetActionRequestResponse> {
     const data = QueryGetActionRequestRequest.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionRequest", data);
+    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionOracleRequest", data);
     return promise.then(data => QueryGetActionRequestResponse.decode(new _m0.Reader(data)));
   }
   actionRequestAll(request: QueryAllActionRequestRequest = {
@@ -81,6 +102,47 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "OracleConfig", data);
     return promise.then(data => QueryGetOracleConfigResponse.decode(new _m0.Reader(data)));
   }
+  actionSigner(request: QueryGetActionSignerRequest): Promise<QueryGetActionSignerResponse> {
+    const data = QueryGetActionSignerRequest.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionSigner", data);
+    return promise.then(data => QueryGetActionSignerResponse.decode(new _m0.Reader(data)));
+  }
+  actionSignerAll(request: QueryAllActionSignerRequest = {
+    pagination: undefined
+  }): Promise<QueryAllActionSignerResponse> {
+    const data = QueryAllActionSignerRequest.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionSignerAll", data);
+    return promise.then(data => QueryAllActionSignerResponse.decode(new _m0.Reader(data)));
+  }
+  bindedSigner(request: QueryGetBindedSignerRequest): Promise<QueryGetBindedSignerResponse> {
+    const data = QueryGetBindedSignerRequest.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "BindedSigner", data);
+    return promise.then(data => QueryGetBindedSignerResponse.decode(new _m0.Reader(data)));
+  }
+  actionSignerConfig(request: QueryGetActionSignerConfigRequest): Promise<QueryGetActionSignerConfigResponse> {
+    const data = QueryGetActionSignerConfigRequest.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionSignerConfig", data);
+    return promise.then(data => QueryGetActionSignerConfigResponse.decode(new _m0.Reader(data)));
+  }
+  actionSignerConfigAll(request: QueryAllActionSignerConfigRequest = {
+    pagination: undefined
+  }): Promise<QueryAllActionSignerConfigResponse> {
+    const data = QueryAllActionSignerConfigRequest.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "ActionSignerConfigAll", data);
+    return promise.then(data => QueryAllActionSignerConfigResponse.decode(new _m0.Reader(data)));
+  }
+  syncActionSigner(request: QueryGetSyncActionSignerRequest): Promise<QueryGetSyncActionSignerResponse> {
+    const data = QueryGetSyncActionSignerRequest.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "SyncActionSigner", data);
+    return promise.then(data => QueryGetSyncActionSignerResponse.decode(new _m0.Reader(data)));
+  }
+  syncActionSignerAll(request: QueryAllSyncActionSignerRequest = {
+    pagination: undefined
+  }): Promise<QueryAllSyncActionSignerResponse> {
+    const data = QueryAllSyncActionSignerRequest.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixnft.nftoracle.Query", "SyncActionSignerAll", data);
+    return promise.then(data => QueryAllSyncActionSignerResponse.decode(new _m0.Reader(data)));
+  }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -95,8 +157,8 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     mintRequestAll(request?: QueryAllMintRequestRequest): Promise<QueryAllMintRequestResponse> {
       return queryService.mintRequestAll(request);
     },
-    actionRequest(request: QueryGetActionRequestRequest): Promise<QueryGetActionRequestResponse> {
-      return queryService.actionRequest(request);
+    actionOracleRequest(request: QueryGetActionRequestRequest): Promise<QueryGetActionRequestResponse> {
+      return queryService.actionOracleRequest(request);
     },
     actionRequestAll(request?: QueryAllActionRequestRequest): Promise<QueryAllActionRequestResponse> {
       return queryService.actionRequestAll(request);
@@ -109,6 +171,27 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     oracleConfig(request?: QueryGetOracleConfigRequest): Promise<QueryGetOracleConfigResponse> {
       return queryService.oracleConfig(request);
+    },
+    actionSigner(request: QueryGetActionSignerRequest): Promise<QueryGetActionSignerResponse> {
+      return queryService.actionSigner(request);
+    },
+    actionSignerAll(request?: QueryAllActionSignerRequest): Promise<QueryAllActionSignerResponse> {
+      return queryService.actionSignerAll(request);
+    },
+    bindedSigner(request: QueryGetBindedSignerRequest): Promise<QueryGetBindedSignerResponse> {
+      return queryService.bindedSigner(request);
+    },
+    actionSignerConfig(request: QueryGetActionSignerConfigRequest): Promise<QueryGetActionSignerConfigResponse> {
+      return queryService.actionSignerConfig(request);
+    },
+    actionSignerConfigAll(request?: QueryAllActionSignerConfigRequest): Promise<QueryAllActionSignerConfigResponse> {
+      return queryService.actionSignerConfigAll(request);
+    },
+    syncActionSigner(request: QueryGetSyncActionSignerRequest): Promise<QueryGetSyncActionSignerResponse> {
+      return queryService.syncActionSigner(request);
+    },
+    syncActionSignerAll(request?: QueryAllSyncActionSignerRequest): Promise<QueryAllSyncActionSignerResponse> {
+      return queryService.syncActionSignerAll(request);
     }
   };
 };

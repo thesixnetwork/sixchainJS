@@ -1,13 +1,11 @@
 //@ts-nocheck
 import { Rpc } from "../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgGrantPermission, MsgGrantPermissionResponse, MsgRevokePermission, MsgRevokePermissionResponse, MsgMint, MsgMintResponse, MsgBurn, MsgBurnResponse } from "./tx";
+import { MsgGrantPermission, MsgGrantPermissionResponse, MsgRevokePermission, MsgRevokePermissionResponse } from "./tx";
 /** Msg defines the Msg service. */
 export interface Msg {
   grantPermission(request: MsgGrantPermission): Promise<MsgGrantPermissionResponse>;
   revokePermission(request: MsgRevokePermission): Promise<MsgRevokePermissionResponse>;
-  mint(request: MsgMint): Promise<MsgMintResponse>;
-  burn(request: MsgBurn): Promise<MsgBurnResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -15,8 +13,6 @@ export class MsgClientImpl implements Msg {
     this.rpc = rpc;
     this.grantPermission = this.grantPermission.bind(this);
     this.revokePermission = this.revokePermission.bind(this);
-    this.mint = this.mint.bind(this);
-    this.burn = this.burn.bind(this);
   }
   grantPermission(request: MsgGrantPermission): Promise<MsgGrantPermissionResponse> {
     const data = MsgGrantPermission.encode(request).finish();
@@ -27,15 +23,5 @@ export class MsgClientImpl implements Msg {
     const data = MsgRevokePermission.encode(request).finish();
     const promise = this.rpc.request("thesixnetwork.sixnft.nftadmin.Msg", "RevokePermission", data);
     return promise.then(data => MsgRevokePermissionResponse.decode(new _m0.Reader(data)));
-  }
-  mint(request: MsgMint): Promise<MsgMintResponse> {
-    const data = MsgMint.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftadmin.Msg", "Mint", data);
-    return promise.then(data => MsgMintResponse.decode(new _m0.Reader(data)));
-  }
-  burn(request: MsgBurn): Promise<MsgBurnResponse> {
-    const data = MsgBurn.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixnft.nftadmin.Msg", "Burn", data);
-    return promise.then(data => MsgBurnResponse.decode(new _m0.Reader(data)));
   }
 }

@@ -29,26 +29,6 @@ export interface OriginContractParamSDKType {
   contract_owner: string;
   request_expire: Date;
 }
-export interface CollectionOwnerRequest_ConfirmersEntry {
-  key: string;
-  value: boolean;
-}
-export interface CollectionOwnerRequest_ConfirmersEntryProtoMsg {
-  typeUrl: string;
-  value: Uint8Array;
-}
-export interface CollectionOwnerRequest_ConfirmersEntryAmino {
-  key?: string;
-  value?: boolean;
-}
-export interface CollectionOwnerRequest_ConfirmersEntryAminoMsg {
-  type: string;
-  value: CollectionOwnerRequest_ConfirmersEntryAmino;
-}
-export interface CollectionOwnerRequest_ConfirmersEntrySDKType {
-  key: string;
-  value: boolean;
-}
 export interface CollectionOwnerRequest {
   id: Long;
   nftSchemaCode: string;
@@ -56,9 +36,7 @@ export interface CollectionOwnerRequest {
   requiredConfirm: Long;
   status: RequestStatus;
   currentConfirm: Long;
-  confirmers: {
-    [key: string]: boolean;
-  };
+  confirmers: string[];
   createdAt: Date;
   validUntil: Date;
   contractInfo: OriginContractInfo[];
@@ -75,9 +53,7 @@ export interface CollectionOwnerRequestAmino {
   required_confirm?: string;
   status?: RequestStatus;
   current_confirm?: string;
-  confirmers?: {
-    [key: string]: boolean;
-  };
+  confirmers?: string[];
   created_at?: string;
   valid_until?: string;
   contract_info?: OriginContractInfoAmino[];
@@ -94,9 +70,7 @@ export interface CollectionOwnerRequestSDKType {
   required_confirm: Long;
   status: RequestStatus;
   current_confirm: Long;
-  confirmers: {
-    [key: string]: boolean;
-  };
+  confirmers: string[];
   created_at: Date;
   valid_until: Date;
   contract_info: OriginContractInfoSDKType[];
@@ -224,74 +198,6 @@ export const OriginContractParam = {
     };
   }
 };
-function createBaseCollectionOwnerRequest_ConfirmersEntry(): CollectionOwnerRequest_ConfirmersEntry {
-  return {
-    key: "",
-    value: false
-  };
-}
-export const CollectionOwnerRequest_ConfirmersEntry = {
-  encode(message: CollectionOwnerRequest_ConfirmersEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.key !== "") {
-      writer.uint32(10).string(message.key);
-    }
-    if (message.value === true) {
-      writer.uint32(16).bool(message.value);
-    }
-    return writer;
-  },
-  decode(input: _m0.Reader | Uint8Array, length?: number): CollectionOwnerRequest_ConfirmersEntry {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCollectionOwnerRequest_ConfirmersEntry();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.key = reader.string();
-          break;
-        case 2:
-          message.value = reader.bool();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<CollectionOwnerRequest_ConfirmersEntry>): CollectionOwnerRequest_ConfirmersEntry {
-    const message = createBaseCollectionOwnerRequest_ConfirmersEntry();
-    message.key = object.key ?? "";
-    message.value = object.value ?? false;
-    return message;
-  },
-  fromAmino(object: CollectionOwnerRequest_ConfirmersEntryAmino): CollectionOwnerRequest_ConfirmersEntry {
-    const message = createBaseCollectionOwnerRequest_ConfirmersEntry();
-    if (object.key !== undefined && object.key !== null) {
-      message.key = object.key;
-    }
-    if (object.value !== undefined && object.value !== null) {
-      message.value = object.value;
-    }
-    return message;
-  },
-  toAmino(message: CollectionOwnerRequest_ConfirmersEntry): CollectionOwnerRequest_ConfirmersEntryAmino {
-    const obj: any = {};
-    obj.key = message.key === "" ? undefined : message.key;
-    obj.value = message.value === false ? undefined : message.value;
-    return obj;
-  },
-  fromAminoMsg(object: CollectionOwnerRequest_ConfirmersEntryAminoMsg): CollectionOwnerRequest_ConfirmersEntry {
-    return CollectionOwnerRequest_ConfirmersEntry.fromAmino(object.value);
-  },
-  fromProtoMsg(message: CollectionOwnerRequest_ConfirmersEntryProtoMsg): CollectionOwnerRequest_ConfirmersEntry {
-    return CollectionOwnerRequest_ConfirmersEntry.decode(message.value);
-  },
-  toProto(message: CollectionOwnerRequest_ConfirmersEntry): Uint8Array {
-    return CollectionOwnerRequest_ConfirmersEntry.encode(message).finish();
-  }
-};
 function createBaseCollectionOwnerRequest(): CollectionOwnerRequest {
   return {
     id: Long.UZERO,
@@ -300,7 +206,7 @@ function createBaseCollectionOwnerRequest(): CollectionOwnerRequest {
     requiredConfirm: Long.UZERO,
     status: 0,
     currentConfirm: Long.UZERO,
-    confirmers: {},
+    confirmers: [],
     createdAt: new Date(),
     validUntil: new Date(),
     contractInfo: [],
@@ -328,12 +234,9 @@ export const CollectionOwnerRequest = {
     if (!message.currentConfirm.isZero()) {
       writer.uint32(48).uint64(message.currentConfirm);
     }
-    Object.entries(message.confirmers).forEach(([key, value]) => {
-      CollectionOwnerRequest_ConfirmersEntry.encode({
-        key: key as any,
-        value
-      }, writer.uint32(56).fork()).ldelim();
-    });
+    for (const v of message.confirmers) {
+      writer.uint32(58).string(v!);
+    }
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(66).fork()).ldelim();
     }
@@ -374,10 +277,7 @@ export const CollectionOwnerRequest = {
           message.currentConfirm = reader.uint64() as Long;
           break;
         case 7:
-          const entry7 = CollectionOwnerRequest_ConfirmersEntry.decode(reader, reader.uint32());
-          if (entry7.value !== undefined) {
-            message.confirmers[entry7.key] = entry7.value;
-          }
+          message.confirmers.push(reader.string());
           break;
         case 8:
           message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
@@ -406,14 +306,7 @@ export const CollectionOwnerRequest = {
     message.requiredConfirm = object.requiredConfirm !== undefined && object.requiredConfirm !== null ? Long.fromValue(object.requiredConfirm) : Long.UZERO;
     message.status = object.status ?? 0;
     message.currentConfirm = object.currentConfirm !== undefined && object.currentConfirm !== null ? Long.fromValue(object.currentConfirm) : Long.UZERO;
-    message.confirmers = Object.entries(object.confirmers ?? {}).reduce<{
-      [key: string]: bool;
-    }>((acc, [key, value]) => {
-      if (value !== undefined) {
-        acc[key] = bool.fromPartial(value);
-      }
-      return acc;
-    }, {});
+    message.confirmers = object.confirmers?.map(e => e) || [];
     message.createdAt = object.createdAt ?? undefined;
     message.validUntil = object.validUntil ?? undefined;
     message.contractInfo = object.contractInfo?.map(e => OriginContractInfo.fromPartial(e)) || [];
@@ -440,14 +333,7 @@ export const CollectionOwnerRequest = {
     if (object.current_confirm !== undefined && object.current_confirm !== null) {
       message.currentConfirm = Long.fromString(object.current_confirm);
     }
-    message.confirmers = Object.entries(object.confirmers ?? {}).reduce<{
-      [key: string]: bool;
-    }>((acc, [key, value]) => {
-      if (value !== undefined) {
-        acc[key] = bool.fromAmino(value);
-      }
-      return acc;
-    }, {});
+    message.confirmers = object.confirmers?.map(e => e) || [];
     if (object.created_at !== undefined && object.created_at !== null) {
       message.createdAt = fromTimestamp(Timestamp.fromAmino(object.created_at));
     }
@@ -468,11 +354,10 @@ export const CollectionOwnerRequest = {
     obj.required_confirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
     obj.current_confirm = !message.currentConfirm.isZero() ? (message.currentConfirm?.toString)() : undefined;
-    obj.confirmers = {};
     if (message.confirmers) {
-      Object.entries(message.confirmers).forEach(([k, v]) => {
-        obj.confirmers[k] = bool.toAmino(v);
-      });
+      obj.confirmers = message.confirmers.map(e => e);
+    } else {
+      obj.confirmers = message.confirmers;
     }
     obj.created_at = message.createdAt ? Timestamp.toAmino(toTimestamp(message.createdAt)) : undefined;
     obj.valid_until = message.validUntil ? Timestamp.toAmino(toTimestamp(message.validUntil)) : undefined;

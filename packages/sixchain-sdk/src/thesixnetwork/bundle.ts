@@ -19,65 +19,67 @@ import * as _74 from "../nftmngr/nft_fee_config";
 import * as _75 from "../nftmngr/nft_schema_by_contract";
 import * as _76 from "../nftmngr/nft_schema";
 import * as _77 from "../nftmngr/on_chain_data";
-import * as _78 from "../nftmngr/on_off_switch";
-import * as _79 from "../nftmngr/opensea_display_option";
-import * as _80 from "../nftmngr/organization";
-import * as _81 from "../nftmngr/origin_data";
-import * as _82 from "../nftmngr/params";
-import * as _83 from "../nftmngr/query";
-import * as _84 from "../nftmngr/status";
-import * as _85 from "../nftmngr/tx";
-import * as _86 from "../nftoracle/action_request";
-import * as _87 from "../nftoracle/action_signature";
-import * as _88 from "../nftoracle/collection_owner_request";
-import * as _89 from "../nftoracle/collection_owner_signature";
-import * as _90 from "../nftoracle/genesis";
-import * as _91 from "../nftoracle/mint_request";
-import * as _92 from "../nftoracle/opensea";
-import * as _93 from "../nftoracle/oracle_config";
-import * as _94 from "../nftoracle/params";
-import * as _95 from "../nftoracle/query";
-import * as _96 from "../nftoracle/request";
-import * as _97 from "../nftoracle/tx";
-import * as _98 from "../protocoladmin/admin";
-import * as _99 from "../protocoladmin/genesis";
-import * as _100 from "../protocoladmin/group";
-import * as _101 from "../protocoladmin/packet";
-import * as _102 from "../protocoladmin/params";
-import * as _103 from "../protocoladmin/query";
-import * as _104 from "../protocoladmin/tx";
-import * as _105 from "../tokenmngr/burn";
-import * as _106 from "../tokenmngr/genesis";
-import * as _107 from "../tokenmngr/mintperm";
-import * as _108 from "../tokenmngr/options";
-import * as _109 from "../tokenmngr/packet";
-import * as _110 from "../tokenmngr/params";
-import * as _111 from "../tokenmngr/query";
-import * as _112 from "../tokenmngr/token_burn";
-import * as _113 from "../tokenmngr/token";
-import * as _114 from "../tokenmngr/tx";
-import * as _158 from "../nftadmin/tx.amino";
-import * as _159 from "../nftmngr/tx.amino";
-import * as _160 from "../nftoracle/tx.amino";
-import * as _161 from "../protocoladmin/tx.amino";
-import * as _162 from "../tokenmngr/tx.amino";
-import * as _163 from "../nftadmin/tx.registry";
-import * as _164 from "../nftmngr/tx.registry";
-import * as _165 from "../nftoracle/tx.registry";
-import * as _166 from "../protocoladmin/tx.registry";
-import * as _167 from "../tokenmngr/tx.registry";
-import * as _168 from "../nftadmin/query.rpc.Query";
-import * as _169 from "../nftmngr/query.rpc.Query";
-import * as _170 from "../nftoracle/query.rpc.Query";
-import * as _171 from "../protocoladmin/query.rpc.Query";
-import * as _172 from "../tokenmngr/query.rpc.Query";
-import * as _173 from "../nftadmin/tx.rpc.msg";
-import * as _174 from "../nftmngr/tx.rpc.msg";
-import * as _175 from "../nftoracle/tx.rpc.msg";
-import * as _176 from "../protocoladmin/tx.rpc.msg";
-import * as _177 from "../tokenmngr/tx.rpc.msg";
-import * as _180 from "./rpc.query";
-import * as _181 from "./rpc.tx";
+import * as _78 from "../nftmngr/opensea_display_option";
+import * as _79 from "../nftmngr/organization";
+import * as _80 from "../nftmngr/origin_data";
+import * as _81 from "../nftmngr/params";
+import * as _82 from "../nftmngr/query";
+import * as _83 from "../nftmngr/tx";
+import * as _84 from "../nftoracle/action_request";
+import * as _85 from "../nftoracle/action_signature";
+import * as _86 from "../nftoracle/action_signer_config";
+import * as _87 from "../nftoracle/action_signer";
+import * as _88 from "../nftoracle/binded_signer";
+import * as _89 from "../nftoracle/collection_owner_request";
+import * as _90 from "../nftoracle/collection_owner_signature";
+import * as _91 from "../nftoracle/genesis";
+import * as _92 from "../nftoracle/mint_request";
+import * as _93 from "../nftoracle/opensea";
+import * as _94 from "../nftoracle/oracle_config";
+import * as _95 from "../nftoracle/params";
+import * as _96 from "../nftoracle/query";
+import * as _97 from "../nftoracle/request";
+import * as _98 from "../nftoracle/sync_action_signer";
+import * as _99 from "../nftoracle/tx";
+import * as _100 from "../protocoladmin/admin";
+import * as _101 from "../protocoladmin/genesis";
+import * as _102 from "../protocoladmin/group";
+import * as _103 from "../protocoladmin/packet";
+import * as _104 from "../protocoladmin/params";
+import * as _105 from "../protocoladmin/query";
+import * as _106 from "../protocoladmin/tx";
+import * as _107 from "../tokenmngr/burn";
+import * as _108 from "../tokenmngr/genesis";
+import * as _109 from "../tokenmngr/mintperm";
+import * as _110 from "../tokenmngr/options";
+import * as _111 from "../tokenmngr/packet";
+import * as _112 from "../tokenmngr/params";
+import * as _113 from "../tokenmngr/query";
+import * as _114 from "../tokenmngr/token_burn";
+import * as _115 from "../tokenmngr/token";
+import * as _116 from "../tokenmngr/tx";
+import * as _160 from "../nftadmin/tx.amino";
+import * as _161 from "../nftmngr/tx.amino";
+import * as _162 from "../nftoracle/tx.amino";
+import * as _163 from "../protocoladmin/tx.amino";
+import * as _164 from "../tokenmngr/tx.amino";
+import * as _165 from "../nftadmin/tx.registry";
+import * as _166 from "../nftmngr/tx.registry";
+import * as _167 from "../nftoracle/tx.registry";
+import * as _168 from "../protocoladmin/tx.registry";
+import * as _169 from "../tokenmngr/tx.registry";
+import * as _170 from "../nftadmin/query.rpc.Query";
+import * as _171 from "../nftmngr/query.rpc.Query";
+import * as _172 from "../nftoracle/query.rpc.Query";
+import * as _173 from "../protocoladmin/query.rpc.Query";
+import * as _174 from "../tokenmngr/query.rpc.Query";
+import * as _175 from "../nftadmin/tx.rpc.msg";
+import * as _176 from "../nftmngr/tx.rpc.msg";
+import * as _177 from "../nftoracle/tx.rpc.msg";
+import * as _178 from "../protocoladmin/tx.rpc.msg";
+import * as _179 from "../tokenmngr/tx.rpc.msg";
+import * as _182 from "./rpc.query";
+import * as _183 from "./rpc.tx";
 export namespace thesixnetwork {
   export namespace sixnft {
     export const nftadmin = {
@@ -87,10 +89,10 @@ export namespace thesixnetwork {
       ..._61,
       ..._62,
       ..._63,
-      ..._158,
-      ..._163,
-      ..._168,
-      ..._173
+      ..._160,
+      ..._165,
+      ..._170,
+      ..._175
     };
     export const nftmngr = {
       ..._64,
@@ -113,14 +115,14 @@ export namespace thesixnetwork {
       ..._81,
       ..._82,
       ..._83,
-      ..._84,
-      ..._85,
-      ..._159,
-      ..._164,
-      ..._169,
-      ..._174
+      ..._161,
+      ..._166,
+      ..._171,
+      ..._176
     };
     export const nftoracle = {
+      ..._84,
+      ..._85,
       ..._86,
       ..._87,
       ..._88,
@@ -133,29 +135,29 @@ export namespace thesixnetwork {
       ..._95,
       ..._96,
       ..._97,
-      ..._160,
-      ..._165,
-      ..._170,
-      ..._175
+      ..._98,
+      ..._99,
+      ..._162,
+      ..._167,
+      ..._172,
+      ..._177
     };
   }
   export namespace sixprotocol {
     export const protocoladmin = {
-      ..._98,
-      ..._99,
       ..._100,
       ..._101,
       ..._102,
       ..._103,
       ..._104,
-      ..._161,
-      ..._166,
-      ..._171,
-      ..._176
-    };
-    export const tokenmngr = {
       ..._105,
       ..._106,
+      ..._163,
+      ..._168,
+      ..._173,
+      ..._178
+    };
+    export const tokenmngr = {
       ..._107,
       ..._108,
       ..._109,
@@ -164,14 +166,16 @@ export namespace thesixnetwork {
       ..._112,
       ..._113,
       ..._114,
-      ..._162,
-      ..._167,
-      ..._172,
-      ..._177
+      ..._115,
+      ..._116,
+      ..._164,
+      ..._169,
+      ..._174,
+      ..._179
     };
   }
   export const ClientFactory = {
-    ..._180,
-    ..._181
+    ..._182,
+    ..._183
   };
 }

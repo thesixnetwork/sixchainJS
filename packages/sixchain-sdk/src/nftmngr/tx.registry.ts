@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateNFTSchema, MsgCreateMetadata, MsgPerformActionByAdmin, MsgAddAttribute, MsgAddAction, MsgSetNFTAttribute, MsgSetBaseUri, MsgToggleAction, MsgChangeSchemaOwner, MsgAddSystemActioner, MsgRemoveSystemActioner, MsgResyncAttributes, MsgShowAttributes, MsgSetFeeConfig, MsgSetMintauth } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchema", MsgCreateNFTSchema], ["/thesixnetwork.sixnft.nftmngr.MsgCreateMetadata", MsgCreateMetadata], ["/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdmin", MsgPerformActionByAdmin], ["/thesixnetwork.sixnft.nftmngr.MsgAddAttribute", MsgAddAttribute], ["/thesixnetwork.sixnft.nftmngr.MsgAddAction", MsgAddAction], ["/thesixnetwork.sixnft.nftmngr.MsgSetNFTAttribute", MsgSetNFTAttribute], ["/thesixnetwork.sixnft.nftmngr.MsgSetBaseUri", MsgSetBaseUri], ["/thesixnetwork.sixnft.nftmngr.MsgToggleAction", MsgToggleAction], ["/thesixnetwork.sixnft.nftmngr.MsgChangeSchemaOwner", MsgChangeSchemaOwner], ["/thesixnetwork.sixnft.nftmngr.MsgAddSystemActioner", MsgAddSystemActioner], ["/thesixnetwork.sixnft.nftmngr.MsgRemoveSystemActioner", MsgRemoveSystemActioner], ["/thesixnetwork.sixnft.nftmngr.MsgResyncAttributes", MsgResyncAttributes], ["/thesixnetwork.sixnft.nftmngr.MsgShowAttributes", MsgShowAttributes], ["/thesixnetwork.sixnft.nftmngr.MsgSetFeeConfig", MsgSetFeeConfig], ["/thesixnetwork.sixnft.nftmngr.MsgSetMintauth", MsgSetMintauth]];
+import { MsgCreateNFTSchema, MsgCreateMetadata, MsgPerformActionByAdmin, MsgAddAttribute, MsgAddAction, MsgSetNFTAttribute, MsgSetBaseUri, MsgToggleAction, MsgChangeSchemaOwner, MsgAddSystemActioner, MsgRemoveSystemActioner, MsgResyncAttributes, MsgShowAttributes, MsgSetFeeConfig, MsgSetMintauth, MsgChangeOrgOwner, MsgCreateMultiMetadata, MsgPerformMultiTokenAction, MsgSetUriRetrievalMethod, MsgSetOriginChain, MsgSetOriginContract, MsgSetAttributeOveriding, MsgSetMetadataFormat } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchema", MsgCreateNFTSchema], ["/thesixnetwork.sixnft.nftmngr.MsgCreateMetadata", MsgCreateMetadata], ["/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdmin", MsgPerformActionByAdmin], ["/thesixnetwork.sixnft.nftmngr.MsgAddAttribute", MsgAddAttribute], ["/thesixnetwork.sixnft.nftmngr.MsgAddAction", MsgAddAction], ["/thesixnetwork.sixnft.nftmngr.MsgSetNFTAttribute", MsgSetNFTAttribute], ["/thesixnetwork.sixnft.nftmngr.MsgSetBaseUri", MsgSetBaseUri], ["/thesixnetwork.sixnft.nftmngr.MsgToggleAction", MsgToggleAction], ["/thesixnetwork.sixnft.nftmngr.MsgChangeSchemaOwner", MsgChangeSchemaOwner], ["/thesixnetwork.sixnft.nftmngr.MsgAddSystemActioner", MsgAddSystemActioner], ["/thesixnetwork.sixnft.nftmngr.MsgRemoveSystemActioner", MsgRemoveSystemActioner], ["/thesixnetwork.sixnft.nftmngr.MsgResyncAttributes", MsgResyncAttributes], ["/thesixnetwork.sixnft.nftmngr.MsgShowAttributes", MsgShowAttributes], ["/thesixnetwork.sixnft.nftmngr.MsgSetFeeConfig", MsgSetFeeConfig], ["/thesixnetwork.sixnft.nftmngr.MsgSetMintauth", MsgSetMintauth], ["/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner", MsgChangeOrgOwner], ["/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadata", MsgCreateMultiMetadata], ["/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenAction", MsgPerformMultiTokenAction], ["/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod", MsgSetUriRetrievalMethod], ["/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain", MsgSetOriginChain], ["/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract", MsgSetOriginContract], ["/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding", MsgSetAttributeOveriding], ["/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat", MsgSetMetadataFormat]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -98,6 +98,54 @@ export const MessageComposer = {
         typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauth",
         value: MsgSetMintauth.encode(value).finish()
       };
+    },
+    changeOrgOwner(value: MsgChangeOrgOwner) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner",
+        value: MsgChangeOrgOwner.encode(value).finish()
+      };
+    },
+    createMultiMetadata(value: MsgCreateMultiMetadata) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadata",
+        value: MsgCreateMultiMetadata.encode(value).finish()
+      };
+    },
+    performMultiTokenAction(value: MsgPerformMultiTokenAction) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenAction",
+        value: MsgPerformMultiTokenAction.encode(value).finish()
+      };
+    },
+    setUriRetrievalMethod(value: MsgSetUriRetrievalMethod) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod",
+        value: MsgSetUriRetrievalMethod.encode(value).finish()
+      };
+    },
+    setOriginChain(value: MsgSetOriginChain) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain",
+        value: MsgSetOriginChain.encode(value).finish()
+      };
+    },
+    setOriginContract(value: MsgSetOriginContract) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract",
+        value: MsgSetOriginContract.encode(value).finish()
+      };
+    },
+    setAttributeOveriding(value: MsgSetAttributeOveriding) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding",
+        value: MsgSetAttributeOveriding.encode(value).finish()
+      };
+    },
+    setMetadataFormat(value: MsgSetMetadataFormat) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat",
+        value: MsgSetMetadataFormat.encode(value).finish()
+      };
     }
   },
   withTypeUrl: {
@@ -188,6 +236,54 @@ export const MessageComposer = {
     setMintauth(value: MsgSetMintauth) {
       return {
         typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauth",
+        value
+      };
+    },
+    changeOrgOwner(value: MsgChangeOrgOwner) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner",
+        value
+      };
+    },
+    createMultiMetadata(value: MsgCreateMultiMetadata) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadata",
+        value
+      };
+    },
+    performMultiTokenAction(value: MsgPerformMultiTokenAction) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenAction",
+        value
+      };
+    },
+    setUriRetrievalMethod(value: MsgSetUriRetrievalMethod) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod",
+        value
+      };
+    },
+    setOriginChain(value: MsgSetOriginChain) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain",
+        value
+      };
+    },
+    setOriginContract(value: MsgSetOriginContract) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract",
+        value
+      };
+    },
+    setAttributeOveriding(value: MsgSetAttributeOveriding) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding",
+        value
+      };
+    },
+    setMetadataFormat(value: MsgSetMetadataFormat) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat",
         value
       };
     }
@@ -281,6 +377,54 @@ export const MessageComposer = {
       return {
         typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauth",
         value: MsgSetMintauth.fromPartial(value)
+      };
+    },
+    changeOrgOwner(value: MsgChangeOrgOwner) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner",
+        value: MsgChangeOrgOwner.fromPartial(value)
+      };
+    },
+    createMultiMetadata(value: MsgCreateMultiMetadata) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadata",
+        value: MsgCreateMultiMetadata.fromPartial(value)
+      };
+    },
+    performMultiTokenAction(value: MsgPerformMultiTokenAction) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenAction",
+        value: MsgPerformMultiTokenAction.fromPartial(value)
+      };
+    },
+    setUriRetrievalMethod(value: MsgSetUriRetrievalMethod) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod",
+        value: MsgSetUriRetrievalMethod.fromPartial(value)
+      };
+    },
+    setOriginChain(value: MsgSetOriginChain) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain",
+        value: MsgSetOriginChain.fromPartial(value)
+      };
+    },
+    setOriginContract(value: MsgSetOriginContract) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract",
+        value: MsgSetOriginContract.fromPartial(value)
+      };
+    },
+    setAttributeOveriding(value: MsgSetAttributeOveriding) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding",
+        value: MsgSetAttributeOveriding.fromPartial(value)
+      };
+    },
+    setMetadataFormat(value: MsgSetMetadataFormat) {
+      return {
+        typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat",
+        value: MsgSetMetadataFormat.fromPartial(value)
       };
     }
   }

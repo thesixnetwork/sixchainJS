@@ -4,11 +4,11 @@ import { NFTSchema, NFTSchemaAmino, NFTSchemaSDKType } from "./nft_schema";
 import { NftData, NftDataAmino, NftDataSDKType } from "./nft_data";
 import { ActionByRefId, ActionByRefIdAmino, ActionByRefIdSDKType } from "./action_by_ref_id";
 import { Organization, OrganizationAmino, OrganizationSDKType } from "./organization";
-import { NftCollection, NftCollectionAmino, NftCollectionSDKType } from "./nft_collection";
 import { NFTSchemaByContract, NFTSchemaByContractAmino, NFTSchemaByContractSDKType } from "./nft_schema_by_contract";
 import { NFTFeeConfig, NFTFeeConfigAmino, NFTFeeConfigSDKType } from "./nft_fee_config";
 import { NFTFeeBalance, NFTFeeBalanceAmino, NFTFeeBalanceSDKType } from "./nft_fee_balance";
 import { MetadataCreator, MetadataCreatorAmino, MetadataCreatorSDKType } from "./metadata_creator";
+import { NftCollection, NftCollectionAmino, NftCollectionSDKType } from "./nft_collection";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the nftmngr module's genesis state. */
 export interface GenesisState {
@@ -17,11 +17,11 @@ export interface GenesisState {
   nftDataList: NftData[];
   actionByRefIdList: ActionByRefId[];
   organizationList: Organization[];
-  nftCollectionList: NftCollection[];
   nFTSchemaByContractList: NFTSchemaByContract[];
   nftFeeConfig?: NFTFeeConfig;
   nFTFeeBalance?: NFTFeeBalance;
   metadataCreatorList: MetadataCreator[];
+  nftCollectionList: NftCollection[];
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/thesixnetwork.sixnft.nftmngr.GenesisState";
@@ -34,11 +34,11 @@ export interface GenesisStateAmino {
   nftDataList?: NftDataAmino[];
   actionByRefIdList?: ActionByRefIdAmino[];
   organizationList?: OrganizationAmino[];
-  nftCollectionList?: NftCollectionAmino[];
   nFTSchemaByContractList?: NFTSchemaByContractAmino[];
   nft_fee_config?: NFTFeeConfigAmino;
   nFTFeeBalance?: NFTFeeBalanceAmino;
   metadataCreatorList?: MetadataCreatorAmino[];
+  nftCollectionList?: NftCollectionAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: "/thesixnetwork.sixnft.nftmngr.GenesisState";
@@ -51,11 +51,11 @@ export interface GenesisStateSDKType {
   nftDataList: NftDataSDKType[];
   actionByRefIdList: ActionByRefIdSDKType[];
   organizationList: OrganizationSDKType[];
-  nftCollectionList: NftCollectionSDKType[];
   nFTSchemaByContractList: NFTSchemaByContractSDKType[];
   nft_fee_config?: NFTFeeConfigSDKType;
   nFTFeeBalance?: NFTFeeBalanceSDKType;
   metadataCreatorList: MetadataCreatorSDKType[];
+  nftCollectionList: NftCollectionSDKType[];
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -64,11 +64,11 @@ function createBaseGenesisState(): GenesisState {
     nftDataList: [],
     actionByRefIdList: [],
     organizationList: [],
-    nftCollectionList: [],
     nFTSchemaByContractList: [],
     nftFeeConfig: undefined,
     nFTFeeBalance: undefined,
-    metadataCreatorList: []
+    metadataCreatorList: [],
+    nftCollectionList: []
   };
 }
 export const GenesisState = {
@@ -89,9 +89,6 @@ export const GenesisState = {
     for (const v of message.organizationList) {
       Organization.encode(v!, writer.uint32(42).fork()).ldelim();
     }
-    for (const v of message.nftCollectionList) {
-      NftCollection.encode(v!, writer.uint32(50).fork()).ldelim();
-    }
     for (const v of message.nFTSchemaByContractList) {
       NFTSchemaByContract.encode(v!, writer.uint32(58).fork()).ldelim();
     }
@@ -103,6 +100,9 @@ export const GenesisState = {
     }
     for (const v of message.metadataCreatorList) {
       MetadataCreator.encode(v!, writer.uint32(82).fork()).ldelim();
+    }
+    for (const v of message.nftCollectionList) {
+      NftCollection.encode(v!, writer.uint32(90).fork()).ldelim();
     }
     return writer;
   },
@@ -128,9 +128,6 @@ export const GenesisState = {
         case 5:
           message.organizationList.push(Organization.decode(reader, reader.uint32()));
           break;
-        case 6:
-          message.nftCollectionList.push(NftCollection.decode(reader, reader.uint32()));
-          break;
         case 7:
           message.nFTSchemaByContractList.push(NFTSchemaByContract.decode(reader, reader.uint32()));
           break;
@@ -142,6 +139,9 @@ export const GenesisState = {
           break;
         case 10:
           message.metadataCreatorList.push(MetadataCreator.decode(reader, reader.uint32()));
+          break;
+        case 11:
+          message.nftCollectionList.push(NftCollection.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -157,11 +157,11 @@ export const GenesisState = {
     message.nftDataList = object.nftDataList?.map(e => NftData.fromPartial(e)) || [];
     message.actionByRefIdList = object.actionByRefIdList?.map(e => ActionByRefId.fromPartial(e)) || [];
     message.organizationList = object.organizationList?.map(e => Organization.fromPartial(e)) || [];
-    message.nftCollectionList = object.nftCollectionList?.map(e => NftCollection.fromPartial(e)) || [];
     message.nFTSchemaByContractList = object.nFTSchemaByContractList?.map(e => NFTSchemaByContract.fromPartial(e)) || [];
     message.nftFeeConfig = object.nftFeeConfig !== undefined && object.nftFeeConfig !== null ? NFTFeeConfig.fromPartial(object.nftFeeConfig) : undefined;
     message.nFTFeeBalance = object.nFTFeeBalance !== undefined && object.nFTFeeBalance !== null ? NFTFeeBalance.fromPartial(object.nFTFeeBalance) : undefined;
     message.metadataCreatorList = object.metadataCreatorList?.map(e => MetadataCreator.fromPartial(e)) || [];
+    message.nftCollectionList = object.nftCollectionList?.map(e => NftCollection.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -173,7 +173,6 @@ export const GenesisState = {
     message.nftDataList = object.nftDataList?.map(e => NftData.fromAmino(e)) || [];
     message.actionByRefIdList = object.actionByRefIdList?.map(e => ActionByRefId.fromAmino(e)) || [];
     message.organizationList = object.organizationList?.map(e => Organization.fromAmino(e)) || [];
-    message.nftCollectionList = object.nftCollectionList?.map(e => NftCollection.fromAmino(e)) || [];
     message.nFTSchemaByContractList = object.nFTSchemaByContractList?.map(e => NFTSchemaByContract.fromAmino(e)) || [];
     if (object.nft_fee_config !== undefined && object.nft_fee_config !== null) {
       message.nftFeeConfig = NFTFeeConfig.fromAmino(object.nft_fee_config);
@@ -182,6 +181,7 @@ export const GenesisState = {
       message.nFTFeeBalance = NFTFeeBalance.fromAmino(object.nFTFeeBalance);
     }
     message.metadataCreatorList = object.metadataCreatorList?.map(e => MetadataCreator.fromAmino(e)) || [];
+    message.nftCollectionList = object.nftCollectionList?.map(e => NftCollection.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -207,11 +207,6 @@ export const GenesisState = {
     } else {
       obj.organizationList = message.organizationList;
     }
-    if (message.nftCollectionList) {
-      obj.nftCollectionList = message.nftCollectionList.map(e => e ? NftCollection.toAmino(e) : undefined);
-    } else {
-      obj.nftCollectionList = message.nftCollectionList;
-    }
     if (message.nFTSchemaByContractList) {
       obj.nFTSchemaByContractList = message.nFTSchemaByContractList.map(e => e ? NFTSchemaByContract.toAmino(e) : undefined);
     } else {
@@ -223,6 +218,11 @@ export const GenesisState = {
       obj.metadataCreatorList = message.metadataCreatorList.map(e => e ? MetadataCreator.toAmino(e) : undefined);
     } else {
       obj.metadataCreatorList = message.metadataCreatorList;
+    }
+    if (message.nftCollectionList) {
+      obj.nftCollectionList = message.nftCollectionList.map(e => e ? NftCollection.toAmino(e) : undefined);
+    } else {
+      obj.nftCollectionList = message.nftCollectionList;
     }
     return obj;
   },

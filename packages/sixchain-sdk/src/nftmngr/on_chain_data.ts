@@ -4,45 +4,25 @@ import { Action, ActionAmino, ActionSDKType } from "./action";
 import { NftAttributeValue, NftAttributeValueAmino, NftAttributeValueSDKType } from "./nft_attribute_value";
 import * as _m0 from "protobufjs/minimal";
 import { bytesFromBase64, base64FromBytes } from "../helpers";
-export interface OnChainData_StatusEntry {
-  key: string;
-  value: boolean;
+export interface FlagStatus {
+  statusName: string;
+  statusValue: boolean;
 }
-export interface OnChainData_StatusEntryProtoMsg {
-  typeUrl: string;
+export interface FlagStatusProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.FlagStatus";
   value: Uint8Array;
 }
-export interface OnChainData_StatusEntryAmino {
-  key?: string;
-  value?: boolean;
+export interface FlagStatusAmino {
+  status_name?: string;
+  status_value?: boolean;
 }
-export interface OnChainData_StatusEntryAminoMsg {
-  type: string;
-  value: OnChainData_StatusEntryAmino;
+export interface FlagStatusAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.FlagStatus";
+  value: FlagStatusAmino;
 }
-export interface OnChainData_StatusEntrySDKType {
-  key: string;
-  value: boolean;
-}
-export interface OnChainData_OnOffSwitchEntry {
-  key: string;
-  value: boolean;
-}
-export interface OnChainData_OnOffSwitchEntryProtoMsg {
-  typeUrl: string;
-  value: Uint8Array;
-}
-export interface OnChainData_OnOffSwitchEntryAmino {
-  key?: string;
-  value?: boolean;
-}
-export interface OnChainData_OnOffSwitchEntryAminoMsg {
-  type: string;
-  value: OnChainData_OnOffSwitchEntryAmino;
-}
-export interface OnChainData_OnOffSwitchEntrySDKType {
-  key: string;
-  value: boolean;
+export interface FlagStatusSDKType {
+  status_name: string;
+  status_value: boolean;
 }
 export interface OnChainData {
   revealRequired: boolean;
@@ -50,12 +30,7 @@ export interface OnChainData {
   nftAttributes: AttributeDefinition[];
   tokenAttributes: AttributeDefinition[];
   actions: Action[];
-  status: {
-    [key: string]: boolean;
-  };
-  onOffSwitch: {
-    [key: string]: boolean;
-  };
+  status: FlagStatus[];
   nftAttributesValue: NftAttributeValue[];
 }
 export interface OnChainDataProtoMsg {
@@ -68,12 +43,7 @@ export interface OnChainDataAmino {
   nft_attributes?: AttributeDefinitionAmino[];
   token_attributes?: AttributeDefinitionAmino[];
   actions?: ActionAmino[];
-  status?: {
-    [key: string]: boolean;
-  };
-  on_off_switch?: {
-    [key: string]: boolean;
-  };
+  status?: FlagStatusAmino[];
   nft_attributes_value?: NftAttributeValueAmino[];
 }
 export interface OnChainDataAminoMsg {
@@ -86,42 +56,38 @@ export interface OnChainDataSDKType {
   nft_attributes: AttributeDefinitionSDKType[];
   token_attributes: AttributeDefinitionSDKType[];
   actions: ActionSDKType[];
-  status: {
-    [key: string]: boolean;
-  };
-  on_off_switch: {
-    [key: string]: boolean;
-  };
+  status: FlagStatusSDKType[];
   nft_attributes_value: NftAttributeValueSDKType[];
 }
-function createBaseOnChainData_StatusEntry(): OnChainData_StatusEntry {
+function createBaseFlagStatus(): FlagStatus {
   return {
-    key: "",
-    value: false
+    statusName: "",
+    statusValue: false
   };
 }
-export const OnChainData_StatusEntry = {
-  encode(message: OnChainData_StatusEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.key !== "") {
-      writer.uint32(10).string(message.key);
+export const FlagStatus = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.FlagStatus",
+  encode(message: FlagStatus, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.statusName !== "") {
+      writer.uint32(10).string(message.statusName);
     }
-    if (message.value === true) {
-      writer.uint32(16).bool(message.value);
+    if (message.statusValue === true) {
+      writer.uint32(16).bool(message.statusValue);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): OnChainData_StatusEntry {
+  decode(input: _m0.Reader | Uint8Array, length?: number): FlagStatus {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseOnChainData_StatusEntry();
+    const message = createBaseFlagStatus();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.key = reader.string();
+          message.statusName = reader.string();
           break;
         case 2:
-          message.value = reader.bool();
+          message.statusValue = reader.bool();
           break;
         default:
           reader.skipType(tag & 7);
@@ -130,104 +96,42 @@ export const OnChainData_StatusEntry = {
     }
     return message;
   },
-  fromPartial(object: Partial<OnChainData_StatusEntry>): OnChainData_StatusEntry {
-    const message = createBaseOnChainData_StatusEntry();
-    message.key = object.key ?? "";
-    message.value = object.value ?? false;
+  fromPartial(object: Partial<FlagStatus>): FlagStatus {
+    const message = createBaseFlagStatus();
+    message.statusName = object.statusName ?? "";
+    message.statusValue = object.statusValue ?? false;
     return message;
   },
-  fromAmino(object: OnChainData_StatusEntryAmino): OnChainData_StatusEntry {
-    const message = createBaseOnChainData_StatusEntry();
-    if (object.key !== undefined && object.key !== null) {
-      message.key = object.key;
+  fromAmino(object: FlagStatusAmino): FlagStatus {
+    const message = createBaseFlagStatus();
+    if (object.status_name !== undefined && object.status_name !== null) {
+      message.statusName = object.status_name;
     }
-    if (object.value !== undefined && object.value !== null) {
-      message.value = object.value;
+    if (object.status_value !== undefined && object.status_value !== null) {
+      message.statusValue = object.status_value;
     }
     return message;
   },
-  toAmino(message: OnChainData_StatusEntry): OnChainData_StatusEntryAmino {
+  toAmino(message: FlagStatus): FlagStatusAmino {
     const obj: any = {};
-    obj.key = message.key === "" ? undefined : message.key;
-    obj.value = message.value === false ? undefined : message.value;
+    obj.status_name = message.statusName === "" ? undefined : message.statusName;
+    obj.status_value = message.statusValue === false ? undefined : message.statusValue;
     return obj;
   },
-  fromAminoMsg(object: OnChainData_StatusEntryAminoMsg): OnChainData_StatusEntry {
-    return OnChainData_StatusEntry.fromAmino(object.value);
+  fromAminoMsg(object: FlagStatusAminoMsg): FlagStatus {
+    return FlagStatus.fromAmino(object.value);
   },
-  fromProtoMsg(message: OnChainData_StatusEntryProtoMsg): OnChainData_StatusEntry {
-    return OnChainData_StatusEntry.decode(message.value);
+  fromProtoMsg(message: FlagStatusProtoMsg): FlagStatus {
+    return FlagStatus.decode(message.value);
   },
-  toProto(message: OnChainData_StatusEntry): Uint8Array {
-    return OnChainData_StatusEntry.encode(message).finish();
-  }
-};
-function createBaseOnChainData_OnOffSwitchEntry(): OnChainData_OnOffSwitchEntry {
-  return {
-    key: "",
-    value: false
-  };
-}
-export const OnChainData_OnOffSwitchEntry = {
-  encode(message: OnChainData_OnOffSwitchEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.key !== "") {
-      writer.uint32(10).string(message.key);
-    }
-    if (message.value === true) {
-      writer.uint32(16).bool(message.value);
-    }
-    return writer;
+  toProto(message: FlagStatus): Uint8Array {
+    return FlagStatus.encode(message).finish();
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): OnChainData_OnOffSwitchEntry {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseOnChainData_OnOffSwitchEntry();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.key = reader.string();
-          break;
-        case 2:
-          message.value = reader.bool();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<OnChainData_OnOffSwitchEntry>): OnChainData_OnOffSwitchEntry {
-    const message = createBaseOnChainData_OnOffSwitchEntry();
-    message.key = object.key ?? "";
-    message.value = object.value ?? false;
-    return message;
-  },
-  fromAmino(object: OnChainData_OnOffSwitchEntryAmino): OnChainData_OnOffSwitchEntry {
-    const message = createBaseOnChainData_OnOffSwitchEntry();
-    if (object.key !== undefined && object.key !== null) {
-      message.key = object.key;
-    }
-    if (object.value !== undefined && object.value !== null) {
-      message.value = object.value;
-    }
-    return message;
-  },
-  toAmino(message: OnChainData_OnOffSwitchEntry): OnChainData_OnOffSwitchEntryAmino {
-    const obj: any = {};
-    obj.key = message.key === "" ? undefined : message.key;
-    obj.value = message.value === false ? undefined : message.value;
-    return obj;
-  },
-  fromAminoMsg(object: OnChainData_OnOffSwitchEntryAminoMsg): OnChainData_OnOffSwitchEntry {
-    return OnChainData_OnOffSwitchEntry.fromAmino(object.value);
-  },
-  fromProtoMsg(message: OnChainData_OnOffSwitchEntryProtoMsg): OnChainData_OnOffSwitchEntry {
-    return OnChainData_OnOffSwitchEntry.decode(message.value);
-  },
-  toProto(message: OnChainData_OnOffSwitchEntry): Uint8Array {
-    return OnChainData_OnOffSwitchEntry.encode(message).finish();
+  toProtoMsg(message: FlagStatus): FlagStatusProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.FlagStatus",
+      value: FlagStatus.encode(message).finish()
+    };
   }
 };
 function createBaseOnChainData(): OnChainData {
@@ -237,8 +141,7 @@ function createBaseOnChainData(): OnChainData {
     nftAttributes: [],
     tokenAttributes: [],
     actions: [],
-    status: {},
-    onOffSwitch: {},
+    status: [],
     nftAttributesValue: []
   };
 }
@@ -260,18 +163,9 @@ export const OnChainData = {
     for (const v of message.actions) {
       Action.encode(v!, writer.uint32(42).fork()).ldelim();
     }
-    Object.entries(message.status).forEach(([key, value]) => {
-      OnChainData_StatusEntry.encode({
-        key: key as any,
-        value
-      }, writer.uint32(48).fork()).ldelim();
-    });
-    Object.entries(message.onOffSwitch).forEach(([key, value]) => {
-      OnChainData_OnOffSwitchEntry.encode({
-        key: key as any,
-        value
-      }, writer.uint32(56).fork()).ldelim();
-    });
+    for (const v of message.status) {
+      FlagStatus.encode(v!, writer.uint32(50).fork()).ldelim();
+    }
     for (const v of message.nftAttributesValue) {
       NftAttributeValue.encode(v!, writer.uint32(66).fork()).ldelim();
     }
@@ -300,16 +194,7 @@ export const OnChainData = {
           message.actions.push(Action.decode(reader, reader.uint32()));
           break;
         case 6:
-          const entry6 = OnChainData_StatusEntry.decode(reader, reader.uint32());
-          if (entry6.value !== undefined) {
-            message.status[entry6.key] = entry6.value;
-          }
-          break;
-        case 7:
-          const entry7 = OnChainData_OnOffSwitchEntry.decode(reader, reader.uint32());
-          if (entry7.value !== undefined) {
-            message.onOffSwitch[entry7.key] = entry7.value;
-          }
+          message.status.push(FlagStatus.decode(reader, reader.uint32()));
           break;
         case 8:
           message.nftAttributesValue.push(NftAttributeValue.decode(reader, reader.uint32()));
@@ -328,22 +213,7 @@ export const OnChainData = {
     message.nftAttributes = object.nftAttributes?.map(e => AttributeDefinition.fromPartial(e)) || [];
     message.tokenAttributes = object.tokenAttributes?.map(e => AttributeDefinition.fromPartial(e)) || [];
     message.actions = object.actions?.map(e => Action.fromPartial(e)) || [];
-    message.status = Object.entries(object.status ?? {}).reduce<{
-      [key: string]: bool;
-    }>((acc, [key, value]) => {
-      if (value !== undefined) {
-        acc[key] = bool.fromPartial(value);
-      }
-      return acc;
-    }, {});
-    message.onOffSwitch = Object.entries(object.onOffSwitch ?? {}).reduce<{
-      [key: string]: bool;
-    }>((acc, [key, value]) => {
-      if (value !== undefined) {
-        acc[key] = bool.fromPartial(value);
-      }
-      return acc;
-    }, {});
+    message.status = object.status?.map(e => FlagStatus.fromPartial(e)) || [];
     message.nftAttributesValue = object.nftAttributesValue?.map(e => NftAttributeValue.fromPartial(e)) || [];
     return message;
   },
@@ -358,22 +228,7 @@ export const OnChainData = {
     message.nftAttributes = object.nft_attributes?.map(e => AttributeDefinition.fromAmino(e)) || [];
     message.tokenAttributes = object.token_attributes?.map(e => AttributeDefinition.fromAmino(e)) || [];
     message.actions = object.actions?.map(e => Action.fromAmino(e)) || [];
-    message.status = Object.entries(object.status ?? {}).reduce<{
-      [key: string]: bool;
-    }>((acc, [key, value]) => {
-      if (value !== undefined) {
-        acc[key] = bool.fromAmino(value);
-      }
-      return acc;
-    }, {});
-    message.onOffSwitch = Object.entries(object.on_off_switch ?? {}).reduce<{
-      [key: string]: bool;
-    }>((acc, [key, value]) => {
-      if (value !== undefined) {
-        acc[key] = bool.fromAmino(value);
-      }
-      return acc;
-    }, {});
+    message.status = object.status?.map(e => FlagStatus.fromAmino(e)) || [];
     message.nftAttributesValue = object.nft_attributes_value?.map(e => NftAttributeValue.fromAmino(e)) || [];
     return message;
   },
@@ -396,17 +251,10 @@ export const OnChainData = {
     } else {
       obj.actions = message.actions;
     }
-    obj.status = {};
     if (message.status) {
-      Object.entries(message.status).forEach(([k, v]) => {
-        obj.status[k] = bool.toAmino(v);
-      });
-    }
-    obj.on_off_switch = {};
-    if (message.onOffSwitch) {
-      Object.entries(message.onOffSwitch).forEach(([k, v]) => {
-        obj.on_off_switch[k] = bool.toAmino(v);
-      });
+      obj.status = message.status.map(e => e ? FlagStatus.toAmino(e) : undefined);
+    } else {
+      obj.status = message.status;
     }
     if (message.nftAttributesValue) {
       obj.nft_attributes_value = message.nftAttributesValue.map(e => e ? NftAttributeValue.toAmino(e) : undefined);

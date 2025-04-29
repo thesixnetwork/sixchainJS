@@ -7,6 +7,7 @@ export interface NftAttributeValue {
   stringAttributeValue?: StringAttributeValue;
   booleanAttributeValue?: BooleanAttributeValue;
   floatAttributeValue?: FloatAttributeValue;
+  hiddenToMarketplace: boolean;
 }
 export interface NftAttributeValueProtoMsg {
   typeUrl: "/thesixnetwork.sixnft.nftmngr.NftAttributeValue";
@@ -18,6 +19,7 @@ export interface NftAttributeValueAmino {
   string_attribute_value?: StringAttributeValueAmino;
   boolean_attribute_value?: BooleanAttributeValueAmino;
   float_attribute_value?: FloatAttributeValueAmino;
+  hidden_to_marketplace?: boolean;
 }
 export interface NftAttributeValueAminoMsg {
   type: "/thesixnetwork.sixnft.nftmngr.NftAttributeValue";
@@ -29,6 +31,7 @@ export interface NftAttributeValueSDKType {
   string_attribute_value?: StringAttributeValueSDKType;
   boolean_attribute_value?: BooleanAttributeValueSDKType;
   float_attribute_value?: FloatAttributeValueSDKType;
+  hidden_to_marketplace: boolean;
 }
 export interface NumberAttributeValue {
   value: Long;
@@ -104,7 +107,8 @@ function createBaseNftAttributeValue(): NftAttributeValue {
     numberAttributeValue: undefined,
     stringAttributeValue: undefined,
     booleanAttributeValue: undefined,
-    floatAttributeValue: undefined
+    floatAttributeValue: undefined,
+    hiddenToMarketplace: false
   };
 }
 export const NftAttributeValue = {
@@ -124,6 +128,9 @@ export const NftAttributeValue = {
     }
     if (message.floatAttributeValue !== undefined) {
       FloatAttributeValue.encode(message.floatAttributeValue, writer.uint32(42).fork()).ldelim();
+    }
+    if (message.hiddenToMarketplace === true) {
+      writer.uint32(48).bool(message.hiddenToMarketplace);
     }
     return writer;
   },
@@ -149,6 +156,9 @@ export const NftAttributeValue = {
         case 5:
           message.floatAttributeValue = FloatAttributeValue.decode(reader, reader.uint32());
           break;
+        case 6:
+          message.hiddenToMarketplace = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -163,6 +173,7 @@ export const NftAttributeValue = {
     message.stringAttributeValue = object.stringAttributeValue !== undefined && object.stringAttributeValue !== null ? StringAttributeValue.fromPartial(object.stringAttributeValue) : undefined;
     message.booleanAttributeValue = object.booleanAttributeValue !== undefined && object.booleanAttributeValue !== null ? BooleanAttributeValue.fromPartial(object.booleanAttributeValue) : undefined;
     message.floatAttributeValue = object.floatAttributeValue !== undefined && object.floatAttributeValue !== null ? FloatAttributeValue.fromPartial(object.floatAttributeValue) : undefined;
+    message.hiddenToMarketplace = object.hiddenToMarketplace ?? false;
     return message;
   },
   fromAmino(object: NftAttributeValueAmino): NftAttributeValue {
@@ -182,6 +193,9 @@ export const NftAttributeValue = {
     if (object.float_attribute_value !== undefined && object.float_attribute_value !== null) {
       message.floatAttributeValue = FloatAttributeValue.fromAmino(object.float_attribute_value);
     }
+    if (object.hidden_to_marketplace !== undefined && object.hidden_to_marketplace !== null) {
+      message.hiddenToMarketplace = object.hidden_to_marketplace;
+    }
     return message;
   },
   toAmino(message: NftAttributeValue): NftAttributeValueAmino {
@@ -191,6 +205,7 @@ export const NftAttributeValue = {
     obj.string_attribute_value = message.stringAttributeValue ? StringAttributeValue.toAmino(message.stringAttributeValue) : undefined;
     obj.boolean_attribute_value = message.booleanAttributeValue ? BooleanAttributeValue.toAmino(message.booleanAttributeValue) : undefined;
     obj.float_attribute_value = message.floatAttributeValue ? FloatAttributeValue.toAmino(message.floatAttributeValue) : undefined;
+    obj.hidden_to_marketplace = message.hiddenToMarketplace === false ? undefined : message.hiddenToMarketplace;
     return obj;
   },
   fromAminoMsg(object: NftAttributeValueAminoMsg): NftAttributeValue {

@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgCreateNFTSchema, MsgCreateMetadata, MsgPerformActionByAdmin, MsgAddAttribute, MsgAddAction, MsgSetNFTAttribute, MsgSetBaseUri, MsgToggleAction, MsgChangeSchemaOwner, MsgAddSystemActioner, MsgRemoveSystemActioner, MsgResyncAttributes, MsgShowAttributes, MsgSetFeeConfig, MsgSetMintauth } from "./tx";
+import { MsgCreateNFTSchema, MsgCreateMetadata, MsgPerformActionByAdmin, MsgAddAttribute, MsgAddAction, MsgSetNFTAttribute, MsgSetBaseUri, MsgToggleAction, MsgChangeSchemaOwner, MsgAddSystemActioner, MsgRemoveSystemActioner, MsgResyncAttributes, MsgShowAttributes, MsgSetFeeConfig, MsgSetMintauth, MsgChangeOrgOwner, MsgCreateMultiMetadata, MsgPerformMultiTokenAction, MsgSetUriRetrievalMethod, MsgSetOriginChain, MsgSetOriginContract, MsgSetAttributeOveriding, MsgSetMetadataFormat } from "./tx";
 export const AminoConverter = {
   "/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchema": {
     aminoType: "/thesixnetwork.sixnft.nftmngr.MsgCreateNFTSchema",
@@ -75,5 +75,45 @@ export const AminoConverter = {
     aminoType: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauth",
     toAmino: MsgSetMintauth.toAmino,
     fromAmino: MsgSetMintauth.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner": {
+    aminoType: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner",
+    toAmino: MsgChangeOrgOwner.toAmino,
+    fromAmino: MsgChangeOrgOwner.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadata": {
+    aminoType: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadata",
+    toAmino: MsgCreateMultiMetadata.toAmino,
+    fromAmino: MsgCreateMultiMetadata.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenAction": {
+    aminoType: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenAction",
+    toAmino: MsgPerformMultiTokenAction.toAmino,
+    fromAmino: MsgPerformMultiTokenAction.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod": {
+    aminoType: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod",
+    toAmino: MsgSetUriRetrievalMethod.toAmino,
+    fromAmino: MsgSetUriRetrievalMethod.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain": {
+    aminoType: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain",
+    toAmino: MsgSetOriginChain.toAmino,
+    fromAmino: MsgSetOriginChain.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract": {
+    aminoType: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract",
+    toAmino: MsgSetOriginContract.toAmino,
+    fromAmino: MsgSetOriginContract.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding": {
+    aminoType: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding",
+    toAmino: MsgSetAttributeOveriding.toAmino,
+    fromAmino: MsgSetAttributeOveriding.fromAmino
+  },
+  "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat": {
+    aminoType: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat",
+    toAmino: MsgSetMetadataFormat.toAmino,
+    fromAmino: MsgSetMetadataFormat.fromAmino
   }
 };

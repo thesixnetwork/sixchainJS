@@ -302,6 +302,410 @@ export interface MsgSetMinimumConfirmationResponseAminoMsg {
 export interface MsgSetMinimumConfirmationResponseSDKType {
   newConfirmation: string;
 }
+export interface MsgCreateActionSigner {
+  creator: string;
+  base64EncodedSetSignerAction: string;
+}
+export interface MsgCreateActionSignerProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSigner";
+  value: Uint8Array;
+}
+export interface MsgCreateActionSignerAmino {
+  creator?: string;
+  base64EncodedSetSignerAction?: string;
+}
+export interface MsgCreateActionSignerAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSigner";
+  value: MsgCreateActionSignerAmino;
+}
+export interface MsgCreateActionSignerSDKType {
+  creator: string;
+  base64EncodedSetSignerAction: string;
+}
+export interface MsgCreateActionSignerResponse {
+  ownerAddress: string;
+  signerAddress: string;
+  expireAt: string;
+}
+export interface MsgCreateActionSignerResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerResponse";
+  value: Uint8Array;
+}
+export interface MsgCreateActionSignerResponseAmino {
+  ownerAddress?: string;
+  signerAddress?: string;
+  expireAt?: string;
+}
+export interface MsgCreateActionSignerResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerResponse";
+  value: MsgCreateActionSignerResponseAmino;
+}
+export interface MsgCreateActionSignerResponseSDKType {
+  ownerAddress: string;
+  signerAddress: string;
+  expireAt: string;
+}
+export interface MsgUpdateActionSigner {
+  creator: string;
+  base64EncodedSetSignerAction: string;
+}
+export interface MsgUpdateActionSignerProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSigner";
+  value: Uint8Array;
+}
+export interface MsgUpdateActionSignerAmino {
+  creator?: string;
+  base64EncodedSetSignerAction?: string;
+}
+export interface MsgUpdateActionSignerAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSigner";
+  value: MsgUpdateActionSignerAmino;
+}
+export interface MsgUpdateActionSignerSDKType {
+  creator: string;
+  base64EncodedSetSignerAction: string;
+}
+export interface MsgUpdateActionSignerResponse {
+  ownerAddress: string;
+  signerAddress: string;
+  expireAt: string;
+}
+export interface MsgUpdateActionSignerResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerResponse";
+  value: Uint8Array;
+}
+export interface MsgUpdateActionSignerResponseAmino {
+  ownerAddress?: string;
+  signerAddress?: string;
+  expireAt?: string;
+}
+export interface MsgUpdateActionSignerResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerResponse";
+  value: MsgUpdateActionSignerResponseAmino;
+}
+export interface MsgUpdateActionSignerResponseSDKType {
+  ownerAddress: string;
+  signerAddress: string;
+  expireAt: string;
+}
+export interface MsgDeleteActionSigner {
+  creator: string;
+  base64EncodedSetSignerAction: string;
+}
+export interface MsgDeleteActionSignerProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSigner";
+  value: Uint8Array;
+}
+export interface MsgDeleteActionSignerAmino {
+  creator?: string;
+  base64EncodedSetSignerAction?: string;
+}
+export interface MsgDeleteActionSignerAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSigner";
+  value: MsgDeleteActionSignerAmino;
+}
+export interface MsgDeleteActionSignerSDKType {
+  creator: string;
+  base64EncodedSetSignerAction: string;
+}
+export interface MsgDeleteActionSignerResponse {
+  ownerAddress: string;
+  signerAddress: string;
+}
+export interface MsgDeleteActionSignerResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerResponse";
+  value: Uint8Array;
+}
+export interface MsgDeleteActionSignerResponseAmino {
+  ownerAddress?: string;
+  signerAddress?: string;
+}
+export interface MsgDeleteActionSignerResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerResponse";
+  value: MsgDeleteActionSignerResponseAmino;
+}
+export interface MsgDeleteActionSignerResponseSDKType {
+  ownerAddress: string;
+  signerAddress: string;
+}
+export interface MsgCreateActionSignerConfig {
+  creator: string;
+  chain: string;
+  rpcEndpoint: string;
+  contractAddress: string;
+  contractName: string;
+  contractOwner: string;
+}
+export interface MsgCreateActionSignerConfigProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfig";
+  value: Uint8Array;
+}
+export interface MsgCreateActionSignerConfigAmino {
+  creator?: string;
+  chain?: string;
+  rpc_endpoint?: string;
+  contractAddress?: string;
+  contractName?: string;
+  contractOwner?: string;
+}
+export interface MsgCreateActionSignerConfigAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfig";
+  value: MsgCreateActionSignerConfigAmino;
+}
+export interface MsgCreateActionSignerConfigSDKType {
+  creator: string;
+  chain: string;
+  rpc_endpoint: string;
+  contractAddress: string;
+  contractName: string;
+  contractOwner: string;
+}
+export interface MsgCreateActionSignerConfigResponse {
+  chain: string;
+  rpcEndpoint: string;
+  contractAddress: string;
+  contractName: string;
+  contractOwner: string;
+}
+export interface MsgCreateActionSignerConfigResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfigResponse";
+  value: Uint8Array;
+}
+export interface MsgCreateActionSignerConfigResponseAmino {
+  chain?: string;
+  rpc_endpoint?: string;
+  contractAddress?: string;
+  contractName?: string;
+  contractOwner?: string;
+}
+export interface MsgCreateActionSignerConfigResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfigResponse";
+  value: MsgCreateActionSignerConfigResponseAmino;
+}
+export interface MsgCreateActionSignerConfigResponseSDKType {
+  chain: string;
+  rpc_endpoint: string;
+  contractAddress: string;
+  contractName: string;
+  contractOwner: string;
+}
+export interface MsgUpdateActionSignerConfig {
+  creator: string;
+  chain: string;
+  rpcEndpoint: string;
+  contractAddress: string;
+  contractName: string;
+  contractOwner: string;
+}
+export interface MsgUpdateActionSignerConfigProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfig";
+  value: Uint8Array;
+}
+export interface MsgUpdateActionSignerConfigAmino {
+  creator?: string;
+  chain?: string;
+  rpc_endpoint?: string;
+  contractAddress?: string;
+  contractName?: string;
+  contractOwner?: string;
+}
+export interface MsgUpdateActionSignerConfigAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfig";
+  value: MsgUpdateActionSignerConfigAmino;
+}
+export interface MsgUpdateActionSignerConfigSDKType {
+  creator: string;
+  chain: string;
+  rpc_endpoint: string;
+  contractAddress: string;
+  contractName: string;
+  contractOwner: string;
+}
+export interface MsgUpdateActionSignerConfigResponse {
+  chain: string;
+  rpcEndpoint: string;
+  newRpcEndpoint: string;
+  contractAddress: string;
+  newContractAddress: string;
+  contractName: string;
+  newContractName: string;
+  contractOwner: string;
+  newContractOwner: string;
+}
+export interface MsgUpdateActionSignerConfigResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfigResponse";
+  value: Uint8Array;
+}
+export interface MsgUpdateActionSignerConfigResponseAmino {
+  chain?: string;
+  rpc_endpoint?: string;
+  new_rpc_endpoint?: string;
+  contractAddress?: string;
+  new_contractAddress?: string;
+  contractName?: string;
+  new_contractName?: string;
+  contractOwner?: string;
+  new_contractOwner?: string;
+}
+export interface MsgUpdateActionSignerConfigResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfigResponse";
+  value: MsgUpdateActionSignerConfigResponseAmino;
+}
+export interface MsgUpdateActionSignerConfigResponseSDKType {
+  chain: string;
+  rpc_endpoint: string;
+  new_rpc_endpoint: string;
+  contractAddress: string;
+  new_contractAddress: string;
+  contractName: string;
+  new_contractName: string;
+  contractOwner: string;
+  new_contractOwner: string;
+}
+export interface MsgDeleteActionSignerConfig {
+  creator: string;
+  chain: string;
+}
+export interface MsgDeleteActionSignerConfigProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfig";
+  value: Uint8Array;
+}
+export interface MsgDeleteActionSignerConfigAmino {
+  creator?: string;
+  chain?: string;
+}
+export interface MsgDeleteActionSignerConfigAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfig";
+  value: MsgDeleteActionSignerConfigAmino;
+}
+export interface MsgDeleteActionSignerConfigSDKType {
+  creator: string;
+  chain: string;
+}
+export interface MsgDeleteActionSignerConfigResponse {
+  chain: string;
+}
+export interface MsgDeleteActionSignerConfigResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfigResponse";
+  value: Uint8Array;
+}
+export interface MsgDeleteActionSignerConfigResponseAmino {
+  chain?: string;
+}
+export interface MsgDeleteActionSignerConfigResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfigResponse";
+  value: MsgDeleteActionSignerConfigResponseAmino;
+}
+export interface MsgDeleteActionSignerConfigResponseSDKType {
+  chain: string;
+}
+export interface MsgCreateSyncActionSigner {
+  creator: string;
+  chain: string;
+  actorAddress: string;
+  ownerAddress: string;
+  requiredConfirm: Long;
+}
+export interface MsgCreateSyncActionSignerProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSigner";
+  value: Uint8Array;
+}
+export interface MsgCreateSyncActionSignerAmino {
+  creator?: string;
+  chain?: string;
+  actorAddress?: string;
+  ownerAddress?: string;
+  requiredConfirm?: string;
+}
+export interface MsgCreateSyncActionSignerAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSigner";
+  value: MsgCreateSyncActionSignerAmino;
+}
+export interface MsgCreateSyncActionSignerSDKType {
+  creator: string;
+  chain: string;
+  actorAddress: string;
+  ownerAddress: string;
+  requiredConfirm: Long;
+}
+export interface MsgCreateSyncActionSignerResponse {
+  id: Long;
+  chain: string;
+  ownerAddress: string;
+  actorAddress: string;
+}
+export interface MsgCreateSyncActionSignerResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSignerResponse";
+  value: Uint8Array;
+}
+export interface MsgCreateSyncActionSignerResponseAmino {
+  id?: string;
+  chain?: string;
+  ownerAddress?: string;
+  actorAddress?: string;
+}
+export interface MsgCreateSyncActionSignerResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSignerResponse";
+  value: MsgCreateSyncActionSignerResponseAmino;
+}
+export interface MsgCreateSyncActionSignerResponseSDKType {
+  id: Long;
+  chain: string;
+  ownerAddress: string;
+  actorAddress: string;
+}
+export interface MsgSubmitSyncActionSigner {
+  creator: string;
+  syncId: Long;
+  chain: string;
+  actorAddress: string;
+  ownerAddress: string;
+  expireEpoch: string;
+}
+export interface MsgSubmitSyncActionSignerProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSigner";
+  value: Uint8Array;
+}
+export interface MsgSubmitSyncActionSignerAmino {
+  creator?: string;
+  syncId?: string;
+  chain?: string;
+  actorAddress?: string;
+  ownerAddress?: string;
+  expire_epoch?: string;
+}
+export interface MsgSubmitSyncActionSignerAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSigner";
+  value: MsgSubmitSyncActionSignerAmino;
+}
+export interface MsgSubmitSyncActionSignerSDKType {
+  creator: string;
+  syncId: Long;
+  chain: string;
+  actorAddress: string;
+  ownerAddress: string;
+  expire_epoch: string;
+}
+export interface MsgSubmitSyncActionSignerResponse {
+  verifyRequestID: Long;
+  expireAt: string;
+}
+export interface MsgSubmitSyncActionSignerResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSignerResponse";
+  value: Uint8Array;
+}
+export interface MsgSubmitSyncActionSignerResponseAmino {
+  verifyRequestID?: string;
+  expireAt?: string;
+}
+export interface MsgSubmitSyncActionSignerResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSignerResponse";
+  value: MsgSubmitSyncActionSignerResponseAmino;
+}
+export interface MsgSubmitSyncActionSignerResponseSDKType {
+  verifyRequestID: Long;
+  expireAt: string;
+}
 function createBaseMsgCreateMintRequest(): MsgCreateMintRequest {
   return {
     creator: "",
@@ -1433,6 +1837,1542 @@ export const MsgSetMinimumConfirmationResponse = {
     return {
       typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSetMinimumConfirmationResponse",
       value: MsgSetMinimumConfirmationResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCreateActionSigner(): MsgCreateActionSigner {
+  return {
+    creator: "",
+    base64EncodedSetSignerAction: ""
+  };
+}
+export const MsgCreateActionSigner = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSigner",
+  encode(message: MsgCreateActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.base64EncodedSetSignerAction !== "") {
+      writer.uint32(18).string(message.base64EncodedSetSignerAction);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateActionSigner {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateActionSigner();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.base64EncodedSetSignerAction = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateActionSigner>): MsgCreateActionSigner {
+    const message = createBaseMsgCreateActionSigner();
+    message.creator = object.creator ?? "";
+    message.base64EncodedSetSignerAction = object.base64EncodedSetSignerAction ?? "";
+    return message;
+  },
+  fromAmino(object: MsgCreateActionSignerAmino): MsgCreateActionSigner {
+    const message = createBaseMsgCreateActionSigner();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.base64EncodedSetSignerAction !== undefined && object.base64EncodedSetSignerAction !== null) {
+      message.base64EncodedSetSignerAction = object.base64EncodedSetSignerAction;
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateActionSigner): MsgCreateActionSignerAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.base64EncodedSetSignerAction = message.base64EncodedSetSignerAction === "" ? undefined : message.base64EncodedSetSignerAction;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateActionSignerAminoMsg): MsgCreateActionSigner {
+    return MsgCreateActionSigner.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateActionSignerProtoMsg): MsgCreateActionSigner {
+    return MsgCreateActionSigner.decode(message.value);
+  },
+  toProto(message: MsgCreateActionSigner): Uint8Array {
+    return MsgCreateActionSigner.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateActionSigner): MsgCreateActionSignerProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSigner",
+      value: MsgCreateActionSigner.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCreateActionSignerResponse(): MsgCreateActionSignerResponse {
+  return {
+    ownerAddress: "",
+    signerAddress: "",
+    expireAt: ""
+  };
+}
+export const MsgCreateActionSignerResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerResponse",
+  encode(message: MsgCreateActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.ownerAddress !== "") {
+      writer.uint32(10).string(message.ownerAddress);
+    }
+    if (message.signerAddress !== "") {
+      writer.uint32(18).string(message.signerAddress);
+    }
+    if (message.expireAt !== "") {
+      writer.uint32(26).string(message.expireAt);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateActionSignerResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateActionSignerResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.ownerAddress = reader.string();
+          break;
+        case 2:
+          message.signerAddress = reader.string();
+          break;
+        case 3:
+          message.expireAt = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateActionSignerResponse>): MsgCreateActionSignerResponse {
+    const message = createBaseMsgCreateActionSignerResponse();
+    message.ownerAddress = object.ownerAddress ?? "";
+    message.signerAddress = object.signerAddress ?? "";
+    message.expireAt = object.expireAt ?? "";
+    return message;
+  },
+  fromAmino(object: MsgCreateActionSignerResponseAmino): MsgCreateActionSignerResponse {
+    const message = createBaseMsgCreateActionSignerResponse();
+    if (object.ownerAddress !== undefined && object.ownerAddress !== null) {
+      message.ownerAddress = object.ownerAddress;
+    }
+    if (object.signerAddress !== undefined && object.signerAddress !== null) {
+      message.signerAddress = object.signerAddress;
+    }
+    if (object.expireAt !== undefined && object.expireAt !== null) {
+      message.expireAt = object.expireAt;
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateActionSignerResponse): MsgCreateActionSignerResponseAmino {
+    const obj: any = {};
+    obj.ownerAddress = message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.signerAddress = message.signerAddress === "" ? undefined : message.signerAddress;
+    obj.expireAt = message.expireAt === "" ? undefined : message.expireAt;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateActionSignerResponseAminoMsg): MsgCreateActionSignerResponse {
+    return MsgCreateActionSignerResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateActionSignerResponseProtoMsg): MsgCreateActionSignerResponse {
+    return MsgCreateActionSignerResponse.decode(message.value);
+  },
+  toProto(message: MsgCreateActionSignerResponse): Uint8Array {
+    return MsgCreateActionSignerResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateActionSignerResponse): MsgCreateActionSignerResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerResponse",
+      value: MsgCreateActionSignerResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUpdateActionSigner(): MsgUpdateActionSigner {
+  return {
+    creator: "",
+    base64EncodedSetSignerAction: ""
+  };
+}
+export const MsgUpdateActionSigner = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSigner",
+  encode(message: MsgUpdateActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.base64EncodedSetSignerAction !== "") {
+      writer.uint32(18).string(message.base64EncodedSetSignerAction);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateActionSigner {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateActionSigner();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.base64EncodedSetSignerAction = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUpdateActionSigner>): MsgUpdateActionSigner {
+    const message = createBaseMsgUpdateActionSigner();
+    message.creator = object.creator ?? "";
+    message.base64EncodedSetSignerAction = object.base64EncodedSetSignerAction ?? "";
+    return message;
+  },
+  fromAmino(object: MsgUpdateActionSignerAmino): MsgUpdateActionSigner {
+    const message = createBaseMsgUpdateActionSigner();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.base64EncodedSetSignerAction !== undefined && object.base64EncodedSetSignerAction !== null) {
+      message.base64EncodedSetSignerAction = object.base64EncodedSetSignerAction;
+    }
+    return message;
+  },
+  toAmino(message: MsgUpdateActionSigner): MsgUpdateActionSignerAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.base64EncodedSetSignerAction = message.base64EncodedSetSignerAction === "" ? undefined : message.base64EncodedSetSignerAction;
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateActionSignerAminoMsg): MsgUpdateActionSigner {
+    return MsgUpdateActionSigner.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUpdateActionSignerProtoMsg): MsgUpdateActionSigner {
+    return MsgUpdateActionSigner.decode(message.value);
+  },
+  toProto(message: MsgUpdateActionSigner): Uint8Array {
+    return MsgUpdateActionSigner.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateActionSigner): MsgUpdateActionSignerProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSigner",
+      value: MsgUpdateActionSigner.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUpdateActionSignerResponse(): MsgUpdateActionSignerResponse {
+  return {
+    ownerAddress: "",
+    signerAddress: "",
+    expireAt: ""
+  };
+}
+export const MsgUpdateActionSignerResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerResponse",
+  encode(message: MsgUpdateActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.ownerAddress !== "") {
+      writer.uint32(10).string(message.ownerAddress);
+    }
+    if (message.signerAddress !== "") {
+      writer.uint32(18).string(message.signerAddress);
+    }
+    if (message.expireAt !== "") {
+      writer.uint32(26).string(message.expireAt);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateActionSignerResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateActionSignerResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.ownerAddress = reader.string();
+          break;
+        case 2:
+          message.signerAddress = reader.string();
+          break;
+        case 3:
+          message.expireAt = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUpdateActionSignerResponse>): MsgUpdateActionSignerResponse {
+    const message = createBaseMsgUpdateActionSignerResponse();
+    message.ownerAddress = object.ownerAddress ?? "";
+    message.signerAddress = object.signerAddress ?? "";
+    message.expireAt = object.expireAt ?? "";
+    return message;
+  },
+  fromAmino(object: MsgUpdateActionSignerResponseAmino): MsgUpdateActionSignerResponse {
+    const message = createBaseMsgUpdateActionSignerResponse();
+    if (object.ownerAddress !== undefined && object.ownerAddress !== null) {
+      message.ownerAddress = object.ownerAddress;
+    }
+    if (object.signerAddress !== undefined && object.signerAddress !== null) {
+      message.signerAddress = object.signerAddress;
+    }
+    if (object.expireAt !== undefined && object.expireAt !== null) {
+      message.expireAt = object.expireAt;
+    }
+    return message;
+  },
+  toAmino(message: MsgUpdateActionSignerResponse): MsgUpdateActionSignerResponseAmino {
+    const obj: any = {};
+    obj.ownerAddress = message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.signerAddress = message.signerAddress === "" ? undefined : message.signerAddress;
+    obj.expireAt = message.expireAt === "" ? undefined : message.expireAt;
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateActionSignerResponseAminoMsg): MsgUpdateActionSignerResponse {
+    return MsgUpdateActionSignerResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUpdateActionSignerResponseProtoMsg): MsgUpdateActionSignerResponse {
+    return MsgUpdateActionSignerResponse.decode(message.value);
+  },
+  toProto(message: MsgUpdateActionSignerResponse): Uint8Array {
+    return MsgUpdateActionSignerResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateActionSignerResponse): MsgUpdateActionSignerResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerResponse",
+      value: MsgUpdateActionSignerResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgDeleteActionSigner(): MsgDeleteActionSigner {
+  return {
+    creator: "",
+    base64EncodedSetSignerAction: ""
+  };
+}
+export const MsgDeleteActionSigner = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSigner",
+  encode(message: MsgDeleteActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.base64EncodedSetSignerAction !== "") {
+      writer.uint32(18).string(message.base64EncodedSetSignerAction);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeleteActionSigner {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteActionSigner();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.base64EncodedSetSignerAction = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgDeleteActionSigner>): MsgDeleteActionSigner {
+    const message = createBaseMsgDeleteActionSigner();
+    message.creator = object.creator ?? "";
+    message.base64EncodedSetSignerAction = object.base64EncodedSetSignerAction ?? "";
+    return message;
+  },
+  fromAmino(object: MsgDeleteActionSignerAmino): MsgDeleteActionSigner {
+    const message = createBaseMsgDeleteActionSigner();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.base64EncodedSetSignerAction !== undefined && object.base64EncodedSetSignerAction !== null) {
+      message.base64EncodedSetSignerAction = object.base64EncodedSetSignerAction;
+    }
+    return message;
+  },
+  toAmino(message: MsgDeleteActionSigner): MsgDeleteActionSignerAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.base64EncodedSetSignerAction = message.base64EncodedSetSignerAction === "" ? undefined : message.base64EncodedSetSignerAction;
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteActionSignerAminoMsg): MsgDeleteActionSigner {
+    return MsgDeleteActionSigner.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDeleteActionSignerProtoMsg): MsgDeleteActionSigner {
+    return MsgDeleteActionSigner.decode(message.value);
+  },
+  toProto(message: MsgDeleteActionSigner): Uint8Array {
+    return MsgDeleteActionSigner.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteActionSigner): MsgDeleteActionSignerProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSigner",
+      value: MsgDeleteActionSigner.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgDeleteActionSignerResponse(): MsgDeleteActionSignerResponse {
+  return {
+    ownerAddress: "",
+    signerAddress: ""
+  };
+}
+export const MsgDeleteActionSignerResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerResponse",
+  encode(message: MsgDeleteActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.ownerAddress !== "") {
+      writer.uint32(10).string(message.ownerAddress);
+    }
+    if (message.signerAddress !== "") {
+      writer.uint32(18).string(message.signerAddress);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeleteActionSignerResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteActionSignerResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.ownerAddress = reader.string();
+          break;
+        case 2:
+          message.signerAddress = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgDeleteActionSignerResponse>): MsgDeleteActionSignerResponse {
+    const message = createBaseMsgDeleteActionSignerResponse();
+    message.ownerAddress = object.ownerAddress ?? "";
+    message.signerAddress = object.signerAddress ?? "";
+    return message;
+  },
+  fromAmino(object: MsgDeleteActionSignerResponseAmino): MsgDeleteActionSignerResponse {
+    const message = createBaseMsgDeleteActionSignerResponse();
+    if (object.ownerAddress !== undefined && object.ownerAddress !== null) {
+      message.ownerAddress = object.ownerAddress;
+    }
+    if (object.signerAddress !== undefined && object.signerAddress !== null) {
+      message.signerAddress = object.signerAddress;
+    }
+    return message;
+  },
+  toAmino(message: MsgDeleteActionSignerResponse): MsgDeleteActionSignerResponseAmino {
+    const obj: any = {};
+    obj.ownerAddress = message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.signerAddress = message.signerAddress === "" ? undefined : message.signerAddress;
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteActionSignerResponseAminoMsg): MsgDeleteActionSignerResponse {
+    return MsgDeleteActionSignerResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDeleteActionSignerResponseProtoMsg): MsgDeleteActionSignerResponse {
+    return MsgDeleteActionSignerResponse.decode(message.value);
+  },
+  toProto(message: MsgDeleteActionSignerResponse): Uint8Array {
+    return MsgDeleteActionSignerResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteActionSignerResponse): MsgDeleteActionSignerResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerResponse",
+      value: MsgDeleteActionSignerResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCreateActionSignerConfig(): MsgCreateActionSignerConfig {
+  return {
+    creator: "",
+    chain: "",
+    rpcEndpoint: "",
+    contractAddress: "",
+    contractName: "",
+    contractOwner: ""
+  };
+}
+export const MsgCreateActionSignerConfig = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfig",
+  encode(message: MsgCreateActionSignerConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.chain !== "") {
+      writer.uint32(18).string(message.chain);
+    }
+    if (message.rpcEndpoint !== "") {
+      writer.uint32(26).string(message.rpcEndpoint);
+    }
+    if (message.contractAddress !== "") {
+      writer.uint32(34).string(message.contractAddress);
+    }
+    if (message.contractName !== "") {
+      writer.uint32(42).string(message.contractName);
+    }
+    if (message.contractOwner !== "") {
+      writer.uint32(50).string(message.contractOwner);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateActionSignerConfig {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateActionSignerConfig();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.chain = reader.string();
+          break;
+        case 3:
+          message.rpcEndpoint = reader.string();
+          break;
+        case 4:
+          message.contractAddress = reader.string();
+          break;
+        case 5:
+          message.contractName = reader.string();
+          break;
+        case 6:
+          message.contractOwner = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateActionSignerConfig>): MsgCreateActionSignerConfig {
+    const message = createBaseMsgCreateActionSignerConfig();
+    message.creator = object.creator ?? "";
+    message.chain = object.chain ?? "";
+    message.rpcEndpoint = object.rpcEndpoint ?? "";
+    message.contractAddress = object.contractAddress ?? "";
+    message.contractName = object.contractName ?? "";
+    message.contractOwner = object.contractOwner ?? "";
+    return message;
+  },
+  fromAmino(object: MsgCreateActionSignerConfigAmino): MsgCreateActionSignerConfig {
+    const message = createBaseMsgCreateActionSignerConfig();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.chain !== undefined && object.chain !== null) {
+      message.chain = object.chain;
+    }
+    if (object.rpc_endpoint !== undefined && object.rpc_endpoint !== null) {
+      message.rpcEndpoint = object.rpc_endpoint;
+    }
+    if (object.contractAddress !== undefined && object.contractAddress !== null) {
+      message.contractAddress = object.contractAddress;
+    }
+    if (object.contractName !== undefined && object.contractName !== null) {
+      message.contractName = object.contractName;
+    }
+    if (object.contractOwner !== undefined && object.contractOwner !== null) {
+      message.contractOwner = object.contractOwner;
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateActionSignerConfig): MsgCreateActionSignerConfigAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    obj.rpc_endpoint = message.rpcEndpoint === "" ? undefined : message.rpcEndpoint;
+    obj.contractAddress = message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.contractName = message.contractName === "" ? undefined : message.contractName;
+    obj.contractOwner = message.contractOwner === "" ? undefined : message.contractOwner;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateActionSignerConfigAminoMsg): MsgCreateActionSignerConfig {
+    return MsgCreateActionSignerConfig.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateActionSignerConfigProtoMsg): MsgCreateActionSignerConfig {
+    return MsgCreateActionSignerConfig.decode(message.value);
+  },
+  toProto(message: MsgCreateActionSignerConfig): Uint8Array {
+    return MsgCreateActionSignerConfig.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateActionSignerConfig): MsgCreateActionSignerConfigProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfig",
+      value: MsgCreateActionSignerConfig.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCreateActionSignerConfigResponse(): MsgCreateActionSignerConfigResponse {
+  return {
+    chain: "",
+    rpcEndpoint: "",
+    contractAddress: "",
+    contractName: "",
+    contractOwner: ""
+  };
+}
+export const MsgCreateActionSignerConfigResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfigResponse",
+  encode(message: MsgCreateActionSignerConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.chain !== "") {
+      writer.uint32(10).string(message.chain);
+    }
+    if (message.rpcEndpoint !== "") {
+      writer.uint32(18).string(message.rpcEndpoint);
+    }
+    if (message.contractAddress !== "") {
+      writer.uint32(26).string(message.contractAddress);
+    }
+    if (message.contractName !== "") {
+      writer.uint32(34).string(message.contractName);
+    }
+    if (message.contractOwner !== "") {
+      writer.uint32(42).string(message.contractOwner);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateActionSignerConfigResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateActionSignerConfigResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.chain = reader.string();
+          break;
+        case 2:
+          message.rpcEndpoint = reader.string();
+          break;
+        case 3:
+          message.contractAddress = reader.string();
+          break;
+        case 4:
+          message.contractName = reader.string();
+          break;
+        case 5:
+          message.contractOwner = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateActionSignerConfigResponse>): MsgCreateActionSignerConfigResponse {
+    const message = createBaseMsgCreateActionSignerConfigResponse();
+    message.chain = object.chain ?? "";
+    message.rpcEndpoint = object.rpcEndpoint ?? "";
+    message.contractAddress = object.contractAddress ?? "";
+    message.contractName = object.contractName ?? "";
+    message.contractOwner = object.contractOwner ?? "";
+    return message;
+  },
+  fromAmino(object: MsgCreateActionSignerConfigResponseAmino): MsgCreateActionSignerConfigResponse {
+    const message = createBaseMsgCreateActionSignerConfigResponse();
+    if (object.chain !== undefined && object.chain !== null) {
+      message.chain = object.chain;
+    }
+    if (object.rpc_endpoint !== undefined && object.rpc_endpoint !== null) {
+      message.rpcEndpoint = object.rpc_endpoint;
+    }
+    if (object.contractAddress !== undefined && object.contractAddress !== null) {
+      message.contractAddress = object.contractAddress;
+    }
+    if (object.contractName !== undefined && object.contractName !== null) {
+      message.contractName = object.contractName;
+    }
+    if (object.contractOwner !== undefined && object.contractOwner !== null) {
+      message.contractOwner = object.contractOwner;
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateActionSignerConfigResponse): MsgCreateActionSignerConfigResponseAmino {
+    const obj: any = {};
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    obj.rpc_endpoint = message.rpcEndpoint === "" ? undefined : message.rpcEndpoint;
+    obj.contractAddress = message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.contractName = message.contractName === "" ? undefined : message.contractName;
+    obj.contractOwner = message.contractOwner === "" ? undefined : message.contractOwner;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateActionSignerConfigResponseAminoMsg): MsgCreateActionSignerConfigResponse {
+    return MsgCreateActionSignerConfigResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateActionSignerConfigResponseProtoMsg): MsgCreateActionSignerConfigResponse {
+    return MsgCreateActionSignerConfigResponse.decode(message.value);
+  },
+  toProto(message: MsgCreateActionSignerConfigResponse): Uint8Array {
+    return MsgCreateActionSignerConfigResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateActionSignerConfigResponse): MsgCreateActionSignerConfigResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfigResponse",
+      value: MsgCreateActionSignerConfigResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUpdateActionSignerConfig(): MsgUpdateActionSignerConfig {
+  return {
+    creator: "",
+    chain: "",
+    rpcEndpoint: "",
+    contractAddress: "",
+    contractName: "",
+    contractOwner: ""
+  };
+}
+export const MsgUpdateActionSignerConfig = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfig",
+  encode(message: MsgUpdateActionSignerConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.chain !== "") {
+      writer.uint32(18).string(message.chain);
+    }
+    if (message.rpcEndpoint !== "") {
+      writer.uint32(26).string(message.rpcEndpoint);
+    }
+    if (message.contractAddress !== "") {
+      writer.uint32(34).string(message.contractAddress);
+    }
+    if (message.contractName !== "") {
+      writer.uint32(42).string(message.contractName);
+    }
+    if (message.contractOwner !== "") {
+      writer.uint32(50).string(message.contractOwner);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateActionSignerConfig {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateActionSignerConfig();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.chain = reader.string();
+          break;
+        case 3:
+          message.rpcEndpoint = reader.string();
+          break;
+        case 4:
+          message.contractAddress = reader.string();
+          break;
+        case 5:
+          message.contractName = reader.string();
+          break;
+        case 6:
+          message.contractOwner = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUpdateActionSignerConfig>): MsgUpdateActionSignerConfig {
+    const message = createBaseMsgUpdateActionSignerConfig();
+    message.creator = object.creator ?? "";
+    message.chain = object.chain ?? "";
+    message.rpcEndpoint = object.rpcEndpoint ?? "";
+    message.contractAddress = object.contractAddress ?? "";
+    message.contractName = object.contractName ?? "";
+    message.contractOwner = object.contractOwner ?? "";
+    return message;
+  },
+  fromAmino(object: MsgUpdateActionSignerConfigAmino): MsgUpdateActionSignerConfig {
+    const message = createBaseMsgUpdateActionSignerConfig();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.chain !== undefined && object.chain !== null) {
+      message.chain = object.chain;
+    }
+    if (object.rpc_endpoint !== undefined && object.rpc_endpoint !== null) {
+      message.rpcEndpoint = object.rpc_endpoint;
+    }
+    if (object.contractAddress !== undefined && object.contractAddress !== null) {
+      message.contractAddress = object.contractAddress;
+    }
+    if (object.contractName !== undefined && object.contractName !== null) {
+      message.contractName = object.contractName;
+    }
+    if (object.contractOwner !== undefined && object.contractOwner !== null) {
+      message.contractOwner = object.contractOwner;
+    }
+    return message;
+  },
+  toAmino(message: MsgUpdateActionSignerConfig): MsgUpdateActionSignerConfigAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    obj.rpc_endpoint = message.rpcEndpoint === "" ? undefined : message.rpcEndpoint;
+    obj.contractAddress = message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.contractName = message.contractName === "" ? undefined : message.contractName;
+    obj.contractOwner = message.contractOwner === "" ? undefined : message.contractOwner;
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateActionSignerConfigAminoMsg): MsgUpdateActionSignerConfig {
+    return MsgUpdateActionSignerConfig.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUpdateActionSignerConfigProtoMsg): MsgUpdateActionSignerConfig {
+    return MsgUpdateActionSignerConfig.decode(message.value);
+  },
+  toProto(message: MsgUpdateActionSignerConfig): Uint8Array {
+    return MsgUpdateActionSignerConfig.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateActionSignerConfig): MsgUpdateActionSignerConfigProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfig",
+      value: MsgUpdateActionSignerConfig.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUpdateActionSignerConfigResponse(): MsgUpdateActionSignerConfigResponse {
+  return {
+    chain: "",
+    rpcEndpoint: "",
+    newRpcEndpoint: "",
+    contractAddress: "",
+    newContractAddress: "",
+    contractName: "",
+    newContractName: "",
+    contractOwner: "",
+    newContractOwner: ""
+  };
+}
+export const MsgUpdateActionSignerConfigResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfigResponse",
+  encode(message: MsgUpdateActionSignerConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.chain !== "") {
+      writer.uint32(10).string(message.chain);
+    }
+    if (message.rpcEndpoint !== "") {
+      writer.uint32(18).string(message.rpcEndpoint);
+    }
+    if (message.newRpcEndpoint !== "") {
+      writer.uint32(26).string(message.newRpcEndpoint);
+    }
+    if (message.contractAddress !== "") {
+      writer.uint32(34).string(message.contractAddress);
+    }
+    if (message.newContractAddress !== "") {
+      writer.uint32(42).string(message.newContractAddress);
+    }
+    if (message.contractName !== "") {
+      writer.uint32(50).string(message.contractName);
+    }
+    if (message.newContractName !== "") {
+      writer.uint32(58).string(message.newContractName);
+    }
+    if (message.contractOwner !== "") {
+      writer.uint32(66).string(message.contractOwner);
+    }
+    if (message.newContractOwner !== "") {
+      writer.uint32(74).string(message.newContractOwner);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateActionSignerConfigResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateActionSignerConfigResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.chain = reader.string();
+          break;
+        case 2:
+          message.rpcEndpoint = reader.string();
+          break;
+        case 3:
+          message.newRpcEndpoint = reader.string();
+          break;
+        case 4:
+          message.contractAddress = reader.string();
+          break;
+        case 5:
+          message.newContractAddress = reader.string();
+          break;
+        case 6:
+          message.contractName = reader.string();
+          break;
+        case 7:
+          message.newContractName = reader.string();
+          break;
+        case 8:
+          message.contractOwner = reader.string();
+          break;
+        case 9:
+          message.newContractOwner = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUpdateActionSignerConfigResponse>): MsgUpdateActionSignerConfigResponse {
+    const message = createBaseMsgUpdateActionSignerConfigResponse();
+    message.chain = object.chain ?? "";
+    message.rpcEndpoint = object.rpcEndpoint ?? "";
+    message.newRpcEndpoint = object.newRpcEndpoint ?? "";
+    message.contractAddress = object.contractAddress ?? "";
+    message.newContractAddress = object.newContractAddress ?? "";
+    message.contractName = object.contractName ?? "";
+    message.newContractName = object.newContractName ?? "";
+    message.contractOwner = object.contractOwner ?? "";
+    message.newContractOwner = object.newContractOwner ?? "";
+    return message;
+  },
+  fromAmino(object: MsgUpdateActionSignerConfigResponseAmino): MsgUpdateActionSignerConfigResponse {
+    const message = createBaseMsgUpdateActionSignerConfigResponse();
+    if (object.chain !== undefined && object.chain !== null) {
+      message.chain = object.chain;
+    }
+    if (object.rpc_endpoint !== undefined && object.rpc_endpoint !== null) {
+      message.rpcEndpoint = object.rpc_endpoint;
+    }
+    if (object.new_rpc_endpoint !== undefined && object.new_rpc_endpoint !== null) {
+      message.newRpcEndpoint = object.new_rpc_endpoint;
+    }
+    if (object.contractAddress !== undefined && object.contractAddress !== null) {
+      message.contractAddress = object.contractAddress;
+    }
+    if (object.new_contractAddress !== undefined && object.new_contractAddress !== null) {
+      message.newContractAddress = object.new_contractAddress;
+    }
+    if (object.contractName !== undefined && object.contractName !== null) {
+      message.contractName = object.contractName;
+    }
+    if (object.new_contractName !== undefined && object.new_contractName !== null) {
+      message.newContractName = object.new_contractName;
+    }
+    if (object.contractOwner !== undefined && object.contractOwner !== null) {
+      message.contractOwner = object.contractOwner;
+    }
+    if (object.new_contractOwner !== undefined && object.new_contractOwner !== null) {
+      message.newContractOwner = object.new_contractOwner;
+    }
+    return message;
+  },
+  toAmino(message: MsgUpdateActionSignerConfigResponse): MsgUpdateActionSignerConfigResponseAmino {
+    const obj: any = {};
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    obj.rpc_endpoint = message.rpcEndpoint === "" ? undefined : message.rpcEndpoint;
+    obj.new_rpc_endpoint = message.newRpcEndpoint === "" ? undefined : message.newRpcEndpoint;
+    obj.contractAddress = message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.new_contractAddress = message.newContractAddress === "" ? undefined : message.newContractAddress;
+    obj.contractName = message.contractName === "" ? undefined : message.contractName;
+    obj.new_contractName = message.newContractName === "" ? undefined : message.newContractName;
+    obj.contractOwner = message.contractOwner === "" ? undefined : message.contractOwner;
+    obj.new_contractOwner = message.newContractOwner === "" ? undefined : message.newContractOwner;
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateActionSignerConfigResponseAminoMsg): MsgUpdateActionSignerConfigResponse {
+    return MsgUpdateActionSignerConfigResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUpdateActionSignerConfigResponseProtoMsg): MsgUpdateActionSignerConfigResponse {
+    return MsgUpdateActionSignerConfigResponse.decode(message.value);
+  },
+  toProto(message: MsgUpdateActionSignerConfigResponse): Uint8Array {
+    return MsgUpdateActionSignerConfigResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateActionSignerConfigResponse): MsgUpdateActionSignerConfigResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfigResponse",
+      value: MsgUpdateActionSignerConfigResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgDeleteActionSignerConfig(): MsgDeleteActionSignerConfig {
+  return {
+    creator: "",
+    chain: ""
+  };
+}
+export const MsgDeleteActionSignerConfig = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfig",
+  encode(message: MsgDeleteActionSignerConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.chain !== "") {
+      writer.uint32(18).string(message.chain);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeleteActionSignerConfig {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteActionSignerConfig();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.chain = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgDeleteActionSignerConfig>): MsgDeleteActionSignerConfig {
+    const message = createBaseMsgDeleteActionSignerConfig();
+    message.creator = object.creator ?? "";
+    message.chain = object.chain ?? "";
+    return message;
+  },
+  fromAmino(object: MsgDeleteActionSignerConfigAmino): MsgDeleteActionSignerConfig {
+    const message = createBaseMsgDeleteActionSignerConfig();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.chain !== undefined && object.chain !== null) {
+      message.chain = object.chain;
+    }
+    return message;
+  },
+  toAmino(message: MsgDeleteActionSignerConfig): MsgDeleteActionSignerConfigAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteActionSignerConfigAminoMsg): MsgDeleteActionSignerConfig {
+    return MsgDeleteActionSignerConfig.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDeleteActionSignerConfigProtoMsg): MsgDeleteActionSignerConfig {
+    return MsgDeleteActionSignerConfig.decode(message.value);
+  },
+  toProto(message: MsgDeleteActionSignerConfig): Uint8Array {
+    return MsgDeleteActionSignerConfig.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteActionSignerConfig): MsgDeleteActionSignerConfigProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfig",
+      value: MsgDeleteActionSignerConfig.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgDeleteActionSignerConfigResponse(): MsgDeleteActionSignerConfigResponse {
+  return {
+    chain: ""
+  };
+}
+export const MsgDeleteActionSignerConfigResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfigResponse",
+  encode(message: MsgDeleteActionSignerConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.chain !== "") {
+      writer.uint32(10).string(message.chain);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeleteActionSignerConfigResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteActionSignerConfigResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.chain = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgDeleteActionSignerConfigResponse>): MsgDeleteActionSignerConfigResponse {
+    const message = createBaseMsgDeleteActionSignerConfigResponse();
+    message.chain = object.chain ?? "";
+    return message;
+  },
+  fromAmino(object: MsgDeleteActionSignerConfigResponseAmino): MsgDeleteActionSignerConfigResponse {
+    const message = createBaseMsgDeleteActionSignerConfigResponse();
+    if (object.chain !== undefined && object.chain !== null) {
+      message.chain = object.chain;
+    }
+    return message;
+  },
+  toAmino(message: MsgDeleteActionSignerConfigResponse): MsgDeleteActionSignerConfigResponseAmino {
+    const obj: any = {};
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteActionSignerConfigResponseAminoMsg): MsgDeleteActionSignerConfigResponse {
+    return MsgDeleteActionSignerConfigResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDeleteActionSignerConfigResponseProtoMsg): MsgDeleteActionSignerConfigResponse {
+    return MsgDeleteActionSignerConfigResponse.decode(message.value);
+  },
+  toProto(message: MsgDeleteActionSignerConfigResponse): Uint8Array {
+    return MsgDeleteActionSignerConfigResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteActionSignerConfigResponse): MsgDeleteActionSignerConfigResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfigResponse",
+      value: MsgDeleteActionSignerConfigResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCreateSyncActionSigner(): MsgCreateSyncActionSigner {
+  return {
+    creator: "",
+    chain: "",
+    actorAddress: "",
+    ownerAddress: "",
+    requiredConfirm: Long.UZERO
+  };
+}
+export const MsgCreateSyncActionSigner = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSigner",
+  encode(message: MsgCreateSyncActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.chain !== "") {
+      writer.uint32(18).string(message.chain);
+    }
+    if (message.actorAddress !== "") {
+      writer.uint32(26).string(message.actorAddress);
+    }
+    if (message.ownerAddress !== "") {
+      writer.uint32(34).string(message.ownerAddress);
+    }
+    if (!message.requiredConfirm.isZero()) {
+      writer.uint32(40).uint64(message.requiredConfirm);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateSyncActionSigner {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateSyncActionSigner();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.chain = reader.string();
+          break;
+        case 3:
+          message.actorAddress = reader.string();
+          break;
+        case 4:
+          message.ownerAddress = reader.string();
+          break;
+        case 5:
+          message.requiredConfirm = reader.uint64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateSyncActionSigner>): MsgCreateSyncActionSigner {
+    const message = createBaseMsgCreateSyncActionSigner();
+    message.creator = object.creator ?? "";
+    message.chain = object.chain ?? "";
+    message.actorAddress = object.actorAddress ?? "";
+    message.ownerAddress = object.ownerAddress ?? "";
+    message.requiredConfirm = object.requiredConfirm !== undefined && object.requiredConfirm !== null ? Long.fromValue(object.requiredConfirm) : Long.UZERO;
+    return message;
+  },
+  fromAmino(object: MsgCreateSyncActionSignerAmino): MsgCreateSyncActionSigner {
+    const message = createBaseMsgCreateSyncActionSigner();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.chain !== undefined && object.chain !== null) {
+      message.chain = object.chain;
+    }
+    if (object.actorAddress !== undefined && object.actorAddress !== null) {
+      message.actorAddress = object.actorAddress;
+    }
+    if (object.ownerAddress !== undefined && object.ownerAddress !== null) {
+      message.ownerAddress = object.ownerAddress;
+    }
+    if (object.requiredConfirm !== undefined && object.requiredConfirm !== null) {
+      message.requiredConfirm = Long.fromString(object.requiredConfirm);
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateSyncActionSigner): MsgCreateSyncActionSignerAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    obj.actorAddress = message.actorAddress === "" ? undefined : message.actorAddress;
+    obj.ownerAddress = message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.requiredConfirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateSyncActionSignerAminoMsg): MsgCreateSyncActionSigner {
+    return MsgCreateSyncActionSigner.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateSyncActionSignerProtoMsg): MsgCreateSyncActionSigner {
+    return MsgCreateSyncActionSigner.decode(message.value);
+  },
+  toProto(message: MsgCreateSyncActionSigner): Uint8Array {
+    return MsgCreateSyncActionSigner.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateSyncActionSigner): MsgCreateSyncActionSignerProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSigner",
+      value: MsgCreateSyncActionSigner.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCreateSyncActionSignerResponse(): MsgCreateSyncActionSignerResponse {
+  return {
+    id: Long.UZERO,
+    chain: "",
+    ownerAddress: "",
+    actorAddress: ""
+  };
+}
+export const MsgCreateSyncActionSignerResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSignerResponse",
+  encode(message: MsgCreateSyncActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.id.isZero()) {
+      writer.uint32(8).uint64(message.id);
+    }
+    if (message.chain !== "") {
+      writer.uint32(18).string(message.chain);
+    }
+    if (message.ownerAddress !== "") {
+      writer.uint32(26).string(message.ownerAddress);
+    }
+    if (message.actorAddress !== "") {
+      writer.uint32(34).string(message.actorAddress);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateSyncActionSignerResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateSyncActionSignerResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.id = reader.uint64() as Long;
+          break;
+        case 2:
+          message.chain = reader.string();
+          break;
+        case 3:
+          message.ownerAddress = reader.string();
+          break;
+        case 4:
+          message.actorAddress = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateSyncActionSignerResponse>): MsgCreateSyncActionSignerResponse {
+    const message = createBaseMsgCreateSyncActionSignerResponse();
+    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
+    message.chain = object.chain ?? "";
+    message.ownerAddress = object.ownerAddress ?? "";
+    message.actorAddress = object.actorAddress ?? "";
+    return message;
+  },
+  fromAmino(object: MsgCreateSyncActionSignerResponseAmino): MsgCreateSyncActionSignerResponse {
+    const message = createBaseMsgCreateSyncActionSignerResponse();
+    if (object.id !== undefined && object.id !== null) {
+      message.id = Long.fromString(object.id);
+    }
+    if (object.chain !== undefined && object.chain !== null) {
+      message.chain = object.chain;
+    }
+    if (object.ownerAddress !== undefined && object.ownerAddress !== null) {
+      message.ownerAddress = object.ownerAddress;
+    }
+    if (object.actorAddress !== undefined && object.actorAddress !== null) {
+      message.actorAddress = object.actorAddress;
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateSyncActionSignerResponse): MsgCreateSyncActionSignerResponseAmino {
+    const obj: any = {};
+    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    obj.ownerAddress = message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.actorAddress = message.actorAddress === "" ? undefined : message.actorAddress;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateSyncActionSignerResponseAminoMsg): MsgCreateSyncActionSignerResponse {
+    return MsgCreateSyncActionSignerResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateSyncActionSignerResponseProtoMsg): MsgCreateSyncActionSignerResponse {
+    return MsgCreateSyncActionSignerResponse.decode(message.value);
+  },
+  toProto(message: MsgCreateSyncActionSignerResponse): Uint8Array {
+    return MsgCreateSyncActionSignerResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateSyncActionSignerResponse): MsgCreateSyncActionSignerResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSignerResponse",
+      value: MsgCreateSyncActionSignerResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSubmitSyncActionSigner(): MsgSubmitSyncActionSigner {
+  return {
+    creator: "",
+    syncId: Long.UZERO,
+    chain: "",
+    actorAddress: "",
+    ownerAddress: "",
+    expireEpoch: ""
+  };
+}
+export const MsgSubmitSyncActionSigner = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSigner",
+  encode(message: MsgSubmitSyncActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (!message.syncId.isZero()) {
+      writer.uint32(16).uint64(message.syncId);
+    }
+    if (message.chain !== "") {
+      writer.uint32(26).string(message.chain);
+    }
+    if (message.actorAddress !== "") {
+      writer.uint32(34).string(message.actorAddress);
+    }
+    if (message.ownerAddress !== "") {
+      writer.uint32(42).string(message.ownerAddress);
+    }
+    if (message.expireEpoch !== "") {
+      writer.uint32(50).string(message.expireEpoch);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitSyncActionSigner {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSubmitSyncActionSigner();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.syncId = reader.uint64() as Long;
+          break;
+        case 3:
+          message.chain = reader.string();
+          break;
+        case 4:
+          message.actorAddress = reader.string();
+          break;
+        case 5:
+          message.ownerAddress = reader.string();
+          break;
+        case 6:
+          message.expireEpoch = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSubmitSyncActionSigner>): MsgSubmitSyncActionSigner {
+    const message = createBaseMsgSubmitSyncActionSigner();
+    message.creator = object.creator ?? "";
+    message.syncId = object.syncId !== undefined && object.syncId !== null ? Long.fromValue(object.syncId) : Long.UZERO;
+    message.chain = object.chain ?? "";
+    message.actorAddress = object.actorAddress ?? "";
+    message.ownerAddress = object.ownerAddress ?? "";
+    message.expireEpoch = object.expireEpoch ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSubmitSyncActionSignerAmino): MsgSubmitSyncActionSigner {
+    const message = createBaseMsgSubmitSyncActionSigner();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.syncId !== undefined && object.syncId !== null) {
+      message.syncId = Long.fromString(object.syncId);
+    }
+    if (object.chain !== undefined && object.chain !== null) {
+      message.chain = object.chain;
+    }
+    if (object.actorAddress !== undefined && object.actorAddress !== null) {
+      message.actorAddress = object.actorAddress;
+    }
+    if (object.ownerAddress !== undefined && object.ownerAddress !== null) {
+      message.ownerAddress = object.ownerAddress;
+    }
+    if (object.expire_epoch !== undefined && object.expire_epoch !== null) {
+      message.expireEpoch = object.expire_epoch;
+    }
+    return message;
+  },
+  toAmino(message: MsgSubmitSyncActionSigner): MsgSubmitSyncActionSignerAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.syncId = !message.syncId.isZero() ? (message.syncId?.toString)() : undefined;
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    obj.actorAddress = message.actorAddress === "" ? undefined : message.actorAddress;
+    obj.ownerAddress = message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.expire_epoch = message.expireEpoch === "" ? undefined : message.expireEpoch;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSubmitSyncActionSignerAminoMsg): MsgSubmitSyncActionSigner {
+    return MsgSubmitSyncActionSigner.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSubmitSyncActionSignerProtoMsg): MsgSubmitSyncActionSigner {
+    return MsgSubmitSyncActionSigner.decode(message.value);
+  },
+  toProto(message: MsgSubmitSyncActionSigner): Uint8Array {
+    return MsgSubmitSyncActionSigner.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSubmitSyncActionSigner): MsgSubmitSyncActionSignerProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSigner",
+      value: MsgSubmitSyncActionSigner.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSubmitSyncActionSignerResponse(): MsgSubmitSyncActionSignerResponse {
+  return {
+    verifyRequestID: Long.UZERO,
+    expireAt: ""
+  };
+}
+export const MsgSubmitSyncActionSignerResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSignerResponse",
+  encode(message: MsgSubmitSyncActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.verifyRequestID.isZero()) {
+      writer.uint32(8).uint64(message.verifyRequestID);
+    }
+    if (message.expireAt !== "") {
+      writer.uint32(18).string(message.expireAt);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitSyncActionSignerResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSubmitSyncActionSignerResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.verifyRequestID = reader.uint64() as Long;
+          break;
+        case 2:
+          message.expireAt = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSubmitSyncActionSignerResponse>): MsgSubmitSyncActionSignerResponse {
+    const message = createBaseMsgSubmitSyncActionSignerResponse();
+    message.verifyRequestID = object.verifyRequestID !== undefined && object.verifyRequestID !== null ? Long.fromValue(object.verifyRequestID) : Long.UZERO;
+    message.expireAt = object.expireAt ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSubmitSyncActionSignerResponseAmino): MsgSubmitSyncActionSignerResponse {
+    const message = createBaseMsgSubmitSyncActionSignerResponse();
+    if (object.verifyRequestID !== undefined && object.verifyRequestID !== null) {
+      message.verifyRequestID = Long.fromString(object.verifyRequestID);
+    }
+    if (object.expireAt !== undefined && object.expireAt !== null) {
+      message.expireAt = object.expireAt;
+    }
+    return message;
+  },
+  toAmino(message: MsgSubmitSyncActionSignerResponse): MsgSubmitSyncActionSignerResponseAmino {
+    const obj: any = {};
+    obj.verifyRequestID = !message.verifyRequestID.isZero() ? (message.verifyRequestID?.toString)() : undefined;
+    obj.expireAt = message.expireAt === "" ? undefined : message.expireAt;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSubmitSyncActionSignerResponseAminoMsg): MsgSubmitSyncActionSignerResponse {
+    return MsgSubmitSyncActionSignerResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSubmitSyncActionSignerResponseProtoMsg): MsgSubmitSyncActionSignerResponse {
+    return MsgSubmitSyncActionSignerResponse.decode(message.value);
+  },
+  toProto(message: MsgSubmitSyncActionSignerResponse): Uint8Array {
+    return MsgSubmitSyncActionSignerResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSubmitSyncActionSignerResponse): MsgSubmitSyncActionSignerResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSignerResponse",
+      value: MsgSubmitSyncActionSignerResponse.encode(message).finish()
     };
   }
 };

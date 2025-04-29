@@ -1,10 +1,12 @@
 //@ts-nocheck
-import { Long } from "../helpers";
+import { Coin, CoinAmino, CoinSDKType } from "../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+/** @deprecated */
 export interface Token {
+  $typeUrl?: "/thesixnetwork.sixprotocol.tokenmngr.Token";
   name: string;
   base: string;
-  maxSupply: Long;
+  maxSupply: Coin;
   mintee: string;
   creator: string;
 }
@@ -12,10 +14,11 @@ export interface TokenProtoMsg {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token";
   value: Uint8Array;
 }
+/** @deprecated */
 export interface TokenAmino {
   name?: string;
   base?: string;
-  maxSupply?: string;
+  maxSupply?: CoinAmino;
   mintee?: string;
   creator?: string;
 }
@@ -23,10 +26,12 @@ export interface TokenAminoMsg {
   type: "/thesixnetwork.sixprotocol.tokenmngr.Token";
   value: TokenAmino;
 }
+/** @deprecated */
 export interface TokenSDKType {
+  $typeUrl?: "/thesixnetwork.sixprotocol.tokenmngr.Token";
   name: string;
   base: string;
-  maxSupply: Long;
+  maxSupply: CoinSDKType;
   mintee: string;
   creator: string;
 }
@@ -163,9 +168,10 @@ export interface MetadataSDKType {
 }
 function createBaseToken(): Token {
   return {
+    $typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token",
     name: "",
     base: "",
-    maxSupply: Long.UZERO,
+    maxSupply: Coin.fromPartial({}),
     mintee: "",
     creator: ""
   };
@@ -179,8 +185,8 @@ export const Token = {
     if (message.base !== "") {
       writer.uint32(18).string(message.base);
     }
-    if (!message.maxSupply.isZero()) {
-      writer.uint32(24).uint64(message.maxSupply);
+    if (message.maxSupply !== undefined) {
+      Coin.encode(message.maxSupply, writer.uint32(26).fork()).ldelim();
     }
     if (message.mintee !== "") {
       writer.uint32(34).string(message.mintee);
@@ -204,7 +210,7 @@ export const Token = {
           message.base = reader.string();
           break;
         case 3:
-          message.maxSupply = reader.uint64() as Long;
+          message.maxSupply = Coin.decode(reader, reader.uint32());
           break;
         case 4:
           message.mintee = reader.string();
@@ -223,7 +229,7 @@ export const Token = {
     const message = createBaseToken();
     message.name = object.name ?? "";
     message.base = object.base ?? "";
-    message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Long.fromValue(object.maxSupply) : Long.UZERO;
+    message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Coin.fromPartial(object.maxSupply) : undefined;
     message.mintee = object.mintee ?? "";
     message.creator = object.creator ?? "";
     return message;
@@ -237,7 +243,7 @@ export const Token = {
       message.base = object.base;
     }
     if (object.maxSupply !== undefined && object.maxSupply !== null) {
-      message.maxSupply = Long.fromString(object.maxSupply);
+      message.maxSupply = Coin.fromAmino(object.maxSupply);
     }
     if (object.mintee !== undefined && object.mintee !== null) {
       message.mintee = object.mintee;
@@ -251,7 +257,7 @@ export const Token = {
     const obj: any = {};
     obj.name = message.name === "" ? undefined : message.name;
     obj.base = message.base === "" ? undefined : message.base;
-    obj.maxSupply = !message.maxSupply.isZero() ? (message.maxSupply?.toString)() : undefined;
+    obj.maxSupply = message.maxSupply ? Coin.toAmino(message.maxSupply) : undefined;
     obj.mintee = message.mintee === "" ? undefined : message.mintee;
     obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;

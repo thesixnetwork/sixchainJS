@@ -16,11 +16,11 @@ option go_package = "github.com/thesixnetwork/six-protocol/x/tokenmngr/types";
 
 // Query defines the gRPC querier service.
 service Query {
-  // Parameters queries the parameters of the module.
-  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
-    option (google.api.http).get = "/thesixnetwork/six-protocol/tokenmngr/params";
-  }
-  // Queries a Token by index.
+	// Parameters queries the parameters of the module.
+	rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+		option (google.api.http).get = "/thesixnetwork/six-protocol/tokenmngr/params";
+	}
+  	// Queries a Token by index.
 	rpc Token(QueryGetTokenRequest) returns (QueryGetTokenResponse) {
 		option (google.api.http).get = "/thesixnetwork/six-protocol/tokenmngr/token/{name}";
 	}
@@ -30,7 +30,7 @@ service Query {
 		option (google.api.http).get = "/thesixnetwork/six-protocol/tokenmngr/token";
 	}
 
-// Queries a Mintperm by index.
+	// Queries a Mintperm by index.
 	rpc Mintperm(QueryGetMintpermRequest) returns (QueryGetMintpermResponse) {
 		option (google.api.http).get = "/thesixnetwork/six-protocol/tokenmngr/mintperm/{token}/{address}";
 	}
@@ -40,16 +40,16 @@ service Query {
 		option (google.api.http).get = "/thesixnetwork/six-protocol/tokenmngr/mintperm";
 	}
 
-// Queries a Options by index.
+	// Queries a Options by index.
 	rpc Options(QueryGetOptionsRequest) returns (QueryGetOptionsResponse) {
 		option (google.api.http).get = "/thesixnetwork/six-protocol/tokenmngr/options";
 	}
-// Queries a list of Burns items.
+	// Queries a list of Burns items.
 	rpc Burns(QueryBurnsRequest) returns (QueryBurnsResponse) {
 		option (google.api.http).get = "/thesixnetwork/sixprotocol/tokenmngr/burns";
 	}
 
-// Queries a TokenBurn by index.
+	// Queries a TokenBurn by index.
 	rpc TokenBurn(QueryGetTokenBurnRequest) returns (QueryGetTokenBurnResponse) {
 		option (google.api.http).get = "/thesixnetwork/sixprotocol/tokenmngr/token_burn/{token}";
 	}

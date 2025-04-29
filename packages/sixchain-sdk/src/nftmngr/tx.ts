@@ -175,6 +175,52 @@ export interface MsgCreateMetadataResponseSDKType {
   nftSchemaCode: string;
   tokenId: string;
 }
+export interface MsgCreateMultiMetadata {
+  creator: string;
+  nftSchemaCode: string;
+  tokenId: string[];
+  base64NFTData: string;
+}
+export interface MsgCreateMultiMetadataProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadata";
+  value: Uint8Array;
+}
+export interface MsgCreateMultiMetadataAmino {
+  creator?: string;
+  nftSchemaCode?: string;
+  tokenId?: string[];
+  base64NFTData?: string;
+}
+export interface MsgCreateMultiMetadataAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadata";
+  value: MsgCreateMultiMetadataAmino;
+}
+export interface MsgCreateMultiMetadataSDKType {
+  creator: string;
+  nftSchemaCode: string;
+  tokenId: string[];
+  base64NFTData: string;
+}
+export interface MsgCreateMultiMetadataResponse {
+  nftSchemaCode: string;
+  tokenId: string[];
+}
+export interface MsgCreateMultiMetadataResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadataResponse";
+  value: Uint8Array;
+}
+export interface MsgCreateMultiMetadataResponseAmino {
+  nftSchemaCode?: string;
+  tokenId?: string[];
+}
+export interface MsgCreateMultiMetadataResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadataResponse";
+  value: MsgCreateMultiMetadataResponseAmino;
+}
+export interface MsgCreateMultiMetadataResponseSDKType {
+  nftSchemaCode: string;
+  tokenId: string[];
+}
 export interface OpenseaAttribute {
   traitType: string;
   value?: Any;
@@ -229,12 +275,36 @@ export interface UpdatedOriginDataAminoMsg {
 export interface UpdatedOriginDataSDKType {
   opensea?: UpdatedOpenseaAttributesSDKType;
 }
+/** ActionParameter */
+export interface ActionParameter {
+  name: string;
+  value: string;
+}
+export interface ActionParameterProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParameter";
+  value: Uint8Array;
+}
+/** ActionParameter */
+export interface ActionParameterAmino {
+  name?: string;
+  value?: string;
+}
+export interface ActionParameterAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.ActionParameter";
+  value: ActionParameterAmino;
+}
+/** ActionParameter */
+export interface ActionParameterSDKType {
+  name: string;
+  value: string;
+}
 export interface MsgPerformActionByAdmin {
   creator: string;
   nftSchemaCode: string;
   tokenId: string;
   action: string;
   refId: string;
+  parameters: ActionParameter[];
 }
 export interface MsgPerformActionByAdminProtoMsg {
   typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdmin";
@@ -246,6 +316,7 @@ export interface MsgPerformActionByAdminAmino {
   tokenId?: string;
   action?: string;
   ref_id?: string;
+  parameters?: ActionParameterAmino[];
 }
 export interface MsgPerformActionByAdminAminoMsg {
   type: "/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdmin";
@@ -257,6 +328,7 @@ export interface MsgPerformActionByAdminSDKType {
   tokenId: string;
   action: string;
   ref_id: string;
+  parameters: ActionParameterSDKType[];
 }
 export interface MsgPerformActionByAdminResponse {
   nftSchemaCode: string;
@@ -277,6 +349,223 @@ export interface MsgPerformActionByAdminResponseAminoMsg {
 export interface MsgPerformActionByAdminResponseSDKType {
   nft_schema_code: string;
   token_id: string;
+}
+export interface MsgPerformMultiTokenAction {
+  creator: string;
+  nftSchemaCode: string;
+  tokenId: string[];
+  action: string[];
+  refId: string;
+  parameters: string;
+}
+export interface MsgPerformMultiTokenActionProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenAction";
+  value: Uint8Array;
+}
+export interface MsgPerformMultiTokenActionAmino {
+  creator?: string;
+  nft_schema_code?: string;
+  tokenId?: string[];
+  action?: string[];
+  ref_id?: string;
+  parameters?: string;
+}
+export interface MsgPerformMultiTokenActionAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenAction";
+  value: MsgPerformMultiTokenActionAmino;
+}
+export interface MsgPerformMultiTokenActionSDKType {
+  creator: string;
+  nft_schema_code: string;
+  tokenId: string[];
+  action: string[];
+  ref_id: string;
+  parameters: string;
+}
+export interface MsgPerformMultiTokenActionResponse {
+  nftSchemaCode: string;
+  tokenId: string[];
+  action: string[];
+}
+export interface MsgPerformMultiTokenActionResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenActionResponse";
+  value: Uint8Array;
+}
+export interface MsgPerformMultiTokenActionResponseAmino {
+  nftSchemaCode?: string;
+  tokenId?: string[];
+  action?: string[];
+}
+export interface MsgPerformMultiTokenActionResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenActionResponse";
+  value: MsgPerformMultiTokenActionResponseAmino;
+}
+export interface MsgPerformMultiTokenActionResponseSDKType {
+  nftSchemaCode: string;
+  tokenId: string[];
+  action: string[];
+}
+export interface MsgPerformMultiTokenOneAction {
+  creator: string;
+  nftSchemaCode: string;
+  tokenId: string[];
+  action: string;
+  refId: string;
+  parameters: ActionParameter[];
+}
+export interface MsgPerformMultiTokenOneActionProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenOneAction";
+  value: Uint8Array;
+}
+export interface MsgPerformMultiTokenOneActionAmino {
+  creator?: string;
+  nftSchemaCode?: string;
+  tokenId?: string[];
+  action?: string;
+  refId?: string;
+  parameters?: ActionParameterAmino[];
+}
+export interface MsgPerformMultiTokenOneActionAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenOneAction";
+  value: MsgPerformMultiTokenOneActionAmino;
+}
+export interface MsgPerformMultiTokenOneActionSDKType {
+  creator: string;
+  nftSchemaCode: string;
+  tokenId: string[];
+  action: string;
+  refId: string;
+  parameters: ActionParameterSDKType[];
+}
+export interface MsgPerformMultiTokenOneActionResponse {
+  nftSchemaCode: string;
+  tokenId: string[];
+}
+export interface MsgPerformMultiTokenOneActionResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenOneActionResponse";
+  value: Uint8Array;
+}
+export interface MsgPerformMultiTokenOneActionResponseAmino {
+  nftSchemaCode?: string;
+  tokenId?: string[];
+}
+export interface MsgPerformMultiTokenOneActionResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenOneActionResponse";
+  value: MsgPerformMultiTokenOneActionResponseAmino;
+}
+export interface MsgPerformMultiTokenOneActionResponseSDKType {
+  nftSchemaCode: string;
+  tokenId: string[];
+}
+export interface MsgPerformMultiTokenMultiAction {
+  creator: string;
+  nftSchemaCode: string;
+  tokenId: string[];
+  action: string[];
+  refId: string;
+  parameters: string[];
+}
+export interface MsgPerformMultiTokenMultiActionProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenMultiAction";
+  value: Uint8Array;
+}
+export interface MsgPerformMultiTokenMultiActionAmino {
+  creator?: string;
+  nftSchemaCode?: string;
+  tokenId?: string[];
+  action?: string[];
+  refId?: string;
+  parameters?: string[];
+}
+export interface MsgPerformMultiTokenMultiActionAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenMultiAction";
+  value: MsgPerformMultiTokenMultiActionAmino;
+}
+export interface MsgPerformMultiTokenMultiActionSDKType {
+  creator: string;
+  nftSchemaCode: string;
+  tokenId: string[];
+  action: string[];
+  refId: string;
+  parameters: string[];
+}
+export interface MsgPerformMultiTokenMultiActionResponse {
+  nftSchemaCode: string;
+  tokenId: string[];
+  action: string[];
+}
+export interface MsgPerformMultiTokenMultiActionResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenMultiActionResponse";
+  value: Uint8Array;
+}
+export interface MsgPerformMultiTokenMultiActionResponseAmino {
+  nftSchemaCode?: string;
+  tokenId?: string[];
+  action?: string[];
+}
+export interface MsgPerformMultiTokenMultiActionResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenMultiActionResponse";
+  value: MsgPerformMultiTokenMultiActionResponseAmino;
+}
+export interface MsgPerformMultiTokenMultiActionResponseSDKType {
+  nftSchemaCode: string;
+  tokenId: string[];
+  action: string[];
+}
+export interface MsgPerformOneTokenMultiAction {
+  creator: string;
+  nftSchemaCode: string;
+  tokenId: string;
+  action: string[];
+  refId: string;
+  parameters: string[];
+}
+export interface MsgPerformOneTokenMultiActionProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformOneTokenMultiAction";
+  value: Uint8Array;
+}
+export interface MsgPerformOneTokenMultiActionAmino {
+  creator?: string;
+  nftSchemaCode?: string;
+  tokenId?: string;
+  action?: string[];
+  refId?: string;
+  parameters?: string[];
+}
+export interface MsgPerformOneTokenMultiActionAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgPerformOneTokenMultiAction";
+  value: MsgPerformOneTokenMultiActionAmino;
+}
+export interface MsgPerformOneTokenMultiActionSDKType {
+  creator: string;
+  nftSchemaCode: string;
+  tokenId: string;
+  action: string[];
+  refId: string;
+  parameters: string[];
+}
+export interface MsgPerformOneTokenMultiActionResponse {
+  nftSchemaCode: string;
+  tokenId: string;
+  action: string[];
+}
+export interface MsgPerformOneTokenMultiActionResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformOneTokenMultiActionResponse";
+  value: Uint8Array;
+}
+export interface MsgPerformOneTokenMultiActionResponseAmino {
+  nftSchemaCode?: string;
+  tokenId?: string;
+  action?: string[];
+}
+export interface MsgPerformOneTokenMultiActionResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgPerformOneTokenMultiActionResponse";
+  value: MsgPerformOneTokenMultiActionResponseAmino;
+}
+export interface MsgPerformOneTokenMultiActionResponseSDKType {
+  nftSchemaCode: string;
+  tokenId: string;
+  action: string[];
 }
 export interface MsgAddAttribute {
   creator: string;
@@ -466,6 +755,7 @@ export interface MsgToggleAction {
   creator: string;
   code: string;
   action: string;
+  disable: boolean;
 }
 export interface MsgToggleActionProtoMsg {
   typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgToggleAction";
@@ -475,6 +765,7 @@ export interface MsgToggleActionAmino {
   creator?: string;
   code?: string;
   action?: string;
+  disable?: boolean;
 }
 export interface MsgToggleActionAminoMsg {
   type: "/thesixnetwork.sixnft.nftmngr.MsgToggleAction";
@@ -484,6 +775,7 @@ export interface MsgToggleActionSDKType {
   creator: string;
   code: string;
   action: string;
+  disable: boolean;
 }
 export interface MsgToggleActionResponse {
   code: string;
@@ -793,6 +1085,267 @@ export interface MsgSetMintauthResponseAminoMsg {
 }
 export interface MsgSetMintauthResponseSDKType {
   nftSchemaCode: string;
+}
+export interface MsgChangeOrgOwner {
+  creator: string;
+  orgName: string;
+  toNewOwner: string;
+}
+export interface MsgChangeOrgOwnerProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner";
+  value: Uint8Array;
+}
+export interface MsgChangeOrgOwnerAmino {
+  creator?: string;
+  orgName?: string;
+  toNewOwner?: string;
+}
+export interface MsgChangeOrgOwnerAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner";
+  value: MsgChangeOrgOwnerAmino;
+}
+export interface MsgChangeOrgOwnerSDKType {
+  creator: string;
+  orgName: string;
+  toNewOwner: string;
+}
+export interface MsgChangeOrgOwnerResponse {
+  orgName: string;
+  oldOwner: string;
+  newOwner: string;
+}
+export interface MsgChangeOrgOwnerResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwnerResponse";
+  value: Uint8Array;
+}
+export interface MsgChangeOrgOwnerResponseAmino {
+  orgName?: string;
+  oldOwner?: string;
+  newOwner?: string;
+}
+export interface MsgChangeOrgOwnerResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwnerResponse";
+  value: MsgChangeOrgOwnerResponseAmino;
+}
+export interface MsgChangeOrgOwnerResponseSDKType {
+  orgName: string;
+  oldOwner: string;
+  newOwner: string;
+}
+export interface MsgSetUriRetrievalMethod {
+  creator: string;
+  schemaCode: string;
+  newMethod: number;
+}
+export interface MsgSetUriRetrievalMethodProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod";
+  value: Uint8Array;
+}
+export interface MsgSetUriRetrievalMethodAmino {
+  creator?: string;
+  schemaCode?: string;
+  newMethod?: number;
+}
+export interface MsgSetUriRetrievalMethodAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod";
+  value: MsgSetUriRetrievalMethodAmino;
+}
+export interface MsgSetUriRetrievalMethodSDKType {
+  creator: string;
+  schemaCode: string;
+  newMethod: number;
+}
+export interface MsgSetUriRetrievalMethodResponse {
+  schemaCode: string;
+  newMethod: string;
+}
+export interface MsgSetUriRetrievalMethodResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethodResponse";
+  value: Uint8Array;
+}
+export interface MsgSetUriRetrievalMethodResponseAmino {
+  schemaCode?: string;
+  newMethod?: string;
+}
+export interface MsgSetUriRetrievalMethodResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethodResponse";
+  value: MsgSetUriRetrievalMethodResponseAmino;
+}
+export interface MsgSetUriRetrievalMethodResponseSDKType {
+  schemaCode: string;
+  newMethod: string;
+}
+export interface MsgSetOriginChain {
+  creator: string;
+  schemaCode: string;
+  newOriginChain: string;
+}
+export interface MsgSetOriginChainProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain";
+  value: Uint8Array;
+}
+export interface MsgSetOriginChainAmino {
+  creator?: string;
+  schemaCode?: string;
+  newOriginChain?: string;
+}
+export interface MsgSetOriginChainAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain";
+  value: MsgSetOriginChainAmino;
+}
+export interface MsgSetOriginChainSDKType {
+  creator: string;
+  schemaCode: string;
+  newOriginChain: string;
+}
+export interface MsgSetOriginChainResponse {
+  schemaCode: string;
+  newOriginChain: string;
+}
+export interface MsgSetOriginChainResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChainResponse";
+  value: Uint8Array;
+}
+export interface MsgSetOriginChainResponseAmino {
+  schemaCode?: string;
+  newOriginChain?: string;
+}
+export interface MsgSetOriginChainResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChainResponse";
+  value: MsgSetOriginChainResponseAmino;
+}
+export interface MsgSetOriginChainResponseSDKType {
+  schemaCode: string;
+  newOriginChain: string;
+}
+export interface MsgSetOriginContract {
+  creator: string;
+  schemaCode: string;
+  newContractAddress: string;
+}
+export interface MsgSetOriginContractProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract";
+  value: Uint8Array;
+}
+export interface MsgSetOriginContractAmino {
+  creator?: string;
+  schemaCode?: string;
+  newContractAddress?: string;
+}
+export interface MsgSetOriginContractAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract";
+  value: MsgSetOriginContractAmino;
+}
+export interface MsgSetOriginContractSDKType {
+  creator: string;
+  schemaCode: string;
+  newContractAddress: string;
+}
+export interface MsgSetOriginContractResponse {
+  schemaCode: string;
+  newContractAddress: string;
+}
+export interface MsgSetOriginContractResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContractResponse";
+  value: Uint8Array;
+}
+export interface MsgSetOriginContractResponseAmino {
+  schemaCode?: string;
+  newContractAddress?: string;
+}
+export interface MsgSetOriginContractResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContractResponse";
+  value: MsgSetOriginContractResponseAmino;
+}
+export interface MsgSetOriginContractResponseSDKType {
+  schemaCode: string;
+  newContractAddress: string;
+}
+export interface MsgSetAttributeOveriding {
+  creator: string;
+  schemaCode: string;
+  newOveridingType: number;
+}
+export interface MsgSetAttributeOveridingProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding";
+  value: Uint8Array;
+}
+export interface MsgSetAttributeOveridingAmino {
+  creator?: string;
+  schemaCode?: string;
+  newOveridingType?: number;
+}
+export interface MsgSetAttributeOveridingAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding";
+  value: MsgSetAttributeOveridingAmino;
+}
+export interface MsgSetAttributeOveridingSDKType {
+  creator: string;
+  schemaCode: string;
+  newOveridingType: number;
+}
+export interface MsgSetAttributeOveridingResponse {
+  schemaCode: string;
+  newOveriding: string;
+}
+export interface MsgSetAttributeOveridingResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveridingResponse";
+  value: Uint8Array;
+}
+export interface MsgSetAttributeOveridingResponseAmino {
+  schemaCode?: string;
+  newOveriding?: string;
+}
+export interface MsgSetAttributeOveridingResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveridingResponse";
+  value: MsgSetAttributeOveridingResponseAmino;
+}
+export interface MsgSetAttributeOveridingResponseSDKType {
+  schemaCode: string;
+  newOveriding: string;
+}
+export interface MsgSetMetadataFormat {
+  creator: string;
+  schemaCode: string;
+  newFormat: string;
+}
+export interface MsgSetMetadataFormatProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat";
+  value: Uint8Array;
+}
+export interface MsgSetMetadataFormatAmino {
+  creator?: string;
+  schemaCode?: string;
+  newFormat?: string;
+}
+export interface MsgSetMetadataFormatAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat";
+  value: MsgSetMetadataFormatAmino;
+}
+export interface MsgSetMetadataFormatSDKType {
+  creator: string;
+  schemaCode: string;
+  newFormat: string;
+}
+export interface MsgSetMetadataFormatResponse {
+  schemaCode: string;
+  newFormat: string;
+}
+export interface MsgSetMetadataFormatResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormatResponse";
+  value: Uint8Array;
+}
+export interface MsgSetMetadataFormatResponseAmino {
+  schemaCode?: string;
+  newFormat?: string;
+}
+export interface MsgSetMetadataFormatResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormatResponse";
+  value: MsgSetMetadataFormatResponseAmino;
+}
+export interface MsgSetMetadataFormatResponseSDKType {
+  schemaCode: string;
+  newFormat: string;
 }
 function createBaseMsgCreateNFTSchema(): MsgCreateNFTSchema {
   return {
@@ -1106,6 +1659,184 @@ export const MsgCreateMetadataResponse = {
     };
   }
 };
+function createBaseMsgCreateMultiMetadata(): MsgCreateMultiMetadata {
+  return {
+    creator: "",
+    nftSchemaCode: "",
+    tokenId: [],
+    base64NFTData: ""
+  };
+}
+export const MsgCreateMultiMetadata = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadata",
+  encode(message: MsgCreateMultiMetadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(18).string(message.nftSchemaCode);
+    }
+    for (const v of message.tokenId) {
+      writer.uint32(26).string(v!);
+    }
+    if (message.base64NFTData !== "") {
+      writer.uint32(34).string(message.base64NFTData);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateMultiMetadata {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateMultiMetadata();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.tokenId.push(reader.string());
+          break;
+        case 4:
+          message.base64NFTData = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateMultiMetadata>): MsgCreateMultiMetadata {
+    const message = createBaseMsgCreateMultiMetadata();
+    message.creator = object.creator ?? "";
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    message.base64NFTData = object.base64NFTData ?? "";
+    return message;
+  },
+  fromAmino(object: MsgCreateMultiMetadataAmino): MsgCreateMultiMetadata {
+    const message = createBaseMsgCreateMultiMetadata();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    if (object.base64NFTData !== undefined && object.base64NFTData !== null) {
+      message.base64NFTData = object.base64NFTData;
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateMultiMetadata): MsgCreateMultiMetadataAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.tokenId) {
+      obj.tokenId = message.tokenId.map(e => e);
+    } else {
+      obj.tokenId = message.tokenId;
+    }
+    obj.base64NFTData = message.base64NFTData === "" ? undefined : message.base64NFTData;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateMultiMetadataAminoMsg): MsgCreateMultiMetadata {
+    return MsgCreateMultiMetadata.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateMultiMetadataProtoMsg): MsgCreateMultiMetadata {
+    return MsgCreateMultiMetadata.decode(message.value);
+  },
+  toProto(message: MsgCreateMultiMetadata): Uint8Array {
+    return MsgCreateMultiMetadata.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateMultiMetadata): MsgCreateMultiMetadataProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadata",
+      value: MsgCreateMultiMetadata.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgCreateMultiMetadataResponse(): MsgCreateMultiMetadataResponse {
+  return {
+    nftSchemaCode: "",
+    tokenId: []
+  };
+}
+export const MsgCreateMultiMetadataResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadataResponse",
+  encode(message: MsgCreateMultiMetadataResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(10).string(message.nftSchemaCode);
+    }
+    for (const v of message.tokenId) {
+      writer.uint32(18).string(v!);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateMultiMetadataResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateMultiMetadataResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.tokenId.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateMultiMetadataResponse>): MsgCreateMultiMetadataResponse {
+    const message = createBaseMsgCreateMultiMetadataResponse();
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    return message;
+  },
+  fromAmino(object: MsgCreateMultiMetadataResponseAmino): MsgCreateMultiMetadataResponse {
+    const message = createBaseMsgCreateMultiMetadataResponse();
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    return message;
+  },
+  toAmino(message: MsgCreateMultiMetadataResponse): MsgCreateMultiMetadataResponseAmino {
+    const obj: any = {};
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.tokenId) {
+      obj.tokenId = message.tokenId.map(e => e);
+    } else {
+      obj.tokenId = message.tokenId;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateMultiMetadataResponseAminoMsg): MsgCreateMultiMetadataResponse {
+    return MsgCreateMultiMetadataResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateMultiMetadataResponseProtoMsg): MsgCreateMultiMetadataResponse {
+    return MsgCreateMultiMetadataResponse.decode(message.value);
+  },
+  toProto(message: MsgCreateMultiMetadataResponse): Uint8Array {
+    return MsgCreateMultiMetadataResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateMultiMetadataResponse): MsgCreateMultiMetadataResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgCreateMultiMetadataResponse",
+      value: MsgCreateMultiMetadataResponse.encode(message).finish()
+    };
+  }
+};
 function createBaseOpenseaAttribute(): OpenseaAttribute {
   return {
     traitType: "",
@@ -1309,13 +2040,89 @@ export const UpdatedOriginData = {
     };
   }
 };
+function createBaseActionParameter(): ActionParameter {
+  return {
+    name: "",
+    value: ""
+  };
+}
+export const ActionParameter = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParameter",
+  encode(message: ActionParameter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.name !== "") {
+      writer.uint32(10).string(message.name);
+    }
+    if (message.value !== "") {
+      writer.uint32(18).string(message.value);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): ActionParameter {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseActionParameter();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.name = reader.string();
+          break;
+        case 2:
+          message.value = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<ActionParameter>): ActionParameter {
+    const message = createBaseActionParameter();
+    message.name = object.name ?? "";
+    message.value = object.value ?? "";
+    return message;
+  },
+  fromAmino(object: ActionParameterAmino): ActionParameter {
+    const message = createBaseActionParameter();
+    if (object.name !== undefined && object.name !== null) {
+      message.name = object.name;
+    }
+    if (object.value !== undefined && object.value !== null) {
+      message.value = object.value;
+    }
+    return message;
+  },
+  toAmino(message: ActionParameter): ActionParameterAmino {
+    const obj: any = {};
+    obj.name = message.name === "" ? undefined : message.name;
+    obj.value = message.value === "" ? undefined : message.value;
+    return obj;
+  },
+  fromAminoMsg(object: ActionParameterAminoMsg): ActionParameter {
+    return ActionParameter.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ActionParameterProtoMsg): ActionParameter {
+    return ActionParameter.decode(message.value);
+  },
+  toProto(message: ActionParameter): Uint8Array {
+    return ActionParameter.encode(message).finish();
+  },
+  toProtoMsg(message: ActionParameter): ActionParameterProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParameter",
+      value: ActionParameter.encode(message).finish()
+    };
+  }
+};
 function createBaseMsgPerformActionByAdmin(): MsgPerformActionByAdmin {
   return {
     creator: "",
     nftSchemaCode: "",
     tokenId: "",
     action: "",
-    refId: ""
+    refId: "",
+    parameters: []
   };
 }
 export const MsgPerformActionByAdmin = {
@@ -1335,6 +2142,9 @@ export const MsgPerformActionByAdmin = {
     }
     if (message.refId !== "") {
       writer.uint32(42).string(message.refId);
+    }
+    for (const v of message.parameters) {
+      ActionParameter.encode(v!, writer.uint32(50).fork()).ldelim();
     }
     return writer;
   },
@@ -1360,6 +2170,9 @@ export const MsgPerformActionByAdmin = {
         case 5:
           message.refId = reader.string();
           break;
+        case 6:
+          message.parameters.push(ActionParameter.decode(reader, reader.uint32()));
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1374,6 +2187,7 @@ export const MsgPerformActionByAdmin = {
     message.tokenId = object.tokenId ?? "";
     message.action = object.action ?? "";
     message.refId = object.refId ?? "";
+    message.parameters = object.parameters?.map(e => ActionParameter.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: MsgPerformActionByAdminAmino): MsgPerformActionByAdmin {
@@ -1393,6 +2207,7 @@ export const MsgPerformActionByAdmin = {
     if (object.ref_id !== undefined && object.ref_id !== null) {
       message.refId = object.ref_id;
     }
+    message.parameters = object.parameters?.map(e => ActionParameter.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: MsgPerformActionByAdmin): MsgPerformActionByAdminAmino {
@@ -1402,6 +2217,11 @@ export const MsgPerformActionByAdmin = {
     obj.tokenId = message.tokenId === "" ? undefined : message.tokenId;
     obj.action = message.action === "" ? undefined : message.action;
     obj.ref_id = message.refId === "" ? undefined : message.refId;
+    if (message.parameters) {
+      obj.parameters = message.parameters.map(e => e ? ActionParameter.toAmino(e) : undefined);
+    } else {
+      obj.parameters = message.parameters;
+    }
     return obj;
   },
   fromAminoMsg(object: MsgPerformActionByAdminAminoMsg): MsgPerformActionByAdmin {
@@ -1492,6 +2312,864 @@ export const MsgPerformActionByAdminResponse = {
     return {
       typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformActionByAdminResponse",
       value: MsgPerformActionByAdminResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgPerformMultiTokenAction(): MsgPerformMultiTokenAction {
+  return {
+    creator: "",
+    nftSchemaCode: "",
+    tokenId: [],
+    action: [],
+    refId: "",
+    parameters: ""
+  };
+}
+export const MsgPerformMultiTokenAction = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenAction",
+  encode(message: MsgPerformMultiTokenAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(18).string(message.nftSchemaCode);
+    }
+    for (const v of message.tokenId) {
+      writer.uint32(26).string(v!);
+    }
+    for (const v of message.action) {
+      writer.uint32(34).string(v!);
+    }
+    if (message.refId !== "") {
+      writer.uint32(42).string(message.refId);
+    }
+    if (message.parameters !== "") {
+      writer.uint32(50).string(message.parameters);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgPerformMultiTokenAction {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgPerformMultiTokenAction();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.tokenId.push(reader.string());
+          break;
+        case 4:
+          message.action.push(reader.string());
+          break;
+        case 5:
+          message.refId = reader.string();
+          break;
+        case 6:
+          message.parameters = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgPerformMultiTokenAction>): MsgPerformMultiTokenAction {
+    const message = createBaseMsgPerformMultiTokenAction();
+    message.creator = object.creator ?? "";
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    message.action = object.action?.map(e => e) || [];
+    message.refId = object.refId ?? "";
+    message.parameters = object.parameters ?? "";
+    return message;
+  },
+  fromAmino(object: MsgPerformMultiTokenActionAmino): MsgPerformMultiTokenAction {
+    const message = createBaseMsgPerformMultiTokenAction();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.nft_schema_code !== undefined && object.nft_schema_code !== null) {
+      message.nftSchemaCode = object.nft_schema_code;
+    }
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    message.action = object.action?.map(e => e) || [];
+    if (object.ref_id !== undefined && object.ref_id !== null) {
+      message.refId = object.ref_id;
+    }
+    if (object.parameters !== undefined && object.parameters !== null) {
+      message.parameters = object.parameters;
+    }
+    return message;
+  },
+  toAmino(message: MsgPerformMultiTokenAction): MsgPerformMultiTokenActionAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.nft_schema_code = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.tokenId) {
+      obj.tokenId = message.tokenId.map(e => e);
+    } else {
+      obj.tokenId = message.tokenId;
+    }
+    if (message.action) {
+      obj.action = message.action.map(e => e);
+    } else {
+      obj.action = message.action;
+    }
+    obj.ref_id = message.refId === "" ? undefined : message.refId;
+    obj.parameters = message.parameters === "" ? undefined : message.parameters;
+    return obj;
+  },
+  fromAminoMsg(object: MsgPerformMultiTokenActionAminoMsg): MsgPerformMultiTokenAction {
+    return MsgPerformMultiTokenAction.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgPerformMultiTokenActionProtoMsg): MsgPerformMultiTokenAction {
+    return MsgPerformMultiTokenAction.decode(message.value);
+  },
+  toProto(message: MsgPerformMultiTokenAction): Uint8Array {
+    return MsgPerformMultiTokenAction.encode(message).finish();
+  },
+  toProtoMsg(message: MsgPerformMultiTokenAction): MsgPerformMultiTokenActionProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenAction",
+      value: MsgPerformMultiTokenAction.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgPerformMultiTokenActionResponse(): MsgPerformMultiTokenActionResponse {
+  return {
+    nftSchemaCode: "",
+    tokenId: [],
+    action: []
+  };
+}
+export const MsgPerformMultiTokenActionResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenActionResponse",
+  encode(message: MsgPerformMultiTokenActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(10).string(message.nftSchemaCode);
+    }
+    for (const v of message.tokenId) {
+      writer.uint32(18).string(v!);
+    }
+    for (const v of message.action) {
+      writer.uint32(26).string(v!);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgPerformMultiTokenActionResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgPerformMultiTokenActionResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.tokenId.push(reader.string());
+          break;
+        case 3:
+          message.action.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgPerformMultiTokenActionResponse>): MsgPerformMultiTokenActionResponse {
+    const message = createBaseMsgPerformMultiTokenActionResponse();
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    message.action = object.action?.map(e => e) || [];
+    return message;
+  },
+  fromAmino(object: MsgPerformMultiTokenActionResponseAmino): MsgPerformMultiTokenActionResponse {
+    const message = createBaseMsgPerformMultiTokenActionResponse();
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    message.action = object.action?.map(e => e) || [];
+    return message;
+  },
+  toAmino(message: MsgPerformMultiTokenActionResponse): MsgPerformMultiTokenActionResponseAmino {
+    const obj: any = {};
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.tokenId) {
+      obj.tokenId = message.tokenId.map(e => e);
+    } else {
+      obj.tokenId = message.tokenId;
+    }
+    if (message.action) {
+      obj.action = message.action.map(e => e);
+    } else {
+      obj.action = message.action;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgPerformMultiTokenActionResponseAminoMsg): MsgPerformMultiTokenActionResponse {
+    return MsgPerformMultiTokenActionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgPerformMultiTokenActionResponseProtoMsg): MsgPerformMultiTokenActionResponse {
+    return MsgPerformMultiTokenActionResponse.decode(message.value);
+  },
+  toProto(message: MsgPerformMultiTokenActionResponse): Uint8Array {
+    return MsgPerformMultiTokenActionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgPerformMultiTokenActionResponse): MsgPerformMultiTokenActionResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenActionResponse",
+      value: MsgPerformMultiTokenActionResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgPerformMultiTokenOneAction(): MsgPerformMultiTokenOneAction {
+  return {
+    creator: "",
+    nftSchemaCode: "",
+    tokenId: [],
+    action: "",
+    refId: "",
+    parameters: []
+  };
+}
+export const MsgPerformMultiTokenOneAction = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenOneAction",
+  encode(message: MsgPerformMultiTokenOneAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(18).string(message.nftSchemaCode);
+    }
+    for (const v of message.tokenId) {
+      writer.uint32(26).string(v!);
+    }
+    if (message.action !== "") {
+      writer.uint32(34).string(message.action);
+    }
+    if (message.refId !== "") {
+      writer.uint32(42).string(message.refId);
+    }
+    for (const v of message.parameters) {
+      ActionParameter.encode(v!, writer.uint32(50).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgPerformMultiTokenOneAction {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgPerformMultiTokenOneAction();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.tokenId.push(reader.string());
+          break;
+        case 4:
+          message.action = reader.string();
+          break;
+        case 5:
+          message.refId = reader.string();
+          break;
+        case 6:
+          message.parameters.push(ActionParameter.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgPerformMultiTokenOneAction>): MsgPerformMultiTokenOneAction {
+    const message = createBaseMsgPerformMultiTokenOneAction();
+    message.creator = object.creator ?? "";
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    message.action = object.action ?? "";
+    message.refId = object.refId ?? "";
+    message.parameters = object.parameters?.map(e => ActionParameter.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: MsgPerformMultiTokenOneActionAmino): MsgPerformMultiTokenOneAction {
+    const message = createBaseMsgPerformMultiTokenOneAction();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    if (object.action !== undefined && object.action !== null) {
+      message.action = object.action;
+    }
+    if (object.refId !== undefined && object.refId !== null) {
+      message.refId = object.refId;
+    }
+    message.parameters = object.parameters?.map(e => ActionParameter.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgPerformMultiTokenOneAction): MsgPerformMultiTokenOneActionAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.tokenId) {
+      obj.tokenId = message.tokenId.map(e => e);
+    } else {
+      obj.tokenId = message.tokenId;
+    }
+    obj.action = message.action === "" ? undefined : message.action;
+    obj.refId = message.refId === "" ? undefined : message.refId;
+    if (message.parameters) {
+      obj.parameters = message.parameters.map(e => e ? ActionParameter.toAmino(e) : undefined);
+    } else {
+      obj.parameters = message.parameters;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgPerformMultiTokenOneActionAminoMsg): MsgPerformMultiTokenOneAction {
+    return MsgPerformMultiTokenOneAction.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgPerformMultiTokenOneActionProtoMsg): MsgPerformMultiTokenOneAction {
+    return MsgPerformMultiTokenOneAction.decode(message.value);
+  },
+  toProto(message: MsgPerformMultiTokenOneAction): Uint8Array {
+    return MsgPerformMultiTokenOneAction.encode(message).finish();
+  },
+  toProtoMsg(message: MsgPerformMultiTokenOneAction): MsgPerformMultiTokenOneActionProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenOneAction",
+      value: MsgPerformMultiTokenOneAction.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgPerformMultiTokenOneActionResponse(): MsgPerformMultiTokenOneActionResponse {
+  return {
+    nftSchemaCode: "",
+    tokenId: []
+  };
+}
+export const MsgPerformMultiTokenOneActionResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenOneActionResponse",
+  encode(message: MsgPerformMultiTokenOneActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(10).string(message.nftSchemaCode);
+    }
+    for (const v of message.tokenId) {
+      writer.uint32(18).string(v!);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgPerformMultiTokenOneActionResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgPerformMultiTokenOneActionResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.tokenId.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgPerformMultiTokenOneActionResponse>): MsgPerformMultiTokenOneActionResponse {
+    const message = createBaseMsgPerformMultiTokenOneActionResponse();
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    return message;
+  },
+  fromAmino(object: MsgPerformMultiTokenOneActionResponseAmino): MsgPerformMultiTokenOneActionResponse {
+    const message = createBaseMsgPerformMultiTokenOneActionResponse();
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    return message;
+  },
+  toAmino(message: MsgPerformMultiTokenOneActionResponse): MsgPerformMultiTokenOneActionResponseAmino {
+    const obj: any = {};
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.tokenId) {
+      obj.tokenId = message.tokenId.map(e => e);
+    } else {
+      obj.tokenId = message.tokenId;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgPerformMultiTokenOneActionResponseAminoMsg): MsgPerformMultiTokenOneActionResponse {
+    return MsgPerformMultiTokenOneActionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgPerformMultiTokenOneActionResponseProtoMsg): MsgPerformMultiTokenOneActionResponse {
+    return MsgPerformMultiTokenOneActionResponse.decode(message.value);
+  },
+  toProto(message: MsgPerformMultiTokenOneActionResponse): Uint8Array {
+    return MsgPerformMultiTokenOneActionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgPerformMultiTokenOneActionResponse): MsgPerformMultiTokenOneActionResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenOneActionResponse",
+      value: MsgPerformMultiTokenOneActionResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgPerformMultiTokenMultiAction(): MsgPerformMultiTokenMultiAction {
+  return {
+    creator: "",
+    nftSchemaCode: "",
+    tokenId: [],
+    action: [],
+    refId: "",
+    parameters: []
+  };
+}
+export const MsgPerformMultiTokenMultiAction = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenMultiAction",
+  encode(message: MsgPerformMultiTokenMultiAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(18).string(message.nftSchemaCode);
+    }
+    for (const v of message.tokenId) {
+      writer.uint32(26).string(v!);
+    }
+    for (const v of message.action) {
+      writer.uint32(34).string(v!);
+    }
+    if (message.refId !== "") {
+      writer.uint32(42).string(message.refId);
+    }
+    for (const v of message.parameters) {
+      writer.uint32(50).string(v!);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgPerformMultiTokenMultiAction {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgPerformMultiTokenMultiAction();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.tokenId.push(reader.string());
+          break;
+        case 4:
+          message.action.push(reader.string());
+          break;
+        case 5:
+          message.refId = reader.string();
+          break;
+        case 6:
+          message.parameters.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgPerformMultiTokenMultiAction>): MsgPerformMultiTokenMultiAction {
+    const message = createBaseMsgPerformMultiTokenMultiAction();
+    message.creator = object.creator ?? "";
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    message.action = object.action?.map(e => e) || [];
+    message.refId = object.refId ?? "";
+    message.parameters = object.parameters?.map(e => e) || [];
+    return message;
+  },
+  fromAmino(object: MsgPerformMultiTokenMultiActionAmino): MsgPerformMultiTokenMultiAction {
+    const message = createBaseMsgPerformMultiTokenMultiAction();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    message.action = object.action?.map(e => e) || [];
+    if (object.refId !== undefined && object.refId !== null) {
+      message.refId = object.refId;
+    }
+    message.parameters = object.parameters?.map(e => e) || [];
+    return message;
+  },
+  toAmino(message: MsgPerformMultiTokenMultiAction): MsgPerformMultiTokenMultiActionAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.tokenId) {
+      obj.tokenId = message.tokenId.map(e => e);
+    } else {
+      obj.tokenId = message.tokenId;
+    }
+    if (message.action) {
+      obj.action = message.action.map(e => e);
+    } else {
+      obj.action = message.action;
+    }
+    obj.refId = message.refId === "" ? undefined : message.refId;
+    if (message.parameters) {
+      obj.parameters = message.parameters.map(e => e);
+    } else {
+      obj.parameters = message.parameters;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgPerformMultiTokenMultiActionAminoMsg): MsgPerformMultiTokenMultiAction {
+    return MsgPerformMultiTokenMultiAction.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgPerformMultiTokenMultiActionProtoMsg): MsgPerformMultiTokenMultiAction {
+    return MsgPerformMultiTokenMultiAction.decode(message.value);
+  },
+  toProto(message: MsgPerformMultiTokenMultiAction): Uint8Array {
+    return MsgPerformMultiTokenMultiAction.encode(message).finish();
+  },
+  toProtoMsg(message: MsgPerformMultiTokenMultiAction): MsgPerformMultiTokenMultiActionProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenMultiAction",
+      value: MsgPerformMultiTokenMultiAction.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgPerformMultiTokenMultiActionResponse(): MsgPerformMultiTokenMultiActionResponse {
+  return {
+    nftSchemaCode: "",
+    tokenId: [],
+    action: []
+  };
+}
+export const MsgPerformMultiTokenMultiActionResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenMultiActionResponse",
+  encode(message: MsgPerformMultiTokenMultiActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(10).string(message.nftSchemaCode);
+    }
+    for (const v of message.tokenId) {
+      writer.uint32(18).string(v!);
+    }
+    for (const v of message.action) {
+      writer.uint32(26).string(v!);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgPerformMultiTokenMultiActionResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgPerformMultiTokenMultiActionResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.tokenId.push(reader.string());
+          break;
+        case 3:
+          message.action.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgPerformMultiTokenMultiActionResponse>): MsgPerformMultiTokenMultiActionResponse {
+    const message = createBaseMsgPerformMultiTokenMultiActionResponse();
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    message.action = object.action?.map(e => e) || [];
+    return message;
+  },
+  fromAmino(object: MsgPerformMultiTokenMultiActionResponseAmino): MsgPerformMultiTokenMultiActionResponse {
+    const message = createBaseMsgPerformMultiTokenMultiActionResponse();
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    message.tokenId = object.tokenId?.map(e => e) || [];
+    message.action = object.action?.map(e => e) || [];
+    return message;
+  },
+  toAmino(message: MsgPerformMultiTokenMultiActionResponse): MsgPerformMultiTokenMultiActionResponseAmino {
+    const obj: any = {};
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    if (message.tokenId) {
+      obj.tokenId = message.tokenId.map(e => e);
+    } else {
+      obj.tokenId = message.tokenId;
+    }
+    if (message.action) {
+      obj.action = message.action.map(e => e);
+    } else {
+      obj.action = message.action;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgPerformMultiTokenMultiActionResponseAminoMsg): MsgPerformMultiTokenMultiActionResponse {
+    return MsgPerformMultiTokenMultiActionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgPerformMultiTokenMultiActionResponseProtoMsg): MsgPerformMultiTokenMultiActionResponse {
+    return MsgPerformMultiTokenMultiActionResponse.decode(message.value);
+  },
+  toProto(message: MsgPerformMultiTokenMultiActionResponse): Uint8Array {
+    return MsgPerformMultiTokenMultiActionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgPerformMultiTokenMultiActionResponse): MsgPerformMultiTokenMultiActionResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformMultiTokenMultiActionResponse",
+      value: MsgPerformMultiTokenMultiActionResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgPerformOneTokenMultiAction(): MsgPerformOneTokenMultiAction {
+  return {
+    creator: "",
+    nftSchemaCode: "",
+    tokenId: "",
+    action: [],
+    refId: "",
+    parameters: []
+  };
+}
+export const MsgPerformOneTokenMultiAction = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformOneTokenMultiAction",
+  encode(message: MsgPerformOneTokenMultiAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(18).string(message.nftSchemaCode);
+    }
+    if (message.tokenId !== "") {
+      writer.uint32(26).string(message.tokenId);
+    }
+    for (const v of message.action) {
+      writer.uint32(34).string(v!);
+    }
+    if (message.refId !== "") {
+      writer.uint32(42).string(message.refId);
+    }
+    for (const v of message.parameters) {
+      writer.uint32(50).string(v!);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgPerformOneTokenMultiAction {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgPerformOneTokenMultiAction();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.tokenId = reader.string();
+          break;
+        case 4:
+          message.action.push(reader.string());
+          break;
+        case 5:
+          message.refId = reader.string();
+          break;
+        case 6:
+          message.parameters.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgPerformOneTokenMultiAction>): MsgPerformOneTokenMultiAction {
+    const message = createBaseMsgPerformOneTokenMultiAction();
+    message.creator = object.creator ?? "";
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId ?? "";
+    message.action = object.action?.map(e => e) || [];
+    message.refId = object.refId ?? "";
+    message.parameters = object.parameters?.map(e => e) || [];
+    return message;
+  },
+  fromAmino(object: MsgPerformOneTokenMultiActionAmino): MsgPerformOneTokenMultiAction {
+    const message = createBaseMsgPerformOneTokenMultiAction();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    if (object.tokenId !== undefined && object.tokenId !== null) {
+      message.tokenId = object.tokenId;
+    }
+    message.action = object.action?.map(e => e) || [];
+    if (object.refId !== undefined && object.refId !== null) {
+      message.refId = object.refId;
+    }
+    message.parameters = object.parameters?.map(e => e) || [];
+    return message;
+  },
+  toAmino(message: MsgPerformOneTokenMultiAction): MsgPerformOneTokenMultiActionAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.tokenId = message.tokenId === "" ? undefined : message.tokenId;
+    if (message.action) {
+      obj.action = message.action.map(e => e);
+    } else {
+      obj.action = message.action;
+    }
+    obj.refId = message.refId === "" ? undefined : message.refId;
+    if (message.parameters) {
+      obj.parameters = message.parameters.map(e => e);
+    } else {
+      obj.parameters = message.parameters;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgPerformOneTokenMultiActionAminoMsg): MsgPerformOneTokenMultiAction {
+    return MsgPerformOneTokenMultiAction.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgPerformOneTokenMultiActionProtoMsg): MsgPerformOneTokenMultiAction {
+    return MsgPerformOneTokenMultiAction.decode(message.value);
+  },
+  toProto(message: MsgPerformOneTokenMultiAction): Uint8Array {
+    return MsgPerformOneTokenMultiAction.encode(message).finish();
+  },
+  toProtoMsg(message: MsgPerformOneTokenMultiAction): MsgPerformOneTokenMultiActionProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformOneTokenMultiAction",
+      value: MsgPerformOneTokenMultiAction.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgPerformOneTokenMultiActionResponse(): MsgPerformOneTokenMultiActionResponse {
+  return {
+    nftSchemaCode: "",
+    tokenId: "",
+    action: []
+  };
+}
+export const MsgPerformOneTokenMultiActionResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformOneTokenMultiActionResponse",
+  encode(message: MsgPerformOneTokenMultiActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.nftSchemaCode !== "") {
+      writer.uint32(10).string(message.nftSchemaCode);
+    }
+    if (message.tokenId !== "") {
+      writer.uint32(18).string(message.tokenId);
+    }
+    for (const v of message.action) {
+      writer.uint32(26).string(v!);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgPerformOneTokenMultiActionResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgPerformOneTokenMultiActionResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.tokenId = reader.string();
+          break;
+        case 3:
+          message.action.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgPerformOneTokenMultiActionResponse>): MsgPerformOneTokenMultiActionResponse {
+    const message = createBaseMsgPerformOneTokenMultiActionResponse();
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId ?? "";
+    message.action = object.action?.map(e => e) || [];
+    return message;
+  },
+  fromAmino(object: MsgPerformOneTokenMultiActionResponseAmino): MsgPerformOneTokenMultiActionResponse {
+    const message = createBaseMsgPerformOneTokenMultiActionResponse();
+    if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
+      message.nftSchemaCode = object.nftSchemaCode;
+    }
+    if (object.tokenId !== undefined && object.tokenId !== null) {
+      message.tokenId = object.tokenId;
+    }
+    message.action = object.action?.map(e => e) || [];
+    return message;
+  },
+  toAmino(message: MsgPerformOneTokenMultiActionResponse): MsgPerformOneTokenMultiActionResponseAmino {
+    const obj: any = {};
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.tokenId = message.tokenId === "" ? undefined : message.tokenId;
+    if (message.action) {
+      obj.action = message.action.map(e => e);
+    } else {
+      obj.action = message.action;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgPerformOneTokenMultiActionResponseAminoMsg): MsgPerformOneTokenMultiActionResponse {
+    return MsgPerformOneTokenMultiActionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgPerformOneTokenMultiActionResponseProtoMsg): MsgPerformOneTokenMultiActionResponse {
+    return MsgPerformOneTokenMultiActionResponse.decode(message.value);
+  },
+  toProto(message: MsgPerformOneTokenMultiActionResponse): Uint8Array {
+    return MsgPerformOneTokenMultiActionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgPerformOneTokenMultiActionResponse): MsgPerformOneTokenMultiActionResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgPerformOneTokenMultiActionResponse",
+      value: MsgPerformOneTokenMultiActionResponse.encode(message).finish()
     };
   }
 };
@@ -2195,7 +3873,8 @@ function createBaseMsgToggleAction(): MsgToggleAction {
   return {
     creator: "",
     code: "",
-    action: ""
+    action: "",
+    disable: false
   };
 }
 export const MsgToggleAction = {
@@ -2209,6 +3888,9 @@ export const MsgToggleAction = {
     }
     if (message.action !== "") {
       writer.uint32(26).string(message.action);
+    }
+    if (message.disable === true) {
+      writer.uint32(32).bool(message.disable);
     }
     return writer;
   },
@@ -2228,6 +3910,9 @@ export const MsgToggleAction = {
         case 3:
           message.action = reader.string();
           break;
+        case 4:
+          message.disable = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2240,6 +3925,7 @@ export const MsgToggleAction = {
     message.creator = object.creator ?? "";
     message.code = object.code ?? "";
     message.action = object.action ?? "";
+    message.disable = object.disable ?? false;
     return message;
   },
   fromAmino(object: MsgToggleActionAmino): MsgToggleAction {
@@ -2253,6 +3939,9 @@ export const MsgToggleAction = {
     if (object.action !== undefined && object.action !== null) {
       message.action = object.action;
     }
+    if (object.disable !== undefined && object.disable !== null) {
+      message.disable = object.disable;
+    }
     return message;
   },
   toAmino(message: MsgToggleAction): MsgToggleActionAmino {
@@ -2260,6 +3949,7 @@ export const MsgToggleAction = {
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.code = message.code === "" ? undefined : message.code;
     obj.action = message.action === "" ? undefined : message.action;
+    obj.disable = message.disable === false ? undefined : message.disable;
     return obj;
   },
   fromAminoMsg(object: MsgToggleActionAminoMsg): MsgToggleAction {
@@ -3449,6 +5139,990 @@ export const MsgSetMintauthResponse = {
     return {
       typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMintauthResponse",
       value: MsgSetMintauthResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgChangeOrgOwner(): MsgChangeOrgOwner {
+  return {
+    creator: "",
+    orgName: "",
+    toNewOwner: ""
+  };
+}
+export const MsgChangeOrgOwner = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner",
+  encode(message: MsgChangeOrgOwner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.orgName !== "") {
+      writer.uint32(18).string(message.orgName);
+    }
+    if (message.toNewOwner !== "") {
+      writer.uint32(26).string(message.toNewOwner);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeOrgOwner {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgChangeOrgOwner();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.orgName = reader.string();
+          break;
+        case 3:
+          message.toNewOwner = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgChangeOrgOwner>): MsgChangeOrgOwner {
+    const message = createBaseMsgChangeOrgOwner();
+    message.creator = object.creator ?? "";
+    message.orgName = object.orgName ?? "";
+    message.toNewOwner = object.toNewOwner ?? "";
+    return message;
+  },
+  fromAmino(object: MsgChangeOrgOwnerAmino): MsgChangeOrgOwner {
+    const message = createBaseMsgChangeOrgOwner();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.orgName !== undefined && object.orgName !== null) {
+      message.orgName = object.orgName;
+    }
+    if (object.toNewOwner !== undefined && object.toNewOwner !== null) {
+      message.toNewOwner = object.toNewOwner;
+    }
+    return message;
+  },
+  toAmino(message: MsgChangeOrgOwner): MsgChangeOrgOwnerAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.orgName = message.orgName === "" ? undefined : message.orgName;
+    obj.toNewOwner = message.toNewOwner === "" ? undefined : message.toNewOwner;
+    return obj;
+  },
+  fromAminoMsg(object: MsgChangeOrgOwnerAminoMsg): MsgChangeOrgOwner {
+    return MsgChangeOrgOwner.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgChangeOrgOwnerProtoMsg): MsgChangeOrgOwner {
+    return MsgChangeOrgOwner.decode(message.value);
+  },
+  toProto(message: MsgChangeOrgOwner): Uint8Array {
+    return MsgChangeOrgOwner.encode(message).finish();
+  },
+  toProtoMsg(message: MsgChangeOrgOwner): MsgChangeOrgOwnerProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwner",
+      value: MsgChangeOrgOwner.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgChangeOrgOwnerResponse(): MsgChangeOrgOwnerResponse {
+  return {
+    orgName: "",
+    oldOwner: "",
+    newOwner: ""
+  };
+}
+export const MsgChangeOrgOwnerResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwnerResponse",
+  encode(message: MsgChangeOrgOwnerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.orgName !== "") {
+      writer.uint32(10).string(message.orgName);
+    }
+    if (message.oldOwner !== "") {
+      writer.uint32(18).string(message.oldOwner);
+    }
+    if (message.newOwner !== "") {
+      writer.uint32(26).string(message.newOwner);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeOrgOwnerResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgChangeOrgOwnerResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.orgName = reader.string();
+          break;
+        case 2:
+          message.oldOwner = reader.string();
+          break;
+        case 3:
+          message.newOwner = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgChangeOrgOwnerResponse>): MsgChangeOrgOwnerResponse {
+    const message = createBaseMsgChangeOrgOwnerResponse();
+    message.orgName = object.orgName ?? "";
+    message.oldOwner = object.oldOwner ?? "";
+    message.newOwner = object.newOwner ?? "";
+    return message;
+  },
+  fromAmino(object: MsgChangeOrgOwnerResponseAmino): MsgChangeOrgOwnerResponse {
+    const message = createBaseMsgChangeOrgOwnerResponse();
+    if (object.orgName !== undefined && object.orgName !== null) {
+      message.orgName = object.orgName;
+    }
+    if (object.oldOwner !== undefined && object.oldOwner !== null) {
+      message.oldOwner = object.oldOwner;
+    }
+    if (object.newOwner !== undefined && object.newOwner !== null) {
+      message.newOwner = object.newOwner;
+    }
+    return message;
+  },
+  toAmino(message: MsgChangeOrgOwnerResponse): MsgChangeOrgOwnerResponseAmino {
+    const obj: any = {};
+    obj.orgName = message.orgName === "" ? undefined : message.orgName;
+    obj.oldOwner = message.oldOwner === "" ? undefined : message.oldOwner;
+    obj.newOwner = message.newOwner === "" ? undefined : message.newOwner;
+    return obj;
+  },
+  fromAminoMsg(object: MsgChangeOrgOwnerResponseAminoMsg): MsgChangeOrgOwnerResponse {
+    return MsgChangeOrgOwnerResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgChangeOrgOwnerResponseProtoMsg): MsgChangeOrgOwnerResponse {
+    return MsgChangeOrgOwnerResponse.decode(message.value);
+  },
+  toProto(message: MsgChangeOrgOwnerResponse): Uint8Array {
+    return MsgChangeOrgOwnerResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgChangeOrgOwnerResponse): MsgChangeOrgOwnerResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgChangeOrgOwnerResponse",
+      value: MsgChangeOrgOwnerResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetUriRetrievalMethod(): MsgSetUriRetrievalMethod {
+  return {
+    creator: "",
+    schemaCode: "",
+    newMethod: 0
+  };
+}
+export const MsgSetUriRetrievalMethod = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod",
+  encode(message: MsgSetUriRetrievalMethod, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.schemaCode !== "") {
+      writer.uint32(18).string(message.schemaCode);
+    }
+    if (message.newMethod !== 0) {
+      writer.uint32(24).int32(message.newMethod);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetUriRetrievalMethod {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetUriRetrievalMethod();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.schemaCode = reader.string();
+          break;
+        case 3:
+          message.newMethod = reader.int32();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetUriRetrievalMethod>): MsgSetUriRetrievalMethod {
+    const message = createBaseMsgSetUriRetrievalMethod();
+    message.creator = object.creator ?? "";
+    message.schemaCode = object.schemaCode ?? "";
+    message.newMethod = object.newMethod ?? 0;
+    return message;
+  },
+  fromAmino(object: MsgSetUriRetrievalMethodAmino): MsgSetUriRetrievalMethod {
+    const message = createBaseMsgSetUriRetrievalMethod();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.schemaCode !== undefined && object.schemaCode !== null) {
+      message.schemaCode = object.schemaCode;
+    }
+    if (object.newMethod !== undefined && object.newMethod !== null) {
+      message.newMethod = object.newMethod;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetUriRetrievalMethod): MsgSetUriRetrievalMethodAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.schemaCode = message.schemaCode === "" ? undefined : message.schemaCode;
+    obj.newMethod = message.newMethod === 0 ? undefined : message.newMethod;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetUriRetrievalMethodAminoMsg): MsgSetUriRetrievalMethod {
+    return MsgSetUriRetrievalMethod.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetUriRetrievalMethodProtoMsg): MsgSetUriRetrievalMethod {
+    return MsgSetUriRetrievalMethod.decode(message.value);
+  },
+  toProto(message: MsgSetUriRetrievalMethod): Uint8Array {
+    return MsgSetUriRetrievalMethod.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetUriRetrievalMethod): MsgSetUriRetrievalMethodProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethod",
+      value: MsgSetUriRetrievalMethod.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetUriRetrievalMethodResponse(): MsgSetUriRetrievalMethodResponse {
+  return {
+    schemaCode: "",
+    newMethod: ""
+  };
+}
+export const MsgSetUriRetrievalMethodResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethodResponse",
+  encode(message: MsgSetUriRetrievalMethodResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.schemaCode !== "") {
+      writer.uint32(10).string(message.schemaCode);
+    }
+    if (message.newMethod !== "") {
+      writer.uint32(18).string(message.newMethod);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetUriRetrievalMethodResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetUriRetrievalMethodResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.schemaCode = reader.string();
+          break;
+        case 2:
+          message.newMethod = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetUriRetrievalMethodResponse>): MsgSetUriRetrievalMethodResponse {
+    const message = createBaseMsgSetUriRetrievalMethodResponse();
+    message.schemaCode = object.schemaCode ?? "";
+    message.newMethod = object.newMethod ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetUriRetrievalMethodResponseAmino): MsgSetUriRetrievalMethodResponse {
+    const message = createBaseMsgSetUriRetrievalMethodResponse();
+    if (object.schemaCode !== undefined && object.schemaCode !== null) {
+      message.schemaCode = object.schemaCode;
+    }
+    if (object.newMethod !== undefined && object.newMethod !== null) {
+      message.newMethod = object.newMethod;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetUriRetrievalMethodResponse): MsgSetUriRetrievalMethodResponseAmino {
+    const obj: any = {};
+    obj.schemaCode = message.schemaCode === "" ? undefined : message.schemaCode;
+    obj.newMethod = message.newMethod === "" ? undefined : message.newMethod;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetUriRetrievalMethodResponseAminoMsg): MsgSetUriRetrievalMethodResponse {
+    return MsgSetUriRetrievalMethodResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetUriRetrievalMethodResponseProtoMsg): MsgSetUriRetrievalMethodResponse {
+    return MsgSetUriRetrievalMethodResponse.decode(message.value);
+  },
+  toProto(message: MsgSetUriRetrievalMethodResponse): Uint8Array {
+    return MsgSetUriRetrievalMethodResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetUriRetrievalMethodResponse): MsgSetUriRetrievalMethodResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetUriRetrievalMethodResponse",
+      value: MsgSetUriRetrievalMethodResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetOriginChain(): MsgSetOriginChain {
+  return {
+    creator: "",
+    schemaCode: "",
+    newOriginChain: ""
+  };
+}
+export const MsgSetOriginChain = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain",
+  encode(message: MsgSetOriginChain, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.schemaCode !== "") {
+      writer.uint32(18).string(message.schemaCode);
+    }
+    if (message.newOriginChain !== "") {
+      writer.uint32(26).string(message.newOriginChain);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetOriginChain {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetOriginChain();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.schemaCode = reader.string();
+          break;
+        case 3:
+          message.newOriginChain = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetOriginChain>): MsgSetOriginChain {
+    const message = createBaseMsgSetOriginChain();
+    message.creator = object.creator ?? "";
+    message.schemaCode = object.schemaCode ?? "";
+    message.newOriginChain = object.newOriginChain ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetOriginChainAmino): MsgSetOriginChain {
+    const message = createBaseMsgSetOriginChain();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.schemaCode !== undefined && object.schemaCode !== null) {
+      message.schemaCode = object.schemaCode;
+    }
+    if (object.newOriginChain !== undefined && object.newOriginChain !== null) {
+      message.newOriginChain = object.newOriginChain;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetOriginChain): MsgSetOriginChainAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.schemaCode = message.schemaCode === "" ? undefined : message.schemaCode;
+    obj.newOriginChain = message.newOriginChain === "" ? undefined : message.newOriginChain;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetOriginChainAminoMsg): MsgSetOriginChain {
+    return MsgSetOriginChain.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetOriginChainProtoMsg): MsgSetOriginChain {
+    return MsgSetOriginChain.decode(message.value);
+  },
+  toProto(message: MsgSetOriginChain): Uint8Array {
+    return MsgSetOriginChain.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetOriginChain): MsgSetOriginChainProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChain",
+      value: MsgSetOriginChain.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetOriginChainResponse(): MsgSetOriginChainResponse {
+  return {
+    schemaCode: "",
+    newOriginChain: ""
+  };
+}
+export const MsgSetOriginChainResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChainResponse",
+  encode(message: MsgSetOriginChainResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.schemaCode !== "") {
+      writer.uint32(10).string(message.schemaCode);
+    }
+    if (message.newOriginChain !== "") {
+      writer.uint32(18).string(message.newOriginChain);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetOriginChainResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetOriginChainResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.schemaCode = reader.string();
+          break;
+        case 2:
+          message.newOriginChain = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetOriginChainResponse>): MsgSetOriginChainResponse {
+    const message = createBaseMsgSetOriginChainResponse();
+    message.schemaCode = object.schemaCode ?? "";
+    message.newOriginChain = object.newOriginChain ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetOriginChainResponseAmino): MsgSetOriginChainResponse {
+    const message = createBaseMsgSetOriginChainResponse();
+    if (object.schemaCode !== undefined && object.schemaCode !== null) {
+      message.schemaCode = object.schemaCode;
+    }
+    if (object.newOriginChain !== undefined && object.newOriginChain !== null) {
+      message.newOriginChain = object.newOriginChain;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetOriginChainResponse): MsgSetOriginChainResponseAmino {
+    const obj: any = {};
+    obj.schemaCode = message.schemaCode === "" ? undefined : message.schemaCode;
+    obj.newOriginChain = message.newOriginChain === "" ? undefined : message.newOriginChain;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetOriginChainResponseAminoMsg): MsgSetOriginChainResponse {
+    return MsgSetOriginChainResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetOriginChainResponseProtoMsg): MsgSetOriginChainResponse {
+    return MsgSetOriginChainResponse.decode(message.value);
+  },
+  toProto(message: MsgSetOriginChainResponse): Uint8Array {
+    return MsgSetOriginChainResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetOriginChainResponse): MsgSetOriginChainResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginChainResponse",
+      value: MsgSetOriginChainResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetOriginContract(): MsgSetOriginContract {
+  return {
+    creator: "",
+    schemaCode: "",
+    newContractAddress: ""
+  };
+}
+export const MsgSetOriginContract = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract",
+  encode(message: MsgSetOriginContract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.schemaCode !== "") {
+      writer.uint32(18).string(message.schemaCode);
+    }
+    if (message.newContractAddress !== "") {
+      writer.uint32(26).string(message.newContractAddress);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetOriginContract {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetOriginContract();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.schemaCode = reader.string();
+          break;
+        case 3:
+          message.newContractAddress = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetOriginContract>): MsgSetOriginContract {
+    const message = createBaseMsgSetOriginContract();
+    message.creator = object.creator ?? "";
+    message.schemaCode = object.schemaCode ?? "";
+    message.newContractAddress = object.newContractAddress ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetOriginContractAmino): MsgSetOriginContract {
+    const message = createBaseMsgSetOriginContract();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.schemaCode !== undefined && object.schemaCode !== null) {
+      message.schemaCode = object.schemaCode;
+    }
+    if (object.newContractAddress !== undefined && object.newContractAddress !== null) {
+      message.newContractAddress = object.newContractAddress;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetOriginContract): MsgSetOriginContractAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.schemaCode = message.schemaCode === "" ? undefined : message.schemaCode;
+    obj.newContractAddress = message.newContractAddress === "" ? undefined : message.newContractAddress;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetOriginContractAminoMsg): MsgSetOriginContract {
+    return MsgSetOriginContract.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetOriginContractProtoMsg): MsgSetOriginContract {
+    return MsgSetOriginContract.decode(message.value);
+  },
+  toProto(message: MsgSetOriginContract): Uint8Array {
+    return MsgSetOriginContract.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetOriginContract): MsgSetOriginContractProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContract",
+      value: MsgSetOriginContract.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetOriginContractResponse(): MsgSetOriginContractResponse {
+  return {
+    schemaCode: "",
+    newContractAddress: ""
+  };
+}
+export const MsgSetOriginContractResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContractResponse",
+  encode(message: MsgSetOriginContractResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.schemaCode !== "") {
+      writer.uint32(10).string(message.schemaCode);
+    }
+    if (message.newContractAddress !== "") {
+      writer.uint32(18).string(message.newContractAddress);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetOriginContractResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetOriginContractResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.schemaCode = reader.string();
+          break;
+        case 2:
+          message.newContractAddress = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetOriginContractResponse>): MsgSetOriginContractResponse {
+    const message = createBaseMsgSetOriginContractResponse();
+    message.schemaCode = object.schemaCode ?? "";
+    message.newContractAddress = object.newContractAddress ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetOriginContractResponseAmino): MsgSetOriginContractResponse {
+    const message = createBaseMsgSetOriginContractResponse();
+    if (object.schemaCode !== undefined && object.schemaCode !== null) {
+      message.schemaCode = object.schemaCode;
+    }
+    if (object.newContractAddress !== undefined && object.newContractAddress !== null) {
+      message.newContractAddress = object.newContractAddress;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetOriginContractResponse): MsgSetOriginContractResponseAmino {
+    const obj: any = {};
+    obj.schemaCode = message.schemaCode === "" ? undefined : message.schemaCode;
+    obj.newContractAddress = message.newContractAddress === "" ? undefined : message.newContractAddress;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetOriginContractResponseAminoMsg): MsgSetOriginContractResponse {
+    return MsgSetOriginContractResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetOriginContractResponseProtoMsg): MsgSetOriginContractResponse {
+    return MsgSetOriginContractResponse.decode(message.value);
+  },
+  toProto(message: MsgSetOriginContractResponse): Uint8Array {
+    return MsgSetOriginContractResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetOriginContractResponse): MsgSetOriginContractResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetOriginContractResponse",
+      value: MsgSetOriginContractResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetAttributeOveriding(): MsgSetAttributeOveriding {
+  return {
+    creator: "",
+    schemaCode: "",
+    newOveridingType: 0
+  };
+}
+export const MsgSetAttributeOveriding = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding",
+  encode(message: MsgSetAttributeOveriding, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.schemaCode !== "") {
+      writer.uint32(18).string(message.schemaCode);
+    }
+    if (message.newOveridingType !== 0) {
+      writer.uint32(24).int32(message.newOveridingType);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetAttributeOveriding {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetAttributeOveriding();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.schemaCode = reader.string();
+          break;
+        case 3:
+          message.newOveridingType = reader.int32();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetAttributeOveriding>): MsgSetAttributeOveriding {
+    const message = createBaseMsgSetAttributeOveriding();
+    message.creator = object.creator ?? "";
+    message.schemaCode = object.schemaCode ?? "";
+    message.newOveridingType = object.newOveridingType ?? 0;
+    return message;
+  },
+  fromAmino(object: MsgSetAttributeOveridingAmino): MsgSetAttributeOveriding {
+    const message = createBaseMsgSetAttributeOveriding();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.schemaCode !== undefined && object.schemaCode !== null) {
+      message.schemaCode = object.schemaCode;
+    }
+    if (object.newOveridingType !== undefined && object.newOveridingType !== null) {
+      message.newOveridingType = object.newOveridingType;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetAttributeOveriding): MsgSetAttributeOveridingAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.schemaCode = message.schemaCode === "" ? undefined : message.schemaCode;
+    obj.newOveridingType = message.newOveridingType === 0 ? undefined : message.newOveridingType;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetAttributeOveridingAminoMsg): MsgSetAttributeOveriding {
+    return MsgSetAttributeOveriding.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetAttributeOveridingProtoMsg): MsgSetAttributeOveriding {
+    return MsgSetAttributeOveriding.decode(message.value);
+  },
+  toProto(message: MsgSetAttributeOveriding): Uint8Array {
+    return MsgSetAttributeOveriding.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetAttributeOveriding): MsgSetAttributeOveridingProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveriding",
+      value: MsgSetAttributeOveriding.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetAttributeOveridingResponse(): MsgSetAttributeOveridingResponse {
+  return {
+    schemaCode: "",
+    newOveriding: ""
+  };
+}
+export const MsgSetAttributeOveridingResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveridingResponse",
+  encode(message: MsgSetAttributeOveridingResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.schemaCode !== "") {
+      writer.uint32(10).string(message.schemaCode);
+    }
+    if (message.newOveriding !== "") {
+      writer.uint32(18).string(message.newOveriding);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetAttributeOveridingResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetAttributeOveridingResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.schemaCode = reader.string();
+          break;
+        case 2:
+          message.newOveriding = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetAttributeOveridingResponse>): MsgSetAttributeOveridingResponse {
+    const message = createBaseMsgSetAttributeOveridingResponse();
+    message.schemaCode = object.schemaCode ?? "";
+    message.newOveriding = object.newOveriding ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetAttributeOveridingResponseAmino): MsgSetAttributeOveridingResponse {
+    const message = createBaseMsgSetAttributeOveridingResponse();
+    if (object.schemaCode !== undefined && object.schemaCode !== null) {
+      message.schemaCode = object.schemaCode;
+    }
+    if (object.newOveriding !== undefined && object.newOveriding !== null) {
+      message.newOveriding = object.newOveriding;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetAttributeOveridingResponse): MsgSetAttributeOveridingResponseAmino {
+    const obj: any = {};
+    obj.schemaCode = message.schemaCode === "" ? undefined : message.schemaCode;
+    obj.newOveriding = message.newOveriding === "" ? undefined : message.newOveriding;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetAttributeOveridingResponseAminoMsg): MsgSetAttributeOveridingResponse {
+    return MsgSetAttributeOveridingResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetAttributeOveridingResponseProtoMsg): MsgSetAttributeOveridingResponse {
+    return MsgSetAttributeOveridingResponse.decode(message.value);
+  },
+  toProto(message: MsgSetAttributeOveridingResponse): Uint8Array {
+    return MsgSetAttributeOveridingResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetAttributeOveridingResponse): MsgSetAttributeOveridingResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetAttributeOveridingResponse",
+      value: MsgSetAttributeOveridingResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetMetadataFormat(): MsgSetMetadataFormat {
+  return {
+    creator: "",
+    schemaCode: "",
+    newFormat: ""
+  };
+}
+export const MsgSetMetadataFormat = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat",
+  encode(message: MsgSetMetadataFormat, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.schemaCode !== "") {
+      writer.uint32(18).string(message.schemaCode);
+    }
+    if (message.newFormat !== "") {
+      writer.uint32(26).string(message.newFormat);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMetadataFormat {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetMetadataFormat();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.schemaCode = reader.string();
+          break;
+        case 3:
+          message.newFormat = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetMetadataFormat>): MsgSetMetadataFormat {
+    const message = createBaseMsgSetMetadataFormat();
+    message.creator = object.creator ?? "";
+    message.schemaCode = object.schemaCode ?? "";
+    message.newFormat = object.newFormat ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetMetadataFormatAmino): MsgSetMetadataFormat {
+    const message = createBaseMsgSetMetadataFormat();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.schemaCode !== undefined && object.schemaCode !== null) {
+      message.schemaCode = object.schemaCode;
+    }
+    if (object.newFormat !== undefined && object.newFormat !== null) {
+      message.newFormat = object.newFormat;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetMetadataFormat): MsgSetMetadataFormatAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.schemaCode = message.schemaCode === "" ? undefined : message.schemaCode;
+    obj.newFormat = message.newFormat === "" ? undefined : message.newFormat;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetMetadataFormatAminoMsg): MsgSetMetadataFormat {
+    return MsgSetMetadataFormat.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetMetadataFormatProtoMsg): MsgSetMetadataFormat {
+    return MsgSetMetadataFormat.decode(message.value);
+  },
+  toProto(message: MsgSetMetadataFormat): Uint8Array {
+    return MsgSetMetadataFormat.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetMetadataFormat): MsgSetMetadataFormatProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormat",
+      value: MsgSetMetadataFormat.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetMetadataFormatResponse(): MsgSetMetadataFormatResponse {
+  return {
+    schemaCode: "",
+    newFormat: ""
+  };
+}
+export const MsgSetMetadataFormatResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormatResponse",
+  encode(message: MsgSetMetadataFormatResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.schemaCode !== "") {
+      writer.uint32(10).string(message.schemaCode);
+    }
+    if (message.newFormat !== "") {
+      writer.uint32(18).string(message.newFormat);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMetadataFormatResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetMetadataFormatResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.schemaCode = reader.string();
+          break;
+        case 2:
+          message.newFormat = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetMetadataFormatResponse>): MsgSetMetadataFormatResponse {
+    const message = createBaseMsgSetMetadataFormatResponse();
+    message.schemaCode = object.schemaCode ?? "";
+    message.newFormat = object.newFormat ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetMetadataFormatResponseAmino): MsgSetMetadataFormatResponse {
+    const message = createBaseMsgSetMetadataFormatResponse();
+    if (object.schemaCode !== undefined && object.schemaCode !== null) {
+      message.schemaCode = object.schemaCode;
+    }
+    if (object.newFormat !== undefined && object.newFormat !== null) {
+      message.newFormat = object.newFormat;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetMetadataFormatResponse): MsgSetMetadataFormatResponseAmino {
+    const obj: any = {};
+    obj.schemaCode = message.schemaCode === "" ? undefined : message.schemaCode;
+    obj.newFormat = message.newFormat === "" ? undefined : message.newFormat;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetMetadataFormatResponseAminoMsg): MsgSetMetadataFormatResponse {
+    return MsgSetMetadataFormatResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetMetadataFormatResponseProtoMsg): MsgSetMetadataFormatResponse {
+    return MsgSetMetadataFormatResponse.decode(message.value);
+  },
+  toProto(message: MsgSetMetadataFormatResponse): Uint8Array {
+    return MsgSetMetadataFormatResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetMetadataFormatResponse): MsgSetMetadataFormatResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.MsgSetMetadataFormatResponse",
+      value: MsgSetMetadataFormatResponse.encode(message).finish()
     };
   }
 };
