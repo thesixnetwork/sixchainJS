@@ -1,13 +1,10 @@
 //@ts-nocheck
-import { Coin, CoinAmino, CoinSDKType } from "../cosmos/base/v1beta1/coin";
 import { Long } from "../helpers";
 import * as _m0 from "protobufjs/minimal";
-/** @deprecated */
 export interface Token {
-  $typeUrl?: "/thesixnetwork.sixprotocol.tokenmngr.Token";
   name: string;
   base: string;
-  maxSupply: Coin;
+  maxSupply: Long;
   mintee: string;
   creator: string;
 }
@@ -15,11 +12,10 @@ export interface TokenProtoMsg {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token";
   value: Uint8Array;
 }
-/** @deprecated */
 export interface TokenAmino {
   name?: string;
   base?: string;
-  maxSupply?: CoinAmino;
+  maxSupply?: string;
   mintee?: string;
   creator?: string;
 }
@@ -27,38 +23,7 @@ export interface TokenAminoMsg {
   type: "/thesixnetwork.sixprotocol.tokenmngr.Token";
   value: TokenAmino;
 }
-/** @deprecated */
 export interface TokenSDKType {
-  $typeUrl?: "/thesixnetwork.sixprotocol.tokenmngr.Token";
-  name: string;
-  base: string;
-  maxSupply: CoinSDKType;
-  mintee: string;
-  creator: string;
-}
-export interface TokenV202 {
-  name: string;
-  base: string;
-  maxSupply: Long;
-  mintee: string;
-  creator: string;
-}
-export interface TokenV202ProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenV202";
-  value: Uint8Array;
-}
-export interface TokenV202Amino {
-  name?: string;
-  base?: string;
-  maxSupply?: string;
-  mintee?: string;
-  creator?: string;
-}
-export interface TokenV202AminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.TokenV202";
-  value: TokenV202Amino;
-}
-export interface TokenV202SDKType {
   name: string;
   base: string;
   maxSupply: Long;
@@ -198,118 +163,6 @@ export interface MetadataSDKType {
 }
 function createBaseToken(): Token {
   return {
-    $typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token",
-    name: "",
-    base: "",
-    maxSupply: Coin.fromPartial({}),
-    mintee: "",
-    creator: ""
-  };
-}
-export const Token = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token",
-  encode(message: Token, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== "") {
-      writer.uint32(10).string(message.name);
-    }
-    if (message.base !== "") {
-      writer.uint32(18).string(message.base);
-    }
-    if (message.maxSupply !== undefined) {
-      Coin.encode(message.maxSupply, writer.uint32(26).fork()).ldelim();
-    }
-    if (message.mintee !== "") {
-      writer.uint32(34).string(message.mintee);
-    }
-    if (message.creator !== "") {
-      writer.uint32(42).string(message.creator);
-    }
-    return writer;
-  },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Token {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseToken();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.name = reader.string();
-          break;
-        case 2:
-          message.base = reader.string();
-          break;
-        case 3:
-          message.maxSupply = Coin.decode(reader, reader.uint32());
-          break;
-        case 4:
-          message.mintee = reader.string();
-          break;
-        case 5:
-          message.creator = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<Token>): Token {
-    const message = createBaseToken();
-    message.name = object.name ?? "";
-    message.base = object.base ?? "";
-    message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Coin.fromPartial(object.maxSupply) : undefined;
-    message.mintee = object.mintee ?? "";
-    message.creator = object.creator ?? "";
-    return message;
-  },
-  fromAmino(object: TokenAmino): Token {
-    const message = createBaseToken();
-    if (object.name !== undefined && object.name !== null) {
-      message.name = object.name;
-    }
-    if (object.base !== undefined && object.base !== null) {
-      message.base = object.base;
-    }
-    if (object.maxSupply !== undefined && object.maxSupply !== null) {
-      message.maxSupply = Coin.fromAmino(object.maxSupply);
-    }
-    if (object.mintee !== undefined && object.mintee !== null) {
-      message.mintee = object.mintee;
-    }
-    if (object.creator !== undefined && object.creator !== null) {
-      message.creator = object.creator;
-    }
-    return message;
-  },
-  toAmino(message: Token): TokenAmino {
-    const obj: any = {};
-    obj.name = message.name === "" ? undefined : message.name;
-    obj.base = message.base === "" ? undefined : message.base;
-    obj.maxSupply = message.maxSupply ? Coin.toAmino(message.maxSupply) : undefined;
-    obj.mintee = message.mintee === "" ? undefined : message.mintee;
-    obj.creator = message.creator === "" ? undefined : message.creator;
-    return obj;
-  },
-  fromAminoMsg(object: TokenAminoMsg): Token {
-    return Token.fromAmino(object.value);
-  },
-  fromProtoMsg(message: TokenProtoMsg): Token {
-    return Token.decode(message.value);
-  },
-  toProto(message: Token): Uint8Array {
-    return Token.encode(message).finish();
-  },
-  toProtoMsg(message: Token): TokenProtoMsg {
-    return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token",
-      value: Token.encode(message).finish()
-    };
-  }
-};
-function createBaseTokenV202(): TokenV202 {
-  return {
     name: "",
     base: "",
     maxSupply: Long.UZERO,
@@ -317,9 +170,9 @@ function createBaseTokenV202(): TokenV202 {
     creator: ""
   };
 }
-export const TokenV202 = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenV202",
-  encode(message: TokenV202, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const Token = {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token",
+  encode(message: Token, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
@@ -337,10 +190,10 @@ export const TokenV202 = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): TokenV202 {
+  decode(input: _m0.Reader | Uint8Array, length?: number): Token {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseTokenV202();
+    const message = createBaseToken();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -366,8 +219,8 @@ export const TokenV202 = {
     }
     return message;
   },
-  fromPartial(object: Partial<TokenV202>): TokenV202 {
-    const message = createBaseTokenV202();
+  fromPartial(object: Partial<Token>): Token {
+    const message = createBaseToken();
     message.name = object.name ?? "";
     message.base = object.base ?? "";
     message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Long.fromValue(object.maxSupply) : Long.UZERO;
@@ -375,8 +228,8 @@ export const TokenV202 = {
     message.creator = object.creator ?? "";
     return message;
   },
-  fromAmino(object: TokenV202Amino): TokenV202 {
-    const message = createBaseTokenV202();
+  fromAmino(object: TokenAmino): Token {
+    const message = createBaseToken();
     if (object.name !== undefined && object.name !== null) {
       message.name = object.name;
     }
@@ -394,7 +247,7 @@ export const TokenV202 = {
     }
     return message;
   },
-  toAmino(message: TokenV202): TokenV202Amino {
+  toAmino(message: Token): TokenAmino {
     const obj: any = {};
     obj.name = message.name === "" ? undefined : message.name;
     obj.base = message.base === "" ? undefined : message.base;
@@ -403,19 +256,19 @@ export const TokenV202 = {
     obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;
   },
-  fromAminoMsg(object: TokenV202AminoMsg): TokenV202 {
-    return TokenV202.fromAmino(object.value);
+  fromAminoMsg(object: TokenAminoMsg): Token {
+    return Token.fromAmino(object.value);
   },
-  fromProtoMsg(message: TokenV202ProtoMsg): TokenV202 {
-    return TokenV202.decode(message.value);
+  fromProtoMsg(message: TokenProtoMsg): Token {
+    return Token.decode(message.value);
   },
-  toProto(message: TokenV202): Uint8Array {
-    return TokenV202.encode(message).finish();
+  toProto(message: Token): Uint8Array {
+    return Token.encode(message).finish();
   },
-  toProtoMsg(message: TokenV202): TokenV202ProtoMsg {
+  toProtoMsg(message: Token): TokenProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenV202",
-      value: TokenV202.encode(message).finish()
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Token",
+      value: Token.encode(message).finish()
     };
   }
 };

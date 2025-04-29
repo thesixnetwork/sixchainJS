@@ -1,7 +1,7 @@
 syntax = "proto3";
-package thesixnetwork.sixprotocol.nftmngr;
+package thesixnetwork.sixnft.nftmngr;
 import "nftmngr/attribute_definition.proto";
-option go_package = "github.com/thesixnetwork/six-protocol/x/nftmngr/types";
+option go_package = "github.com/thesixnetwork/sixnft/x/nftmngr/types";
 
 enum AttributeOverriding {
   ORIGIN = 0;
@@ -14,12 +14,12 @@ enum URIRetrievalMethod {
 }
 
 message OriginData {
-
-  string origin_chain = 1;
-  string origin_contract_address = 2;
-  string origin_base_uri = 3;
-  AttributeOverriding attribute_overriding = 4;
-  string metadata_format = 5;
-  repeated AttributeDefinition origin_attributes = 6;
-  URIRetrievalMethod uri_retrieval_method = 7;
+  
+  string origin_chain = 1; 
+  string origin_contract_address = 2; 
+  string origin_base_uri = 3; 
+  AttributeOverriding  attribute_overriding = 4; 
+  string metadata_format = 5; 
+  repeated AttributeDefinition origin_attributes = 6; 
+  URIRetrievalMethod  uri_retrieval_method = 7;
 }

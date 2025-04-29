@@ -3,6 +3,26 @@ import { RequestStatus, DataHash, DataHashAmino, DataHashSDKType } from "./reque
 import { Timestamp } from "../google/protobuf/timestamp";
 import { Long, toTimestamp, fromTimestamp } from "../helpers";
 import * as _m0 from "protobufjs/minimal";
+export interface MintRequest_ConfirmersEntry {
+  key: string;
+  value: boolean;
+}
+export interface MintRequest_ConfirmersEntryProtoMsg {
+  typeUrl: string;
+  value: Uint8Array;
+}
+export interface MintRequest_ConfirmersEntryAmino {
+  key?: string;
+  value?: boolean;
+}
+export interface MintRequest_ConfirmersEntryAminoMsg {
+  type: string;
+  value: MintRequest_ConfirmersEntryAmino;
+}
+export interface MintRequest_ConfirmersEntrySDKType {
+  key: string;
+  value: boolean;
+}
 export interface MintRequest {
   id: Long;
   nftSchemaCode: string;
@@ -10,7 +30,9 @@ export interface MintRequest {
   requiredConfirm: Long;
   status: RequestStatus;
   currentConfirm: Long;
-  confirmers: string[];
+  confirmers: {
+    [key: string]: boolean;
+  };
   /** NftOriginData nft_origin_data = 8; */
   createdAt: Date;
   validUntil: Date;
@@ -18,7 +40,7 @@ export interface MintRequest {
   expiredHeight: Long;
 }
 export interface MintRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MintRequest";
   value: Uint8Array;
 }
 export interface MintRequestAmino {
@@ -28,7 +50,9 @@ export interface MintRequestAmino {
   required_confirm?: string;
   status?: RequestStatus;
   current_confirm?: string;
-  confirmers?: string[];
+  confirmers?: {
+    [key: string]: boolean;
+  };
   /** NftOriginData nft_origin_data = 8; */
   created_at?: string;
   valid_until?: string;
@@ -36,7 +60,7 @@ export interface MintRequestAmino {
   expired_height?: string;
 }
 export interface MintRequestAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MintRequest";
+  type: "/thesixnetwork.sixnft.nftoracle.MintRequest";
   value: MintRequestAmino;
 }
 export interface MintRequestSDKType {
@@ -46,12 +70,82 @@ export interface MintRequestSDKType {
   required_confirm: Long;
   status: RequestStatus;
   current_confirm: Long;
-  confirmers: string[];
+  confirmers: {
+    [key: string]: boolean;
+  };
   created_at: Date;
   valid_until: Date;
   data_hashes: DataHashSDKType[];
   expired_height: Long;
 }
+function createBaseMintRequest_ConfirmersEntry(): MintRequest_ConfirmersEntry {
+  return {
+    key: "",
+    value: false
+  };
+}
+export const MintRequest_ConfirmersEntry = {
+  encode(message: MintRequest_ConfirmersEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    if (message.value === true) {
+      writer.uint32(16).bool(message.value);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MintRequest_ConfirmersEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMintRequest_ConfirmersEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.key = reader.string();
+          break;
+        case 2:
+          message.value = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MintRequest_ConfirmersEntry>): MintRequest_ConfirmersEntry {
+    const message = createBaseMintRequest_ConfirmersEntry();
+    message.key = object.key ?? "";
+    message.value = object.value ?? false;
+    return message;
+  },
+  fromAmino(object: MintRequest_ConfirmersEntryAmino): MintRequest_ConfirmersEntry {
+    const message = createBaseMintRequest_ConfirmersEntry();
+    if (object.key !== undefined && object.key !== null) {
+      message.key = object.key;
+    }
+    if (object.value !== undefined && object.value !== null) {
+      message.value = object.value;
+    }
+    return message;
+  },
+  toAmino(message: MintRequest_ConfirmersEntry): MintRequest_ConfirmersEntryAmino {
+    const obj: any = {};
+    obj.key = message.key === "" ? undefined : message.key;
+    obj.value = message.value === false ? undefined : message.value;
+    return obj;
+  },
+  fromAminoMsg(object: MintRequest_ConfirmersEntryAminoMsg): MintRequest_ConfirmersEntry {
+    return MintRequest_ConfirmersEntry.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MintRequest_ConfirmersEntryProtoMsg): MintRequest_ConfirmersEntry {
+    return MintRequest_ConfirmersEntry.decode(message.value);
+  },
+  toProto(message: MintRequest_ConfirmersEntry): Uint8Array {
+    return MintRequest_ConfirmersEntry.encode(message).finish();
+  }
+};
 function createBaseMintRequest(): MintRequest {
   return {
     id: Long.UZERO,
@@ -60,7 +154,7 @@ function createBaseMintRequest(): MintRequest {
     requiredConfirm: Long.UZERO,
     status: 0,
     currentConfirm: Long.UZERO,
-    confirmers: [],
+    confirmers: {},
     createdAt: new Date(),
     validUntil: new Date(),
     dataHashes: [],
@@ -68,7 +162,7 @@ function createBaseMintRequest(): MintRequest {
   };
 }
 export const MintRequest = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MintRequest",
   encode(message: MintRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -88,9 +182,12 @@ export const MintRequest = {
     if (!message.currentConfirm.isZero()) {
       writer.uint32(48).uint64(message.currentConfirm);
     }
-    for (const v of message.confirmers) {
-      writer.uint32(58).string(v!);
-    }
+    Object.entries(message.confirmers).forEach(([key, value]) => {
+      MintRequest_ConfirmersEntry.encode({
+        key: key as any,
+        value
+      }, writer.uint32(56).fork()).ldelim();
+    });
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(66).fork()).ldelim();
     }
@@ -131,7 +228,10 @@ export const MintRequest = {
           message.currentConfirm = reader.uint64() as Long;
           break;
         case 7:
-          message.confirmers.push(reader.string());
+          const entry7 = MintRequest_ConfirmersEntry.decode(reader, reader.uint32());
+          if (entry7.value !== undefined) {
+            message.confirmers[entry7.key] = entry7.value;
+          }
           break;
         case 8:
           message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
@@ -160,7 +260,14 @@ export const MintRequest = {
     message.requiredConfirm = object.requiredConfirm !== undefined && object.requiredConfirm !== null ? Long.fromValue(object.requiredConfirm) : Long.UZERO;
     message.status = object.status ?? 0;
     message.currentConfirm = object.currentConfirm !== undefined && object.currentConfirm !== null ? Long.fromValue(object.currentConfirm) : Long.UZERO;
-    message.confirmers = object.confirmers?.map(e => e) || [];
+    message.confirmers = Object.entries(object.confirmers ?? {}).reduce<{
+      [key: string]: bool;
+    }>((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[key] = bool.fromPartial(value);
+      }
+      return acc;
+    }, {});
     message.createdAt = object.createdAt ?? undefined;
     message.validUntil = object.validUntil ?? undefined;
     message.dataHashes = object.dataHashes?.map(e => DataHash.fromPartial(e)) || [];
@@ -187,7 +294,14 @@ export const MintRequest = {
     if (object.current_confirm !== undefined && object.current_confirm !== null) {
       message.currentConfirm = Long.fromString(object.current_confirm);
     }
-    message.confirmers = object.confirmers?.map(e => e) || [];
+    message.confirmers = Object.entries(object.confirmers ?? {}).reduce<{
+      [key: string]: bool;
+    }>((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[key] = bool.fromAmino(value);
+      }
+      return acc;
+    }, {});
     if (object.created_at !== undefined && object.created_at !== null) {
       message.createdAt = fromTimestamp(Timestamp.fromAmino(object.created_at));
     }
@@ -208,10 +322,11 @@ export const MintRequest = {
     obj.required_confirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
     obj.current_confirm = !message.currentConfirm.isZero() ? (message.currentConfirm?.toString)() : undefined;
+    obj.confirmers = {};
     if (message.confirmers) {
-      obj.confirmers = message.confirmers.map(e => e);
-    } else {
-      obj.confirmers = message.confirmers;
+      Object.entries(message.confirmers).forEach(([k, v]) => {
+        obj.confirmers[k] = bool.toAmino(v);
+      });
     }
     obj.created_at = message.createdAt ? Timestamp.toAmino(toTimestamp(message.createdAt)) : undefined;
     obj.valid_until = message.validUntil ? Timestamp.toAmino(toTimestamp(message.validUntil)) : undefined;
@@ -234,7 +349,7 @@ export const MintRequest = {
   },
   toProtoMsg(message: MintRequest): MintRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MintRequest",
       value: MintRequest.encode(message).finish()
     };
   }

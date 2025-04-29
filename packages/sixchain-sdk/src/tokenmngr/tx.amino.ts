@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn, MsgConvertToAtto, MsgConvertToMicro } from "./tx";
+import { MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn } from "./tx";
 export const AminoConverter = {
   "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken": {
     aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken",
@@ -55,15 +55,5 @@ export const AminoConverter = {
     aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn",
     toAmino: MsgBurn.toAmino,
     fromAmino: MsgBurn.fromAmino
-  },
-  "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto": {
-    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto",
-    toAmino: MsgConvertToAtto.toAmino,
-    fromAmino: MsgConvertToAtto.fromAmino
-  },
-  "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro": {
-    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro",
-    toAmino: MsgConvertToMicro.toAmino,
-    fromAmino: MsgConvertToMicro.fromAmino
   }
 };

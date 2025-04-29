@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn, MsgConvertToAtto, MsgConvertToMicro } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken", MsgCreateToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken", MsgUpdateToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken", MsgDeleteToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm", MsgCreateMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm", MsgUpdateMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm", MsgDeleteMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgMint", MsgMint], ["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions", MsgCreateOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions", MsgUpdateOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions", MsgDeleteOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgBurn", MsgBurn], ["/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto", MsgConvertToAtto], ["/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro", MsgConvertToMicro]];
+import { MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken", MsgCreateToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken", MsgUpdateToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken", MsgDeleteToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm", MsgCreateMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm", MsgUpdateMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm", MsgDeleteMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgMint", MsgMint], ["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions", MsgCreateOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions", MsgUpdateOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions", MsgDeleteOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgBurn", MsgBurn]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -74,18 +74,6 @@ export const MessageComposer = {
         typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn",
         value: MsgBurn.encode(value).finish()
       };
-    },
-    convertToAtto(value: MsgConvertToAtto) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto",
-        value: MsgConvertToAtto.encode(value).finish()
-      };
-    },
-    convertToMicro(value: MsgConvertToMicro) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro",
-        value: MsgConvertToMicro.encode(value).finish()
-      };
     }
   },
   withTypeUrl: {
@@ -152,18 +140,6 @@ export const MessageComposer = {
     burn(value: MsgBurn) {
       return {
         typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn",
-        value
-      };
-    },
-    convertToAtto(value: MsgConvertToAtto) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto",
-        value
-      };
-    },
-    convertToMicro(value: MsgConvertToMicro) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro",
         value
       };
     }
@@ -233,18 +209,6 @@ export const MessageComposer = {
       return {
         typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn",
         value: MsgBurn.fromPartial(value)
-      };
-    },
-    convertToAtto(value: MsgConvertToAtto) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto",
-        value: MsgConvertToAtto.fromPartial(value)
-      };
-    },
-    convertToMicro(value: MsgConvertToMicro) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro",
-        value: MsgConvertToMicro.fromPartial(value)
       };
     }
   }

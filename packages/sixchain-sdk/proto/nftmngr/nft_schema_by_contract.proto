@@ -1,9 +1,11 @@
 syntax = "proto3";
-package thesixnetwork.sixprotocol.nftmngr;
+package thesixnetwork.sixnft.nftmngr;
 
-option go_package = "github.com/thesixnetwork/six-protocol/x/nftmngr/types";
+option go_package = "github.com/thesixnetwork/sixnft/x/nftmngr/types";
 
 message NFTSchemaByContract {
-  string originContractAddress = 1;
-  repeated string schemaCodes = 2;
+  string originContractAddress = 1; 
+  repeated string schemaCodes = 2; 
+  
 }
+

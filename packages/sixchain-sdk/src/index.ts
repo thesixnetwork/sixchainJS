@@ -9,8 +9,6 @@ export * from "./amino/bundle";
 export * from "./cosmos_proto/bundle";
 export * from "./cosmos/bundle";
 export * from "./cosmos/client";
-export * from "./ethermint/bundle";
-export * from "./ethermint/client";
 export * from "./gogoproto/bundle";
 export * from "./google/bundle";
 export * from "./thesixnetwork/bundle";

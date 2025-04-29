@@ -4,55 +4,61 @@ export interface AddressList {
   addresses: string[];
 }
 export interface AddressListProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.AddressList";
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.AddressList";
   value: Uint8Array;
 }
 export interface AddressListAmino {
   addresses?: string[];
 }
 export interface AddressListAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftadmin.AddressList";
+  type: "/thesixnetwork.sixnft.nftadmin.AddressList";
   value: AddressListAmino;
 }
 export interface AddressListSDKType {
   addresses: string[];
 }
-export interface Permission {
-  name: string;
-  addresses?: AddressList;
+export interface Permissions_MapNameEntry {
+  key: string;
+  value?: AddressList;
 }
-export interface PermissionProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permission";
+export interface Permissions_MapNameEntryProtoMsg {
+  typeUrl: string;
   value: Uint8Array;
 }
-export interface PermissionAmino {
-  name?: string;
-  addresses?: AddressListAmino;
+export interface Permissions_MapNameEntryAmino {
+  key?: string;
+  value?: AddressListAmino;
 }
-export interface PermissionAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftadmin.Permission";
-  value: PermissionAmino;
+export interface Permissions_MapNameEntryAminoMsg {
+  type: string;
+  value: Permissions_MapNameEntryAmino;
 }
-export interface PermissionSDKType {
-  name: string;
-  addresses?: AddressListSDKType;
+export interface Permissions_MapNameEntrySDKType {
+  key: string;
+  value?: AddressListSDKType;
 }
 export interface Permissions {
-  permissions: Permission[];
+  mapName: {
+    [key: string]: AddressList;
+  };
 }
 export interface PermissionsProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permissions";
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.Permissions";
   value: Uint8Array;
 }
 export interface PermissionsAmino {
-  permissions?: PermissionAmino[];
+  map_name?: {
+    [key: string]: AddressListAmino;
+  };
 }
 export interface PermissionsAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftadmin.Permissions";
+  type: "/thesixnetwork.sixnft.nftadmin.Permissions";
   value: PermissionsAmino;
 }
 export interface PermissionsSDKType {
-  permissions: PermissionSDKType[];
+  map_name: {
+    [key: string]: AddressListSDKType;
+  };
 }
 function createBaseAddressList(): AddressList {
   return {
@@ -60,7 +66,7 @@ function createBaseAddressList(): AddressList {
   };
 }
 export const AddressList = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.AddressList",
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.AddressList",
   encode(message: AddressList, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.addresses) {
       writer.uint32(10).string(v!);
@@ -114,40 +120,39 @@ export const AddressList = {
   },
   toProtoMsg(message: AddressList): AddressListProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.AddressList",
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.AddressList",
       value: AddressList.encode(message).finish()
     };
   }
 };
-function createBasePermission(): Permission {
+function createBasePermissions_MapNameEntry(): Permissions_MapNameEntry {
   return {
-    name: "",
-    addresses: undefined
+    key: "",
+    value: undefined
   };
 }
-export const Permission = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permission",
-  encode(message: Permission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== "") {
-      writer.uint32(10).string(message.name);
+export const Permissions_MapNameEntry = {
+  encode(message: Permissions_MapNameEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
     }
-    if (message.addresses !== undefined) {
-      AddressList.encode(message.addresses, writer.uint32(18).fork()).ldelim();
+    if (message.value !== undefined) {
+      AddressList.encode(message.value, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): Permission {
+  decode(input: _m0.Reader | Uint8Array, length?: number): Permissions_MapNameEntry {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasePermission();
+    const message = createBasePermissions_MapNameEntry();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.name = reader.string();
+          message.key = reader.string();
           break;
         case 2:
-          message.addresses = AddressList.decode(reader, reader.uint32());
+          message.value = AddressList.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -156,55 +161,52 @@ export const Permission = {
     }
     return message;
   },
-  fromPartial(object: Partial<Permission>): Permission {
-    const message = createBasePermission();
-    message.name = object.name ?? "";
-    message.addresses = object.addresses !== undefined && object.addresses !== null ? AddressList.fromPartial(object.addresses) : undefined;
+  fromPartial(object: Partial<Permissions_MapNameEntry>): Permissions_MapNameEntry {
+    const message = createBasePermissions_MapNameEntry();
+    message.key = object.key ?? "";
+    message.value = object.value !== undefined && object.value !== null ? AddressList.fromPartial(object.value) : undefined;
     return message;
   },
-  fromAmino(object: PermissionAmino): Permission {
-    const message = createBasePermission();
-    if (object.name !== undefined && object.name !== null) {
-      message.name = object.name;
+  fromAmino(object: Permissions_MapNameEntryAmino): Permissions_MapNameEntry {
+    const message = createBasePermissions_MapNameEntry();
+    if (object.key !== undefined && object.key !== null) {
+      message.key = object.key;
     }
-    if (object.addresses !== undefined && object.addresses !== null) {
-      message.addresses = AddressList.fromAmino(object.addresses);
+    if (object.value !== undefined && object.value !== null) {
+      message.value = AddressList.fromAmino(object.value);
     }
     return message;
   },
-  toAmino(message: Permission): PermissionAmino {
+  toAmino(message: Permissions_MapNameEntry): Permissions_MapNameEntryAmino {
     const obj: any = {};
-    obj.name = message.name === "" ? undefined : message.name;
-    obj.addresses = message.addresses ? AddressList.toAmino(message.addresses) : undefined;
+    obj.key = message.key === "" ? undefined : message.key;
+    obj.value = message.value ? AddressList.toAmino(message.value) : undefined;
     return obj;
   },
-  fromAminoMsg(object: PermissionAminoMsg): Permission {
-    return Permission.fromAmino(object.value);
+  fromAminoMsg(object: Permissions_MapNameEntryAminoMsg): Permissions_MapNameEntry {
+    return Permissions_MapNameEntry.fromAmino(object.value);
   },
-  fromProtoMsg(message: PermissionProtoMsg): Permission {
-    return Permission.decode(message.value);
+  fromProtoMsg(message: Permissions_MapNameEntryProtoMsg): Permissions_MapNameEntry {
+    return Permissions_MapNameEntry.decode(message.value);
   },
-  toProto(message: Permission): Uint8Array {
-    return Permission.encode(message).finish();
-  },
-  toProtoMsg(message: Permission): PermissionProtoMsg {
-    return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permission",
-      value: Permission.encode(message).finish()
-    };
+  toProto(message: Permissions_MapNameEntry): Uint8Array {
+    return Permissions_MapNameEntry.encode(message).finish();
   }
 };
 function createBasePermissions(): Permissions {
   return {
-    permissions: []
+    mapName: {}
   };
 }
 export const Permissions = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permissions",
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.Permissions",
   encode(message: Permissions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.permissions) {
-      Permission.encode(v!, writer.uint32(10).fork()).ldelim();
-    }
+    Object.entries(message.mapName).forEach(([key, value]) => {
+      Permissions_MapNameEntry.encode({
+        key: key as any,
+        value
+      }, writer.uint32(10).fork()).ldelim();
+    });
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): Permissions {
@@ -215,7 +217,10 @@ export const Permissions = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.permissions.push(Permission.decode(reader, reader.uint32()));
+          const entry1 = Permissions_MapNameEntry.decode(reader, reader.uint32());
+          if (entry1.value !== undefined) {
+            message.mapName[entry1.key] = entry1.value;
+          }
           break;
         default:
           reader.skipType(tag & 7);
@@ -226,20 +231,35 @@ export const Permissions = {
   },
   fromPartial(object: Partial<Permissions>): Permissions {
     const message = createBasePermissions();
-    message.permissions = object.permissions?.map(e => Permission.fromPartial(e)) || [];
+    message.mapName = Object.entries(object.mapName ?? {}).reduce<{
+      [key: string]: AddressList;
+    }>((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[key] = AddressList.fromPartial(value);
+      }
+      return acc;
+    }, {});
     return message;
   },
   fromAmino(object: PermissionsAmino): Permissions {
     const message = createBasePermissions();
-    message.permissions = object.permissions?.map(e => Permission.fromAmino(e)) || [];
+    message.mapName = Object.entries(object.map_name ?? {}).reduce<{
+      [key: string]: AddressList;
+    }>((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[key] = AddressList.fromAmino(value);
+      }
+      return acc;
+    }, {});
     return message;
   },
   toAmino(message: Permissions): PermissionsAmino {
     const obj: any = {};
-    if (message.permissions) {
-      obj.permissions = message.permissions.map(e => e ? Permission.toAmino(e) : undefined);
-    } else {
-      obj.permissions = message.permissions;
+    obj.map_name = {};
+    if (message.mapName) {
+      Object.entries(message.mapName).forEach(([k, v]) => {
+        obj.map_name[k] = AddressList.toAmino(v);
+      });
     }
     return obj;
   },
@@ -254,7 +274,7 @@ export const Permissions = {
   },
   toProtoMsg(message: Permissions): PermissionsProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permissions",
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.Permissions",
       value: Permissions.encode(message).finish()
     };
   }

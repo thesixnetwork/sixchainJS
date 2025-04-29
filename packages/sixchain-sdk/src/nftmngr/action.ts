@@ -38,35 +38,6 @@ export function allowedActionerToJSON(object: AllowedActioner): string {
       return "UNRECOGNIZED";
   }
 }
-export interface ActionParams {
-  name: string;
-  desc: string;
-  dataType: string;
-  required: boolean;
-  defaultValue: string;
-}
-export interface ActionParamsProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionParams";
-  value: Uint8Array;
-}
-export interface ActionParamsAmino {
-  name?: string;
-  desc?: string;
-  data_type?: string;
-  required?: boolean;
-  default_value?: string;
-}
-export interface ActionParamsAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.ActionParams";
-  value: ActionParamsAmino;
-}
-export interface ActionParamsSDKType {
-  name: string;
-  desc: string;
-  data_type: string;
-  required: boolean;
-  default_value: string;
-}
 export interface Action {
   name: string;
   desc: string;
@@ -74,10 +45,9 @@ export interface Action {
   when: string;
   then: string[];
   allowedActioner?: AllowedActioner;
-  params?: ActionParams[];
 }
 export interface ActionProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Action";
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.Action";
   value: Uint8Array;
 }
 export interface ActionAmino {
@@ -87,10 +57,9 @@ export interface ActionAmino {
   when?: string;
   then?: string[];
   allowed_actioner?: AllowedActioner;
-  params?: ActionParamsAmino[];
 }
 export interface ActionAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.Action";
+  type: "/thesixnetwork.sixnft.nftmngr.Action";
   value: ActionAmino;
 }
 export interface ActionSDKType {
@@ -100,119 +69,7 @@ export interface ActionSDKType {
   when: string;
   then: string[];
   allowed_actioner?: AllowedActioner;
-  params?: ActionParamsSDKType[];
 }
-function createBaseActionParams(): ActionParams {
-  return {
-    name: "",
-    desc: "",
-    dataType: "",
-    required: false,
-    defaultValue: ""
-  };
-}
-export const ActionParams = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionParams",
-  encode(message: ActionParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== "") {
-      writer.uint32(10).string(message.name);
-    }
-    if (message.desc !== "") {
-      writer.uint32(18).string(message.desc);
-    }
-    if (message.dataType !== "") {
-      writer.uint32(26).string(message.dataType);
-    }
-    if (message.required === true) {
-      writer.uint32(32).bool(message.required);
-    }
-    if (message.defaultValue !== "") {
-      writer.uint32(42).string(message.defaultValue);
-    }
-    return writer;
-  },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ActionParams {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseActionParams();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.name = reader.string();
-          break;
-        case 2:
-          message.desc = reader.string();
-          break;
-        case 3:
-          message.dataType = reader.string();
-          break;
-        case 4:
-          message.required = reader.bool();
-          break;
-        case 5:
-          message.defaultValue = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<ActionParams>): ActionParams {
-    const message = createBaseActionParams();
-    message.name = object.name ?? "";
-    message.desc = object.desc ?? "";
-    message.dataType = object.dataType ?? "";
-    message.required = object.required ?? false;
-    message.defaultValue = object.defaultValue ?? "";
-    return message;
-  },
-  fromAmino(object: ActionParamsAmino): ActionParams {
-    const message = createBaseActionParams();
-    if (object.name !== undefined && object.name !== null) {
-      message.name = object.name;
-    }
-    if (object.desc !== undefined && object.desc !== null) {
-      message.desc = object.desc;
-    }
-    if (object.data_type !== undefined && object.data_type !== null) {
-      message.dataType = object.data_type;
-    }
-    if (object.required !== undefined && object.required !== null) {
-      message.required = object.required;
-    }
-    if (object.default_value !== undefined && object.default_value !== null) {
-      message.defaultValue = object.default_value;
-    }
-    return message;
-  },
-  toAmino(message: ActionParams): ActionParamsAmino {
-    const obj: any = {};
-    obj.name = message.name === "" ? undefined : message.name;
-    obj.desc = message.desc === "" ? undefined : message.desc;
-    obj.data_type = message.dataType === "" ? undefined : message.dataType;
-    obj.required = message.required === false ? undefined : message.required;
-    obj.default_value = message.defaultValue === "" ? undefined : message.defaultValue;
-    return obj;
-  },
-  fromAminoMsg(object: ActionParamsAminoMsg): ActionParams {
-    return ActionParams.fromAmino(object.value);
-  },
-  fromProtoMsg(message: ActionParamsProtoMsg): ActionParams {
-    return ActionParams.decode(message.value);
-  },
-  toProto(message: ActionParams): Uint8Array {
-    return ActionParams.encode(message).finish();
-  },
-  toProtoMsg(message: ActionParams): ActionParamsProtoMsg {
-    return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionParams",
-      value: ActionParams.encode(message).finish()
-    };
-  }
-};
 function createBaseAction(): Action {
   return {
     name: "",
@@ -220,12 +77,11 @@ function createBaseAction(): Action {
     disable: false,
     when: "",
     then: [],
-    allowedActioner: undefined,
-    params: []
+    allowedActioner: undefined
   };
 }
 export const Action = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Action",
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.Action",
   encode(message: Action, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -244,9 +100,6 @@ export const Action = {
     }
     if (message.allowedActioner !== undefined) {
       writer.uint32(48).int32(message.allowedActioner);
-    }
-    for (const v of message.params) {
-      ActionParams.encode(v!, writer.uint32(58).fork()).ldelim();
     }
     return writer;
   },
@@ -275,9 +128,6 @@ export const Action = {
         case 6:
           message.allowedActioner = reader.int32() as any;
           break;
-        case 7:
-          message.params.push(ActionParams.decode(reader, reader.uint32()));
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -293,7 +143,6 @@ export const Action = {
     message.when = object.when ?? "";
     message.then = object.then?.map(e => e) || [];
     message.allowedActioner = object.allowedActioner ?? undefined;
-    message.params = object.params?.map(e => ActionParams.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: ActionAmino): Action {
@@ -314,7 +163,6 @@ export const Action = {
     if (object.allowed_actioner !== undefined && object.allowed_actioner !== null) {
       message.allowedActioner = object.allowed_actioner;
     }
-    message.params = object.params?.map(e => ActionParams.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: Action): ActionAmino {
@@ -329,11 +177,6 @@ export const Action = {
       obj.then = message.then;
     }
     obj.allowed_actioner = message.allowedActioner === null ? undefined : message.allowedActioner;
-    if (message.params) {
-      obj.params = message.params.map(e => e ? ActionParams.toAmino(e) : undefined);
-    } else {
-      obj.params = message.params;
-    }
     return obj;
   },
   fromAminoMsg(object: ActionAminoMsg): Action {
@@ -347,7 +190,7 @@ export const Action = {
   },
   toProtoMsg(message: Action): ActionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Action",
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.Action",
       value: Action.encode(message).finish()
     };
   }

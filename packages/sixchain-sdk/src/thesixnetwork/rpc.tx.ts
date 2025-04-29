@@ -29,10 +29,12 @@ export const createRPCMsgClient = async ({
     }
   },
   thesixnetwork: {
-    sixprotocol: {
+    sixnft: {
       nftadmin: new (await import("../nftadmin/tx.rpc.msg")).MsgClientImpl(rpc),
       nftmngr: new (await import("../nftmngr/tx.rpc.msg")).MsgClientImpl(rpc),
-      nftoracle: new (await import("../nftoracle/tx.rpc.msg")).MsgClientImpl(rpc),
+      nftoracle: new (await import("../nftoracle/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    sixprotocol: {
       protocoladmin: new (await import("../protocoladmin/tx.rpc.msg")).MsgClientImpl(rpc),
       tokenmngr: new (await import("../tokenmngr/tx.rpc.msg")).MsgClientImpl(rpc)
     }

@@ -1,108 +1,111 @@
 //@ts-nocheck
-import * as _71 from "../nftadmin/authorization";
-import * as _72 from "../nftadmin/genesis";
-import * as _73 from "../nftadmin/params";
-import * as _74 from "../nftadmin/permissions";
-import * as _75 from "../nftadmin/query";
-import * as _76 from "../nftadmin/tx";
-import * as _77 from "../nftmngr/action_by_ref_id";
-import * as _78 from "../nftmngr/action_executor";
-import * as _79 from "../nftmngr/action_of_schema";
-import * as _80 from "../nftmngr/action";
-import * as _81 from "../nftmngr/attribute_definition";
-import * as _82 from "../nftmngr/attribute_of_schema";
-import * as _83 from "../nftmngr/display_option";
-import * as _84 from "../nftmngr/executor_of_schema";
-import * as _85 from "../nftmngr/genesis";
-import * as _86 from "../nftmngr/lock_schema_fee";
-import * as _87 from "../nftmngr/metadata_creator";
-import * as _88 from "../nftmngr/nft_attribute_value";
-import * as _89 from "../nftmngr/nft_collection";
-import * as _90 from "../nftmngr/nft_data";
-import * as _91 from "../nftmngr/nft_fee_balance";
-import * as _92 from "../nftmngr/nft_fee_config";
-import * as _93 from "../nftmngr/nft_schema_by_contract";
-import * as _94 from "../nftmngr/nft_schema";
-import * as _95 from "../nftmngr/on_chain_data";
-import * as _96 from "../nftmngr/opensea_display_option";
-import * as _97 from "../nftmngr/organization";
-import * as _98 from "../nftmngr/origin_data";
-import * as _99 from "../nftmngr/params";
-import * as _100 from "../nftmngr/query";
-import * as _101 from "../nftmngr/schema_attribute";
-import * as _102 from "../nftmngr/tx";
-import * as _103 from "../nftmngr/virtual_action";
-import * as _104 from "../nftmngr/virtual_schema";
-import * as _105 from "../nftoracle/action_request";
-import * as _106 from "../nftoracle/action_signature";
-import * as _107 from "../nftoracle/action_signer_config";
-import * as _108 from "../nftoracle/action_signer";
-import * as _109 from "../nftoracle/binded_signer";
-import * as _110 from "../nftoracle/collection_owner_request";
-import * as _111 from "../nftoracle/collection_owner_signature";
-import * as _112 from "../nftoracle/genesis";
-import * as _113 from "../nftoracle/mint_request";
-import * as _114 from "../nftoracle/opensea";
-import * as _115 from "../nftoracle/oracle_config";
-import * as _116 from "../nftoracle/params";
-import * as _117 from "../nftoracle/query";
-import * as _118 from "../nftoracle/request";
-import * as _119 from "../nftoracle/sync_action_signer";
-import * as _120 from "../nftoracle/tx";
-import * as _121 from "../protocoladmin/admin";
-import * as _122 from "../protocoladmin/genesis";
-import * as _123 from "../protocoladmin/group";
-import * as _124 from "../protocoladmin/packet";
-import * as _125 from "../protocoladmin/params";
-import * as _126 from "../protocoladmin/query";
-import * as _127 from "../protocoladmin/tx";
-import * as _128 from "../tokenmngr/burn";
-import * as _129 from "../tokenmngr/genesis";
-import * as _130 from "../tokenmngr/mintperm";
-import * as _131 from "../tokenmngr/options";
-import * as _132 from "../tokenmngr/packet";
-import * as _133 from "../tokenmngr/params";
-import * as _134 from "../tokenmngr/query";
-import * as _135 from "../tokenmngr/token_burn";
-import * as _136 from "../tokenmngr/token";
-import * as _137 from "../tokenmngr/tx";
-import * as _187 from "../nftadmin/tx.amino";
-import * as _188 from "../nftmngr/tx.amino";
-import * as _189 from "../nftoracle/tx.amino";
-import * as _190 from "../protocoladmin/tx.amino";
-import * as _191 from "../tokenmngr/tx.amino";
-import * as _192 from "../nftadmin/tx.registry";
-import * as _193 from "../nftmngr/tx.registry";
-import * as _194 from "../nftoracle/tx.registry";
-import * as _195 from "../protocoladmin/tx.registry";
-import * as _196 from "../tokenmngr/tx.registry";
-import * as _197 from "../nftadmin/query.rpc.Query";
-import * as _198 from "../nftmngr/query.rpc.Query";
-import * as _199 from "../nftoracle/query.rpc.Query";
-import * as _200 from "../protocoladmin/query.rpc.Query";
-import * as _201 from "../tokenmngr/query.rpc.Query";
-import * as _202 from "../nftadmin/tx.rpc.msg";
-import * as _203 from "../nftmngr/tx.rpc.msg";
-import * as _204 from "../nftoracle/tx.rpc.msg";
-import * as _205 from "../protocoladmin/tx.rpc.msg";
-import * as _206 from "../tokenmngr/tx.rpc.msg";
-import * as _211 from "./rpc.query";
-import * as _212 from "./rpc.tx";
+import * as _58 from "../nftadmin/authorization";
+import * as _59 from "../nftadmin/genesis";
+import * as _60 from "../nftadmin/params";
+import * as _61 from "../nftadmin/permissions";
+import * as _62 from "../nftadmin/query";
+import * as _63 from "../nftadmin/tx";
+import * as _64 from "../nftmngr/action_by_ref_id";
+import * as _65 from "../nftmngr/action";
+import * as _66 from "../nftmngr/attribute_definition";
+import * as _67 from "../nftmngr/display_option";
+import * as _68 from "../nftmngr/genesis";
+import * as _69 from "../nftmngr/metadata_creator";
+import * as _70 from "../nftmngr/nft_attribute_value";
+import * as _71 from "../nftmngr/nft_collection";
+import * as _72 from "../nftmngr/nft_data";
+import * as _73 from "../nftmngr/nft_fee_balance";
+import * as _74 from "../nftmngr/nft_fee_config";
+import * as _75 from "../nftmngr/nft_schema_by_contract";
+import * as _76 from "../nftmngr/nft_schema";
+import * as _77 from "../nftmngr/on_chain_data";
+import * as _78 from "../nftmngr/on_off_switch";
+import * as _79 from "../nftmngr/opensea_display_option";
+import * as _80 from "../nftmngr/organization";
+import * as _81 from "../nftmngr/origin_data";
+import * as _82 from "../nftmngr/params";
+import * as _83 from "../nftmngr/query";
+import * as _84 from "../nftmngr/status";
+import * as _85 from "../nftmngr/tx";
+import * as _86 from "../nftoracle/action_request";
+import * as _87 from "../nftoracle/action_signature";
+import * as _88 from "../nftoracle/collection_owner_request";
+import * as _89 from "../nftoracle/collection_owner_signature";
+import * as _90 from "../nftoracle/genesis";
+import * as _91 from "../nftoracle/mint_request";
+import * as _92 from "../nftoracle/opensea";
+import * as _93 from "../nftoracle/oracle_config";
+import * as _94 from "../nftoracle/params";
+import * as _95 from "../nftoracle/query";
+import * as _96 from "../nftoracle/request";
+import * as _97 from "../nftoracle/tx";
+import * as _98 from "../protocoladmin/admin";
+import * as _99 from "../protocoladmin/genesis";
+import * as _100 from "../protocoladmin/group";
+import * as _101 from "../protocoladmin/packet";
+import * as _102 from "../protocoladmin/params";
+import * as _103 from "../protocoladmin/query";
+import * as _104 from "../protocoladmin/tx";
+import * as _105 from "../tokenmngr/burn";
+import * as _106 from "../tokenmngr/genesis";
+import * as _107 from "../tokenmngr/mintperm";
+import * as _108 from "../tokenmngr/options";
+import * as _109 from "../tokenmngr/packet";
+import * as _110 from "../tokenmngr/params";
+import * as _111 from "../tokenmngr/query";
+import * as _112 from "../tokenmngr/token_burn";
+import * as _113 from "../tokenmngr/token";
+import * as _114 from "../tokenmngr/tx";
+import * as _158 from "../nftadmin/tx.amino";
+import * as _159 from "../nftmngr/tx.amino";
+import * as _160 from "../nftoracle/tx.amino";
+import * as _161 from "../protocoladmin/tx.amino";
+import * as _162 from "../tokenmngr/tx.amino";
+import * as _163 from "../nftadmin/tx.registry";
+import * as _164 from "../nftmngr/tx.registry";
+import * as _165 from "../nftoracle/tx.registry";
+import * as _166 from "../protocoladmin/tx.registry";
+import * as _167 from "../tokenmngr/tx.registry";
+import * as _168 from "../nftadmin/query.rpc.Query";
+import * as _169 from "../nftmngr/query.rpc.Query";
+import * as _170 from "../nftoracle/query.rpc.Query";
+import * as _171 from "../protocoladmin/query.rpc.Query";
+import * as _172 from "../tokenmngr/query.rpc.Query";
+import * as _173 from "../nftadmin/tx.rpc.msg";
+import * as _174 from "../nftmngr/tx.rpc.msg";
+import * as _175 from "../nftoracle/tx.rpc.msg";
+import * as _176 from "../protocoladmin/tx.rpc.msg";
+import * as _177 from "../tokenmngr/tx.rpc.msg";
+import * as _180 from "./rpc.query";
+import * as _181 from "./rpc.tx";
 export namespace thesixnetwork {
-  export namespace sixprotocol {
+  export namespace sixnft {
     export const nftadmin = {
+      ..._58,
+      ..._59,
+      ..._60,
+      ..._61,
+      ..._62,
+      ..._63,
+      ..._158,
+      ..._163,
+      ..._168,
+      ..._173
+    };
+    export const nftmngr = {
+      ..._64,
+      ..._65,
+      ..._66,
+      ..._67,
+      ..._68,
+      ..._69,
+      ..._70,
       ..._71,
       ..._72,
       ..._73,
       ..._74,
       ..._75,
       ..._76,
-      ..._187,
-      ..._192,
-      ..._197,
-      ..._202
-    };
-    export const nftmngr = {
       ..._77,
       ..._78,
       ..._79,
@@ -112,6 +115,12 @@ export namespace thesixnetwork {
       ..._83,
       ..._84,
       ..._85,
+      ..._159,
+      ..._164,
+      ..._169,
+      ..._174
+    };
+    export const nftoracle = {
       ..._86,
       ..._87,
       ..._88,
@@ -124,6 +133,14 @@ export namespace thesixnetwork {
       ..._95,
       ..._96,
       ..._97,
+      ..._160,
+      ..._165,
+      ..._170,
+      ..._175
+    };
+  }
+  export namespace sixprotocol {
+    export const protocoladmin = {
       ..._98,
       ..._99,
       ..._100,
@@ -131,12 +148,12 @@ export namespace thesixnetwork {
       ..._102,
       ..._103,
       ..._104,
-      ..._188,
-      ..._193,
-      ..._198,
-      ..._203
+      ..._161,
+      ..._166,
+      ..._171,
+      ..._176
     };
-    export const nftoracle = {
+    export const tokenmngr = {
       ..._105,
       ..._106,
       ..._107,
@@ -147,49 +164,14 @@ export namespace thesixnetwork {
       ..._112,
       ..._113,
       ..._114,
-      ..._115,
-      ..._116,
-      ..._117,
-      ..._118,
-      ..._119,
-      ..._120,
-      ..._189,
-      ..._194,
-      ..._199,
-      ..._204
-    };
-    export const protocoladmin = {
-      ..._121,
-      ..._122,
-      ..._123,
-      ..._124,
-      ..._125,
-      ..._126,
-      ..._127,
-      ..._190,
-      ..._195,
-      ..._200,
-      ..._205
-    };
-    export const tokenmngr = {
-      ..._128,
-      ..._129,
-      ..._130,
-      ..._131,
-      ..._132,
-      ..._133,
-      ..._134,
-      ..._135,
-      ..._136,
-      ..._137,
-      ..._191,
-      ..._196,
-      ..._201,
-      ..._206
+      ..._162,
+      ..._167,
+      ..._172,
+      ..._177
     };
   }
   export const ClientFactory = {
-    ..._211,
-    ..._212
+    ..._180,
+    ..._181
   };
 }

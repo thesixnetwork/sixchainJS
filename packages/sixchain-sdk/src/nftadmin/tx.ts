@@ -1,4 +1,5 @@
 //@ts-nocheck
+import { Long } from "../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface MsgGrantPermission {
   creator: string;
@@ -6,7 +7,7 @@ export interface MsgGrantPermission {
   grantee: string;
 }
 export interface MsgGrantPermissionProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission";
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermission";
   value: Uint8Array;
 }
 export interface MsgGrantPermissionAmino {
@@ -15,7 +16,7 @@ export interface MsgGrantPermissionAmino {
   grantee?: string;
 }
 export interface MsgGrantPermissionAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission";
+  type: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermission";
   value: MsgGrantPermissionAmino;
 }
 export interface MsgGrantPermissionSDKType {
@@ -27,14 +28,14 @@ export interface MsgGrantPermissionResponse {
   grantee: string;
 }
 export interface MsgGrantPermissionResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermissionResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermissionResponse";
   value: Uint8Array;
 }
 export interface MsgGrantPermissionResponseAmino {
   grantee?: string;
 }
 export interface MsgGrantPermissionResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermissionResponse";
+  type: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermissionResponse";
   value: MsgGrantPermissionResponseAmino;
 }
 export interface MsgGrantPermissionResponseSDKType {
@@ -46,7 +47,7 @@ export interface MsgRevokePermission {
   revokee: string;
 }
 export interface MsgRevokePermissionProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission";
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermission";
   value: Uint8Array;
 }
 export interface MsgRevokePermissionAmino {
@@ -55,7 +56,7 @@ export interface MsgRevokePermissionAmino {
   revokee?: string;
 }
 export interface MsgRevokePermissionAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission";
+  type: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermission";
   value: MsgRevokePermissionAmino;
 }
 export interface MsgRevokePermissionSDKType {
@@ -67,18 +68,104 @@ export interface MsgRevokePermissionResponse {
   revokee: string;
 }
 export interface MsgRevokePermissionResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermissionResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermissionResponse";
   value: Uint8Array;
 }
 export interface MsgRevokePermissionResponseAmino {
   revokee?: string;
 }
 export interface MsgRevokePermissionResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermissionResponse";
+  type: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermissionResponse";
   value: MsgRevokePermissionResponseAmino;
 }
 export interface MsgRevokePermissionResponseSDKType {
   revokee: string;
+}
+export interface MsgMint {
+  creator: string;
+  amount: Long;
+  token: string;
+}
+export interface MsgMintProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgMint";
+  value: Uint8Array;
+}
+export interface MsgMintAmino {
+  creator?: string;
+  amount?: string;
+  token?: string;
+}
+export interface MsgMintAminoMsg {
+  type: "/thesixnetwork.sixnft.nftadmin.MsgMint";
+  value: MsgMintAmino;
+}
+export interface MsgMintSDKType {
+  creator: string;
+  amount: Long;
+  token: string;
+}
+export interface MsgMintResponse {
+  amount: string;
+  token: string;
+}
+export interface MsgMintResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgMintResponse";
+  value: Uint8Array;
+}
+export interface MsgMintResponseAmino {
+  amount?: string;
+  token?: string;
+}
+export interface MsgMintResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftadmin.MsgMintResponse";
+  value: MsgMintResponseAmino;
+}
+export interface MsgMintResponseSDKType {
+  amount: string;
+  token: string;
+}
+export interface MsgBurn {
+  creator: string;
+  amount: Long;
+  token: string;
+}
+export interface MsgBurnProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgBurn";
+  value: Uint8Array;
+}
+export interface MsgBurnAmino {
+  creator?: string;
+  amount?: string;
+  token?: string;
+}
+export interface MsgBurnAminoMsg {
+  type: "/thesixnetwork.sixnft.nftadmin.MsgBurn";
+  value: MsgBurnAmino;
+}
+export interface MsgBurnSDKType {
+  creator: string;
+  amount: Long;
+  token: string;
+}
+export interface MsgBurnResponse {
+  amount: string;
+  token: string;
+}
+export interface MsgBurnResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgBurnResponse";
+  value: Uint8Array;
+}
+export interface MsgBurnResponseAmino {
+  amount?: string;
+  token?: string;
+}
+export interface MsgBurnResponseAminoMsg {
+  type: "/thesixnetwork.sixnft.nftadmin.MsgBurnResponse";
+  value: MsgBurnResponseAmino;
+}
+export interface MsgBurnResponseSDKType {
+  amount: string;
+  token: string;
 }
 function createBaseMsgGrantPermission(): MsgGrantPermission {
   return {
@@ -88,7 +175,7 @@ function createBaseMsgGrantPermission(): MsgGrantPermission {
   };
 }
 export const MsgGrantPermission = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission",
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermission",
   encode(message: MsgGrantPermission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -162,7 +249,7 @@ export const MsgGrantPermission = {
   },
   toProtoMsg(message: MsgGrantPermission): MsgGrantPermissionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermission",
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermission",
       value: MsgGrantPermission.encode(message).finish()
     };
   }
@@ -173,7 +260,7 @@ function createBaseMsgGrantPermissionResponse(): MsgGrantPermissionResponse {
   };
 }
 export const MsgGrantPermissionResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermissionResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermissionResponse",
   encode(message: MsgGrantPermissionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.grantee !== "") {
       writer.uint32(10).string(message.grantee);
@@ -225,7 +312,7 @@ export const MsgGrantPermissionResponse = {
   },
   toProtoMsg(message: MsgGrantPermissionResponse): MsgGrantPermissionResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgGrantPermissionResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgGrantPermissionResponse",
       value: MsgGrantPermissionResponse.encode(message).finish()
     };
   }
@@ -238,7 +325,7 @@ function createBaseMsgRevokePermission(): MsgRevokePermission {
   };
 }
 export const MsgRevokePermission = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission",
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermission",
   encode(message: MsgRevokePermission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -312,7 +399,7 @@ export const MsgRevokePermission = {
   },
   toProtoMsg(message: MsgRevokePermission): MsgRevokePermissionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermission",
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermission",
       value: MsgRevokePermission.encode(message).finish()
     };
   }
@@ -323,7 +410,7 @@ function createBaseMsgRevokePermissionResponse(): MsgRevokePermissionResponse {
   };
 }
 export const MsgRevokePermissionResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermissionResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermissionResponse",
   encode(message: MsgRevokePermissionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.revokee !== "") {
       writer.uint32(10).string(message.revokee);
@@ -375,8 +462,332 @@ export const MsgRevokePermissionResponse = {
   },
   toProtoMsg(message: MsgRevokePermissionResponse): MsgRevokePermissionResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.MsgRevokePermissionResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgRevokePermissionResponse",
       value: MsgRevokePermissionResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgMint(): MsgMint {
+  return {
+    creator: "",
+    amount: Long.UZERO,
+    token: ""
+  };
+}
+export const MsgMint = {
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgMint",
+  encode(message: MsgMint, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (!message.amount.isZero()) {
+      writer.uint32(16).uint64(message.amount);
+    }
+    if (message.token !== "") {
+      writer.uint32(26).string(message.token);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMint {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgMint();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.amount = reader.uint64() as Long;
+          break;
+        case 3:
+          message.token = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgMint>): MsgMint {
+    const message = createBaseMsgMint();
+    message.creator = object.creator ?? "";
+    message.amount = object.amount !== undefined && object.amount !== null ? Long.fromValue(object.amount) : Long.UZERO;
+    message.token = object.token ?? "";
+    return message;
+  },
+  fromAmino(object: MsgMintAmino): MsgMint {
+    const message = createBaseMsgMint();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Long.fromString(object.amount);
+    }
+    if (object.token !== undefined && object.token !== null) {
+      message.token = object.token;
+    }
+    return message;
+  },
+  toAmino(message: MsgMint): MsgMintAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.amount = !message.amount.isZero() ? (message.amount?.toString)() : undefined;
+    obj.token = message.token === "" ? undefined : message.token;
+    return obj;
+  },
+  fromAminoMsg(object: MsgMintAminoMsg): MsgMint {
+    return MsgMint.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgMintProtoMsg): MsgMint {
+    return MsgMint.decode(message.value);
+  },
+  toProto(message: MsgMint): Uint8Array {
+    return MsgMint.encode(message).finish();
+  },
+  toProtoMsg(message: MsgMint): MsgMintProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgMint",
+      value: MsgMint.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgMintResponse(): MsgMintResponse {
+  return {
+    amount: "",
+    token: ""
+  };
+}
+export const MsgMintResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgMintResponse",
+  encode(message: MsgMintResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.amount !== "") {
+      writer.uint32(10).string(message.amount);
+    }
+    if (message.token !== "") {
+      writer.uint32(18).string(message.token);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMintResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgMintResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.amount = reader.string();
+          break;
+        case 2:
+          message.token = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgMintResponse>): MsgMintResponse {
+    const message = createBaseMsgMintResponse();
+    message.amount = object.amount ?? "";
+    message.token = object.token ?? "";
+    return message;
+  },
+  fromAmino(object: MsgMintResponseAmino): MsgMintResponse {
+    const message = createBaseMsgMintResponse();
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = object.amount;
+    }
+    if (object.token !== undefined && object.token !== null) {
+      message.token = object.token;
+    }
+    return message;
+  },
+  toAmino(message: MsgMintResponse): MsgMintResponseAmino {
+    const obj: any = {};
+    obj.amount = message.amount === "" ? undefined : message.amount;
+    obj.token = message.token === "" ? undefined : message.token;
+    return obj;
+  },
+  fromAminoMsg(object: MsgMintResponseAminoMsg): MsgMintResponse {
+    return MsgMintResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgMintResponseProtoMsg): MsgMintResponse {
+    return MsgMintResponse.decode(message.value);
+  },
+  toProto(message: MsgMintResponse): Uint8Array {
+    return MsgMintResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgMintResponse): MsgMintResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgMintResponse",
+      value: MsgMintResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgBurn(): MsgBurn {
+  return {
+    creator: "",
+    amount: Long.UZERO,
+    token: ""
+  };
+}
+export const MsgBurn = {
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgBurn",
+  encode(message: MsgBurn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (!message.amount.isZero()) {
+      writer.uint32(16).uint64(message.amount);
+    }
+    if (message.token !== "") {
+      writer.uint32(26).string(message.token);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurn {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgBurn();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.amount = reader.uint64() as Long;
+          break;
+        case 3:
+          message.token = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgBurn>): MsgBurn {
+    const message = createBaseMsgBurn();
+    message.creator = object.creator ?? "";
+    message.amount = object.amount !== undefined && object.amount !== null ? Long.fromValue(object.amount) : Long.UZERO;
+    message.token = object.token ?? "";
+    return message;
+  },
+  fromAmino(object: MsgBurnAmino): MsgBurn {
+    const message = createBaseMsgBurn();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Long.fromString(object.amount);
+    }
+    if (object.token !== undefined && object.token !== null) {
+      message.token = object.token;
+    }
+    return message;
+  },
+  toAmino(message: MsgBurn): MsgBurnAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.amount = !message.amount.isZero() ? (message.amount?.toString)() : undefined;
+    obj.token = message.token === "" ? undefined : message.token;
+    return obj;
+  },
+  fromAminoMsg(object: MsgBurnAminoMsg): MsgBurn {
+    return MsgBurn.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgBurnProtoMsg): MsgBurn {
+    return MsgBurn.decode(message.value);
+  },
+  toProto(message: MsgBurn): Uint8Array {
+    return MsgBurn.encode(message).finish();
+  },
+  toProtoMsg(message: MsgBurn): MsgBurnProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgBurn",
+      value: MsgBurn.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgBurnResponse(): MsgBurnResponse {
+  return {
+    amount: "",
+    token: ""
+  };
+}
+export const MsgBurnResponse = {
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgBurnResponse",
+  encode(message: MsgBurnResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.amount !== "") {
+      writer.uint32(10).string(message.amount);
+    }
+    if (message.token !== "") {
+      writer.uint32(18).string(message.token);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgBurnResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.amount = reader.string();
+          break;
+        case 2:
+          message.token = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgBurnResponse>): MsgBurnResponse {
+    const message = createBaseMsgBurnResponse();
+    message.amount = object.amount ?? "";
+    message.token = object.token ?? "";
+    return message;
+  },
+  fromAmino(object: MsgBurnResponseAmino): MsgBurnResponse {
+    const message = createBaseMsgBurnResponse();
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = object.amount;
+    }
+    if (object.token !== undefined && object.token !== null) {
+      message.token = object.token;
+    }
+    return message;
+  },
+  toAmino(message: MsgBurnResponse): MsgBurnResponseAmino {
+    const obj: any = {};
+    obj.amount = message.amount === "" ? undefined : message.amount;
+    obj.token = message.token === "" ? undefined : message.token;
+    return obj;
+  },
+  fromAminoMsg(object: MsgBurnResponseAminoMsg): MsgBurnResponse {
+    return MsgBurnResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgBurnResponseProtoMsg): MsgBurnResponse {
+    return MsgBurnResponse.decode(message.value);
+  },
+  toProto(message: MsgBurnResponse): Uint8Array {
+    return MsgBurnResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgBurnResponse): MsgBurnResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.MsgBurnResponse",
+      value: MsgBurnResponse.encode(message).finish()
     };
   }
 };

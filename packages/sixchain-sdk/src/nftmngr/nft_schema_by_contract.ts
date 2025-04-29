@@ -5,7 +5,7 @@ export interface NFTSchemaByContract {
   schemaCodes: string[];
 }
 export interface NFTSchemaByContractProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaByContract";
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTSchemaByContract";
   value: Uint8Array;
 }
 export interface NFTSchemaByContractAmino {
@@ -13,7 +13,7 @@ export interface NFTSchemaByContractAmino {
   schemaCodes?: string[];
 }
 export interface NFTSchemaByContractAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaByContract";
+  type: "/thesixnetwork.sixnft.nftmngr.NFTSchemaByContract";
   value: NFTSchemaByContractAmino;
 }
 export interface NFTSchemaByContractSDKType {
@@ -27,7 +27,7 @@ function createBaseNFTSchemaByContract(): NFTSchemaByContract {
   };
 }
 export const NFTSchemaByContract = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaByContract",
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTSchemaByContract",
   encode(message: NFTSchemaByContract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.originContractAddress !== "") {
       writer.uint32(10).string(message.originContractAddress);
@@ -92,7 +92,7 @@ export const NFTSchemaByContract = {
   },
   toProtoMsg(message: NFTSchemaByContract): NFTSchemaByContractProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaByContract",
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.NFTSchemaByContract",
       value: NFTSchemaByContract.encode(message).finish()
     };
   }

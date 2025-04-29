@@ -5,7 +5,7 @@ export interface Organization {
   owner: string;
 }
 export interface OrganizationProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Organization";
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.Organization";
   value: Uint8Array;
 }
 export interface OrganizationAmino {
@@ -13,7 +13,7 @@ export interface OrganizationAmino {
   owner?: string;
 }
 export interface OrganizationAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.Organization";
+  type: "/thesixnetwork.sixnft.nftmngr.Organization";
   value: OrganizationAmino;
 }
 export interface OrganizationSDKType {
@@ -27,7 +27,7 @@ function createBaseOrganization(): Organization {
   };
 }
 export const Organization = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Organization",
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.Organization",
   encode(message: Organization, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -90,7 +90,7 @@ export const Organization = {
   },
   toProtoMsg(message: Organization): OrganizationProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Organization",
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.Organization",
       value: Organization.encode(message).finish()
     };
   }

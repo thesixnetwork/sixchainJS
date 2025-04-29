@@ -4,8 +4,8 @@ import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Token, TokenAmino, TokenSDKType } from "./token";
 import { Mintperm, MintpermAmino, MintpermSDKType } from "./mintperm";
 import { Options, OptionsAmino, OptionsSDKType } from "./options";
-import { Burn, BurnAmino, BurnSDKType, BurnV202, BurnV202Amino, BurnV202SDKType } from "./burn";
-import { TokenBurn, TokenBurnAmino, TokenBurnSDKType, TokenBurnV202, TokenBurnV202Amino, TokenBurnV202SDKType } from "./token_burn";
+import { Burn, BurnAmino, BurnSDKType } from "./burn";
+import { TokenBurn, TokenBurnAmino, TokenBurnSDKType } from "./token_burn";
 import * as _m0 from "protobufjs/minimal";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
@@ -257,30 +257,6 @@ export interface QueryBurnsResponseSDKType {
   Burn: BurnSDKType[];
   pagination?: PageResponseSDKType;
 }
-export interface QueryBurnsResponseV202 {
-  /** Returning a list of posts */
-  burn: BurnV202[];
-  /** Adding pagination to response */
-  pagination?: PageResponse;
-}
-export interface QueryBurnsResponseV202ProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponseV202";
-  value: Uint8Array;
-}
-export interface QueryBurnsResponseV202Amino {
-  /** Returning a list of posts */
-  Burn?: BurnV202Amino[];
-  /** Adding pagination to response */
-  pagination?: PageResponseAmino;
-}
-export interface QueryBurnsResponseV202AminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponseV202";
-  value: QueryBurnsResponseV202Amino;
-}
-export interface QueryBurnsResponseV202SDKType {
-  Burn: BurnV202SDKType[];
-  pagination?: PageResponseSDKType;
-}
 export interface QueryGetTokenBurnRequest {
   token: string;
 }
@@ -314,23 +290,6 @@ export interface QueryGetTokenBurnResponseAminoMsg {
 }
 export interface QueryGetTokenBurnResponseSDKType {
   tokenBurn: TokenBurnSDKType;
-}
-export interface QueryGetTokenBurnResponseV202 {
-  tokenBurn: TokenBurnV202;
-}
-export interface QueryGetTokenBurnResponseV202ProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponseV202";
-  value: Uint8Array;
-}
-export interface QueryGetTokenBurnResponseV202Amino {
-  tokenBurn?: TokenBurnV202Amino;
-}
-export interface QueryGetTokenBurnResponseV202AminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponseV202";
-  value: QueryGetTokenBurnResponseV202Amino;
-}
-export interface QueryGetTokenBurnResponseV202SDKType {
-  tokenBurn: TokenBurnV202SDKType;
 }
 export interface QueryAllTokenBurnRequest {
   pagination?: PageRequest;
@@ -367,26 +326,6 @@ export interface QueryAllTokenBurnResponseAminoMsg {
 }
 export interface QueryAllTokenBurnResponseSDKType {
   tokenBurn: TokenBurnSDKType[];
-  pagination?: PageResponseSDKType;
-}
-export interface QueryAllTokenBurnResponseV202 {
-  tokenBurn: TokenBurnV202[];
-  pagination?: PageResponse;
-}
-export interface QueryAllTokenBurnResponseV202ProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponseV202";
-  value: Uint8Array;
-}
-export interface QueryAllTokenBurnResponseV202Amino {
-  tokenBurn?: TokenBurnV202Amino[];
-  pagination?: PageResponseAmino;
-}
-export interface QueryAllTokenBurnResponseV202AminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponseV202";
-  value: QueryAllTokenBurnResponseV202Amino;
-}
-export interface QueryAllTokenBurnResponseV202SDKType {
-  tokenBurn: TokenBurnV202SDKType[];
   pagination?: PageResponseSDKType;
 }
 function createBaseQueryParamsRequest(): QueryParamsRequest {
@@ -1299,83 +1238,6 @@ export const QueryBurnsResponse = {
     };
   }
 };
-function createBaseQueryBurnsResponseV202(): QueryBurnsResponseV202 {
-  return {
-    burn: [],
-    pagination: undefined
-  };
-}
-export const QueryBurnsResponseV202 = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponseV202",
-  encode(message: QueryBurnsResponseV202, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.burn) {
-      BurnV202.encode(v!, writer.uint32(10).fork()).ldelim();
-    }
-    if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
-    }
-    return writer;
-  },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryBurnsResponseV202 {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryBurnsResponseV202();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.burn.push(BurnV202.decode(reader, reader.uint32()));
-          break;
-        case 2:
-          message.pagination = PageResponse.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<QueryBurnsResponseV202>): QueryBurnsResponseV202 {
-    const message = createBaseQueryBurnsResponseV202();
-    message.burn = object.burn?.map(e => BurnV202.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
-    return message;
-  },
-  fromAmino(object: QueryBurnsResponseV202Amino): QueryBurnsResponseV202 {
-    const message = createBaseQueryBurnsResponseV202();
-    message.burn = object.Burn?.map(e => BurnV202.fromAmino(e)) || [];
-    if (object.pagination !== undefined && object.pagination !== null) {
-      message.pagination = PageResponse.fromAmino(object.pagination);
-    }
-    return message;
-  },
-  toAmino(message: QueryBurnsResponseV202): QueryBurnsResponseV202Amino {
-    const obj: any = {};
-    if (message.burn) {
-      obj.Burn = message.burn.map(e => e ? BurnV202.toAmino(e) : undefined);
-    } else {
-      obj.Burn = message.burn;
-    }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
-    return obj;
-  },
-  fromAminoMsg(object: QueryBurnsResponseV202AminoMsg): QueryBurnsResponseV202 {
-    return QueryBurnsResponseV202.fromAmino(object.value);
-  },
-  fromProtoMsg(message: QueryBurnsResponseV202ProtoMsg): QueryBurnsResponseV202 {
-    return QueryBurnsResponseV202.decode(message.value);
-  },
-  toProto(message: QueryBurnsResponseV202): Uint8Array {
-    return QueryBurnsResponseV202.encode(message).finish();
-  },
-  toProtoMsg(message: QueryBurnsResponseV202): QueryBurnsResponseV202ProtoMsg {
-    return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponseV202",
-      value: QueryBurnsResponseV202.encode(message).finish()
-    };
-  }
-};
 function createBaseQueryGetTokenBurnRequest(): QueryGetTokenBurnRequest {
   return {
     token: ""
@@ -1499,69 +1361,6 @@ export const QueryGetTokenBurnResponse = {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponse",
       value: QueryGetTokenBurnResponse.encode(message).finish()
-    };
-  }
-};
-function createBaseQueryGetTokenBurnResponseV202(): QueryGetTokenBurnResponseV202 {
-  return {
-    tokenBurn: TokenBurnV202.fromPartial({})
-  };
-}
-export const QueryGetTokenBurnResponseV202 = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponseV202",
-  encode(message: QueryGetTokenBurnResponseV202, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.tokenBurn !== undefined) {
-      TokenBurnV202.encode(message.tokenBurn, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetTokenBurnResponseV202 {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryGetTokenBurnResponseV202();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.tokenBurn = TokenBurnV202.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<QueryGetTokenBurnResponseV202>): QueryGetTokenBurnResponseV202 {
-    const message = createBaseQueryGetTokenBurnResponseV202();
-    message.tokenBurn = object.tokenBurn !== undefined && object.tokenBurn !== null ? TokenBurnV202.fromPartial(object.tokenBurn) : undefined;
-    return message;
-  },
-  fromAmino(object: QueryGetTokenBurnResponseV202Amino): QueryGetTokenBurnResponseV202 {
-    const message = createBaseQueryGetTokenBurnResponseV202();
-    if (object.tokenBurn !== undefined && object.tokenBurn !== null) {
-      message.tokenBurn = TokenBurnV202.fromAmino(object.tokenBurn);
-    }
-    return message;
-  },
-  toAmino(message: QueryGetTokenBurnResponseV202): QueryGetTokenBurnResponseV202Amino {
-    const obj: any = {};
-    obj.tokenBurn = message.tokenBurn ? TokenBurnV202.toAmino(message.tokenBurn) : undefined;
-    return obj;
-  },
-  fromAminoMsg(object: QueryGetTokenBurnResponseV202AminoMsg): QueryGetTokenBurnResponseV202 {
-    return QueryGetTokenBurnResponseV202.fromAmino(object.value);
-  },
-  fromProtoMsg(message: QueryGetTokenBurnResponseV202ProtoMsg): QueryGetTokenBurnResponseV202 {
-    return QueryGetTokenBurnResponseV202.decode(message.value);
-  },
-  toProto(message: QueryGetTokenBurnResponseV202): Uint8Array {
-    return QueryGetTokenBurnResponseV202.encode(message).finish();
-  },
-  toProtoMsg(message: QueryGetTokenBurnResponseV202): QueryGetTokenBurnResponseV202ProtoMsg {
-    return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponseV202",
-      value: QueryGetTokenBurnResponseV202.encode(message).finish()
     };
   }
 };
@@ -1702,83 +1501,6 @@ export const QueryAllTokenBurnResponse = {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponse",
       value: QueryAllTokenBurnResponse.encode(message).finish()
-    };
-  }
-};
-function createBaseQueryAllTokenBurnResponseV202(): QueryAllTokenBurnResponseV202 {
-  return {
-    tokenBurn: [],
-    pagination: undefined
-  };
-}
-export const QueryAllTokenBurnResponseV202 = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponseV202",
-  encode(message: QueryAllTokenBurnResponseV202, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.tokenBurn) {
-      TokenBurnV202.encode(v!, writer.uint32(10).fork()).ldelim();
-    }
-    if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
-    }
-    return writer;
-  },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllTokenBurnResponseV202 {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueryAllTokenBurnResponseV202();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.tokenBurn.push(TokenBurnV202.decode(reader, reader.uint32()));
-          break;
-        case 2:
-          message.pagination = PageResponse.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<QueryAllTokenBurnResponseV202>): QueryAllTokenBurnResponseV202 {
-    const message = createBaseQueryAllTokenBurnResponseV202();
-    message.tokenBurn = object.tokenBurn?.map(e => TokenBurnV202.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
-    return message;
-  },
-  fromAmino(object: QueryAllTokenBurnResponseV202Amino): QueryAllTokenBurnResponseV202 {
-    const message = createBaseQueryAllTokenBurnResponseV202();
-    message.tokenBurn = object.tokenBurn?.map(e => TokenBurnV202.fromAmino(e)) || [];
-    if (object.pagination !== undefined && object.pagination !== null) {
-      message.pagination = PageResponse.fromAmino(object.pagination);
-    }
-    return message;
-  },
-  toAmino(message: QueryAllTokenBurnResponseV202): QueryAllTokenBurnResponseV202Amino {
-    const obj: any = {};
-    if (message.tokenBurn) {
-      obj.tokenBurn = message.tokenBurn.map(e => e ? TokenBurnV202.toAmino(e) : undefined);
-    } else {
-      obj.tokenBurn = message.tokenBurn;
-    }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
-    return obj;
-  },
-  fromAminoMsg(object: QueryAllTokenBurnResponseV202AminoMsg): QueryAllTokenBurnResponseV202 {
-    return QueryAllTokenBurnResponseV202.fromAmino(object.value);
-  },
-  fromProtoMsg(message: QueryAllTokenBurnResponseV202ProtoMsg): QueryAllTokenBurnResponseV202 {
-    return QueryAllTokenBurnResponseV202.decode(message.value);
-  },
-  toProto(message: QueryAllTokenBurnResponseV202): Uint8Array {
-    return QueryAllTokenBurnResponseV202.encode(message).finish();
-  },
-  toProtoMsg(message: QueryAllTokenBurnResponseV202): QueryAllTokenBurnResponseV202ProtoMsg {
-    return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponseV202",
-      value: QueryAllTokenBurnResponseV202.encode(message).finish()
     };
   }
 };

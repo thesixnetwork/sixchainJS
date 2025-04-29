@@ -10,7 +10,7 @@ export interface DefaultMintValue {
   floatAttributeValue?: FloatAttributeValue;
 }
 export interface DefaultMintValueProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue";
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.DefaultMintValue";
   value: Uint8Array;
 }
 export interface DefaultMintValueAmino {
@@ -20,7 +20,7 @@ export interface DefaultMintValueAmino {
   float_attribute_value?: FloatAttributeValueAmino;
 }
 export interface DefaultMintValueAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue";
+  type: "/thesixnetwork.sixnft.nftmngr.DefaultMintValue";
   value: DefaultMintValueAmino;
 }
 export interface DefaultMintValueSDKType {
@@ -36,13 +36,11 @@ export interface AttributeDefinition {
   displayValueField: string;
   displayOption?: DisplayOption;
   defaultMintValue?: DefaultMintValue;
-  /** flag that allows action to override hidden */
-  hiddenOveride: boolean;
   hiddenToMarketplace: boolean;
   index: Long;
 }
 export interface AttributeDefinitionProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition";
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.AttributeDefinition";
   value: Uint8Array;
 }
 export interface AttributeDefinitionAmino {
@@ -52,13 +50,11 @@ export interface AttributeDefinitionAmino {
   display_value_field?: string;
   display_option?: DisplayOptionAmino;
   default_mint_value?: DefaultMintValueAmino;
-  /** flag that allows action to override hidden */
-  hidden_overide?: boolean;
   hidden_to_marketplace?: boolean;
   index?: string;
 }
 export interface AttributeDefinitionAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition";
+  type: "/thesixnetwork.sixnft.nftmngr.AttributeDefinition";
   value: AttributeDefinitionAmino;
 }
 export interface AttributeDefinitionSDKType {
@@ -68,7 +64,6 @@ export interface AttributeDefinitionSDKType {
   display_value_field: string;
   display_option?: DisplayOptionSDKType;
   default_mint_value?: DefaultMintValueSDKType;
-  hidden_overide: boolean;
   hidden_to_marketplace: boolean;
   index: Long;
 }
@@ -81,7 +76,7 @@ function createBaseDefaultMintValue(): DefaultMintValue {
   };
 }
 export const DefaultMintValue = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue",
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.DefaultMintValue",
   encode(message: DefaultMintValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.numberAttributeValue !== undefined) {
       NumberAttributeValue.encode(message.numberAttributeValue, writer.uint32(10).fork()).ldelim();
@@ -166,7 +161,7 @@ export const DefaultMintValue = {
   },
   toProtoMsg(message: DefaultMintValue): DefaultMintValueProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue",
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.DefaultMintValue",
       value: DefaultMintValue.encode(message).finish()
     };
   }
@@ -179,13 +174,12 @@ function createBaseAttributeDefinition(): AttributeDefinition {
     displayValueField: "",
     displayOption: undefined,
     defaultMintValue: undefined,
-    hiddenOveride: false,
     hiddenToMarketplace: false,
     index: Long.UZERO
   };
 }
 export const AttributeDefinition = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition",
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.AttributeDefinition",
   encode(message: AttributeDefinition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -205,14 +199,11 @@ export const AttributeDefinition = {
     if (message.defaultMintValue !== undefined) {
       DefaultMintValue.encode(message.defaultMintValue, writer.uint32(50).fork()).ldelim();
     }
-    if (message.hiddenOveride === true) {
-      writer.uint32(56).bool(message.hiddenOveride);
-    }
     if (message.hiddenToMarketplace === true) {
-      writer.uint32(64).bool(message.hiddenToMarketplace);
+      writer.uint32(56).bool(message.hiddenToMarketplace);
     }
     if (!message.index.isZero()) {
-      writer.uint32(72).uint64(message.index);
+      writer.uint32(64).uint64(message.index);
     }
     return writer;
   },
@@ -242,12 +233,9 @@ export const AttributeDefinition = {
           message.defaultMintValue = DefaultMintValue.decode(reader, reader.uint32());
           break;
         case 7:
-          message.hiddenOveride = reader.bool();
-          break;
-        case 8:
           message.hiddenToMarketplace = reader.bool();
           break;
-        case 9:
+        case 8:
           message.index = reader.uint64() as Long;
           break;
         default:
@@ -265,7 +253,6 @@ export const AttributeDefinition = {
     message.displayValueField = object.displayValueField ?? "";
     message.displayOption = object.displayOption !== undefined && object.displayOption !== null ? DisplayOption.fromPartial(object.displayOption) : undefined;
     message.defaultMintValue = object.defaultMintValue !== undefined && object.defaultMintValue !== null ? DefaultMintValue.fromPartial(object.defaultMintValue) : undefined;
-    message.hiddenOveride = object.hiddenOveride ?? false;
     message.hiddenToMarketplace = object.hiddenToMarketplace ?? false;
     message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.UZERO;
     return message;
@@ -290,9 +277,6 @@ export const AttributeDefinition = {
     if (object.default_mint_value !== undefined && object.default_mint_value !== null) {
       message.defaultMintValue = DefaultMintValue.fromAmino(object.default_mint_value);
     }
-    if (object.hidden_overide !== undefined && object.hidden_overide !== null) {
-      message.hiddenOveride = object.hidden_overide;
-    }
     if (object.hidden_to_marketplace !== undefined && object.hidden_to_marketplace !== null) {
       message.hiddenToMarketplace = object.hidden_to_marketplace;
     }
@@ -309,7 +293,6 @@ export const AttributeDefinition = {
     obj.display_value_field = message.displayValueField === "" ? undefined : message.displayValueField;
     obj.display_option = message.displayOption ? DisplayOption.toAmino(message.displayOption) : undefined;
     obj.default_mint_value = message.defaultMintValue ? DefaultMintValue.toAmino(message.defaultMintValue) : undefined;
-    obj.hidden_overide = message.hiddenOveride === false ? undefined : message.hiddenOveride;
     obj.hidden_to_marketplace = message.hiddenToMarketplace === false ? undefined : message.hiddenToMarketplace;
     obj.index = !message.index.isZero() ? (message.index?.toString)() : undefined;
     return obj;
@@ -325,7 +308,7 @@ export const AttributeDefinition = {
   },
   toProtoMsg(message: AttributeDefinition): AttributeDefinitionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition",
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.AttributeDefinition",
       value: AttributeDefinition.encode(message).finish()
     };
   }
