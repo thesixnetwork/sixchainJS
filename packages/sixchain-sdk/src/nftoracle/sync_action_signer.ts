@@ -21,7 +21,7 @@ export interface SyncActionSigner {
   executionErrorMessage: string;
 }
 export interface SyncActionSignerProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.SyncActionSigner";
   value: Uint8Array;
 }
 export interface SyncActionSignerAmino {
@@ -42,7 +42,7 @@ export interface SyncActionSignerAmino {
   execution_error_message?: string;
 }
 export interface SyncActionSignerAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner";
+  type: "/thesixnetwork.sixnft.nftoracle.SyncActionSigner";
   value: SyncActionSignerAmino;
 }
 export interface SyncActionSignerSDKType {
@@ -71,7 +71,7 @@ export interface ParameterSyncSignerByOracle {
   expireEpoch: string;
 }
 export interface ParameterSyncSignerByOracleProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.ParameterSyncSignerByOracle";
   value: Uint8Array;
 }
 export interface ParameterSyncSignerByOracleAmino {
@@ -84,7 +84,7 @@ export interface ParameterSyncSignerByOracleAmino {
   expire_epoch?: string;
 }
 export interface ParameterSyncSignerByOracleAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle";
+  type: "/thesixnetwork.sixnft.nftoracle.ParameterSyncSignerByOracle";
   value: ParameterSyncSignerByOracleAmino;
 }
 export interface ParameterSyncSignerByOracleSDKType {
@@ -99,7 +99,7 @@ export interface ContractInfoHash {
   confirmers: string[];
 }
 export interface ContractInfoHashProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.ContractInfoHash";
   value: Uint8Array;
 }
 export interface ContractInfoHashAmino {
@@ -108,7 +108,7 @@ export interface ContractInfoHashAmino {
   confirmers?: string[];
 }
 export interface ContractInfoHashAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash";
+  type: "/thesixnetwork.sixnft.nftoracle.ContractInfoHash";
   value: ContractInfoHashAmino;
 }
 export interface ContractInfoHashSDKType {
@@ -135,7 +135,7 @@ function createBaseSyncActionSigner(): SyncActionSigner {
   };
 }
 export const SyncActionSigner = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.SyncActionSigner",
   encode(message: SyncActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -334,7 +334,7 @@ export const SyncActionSigner = {
   },
   toProtoMsg(message: SyncActionSigner): SyncActionSignerProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.SyncActionSigner",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.SyncActionSigner",
       value: SyncActionSigner.encode(message).finish()
     };
   }
@@ -348,7 +348,7 @@ function createBaseParameterSyncSignerByOracle(): ParameterSyncSignerByOracle {
   };
 }
 export const ParameterSyncSignerByOracle = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.ParameterSyncSignerByOracle",
   encode(message: ParameterSyncSignerByOracle, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
@@ -433,7 +433,7 @@ export const ParameterSyncSignerByOracle = {
   },
   toProtoMsg(message: ParameterSyncSignerByOracle): ParameterSyncSignerByOracleProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ParameterSyncSignerByOracle",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.ParameterSyncSignerByOracle",
       value: ParameterSyncSignerByOracle.encode(message).finish()
     };
   }
@@ -446,7 +446,7 @@ function createBaseContractInfoHash(): ContractInfoHash {
   };
 }
 export const ContractInfoHash = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.ContractInfoHash",
   encode(message: ContractInfoHash, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.contractParam !== undefined) {
       ParameterSyncSignerByOracle.encode(message.contractParam, writer.uint32(10).fork()).ldelim();
@@ -522,7 +522,7 @@ export const ContractInfoHash = {
   },
   toProtoMsg(message: ContractInfoHash): ContractInfoHashProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ContractInfoHash",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.ContractInfoHash",
       value: ContractInfoHash.encode(message).finish()
     };
   }

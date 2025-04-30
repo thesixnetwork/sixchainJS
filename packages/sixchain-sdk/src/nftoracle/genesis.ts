@@ -27,7 +27,7 @@ export interface GenesisState {
   syncActionSignerCount: Long;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.GenesisState";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.GenesisState";
   value: Uint8Array;
 }
 /** GenesisState defines the nftoracle module's genesis state. */
@@ -47,7 +47,7 @@ export interface GenesisStateAmino {
   syncActionSignerCount?: string;
 }
 export interface GenesisStateAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.GenesisState";
+  type: "/thesixnetwork.sixnft.nftoracle.GenesisState";
   value: GenesisStateAmino;
 }
 /** GenesisState defines the nftoracle module's genesis state. */
@@ -84,7 +84,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.GenesisState",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.GenesisState",
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -282,7 +282,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.GenesisState",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.GenesisState",
       value: GenesisState.encode(message).finish()
     };
   }

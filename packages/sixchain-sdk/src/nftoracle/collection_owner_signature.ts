@@ -5,7 +5,7 @@ export interface CollectionOwnerSignature {
   message: string;
 }
 export interface CollectionOwnerSignatureProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.CollectionOwnerSignature";
   value: Uint8Array;
 }
 export interface CollectionOwnerSignatureAmino {
@@ -13,7 +13,7 @@ export interface CollectionOwnerSignatureAmino {
   message?: string;
 }
 export interface CollectionOwnerSignatureAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature";
+  type: "/thesixnetwork.sixnft.nftoracle.CollectionOwnerSignature";
   value: CollectionOwnerSignatureAmino;
 }
 export interface CollectionOwnerSignatureSDKType {
@@ -27,7 +27,7 @@ function createBaseCollectionOwnerSignature(): CollectionOwnerSignature {
   };
 }
 export const CollectionOwnerSignature = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.CollectionOwnerSignature",
   encode(message: CollectionOwnerSignature, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.signature !== "") {
       writer.uint32(10).string(message.signature);
@@ -90,7 +90,7 @@ export const CollectionOwnerSignature = {
   },
   toProtoMsg(message: CollectionOwnerSignature): CollectionOwnerSignatureProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.CollectionOwnerSignature",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.CollectionOwnerSignature",
       value: CollectionOwnerSignature.encode(message).finish()
     };
   }

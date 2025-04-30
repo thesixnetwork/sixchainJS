@@ -8,7 +8,7 @@ export interface MsgCreateMintRequest {
   requiredConfirm: Long;
 }
 export interface MsgCreateMintRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateMintRequest";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateMintRequest";
   value: Uint8Array;
 }
 export interface MsgCreateMintRequestAmino {
@@ -18,7 +18,7 @@ export interface MsgCreateMintRequestAmino {
   requiredConfirm?: string;
 }
 export interface MsgCreateMintRequestAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateMintRequest";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateMintRequest";
   value: MsgCreateMintRequestAmino;
 }
 export interface MsgCreateMintRequestSDKType {
@@ -33,7 +33,7 @@ export interface MsgCreateMintRequestResponse {
   tokenId: string;
 }
 export interface MsgCreateMintRequestResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateMintRequestResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateMintRequestResponse";
   value: Uint8Array;
 }
 export interface MsgCreateMintRequestResponseAmino {
@@ -42,7 +42,7 @@ export interface MsgCreateMintRequestResponseAmino {
   tokenId?: string;
 }
 export interface MsgCreateMintRequestResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateMintRequestResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateMintRequestResponse";
   value: MsgCreateMintRequestResponseAmino;
 }
 export interface MsgCreateMintRequestResponseSDKType {
@@ -56,7 +56,7 @@ export interface MsgSubmitMintResponse {
   base64NftData: string;
 }
 export interface MsgSubmitMintResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitMintResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitMintResponse";
   value: Uint8Array;
 }
 export interface MsgSubmitMintResponseAmino {
@@ -65,7 +65,7 @@ export interface MsgSubmitMintResponseAmino {
   base64NftData?: string;
 }
 export interface MsgSubmitMintResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitMintResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSubmitMintResponse";
   value: MsgSubmitMintResponseAmino;
 }
 export interface MsgSubmitMintResponseSDKType {
@@ -77,14 +77,14 @@ export interface MsgSubmitMintResponseResponse {
   mintRequestID: string;
 }
 export interface MsgSubmitMintResponseResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitMintResponseResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitMintResponseResponse";
   value: Uint8Array;
 }
 export interface MsgSubmitMintResponseResponseAmino {
   mintRequestID?: string;
 }
 export interface MsgSubmitMintResponseResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitMintResponseResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSubmitMintResponseResponse";
   value: MsgSubmitMintResponseResponseAmino;
 }
 export interface MsgSubmitMintResponseResponseSDKType {
@@ -97,7 +97,7 @@ export interface MsgCreateActionRequest {
   requiredConfirm: Long;
 }
 export interface MsgCreateActionRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionRequest";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionRequest";
   value: Uint8Array;
 }
 export interface MsgCreateActionRequestAmino {
@@ -107,7 +107,7 @@ export interface MsgCreateActionRequestAmino {
   requiredConfirm?: string;
 }
 export interface MsgCreateActionRequestAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionRequest";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionRequest";
   value: MsgCreateActionRequestAmino;
 }
 export interface MsgCreateActionRequestSDKType {
@@ -120,14 +120,14 @@ export interface MsgCreateActionRequestResponse {
   id: Long;
 }
 export interface MsgCreateActionRequestResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionRequestResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionRequestResponse";
   value: Uint8Array;
 }
 export interface MsgCreateActionRequestResponseAmino {
   id?: string;
 }
 export interface MsgCreateActionRequestResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionRequestResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionRequestResponse";
   value: MsgCreateActionRequestResponseAmino;
 }
 export interface MsgCreateActionRequestResponseSDKType {
@@ -139,7 +139,7 @@ export interface MsgSubmitActionResponse {
   base64NftData: string;
 }
 export interface MsgSubmitActionResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitActionResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitActionResponse";
   value: Uint8Array;
 }
 export interface MsgSubmitActionResponseAmino {
@@ -148,7 +148,7 @@ export interface MsgSubmitActionResponseAmino {
   base64NftData?: string;
 }
 export interface MsgSubmitActionResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitActionResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSubmitActionResponse";
   value: MsgSubmitActionResponseAmino;
 }
 export interface MsgSubmitActionResponseSDKType {
@@ -160,14 +160,14 @@ export interface MsgSubmitActionResponseResponse {
   actionRequestID: string;
 }
 export interface MsgSubmitActionResponseResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitActionResponseResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitActionResponseResponse";
   value: Uint8Array;
 }
 export interface MsgSubmitActionResponseResponseAmino {
   actionRequestID?: string;
 }
 export interface MsgSubmitActionResponseResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitActionResponseResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSubmitActionResponseResponse";
   value: MsgSubmitActionResponseResponseAmino;
 }
 export interface MsgSubmitActionResponseResponseSDKType {
@@ -180,7 +180,7 @@ export interface MsgCreateVerifyCollectionOwnerRequest {
   requiredConfirm: Long;
 }
 export interface MsgCreateVerifyCollectionOwnerRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateVerifyCollectionOwnerRequest";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateVerifyCollectionOwnerRequest";
   value: Uint8Array;
 }
 export interface MsgCreateVerifyCollectionOwnerRequestAmino {
@@ -190,7 +190,7 @@ export interface MsgCreateVerifyCollectionOwnerRequestAmino {
   requiredConfirm?: string;
 }
 export interface MsgCreateVerifyCollectionOwnerRequestAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateVerifyCollectionOwnerRequest";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateVerifyCollectionOwnerRequest";
   value: MsgCreateVerifyCollectionOwnerRequestAmino;
 }
 export interface MsgCreateVerifyCollectionOwnerRequestSDKType {
@@ -205,7 +205,7 @@ export interface MsgCreateVerifyCollectionOwnerRequestResponse {
   ownerAddress: string;
 }
 export interface MsgCreateVerifyCollectionOwnerRequestResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateVerifyCollectionOwnerRequestResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateVerifyCollectionOwnerRequestResponse";
   value: Uint8Array;
 }
 export interface MsgCreateVerifyCollectionOwnerRequestResponseAmino {
@@ -214,7 +214,7 @@ export interface MsgCreateVerifyCollectionOwnerRequestResponseAmino {
   ownerAddress?: string;
 }
 export interface MsgCreateVerifyCollectionOwnerRequestResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateVerifyCollectionOwnerRequestResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateVerifyCollectionOwnerRequestResponse";
   value: MsgCreateVerifyCollectionOwnerRequestResponseAmino;
 }
 export interface MsgCreateVerifyCollectionOwnerRequestResponseSDKType {
@@ -229,7 +229,7 @@ export interface MsgSubmitVerifyCollectionOwner {
   base64OriginContractInfo: string;
 }
 export interface MsgSubmitVerifyCollectionOwnerProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitVerifyCollectionOwner";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitVerifyCollectionOwner";
   value: Uint8Array;
 }
 export interface MsgSubmitVerifyCollectionOwnerAmino {
@@ -239,7 +239,7 @@ export interface MsgSubmitVerifyCollectionOwnerAmino {
   base64OriginContractInfo?: string;
 }
 export interface MsgSubmitVerifyCollectionOwnerAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitVerifyCollectionOwner";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSubmitVerifyCollectionOwner";
   value: MsgSubmitVerifyCollectionOwnerAmino;
 }
 export interface MsgSubmitVerifyCollectionOwnerSDKType {
@@ -252,14 +252,14 @@ export interface MsgSubmitVerifyCollectionOwnerResponse {
   verifyRequestID: Long;
 }
 export interface MsgSubmitVerifyCollectionOwnerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitVerifyCollectionOwnerResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitVerifyCollectionOwnerResponse";
   value: Uint8Array;
 }
 export interface MsgSubmitVerifyCollectionOwnerResponseAmino {
   verifyRequestID?: string;
 }
 export interface MsgSubmitVerifyCollectionOwnerResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitVerifyCollectionOwnerResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSubmitVerifyCollectionOwnerResponse";
   value: MsgSubmitVerifyCollectionOwnerResponseAmino;
 }
 export interface MsgSubmitVerifyCollectionOwnerResponseSDKType {
@@ -270,7 +270,7 @@ export interface MsgSetMinimumConfirmation {
   newConfirmation: string;
 }
 export interface MsgSetMinimumConfirmationProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSetMinimumConfirmation";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSetMinimumConfirmation";
   value: Uint8Array;
 }
 export interface MsgSetMinimumConfirmationAmino {
@@ -278,7 +278,7 @@ export interface MsgSetMinimumConfirmationAmino {
   newConfirmation?: string;
 }
 export interface MsgSetMinimumConfirmationAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgSetMinimumConfirmation";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSetMinimumConfirmation";
   value: MsgSetMinimumConfirmationAmino;
 }
 export interface MsgSetMinimumConfirmationSDKType {
@@ -289,14 +289,14 @@ export interface MsgSetMinimumConfirmationResponse {
   newConfirmation: string;
 }
 export interface MsgSetMinimumConfirmationResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSetMinimumConfirmationResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSetMinimumConfirmationResponse";
   value: Uint8Array;
 }
 export interface MsgSetMinimumConfirmationResponseAmino {
   newConfirmation?: string;
 }
 export interface MsgSetMinimumConfirmationResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgSetMinimumConfirmationResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSetMinimumConfirmationResponse";
   value: MsgSetMinimumConfirmationResponseAmino;
 }
 export interface MsgSetMinimumConfirmationResponseSDKType {
@@ -307,7 +307,7 @@ export interface MsgCreateActionSigner {
   base64EncodedSetSignerAction: string;
 }
 export interface MsgCreateActionSignerProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSigner";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSigner";
   value: Uint8Array;
 }
 export interface MsgCreateActionSignerAmino {
@@ -315,7 +315,7 @@ export interface MsgCreateActionSignerAmino {
   base64EncodedSetSignerAction?: string;
 }
 export interface MsgCreateActionSignerAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSigner";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSigner";
   value: MsgCreateActionSignerAmino;
 }
 export interface MsgCreateActionSignerSDKType {
@@ -328,7 +328,7 @@ export interface MsgCreateActionSignerResponse {
   expireAt: string;
 }
 export interface MsgCreateActionSignerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerResponse";
   value: Uint8Array;
 }
 export interface MsgCreateActionSignerResponseAmino {
@@ -337,7 +337,7 @@ export interface MsgCreateActionSignerResponseAmino {
   expireAt?: string;
 }
 export interface MsgCreateActionSignerResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerResponse";
   value: MsgCreateActionSignerResponseAmino;
 }
 export interface MsgCreateActionSignerResponseSDKType {
@@ -350,7 +350,7 @@ export interface MsgUpdateActionSigner {
   base64EncodedSetSignerAction: string;
 }
 export interface MsgUpdateActionSignerProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSigner";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSigner";
   value: Uint8Array;
 }
 export interface MsgUpdateActionSignerAmino {
@@ -358,7 +358,7 @@ export interface MsgUpdateActionSignerAmino {
   base64EncodedSetSignerAction?: string;
 }
 export interface MsgUpdateActionSignerAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSigner";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSigner";
   value: MsgUpdateActionSignerAmino;
 }
 export interface MsgUpdateActionSignerSDKType {
@@ -371,7 +371,7 @@ export interface MsgUpdateActionSignerResponse {
   expireAt: string;
 }
 export interface MsgUpdateActionSignerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerResponse";
   value: Uint8Array;
 }
 export interface MsgUpdateActionSignerResponseAmino {
@@ -380,7 +380,7 @@ export interface MsgUpdateActionSignerResponseAmino {
   expireAt?: string;
 }
 export interface MsgUpdateActionSignerResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerResponse";
   value: MsgUpdateActionSignerResponseAmino;
 }
 export interface MsgUpdateActionSignerResponseSDKType {
@@ -393,7 +393,7 @@ export interface MsgDeleteActionSigner {
   base64EncodedSetSignerAction: string;
 }
 export interface MsgDeleteActionSignerProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSigner";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSigner";
   value: Uint8Array;
 }
 export interface MsgDeleteActionSignerAmino {
@@ -401,7 +401,7 @@ export interface MsgDeleteActionSignerAmino {
   base64EncodedSetSignerAction?: string;
 }
 export interface MsgDeleteActionSignerAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSigner";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSigner";
   value: MsgDeleteActionSignerAmino;
 }
 export interface MsgDeleteActionSignerSDKType {
@@ -413,7 +413,7 @@ export interface MsgDeleteActionSignerResponse {
   signerAddress: string;
 }
 export interface MsgDeleteActionSignerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerResponse";
   value: Uint8Array;
 }
 export interface MsgDeleteActionSignerResponseAmino {
@@ -421,7 +421,7 @@ export interface MsgDeleteActionSignerResponseAmino {
   signerAddress?: string;
 }
 export interface MsgDeleteActionSignerResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerResponse";
   value: MsgDeleteActionSignerResponseAmino;
 }
 export interface MsgDeleteActionSignerResponseSDKType {
@@ -437,7 +437,7 @@ export interface MsgCreateActionSignerConfig {
   contractOwner: string;
 }
 export interface MsgCreateActionSignerConfigProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerConfig";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfig";
   value: Uint8Array;
 }
 export interface MsgCreateActionSignerConfigAmino {
@@ -449,7 +449,7 @@ export interface MsgCreateActionSignerConfigAmino {
   contractOwner?: string;
 }
 export interface MsgCreateActionSignerConfigAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerConfig";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfig";
   value: MsgCreateActionSignerConfigAmino;
 }
 export interface MsgCreateActionSignerConfigSDKType {
@@ -468,7 +468,7 @@ export interface MsgCreateActionSignerConfigResponse {
   contractOwner: string;
 }
 export interface MsgCreateActionSignerConfigResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerConfigResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfigResponse";
   value: Uint8Array;
 }
 export interface MsgCreateActionSignerConfigResponseAmino {
@@ -479,7 +479,7 @@ export interface MsgCreateActionSignerConfigResponseAmino {
   contractOwner?: string;
 }
 export interface MsgCreateActionSignerConfigResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerConfigResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfigResponse";
   value: MsgCreateActionSignerConfigResponseAmino;
 }
 export interface MsgCreateActionSignerConfigResponseSDKType {
@@ -498,7 +498,7 @@ export interface MsgUpdateActionSignerConfig {
   contractOwner: string;
 }
 export interface MsgUpdateActionSignerConfigProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerConfig";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfig";
   value: Uint8Array;
 }
 export interface MsgUpdateActionSignerConfigAmino {
@@ -510,7 +510,7 @@ export interface MsgUpdateActionSignerConfigAmino {
   contractOwner?: string;
 }
 export interface MsgUpdateActionSignerConfigAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerConfig";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfig";
   value: MsgUpdateActionSignerConfigAmino;
 }
 export interface MsgUpdateActionSignerConfigSDKType {
@@ -533,7 +533,7 @@ export interface MsgUpdateActionSignerConfigResponse {
   newContractOwner: string;
 }
 export interface MsgUpdateActionSignerConfigResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerConfigResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfigResponse";
   value: Uint8Array;
 }
 export interface MsgUpdateActionSignerConfigResponseAmino {
@@ -548,7 +548,7 @@ export interface MsgUpdateActionSignerConfigResponseAmino {
   new_contractOwner?: string;
 }
 export interface MsgUpdateActionSignerConfigResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerConfigResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfigResponse";
   value: MsgUpdateActionSignerConfigResponseAmino;
 }
 export interface MsgUpdateActionSignerConfigResponseSDKType {
@@ -567,7 +567,7 @@ export interface MsgDeleteActionSignerConfig {
   chain: string;
 }
 export interface MsgDeleteActionSignerConfigProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerConfig";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfig";
   value: Uint8Array;
 }
 export interface MsgDeleteActionSignerConfigAmino {
@@ -575,7 +575,7 @@ export interface MsgDeleteActionSignerConfigAmino {
   chain?: string;
 }
 export interface MsgDeleteActionSignerConfigAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerConfig";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfig";
   value: MsgDeleteActionSignerConfigAmino;
 }
 export interface MsgDeleteActionSignerConfigSDKType {
@@ -586,14 +586,14 @@ export interface MsgDeleteActionSignerConfigResponse {
   chain: string;
 }
 export interface MsgDeleteActionSignerConfigResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerConfigResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfigResponse";
   value: Uint8Array;
 }
 export interface MsgDeleteActionSignerConfigResponseAmino {
   chain?: string;
 }
 export interface MsgDeleteActionSignerConfigResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerConfigResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfigResponse";
   value: MsgDeleteActionSignerConfigResponseAmino;
 }
 export interface MsgDeleteActionSignerConfigResponseSDKType {
@@ -607,7 +607,7 @@ export interface MsgCreateSyncActionSigner {
   requiredConfirm: Long;
 }
 export interface MsgCreateSyncActionSignerProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateSyncActionSigner";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSigner";
   value: Uint8Array;
 }
 export interface MsgCreateSyncActionSignerAmino {
@@ -618,7 +618,7 @@ export interface MsgCreateSyncActionSignerAmino {
   requiredConfirm?: string;
 }
 export interface MsgCreateSyncActionSignerAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateSyncActionSigner";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSigner";
   value: MsgCreateSyncActionSignerAmino;
 }
 export interface MsgCreateSyncActionSignerSDKType {
@@ -635,7 +635,7 @@ export interface MsgCreateSyncActionSignerResponse {
   actorAddress: string;
 }
 export interface MsgCreateSyncActionSignerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateSyncActionSignerResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSignerResponse";
   value: Uint8Array;
 }
 export interface MsgCreateSyncActionSignerResponseAmino {
@@ -645,7 +645,7 @@ export interface MsgCreateSyncActionSignerResponseAmino {
   actorAddress?: string;
 }
 export interface MsgCreateSyncActionSignerResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateSyncActionSignerResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSignerResponse";
   value: MsgCreateSyncActionSignerResponseAmino;
 }
 export interface MsgCreateSyncActionSignerResponseSDKType {
@@ -663,7 +663,7 @@ export interface MsgSubmitSyncActionSigner {
   expireEpoch: string;
 }
 export interface MsgSubmitSyncActionSignerProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitSyncActionSigner";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSigner";
   value: Uint8Array;
 }
 export interface MsgSubmitSyncActionSignerAmino {
@@ -675,7 +675,7 @@ export interface MsgSubmitSyncActionSignerAmino {
   expire_epoch?: string;
 }
 export interface MsgSubmitSyncActionSignerAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitSyncActionSigner";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSigner";
   value: MsgSubmitSyncActionSignerAmino;
 }
 export interface MsgSubmitSyncActionSignerSDKType {
@@ -691,7 +691,7 @@ export interface MsgSubmitSyncActionSignerResponse {
   expireAt: string;
 }
 export interface MsgSubmitSyncActionSignerResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitSyncActionSignerResponse";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSignerResponse";
   value: Uint8Array;
 }
 export interface MsgSubmitSyncActionSignerResponseAmino {
@@ -699,7 +699,7 @@ export interface MsgSubmitSyncActionSignerResponseAmino {
   expireAt?: string;
 }
 export interface MsgSubmitSyncActionSignerResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitSyncActionSignerResponse";
+  type: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSignerResponse";
   value: MsgSubmitSyncActionSignerResponseAmino;
 }
 export interface MsgSubmitSyncActionSignerResponseSDKType {
@@ -715,7 +715,7 @@ function createBaseMsgCreateMintRequest(): MsgCreateMintRequest {
   };
 }
 export const MsgCreateMintRequest = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateMintRequest",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateMintRequest",
   encode(message: MsgCreateMintRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -800,7 +800,7 @@ export const MsgCreateMintRequest = {
   },
   toProtoMsg(message: MsgCreateMintRequest): MsgCreateMintRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateMintRequest",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateMintRequest",
       value: MsgCreateMintRequest.encode(message).finish()
     };
   }
@@ -813,7 +813,7 @@ function createBaseMsgCreateMintRequestResponse(): MsgCreateMintRequestResponse 
   };
 }
 export const MsgCreateMintRequestResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateMintRequestResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateMintRequestResponse",
   encode(message: MsgCreateMintRequestResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -887,7 +887,7 @@ export const MsgCreateMintRequestResponse = {
   },
   toProtoMsg(message: MsgCreateMintRequestResponse): MsgCreateMintRequestResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateMintRequestResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateMintRequestResponse",
       value: MsgCreateMintRequestResponse.encode(message).finish()
     };
   }
@@ -900,7 +900,7 @@ function createBaseMsgSubmitMintResponse(): MsgSubmitMintResponse {
   };
 }
 export const MsgSubmitMintResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitMintResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitMintResponse",
   encode(message: MsgSubmitMintResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -974,7 +974,7 @@ export const MsgSubmitMintResponse = {
   },
   toProtoMsg(message: MsgSubmitMintResponse): MsgSubmitMintResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitMintResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitMintResponse",
       value: MsgSubmitMintResponse.encode(message).finish()
     };
   }
@@ -985,7 +985,7 @@ function createBaseMsgSubmitMintResponseResponse(): MsgSubmitMintResponseRespons
   };
 }
 export const MsgSubmitMintResponseResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitMintResponseResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitMintResponseResponse",
   encode(message: MsgSubmitMintResponseResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.mintRequestID !== "") {
       writer.uint32(10).string(message.mintRequestID);
@@ -1037,7 +1037,7 @@ export const MsgSubmitMintResponseResponse = {
   },
   toProtoMsg(message: MsgSubmitMintResponseResponse): MsgSubmitMintResponseResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitMintResponseResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitMintResponseResponse",
       value: MsgSubmitMintResponseResponse.encode(message).finish()
     };
   }
@@ -1051,7 +1051,7 @@ function createBaseMsgCreateActionRequest(): MsgCreateActionRequest {
   };
 }
 export const MsgCreateActionRequest = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionRequest",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionRequest",
   encode(message: MsgCreateActionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -1136,7 +1136,7 @@ export const MsgCreateActionRequest = {
   },
   toProtoMsg(message: MsgCreateActionRequest): MsgCreateActionRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionRequest",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionRequest",
       value: MsgCreateActionRequest.encode(message).finish()
     };
   }
@@ -1147,7 +1147,7 @@ function createBaseMsgCreateActionRequestResponse(): MsgCreateActionRequestRespo
   };
 }
 export const MsgCreateActionRequestResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionRequestResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionRequestResponse",
   encode(message: MsgCreateActionRequestResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -1199,7 +1199,7 @@ export const MsgCreateActionRequestResponse = {
   },
   toProtoMsg(message: MsgCreateActionRequestResponse): MsgCreateActionRequestResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionRequestResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionRequestResponse",
       value: MsgCreateActionRequestResponse.encode(message).finish()
     };
   }
@@ -1212,7 +1212,7 @@ function createBaseMsgSubmitActionResponse(): MsgSubmitActionResponse {
   };
 }
 export const MsgSubmitActionResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitActionResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitActionResponse",
   encode(message: MsgSubmitActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -1286,7 +1286,7 @@ export const MsgSubmitActionResponse = {
   },
   toProtoMsg(message: MsgSubmitActionResponse): MsgSubmitActionResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitActionResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitActionResponse",
       value: MsgSubmitActionResponse.encode(message).finish()
     };
   }
@@ -1297,7 +1297,7 @@ function createBaseMsgSubmitActionResponseResponse(): MsgSubmitActionResponseRes
   };
 }
 export const MsgSubmitActionResponseResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitActionResponseResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitActionResponseResponse",
   encode(message: MsgSubmitActionResponseResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.actionRequestID !== "") {
       writer.uint32(10).string(message.actionRequestID);
@@ -1349,7 +1349,7 @@ export const MsgSubmitActionResponseResponse = {
   },
   toProtoMsg(message: MsgSubmitActionResponseResponse): MsgSubmitActionResponseResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitActionResponseResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitActionResponseResponse",
       value: MsgSubmitActionResponseResponse.encode(message).finish()
     };
   }
@@ -1363,7 +1363,7 @@ function createBaseMsgCreateVerifyCollectionOwnerRequest(): MsgCreateVerifyColle
   };
 }
 export const MsgCreateVerifyCollectionOwnerRequest = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateVerifyCollectionOwnerRequest",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateVerifyCollectionOwnerRequest",
   encode(message: MsgCreateVerifyCollectionOwnerRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -1448,7 +1448,7 @@ export const MsgCreateVerifyCollectionOwnerRequest = {
   },
   toProtoMsg(message: MsgCreateVerifyCollectionOwnerRequest): MsgCreateVerifyCollectionOwnerRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateVerifyCollectionOwnerRequest",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateVerifyCollectionOwnerRequest",
       value: MsgCreateVerifyCollectionOwnerRequest.encode(message).finish()
     };
   }
@@ -1461,7 +1461,7 @@ function createBaseMsgCreateVerifyCollectionOwnerRequestResponse(): MsgCreateVer
   };
 }
 export const MsgCreateVerifyCollectionOwnerRequestResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateVerifyCollectionOwnerRequestResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateVerifyCollectionOwnerRequestResponse",
   encode(message: MsgCreateVerifyCollectionOwnerRequestResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -1535,7 +1535,7 @@ export const MsgCreateVerifyCollectionOwnerRequestResponse = {
   },
   toProtoMsg(message: MsgCreateVerifyCollectionOwnerRequestResponse): MsgCreateVerifyCollectionOwnerRequestResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateVerifyCollectionOwnerRequestResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateVerifyCollectionOwnerRequestResponse",
       value: MsgCreateVerifyCollectionOwnerRequestResponse.encode(message).finish()
     };
   }
@@ -1549,7 +1549,7 @@ function createBaseMsgSubmitVerifyCollectionOwner(): MsgSubmitVerifyCollectionOw
   };
 }
 export const MsgSubmitVerifyCollectionOwner = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitVerifyCollectionOwner",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitVerifyCollectionOwner",
   encode(message: MsgSubmitVerifyCollectionOwner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -1634,7 +1634,7 @@ export const MsgSubmitVerifyCollectionOwner = {
   },
   toProtoMsg(message: MsgSubmitVerifyCollectionOwner): MsgSubmitVerifyCollectionOwnerProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitVerifyCollectionOwner",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitVerifyCollectionOwner",
       value: MsgSubmitVerifyCollectionOwner.encode(message).finish()
     };
   }
@@ -1645,7 +1645,7 @@ function createBaseMsgSubmitVerifyCollectionOwnerResponse(): MsgSubmitVerifyColl
   };
 }
 export const MsgSubmitVerifyCollectionOwnerResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitVerifyCollectionOwnerResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitVerifyCollectionOwnerResponse",
   encode(message: MsgSubmitVerifyCollectionOwnerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.verifyRequestID.isZero()) {
       writer.uint32(8).uint64(message.verifyRequestID);
@@ -1697,7 +1697,7 @@ export const MsgSubmitVerifyCollectionOwnerResponse = {
   },
   toProtoMsg(message: MsgSubmitVerifyCollectionOwnerResponse): MsgSubmitVerifyCollectionOwnerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitVerifyCollectionOwnerResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitVerifyCollectionOwnerResponse",
       value: MsgSubmitVerifyCollectionOwnerResponse.encode(message).finish()
     };
   }
@@ -1709,7 +1709,7 @@ function createBaseMsgSetMinimumConfirmation(): MsgSetMinimumConfirmation {
   };
 }
 export const MsgSetMinimumConfirmation = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSetMinimumConfirmation",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSetMinimumConfirmation",
   encode(message: MsgSetMinimumConfirmation, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -1772,7 +1772,7 @@ export const MsgSetMinimumConfirmation = {
   },
   toProtoMsg(message: MsgSetMinimumConfirmation): MsgSetMinimumConfirmationProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSetMinimumConfirmation",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSetMinimumConfirmation",
       value: MsgSetMinimumConfirmation.encode(message).finish()
     };
   }
@@ -1783,7 +1783,7 @@ function createBaseMsgSetMinimumConfirmationResponse(): MsgSetMinimumConfirmatio
   };
 }
 export const MsgSetMinimumConfirmationResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSetMinimumConfirmationResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSetMinimumConfirmationResponse",
   encode(message: MsgSetMinimumConfirmationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.newConfirmation !== "") {
       writer.uint32(10).string(message.newConfirmation);
@@ -1835,7 +1835,7 @@ export const MsgSetMinimumConfirmationResponse = {
   },
   toProtoMsg(message: MsgSetMinimumConfirmationResponse): MsgSetMinimumConfirmationResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSetMinimumConfirmationResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSetMinimumConfirmationResponse",
       value: MsgSetMinimumConfirmationResponse.encode(message).finish()
     };
   }
@@ -1847,7 +1847,7 @@ function createBaseMsgCreateActionSigner(): MsgCreateActionSigner {
   };
 }
 export const MsgCreateActionSigner = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSigner",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSigner",
   encode(message: MsgCreateActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -1910,7 +1910,7 @@ export const MsgCreateActionSigner = {
   },
   toProtoMsg(message: MsgCreateActionSigner): MsgCreateActionSignerProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSigner",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSigner",
       value: MsgCreateActionSigner.encode(message).finish()
     };
   }
@@ -1923,7 +1923,7 @@ function createBaseMsgCreateActionSignerResponse(): MsgCreateActionSignerRespons
   };
 }
 export const MsgCreateActionSignerResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerResponse",
   encode(message: MsgCreateActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.ownerAddress !== "") {
       writer.uint32(10).string(message.ownerAddress);
@@ -1997,7 +1997,7 @@ export const MsgCreateActionSignerResponse = {
   },
   toProtoMsg(message: MsgCreateActionSignerResponse): MsgCreateActionSignerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerResponse",
       value: MsgCreateActionSignerResponse.encode(message).finish()
     };
   }
@@ -2009,7 +2009,7 @@ function createBaseMsgUpdateActionSigner(): MsgUpdateActionSigner {
   };
 }
 export const MsgUpdateActionSigner = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSigner",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSigner",
   encode(message: MsgUpdateActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -2072,7 +2072,7 @@ export const MsgUpdateActionSigner = {
   },
   toProtoMsg(message: MsgUpdateActionSigner): MsgUpdateActionSignerProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSigner",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSigner",
       value: MsgUpdateActionSigner.encode(message).finish()
     };
   }
@@ -2085,7 +2085,7 @@ function createBaseMsgUpdateActionSignerResponse(): MsgUpdateActionSignerRespons
   };
 }
 export const MsgUpdateActionSignerResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerResponse",
   encode(message: MsgUpdateActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.ownerAddress !== "") {
       writer.uint32(10).string(message.ownerAddress);
@@ -2159,7 +2159,7 @@ export const MsgUpdateActionSignerResponse = {
   },
   toProtoMsg(message: MsgUpdateActionSignerResponse): MsgUpdateActionSignerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerResponse",
       value: MsgUpdateActionSignerResponse.encode(message).finish()
     };
   }
@@ -2171,7 +2171,7 @@ function createBaseMsgDeleteActionSigner(): MsgDeleteActionSigner {
   };
 }
 export const MsgDeleteActionSigner = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSigner",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSigner",
   encode(message: MsgDeleteActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -2234,7 +2234,7 @@ export const MsgDeleteActionSigner = {
   },
   toProtoMsg(message: MsgDeleteActionSigner): MsgDeleteActionSignerProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSigner",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSigner",
       value: MsgDeleteActionSigner.encode(message).finish()
     };
   }
@@ -2246,7 +2246,7 @@ function createBaseMsgDeleteActionSignerResponse(): MsgDeleteActionSignerRespons
   };
 }
 export const MsgDeleteActionSignerResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerResponse",
   encode(message: MsgDeleteActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.ownerAddress !== "") {
       writer.uint32(10).string(message.ownerAddress);
@@ -2309,7 +2309,7 @@ export const MsgDeleteActionSignerResponse = {
   },
   toProtoMsg(message: MsgDeleteActionSignerResponse): MsgDeleteActionSignerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerResponse",
       value: MsgDeleteActionSignerResponse.encode(message).finish()
     };
   }
@@ -2325,7 +2325,7 @@ function createBaseMsgCreateActionSignerConfig(): MsgCreateActionSignerConfig {
   };
 }
 export const MsgCreateActionSignerConfig = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerConfig",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfig",
   encode(message: MsgCreateActionSignerConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -2432,7 +2432,7 @@ export const MsgCreateActionSignerConfig = {
   },
   toProtoMsg(message: MsgCreateActionSignerConfig): MsgCreateActionSignerConfigProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerConfig",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfig",
       value: MsgCreateActionSignerConfig.encode(message).finish()
     };
   }
@@ -2447,7 +2447,7 @@ function createBaseMsgCreateActionSignerConfigResponse(): MsgCreateActionSignerC
   };
 }
 export const MsgCreateActionSignerConfigResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerConfigResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfigResponse",
   encode(message: MsgCreateActionSignerConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
@@ -2543,7 +2543,7 @@ export const MsgCreateActionSignerConfigResponse = {
   },
   toProtoMsg(message: MsgCreateActionSignerConfigResponse): MsgCreateActionSignerConfigResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateActionSignerConfigResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateActionSignerConfigResponse",
       value: MsgCreateActionSignerConfigResponse.encode(message).finish()
     };
   }
@@ -2559,7 +2559,7 @@ function createBaseMsgUpdateActionSignerConfig(): MsgUpdateActionSignerConfig {
   };
 }
 export const MsgUpdateActionSignerConfig = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerConfig",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfig",
   encode(message: MsgUpdateActionSignerConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -2666,7 +2666,7 @@ export const MsgUpdateActionSignerConfig = {
   },
   toProtoMsg(message: MsgUpdateActionSignerConfig): MsgUpdateActionSignerConfigProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerConfig",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfig",
       value: MsgUpdateActionSignerConfig.encode(message).finish()
     };
   }
@@ -2685,7 +2685,7 @@ function createBaseMsgUpdateActionSignerConfigResponse(): MsgUpdateActionSignerC
   };
 }
 export const MsgUpdateActionSignerConfigResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerConfigResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfigResponse",
   encode(message: MsgUpdateActionSignerConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
@@ -2825,7 +2825,7 @@ export const MsgUpdateActionSignerConfigResponse = {
   },
   toProtoMsg(message: MsgUpdateActionSignerConfigResponse): MsgUpdateActionSignerConfigResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgUpdateActionSignerConfigResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgUpdateActionSignerConfigResponse",
       value: MsgUpdateActionSignerConfigResponse.encode(message).finish()
     };
   }
@@ -2837,7 +2837,7 @@ function createBaseMsgDeleteActionSignerConfig(): MsgDeleteActionSignerConfig {
   };
 }
 export const MsgDeleteActionSignerConfig = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerConfig",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfig",
   encode(message: MsgDeleteActionSignerConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -2900,7 +2900,7 @@ export const MsgDeleteActionSignerConfig = {
   },
   toProtoMsg(message: MsgDeleteActionSignerConfig): MsgDeleteActionSignerConfigProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerConfig",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfig",
       value: MsgDeleteActionSignerConfig.encode(message).finish()
     };
   }
@@ -2911,7 +2911,7 @@ function createBaseMsgDeleteActionSignerConfigResponse(): MsgDeleteActionSignerC
   };
 }
 export const MsgDeleteActionSignerConfigResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerConfigResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfigResponse",
   encode(message: MsgDeleteActionSignerConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
@@ -2963,7 +2963,7 @@ export const MsgDeleteActionSignerConfigResponse = {
   },
   toProtoMsg(message: MsgDeleteActionSignerConfigResponse): MsgDeleteActionSignerConfigResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgDeleteActionSignerConfigResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgDeleteActionSignerConfigResponse",
       value: MsgDeleteActionSignerConfigResponse.encode(message).finish()
     };
   }
@@ -2978,7 +2978,7 @@ function createBaseMsgCreateSyncActionSigner(): MsgCreateSyncActionSigner {
   };
 }
 export const MsgCreateSyncActionSigner = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateSyncActionSigner",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSigner",
   encode(message: MsgCreateSyncActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -3074,7 +3074,7 @@ export const MsgCreateSyncActionSigner = {
   },
   toProtoMsg(message: MsgCreateSyncActionSigner): MsgCreateSyncActionSignerProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateSyncActionSigner",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSigner",
       value: MsgCreateSyncActionSigner.encode(message).finish()
     };
   }
@@ -3088,7 +3088,7 @@ function createBaseMsgCreateSyncActionSignerResponse(): MsgCreateSyncActionSigne
   };
 }
 export const MsgCreateSyncActionSignerResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateSyncActionSignerResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSignerResponse",
   encode(message: MsgCreateSyncActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -3173,7 +3173,7 @@ export const MsgCreateSyncActionSignerResponse = {
   },
   toProtoMsg(message: MsgCreateSyncActionSignerResponse): MsgCreateSyncActionSignerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgCreateSyncActionSignerResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgCreateSyncActionSignerResponse",
       value: MsgCreateSyncActionSignerResponse.encode(message).finish()
     };
   }
@@ -3189,7 +3189,7 @@ function createBaseMsgSubmitSyncActionSigner(): MsgSubmitSyncActionSigner {
   };
 }
 export const MsgSubmitSyncActionSigner = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitSyncActionSigner",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSigner",
   encode(message: MsgSubmitSyncActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -3296,7 +3296,7 @@ export const MsgSubmitSyncActionSigner = {
   },
   toProtoMsg(message: MsgSubmitSyncActionSigner): MsgSubmitSyncActionSignerProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitSyncActionSigner",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSigner",
       value: MsgSubmitSyncActionSigner.encode(message).finish()
     };
   }
@@ -3308,7 +3308,7 @@ function createBaseMsgSubmitSyncActionSignerResponse(): MsgSubmitSyncActionSigne
   };
 }
 export const MsgSubmitSyncActionSignerResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitSyncActionSignerResponse",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSignerResponse",
   encode(message: MsgSubmitSyncActionSignerResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.verifyRequestID.isZero()) {
       writer.uint32(8).uint64(message.verifyRequestID);
@@ -3371,7 +3371,7 @@ export const MsgSubmitSyncActionSignerResponse = {
   },
   toProtoMsg(message: MsgSubmitSyncActionSignerResponse): MsgSubmitSyncActionSignerResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MsgSubmitSyncActionSignerResponse",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MsgSubmitSyncActionSignerResponse",
       value: MsgSubmitSyncActionSignerResponse.encode(message).finish()
     };
   }

@@ -6,7 +6,7 @@ export interface ActionSignerConfig {
   creator: string;
 }
 export interface ActionSignerConfigProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionSignerConfig";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionSignerConfig";
   value: Uint8Array;
 }
 export interface ActionSignerConfigAmino {
@@ -15,7 +15,7 @@ export interface ActionSignerConfigAmino {
   creator?: string;
 }
 export interface ActionSignerConfigAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.ActionSignerConfig";
+  type: "/thesixnetwork.sixnft.nftoracle.ActionSignerConfig";
   value: ActionSignerConfigAmino;
 }
 export interface ActionSignerConfigSDKType {
@@ -31,7 +31,7 @@ function createBaseActionSignerConfig(): ActionSignerConfig {
   };
 }
 export const ActionSignerConfig = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionSignerConfig",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionSignerConfig",
   encode(message: ActionSignerConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
@@ -105,7 +105,7 @@ export const ActionSignerConfig = {
   },
   toProtoMsg(message: ActionSignerConfig): ActionSignerConfigProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionSignerConfig",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionSignerConfig",
       value: ActionSignerConfig.encode(message).finish()
     };
   }

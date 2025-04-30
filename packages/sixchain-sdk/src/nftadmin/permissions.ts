@@ -4,14 +4,14 @@ export interface AddressList {
   addresses: string[];
 }
 export interface AddressListProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.AddressList";
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.AddressList";
   value: Uint8Array;
 }
 export interface AddressListAmino {
   addresses?: string[];
 }
 export interface AddressListAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftadmin.AddressList";
+  type: "/thesixnetwork.sixnft.nftadmin.AddressList";
   value: AddressListAmino;
 }
 export interface AddressListSDKType {
@@ -22,7 +22,7 @@ export interface Permission {
   addresses?: AddressList;
 }
 export interface PermissionProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permission";
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.Permission";
   value: Uint8Array;
 }
 export interface PermissionAmino {
@@ -30,7 +30,7 @@ export interface PermissionAmino {
   addresses?: AddressListAmino;
 }
 export interface PermissionAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftadmin.Permission";
+  type: "/thesixnetwork.sixnft.nftadmin.Permission";
   value: PermissionAmino;
 }
 export interface PermissionSDKType {
@@ -41,14 +41,14 @@ export interface Permissions {
   permissions: Permission[];
 }
 export interface PermissionsProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permissions";
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.Permissions";
   value: Uint8Array;
 }
 export interface PermissionsAmino {
   permissions?: PermissionAmino[];
 }
 export interface PermissionsAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftadmin.Permissions";
+  type: "/thesixnetwork.sixnft.nftadmin.Permissions";
   value: PermissionsAmino;
 }
 export interface PermissionsSDKType {
@@ -60,7 +60,7 @@ function createBaseAddressList(): AddressList {
   };
 }
 export const AddressList = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.AddressList",
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.AddressList",
   encode(message: AddressList, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.addresses) {
       writer.uint32(10).string(v!);
@@ -114,7 +114,7 @@ export const AddressList = {
   },
   toProtoMsg(message: AddressList): AddressListProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.AddressList",
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.AddressList",
       value: AddressList.encode(message).finish()
     };
   }
@@ -126,7 +126,7 @@ function createBasePermission(): Permission {
   };
 }
 export const Permission = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permission",
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.Permission",
   encode(message: Permission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -189,7 +189,7 @@ export const Permission = {
   },
   toProtoMsg(message: Permission): PermissionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permission",
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.Permission",
       value: Permission.encode(message).finish()
     };
   }
@@ -200,7 +200,7 @@ function createBasePermissions(): Permissions {
   };
 }
 export const Permissions = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permissions",
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.Permissions",
   encode(message: Permissions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.permissions) {
       Permission.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -254,7 +254,7 @@ export const Permissions = {
   },
   toProtoMsg(message: Permissions): PermissionsProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Permissions",
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.Permissions",
       value: Permissions.encode(message).finish()
     };
   }

@@ -7,7 +7,7 @@ export interface OpenseaDisplayOption {
   maxValue: Long;
 }
 export interface OpenseaDisplayOptionProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OpenseaDisplayOption";
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.OpenseaDisplayOption";
   value: Uint8Array;
 }
 export interface OpenseaDisplayOptionAmino {
@@ -16,7 +16,7 @@ export interface OpenseaDisplayOptionAmino {
   max_value?: string;
 }
 export interface OpenseaDisplayOptionAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.OpenseaDisplayOption";
+  type: "/thesixnetwork.sixnft.nftmngr.OpenseaDisplayOption";
   value: OpenseaDisplayOptionAmino;
 }
 export interface OpenseaDisplayOptionSDKType {
@@ -32,7 +32,7 @@ function createBaseOpenseaDisplayOption(): OpenseaDisplayOption {
   };
 }
 export const OpenseaDisplayOption = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OpenseaDisplayOption",
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.OpenseaDisplayOption",
   encode(message: OpenseaDisplayOption, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.displayType !== "") {
       writer.uint32(10).string(message.displayType);
@@ -106,7 +106,7 @@ export const OpenseaDisplayOption = {
   },
   toProtoMsg(message: OpenseaDisplayOption): OpenseaDisplayOptionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OpenseaDisplayOption",
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.OpenseaDisplayOption",
       value: OpenseaDisplayOption.encode(message).finish()
     };
   }

@@ -10,7 +10,7 @@ export interface DefaultMintValue {
   floatAttributeValue?: FloatAttributeValue;
 }
 export interface DefaultMintValueProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue";
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.DefaultMintValue";
   value: Uint8Array;
 }
 export interface DefaultMintValueAmino {
@@ -20,7 +20,7 @@ export interface DefaultMintValueAmino {
   float_attribute_value?: FloatAttributeValueAmino;
 }
 export interface DefaultMintValueAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue";
+  type: "/thesixnetwork.sixnft.nftmngr.DefaultMintValue";
   value: DefaultMintValueAmino;
 }
 export interface DefaultMintValueSDKType {
@@ -42,7 +42,7 @@ export interface AttributeDefinition {
   index: Long;
 }
 export interface AttributeDefinitionProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition";
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.AttributeDefinition";
   value: Uint8Array;
 }
 export interface AttributeDefinitionAmino {
@@ -58,7 +58,7 @@ export interface AttributeDefinitionAmino {
   index?: string;
 }
 export interface AttributeDefinitionAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition";
+  type: "/thesixnetwork.sixnft.nftmngr.AttributeDefinition";
   value: AttributeDefinitionAmino;
 }
 export interface AttributeDefinitionSDKType {
@@ -81,7 +81,7 @@ function createBaseDefaultMintValue(): DefaultMintValue {
   };
 }
 export const DefaultMintValue = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue",
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.DefaultMintValue",
   encode(message: DefaultMintValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.numberAttributeValue !== undefined) {
       NumberAttributeValue.encode(message.numberAttributeValue, writer.uint32(10).fork()).ldelim();
@@ -166,7 +166,7 @@ export const DefaultMintValue = {
   },
   toProtoMsg(message: DefaultMintValue): DefaultMintValueProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue",
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.DefaultMintValue",
       value: DefaultMintValue.encode(message).finish()
     };
   }
@@ -185,7 +185,7 @@ function createBaseAttributeDefinition(): AttributeDefinition {
   };
 }
 export const AttributeDefinition = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition",
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.AttributeDefinition",
   encode(message: AttributeDefinition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -325,7 +325,7 @@ export const AttributeDefinition = {
   },
   toProtoMsg(message: AttributeDefinition): AttributeDefinitionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition",
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.AttributeDefinition",
       value: AttributeDefinition.encode(message).finish()
     };
   }

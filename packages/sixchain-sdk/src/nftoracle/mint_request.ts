@@ -18,7 +18,7 @@ export interface MintRequest {
   expiredHeight: Long;
 }
 export interface MintRequestProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest";
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MintRequest";
   value: Uint8Array;
 }
 export interface MintRequestAmino {
@@ -36,7 +36,7 @@ export interface MintRequestAmino {
   expired_height?: string;
 }
 export interface MintRequestAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftoracle.MintRequest";
+  type: "/thesixnetwork.sixnft.nftoracle.MintRequest";
   value: MintRequestAmino;
 }
 export interface MintRequestSDKType {
@@ -68,7 +68,7 @@ function createBaseMintRequest(): MintRequest {
   };
 }
 export const MintRequest = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest",
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.MintRequest",
   encode(message: MintRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
@@ -234,7 +234,7 @@ export const MintRequest = {
   },
   toProtoMsg(message: MintRequest): MintRequestProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest",
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.MintRequest",
       value: MintRequest.encode(message).finish()
     };
   }

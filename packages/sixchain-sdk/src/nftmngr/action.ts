@@ -46,7 +46,7 @@ export interface ActionParams {
   defaultValue: string;
 }
 export interface ActionParamsProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionParams";
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParams";
   value: Uint8Array;
 }
 export interface ActionParamsAmino {
@@ -57,7 +57,7 @@ export interface ActionParamsAmino {
   default_value?: string;
 }
 export interface ActionParamsAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.ActionParams";
+  type: "/thesixnetwork.sixnft.nftmngr.ActionParams";
   value: ActionParamsAmino;
 }
 export interface ActionParamsSDKType {
@@ -77,7 +77,7 @@ export interface Action {
   params?: ActionParams[];
 }
 export interface ActionProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Action";
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.Action";
   value: Uint8Array;
 }
 export interface ActionAmino {
@@ -90,7 +90,7 @@ export interface ActionAmino {
   params?: ActionParamsAmino[];
 }
 export interface ActionAminoMsg {
-  type: "/thesixnetwork.sixprotocol.nftmngr.Action";
+  type: "/thesixnetwork.sixnft.nftmngr.Action";
   value: ActionAmino;
 }
 export interface ActionSDKType {
@@ -112,7 +112,7 @@ function createBaseActionParams(): ActionParams {
   };
 }
 export const ActionParams = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionParams",
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParams",
   encode(message: ActionParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -208,7 +208,7 @@ export const ActionParams = {
   },
   toProtoMsg(message: ActionParams): ActionParamsProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.ActionParams",
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.ActionParams",
       value: ActionParams.encode(message).finish()
     };
   }
@@ -225,7 +225,7 @@ function createBaseAction(): Action {
   };
 }
 export const Action = {
-  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Action",
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.Action",
   encode(message: Action, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -347,7 +347,7 @@ export const Action = {
   },
   toProtoMsg(message: Action): ActionProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.Action",
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.Action",
       value: Action.encode(message).finish()
     };
   }
