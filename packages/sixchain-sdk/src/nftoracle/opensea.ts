@@ -1,5 +1,5 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
+import * as _m0 from "protobufjs/minimal";
 export interface Trait {
   traitType: string;
   value: string;
@@ -7,7 +7,7 @@ export interface Trait {
   maxValue: string;
 }
 export interface TraitProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.Trait';
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.Trait";
   value: Uint8Array;
 }
 export interface TraitAmino {
@@ -17,7 +17,7 @@ export interface TraitAmino {
   max_value?: string;
 }
 export interface TraitAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.Trait';
+  type: "/thesixnetwork.sixnft.nftoracle.Trait";
   value: TraitAmino;
 }
 export interface TraitSDKType {
@@ -28,25 +28,25 @@ export interface TraitSDKType {
 }
 function createBaseTrait(): Trait {
   return {
-    traitType: '',
-    value: '',
-    displayType: '',
-    maxValue: ''
+    traitType: "",
+    value: "",
+    displayType: "",
+    maxValue: ""
   };
 }
 export const Trait = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.Trait',
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.Trait",
   encode(message: Trait, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.traitType !== '') {
+    if (message.traitType !== "") {
       writer.uint32(10).string(message.traitType);
     }
-    if (message.value !== '') {
+    if (message.value !== "") {
       writer.uint32(18).string(message.value);
     }
-    if (message.displayType !== '') {
+    if (message.displayType !== "") {
       writer.uint32(26).string(message.displayType);
     }
-    if (message.maxValue !== '') {
+    if (message.maxValue !== "") {
       writer.uint32(34).string(message.maxValue);
     }
     return writer;
@@ -58,31 +58,31 @@ export const Trait = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.traitType = reader.string();
-        break;
-      case 2:
-        message.value = reader.string();
-        break;
-      case 3:
-        message.displayType = reader.string();
-        break;
-      case 4:
-        message.maxValue = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.traitType = reader.string();
+          break;
+        case 2:
+          message.value = reader.string();
+          break;
+        case 3:
+          message.displayType = reader.string();
+          break;
+        case 4:
+          message.maxValue = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Trait>): Trait {
     const message = createBaseTrait();
-    message.traitType = object.traitType ?? '';
-    message.value = object.value ?? '';
-    message.displayType = object.displayType ?? '';
-    message.maxValue = object.maxValue ?? '';
+    message.traitType = object.traitType ?? "";
+    message.value = object.value ?? "";
+    message.displayType = object.displayType ?? "";
+    message.maxValue = object.maxValue ?? "";
     return message;
   },
   fromAmino(object: TraitAmino): Trait {
@@ -103,10 +103,10 @@ export const Trait = {
   },
   toAmino(message: Trait): TraitAmino {
     const obj: any = {};
-    obj.trait_type = message.traitType === '' ? undefined : message.traitType;
-    obj.value = message.value === '' ? undefined : message.value;
-    obj.display_type = message.displayType === '' ? undefined : message.displayType;
-    obj.max_value = message.maxValue === '' ? undefined : message.maxValue;
+    obj.trait_type = message.traitType === "" ? undefined : message.traitType;
+    obj.value = message.value === "" ? undefined : message.value;
+    obj.display_type = message.displayType === "" ? undefined : message.displayType;
+    obj.max_value = message.maxValue === "" ? undefined : message.maxValue;
     return obj;
   },
   fromAminoMsg(object: TraitAminoMsg): Trait {
@@ -120,7 +120,7 @@ export const Trait = {
   },
   toProtoMsg(message: Trait): TraitProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.Trait',
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.Trait",
       value: Trait.encode(message).finish()
     };
   }

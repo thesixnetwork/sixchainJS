@@ -1,11 +1,11 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
+import * as _m0 from "protobufjs/minimal";
 export interface Group {
   name: string;
   owner: string;
 }
 export interface GroupProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.Group';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.Group";
   value: Uint8Array;
 }
 export interface GroupAmino {
@@ -13,7 +13,7 @@ export interface GroupAmino {
   owner?: string;
 }
 export interface GroupAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.Group';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.Group";
   value: GroupAmino;
 }
 export interface GroupSDKType {
@@ -22,17 +22,17 @@ export interface GroupSDKType {
 }
 function createBaseGroup(): Group {
   return {
-    name: '',
-    owner: ''
+    name: "",
+    owner: ""
   };
 }
 export const Group = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.Group',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.Group",
   encode(message: Group, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
-    if (message.owner !== '') {
+    if (message.owner !== "") {
       writer.uint32(18).string(message.owner);
     }
     return writer;
@@ -44,23 +44,23 @@ export const Group = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.name = reader.string();
-        break;
-      case 2:
-        message.owner = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.name = reader.string();
+          break;
+        case 2:
+          message.owner = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<Group>): Group {
     const message = createBaseGroup();
-    message.name = object.name ?? '';
-    message.owner = object.owner ?? '';
+    message.name = object.name ?? "";
+    message.owner = object.owner ?? "";
     return message;
   },
   fromAmino(object: GroupAmino): Group {
@@ -75,8 +75,8 @@ export const Group = {
   },
   toAmino(message: Group): GroupAmino {
     const obj: any = {};
-    obj.name = message.name === '' ? undefined : message.name;
-    obj.owner = message.owner === '' ? undefined : message.owner;
+    obj.name = message.name === "" ? undefined : message.name;
+    obj.owner = message.owner === "" ? undefined : message.owner;
     return obj;
   },
   fromAminoMsg(object: GroupAminoMsg): Group {
@@ -90,7 +90,7 @@ export const Group = {
   },
   toProtoMsg(message: Group): GroupProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.Group',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.Group",
       value: Group.encode(message).finish()
     };
   }

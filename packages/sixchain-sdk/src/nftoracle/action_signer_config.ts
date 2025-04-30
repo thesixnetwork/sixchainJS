@@ -1,12 +1,12 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
+import * as _m0 from "protobufjs/minimal";
 export interface ActionSignerConfig {
   chain: string;
   contractAddress: string;
   creator: string;
 }
 export interface ActionSignerConfigProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionSignerConfig';
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionSignerConfig";
   value: Uint8Array;
 }
 export interface ActionSignerConfigAmino {
@@ -15,7 +15,7 @@ export interface ActionSignerConfigAmino {
   creator?: string;
 }
 export interface ActionSignerConfigAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.ActionSignerConfig';
+  type: "/thesixnetwork.sixnft.nftoracle.ActionSignerConfig";
   value: ActionSignerConfigAmino;
 }
 export interface ActionSignerConfigSDKType {
@@ -25,21 +25,21 @@ export interface ActionSignerConfigSDKType {
 }
 function createBaseActionSignerConfig(): ActionSignerConfig {
   return {
-    chain: '',
-    contractAddress: '',
-    creator: ''
+    chain: "",
+    contractAddress: "",
+    creator: ""
   };
 }
 export const ActionSignerConfig = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionSignerConfig',
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionSignerConfig",
   encode(message: ActionSignerConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.chain !== '') {
+    if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
     }
-    if (message.contractAddress !== '') {
+    if (message.contractAddress !== "") {
       writer.uint32(18).string(message.contractAddress);
     }
-    if (message.creator !== '') {
+    if (message.creator !== "") {
       writer.uint32(26).string(message.creator);
     }
     return writer;
@@ -51,27 +51,27 @@ export const ActionSignerConfig = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.chain = reader.string();
-        break;
-      case 2:
-        message.contractAddress = reader.string();
-        break;
-      case 3:
-        message.creator = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.chain = reader.string();
+          break;
+        case 2:
+          message.contractAddress = reader.string();
+          break;
+        case 3:
+          message.creator = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<ActionSignerConfig>): ActionSignerConfig {
     const message = createBaseActionSignerConfig();
-    message.chain = object.chain ?? '';
-    message.contractAddress = object.contractAddress ?? '';
-    message.creator = object.creator ?? '';
+    message.chain = object.chain ?? "";
+    message.contractAddress = object.contractAddress ?? "";
+    message.creator = object.creator ?? "";
     return message;
   },
   fromAmino(object: ActionSignerConfigAmino): ActionSignerConfig {
@@ -89,9 +89,9 @@ export const ActionSignerConfig = {
   },
   toAmino(message: ActionSignerConfig): ActionSignerConfigAmino {
     const obj: any = {};
-    obj.chain = message.chain === '' ? undefined : message.chain;
-    obj.contractAddress = message.contractAddress === '' ? undefined : message.contractAddress;
-    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.chain = message.chain === "" ? undefined : message.chain;
+    obj.contractAddress = message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;
   },
   fromAminoMsg(object: ActionSignerConfigAminoMsg): ActionSignerConfig {
@@ -105,7 +105,7 @@ export const ActionSignerConfig = {
   },
   toProtoMsg(message: ActionSignerConfig): ActionSignerConfigProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.ActionSignerConfig',
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.ActionSignerConfig",
       value: ActionSignerConfig.encode(message).finish()
     };
   }
