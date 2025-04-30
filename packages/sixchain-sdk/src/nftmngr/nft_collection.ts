@@ -1,15 +1,14 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Long } from '../helpers';
-import { NftData, NftDataAmino, NftDataSDKType } from './nft_data';
+import { NftData, NftDataAmino, NftDataSDKType } from "./nft_data";
+import { Long } from "../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface NftCollection {
   nftSchemaCode: string;
   total: Long;
   nftDatas: NftData[];
 }
 export interface NftCollectionProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NftCollection';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NftCollection";
   value: Uint8Array;
 }
 export interface NftCollectionAmino {
@@ -18,7 +17,7 @@ export interface NftCollectionAmino {
   nftDatas?: NftDataAmino[];
 }
 export interface NftCollectionAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.NftCollection';
+  type: "/thesixnetwork.sixprotocol.nftmngr.NftCollection";
   value: NftCollectionAmino;
 }
 export interface NftCollectionSDKType {
@@ -28,15 +27,15 @@ export interface NftCollectionSDKType {
 }
 function createBaseNftCollection(): NftCollection {
   return {
-    nftSchemaCode: '',
+    nftSchemaCode: "",
     total: Long.UZERO,
     nftDatas: []
   };
 }
 export const NftCollection = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NftCollection',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NftCollection",
   encode(message: NftCollection, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
     if (!message.total.isZero()) {
@@ -54,25 +53,25 @@ export const NftCollection = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 2:
-        message.total = reader.uint64() as Long;
-        break;
-      case 3:
-        message.nftDatas.push(NftData.decode(reader, reader.uint32()));
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 2:
+          message.total = reader.uint64() as Long;
+          break;
+        case 3:
+          message.nftDatas.push(NftData.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<NftCollection>): NftCollection {
     const message = createBaseNftCollection();
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.total = object.total !== undefined && object.total !== null ? Long.fromValue(object.total) : Long.UZERO;
     message.nftDatas = object.nftDatas?.map(e => NftData.fromPartial(e)) || [];
     return message;
@@ -90,8 +89,8 @@ export const NftCollection = {
   },
   toAmino(message: NftCollection): NftCollectionAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
-    obj.total = !message.total.isZero() ? message.total?.toString() : undefined;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.total = !message.total.isZero() ? (message.total?.toString)() : undefined;
     if (message.nftDatas) {
       obj.nftDatas = message.nftDatas.map(e => e ? NftData.toAmino(e) : undefined);
     } else {
@@ -110,7 +109,7 @@ export const NftCollection = {
   },
   toProtoMsg(message: NftCollection): NftCollectionProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NftCollection',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NftCollection",
       value: NftCollection.encode(message).finish()
     };
   }

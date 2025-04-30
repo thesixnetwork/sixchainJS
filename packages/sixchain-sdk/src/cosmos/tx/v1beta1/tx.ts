@@ -1,11 +1,10 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Any, AnyAmino, AnySDKType } from '../../../google/protobuf/any';
-import { base64FromBytes,bytesFromBase64, Long } from '../../../helpers';
-import { Coin, CoinAmino, CoinSDKType } from '../../base/v1beta1/coin';
-import { CompactBitArray, CompactBitArrayAmino, CompactBitArraySDKType } from '../../crypto/multisig/v1beta1/multisig';
-import { SignMode } from '../signing/v1beta1/signing';
+import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
+import { SignMode } from "../signing/v1beta1/signing";
+import { CompactBitArray, CompactBitArrayAmino, CompactBitArraySDKType } from "../../crypto/multisig/v1beta1/multisig";
+import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
+import { Long, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** Tx is the standard type used for broadcasting transactions. */
 export interface Tx {
   /** body is the processable content of the transaction */
@@ -23,7 +22,7 @@ export interface Tx {
   signatures: Uint8Array[];
 }
 export interface TxProtoMsg {
-  typeUrl: '/cosmos.tx.v1beta1.Tx';
+  typeUrl: "/cosmos.tx.v1beta1.Tx";
   value: Uint8Array;
 }
 /** Tx is the standard type used for broadcasting transactions. */
@@ -43,7 +42,7 @@ export interface TxAmino {
   signatures?: string[];
 }
 export interface TxAminoMsg {
-  type: 'cosmos-sdk/Tx';
+  type: "cosmos-sdk/Tx";
   value: TxAmino;
 }
 /** Tx is the standard type used for broadcasting transactions. */
@@ -78,7 +77,7 @@ export interface TxRaw {
   signatures: Uint8Array[];
 }
 export interface TxRawProtoMsg {
-  typeUrl: '/cosmos.tx.v1beta1.TxRaw';
+  typeUrl: "/cosmos.tx.v1beta1.TxRaw";
   value: Uint8Array;
 }
 /**
@@ -107,7 +106,7 @@ export interface TxRawAmino {
   signatures?: string[];
 }
 export interface TxRawAminoMsg {
-  type: 'cosmos-sdk/TxRaw';
+  type: "cosmos-sdk/TxRaw";
   value: TxRawAmino;
 }
 /**
@@ -144,7 +143,7 @@ export interface SignDoc {
   accountNumber: Long;
 }
 export interface SignDocProtoMsg {
-  typeUrl: '/cosmos.tx.v1beta1.SignDoc';
+  typeUrl: "/cosmos.tx.v1beta1.SignDoc";
   value: Uint8Array;
 }
 /** SignDoc is the type used for generating sign bytes for SIGN_MODE_DIRECT. */
@@ -169,7 +168,7 @@ export interface SignDocAmino {
   account_number?: string;
 }
 export interface SignDocAminoMsg {
-  type: 'cosmos-sdk/SignDoc';
+  type: "cosmos-sdk/SignDoc";
   value: SignDocAmino;
 }
 /** SignDoc is the type used for generating sign bytes for SIGN_MODE_DIRECT. */
@@ -216,7 +215,7 @@ export interface TxBody {
   nonCriticalExtensionOptions: Any[];
 }
 export interface TxBodyProtoMsg {
-  typeUrl: '/cosmos.tx.v1beta1.TxBody';
+  typeUrl: "/cosmos.tx.v1beta1.TxBody";
   value: Uint8Array;
 }
 /** TxBody is the body of a transaction that all signers sign over. */
@@ -256,7 +255,7 @@ export interface TxBodyAmino {
   non_critical_extension_options?: AnyAmino[];
 }
 export interface TxBodyAminoMsg {
-  type: 'cosmos-sdk/TxBody';
+  type: "cosmos-sdk/TxBody";
   value: TxBodyAmino;
 }
 /** TxBody is the body of a transaction that all signers sign over. */
@@ -288,7 +287,7 @@ export interface AuthInfo {
   fee?: Fee;
 }
 export interface AuthInfoProtoMsg {
-  typeUrl: '/cosmos.tx.v1beta1.AuthInfo';
+  typeUrl: "/cosmos.tx.v1beta1.AuthInfo";
   value: Uint8Array;
 }
 /**
@@ -312,7 +311,7 @@ export interface AuthInfoAmino {
   fee?: FeeAmino;
 }
 export interface AuthInfoAminoMsg {
-  type: 'cosmos-sdk/AuthInfo';
+  type: "cosmos-sdk/AuthInfo";
   value: AuthInfoAmino;
 }
 /**
@@ -347,7 +346,7 @@ export interface SignerInfo {
   sequence: Long;
 }
 export interface SignerInfoProtoMsg {
-  typeUrl: '/cosmos.tx.v1beta1.SignerInfo';
+  typeUrl: "/cosmos.tx.v1beta1.SignerInfo";
   value: Uint8Array;
 }
 /**
@@ -374,7 +373,7 @@ export interface SignerInfoAmino {
   sequence?: string;
 }
 export interface SignerInfoAminoMsg {
-  type: 'cosmos-sdk/SignerInfo';
+  type: "cosmos-sdk/SignerInfo";
   value: SignerInfoAmino;
 }
 /**
@@ -394,7 +393,7 @@ export interface ModeInfo {
   multi?: ModeInfo_Multi;
 }
 export interface ModeInfoProtoMsg {
-  typeUrl: '/cosmos.tx.v1beta1.ModeInfo';
+  typeUrl: "/cosmos.tx.v1beta1.ModeInfo";
   value: Uint8Array;
 }
 /** ModeInfo describes the signing mode of a single or nested multisig signer. */
@@ -405,7 +404,7 @@ export interface ModeInfoAmino {
   multi?: ModeInfo_MultiAmino;
 }
 export interface ModeInfoAminoMsg {
-  type: 'cosmos-sdk/ModeInfo';
+  type: "cosmos-sdk/ModeInfo";
   value: ModeInfoAmino;
 }
 /** ModeInfo describes the signing mode of a single or nested multisig signer. */
@@ -423,7 +422,7 @@ export interface ModeInfo_Single {
   mode: SignMode;
 }
 export interface ModeInfo_SingleProtoMsg {
-  typeUrl: '/cosmos.tx.v1beta1.Single';
+  typeUrl: "/cosmos.tx.v1beta1.Single";
   value: Uint8Array;
 }
 /**
@@ -436,7 +435,7 @@ export interface ModeInfo_SingleAmino {
   mode?: SignMode;
 }
 export interface ModeInfo_SingleAminoMsg {
-  type: 'cosmos-sdk/Single';
+  type: "cosmos-sdk/Single";
   value: ModeInfo_SingleAmino;
 }
 /**
@@ -458,7 +457,7 @@ export interface ModeInfo_Multi {
   modeInfos: ModeInfo[];
 }
 export interface ModeInfo_MultiProtoMsg {
-  typeUrl: '/cosmos.tx.v1beta1.Multi';
+  typeUrl: "/cosmos.tx.v1beta1.Multi";
   value: Uint8Array;
 }
 /** Multi is the mode info for a multisig public key */
@@ -472,7 +471,7 @@ export interface ModeInfo_MultiAmino {
   mode_infos?: ModeInfoAmino[];
 }
 export interface ModeInfo_MultiAminoMsg {
-  type: 'cosmos-sdk/Multi';
+  type: "cosmos-sdk/Multi";
   value: ModeInfo_MultiAmino;
 }
 /** Multi is the mode info for a multisig public key */
@@ -507,7 +506,7 @@ export interface Fee {
   granter: string;
 }
 export interface FeeProtoMsg {
-  typeUrl: '/cosmos.tx.v1beta1.Fee';
+  typeUrl: "/cosmos.tx.v1beta1.Fee";
   value: Uint8Array;
 }
 /**
@@ -537,7 +536,7 @@ export interface FeeAmino {
   granter?: string;
 }
 export interface FeeAminoMsg {
-  type: 'cosmos-sdk/Fee';
+  type: "cosmos-sdk/Fee";
   value: FeeAmino;
 }
 /**
@@ -559,7 +558,7 @@ function createBaseTx(): Tx {
   };
 }
 export const Tx = {
-  typeUrl: '/cosmos.tx.v1beta1.Tx',
+  typeUrl: "/cosmos.tx.v1beta1.Tx",
   encode(message: Tx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.body !== undefined) {
       TxBody.encode(message.body, writer.uint32(10).fork()).ldelim();
@@ -579,18 +578,18 @@ export const Tx = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.body = TxBody.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.authInfo = AuthInfo.decode(reader, reader.uint32());
-        break;
-      case 3:
-        message.signatures.push(reader.bytes());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.body = TxBody.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.authInfo = AuthInfo.decode(reader, reader.uint32());
+          break;
+        case 3:
+          message.signatures.push(reader.bytes());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -629,7 +628,7 @@ export const Tx = {
   },
   toAminoMsg(message: Tx): TxAminoMsg {
     return {
-      type: 'cosmos-sdk/Tx',
+      type: "cosmos-sdk/Tx",
       value: Tx.toAmino(message)
     };
   },
@@ -641,7 +640,7 @@ export const Tx = {
   },
   toProtoMsg(message: Tx): TxProtoMsg {
     return {
-      typeUrl: '/cosmos.tx.v1beta1.Tx',
+      typeUrl: "/cosmos.tx.v1beta1.Tx",
       value: Tx.encode(message).finish()
     };
   }
@@ -654,7 +653,7 @@ function createBaseTxRaw(): TxRaw {
   };
 }
 export const TxRaw = {
-  typeUrl: '/cosmos.tx.v1beta1.TxRaw',
+  typeUrl: "/cosmos.tx.v1beta1.TxRaw",
   encode(message: TxRaw, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.bodyBytes.length !== 0) {
       writer.uint32(10).bytes(message.bodyBytes);
@@ -674,18 +673,18 @@ export const TxRaw = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.bodyBytes = reader.bytes();
-        break;
-      case 2:
-        message.authInfoBytes = reader.bytes();
-        break;
-      case 3:
-        message.signatures.push(reader.bytes());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.bodyBytes = reader.bytes();
+          break;
+        case 2:
+          message.authInfoBytes = reader.bytes();
+          break;
+        case 3:
+          message.signatures.push(reader.bytes());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -724,7 +723,7 @@ export const TxRaw = {
   },
   toAminoMsg(message: TxRaw): TxRawAminoMsg {
     return {
-      type: 'cosmos-sdk/TxRaw',
+      type: "cosmos-sdk/TxRaw",
       value: TxRaw.toAmino(message)
     };
   },
@@ -736,7 +735,7 @@ export const TxRaw = {
   },
   toProtoMsg(message: TxRaw): TxRawProtoMsg {
     return {
-      typeUrl: '/cosmos.tx.v1beta1.TxRaw',
+      typeUrl: "/cosmos.tx.v1beta1.TxRaw",
       value: TxRaw.encode(message).finish()
     };
   }
@@ -745,12 +744,12 @@ function createBaseSignDoc(): SignDoc {
   return {
     bodyBytes: new Uint8Array(),
     authInfoBytes: new Uint8Array(),
-    chainId: '',
+    chainId: "",
     accountNumber: Long.UZERO
   };
 }
 export const SignDoc = {
-  typeUrl: '/cosmos.tx.v1beta1.SignDoc',
+  typeUrl: "/cosmos.tx.v1beta1.SignDoc",
   encode(message: SignDoc, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.bodyBytes.length !== 0) {
       writer.uint32(10).bytes(message.bodyBytes);
@@ -758,7 +757,7 @@ export const SignDoc = {
     if (message.authInfoBytes.length !== 0) {
       writer.uint32(18).bytes(message.authInfoBytes);
     }
-    if (message.chainId !== '') {
+    if (message.chainId !== "") {
       writer.uint32(26).string(message.chainId);
     }
     if (!message.accountNumber.isZero()) {
@@ -773,21 +772,21 @@ export const SignDoc = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.bodyBytes = reader.bytes();
-        break;
-      case 2:
-        message.authInfoBytes = reader.bytes();
-        break;
-      case 3:
-        message.chainId = reader.string();
-        break;
-      case 4:
-        message.accountNumber = reader.uint64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.bodyBytes = reader.bytes();
+          break;
+        case 2:
+          message.authInfoBytes = reader.bytes();
+          break;
+        case 3:
+          message.chainId = reader.string();
+          break;
+        case 4:
+          message.accountNumber = reader.uint64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -796,7 +795,7 @@ export const SignDoc = {
     const message = createBaseSignDoc();
     message.bodyBytes = object.bodyBytes ?? new Uint8Array();
     message.authInfoBytes = object.authInfoBytes ?? new Uint8Array();
-    message.chainId = object.chainId ?? '';
+    message.chainId = object.chainId ?? "";
     message.accountNumber = object.accountNumber !== undefined && object.accountNumber !== null ? Long.fromValue(object.accountNumber) : Long.UZERO;
     return message;
   },
@@ -820,8 +819,8 @@ export const SignDoc = {
     const obj: any = {};
     obj.body_bytes = message.bodyBytes ? base64FromBytes(message.bodyBytes) : undefined;
     obj.auth_info_bytes = message.authInfoBytes ? base64FromBytes(message.authInfoBytes) : undefined;
-    obj.chain_id = message.chainId === '' ? undefined : message.chainId;
-    obj.account_number = !message.accountNumber.isZero() ? message.accountNumber?.toString() : undefined;
+    obj.chain_id = message.chainId === "" ? undefined : message.chainId;
+    obj.account_number = !message.accountNumber.isZero() ? (message.accountNumber?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: SignDocAminoMsg): SignDoc {
@@ -829,7 +828,7 @@ export const SignDoc = {
   },
   toAminoMsg(message: SignDoc): SignDocAminoMsg {
     return {
-      type: 'cosmos-sdk/SignDoc',
+      type: "cosmos-sdk/SignDoc",
       value: SignDoc.toAmino(message)
     };
   },
@@ -841,7 +840,7 @@ export const SignDoc = {
   },
   toProtoMsg(message: SignDoc): SignDocProtoMsg {
     return {
-      typeUrl: '/cosmos.tx.v1beta1.SignDoc',
+      typeUrl: "/cosmos.tx.v1beta1.SignDoc",
       value: SignDoc.encode(message).finish()
     };
   }
@@ -849,19 +848,19 @@ export const SignDoc = {
 function createBaseTxBody(): TxBody {
   return {
     messages: [],
-    memo: '',
+    memo: "",
     timeoutHeight: Long.UZERO,
     extensionOptions: [],
     nonCriticalExtensionOptions: []
   };
 }
 export const TxBody = {
-  typeUrl: '/cosmos.tx.v1beta1.TxBody',
+  typeUrl: "/cosmos.tx.v1beta1.TxBody",
   encode(message: TxBody, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.messages) {
       Any.encode(v!, writer.uint32(10).fork()).ldelim();
     }
-    if (message.memo !== '') {
+    if (message.memo !== "") {
       writer.uint32(18).string(message.memo);
     }
     if (!message.timeoutHeight.isZero()) {
@@ -882,24 +881,24 @@ export const TxBody = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.messages.push(Any.decode(reader, reader.uint32()));
-        break;
-      case 2:
-        message.memo = reader.string();
-        break;
-      case 3:
-        message.timeoutHeight = reader.uint64() as Long;
-        break;
-      case 1023:
-        message.extensionOptions.push(Any.decode(reader, reader.uint32()));
-        break;
-      case 2047:
-        message.nonCriticalExtensionOptions.push(Any.decode(reader, reader.uint32()));
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.messages.push(Any.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.memo = reader.string();
+          break;
+        case 3:
+          message.timeoutHeight = reader.uint64() as Long;
+          break;
+        case 1023:
+          message.extensionOptions.push(Any.decode(reader, reader.uint32()));
+          break;
+        case 2047:
+          message.nonCriticalExtensionOptions.push(Any.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -907,7 +906,7 @@ export const TxBody = {
   fromPartial(object: Partial<TxBody>): TxBody {
     const message = createBaseTxBody();
     message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
-    message.memo = object.memo ?? '';
+    message.memo = object.memo ?? "";
     message.timeoutHeight = object.timeoutHeight !== undefined && object.timeoutHeight !== null ? Long.fromValue(object.timeoutHeight) : Long.UZERO;
     message.extensionOptions = object.extensionOptions?.map(e => Any.fromPartial(e)) || [];
     message.nonCriticalExtensionOptions = object.nonCriticalExtensionOptions?.map(e => Any.fromPartial(e)) || [];
@@ -933,8 +932,8 @@ export const TxBody = {
     } else {
       obj.messages = message.messages;
     }
-    obj.memo = message.memo === '' ? undefined : message.memo;
-    obj.timeout_height = !message.timeoutHeight.isZero() ? message.timeoutHeight?.toString() : undefined;
+    obj.memo = message.memo === "" ? undefined : message.memo;
+    obj.timeout_height = !message.timeoutHeight.isZero() ? (message.timeoutHeight?.toString)() : undefined;
     if (message.extensionOptions) {
       obj.extension_options = message.extensionOptions.map(e => e ? Any.toAmino(e) : undefined);
     } else {
@@ -952,7 +951,7 @@ export const TxBody = {
   },
   toAminoMsg(message: TxBody): TxBodyAminoMsg {
     return {
-      type: 'cosmos-sdk/TxBody',
+      type: "cosmos-sdk/TxBody",
       value: TxBody.toAmino(message)
     };
   },
@@ -964,7 +963,7 @@ export const TxBody = {
   },
   toProtoMsg(message: TxBody): TxBodyProtoMsg {
     return {
-      typeUrl: '/cosmos.tx.v1beta1.TxBody',
+      typeUrl: "/cosmos.tx.v1beta1.TxBody",
       value: TxBody.encode(message).finish()
     };
   }
@@ -976,7 +975,7 @@ function createBaseAuthInfo(): AuthInfo {
   };
 }
 export const AuthInfo = {
-  typeUrl: '/cosmos.tx.v1beta1.AuthInfo',
+  typeUrl: "/cosmos.tx.v1beta1.AuthInfo",
   encode(message: AuthInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.signerInfos) {
       SignerInfo.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -993,15 +992,15 @@ export const AuthInfo = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.signerInfos.push(SignerInfo.decode(reader, reader.uint32()));
-        break;
-      case 2:
-        message.fee = Fee.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.signerInfos.push(SignerInfo.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.fee = Fee.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1035,7 +1034,7 @@ export const AuthInfo = {
   },
   toAminoMsg(message: AuthInfo): AuthInfoAminoMsg {
     return {
-      type: 'cosmos-sdk/AuthInfo',
+      type: "cosmos-sdk/AuthInfo",
       value: AuthInfo.toAmino(message)
     };
   },
@@ -1047,7 +1046,7 @@ export const AuthInfo = {
   },
   toProtoMsg(message: AuthInfo): AuthInfoProtoMsg {
     return {
-      typeUrl: '/cosmos.tx.v1beta1.AuthInfo',
+      typeUrl: "/cosmos.tx.v1beta1.AuthInfo",
       value: AuthInfo.encode(message).finish()
     };
   }
@@ -1060,7 +1059,7 @@ function createBaseSignerInfo(): SignerInfo {
   };
 }
 export const SignerInfo = {
-  typeUrl: '/cosmos.tx.v1beta1.SignerInfo',
+  typeUrl: "/cosmos.tx.v1beta1.SignerInfo",
   encode(message: SignerInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.publicKey !== undefined) {
       Any.encode(message.publicKey, writer.uint32(10).fork()).ldelim();
@@ -1080,18 +1079,18 @@ export const SignerInfo = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.publicKey = Any.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.modeInfo = ModeInfo.decode(reader, reader.uint32());
-        break;
-      case 3:
-        message.sequence = reader.uint64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.publicKey = Any.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.modeInfo = ModeInfo.decode(reader, reader.uint32());
+          break;
+        case 3:
+          message.sequence = reader.uint64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1120,7 +1119,7 @@ export const SignerInfo = {
     const obj: any = {};
     obj.public_key = message.publicKey ? Any.toAmino(message.publicKey) : undefined;
     obj.mode_info = message.modeInfo ? ModeInfo.toAmino(message.modeInfo) : undefined;
-    obj.sequence = !message.sequence.isZero() ? message.sequence?.toString() : undefined;
+    obj.sequence = !message.sequence.isZero() ? (message.sequence?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: SignerInfoAminoMsg): SignerInfo {
@@ -1128,7 +1127,7 @@ export const SignerInfo = {
   },
   toAminoMsg(message: SignerInfo): SignerInfoAminoMsg {
     return {
-      type: 'cosmos-sdk/SignerInfo',
+      type: "cosmos-sdk/SignerInfo",
       value: SignerInfo.toAmino(message)
     };
   },
@@ -1140,7 +1139,7 @@ export const SignerInfo = {
   },
   toProtoMsg(message: SignerInfo): SignerInfoProtoMsg {
     return {
-      typeUrl: '/cosmos.tx.v1beta1.SignerInfo',
+      typeUrl: "/cosmos.tx.v1beta1.SignerInfo",
       value: SignerInfo.encode(message).finish()
     };
   }
@@ -1152,7 +1151,7 @@ function createBaseModeInfo(): ModeInfo {
   };
 }
 export const ModeInfo = {
-  typeUrl: '/cosmos.tx.v1beta1.ModeInfo',
+  typeUrl: "/cosmos.tx.v1beta1.ModeInfo",
   encode(message: ModeInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.single !== undefined) {
       ModeInfo_Single.encode(message.single, writer.uint32(10).fork()).ldelim();
@@ -1169,15 +1168,15 @@ export const ModeInfo = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.single = ModeInfo_Single.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.multi = ModeInfo_Multi.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.single = ModeInfo_Single.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.multi = ModeInfo_Multi.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1209,7 +1208,7 @@ export const ModeInfo = {
   },
   toAminoMsg(message: ModeInfo): ModeInfoAminoMsg {
     return {
-      type: 'cosmos-sdk/ModeInfo',
+      type: "cosmos-sdk/ModeInfo",
       value: ModeInfo.toAmino(message)
     };
   },
@@ -1221,7 +1220,7 @@ export const ModeInfo = {
   },
   toProtoMsg(message: ModeInfo): ModeInfoProtoMsg {
     return {
-      typeUrl: '/cosmos.tx.v1beta1.ModeInfo',
+      typeUrl: "/cosmos.tx.v1beta1.ModeInfo",
       value: ModeInfo.encode(message).finish()
     };
   }
@@ -1232,7 +1231,7 @@ function createBaseModeInfo_Single(): ModeInfo_Single {
   };
 }
 export const ModeInfo_Single = {
-  typeUrl: '/cosmos.tx.v1beta1.Single',
+  typeUrl: "/cosmos.tx.v1beta1.Single",
   encode(message: ModeInfo_Single, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.mode !== 0) {
       writer.uint32(8).int32(message.mode);
@@ -1246,12 +1245,12 @@ export const ModeInfo_Single = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.mode = reader.int32() as any;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.mode = reader.int32() as any;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1278,7 +1277,7 @@ export const ModeInfo_Single = {
   },
   toAminoMsg(message: ModeInfo_Single): ModeInfo_SingleAminoMsg {
     return {
-      type: 'cosmos-sdk/Single',
+      type: "cosmos-sdk/Single",
       value: ModeInfo_Single.toAmino(message)
     };
   },
@@ -1290,7 +1289,7 @@ export const ModeInfo_Single = {
   },
   toProtoMsg(message: ModeInfo_Single): ModeInfo_SingleProtoMsg {
     return {
-      typeUrl: '/cosmos.tx.v1beta1.Single',
+      typeUrl: "/cosmos.tx.v1beta1.Single",
       value: ModeInfo_Single.encode(message).finish()
     };
   }
@@ -1302,7 +1301,7 @@ function createBaseModeInfo_Multi(): ModeInfo_Multi {
   };
 }
 export const ModeInfo_Multi = {
-  typeUrl: '/cosmos.tx.v1beta1.Multi',
+  typeUrl: "/cosmos.tx.v1beta1.Multi",
   encode(message: ModeInfo_Multi, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.bitarray !== undefined) {
       CompactBitArray.encode(message.bitarray, writer.uint32(10).fork()).ldelim();
@@ -1319,15 +1318,15 @@ export const ModeInfo_Multi = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.bitarray = CompactBitArray.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.modeInfos.push(ModeInfo.decode(reader, reader.uint32()));
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.bitarray = CompactBitArray.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.modeInfos.push(ModeInfo.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1361,7 +1360,7 @@ export const ModeInfo_Multi = {
   },
   toAminoMsg(message: ModeInfo_Multi): ModeInfo_MultiAminoMsg {
     return {
-      type: 'cosmos-sdk/Multi',
+      type: "cosmos-sdk/Multi",
       value: ModeInfo_Multi.toAmino(message)
     };
   },
@@ -1373,7 +1372,7 @@ export const ModeInfo_Multi = {
   },
   toProtoMsg(message: ModeInfo_Multi): ModeInfo_MultiProtoMsg {
     return {
-      typeUrl: '/cosmos.tx.v1beta1.Multi',
+      typeUrl: "/cosmos.tx.v1beta1.Multi",
       value: ModeInfo_Multi.encode(message).finish()
     };
   }
@@ -1382,12 +1381,12 @@ function createBaseFee(): Fee {
   return {
     amount: [],
     gasLimit: Long.UZERO,
-    payer: '',
-    granter: ''
+    payer: "",
+    granter: ""
   };
 }
 export const Fee = {
-  typeUrl: '/cosmos.tx.v1beta1.Fee',
+  typeUrl: "/cosmos.tx.v1beta1.Fee",
   encode(message: Fee, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.amount) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1395,10 +1394,10 @@ export const Fee = {
     if (!message.gasLimit.isZero()) {
       writer.uint32(16).uint64(message.gasLimit);
     }
-    if (message.payer !== '') {
+    if (message.payer !== "") {
       writer.uint32(26).string(message.payer);
     }
-    if (message.granter !== '') {
+    if (message.granter !== "") {
       writer.uint32(34).string(message.granter);
     }
     return writer;
@@ -1410,21 +1409,21 @@ export const Fee = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.amount.push(Coin.decode(reader, reader.uint32()));
-        break;
-      case 2:
-        message.gasLimit = reader.uint64() as Long;
-        break;
-      case 3:
-        message.payer = reader.string();
-        break;
-      case 4:
-        message.granter = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.amount.push(Coin.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.gasLimit = reader.uint64() as Long;
+          break;
+        case 3:
+          message.payer = reader.string();
+          break;
+        case 4:
+          message.granter = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1433,8 +1432,8 @@ export const Fee = {
     const message = createBaseFee();
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     message.gasLimit = object.gasLimit !== undefined && object.gasLimit !== null ? Long.fromValue(object.gasLimit) : Long.UZERO;
-    message.payer = object.payer ?? '';
-    message.granter = object.granter ?? '';
+    message.payer = object.payer ?? "";
+    message.granter = object.granter ?? "";
     return message;
   },
   fromAmino(object: FeeAmino): Fee {
@@ -1458,9 +1457,9 @@ export const Fee = {
     } else {
       obj.amount = message.amount;
     }
-    obj.gas_limit = !message.gasLimit.isZero() ? message.gasLimit?.toString() : undefined;
-    obj.payer = message.payer === '' ? undefined : message.payer;
-    obj.granter = message.granter === '' ? undefined : message.granter;
+    obj.gas_limit = !message.gasLimit.isZero() ? (message.gasLimit?.toString)() : undefined;
+    obj.payer = message.payer === "" ? undefined : message.payer;
+    obj.granter = message.granter === "" ? undefined : message.granter;
     return obj;
   },
   fromAminoMsg(object: FeeAminoMsg): Fee {
@@ -1468,7 +1467,7 @@ export const Fee = {
   },
   toAminoMsg(message: Fee): FeeAminoMsg {
     return {
-      type: 'cosmos-sdk/Fee',
+      type: "cosmos-sdk/Fee",
       value: Fee.toAmino(message)
     };
   },
@@ -1480,7 +1479,7 @@ export const Fee = {
   },
   toProtoMsg(message: Fee): FeeProtoMsg {
     return {
-      typeUrl: '/cosmos.tx.v1beta1.Fee',
+      typeUrl: "/cosmos.tx.v1beta1.Fee",
       value: Fee.encode(message).finish()
     };
   }

@@ -1,8 +1,7 @@
 //@ts-nocheck
-import { GeneratedType, Registry } from '@cosmjs/proto-signing';
-
-import { MsgEthereumTx } from './tx';
-export const registry: ReadonlyArray<[string, GeneratedType]> = [['/ethermint.evm.v1.MsgEthereumTx', MsgEthereumTx]];
+import { GeneratedType, Registry } from "@cosmjs/proto-signing";
+import { MsgEthereumTx } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/ethermint.evm.v1.MsgEthereumTx", MsgEthereumTx]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -12,7 +11,7 @@ export const MessageComposer = {
   encoded: {
     ethereumTx(value: MsgEthereumTx) {
       return {
-        typeUrl: '/ethermint.evm.v1.MsgEthereumTx',
+        typeUrl: "/ethermint.evm.v1.MsgEthereumTx",
         value: MsgEthereumTx.encode(value).finish()
       };
     }
@@ -20,7 +19,7 @@ export const MessageComposer = {
   withTypeUrl: {
     ethereumTx(value: MsgEthereumTx) {
       return {
-        typeUrl: '/ethermint.evm.v1.MsgEthereumTx',
+        typeUrl: "/ethermint.evm.v1.MsgEthereumTx",
         value
       };
     }
@@ -28,7 +27,7 @@ export const MessageComposer = {
   fromPartial: {
     ethereumTx(value: MsgEthereumTx) {
       return {
-        typeUrl: '/ethermint.evm.v1.MsgEthereumTx',
+        typeUrl: "/ethermint.evm.v1.MsgEthereumTx",
         value: MsgEthereumTx.fromPartial(value)
       };
     }

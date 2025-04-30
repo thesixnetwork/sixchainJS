@@ -1,9 +1,8 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Long } from '../helpers';
-import { DisplayOption, DisplayOptionAmino, DisplayOptionSDKType } from './display_option';
-import { BooleanAttributeValue, BooleanAttributeValueAmino, BooleanAttributeValueSDKType, FloatAttributeValue, FloatAttributeValueAmino, FloatAttributeValueSDKType,NumberAttributeValue, NumberAttributeValueAmino, NumberAttributeValueSDKType, StringAttributeValue, StringAttributeValueAmino, StringAttributeValueSDKType } from './nft_attribute_value';
+import { NumberAttributeValue, NumberAttributeValueAmino, NumberAttributeValueSDKType, StringAttributeValue, StringAttributeValueAmino, StringAttributeValueSDKType, BooleanAttributeValue, BooleanAttributeValueAmino, BooleanAttributeValueSDKType, FloatAttributeValue, FloatAttributeValueAmino, FloatAttributeValueSDKType } from "./nft_attribute_value";
+import { DisplayOption, DisplayOptionAmino, DisplayOptionSDKType } from "./display_option";
+import { Long } from "../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface DefaultMintValue {
   numberAttributeValue?: NumberAttributeValue;
   stringAttributeValue?: StringAttributeValue;
@@ -11,7 +10,7 @@ export interface DefaultMintValue {
   floatAttributeValue?: FloatAttributeValue;
 }
 export interface DefaultMintValueProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue";
   value: Uint8Array;
 }
 export interface DefaultMintValueAmino {
@@ -21,7 +20,7 @@ export interface DefaultMintValueAmino {
   float_attribute_value?: FloatAttributeValueAmino;
 }
 export interface DefaultMintValueAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue';
+  type: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue";
   value: DefaultMintValueAmino;
 }
 export interface DefaultMintValueSDKType {
@@ -43,7 +42,7 @@ export interface AttributeDefinition {
   index: Long;
 }
 export interface AttributeDefinitionProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition";
   value: Uint8Array;
 }
 export interface AttributeDefinitionAmino {
@@ -59,7 +58,7 @@ export interface AttributeDefinitionAmino {
   index?: string;
 }
 export interface AttributeDefinitionAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition';
+  type: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition";
   value: AttributeDefinitionAmino;
 }
 export interface AttributeDefinitionSDKType {
@@ -82,7 +81,7 @@ function createBaseDefaultMintValue(): DefaultMintValue {
   };
 }
 export const DefaultMintValue = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue",
   encode(message: DefaultMintValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.numberAttributeValue !== undefined) {
       NumberAttributeValue.encode(message.numberAttributeValue, writer.uint32(10).fork()).ldelim();
@@ -105,21 +104,21 @@ export const DefaultMintValue = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.numberAttributeValue = NumberAttributeValue.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.stringAttributeValue = StringAttributeValue.decode(reader, reader.uint32());
-        break;
-      case 3:
-        message.booleanAttributeValue = BooleanAttributeValue.decode(reader, reader.uint32());
-        break;
-      case 4:
-        message.floatAttributeValue = FloatAttributeValue.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.numberAttributeValue = NumberAttributeValue.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.stringAttributeValue = StringAttributeValue.decode(reader, reader.uint32());
+          break;
+        case 3:
+          message.booleanAttributeValue = BooleanAttributeValue.decode(reader, reader.uint32());
+          break;
+        case 4:
+          message.floatAttributeValue = FloatAttributeValue.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -167,17 +166,17 @@ export const DefaultMintValue = {
   },
   toProtoMsg(message: DefaultMintValue): DefaultMintValueProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.DefaultMintValue",
       value: DefaultMintValue.encode(message).finish()
     };
   }
 };
 function createBaseAttributeDefinition(): AttributeDefinition {
   return {
-    name: '',
-    dataType: '',
+    name: "",
+    dataType: "",
     required: false,
-    displayValueField: '',
+    displayValueField: "",
     displayOption: undefined,
     defaultMintValue: undefined,
     hiddenOveride: false,
@@ -186,18 +185,18 @@ function createBaseAttributeDefinition(): AttributeDefinition {
   };
 }
 export const AttributeDefinition = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition",
   encode(message: AttributeDefinition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
-    if (message.dataType !== '') {
+    if (message.dataType !== "") {
       writer.uint32(18).string(message.dataType);
     }
     if (message.required === true) {
       writer.uint32(24).bool(message.required);
     }
-    if (message.displayValueField !== '') {
+    if (message.displayValueField !== "") {
       writer.uint32(34).string(message.displayValueField);
     }
     if (message.displayOption !== undefined) {
@@ -224,46 +223,46 @@ export const AttributeDefinition = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.name = reader.string();
-        break;
-      case 2:
-        message.dataType = reader.string();
-        break;
-      case 3:
-        message.required = reader.bool();
-        break;
-      case 4:
-        message.displayValueField = reader.string();
-        break;
-      case 5:
-        message.displayOption = DisplayOption.decode(reader, reader.uint32());
-        break;
-      case 6:
-        message.defaultMintValue = DefaultMintValue.decode(reader, reader.uint32());
-        break;
-      case 7:
-        message.hiddenOveride = reader.bool();
-        break;
-      case 8:
-        message.hiddenToMarketplace = reader.bool();
-        break;
-      case 9:
-        message.index = reader.uint64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.name = reader.string();
+          break;
+        case 2:
+          message.dataType = reader.string();
+          break;
+        case 3:
+          message.required = reader.bool();
+          break;
+        case 4:
+          message.displayValueField = reader.string();
+          break;
+        case 5:
+          message.displayOption = DisplayOption.decode(reader, reader.uint32());
+          break;
+        case 6:
+          message.defaultMintValue = DefaultMintValue.decode(reader, reader.uint32());
+          break;
+        case 7:
+          message.hiddenOveride = reader.bool();
+          break;
+        case 8:
+          message.hiddenToMarketplace = reader.bool();
+          break;
+        case 9:
+          message.index = reader.uint64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<AttributeDefinition>): AttributeDefinition {
     const message = createBaseAttributeDefinition();
-    message.name = object.name ?? '';
-    message.dataType = object.dataType ?? '';
+    message.name = object.name ?? "";
+    message.dataType = object.dataType ?? "";
     message.required = object.required ?? false;
-    message.displayValueField = object.displayValueField ?? '';
+    message.displayValueField = object.displayValueField ?? "";
     message.displayOption = object.displayOption !== undefined && object.displayOption !== null ? DisplayOption.fromPartial(object.displayOption) : undefined;
     message.defaultMintValue = object.defaultMintValue !== undefined && object.defaultMintValue !== null ? DefaultMintValue.fromPartial(object.defaultMintValue) : undefined;
     message.hiddenOveride = object.hiddenOveride ?? false;
@@ -304,15 +303,15 @@ export const AttributeDefinition = {
   },
   toAmino(message: AttributeDefinition): AttributeDefinitionAmino {
     const obj: any = {};
-    obj.name = message.name === '' ? undefined : message.name;
-    obj.data_type = message.dataType === '' ? undefined : message.dataType;
+    obj.name = message.name === "" ? undefined : message.name;
+    obj.data_type = message.dataType === "" ? undefined : message.dataType;
     obj.required = message.required === false ? undefined : message.required;
-    obj.display_value_field = message.displayValueField === '' ? undefined : message.displayValueField;
+    obj.display_value_field = message.displayValueField === "" ? undefined : message.displayValueField;
     obj.display_option = message.displayOption ? DisplayOption.toAmino(message.displayOption) : undefined;
     obj.default_mint_value = message.defaultMintValue ? DefaultMintValue.toAmino(message.defaultMintValue) : undefined;
     obj.hidden_overide = message.hiddenOveride === false ? undefined : message.hiddenOveride;
     obj.hidden_to_marketplace = message.hiddenToMarketplace === false ? undefined : message.hiddenToMarketplace;
-    obj.index = !message.index.isZero() ? message.index?.toString() : undefined;
+    obj.index = !message.index.isZero() ? (message.index?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: AttributeDefinitionAminoMsg): AttributeDefinition {
@@ -326,7 +325,7 @@ export const AttributeDefinition = {
   },
   toProtoMsg(message: AttributeDefinition): AttributeDefinitionProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeDefinition",
       value: AttributeDefinition.encode(message).finish()
     };
   }

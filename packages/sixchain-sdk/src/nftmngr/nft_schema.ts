@@ -1,8 +1,7 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { OnChainData, OnChainDataAmino, OnChainDataResult, OnChainDataResultAmino, OnChainDataResultSDKType,OnChainDataSDKType } from './on_chain_data';
-import { OriginData, OriginDataAmino, OriginDataSDKType } from './origin_data';
+import { OriginData, OriginDataAmino, OriginDataSDKType } from "./origin_data";
+import { OnChainData, OnChainDataAmino, OnChainDataSDKType, OnChainDataResult, OnChainDataResultAmino, OnChainDataResultSDKType } from "./on_chain_data";
+import * as _m0 from "protobufjs/minimal";
 export interface NFTSchema {
   code: string;
   name: string;
@@ -14,7 +13,7 @@ export interface NFTSchema {
   mintAuthorization: string;
 }
 export interface NFTSchemaProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchema';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchema";
   value: Uint8Array;
 }
 export interface NFTSchemaAmino {
@@ -28,7 +27,7 @@ export interface NFTSchemaAmino {
   mint_authorization?: string;
 }
 export interface NFTSchemaAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.NFTSchema';
+  type: "/thesixnetwork.sixprotocol.nftmngr.NFTSchema";
   value: NFTSchemaAmino;
 }
 export interface NFTSchemaSDKType {
@@ -53,7 +52,7 @@ export interface NFTSchemaINPUT {
   mintAuthorization: string;
 }
 export interface NFTSchemaINPUTProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaINPUT';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaINPUT";
   value: Uint8Array;
 }
 export interface NFTSchemaINPUTAmino {
@@ -68,7 +67,7 @@ export interface NFTSchemaINPUTAmino {
   mint_authorization?: string;
 }
 export interface NFTSchemaINPUTAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaINPUT';
+  type: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaINPUT";
   value: NFTSchemaINPUTAmino;
 }
 export interface NFTSchemaINPUTSDKType {
@@ -93,7 +92,7 @@ export interface NFTSchemaQueryResult {
   mintAuthorization: string;
 }
 export interface NFTSchemaQueryResultProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaQueryResult';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaQueryResult";
   value: Uint8Array;
 }
 export interface NFTSchemaQueryResultAmino {
@@ -107,7 +106,7 @@ export interface NFTSchemaQueryResultAmino {
   mint_authorization?: string;
 }
 export interface NFTSchemaQueryResultAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaQueryResult';
+  type: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaQueryResult";
   value: NFTSchemaQueryResultAmino;
 }
 export interface NFTSchemaQueryResultSDKType {
@@ -122,29 +121,29 @@ export interface NFTSchemaQueryResultSDKType {
 }
 function createBaseNFTSchema(): NFTSchema {
   return {
-    code: '',
-    name: '',
-    owner: '',
-    description: '',
+    code: "",
+    name: "",
+    owner: "",
+    description: "",
     originData: undefined,
     onchainData: undefined,
     isVerified: false,
-    mintAuthorization: ''
+    mintAuthorization: ""
   };
 }
 export const NFTSchema = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchema',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchema",
   encode(message: NFTSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.code !== '') {
+    if (message.code !== "") {
       writer.uint32(10).string(message.code);
     }
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
-    if (message.owner !== '') {
+    if (message.owner !== "") {
       writer.uint32(26).string(message.owner);
     }
-    if (message.description !== '') {
+    if (message.description !== "") {
       writer.uint32(34).string(message.description);
     }
     if (message.originData !== undefined) {
@@ -156,7 +155,7 @@ export const NFTSchema = {
     if (message.isVerified === true) {
       writer.uint32(56).bool(message.isVerified);
     }
-    if (message.mintAuthorization !== '') {
+    if (message.mintAuthorization !== "") {
       writer.uint32(66).string(message.mintAuthorization);
     }
     return writer;
@@ -168,47 +167,47 @@ export const NFTSchema = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.code = reader.string();
-        break;
-      case 2:
-        message.name = reader.string();
-        break;
-      case 3:
-        message.owner = reader.string();
-        break;
-      case 4:
-        message.description = reader.string();
-        break;
-      case 5:
-        message.originData = OriginData.decode(reader, reader.uint32());
-        break;
-      case 6:
-        message.onchainData = OnChainData.decode(reader, reader.uint32());
-        break;
-      case 7:
-        message.isVerified = reader.bool();
-        break;
-      case 8:
-        message.mintAuthorization = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.code = reader.string();
+          break;
+        case 2:
+          message.name = reader.string();
+          break;
+        case 3:
+          message.owner = reader.string();
+          break;
+        case 4:
+          message.description = reader.string();
+          break;
+        case 5:
+          message.originData = OriginData.decode(reader, reader.uint32());
+          break;
+        case 6:
+          message.onchainData = OnChainData.decode(reader, reader.uint32());
+          break;
+        case 7:
+          message.isVerified = reader.bool();
+          break;
+        case 8:
+          message.mintAuthorization = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<NFTSchema>): NFTSchema {
     const message = createBaseNFTSchema();
-    message.code = object.code ?? '';
-    message.name = object.name ?? '';
-    message.owner = object.owner ?? '';
-    message.description = object.description ?? '';
+    message.code = object.code ?? "";
+    message.name = object.name ?? "";
+    message.owner = object.owner ?? "";
+    message.description = object.description ?? "";
     message.originData = object.originData !== undefined && object.originData !== null ? OriginData.fromPartial(object.originData) : undefined;
     message.onchainData = object.onchainData !== undefined && object.onchainData !== null ? OnChainData.fromPartial(object.onchainData) : undefined;
     message.isVerified = object.isVerified ?? false;
-    message.mintAuthorization = object.mintAuthorization ?? '';
+    message.mintAuthorization = object.mintAuthorization ?? "";
     return message;
   },
   fromAmino(object: NFTSchemaAmino): NFTSchema {
@@ -241,14 +240,14 @@ export const NFTSchema = {
   },
   toAmino(message: NFTSchema): NFTSchemaAmino {
     const obj: any = {};
-    obj.code = message.code === '' ? undefined : message.code;
-    obj.name = message.name === '' ? undefined : message.name;
-    obj.owner = message.owner === '' ? undefined : message.owner;
-    obj.description = message.description === '' ? undefined : message.description;
+    obj.code = message.code === "" ? undefined : message.code;
+    obj.name = message.name === "" ? undefined : message.name;
+    obj.owner = message.owner === "" ? undefined : message.owner;
+    obj.description = message.description === "" ? undefined : message.description;
     obj.origin_data = message.originData ? OriginData.toAmino(message.originData) : undefined;
     obj.onchain_data = message.onchainData ? OnChainData.toAmino(message.onchainData) : undefined;
     obj.isVerified = message.isVerified === false ? undefined : message.isVerified;
-    obj.mint_authorization = message.mintAuthorization === '' ? undefined : message.mintAuthorization;
+    obj.mint_authorization = message.mintAuthorization === "" ? undefined : message.mintAuthorization;
     return obj;
   },
   fromAminoMsg(object: NFTSchemaAminoMsg): NFTSchema {
@@ -262,37 +261,37 @@ export const NFTSchema = {
   },
   toProtoMsg(message: NFTSchema): NFTSchemaProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchema',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchema",
       value: NFTSchema.encode(message).finish()
     };
   }
 };
 function createBaseNFTSchemaINPUT(): NFTSchemaINPUT {
   return {
-    code: '',
-    name: '',
-    owner: '',
-    description: '',
+    code: "",
+    name: "",
+    owner: "",
+    description: "",
     systemActioners: [],
     originData: undefined,
     onchainData: undefined,
     isVerified: false,
-    mintAuthorization: ''
+    mintAuthorization: ""
   };
 }
 export const NFTSchemaINPUT = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaINPUT',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaINPUT",
   encode(message: NFTSchemaINPUT, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.code !== '') {
+    if (message.code !== "") {
       writer.uint32(10).string(message.code);
     }
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
-    if (message.owner !== '') {
+    if (message.owner !== "") {
       writer.uint32(26).string(message.owner);
     }
-    if (message.description !== '') {
+    if (message.description !== "") {
       writer.uint32(34).string(message.description);
     }
     for (const v of message.systemActioners) {
@@ -307,7 +306,7 @@ export const NFTSchemaINPUT = {
     if (message.isVerified === true) {
       writer.uint32(64).bool(message.isVerified);
     }
-    if (message.mintAuthorization !== '') {
+    if (message.mintAuthorization !== "") {
       writer.uint32(74).string(message.mintAuthorization);
     }
     return writer;
@@ -319,51 +318,51 @@ export const NFTSchemaINPUT = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.code = reader.string();
-        break;
-      case 2:
-        message.name = reader.string();
-        break;
-      case 3:
-        message.owner = reader.string();
-        break;
-      case 4:
-        message.description = reader.string();
-        break;
-      case 5:
-        message.systemActioners.push(reader.string());
-        break;
-      case 6:
-        message.originData = OriginData.decode(reader, reader.uint32());
-        break;
-      case 7:
-        message.onchainData = OnChainData.decode(reader, reader.uint32());
-        break;
-      case 8:
-        message.isVerified = reader.bool();
-        break;
-      case 9:
-        message.mintAuthorization = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.code = reader.string();
+          break;
+        case 2:
+          message.name = reader.string();
+          break;
+        case 3:
+          message.owner = reader.string();
+          break;
+        case 4:
+          message.description = reader.string();
+          break;
+        case 5:
+          message.systemActioners.push(reader.string());
+          break;
+        case 6:
+          message.originData = OriginData.decode(reader, reader.uint32());
+          break;
+        case 7:
+          message.onchainData = OnChainData.decode(reader, reader.uint32());
+          break;
+        case 8:
+          message.isVerified = reader.bool();
+          break;
+        case 9:
+          message.mintAuthorization = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<NFTSchemaINPUT>): NFTSchemaINPUT {
     const message = createBaseNFTSchemaINPUT();
-    message.code = object.code ?? '';
-    message.name = object.name ?? '';
-    message.owner = object.owner ?? '';
-    message.description = object.description ?? '';
+    message.code = object.code ?? "";
+    message.name = object.name ?? "";
+    message.owner = object.owner ?? "";
+    message.description = object.description ?? "";
     message.systemActioners = object.systemActioners?.map(e => e) || [];
     message.originData = object.originData !== undefined && object.originData !== null ? OriginData.fromPartial(object.originData) : undefined;
     message.onchainData = object.onchainData !== undefined && object.onchainData !== null ? OnChainData.fromPartial(object.onchainData) : undefined;
     message.isVerified = object.isVerified ?? false;
-    message.mintAuthorization = object.mintAuthorization ?? '';
+    message.mintAuthorization = object.mintAuthorization ?? "";
     return message;
   },
   fromAmino(object: NFTSchemaINPUTAmino): NFTSchemaINPUT {
@@ -397,10 +396,10 @@ export const NFTSchemaINPUT = {
   },
   toAmino(message: NFTSchemaINPUT): NFTSchemaINPUTAmino {
     const obj: any = {};
-    obj.code = message.code === '' ? undefined : message.code;
-    obj.name = message.name === '' ? undefined : message.name;
-    obj.owner = message.owner === '' ? undefined : message.owner;
-    obj.description = message.description === '' ? undefined : message.description;
+    obj.code = message.code === "" ? undefined : message.code;
+    obj.name = message.name === "" ? undefined : message.name;
+    obj.owner = message.owner === "" ? undefined : message.owner;
+    obj.description = message.description === "" ? undefined : message.description;
     if (message.systemActioners) {
       obj.system_actioners = message.systemActioners.map(e => e);
     } else {
@@ -409,7 +408,7 @@ export const NFTSchemaINPUT = {
     obj.origin_data = message.originData ? OriginData.toAmino(message.originData) : undefined;
     obj.onchain_data = message.onchainData ? OnChainData.toAmino(message.onchainData) : undefined;
     obj.isVerified = message.isVerified === false ? undefined : message.isVerified;
-    obj.mint_authorization = message.mintAuthorization === '' ? undefined : message.mintAuthorization;
+    obj.mint_authorization = message.mintAuthorization === "" ? undefined : message.mintAuthorization;
     return obj;
   },
   fromAminoMsg(object: NFTSchemaINPUTAminoMsg): NFTSchemaINPUT {
@@ -423,36 +422,36 @@ export const NFTSchemaINPUT = {
   },
   toProtoMsg(message: NFTSchemaINPUT): NFTSchemaINPUTProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaINPUT',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaINPUT",
       value: NFTSchemaINPUT.encode(message).finish()
     };
   }
 };
 function createBaseNFTSchemaQueryResult(): NFTSchemaQueryResult {
   return {
-    code: '',
-    name: '',
-    owner: '',
-    description: '',
+    code: "",
+    name: "",
+    owner: "",
+    description: "",
     originData: undefined,
     onchainData: undefined,
     isVerified: false,
-    mintAuthorization: ''
+    mintAuthorization: ""
   };
 }
 export const NFTSchemaQueryResult = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaQueryResult',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaQueryResult",
   encode(message: NFTSchemaQueryResult, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.code !== '') {
+    if (message.code !== "") {
       writer.uint32(10).string(message.code);
     }
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
-    if (message.owner !== '') {
+    if (message.owner !== "") {
       writer.uint32(26).string(message.owner);
     }
-    if (message.description !== '') {
+    if (message.description !== "") {
       writer.uint32(34).string(message.description);
     }
     if (message.originData !== undefined) {
@@ -464,7 +463,7 @@ export const NFTSchemaQueryResult = {
     if (message.isVerified === true) {
       writer.uint32(56).bool(message.isVerified);
     }
-    if (message.mintAuthorization !== '') {
+    if (message.mintAuthorization !== "") {
       writer.uint32(66).string(message.mintAuthorization);
     }
     return writer;
@@ -476,47 +475,47 @@ export const NFTSchemaQueryResult = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.code = reader.string();
-        break;
-      case 2:
-        message.name = reader.string();
-        break;
-      case 3:
-        message.owner = reader.string();
-        break;
-      case 4:
-        message.description = reader.string();
-        break;
-      case 5:
-        message.originData = OriginData.decode(reader, reader.uint32());
-        break;
-      case 6:
-        message.onchainData = OnChainDataResult.decode(reader, reader.uint32());
-        break;
-      case 7:
-        message.isVerified = reader.bool();
-        break;
-      case 8:
-        message.mintAuthorization = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.code = reader.string();
+          break;
+        case 2:
+          message.name = reader.string();
+          break;
+        case 3:
+          message.owner = reader.string();
+          break;
+        case 4:
+          message.description = reader.string();
+          break;
+        case 5:
+          message.originData = OriginData.decode(reader, reader.uint32());
+          break;
+        case 6:
+          message.onchainData = OnChainDataResult.decode(reader, reader.uint32());
+          break;
+        case 7:
+          message.isVerified = reader.bool();
+          break;
+        case 8:
+          message.mintAuthorization = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<NFTSchemaQueryResult>): NFTSchemaQueryResult {
     const message = createBaseNFTSchemaQueryResult();
-    message.code = object.code ?? '';
-    message.name = object.name ?? '';
-    message.owner = object.owner ?? '';
-    message.description = object.description ?? '';
+    message.code = object.code ?? "";
+    message.name = object.name ?? "";
+    message.owner = object.owner ?? "";
+    message.description = object.description ?? "";
     message.originData = object.originData !== undefined && object.originData !== null ? OriginData.fromPartial(object.originData) : undefined;
     message.onchainData = object.onchainData !== undefined && object.onchainData !== null ? OnChainDataResult.fromPartial(object.onchainData) : undefined;
     message.isVerified = object.isVerified ?? false;
-    message.mintAuthorization = object.mintAuthorization ?? '';
+    message.mintAuthorization = object.mintAuthorization ?? "";
     return message;
   },
   fromAmino(object: NFTSchemaQueryResultAmino): NFTSchemaQueryResult {
@@ -549,14 +548,14 @@ export const NFTSchemaQueryResult = {
   },
   toAmino(message: NFTSchemaQueryResult): NFTSchemaQueryResultAmino {
     const obj: any = {};
-    obj.code = message.code === '' ? undefined : message.code;
-    obj.name = message.name === '' ? undefined : message.name;
-    obj.owner = message.owner === '' ? undefined : message.owner;
-    obj.description = message.description === '' ? undefined : message.description;
+    obj.code = message.code === "" ? undefined : message.code;
+    obj.name = message.name === "" ? undefined : message.name;
+    obj.owner = message.owner === "" ? undefined : message.owner;
+    obj.description = message.description === "" ? undefined : message.description;
     obj.origin_data = message.originData ? OriginData.toAmino(message.originData) : undefined;
     obj.onchain_data = message.onchainData ? OnChainDataResult.toAmino(message.onchainData) : undefined;
     obj.isVerified = message.isVerified === false ? undefined : message.isVerified;
-    obj.mint_authorization = message.mintAuthorization === '' ? undefined : message.mintAuthorization;
+    obj.mint_authorization = message.mintAuthorization === "" ? undefined : message.mintAuthorization;
     return obj;
   },
   fromAminoMsg(object: NFTSchemaQueryResultAminoMsg): NFTSchemaQueryResult {
@@ -570,7 +569,7 @@ export const NFTSchemaQueryResult = {
   },
   toProtoMsg(message: NFTSchemaQueryResult): NFTSchemaQueryResultProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.NFTSchemaQueryResult',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTSchemaQueryResult",
       value: NFTSchemaQueryResult.encode(message).finish()
     };
   }

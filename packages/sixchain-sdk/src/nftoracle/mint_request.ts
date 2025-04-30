@@ -1,9 +1,8 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Timestamp } from '../google/protobuf/timestamp';
-import { fromTimestamp,Long, toTimestamp } from '../helpers';
-import { DataHash, DataHashAmino, DataHashSDKType,RequestStatus } from './request';
+import { RequestStatus, DataHash, DataHashAmino, DataHashSDKType } from "./request";
+import { Timestamp } from "../google/protobuf/timestamp";
+import { Long, toTimestamp, fromTimestamp } from "../helpers";
+import * as _m0 from "protobufjs/minimal";
 export interface MintRequest {
   id: Long;
   nftSchemaCode: string;
@@ -19,7 +18,7 @@ export interface MintRequest {
   expiredHeight: Long;
 }
 export interface MintRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.MintRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest";
   value: Uint8Array;
 }
 export interface MintRequestAmino {
@@ -37,7 +36,7 @@ export interface MintRequestAmino {
   expired_height?: string;
 }
 export interface MintRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.MintRequest';
+  type: "/thesixnetwork.sixprotocol.nftoracle.MintRequest";
   value: MintRequestAmino;
 }
 export interface MintRequestSDKType {
@@ -56,8 +55,8 @@ export interface MintRequestSDKType {
 function createBaseMintRequest(): MintRequest {
   return {
     id: Long.UZERO,
-    nftSchemaCode: '',
-    tokenId: '',
+    nftSchemaCode: "",
+    tokenId: "",
     requiredConfirm: Long.UZERO,
     status: 0,
     currentConfirm: Long.UZERO,
@@ -69,15 +68,15 @@ function createBaseMintRequest(): MintRequest {
   };
 }
 export const MintRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.MintRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest",
   encode(message: MintRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
     }
-    if (message.nftSchemaCode !== '') {
+    if (message.nftSchemaCode !== "") {
       writer.uint32(18).string(message.nftSchemaCode);
     }
-    if (message.tokenId !== '') {
+    if (message.tokenId !== "") {
       writer.uint32(26).string(message.tokenId);
     }
     if (!message.requiredConfirm.isZero()) {
@@ -113,42 +112,42 @@ export const MintRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.id = reader.uint64() as Long;
-        break;
-      case 2:
-        message.nftSchemaCode = reader.string();
-        break;
-      case 3:
-        message.tokenId = reader.string();
-        break;
-      case 4:
-        message.requiredConfirm = reader.uint64() as Long;
-        break;
-      case 5:
-        message.status = reader.int32() as any;
-        break;
-      case 6:
-        message.currentConfirm = reader.uint64() as Long;
-        break;
-      case 7:
-        message.confirmers.push(reader.string());
-        break;
-      case 8:
-        message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      case 9:
-        message.validUntil = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
-        break;
-      case 10:
-        message.dataHashes.push(DataHash.decode(reader, reader.uint32()));
-        break;
-      case 11:
-        message.expiredHeight = reader.int64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.id = reader.uint64() as Long;
+          break;
+        case 2:
+          message.nftSchemaCode = reader.string();
+          break;
+        case 3:
+          message.tokenId = reader.string();
+          break;
+        case 4:
+          message.requiredConfirm = reader.uint64() as Long;
+          break;
+        case 5:
+          message.status = reader.int32() as any;
+          break;
+        case 6:
+          message.currentConfirm = reader.uint64() as Long;
+          break;
+        case 7:
+          message.confirmers.push(reader.string());
+          break;
+        case 8:
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 9:
+          message.validUntil = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 10:
+          message.dataHashes.push(DataHash.decode(reader, reader.uint32()));
+          break;
+        case 11:
+          message.expiredHeight = reader.int64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -156,8 +155,8 @@ export const MintRequest = {
   fromPartial(object: Partial<MintRequest>): MintRequest {
     const message = createBaseMintRequest();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
-    message.nftSchemaCode = object.nftSchemaCode ?? '';
-    message.tokenId = object.tokenId ?? '';
+    message.nftSchemaCode = object.nftSchemaCode ?? "";
+    message.tokenId = object.tokenId ?? "";
     message.requiredConfirm = object.requiredConfirm !== undefined && object.requiredConfirm !== null ? Long.fromValue(object.requiredConfirm) : Long.UZERO;
     message.status = object.status ?? 0;
     message.currentConfirm = object.currentConfirm !== undefined && object.currentConfirm !== null ? Long.fromValue(object.currentConfirm) : Long.UZERO;
@@ -203,12 +202,12 @@ export const MintRequest = {
   },
   toAmino(message: MintRequest): MintRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
-    obj.nft_schema_code = message.nftSchemaCode === '' ? undefined : message.nftSchemaCode;
-    obj.token_id = message.tokenId === '' ? undefined : message.tokenId;
-    obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
+    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.nft_schema_code = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.token_id = message.tokenId === "" ? undefined : message.tokenId;
+    obj.required_confirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
-    obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
+    obj.current_confirm = !message.currentConfirm.isZero() ? (message.currentConfirm?.toString)() : undefined;
     if (message.confirmers) {
       obj.confirmers = message.confirmers.map(e => e);
     } else {
@@ -221,7 +220,7 @@ export const MintRequest = {
     } else {
       obj.data_hashes = message.dataHashes;
     }
-    obj.expired_height = !message.expiredHeight.isZero() ? message.expiredHeight?.toString() : undefined;
+    obj.expired_height = !message.expiredHeight.isZero() ? (message.expiredHeight?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: MintRequestAminoMsg): MintRequest {
@@ -235,7 +234,7 @@ export const MintRequest = {
   },
   toProtoMsg(message: MintRequest): MintRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.MintRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.nftoracle.MintRequest",
       value: MintRequest.encode(message).finish()
     };
   }

@@ -1,9 +1,8 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Admin, AdminAmino, AdminSDKType } from './admin';
-import { Group, GroupAmino, GroupSDKType } from './group';
-import { Params, ParamsAmino, ParamsSDKType } from './params';
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Group, GroupAmino, GroupSDKType } from "./group";
+import { Admin, AdminAmino, AdminSDKType } from "./admin";
+import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the protocoladmin module's genesis state. */
 export interface GenesisState {
   params: Params;
@@ -12,7 +11,7 @@ export interface GenesisState {
   adminList: Admin[];
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.GenesisState';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.GenesisState";
   value: Uint8Array;
 }
 /** GenesisState defines the protocoladmin module's genesis state. */
@@ -23,7 +22,7 @@ export interface GenesisStateAmino {
   adminList?: AdminAmino[];
 }
 export interface GenesisStateAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.GenesisState';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.GenesisState";
   value: GenesisStateAmino;
 }
 /** GenesisState defines the protocoladmin module's genesis state. */
@@ -36,18 +35,18 @@ export interface GenesisStateSDKType {
 function createBaseGenesisState(): GenesisState {
   return {
     params: Params.fromPartial({}),
-    portId: '',
+    portId: "",
     groupList: [],
     adminList: []
   };
 }
 export const GenesisState = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.GenesisState',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.GenesisState",
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
-    if (message.portId !== '') {
+    if (message.portId !== "") {
       writer.uint32(18).string(message.portId);
     }
     for (const v of message.groupList) {
@@ -65,21 +64,21 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.params = Params.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.portId = reader.string();
-        break;
-      case 3:
-        message.groupList.push(Group.decode(reader, reader.uint32()));
-        break;
-      case 4:
-        message.adminList.push(Admin.decode(reader, reader.uint32()));
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.portId = reader.string();
+          break;
+        case 3:
+          message.groupList.push(Group.decode(reader, reader.uint32()));
+          break;
+        case 4:
+          message.adminList.push(Admin.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -87,7 +86,7 @@ export const GenesisState = {
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.portId = object.portId ?? '';
+    message.portId = object.portId ?? "";
     message.groupList = object.groupList?.map(e => Group.fromPartial(e)) || [];
     message.adminList = object.adminList?.map(e => Admin.fromPartial(e)) || [];
     return message;
@@ -107,7 +106,7 @@ export const GenesisState = {
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
-    obj.port_id = message.portId === '' ? undefined : message.portId;
+    obj.port_id = message.portId === "" ? undefined : message.portId;
     if (message.groupList) {
       obj.groupList = message.groupList.map(e => e ? Group.toAmino(e) : undefined);
     } else {
@@ -131,7 +130,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.GenesisState',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.GenesisState",
       value: GenesisState.encode(message).finish()
     };
   }

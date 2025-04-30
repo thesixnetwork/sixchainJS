@@ -1,7 +1,6 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Coin, CoinAmino, CoinSDKType } from '../cosmos/base/v1beta1/coin';
+import { Coin, CoinAmino, CoinSDKType } from "../cosmos/base/v1beta1/coin";
+import * as _m0 from "protobufjs/minimal";
 export interface LockSchemaFee {
   id: string;
   virtualSchemaCode: string;
@@ -9,7 +8,7 @@ export interface LockSchemaFee {
   proposer: string;
 }
 export interface LockSchemaFeeProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.LockSchemaFee';
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.LockSchemaFee";
   value: Uint8Array;
 }
 export interface LockSchemaFeeAmino {
@@ -19,7 +18,7 @@ export interface LockSchemaFeeAmino {
   proposer?: string;
 }
 export interface LockSchemaFeeAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.LockSchemaFee';
+  type: "/thesixnetwork.sixprotocol.nftmngr.LockSchemaFee";
   value: LockSchemaFeeAmino;
 }
 export interface LockSchemaFeeSDKType {
@@ -30,25 +29,25 @@ export interface LockSchemaFeeSDKType {
 }
 function createBaseLockSchemaFee(): LockSchemaFee {
   return {
-    id: '',
-    virtualSchemaCode: '',
+    id: "",
+    virtualSchemaCode: "",
     amount: Coin.fromPartial({}),
-    proposer: ''
+    proposer: ""
   };
 }
 export const LockSchemaFee = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.LockSchemaFee',
+  typeUrl: "/thesixnetwork.sixprotocol.nftmngr.LockSchemaFee",
   encode(message: LockSchemaFee, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== '') {
+    if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.virtualSchemaCode !== '') {
+    if (message.virtualSchemaCode !== "") {
       writer.uint32(18).string(message.virtualSchemaCode);
     }
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(26).fork()).ldelim();
     }
-    if (message.proposer !== '') {
+    if (message.proposer !== "") {
       writer.uint32(34).string(message.proposer);
     }
     return writer;
@@ -60,31 +59,31 @@ export const LockSchemaFee = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.id = reader.string();
-        break;
-      case 2:
-        message.virtualSchemaCode = reader.string();
-        break;
-      case 3:
-        message.amount = Coin.decode(reader, reader.uint32());
-        break;
-      case 4:
-        message.proposer = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.id = reader.string();
+          break;
+        case 2:
+          message.virtualSchemaCode = reader.string();
+          break;
+        case 3:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        case 4:
+          message.proposer = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<LockSchemaFee>): LockSchemaFee {
     const message = createBaseLockSchemaFee();
-    message.id = object.id ?? '';
-    message.virtualSchemaCode = object.virtualSchemaCode ?? '';
+    message.id = object.id ?? "";
+    message.virtualSchemaCode = object.virtualSchemaCode ?? "";
     message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
-    message.proposer = object.proposer ?? '';
+    message.proposer = object.proposer ?? "";
     return message;
   },
   fromAmino(object: LockSchemaFeeAmino): LockSchemaFee {
@@ -105,10 +104,10 @@ export const LockSchemaFee = {
   },
   toAmino(message: LockSchemaFee): LockSchemaFeeAmino {
     const obj: any = {};
-    obj.id = message.id === '' ? undefined : message.id;
-    obj.virtualSchemaCode = message.virtualSchemaCode === '' ? undefined : message.virtualSchemaCode;
+    obj.id = message.id === "" ? undefined : message.id;
+    obj.virtualSchemaCode = message.virtualSchemaCode === "" ? undefined : message.virtualSchemaCode;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
-    obj.proposer = message.proposer === '' ? undefined : message.proposer;
+    obj.proposer = message.proposer === "" ? undefined : message.proposer;
     return obj;
   },
   fromAminoMsg(object: LockSchemaFeeAminoMsg): LockSchemaFee {
@@ -122,7 +121,7 @@ export const LockSchemaFee = {
   },
   toProtoMsg(message: LockSchemaFee): LockSchemaFeeProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.LockSchemaFee',
+      typeUrl: "/thesixnetwork.sixprotocol.nftmngr.LockSchemaFee",
       value: LockSchemaFee.encode(message).finish()
     };
   }

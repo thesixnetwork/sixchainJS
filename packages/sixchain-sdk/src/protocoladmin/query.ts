@@ -1,20 +1,19 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from '../cosmos/base/query/v1beta1/pagination';
-import { Admin, AdminAmino, AdminSDKType } from './admin';
-import { Group, GroupAmino, GroupSDKType } from './group';
-import { Params, ParamsAmino, ParamsSDKType } from './params';
+import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../cosmos/base/query/v1beta1/pagination";
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Group, GroupAmino, GroupSDKType } from "./group";
+import { Admin, AdminAmino, AdminSDKType } from "./admin";
+import * as _m0 from "protobufjs/minimal";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryParamsRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryParamsRequest";
   value: Uint8Array;
 }
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryParamsRequest';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryParamsRequest";
   value: QueryParamsRequestAmino;
 }
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
@@ -25,7 +24,7 @@ export interface QueryParamsResponse {
   params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryParamsResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryParamsResponse";
   value: Uint8Array;
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
@@ -34,7 +33,7 @@ export interface QueryParamsResponseAmino {
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryParamsResponse';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryParamsResponse";
   value: QueryParamsResponseAmino;
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
@@ -45,14 +44,14 @@ export interface QueryGetGroupRequest {
   name: string;
 }
 export interface QueryGetGroupRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupRequest";
   value: Uint8Array;
 }
 export interface QueryGetGroupRequestAmino {
   name?: string;
 }
 export interface QueryGetGroupRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupRequest';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupRequest";
   value: QueryGetGroupRequestAmino;
 }
 export interface QueryGetGroupRequestSDKType {
@@ -62,14 +61,14 @@ export interface QueryGetGroupResponse {
   group: Group;
 }
 export interface QueryGetGroupResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupResponse";
   value: Uint8Array;
 }
 export interface QueryGetGroupResponseAmino {
   group?: GroupAmino;
 }
 export interface QueryGetGroupResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupResponse';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupResponse";
   value: QueryGetGroupResponseAmino;
 }
 export interface QueryGetGroupResponseSDKType {
@@ -79,14 +78,14 @@ export interface QueryAllGroupRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllGroupRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupRequest";
   value: Uint8Array;
 }
 export interface QueryAllGroupRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllGroupRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupRequest';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupRequest";
   value: QueryAllGroupRequestAmino;
 }
 export interface QueryAllGroupRequestSDKType {
@@ -97,7 +96,7 @@ export interface QueryAllGroupResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllGroupResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupResponse";
   value: Uint8Array;
 }
 export interface QueryAllGroupResponseAmino {
@@ -105,7 +104,7 @@ export interface QueryAllGroupResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllGroupResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupResponse';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupResponse";
   value: QueryAllGroupResponseAmino;
 }
 export interface QueryAllGroupResponseSDKType {
@@ -117,7 +116,7 @@ export interface QueryGetAdminRequest {
   admin: string;
 }
 export interface QueryGetAdminRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminRequest";
   value: Uint8Array;
 }
 export interface QueryGetAdminRequestAmino {
@@ -125,7 +124,7 @@ export interface QueryGetAdminRequestAmino {
   admin?: string;
 }
 export interface QueryGetAdminRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminRequest';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminRequest";
   value: QueryGetAdminRequestAmino;
 }
 export interface QueryGetAdminRequestSDKType {
@@ -136,14 +135,14 @@ export interface QueryGetAdminResponse {
   admin: Admin;
 }
 export interface QueryGetAdminResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminResponse";
   value: Uint8Array;
 }
 export interface QueryGetAdminResponseAmino {
   admin?: AdminAmino;
 }
 export interface QueryGetAdminResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminResponse';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminResponse";
   value: QueryGetAdminResponseAmino;
 }
 export interface QueryGetAdminResponseSDKType {
@@ -153,14 +152,14 @@ export interface QueryAllAdminRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllAdminRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminRequest";
   value: Uint8Array;
 }
 export interface QueryAllAdminRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllAdminRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminRequest';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminRequest";
   value: QueryAllAdminRequestAmino;
 }
 export interface QueryAllAdminRequestSDKType {
@@ -171,7 +170,7 @@ export interface QueryAllAdminResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllAdminResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminResponse";
   value: Uint8Array;
 }
 export interface QueryAllAdminResponseAmino {
@@ -179,7 +178,7 @@ export interface QueryAllAdminResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllAdminResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminResponse';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminResponse";
   value: QueryAllAdminResponseAmino;
 }
 export interface QueryAllAdminResponseSDKType {
@@ -191,7 +190,7 @@ export interface QueryListAdminOfGroupRequest {
   pagination?: PageRequest;
 }
 export interface QueryListAdminOfGroupRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupRequest';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupRequest";
   value: Uint8Array;
 }
 export interface QueryListAdminOfGroupRequestAmino {
@@ -199,7 +198,7 @@ export interface QueryListAdminOfGroupRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryListAdminOfGroupRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupRequest';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupRequest";
   value: QueryListAdminOfGroupRequestAmino;
 }
 export interface QueryListAdminOfGroupRequestSDKType {
@@ -211,7 +210,7 @@ export interface QueryListAdminOfGroupResponse {
   pagination?: PageResponse;
 }
 export interface QueryListAdminOfGroupResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupResponse';
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupResponse";
   value: Uint8Array;
 }
 export interface QueryListAdminOfGroupResponseAmino {
@@ -219,7 +218,7 @@ export interface QueryListAdminOfGroupResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryListAdminOfGroupResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupResponse';
+  type: "/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupResponse";
   value: QueryListAdminOfGroupResponseAmino;
 }
 export interface QueryListAdminOfGroupResponseSDKType {
@@ -230,7 +229,7 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryParamsRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryParamsRequest",
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -241,9 +240,9 @@ export const QueryParamsRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -271,7 +270,7 @@ export const QueryParamsRequest = {
   },
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryParamsRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryParamsRequest",
       value: QueryParamsRequest.encode(message).finish()
     };
   }
@@ -282,7 +281,7 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
   };
 }
 export const QueryParamsResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryParamsResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryParamsResponse",
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -296,12 +295,12 @@ export const QueryParamsResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.params = Params.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -334,20 +333,20 @@ export const QueryParamsResponse = {
   },
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryParamsResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryParamsResponse",
       value: QueryParamsResponse.encode(message).finish()
     };
   }
 };
 function createBaseQueryGetGroupRequest(): QueryGetGroupRequest {
   return {
-    name: ''
+    name: ""
   };
 }
 export const QueryGetGroupRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupRequest",
   encode(message: QueryGetGroupRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== '') {
+    if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     return writer;
@@ -359,19 +358,19 @@ export const QueryGetGroupRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.name = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.name = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<QueryGetGroupRequest>): QueryGetGroupRequest {
     const message = createBaseQueryGetGroupRequest();
-    message.name = object.name ?? '';
+    message.name = object.name ?? "";
     return message;
   },
   fromAmino(object: QueryGetGroupRequestAmino): QueryGetGroupRequest {
@@ -383,7 +382,7 @@ export const QueryGetGroupRequest = {
   },
   toAmino(message: QueryGetGroupRequest): QueryGetGroupRequestAmino {
     const obj: any = {};
-    obj.name = message.name === '' ? undefined : message.name;
+    obj.name = message.name === "" ? undefined : message.name;
     return obj;
   },
   fromAminoMsg(object: QueryGetGroupRequestAminoMsg): QueryGetGroupRequest {
@@ -397,7 +396,7 @@ export const QueryGetGroupRequest = {
   },
   toProtoMsg(message: QueryGetGroupRequest): QueryGetGroupRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupRequest",
       value: QueryGetGroupRequest.encode(message).finish()
     };
   }
@@ -408,7 +407,7 @@ function createBaseQueryGetGroupResponse(): QueryGetGroupResponse {
   };
 }
 export const QueryGetGroupResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupResponse",
   encode(message: QueryGetGroupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.group !== undefined) {
       Group.encode(message.group, writer.uint32(10).fork()).ldelim();
@@ -422,12 +421,12 @@ export const QueryGetGroupResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.group = Group.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.group = Group.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -460,7 +459,7 @@ export const QueryGetGroupResponse = {
   },
   toProtoMsg(message: QueryGetGroupResponse): QueryGetGroupResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetGroupResponse",
       value: QueryGetGroupResponse.encode(message).finish()
     };
   }
@@ -471,7 +470,7 @@ function createBaseQueryAllGroupRequest(): QueryAllGroupRequest {
   };
 }
 export const QueryAllGroupRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupRequest",
   encode(message: QueryAllGroupRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -485,12 +484,12 @@ export const QueryAllGroupRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.pagination = PageRequest.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -523,7 +522,7 @@ export const QueryAllGroupRequest = {
   },
   toProtoMsg(message: QueryAllGroupRequest): QueryAllGroupRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupRequest",
       value: QueryAllGroupRequest.encode(message).finish()
     };
   }
@@ -535,7 +534,7 @@ function createBaseQueryAllGroupResponse(): QueryAllGroupResponse {
   };
 }
 export const QueryAllGroupResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupResponse",
   encode(message: QueryAllGroupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.group) {
       Group.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -552,15 +551,15 @@ export const QueryAllGroupResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.group.push(Group.decode(reader, reader.uint32()));
-        break;
-      case 2:
-        message.pagination = PageResponse.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.group.push(Group.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -600,24 +599,24 @@ export const QueryAllGroupResponse = {
   },
   toProtoMsg(message: QueryAllGroupResponse): QueryAllGroupResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllGroupResponse",
       value: QueryAllGroupResponse.encode(message).finish()
     };
   }
 };
 function createBaseQueryGetAdminRequest(): QueryGetAdminRequest {
   return {
-    group: '',
-    admin: ''
+    group: "",
+    admin: ""
   };
 }
 export const QueryGetAdminRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminRequest",
   encode(message: QueryGetAdminRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.group !== '') {
+    if (message.group !== "") {
       writer.uint32(10).string(message.group);
     }
-    if (message.admin !== '') {
+    if (message.admin !== "") {
       writer.uint32(18).string(message.admin);
     }
     return writer;
@@ -629,23 +628,23 @@ export const QueryGetAdminRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.group = reader.string();
-        break;
-      case 2:
-        message.admin = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.group = reader.string();
+          break;
+        case 2:
+          message.admin = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<QueryGetAdminRequest>): QueryGetAdminRequest {
     const message = createBaseQueryGetAdminRequest();
-    message.group = object.group ?? '';
-    message.admin = object.admin ?? '';
+    message.group = object.group ?? "";
+    message.admin = object.admin ?? "";
     return message;
   },
   fromAmino(object: QueryGetAdminRequestAmino): QueryGetAdminRequest {
@@ -660,8 +659,8 @@ export const QueryGetAdminRequest = {
   },
   toAmino(message: QueryGetAdminRequest): QueryGetAdminRequestAmino {
     const obj: any = {};
-    obj.group = message.group === '' ? undefined : message.group;
-    obj.admin = message.admin === '' ? undefined : message.admin;
+    obj.group = message.group === "" ? undefined : message.group;
+    obj.admin = message.admin === "" ? undefined : message.admin;
     return obj;
   },
   fromAminoMsg(object: QueryGetAdminRequestAminoMsg): QueryGetAdminRequest {
@@ -675,7 +674,7 @@ export const QueryGetAdminRequest = {
   },
   toProtoMsg(message: QueryGetAdminRequest): QueryGetAdminRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminRequest",
       value: QueryGetAdminRequest.encode(message).finish()
     };
   }
@@ -686,7 +685,7 @@ function createBaseQueryGetAdminResponse(): QueryGetAdminResponse {
   };
 }
 export const QueryGetAdminResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminResponse",
   encode(message: QueryGetAdminResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.admin !== undefined) {
       Admin.encode(message.admin, writer.uint32(10).fork()).ldelim();
@@ -700,12 +699,12 @@ export const QueryGetAdminResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.admin = Admin.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.admin = Admin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -738,7 +737,7 @@ export const QueryGetAdminResponse = {
   },
   toProtoMsg(message: QueryGetAdminResponse): QueryGetAdminResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryGetAdminResponse",
       value: QueryGetAdminResponse.encode(message).finish()
     };
   }
@@ -749,7 +748,7 @@ function createBaseQueryAllAdminRequest(): QueryAllAdminRequest {
   };
 }
 export const QueryAllAdminRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminRequest",
   encode(message: QueryAllAdminRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -763,12 +762,12 @@ export const QueryAllAdminRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.pagination = PageRequest.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -801,7 +800,7 @@ export const QueryAllAdminRequest = {
   },
   toProtoMsg(message: QueryAllAdminRequest): QueryAllAdminRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminRequest",
       value: QueryAllAdminRequest.encode(message).finish()
     };
   }
@@ -813,7 +812,7 @@ function createBaseQueryAllAdminResponse(): QueryAllAdminResponse {
   };
 }
 export const QueryAllAdminResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminResponse",
   encode(message: QueryAllAdminResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.admin) {
       Admin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -830,15 +829,15 @@ export const QueryAllAdminResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.admin.push(Admin.decode(reader, reader.uint32()));
-        break;
-      case 2:
-        message.pagination = PageResponse.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.admin.push(Admin.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -878,21 +877,21 @@ export const QueryAllAdminResponse = {
   },
   toProtoMsg(message: QueryAllAdminResponse): QueryAllAdminResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryAllAdminResponse",
       value: QueryAllAdminResponse.encode(message).finish()
     };
   }
 };
 function createBaseQueryListAdminOfGroupRequest(): QueryListAdminOfGroupRequest {
   return {
-    group: '',
+    group: "",
     pagination: undefined
   };
 }
 export const QueryListAdminOfGroupRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupRequest',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupRequest",
   encode(message: QueryListAdminOfGroupRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.group !== '') {
+    if (message.group !== "") {
       writer.uint32(10).string(message.group);
     }
     if (message.pagination !== undefined) {
@@ -907,22 +906,22 @@ export const QueryListAdminOfGroupRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.group = reader.string();
-        break;
-      case 2:
-        message.pagination = PageRequest.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.group = reader.string();
+          break;
+        case 2:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<QueryListAdminOfGroupRequest>): QueryListAdminOfGroupRequest {
     const message = createBaseQueryListAdminOfGroupRequest();
-    message.group = object.group ?? '';
+    message.group = object.group ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
@@ -938,7 +937,7 @@ export const QueryListAdminOfGroupRequest = {
   },
   toAmino(message: QueryListAdminOfGroupRequest): QueryListAdminOfGroupRequestAmino {
     const obj: any = {};
-    obj.group = message.group === '' ? undefined : message.group;
+    obj.group = message.group === "" ? undefined : message.group;
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
@@ -953,7 +952,7 @@ export const QueryListAdminOfGroupRequest = {
   },
   toProtoMsg(message: QueryListAdminOfGroupRequest): QueryListAdminOfGroupRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupRequest',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupRequest",
       value: QueryListAdminOfGroupRequest.encode(message).finish()
     };
   }
@@ -965,7 +964,7 @@ function createBaseQueryListAdminOfGroupResponse(): QueryListAdminOfGroupRespons
   };
 }
 export const QueryListAdminOfGroupResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupResponse',
+  typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupResponse",
   encode(message: QueryListAdminOfGroupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.admin) {
       writer.uint32(10).string(v!);
@@ -982,15 +981,15 @@ export const QueryListAdminOfGroupResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.admin.push(reader.string());
-        break;
-      case 2:
-        message.pagination = PageResponse.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.admin.push(reader.string());
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -1030,7 +1029,7 @@ export const QueryListAdminOfGroupResponse = {
   },
   toProtoMsg(message: QueryListAdminOfGroupResponse): QueryListAdminOfGroupResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupResponse',
+      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.QueryListAdminOfGroupResponse",
       value: QueryListAdminOfGroupResponse.encode(message).finish()
     };
   }

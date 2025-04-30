@@ -1,11 +1,10 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Mintperm, MintpermAmino, MintpermSDKType } from './mintperm';
-import { Options, OptionsAmino, OptionsSDKType } from './options';
-import { Params, ParamsAmino, ParamsSDKType } from './params';
-import { Token, TokenAmino, TokenSDKType } from './token';
-import { TokenBurn, TokenBurnAmino, TokenBurnSDKType } from './token_burn';
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Token, TokenAmino, TokenSDKType } from "./token";
+import { Mintperm, MintpermAmino, MintpermSDKType } from "./mintperm";
+import { Options, OptionsAmino, OptionsSDKType } from "./options";
+import { TokenBurn, TokenBurnAmino, TokenBurnSDKType } from "./token_burn";
+import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the tokenmngr module's genesis state. */
 export interface GenesisState {
   params: Params;
@@ -16,7 +15,7 @@ export interface GenesisState {
   tokenBurnList: TokenBurn[];
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.GenesisState';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.GenesisState";
   value: Uint8Array;
 }
 /** GenesisState defines the tokenmngr module's genesis state. */
@@ -29,7 +28,7 @@ export interface GenesisStateAmino {
   tokenBurnList?: TokenBurnAmino[];
 }
 export interface GenesisStateAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.GenesisState';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.GenesisState";
   value: GenesisStateAmino;
 }
 /** GenesisState defines the tokenmngr module's genesis state. */
@@ -44,7 +43,7 @@ export interface GenesisStateSDKType {
 function createBaseGenesisState(): GenesisState {
   return {
     params: Params.fromPartial({}),
-    portId: '',
+    portId: "",
     tokenList: [],
     mintpermList: [],
     options: undefined,
@@ -52,12 +51,12 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.GenesisState',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.GenesisState",
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
-    if (message.portId !== '') {
+    if (message.portId !== "") {
       writer.uint32(18).string(message.portId);
     }
     for (const v of message.tokenList) {
@@ -81,27 +80,27 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.params = Params.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.portId = reader.string();
-        break;
-      case 3:
-        message.tokenList.push(Token.decode(reader, reader.uint32()));
-        break;
-      case 4:
-        message.mintpermList.push(Mintperm.decode(reader, reader.uint32()));
-        break;
-      case 6:
-        message.options = Options.decode(reader, reader.uint32());
-        break;
-      case 7:
-        message.tokenBurnList.push(TokenBurn.decode(reader, reader.uint32()));
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.portId = reader.string();
+          break;
+        case 3:
+          message.tokenList.push(Token.decode(reader, reader.uint32()));
+          break;
+        case 4:
+          message.mintpermList.push(Mintperm.decode(reader, reader.uint32()));
+          break;
+        case 6:
+          message.options = Options.decode(reader, reader.uint32());
+          break;
+        case 7:
+          message.tokenBurnList.push(TokenBurn.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -109,7 +108,7 @@ export const GenesisState = {
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.portId = object.portId ?? '';
+    message.portId = object.portId ?? "";
     message.tokenList = object.tokenList?.map(e => Token.fromPartial(e)) || [];
     message.mintpermList = object.mintpermList?.map(e => Mintperm.fromPartial(e)) || [];
     message.options = object.options !== undefined && object.options !== null ? Options.fromPartial(object.options) : undefined;
@@ -135,7 +134,7 @@ export const GenesisState = {
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
-    obj.port_id = message.portId === '' ? undefined : message.portId;
+    obj.port_id = message.portId === "" ? undefined : message.portId;
     if (message.tokenList) {
       obj.tokenList = message.tokenList.map(e => e ? Token.toAmino(e) : undefined);
     } else {
@@ -165,7 +164,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.GenesisState',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.GenesisState",
       value: GenesisState.encode(message).finish()
     };
   }

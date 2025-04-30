@@ -1,18 +1,17 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Long } from '../../../helpers';
-import { Params, ParamsAmino, ParamsSDKType } from './feemarket';
+import { Params, ParamsAmino, ParamsSDKType } from "./feemarket";
+import { Long } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** QueryParamsRequest defines the request type for querying x/evm parameters. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
-  typeUrl: '/ethermint.feemarket.v2.QueryParamsRequest';
+  typeUrl: "/ethermint.feemarket.v2.QueryParamsRequest";
   value: Uint8Array;
 }
 /** QueryParamsRequest defines the request type for querying x/evm parameters. */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
-  type: '/ethermint.feemarket.v2.QueryParamsRequest';
+  type: "/ethermint.feemarket.v2.QueryParamsRequest";
   value: QueryParamsRequestAmino;
 }
 /** QueryParamsRequest defines the request type for querying x/evm parameters. */
@@ -23,7 +22,7 @@ export interface QueryParamsResponse {
   params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
-  typeUrl: '/ethermint.feemarket.v2.QueryParamsResponse';
+  typeUrl: "/ethermint.feemarket.v2.QueryParamsResponse";
   value: Uint8Array;
 }
 /** QueryParamsResponse defines the response type for querying x/evm parameters. */
@@ -32,7 +31,7 @@ export interface QueryParamsResponseAmino {
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
-  type: '/ethermint.feemarket.v2.QueryParamsResponse';
+  type: "/ethermint.feemarket.v2.QueryParamsResponse";
   value: QueryParamsResponseAmino;
 }
 /** QueryParamsResponse defines the response type for querying x/evm parameters. */
@@ -45,7 +44,7 @@ export interface QueryParamsResponseSDKType {
  */
 export interface QueryBaseFeeRequest {}
 export interface QueryBaseFeeRequestProtoMsg {
-  typeUrl: '/ethermint.feemarket.v2.QueryBaseFeeRequest';
+  typeUrl: "/ethermint.feemarket.v2.QueryBaseFeeRequest";
   value: Uint8Array;
 }
 /**
@@ -54,7 +53,7 @@ export interface QueryBaseFeeRequestProtoMsg {
  */
 export interface QueryBaseFeeRequestAmino {}
 export interface QueryBaseFeeRequestAminoMsg {
-  type: '/ethermint.feemarket.v2.QueryBaseFeeRequest';
+  type: "/ethermint.feemarket.v2.QueryBaseFeeRequest";
   value: QueryBaseFeeRequestAmino;
 }
 /**
@@ -67,7 +66,7 @@ export interface QueryBaseFeeResponse {
   baseFee: string;
 }
 export interface QueryBaseFeeResponseProtoMsg {
-  typeUrl: '/ethermint.feemarket.v2.QueryBaseFeeResponse';
+  typeUrl: "/ethermint.feemarket.v2.QueryBaseFeeResponse";
   value: Uint8Array;
 }
 /** BaseFeeResponse returns the EIP1559 base fee. */
@@ -75,7 +74,7 @@ export interface QueryBaseFeeResponseAmino {
   base_fee?: string;
 }
 export interface QueryBaseFeeResponseAminoMsg {
-  type: '/ethermint.feemarket.v2.QueryBaseFeeResponse';
+  type: "/ethermint.feemarket.v2.QueryBaseFeeResponse";
   value: QueryBaseFeeResponseAmino;
 }
 /** BaseFeeResponse returns the EIP1559 base fee. */
@@ -88,7 +87,7 @@ export interface QueryBaseFeeResponseSDKType {
  */
 export interface QueryBlockGasRequest {}
 export interface QueryBlockGasRequestProtoMsg {
-  typeUrl: '/ethermint.feemarket.v2.QueryBlockGasRequest';
+  typeUrl: "/ethermint.feemarket.v2.QueryBlockGasRequest";
   value: Uint8Array;
 }
 /**
@@ -97,7 +96,7 @@ export interface QueryBlockGasRequestProtoMsg {
  */
 export interface QueryBlockGasRequestAmino {}
 export interface QueryBlockGasRequestAminoMsg {
-  type: '/ethermint.feemarket.v2.QueryBlockGasRequest';
+  type: "/ethermint.feemarket.v2.QueryBlockGasRequest";
   value: QueryBlockGasRequestAmino;
 }
 /**
@@ -110,7 +109,7 @@ export interface QueryBlockGasResponse {
   gas: Long;
 }
 export interface QueryBlockGasResponseProtoMsg {
-  typeUrl: '/ethermint.feemarket.v2.QueryBlockGasResponse';
+  typeUrl: "/ethermint.feemarket.v2.QueryBlockGasResponse";
   value: Uint8Array;
 }
 /** QueryBlockGasResponse returns block gas used for a given height. */
@@ -118,7 +117,7 @@ export interface QueryBlockGasResponseAmino {
   gas?: string;
 }
 export interface QueryBlockGasResponseAminoMsg {
-  type: '/ethermint.feemarket.v2.QueryBlockGasResponse';
+  type: "/ethermint.feemarket.v2.QueryBlockGasResponse";
   value: QueryBlockGasResponseAmino;
 }
 /** QueryBlockGasResponse returns block gas used for a given height. */
@@ -129,7 +128,7 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
-  typeUrl: '/ethermint.feemarket.v2.QueryParamsRequest',
+  typeUrl: "/ethermint.feemarket.v2.QueryParamsRequest",
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -140,9 +139,9 @@ export const QueryParamsRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -170,7 +169,7 @@ export const QueryParamsRequest = {
   },
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
-      typeUrl: '/ethermint.feemarket.v2.QueryParamsRequest',
+      typeUrl: "/ethermint.feemarket.v2.QueryParamsRequest",
       value: QueryParamsRequest.encode(message).finish()
     };
   }
@@ -181,7 +180,7 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
   };
 }
 export const QueryParamsResponse = {
-  typeUrl: '/ethermint.feemarket.v2.QueryParamsResponse',
+  typeUrl: "/ethermint.feemarket.v2.QueryParamsResponse",
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -195,12 +194,12 @@ export const QueryParamsResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.params = Params.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -233,7 +232,7 @@ export const QueryParamsResponse = {
   },
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
-      typeUrl: '/ethermint.feemarket.v2.QueryParamsResponse',
+      typeUrl: "/ethermint.feemarket.v2.QueryParamsResponse",
       value: QueryParamsResponse.encode(message).finish()
     };
   }
@@ -242,7 +241,7 @@ function createBaseQueryBaseFeeRequest(): QueryBaseFeeRequest {
   return {};
 }
 export const QueryBaseFeeRequest = {
-  typeUrl: '/ethermint.feemarket.v2.QueryBaseFeeRequest',
+  typeUrl: "/ethermint.feemarket.v2.QueryBaseFeeRequest",
   encode(_: QueryBaseFeeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -253,9 +252,9 @@ export const QueryBaseFeeRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -283,20 +282,20 @@ export const QueryBaseFeeRequest = {
   },
   toProtoMsg(message: QueryBaseFeeRequest): QueryBaseFeeRequestProtoMsg {
     return {
-      typeUrl: '/ethermint.feemarket.v2.QueryBaseFeeRequest',
+      typeUrl: "/ethermint.feemarket.v2.QueryBaseFeeRequest",
       value: QueryBaseFeeRequest.encode(message).finish()
     };
   }
 };
 function createBaseQueryBaseFeeResponse(): QueryBaseFeeResponse {
   return {
-    baseFee: ''
+    baseFee: ""
   };
 }
 export const QueryBaseFeeResponse = {
-  typeUrl: '/ethermint.feemarket.v2.QueryBaseFeeResponse',
+  typeUrl: "/ethermint.feemarket.v2.QueryBaseFeeResponse",
   encode(message: QueryBaseFeeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.baseFee !== '') {
+    if (message.baseFee !== "") {
       writer.uint32(10).string(message.baseFee);
     }
     return writer;
@@ -308,19 +307,19 @@ export const QueryBaseFeeResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.baseFee = reader.string();
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.baseFee = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<QueryBaseFeeResponse>): QueryBaseFeeResponse {
     const message = createBaseQueryBaseFeeResponse();
-    message.baseFee = object.baseFee ?? '';
+    message.baseFee = object.baseFee ?? "";
     return message;
   },
   fromAmino(object: QueryBaseFeeResponseAmino): QueryBaseFeeResponse {
@@ -332,7 +331,7 @@ export const QueryBaseFeeResponse = {
   },
   toAmino(message: QueryBaseFeeResponse): QueryBaseFeeResponseAmino {
     const obj: any = {};
-    obj.base_fee = message.baseFee === '' ? undefined : message.baseFee;
+    obj.base_fee = message.baseFee === "" ? undefined : message.baseFee;
     return obj;
   },
   fromAminoMsg(object: QueryBaseFeeResponseAminoMsg): QueryBaseFeeResponse {
@@ -346,7 +345,7 @@ export const QueryBaseFeeResponse = {
   },
   toProtoMsg(message: QueryBaseFeeResponse): QueryBaseFeeResponseProtoMsg {
     return {
-      typeUrl: '/ethermint.feemarket.v2.QueryBaseFeeResponse',
+      typeUrl: "/ethermint.feemarket.v2.QueryBaseFeeResponse",
       value: QueryBaseFeeResponse.encode(message).finish()
     };
   }
@@ -355,7 +354,7 @@ function createBaseQueryBlockGasRequest(): QueryBlockGasRequest {
   return {};
 }
 export const QueryBlockGasRequest = {
-  typeUrl: '/ethermint.feemarket.v2.QueryBlockGasRequest',
+  typeUrl: "/ethermint.feemarket.v2.QueryBlockGasRequest",
   encode(_: QueryBlockGasRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -366,9 +365,9 @@ export const QueryBlockGasRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -396,7 +395,7 @@ export const QueryBlockGasRequest = {
   },
   toProtoMsg(message: QueryBlockGasRequest): QueryBlockGasRequestProtoMsg {
     return {
-      typeUrl: '/ethermint.feemarket.v2.QueryBlockGasRequest',
+      typeUrl: "/ethermint.feemarket.v2.QueryBlockGasRequest",
       value: QueryBlockGasRequest.encode(message).finish()
     };
   }
@@ -407,7 +406,7 @@ function createBaseQueryBlockGasResponse(): QueryBlockGasResponse {
   };
 }
 export const QueryBlockGasResponse = {
-  typeUrl: '/ethermint.feemarket.v2.QueryBlockGasResponse',
+  typeUrl: "/ethermint.feemarket.v2.QueryBlockGasResponse",
   encode(message: QueryBlockGasResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.gas.isZero()) {
       writer.uint32(8).int64(message.gas);
@@ -421,12 +420,12 @@ export const QueryBlockGasResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.gas = reader.int64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.gas = reader.int64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -445,7 +444,7 @@ export const QueryBlockGasResponse = {
   },
   toAmino(message: QueryBlockGasResponse): QueryBlockGasResponseAmino {
     const obj: any = {};
-    obj.gas = !message.gas.isZero() ? message.gas?.toString() : undefined;
+    obj.gas = !message.gas.isZero() ? (message.gas?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryBlockGasResponseAminoMsg): QueryBlockGasResponse {
@@ -459,7 +458,7 @@ export const QueryBlockGasResponse = {
   },
   toProtoMsg(message: QueryBlockGasResponse): QueryBlockGasResponseProtoMsg {
     return {
-      typeUrl: '/ethermint.feemarket.v2.QueryBlockGasResponse',
+      typeUrl: "/ethermint.feemarket.v2.QueryBlockGasResponse",
       value: QueryBlockGasResponse.encode(message).finish()
     };
   }
