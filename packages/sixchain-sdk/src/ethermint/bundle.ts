@@ -12,14 +12,14 @@ import * as _62 from "./feemarket/v2/genesis";
 import * as _63 from "./feemarket/v2/query";
 import * as _64 from "./types/v1/account";
 import * as _65 from "./types/v1/web3";
-import * as _173 from "./evm/v1/tx.amino";
-import * as _174 from "./evm/v1/tx.registry";
-import * as _175 from "./evm/v1/query.rpc.Query";
-import * as _176 from "./feemarket/v1/query.rpc.Query";
-import * as _177 from "./feemarket/v2/query.rpc.Query";
-import * as _178 from "./evm/v1/tx.rpc.msg";
-import * as _201 from "./rpc.query";
-import * as _202 from "./rpc.tx";
+import * as _178 from "./evm/v1/tx.amino";
+import * as _179 from "./evm/v1/tx.registry";
+import * as _180 from "./evm/v1/query.rpc.Query";
+import * as _181 from "./feemarket/v1/query.rpc.Query";
+import * as _182 from "./feemarket/v2/query.rpc.Query";
+import * as _183 from "./evm/v1/tx.rpc.msg";
+import * as _210 from "./rpc.query";
+import * as _211 from "./rpc.tx";
 export namespace ethermint {
   export namespace crypto {
     export namespace v1 {
@@ -34,10 +34,10 @@ export namespace ethermint {
       ..._55,
       ..._56,
       ..._57,
-      ..._173,
-      ..._174,
-      ..._175,
-      ..._178
+      ..._178,
+      ..._179,
+      ..._180,
+      ..._183
     };
   }
   export namespace feemarket {
@@ -45,13 +45,13 @@ export namespace ethermint {
       ..._58,
       ..._59,
       ..._60,
-      ..._176
+      ..._181
     };
     export const v2 = {
       ..._61,
       ..._62,
       ..._63,
-      ..._177
+      ..._182
     };
   }
   export namespace types {
@@ -61,7 +61,7 @@ export namespace ethermint {
     };
   }
   export const ClientFactory = {
-    ..._201,
-    ..._202
+    ..._210,
+    ..._211
   };
 }

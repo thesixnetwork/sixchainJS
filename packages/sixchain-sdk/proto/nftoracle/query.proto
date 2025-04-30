@@ -38,6 +38,7 @@ service Query {
 		option (google.api.http).get = "/thesixnetwork/sixnft/nftoracle/action_request/{id}";
 	}
 
+
 	// Queries a list of ActionRequest items.
 	rpc ActionRequestAll(QueryAllActionRequestRequest) returns (QueryAllActionRequestResponse) {
 		option (google.api.http).get = "/thesixnetwork/sixnft/nftoracle/action_request";
@@ -129,6 +130,7 @@ message QueryGetActionRequestResponse {
 	ActionOracleRequest ActionOracleRequest = 1 [(gogoproto.nullable) = false];
 }
 
+
 message QueryAllActionRequestRequest {
 	cosmos.base.query.v1beta1.PageRequest pagination = 1;
 }
@@ -137,6 +139,7 @@ message QueryAllActionRequestResponse {
 	repeated ActionOracleRequest ActionOracleRequest = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
+
 
 message QueryGetCollectionOwnerRequestRequest {
 	uint64 id = 1;
