@@ -1,6 +1,8 @@
 syntax = "proto3";
-package thesixnetwork.sixprotocol.nftoracle;
+package thesixnetwork.sixnft.nftoracle;
 
-option go_package = "github.com/thesixnetwork/six-protocol/x/nftoracle/types";
+option go_package = "github.com/thesixnetwork/sixnft/x/nftoracle/types";
 
-message OracleConfig { int32 minimum_confirmation = 1; }
+message OracleConfig {
+  int32 minimum_confirmation = 1;
+}

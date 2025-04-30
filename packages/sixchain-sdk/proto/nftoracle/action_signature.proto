@@ -1,8 +1,8 @@
 syntax = "proto3";
-package thesixnetwork.sixprotocol.nftoracle;
-option go_package = "github.com/thesixnetwork/six-protocol/x/nftoracle/types";
+package thesixnetwork.sixnft.nftoracle;
+option go_package = "github.com/thesixnetwork/sixnft/x/nftoracle/types";
 
 message ActionSignature {
-  string signature = 1;
-  string message = 2;
+    string signature = 1;
+    string message = 2;
 }

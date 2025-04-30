@@ -1,9 +1,8 @@
 //@ts-nocheck
-import { createProtobufRpcClient,QueryClient } from '@cosmjs/stargate';
-import * as _m0 from 'protobufjs/minimal';
-
-import { Rpc } from '../../../helpers';
-import { BroadcastTxRequest, BroadcastTxResponse, GetBlockWithTxsRequest, GetBlockWithTxsResponse,GetTxRequest, GetTxResponse, GetTxsEventRequest, GetTxsEventResponse, SimulateRequest, SimulateResponse } from './service';
+import { Rpc } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
+import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
+import { SimulateRequest, SimulateResponse, GetTxRequest, GetTxResponse, BroadcastTxRequest, BroadcastTxResponse, GetTxsEventRequest, GetTxsEventResponse, GetBlockWithTxsRequest, GetBlockWithTxsResponse } from "./service";
 /** Service defines a gRPC service for interacting with transactions. */
 export interface Service {
   /** Simulate simulates executing a transaction for estimating gas usage. */
@@ -33,27 +32,27 @@ export class ServiceClientImpl implements Service {
   }
   simulate(request: SimulateRequest): Promise<SimulateResponse> {
     const data = SimulateRequest.encode(request).finish();
-    const promise = this.rpc.request('cosmos.tx.v1beta1.Service', 'Simulate', data);
+    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "Simulate", data);
     return promise.then(data => SimulateResponse.decode(new _m0.Reader(data)));
   }
   getTx(request: GetTxRequest): Promise<GetTxResponse> {
     const data = GetTxRequest.encode(request).finish();
-    const promise = this.rpc.request('cosmos.tx.v1beta1.Service', 'GetTx', data);
+    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "GetTx", data);
     return promise.then(data => GetTxResponse.decode(new _m0.Reader(data)));
   }
   broadcastTx(request: BroadcastTxRequest): Promise<BroadcastTxResponse> {
     const data = BroadcastTxRequest.encode(request).finish();
-    const promise = this.rpc.request('cosmos.tx.v1beta1.Service', 'BroadcastTx', data);
+    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "BroadcastTx", data);
     return promise.then(data => BroadcastTxResponse.decode(new _m0.Reader(data)));
   }
   getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponse> {
     const data = GetTxsEventRequest.encode(request).finish();
-    const promise = this.rpc.request('cosmos.tx.v1beta1.Service', 'GetTxsEvent', data);
+    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "GetTxsEvent", data);
     return promise.then(data => GetTxsEventResponse.decode(new _m0.Reader(data)));
   }
   getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse> {
     const data = GetBlockWithTxsRequest.encode(request).finish();
-    const promise = this.rpc.request('cosmos.tx.v1beta1.Service', 'GetBlockWithTxs', data);
+    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "GetBlockWithTxs", data);
     return promise.then(data => GetBlockWithTxsResponse.decode(new _m0.Reader(data)));
   }
 }

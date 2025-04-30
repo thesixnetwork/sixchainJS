@@ -1,15 +1,14 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Authorization, AuthorizationAmino, AuthorizationSDKType } from './authorization';
-import { Params, ParamsAmino, ParamsSDKType } from './params';
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Authorization, AuthorizationAmino, AuthorizationSDKType } from "./authorization";
+import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the nftadmin module's genesis state. */
 export interface GenesisState {
   params: Params;
   authorization?: Authorization;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.GenesisState';
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.GenesisState";
   value: Uint8Array;
 }
 /** GenesisState defines the nftadmin module's genesis state. */
@@ -18,7 +17,7 @@ export interface GenesisStateAmino {
   authorization?: AuthorizationAmino;
 }
 export interface GenesisStateAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftadmin.GenesisState';
+  type: "/thesixnetwork.sixnft.nftadmin.GenesisState";
   value: GenesisStateAmino;
 }
 /** GenesisState defines the nftadmin module's genesis state. */
@@ -33,7 +32,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.GenesisState',
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.GenesisState",
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -50,15 +49,15 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.params = Params.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.authorization = Authorization.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.authorization = Authorization.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -96,7 +95,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftadmin.GenesisState',
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.GenesisState",
       value: GenesisState.encode(message).finish()
     };
   }

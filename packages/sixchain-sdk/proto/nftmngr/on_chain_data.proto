@@ -1,9 +1,9 @@
 syntax = "proto3";
-package thesixnetwork.sixprotocol.nftmngr;
+package thesixnetwork.sixnft.nftmngr;
 import "nftmngr/attribute_definition.proto";
 import "nftmngr/action.proto";
-import "nftmngr/virtual_action.proto";
-option go_package = "github.com/thesixnetwork/six-protocol/x/nftmngr/types";
+import "nftmngr/nft_attribute_value.proto";
+option go_package = "github.com/thesixnetwork/sixnft/x/nftmngr/types";
 
 message FlagStatus {
   string status_name = 1;
@@ -11,16 +11,11 @@ message FlagStatus {
 }
 
 message OnChainData {
-  repeated AttributeDefinition nft_attributes = 1;
-  repeated AttributeDefinition token_attributes = 2;
-  repeated Action actions = 3;
-  repeated FlagStatus status = 4;
-}
-
-message OnChainDataResult {
-  repeated AttributeDefinition nft_attributes = 1;
-  repeated AttributeDefinition token_attributes = 2;
-  repeated Action actions = 3;
-  repeated VirtualAction virtual_actions = 4;
-  repeated FlagStatus status = 5;
+  bool reveal_required = 1;
+  bytes reveal_secret = 2;
+  repeated AttributeDefinition nft_attributes = 3; 
+  repeated AttributeDefinition token_attributes = 4; 
+  repeated Action actions = 5; 
+  repeated FlagStatus status = 6;
+  repeated NftAttributeValue nft_attributes_value = 8;
 }

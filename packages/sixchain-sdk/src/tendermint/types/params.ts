@@ -1,8 +1,7 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Duration, DurationAmino, DurationSDKType } from '../../google/protobuf/duration';
-import { Long } from '../../helpers';
+import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
+import { Long } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /**
  * ConsensusParams contains consensus critical parameters that determine the
  * validity of blocks.
@@ -14,7 +13,7 @@ export interface ConsensusParams {
   version: VersionParams;
 }
 export interface ConsensusParamsProtoMsg {
-  typeUrl: '/tendermint.types.ConsensusParams';
+  typeUrl: "/tendermint.types.ConsensusParams";
   value: Uint8Array;
 }
 /**
@@ -28,7 +27,7 @@ export interface ConsensusParamsAmino {
   version?: VersionParamsAmino;
 }
 export interface ConsensusParamsAminoMsg {
-  type: '/tendermint.types.ConsensusParams';
+  type: "/tendermint.types.ConsensusParams";
   value: ConsensusParamsAmino;
 }
 /**
@@ -62,7 +61,7 @@ export interface BlockParams {
   timeIotaMs: Long;
 }
 export interface BlockParamsProtoMsg {
-  typeUrl: '/tendermint.types.BlockParams';
+  typeUrl: "/tendermint.types.BlockParams";
   value: Uint8Array;
 }
 /** BlockParams contains limits on the block size. */
@@ -86,7 +85,7 @@ export interface BlockParamsAmino {
   time_iota_ms?: string;
 }
 export interface BlockParamsAminoMsg {
-  type: '/tendermint.types.BlockParams';
+  type: "/tendermint.types.BlockParams";
   value: BlockParamsAmino;
 }
 /** BlockParams contains limits on the block size. */
@@ -120,7 +119,7 @@ export interface EvidenceParams {
   maxBytes: Long;
 }
 export interface EvidenceParamsProtoMsg {
-  typeUrl: '/tendermint.types.EvidenceParams';
+  typeUrl: "/tendermint.types.EvidenceParams";
   value: Uint8Array;
 }
 /** EvidenceParams determine how we handle evidence of malfeasance. */
@@ -148,7 +147,7 @@ export interface EvidenceParamsAmino {
   max_bytes?: string;
 }
 export interface EvidenceParamsAminoMsg {
-  type: '/tendermint.types.EvidenceParams';
+  type: "/tendermint.types.EvidenceParams";
   value: EvidenceParamsAmino;
 }
 /** EvidenceParams determine how we handle evidence of malfeasance. */
@@ -165,7 +164,7 @@ export interface ValidatorParams {
   pubKeyTypes: string[];
 }
 export interface ValidatorParamsProtoMsg {
-  typeUrl: '/tendermint.types.ValidatorParams';
+  typeUrl: "/tendermint.types.ValidatorParams";
   value: Uint8Array;
 }
 /**
@@ -176,7 +175,7 @@ export interface ValidatorParamsAmino {
   pub_key_types?: string[];
 }
 export interface ValidatorParamsAminoMsg {
-  type: '/tendermint.types.ValidatorParams';
+  type: "/tendermint.types.ValidatorParams";
   value: ValidatorParamsAmino;
 }
 /**
@@ -191,7 +190,7 @@ export interface VersionParams {
   appVersion: Long;
 }
 export interface VersionParamsProtoMsg {
-  typeUrl: '/tendermint.types.VersionParams';
+  typeUrl: "/tendermint.types.VersionParams";
   value: Uint8Array;
 }
 /** VersionParams contains the ABCI application version. */
@@ -199,7 +198,7 @@ export interface VersionParamsAmino {
   app_version?: string;
 }
 export interface VersionParamsAminoMsg {
-  type: '/tendermint.types.VersionParams';
+  type: "/tendermint.types.VersionParams";
   value: VersionParamsAmino;
 }
 /** VersionParams contains the ABCI application version. */
@@ -216,7 +215,7 @@ export interface HashedParams {
   blockMaxGas: Long;
 }
 export interface HashedParamsProtoMsg {
-  typeUrl: '/tendermint.types.HashedParams';
+  typeUrl: "/tendermint.types.HashedParams";
   value: Uint8Array;
 }
 /**
@@ -229,7 +228,7 @@ export interface HashedParamsAmino {
   block_max_gas?: string;
 }
 export interface HashedParamsAminoMsg {
-  type: '/tendermint.types.HashedParams';
+  type: "/tendermint.types.HashedParams";
   value: HashedParamsAmino;
 }
 /**
@@ -250,7 +249,7 @@ function createBaseConsensusParams(): ConsensusParams {
   };
 }
 export const ConsensusParams = {
-  typeUrl: '/tendermint.types.ConsensusParams',
+  typeUrl: "/tendermint.types.ConsensusParams",
   encode(message: ConsensusParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.block !== undefined) {
       BlockParams.encode(message.block, writer.uint32(10).fork()).ldelim();
@@ -273,21 +272,21 @@ export const ConsensusParams = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.block = BlockParams.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.evidence = EvidenceParams.decode(reader, reader.uint32());
-        break;
-      case 3:
-        message.validator = ValidatorParams.decode(reader, reader.uint32());
-        break;
-      case 4:
-        message.version = VersionParams.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.block = BlockParams.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.evidence = EvidenceParams.decode(reader, reader.uint32());
+          break;
+        case 3:
+          message.validator = ValidatorParams.decode(reader, reader.uint32());
+          break;
+        case 4:
+          message.version = VersionParams.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -335,7 +334,7 @@ export const ConsensusParams = {
   },
   toProtoMsg(message: ConsensusParams): ConsensusParamsProtoMsg {
     return {
-      typeUrl: '/tendermint.types.ConsensusParams',
+      typeUrl: "/tendermint.types.ConsensusParams",
       value: ConsensusParams.encode(message).finish()
     };
   }
@@ -348,7 +347,7 @@ function createBaseBlockParams(): BlockParams {
   };
 }
 export const BlockParams = {
-  typeUrl: '/tendermint.types.BlockParams',
+  typeUrl: "/tendermint.types.BlockParams",
   encode(message: BlockParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.maxBytes.isZero()) {
       writer.uint32(8).int64(message.maxBytes);
@@ -368,18 +367,18 @@ export const BlockParams = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.maxBytes = reader.int64() as Long;
-        break;
-      case 2:
-        message.maxGas = reader.int64() as Long;
-        break;
-      case 3:
-        message.timeIotaMs = reader.int64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.maxBytes = reader.int64() as Long;
+          break;
+        case 2:
+          message.maxGas = reader.int64() as Long;
+          break;
+        case 3:
+          message.timeIotaMs = reader.int64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -406,9 +405,9 @@ export const BlockParams = {
   },
   toAmino(message: BlockParams): BlockParamsAmino {
     const obj: any = {};
-    obj.max_bytes = !message.maxBytes.isZero() ? message.maxBytes?.toString() : undefined;
-    obj.max_gas = !message.maxGas.isZero() ? message.maxGas?.toString() : undefined;
-    obj.time_iota_ms = !message.timeIotaMs.isZero() ? message.timeIotaMs?.toString() : undefined;
+    obj.max_bytes = !message.maxBytes.isZero() ? (message.maxBytes?.toString)() : undefined;
+    obj.max_gas = !message.maxGas.isZero() ? (message.maxGas?.toString)() : undefined;
+    obj.time_iota_ms = !message.timeIotaMs.isZero() ? (message.timeIotaMs?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: BlockParamsAminoMsg): BlockParams {
@@ -422,7 +421,7 @@ export const BlockParams = {
   },
   toProtoMsg(message: BlockParams): BlockParamsProtoMsg {
     return {
-      typeUrl: '/tendermint.types.BlockParams',
+      typeUrl: "/tendermint.types.BlockParams",
       value: BlockParams.encode(message).finish()
     };
   }
@@ -435,7 +434,7 @@ function createBaseEvidenceParams(): EvidenceParams {
   };
 }
 export const EvidenceParams = {
-  typeUrl: '/tendermint.types.EvidenceParams',
+  typeUrl: "/tendermint.types.EvidenceParams",
   encode(message: EvidenceParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.maxAgeNumBlocks.isZero()) {
       writer.uint32(8).int64(message.maxAgeNumBlocks);
@@ -455,18 +454,18 @@ export const EvidenceParams = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.maxAgeNumBlocks = reader.int64() as Long;
-        break;
-      case 2:
-        message.maxAgeDuration = Duration.decode(reader, reader.uint32());
-        break;
-      case 3:
-        message.maxBytes = reader.int64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.maxAgeNumBlocks = reader.int64() as Long;
+          break;
+        case 2:
+          message.maxAgeDuration = Duration.decode(reader, reader.uint32());
+          break;
+        case 3:
+          message.maxBytes = reader.int64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -493,9 +492,9 @@ export const EvidenceParams = {
   },
   toAmino(message: EvidenceParams): EvidenceParamsAmino {
     const obj: any = {};
-    obj.max_age_num_blocks = !message.maxAgeNumBlocks.isZero() ? message.maxAgeNumBlocks?.toString() : undefined;
+    obj.max_age_num_blocks = !message.maxAgeNumBlocks.isZero() ? (message.maxAgeNumBlocks?.toString)() : undefined;
     obj.max_age_duration = message.maxAgeDuration ? Duration.toAmino(message.maxAgeDuration) : undefined;
-    obj.max_bytes = !message.maxBytes.isZero() ? message.maxBytes?.toString() : undefined;
+    obj.max_bytes = !message.maxBytes.isZero() ? (message.maxBytes?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: EvidenceParamsAminoMsg): EvidenceParams {
@@ -509,7 +508,7 @@ export const EvidenceParams = {
   },
   toProtoMsg(message: EvidenceParams): EvidenceParamsProtoMsg {
     return {
-      typeUrl: '/tendermint.types.EvidenceParams',
+      typeUrl: "/tendermint.types.EvidenceParams",
       value: EvidenceParams.encode(message).finish()
     };
   }
@@ -520,7 +519,7 @@ function createBaseValidatorParams(): ValidatorParams {
   };
 }
 export const ValidatorParams = {
-  typeUrl: '/tendermint.types.ValidatorParams',
+  typeUrl: "/tendermint.types.ValidatorParams",
   encode(message: ValidatorParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.pubKeyTypes) {
       writer.uint32(10).string(v!);
@@ -534,12 +533,12 @@ export const ValidatorParams = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.pubKeyTypes.push(reader.string());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.pubKeyTypes.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -574,7 +573,7 @@ export const ValidatorParams = {
   },
   toProtoMsg(message: ValidatorParams): ValidatorParamsProtoMsg {
     return {
-      typeUrl: '/tendermint.types.ValidatorParams',
+      typeUrl: "/tendermint.types.ValidatorParams",
       value: ValidatorParams.encode(message).finish()
     };
   }
@@ -585,7 +584,7 @@ function createBaseVersionParams(): VersionParams {
   };
 }
 export const VersionParams = {
-  typeUrl: '/tendermint.types.VersionParams',
+  typeUrl: "/tendermint.types.VersionParams",
   encode(message: VersionParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.appVersion.isZero()) {
       writer.uint32(8).uint64(message.appVersion);
@@ -599,12 +598,12 @@ export const VersionParams = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.appVersion = reader.uint64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.appVersion = reader.uint64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -623,7 +622,7 @@ export const VersionParams = {
   },
   toAmino(message: VersionParams): VersionParamsAmino {
     const obj: any = {};
-    obj.app_version = !message.appVersion.isZero() ? message.appVersion?.toString() : undefined;
+    obj.app_version = !message.appVersion.isZero() ? (message.appVersion?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: VersionParamsAminoMsg): VersionParams {
@@ -637,7 +636,7 @@ export const VersionParams = {
   },
   toProtoMsg(message: VersionParams): VersionParamsProtoMsg {
     return {
-      typeUrl: '/tendermint.types.VersionParams',
+      typeUrl: "/tendermint.types.VersionParams",
       value: VersionParams.encode(message).finish()
     };
   }
@@ -649,7 +648,7 @@ function createBaseHashedParams(): HashedParams {
   };
 }
 export const HashedParams = {
-  typeUrl: '/tendermint.types.HashedParams',
+  typeUrl: "/tendermint.types.HashedParams",
   encode(message: HashedParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.blockMaxBytes.isZero()) {
       writer.uint32(8).int64(message.blockMaxBytes);
@@ -666,15 +665,15 @@ export const HashedParams = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.blockMaxBytes = reader.int64() as Long;
-        break;
-      case 2:
-        message.blockMaxGas = reader.int64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.blockMaxBytes = reader.int64() as Long;
+          break;
+        case 2:
+          message.blockMaxGas = reader.int64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -697,8 +696,8 @@ export const HashedParams = {
   },
   toAmino(message: HashedParams): HashedParamsAmino {
     const obj: any = {};
-    obj.block_max_bytes = !message.blockMaxBytes.isZero() ? message.blockMaxBytes?.toString() : undefined;
-    obj.block_max_gas = !message.blockMaxGas.isZero() ? message.blockMaxGas?.toString() : undefined;
+    obj.block_max_bytes = !message.blockMaxBytes.isZero() ? (message.blockMaxBytes?.toString)() : undefined;
+    obj.block_max_gas = !message.blockMaxGas.isZero() ? (message.blockMaxGas?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: HashedParamsAminoMsg): HashedParams {
@@ -712,7 +711,7 @@ export const HashedParams = {
   },
   toProtoMsg(message: HashedParams): HashedParamsProtoMsg {
     return {
-      typeUrl: '/tendermint.types.HashedParams',
+      typeUrl: "/tendermint.types.HashedParams",
       value: HashedParams.encode(message).finish()
     };
   }

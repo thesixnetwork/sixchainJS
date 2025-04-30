@@ -1,12 +1,11 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { base64FromBytes,bytesFromBase64 } from '../helpers';
-import { Trait, TraitAmino, TraitSDKType } from './opensea';
+import { Trait, TraitAmino, TraitSDKType } from "./opensea";
+import * as _m0 from "protobufjs/minimal";
+import { bytesFromBase64, base64FromBytes } from "../helpers";
 export enum RequestStatus {
   PENDING = 0,
   SUCCESS_WITH_CONSENSUS = 1,
-  FAILED_WITHOUT_CONSENSUS = 2,
+  FAILED_WITHOUT_CONCENSUS = 2,
   EXPIRED = 3,
   FAILED_ON_EXECUTION = 4,
   FAILED_REJECT_BY_CONSENSUS = 5,
@@ -16,47 +15,47 @@ export const RequestStatusSDKType = RequestStatus;
 export const RequestStatusAmino = RequestStatus;
 export function requestStatusFromJSON(object: any): RequestStatus {
   switch (object) {
-  case 0:
-  case 'PENDING':
-    return RequestStatus.PENDING;
-  case 1:
-  case 'SUCCESS_WITH_CONSENSUS':
-    return RequestStatus.SUCCESS_WITH_CONSENSUS;
-  case 2:
-  case 'FAILED_WITHOUT_CONSENSUS':
-    return RequestStatus.FAILED_WITHOUT_CONSENSUS;
-  case 3:
-  case 'EXPIRED':
-    return RequestStatus.EXPIRED;
-  case 4:
-  case 'FAILED_ON_EXECUTION':
-    return RequestStatus.FAILED_ON_EXECUTION;
-  case 5:
-  case 'FAILED_REJECT_BY_CONSENSUS':
-    return RequestStatus.FAILED_REJECT_BY_CONSENSUS;
-  case -1:
-  case 'UNRECOGNIZED':
-  default:
-    return RequestStatus.UNRECOGNIZED;
+    case 0:
+    case "PENDING":
+      return RequestStatus.PENDING;
+    case 1:
+    case "SUCCESS_WITH_CONSENSUS":
+      return RequestStatus.SUCCESS_WITH_CONSENSUS;
+    case 2:
+    case "FAILED_WITHOUT_CONCENSUS":
+      return RequestStatus.FAILED_WITHOUT_CONCENSUS;
+    case 3:
+    case "EXPIRED":
+      return RequestStatus.EXPIRED;
+    case 4:
+    case "FAILED_ON_EXECUTION":
+      return RequestStatus.FAILED_ON_EXECUTION;
+    case 5:
+    case "FAILED_REJECT_BY_CONSENSUS":
+      return RequestStatus.FAILED_REJECT_BY_CONSENSUS;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return RequestStatus.UNRECOGNIZED;
   }
 }
 export function requestStatusToJSON(object: RequestStatus): string {
   switch (object) {
-  case RequestStatus.PENDING:
-    return 'PENDING';
-  case RequestStatus.SUCCESS_WITH_CONSENSUS:
-    return 'SUCCESS_WITH_CONSENSUS';
-  case RequestStatus.FAILED_WITHOUT_CONSENSUS:
-    return 'FAILED_WITHOUT_CONSENSUS';
-  case RequestStatus.EXPIRED:
-    return 'EXPIRED';
-  case RequestStatus.FAILED_ON_EXECUTION:
-    return 'FAILED_ON_EXECUTION';
-  case RequestStatus.FAILED_REJECT_BY_CONSENSUS:
-    return 'FAILED_REJECT_BY_CONSENSUS';
-  case RequestStatus.UNRECOGNIZED:
-  default:
-    return 'UNRECOGNIZED';
+    case RequestStatus.PENDING:
+      return "PENDING";
+    case RequestStatus.SUCCESS_WITH_CONSENSUS:
+      return "SUCCESS_WITH_CONSENSUS";
+    case RequestStatus.FAILED_WITHOUT_CONCENSUS:
+      return "FAILED_WITHOUT_CONCENSUS";
+    case RequestStatus.EXPIRED:
+      return "EXPIRED";
+    case RequestStatus.FAILED_ON_EXECUTION:
+      return "FAILED_ON_EXECUTION";
+    case RequestStatus.FAILED_REJECT_BY_CONSENSUS:
+      return "FAILED_REJECT_BY_CONSENSUS";
+    case RequestStatus.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
   }
 }
 export interface NftOriginData {
@@ -65,7 +64,7 @@ export interface NftOriginData {
   traits: Trait[];
 }
 export interface NftOriginDataProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.NftOriginData';
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.NftOriginData";
   value: Uint8Array;
 }
 export interface NftOriginDataAmino {
@@ -74,7 +73,7 @@ export interface NftOriginDataAmino {
   traits?: TraitAmino[];
 }
 export interface NftOriginDataAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.NftOriginData';
+  type: "/thesixnetwork.sixnft.nftoracle.NftOriginData";
   value: NftOriginDataAmino;
 }
 export interface NftOriginDataSDKType {
@@ -88,7 +87,7 @@ export interface DataHash {
   confirmers: string[];
 }
 export interface DataHashProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.DataHash';
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.DataHash";
   value: Uint8Array;
 }
 export interface DataHashAmino {
@@ -97,7 +96,7 @@ export interface DataHashAmino {
   confirmers?: string[];
 }
 export interface DataHashAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.DataHash';
+  type: "/thesixnetwork.sixnft.nftoracle.DataHash";
   value: DataHashAmino;
 }
 export interface DataHashSDKType {
@@ -107,18 +106,18 @@ export interface DataHashSDKType {
 }
 function createBaseNftOriginData(): NftOriginData {
   return {
-    image: '',
-    holderAddress: '',
+    image: "",
+    holderAddress: "",
     traits: []
   };
 }
 export const NftOriginData = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.NftOriginData',
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.NftOriginData",
   encode(message: NftOriginData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.image !== '') {
+    if (message.image !== "") {
       writer.uint32(10).string(message.image);
     }
-    if (message.holderAddress !== '') {
+    if (message.holderAddress !== "") {
       writer.uint32(18).string(message.holderAddress);
     }
     for (const v of message.traits) {
@@ -133,26 +132,26 @@ export const NftOriginData = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.image = reader.string();
-        break;
-      case 2:
-        message.holderAddress = reader.string();
-        break;
-      case 3:
-        message.traits.push(Trait.decode(reader, reader.uint32()));
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.image = reader.string();
+          break;
+        case 2:
+          message.holderAddress = reader.string();
+          break;
+        case 3:
+          message.traits.push(Trait.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
   },
   fromPartial(object: Partial<NftOriginData>): NftOriginData {
     const message = createBaseNftOriginData();
-    message.image = object.image ?? '';
-    message.holderAddress = object.holderAddress ?? '';
+    message.image = object.image ?? "";
+    message.holderAddress = object.holderAddress ?? "";
     message.traits = object.traits?.map(e => Trait.fromPartial(e)) || [];
     return message;
   },
@@ -169,8 +168,8 @@ export const NftOriginData = {
   },
   toAmino(message: NftOriginData): NftOriginDataAmino {
     const obj: any = {};
-    obj.image = message.image === '' ? undefined : message.image;
-    obj.holder_address = message.holderAddress === '' ? undefined : message.holderAddress;
+    obj.image = message.image === "" ? undefined : message.image;
+    obj.holder_address = message.holderAddress === "" ? undefined : message.holderAddress;
     if (message.traits) {
       obj.traits = message.traits.map(e => e ? Trait.toAmino(e) : undefined);
     } else {
@@ -189,7 +188,7 @@ export const NftOriginData = {
   },
   toProtoMsg(message: NftOriginData): NftOriginDataProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.NftOriginData',
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.NftOriginData",
       value: NftOriginData.encode(message).finish()
     };
   }
@@ -202,7 +201,7 @@ function createBaseDataHash(): DataHash {
   };
 }
 export const DataHash = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.DataHash',
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.DataHash",
   encode(message: DataHash, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.originData !== undefined) {
       NftOriginData.encode(message.originData, writer.uint32(10).fork()).ldelim();
@@ -222,18 +221,18 @@ export const DataHash = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.originData = NftOriginData.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.hash = reader.bytes();
-        break;
-      case 3:
-        message.confirmers.push(reader.string());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.originData = NftOriginData.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.hash = reader.bytes();
+          break;
+        case 3:
+          message.confirmers.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -278,7 +277,7 @@ export const DataHash = {
   },
   toProtoMsg(message: DataHash): DataHashProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.DataHash',
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.DataHash",
       value: DataHash.encode(message).finish()
     };
   }

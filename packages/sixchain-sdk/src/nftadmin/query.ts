@@ -1,18 +1,17 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Authorization, AuthorizationAmino, AuthorizationSDKType } from './authorization';
-import { Params, ParamsAmino, ParamsSDKType } from './params';
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Authorization, AuthorizationAmino, AuthorizationSDKType } from "./authorization";
+import * as _m0 from "protobufjs/minimal";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryParamsRequest';
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryParamsRequest";
   value: Uint8Array;
 }
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftadmin.QueryParamsRequest';
+  type: "/thesixnetwork.sixnft.nftadmin.QueryParamsRequest";
   value: QueryParamsRequestAmino;
 }
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
@@ -23,7 +22,7 @@ export interface QueryParamsResponse {
   params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryParamsResponse';
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryParamsResponse";
   value: Uint8Array;
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
@@ -32,7 +31,7 @@ export interface QueryParamsResponseAmino {
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftadmin.QueryParamsResponse';
+  type: "/thesixnetwork.sixnft.nftadmin.QueryParamsResponse";
   value: QueryParamsResponseAmino;
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
@@ -41,12 +40,12 @@ export interface QueryParamsResponseSDKType {
 }
 export interface QueryGetAuthorizationRequest {}
 export interface QueryGetAuthorizationRequestProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryGetAuthorizationRequest';
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryGetAuthorizationRequest";
   value: Uint8Array;
 }
 export interface QueryGetAuthorizationRequestAmino {}
 export interface QueryGetAuthorizationRequestAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftadmin.QueryGetAuthorizationRequest';
+  type: "/thesixnetwork.sixnft.nftadmin.QueryGetAuthorizationRequest";
   value: QueryGetAuthorizationRequestAmino;
 }
 export interface QueryGetAuthorizationRequestSDKType {}
@@ -54,14 +53,14 @@ export interface QueryGetAuthorizationResponse {
   authorization: Authorization;
 }
 export interface QueryGetAuthorizationResponseProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryGetAuthorizationResponse';
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryGetAuthorizationResponse";
   value: Uint8Array;
 }
 export interface QueryGetAuthorizationResponseAmino {
   Authorization?: AuthorizationAmino;
 }
 export interface QueryGetAuthorizationResponseAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftadmin.QueryGetAuthorizationResponse';
+  type: "/thesixnetwork.sixnft.nftadmin.QueryGetAuthorizationResponse";
   value: QueryGetAuthorizationResponseAmino;
 }
 export interface QueryGetAuthorizationResponseSDKType {
@@ -71,7 +70,7 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryParamsRequest',
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryParamsRequest",
   encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -82,9 +81,9 @@ export const QueryParamsRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -112,7 +111,7 @@ export const QueryParamsRequest = {
   },
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryParamsRequest',
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryParamsRequest",
       value: QueryParamsRequest.encode(message).finish()
     };
   }
@@ -123,7 +122,7 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
   };
 }
 export const QueryParamsResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryParamsResponse',
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryParamsResponse",
   encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -137,12 +136,12 @@ export const QueryParamsResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.params = Params.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -175,7 +174,7 @@ export const QueryParamsResponse = {
   },
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryParamsResponse',
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryParamsResponse",
       value: QueryParamsResponse.encode(message).finish()
     };
   }
@@ -184,7 +183,7 @@ function createBaseQueryGetAuthorizationRequest(): QueryGetAuthorizationRequest 
   return {};
 }
 export const QueryGetAuthorizationRequest = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryGetAuthorizationRequest',
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryGetAuthorizationRequest",
   encode(_: QueryGetAuthorizationRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -195,9 +194,9 @@ export const QueryGetAuthorizationRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -225,7 +224,7 @@ export const QueryGetAuthorizationRequest = {
   },
   toProtoMsg(message: QueryGetAuthorizationRequest): QueryGetAuthorizationRequestProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryGetAuthorizationRequest',
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryGetAuthorizationRequest",
       value: QueryGetAuthorizationRequest.encode(message).finish()
     };
   }
@@ -236,7 +235,7 @@ function createBaseQueryGetAuthorizationResponse(): QueryGetAuthorizationRespons
   };
 }
 export const QueryGetAuthorizationResponse = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryGetAuthorizationResponse',
+  typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryGetAuthorizationResponse",
   encode(message: QueryGetAuthorizationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.authorization !== undefined) {
       Authorization.encode(message.authorization, writer.uint32(10).fork()).ldelim();
@@ -250,12 +249,12 @@ export const QueryGetAuthorizationResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.authorization = Authorization.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.authorization = Authorization.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -288,7 +287,7 @@ export const QueryGetAuthorizationResponse = {
   },
   toProtoMsg(message: QueryGetAuthorizationResponse): QueryGetAuthorizationResponseProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftadmin.QueryGetAuthorizationResponse',
+      typeUrl: "/thesixnetwork.sixnft.nftadmin.QueryGetAuthorizationResponse",
       value: QueryGetAuthorizationResponse.encode(message).finish()
     };
   }

@@ -1,23 +1,15 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { ActionByRefId, ActionByRefIdAmino, ActionByRefIdSDKType } from './action_by_ref_id';
-import { ActionExecutor, ActionExecutorAmino, ActionExecutorSDKType } from './action_executor';
-import { ActionOfSchema, ActionOfSchemaAmino, ActionOfSchemaSDKType } from './action_of_schema';
-import { ExecutorOfSchema, ExecutorOfSchemaAmino, ExecutorOfSchemaSDKType } from './executor_of_schema';
-import { LockSchemaFee, LockSchemaFeeAmino, LockSchemaFeeSDKType } from './lock_schema_fee';
-import { MetadataCreator, MetadataCreatorAmino, MetadataCreatorSDKType } from './metadata_creator';
-import { NftCollection, NftCollectionAmino, NftCollectionSDKType } from './nft_collection';
-import { NftData, NftDataAmino, NftDataSDKType } from './nft_data';
-import { NFTFeeBalance, NFTFeeBalanceAmino, NFTFeeBalanceSDKType } from './nft_fee_balance';
-import { NFTFeeConfig, NFTFeeConfigAmino, NFTFeeConfigSDKType } from './nft_fee_config';
-import { NFTSchema, NFTSchemaAmino, NFTSchemaSDKType } from './nft_schema';
-import { NFTSchemaByContract, NFTSchemaByContractAmino, NFTSchemaByContractSDKType } from './nft_schema_by_contract';
-import { Organization, OrganizationAmino, OrganizationSDKType } from './organization';
-import { Params, ParamsAmino, ParamsSDKType } from './params';
-import { SchemaAttribute, SchemaAttributeAmino, SchemaAttributeSDKType } from './schema_attribute';
-import { VirtualAction, VirtualActionAmino, VirtualActionSDKType } from './virtual_action';
-import { ActiveVirtualSchemaProposal, ActiveVirtualSchemaProposalAmino, ActiveVirtualSchemaProposalSDKType, InactiveVirtualSchemaProposal, InactiveVirtualSchemaProposalAmino, InactiveVirtualSchemaProposalSDKType,VirtualSchema, VirtualSchemaAmino, VirtualSchemaProposal, VirtualSchemaProposalAmino, VirtualSchemaProposalSDKType, VirtualSchemaSDKType } from './virtual_schema';
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { NFTSchema, NFTSchemaAmino, NFTSchemaSDKType } from "./nft_schema";
+import { NftData, NftDataAmino, NftDataSDKType } from "./nft_data";
+import { ActionByRefId, ActionByRefIdAmino, ActionByRefIdSDKType } from "./action_by_ref_id";
+import { Organization, OrganizationAmino, OrganizationSDKType } from "./organization";
+import { NFTSchemaByContract, NFTSchemaByContractAmino, NFTSchemaByContractSDKType } from "./nft_schema_by_contract";
+import { NFTFeeConfig, NFTFeeConfigAmino, NFTFeeConfigSDKType } from "./nft_fee_config";
+import { NFTFeeBalance, NFTFeeBalanceAmino, NFTFeeBalanceSDKType } from "./nft_fee_balance";
+import { MetadataCreator, MetadataCreatorAmino, MetadataCreatorSDKType } from "./metadata_creator";
+import { NftCollection, NftCollectionAmino, NftCollectionSDKType } from "./nft_collection";
+import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the nftmngr module's genesis state. */
 export interface GenesisState {
   params: Params;
@@ -30,19 +22,9 @@ export interface GenesisState {
   nFTFeeBalance?: NFTFeeBalance;
   metadataCreatorList: MetadataCreator[];
   nftCollectionList: NftCollection[];
-  actionExecutorList: ActionExecutor[];
-  schemaAttributeList: SchemaAttribute[];
-  actionOfSchemaList: ActionOfSchema[];
-  executorOfSchemaList: ExecutorOfSchema[];
-  virtualActionList: VirtualAction[];
-  virtualSchemaList: VirtualSchema[];
-  virtualSchemaProposalList: VirtualSchemaProposal[];
-  activeVirtualSchemaProposalList: ActiveVirtualSchemaProposal[];
-  inactiveVirtualSchemaProposalList: InactiveVirtualSchemaProposal[];
-  lockSchemaFeeList: LockSchemaFee[];
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.GenesisState';
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.GenesisState";
   value: Uint8Array;
 }
 /** GenesisState defines the nftmngr module's genesis state. */
@@ -57,19 +39,9 @@ export interface GenesisStateAmino {
   nFTFeeBalance?: NFTFeeBalanceAmino;
   metadataCreatorList?: MetadataCreatorAmino[];
   nftCollectionList?: NftCollectionAmino[];
-  actionExecutorList?: ActionExecutorAmino[];
-  schemaAttributeList?: SchemaAttributeAmino[];
-  actionOfSchemaList?: ActionOfSchemaAmino[];
-  executorOfSchemaList?: ExecutorOfSchemaAmino[];
-  virtualActionList?: VirtualActionAmino[];
-  virtualSchemaList?: VirtualSchemaAmino[];
-  virtualSchemaProposalList?: VirtualSchemaProposalAmino[];
-  activeVirtualSchemaProposalList?: ActiveVirtualSchemaProposalAmino[];
-  inactiveVirtualSchemaProposalList?: InactiveVirtualSchemaProposalAmino[];
-  lockSchemaFeeList?: LockSchemaFeeAmino[];
 }
 export interface GenesisStateAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftmngr.GenesisState';
+  type: "/thesixnetwork.sixnft.nftmngr.GenesisState";
   value: GenesisStateAmino;
 }
 /** GenesisState defines the nftmngr module's genesis state. */
@@ -84,16 +56,6 @@ export interface GenesisStateSDKType {
   nFTFeeBalance?: NFTFeeBalanceSDKType;
   metadataCreatorList: MetadataCreatorSDKType[];
   nftCollectionList: NftCollectionSDKType[];
-  actionExecutorList: ActionExecutorSDKType[];
-  schemaAttributeList: SchemaAttributeSDKType[];
-  actionOfSchemaList: ActionOfSchemaSDKType[];
-  executorOfSchemaList: ExecutorOfSchemaSDKType[];
-  virtualActionList: VirtualActionSDKType[];
-  virtualSchemaList: VirtualSchemaSDKType[];
-  virtualSchemaProposalList: VirtualSchemaProposalSDKType[];
-  activeVirtualSchemaProposalList: ActiveVirtualSchemaProposalSDKType[];
-  inactiveVirtualSchemaProposalList: InactiveVirtualSchemaProposalSDKType[];
-  lockSchemaFeeList: LockSchemaFeeSDKType[];
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -106,21 +68,11 @@ function createBaseGenesisState(): GenesisState {
     nftFeeConfig: undefined,
     nFTFeeBalance: undefined,
     metadataCreatorList: [],
-    nftCollectionList: [],
-    actionExecutorList: [],
-    schemaAttributeList: [],
-    actionOfSchemaList: [],
-    executorOfSchemaList: [],
-    virtualActionList: [],
-    virtualSchemaList: [],
-    virtualSchemaProposalList: [],
-    activeVirtualSchemaProposalList: [],
-    inactiveVirtualSchemaProposalList: [],
-    lockSchemaFeeList: []
+    nftCollectionList: []
   };
 }
 export const GenesisState = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftmngr.GenesisState',
+  typeUrl: "/thesixnetwork.sixnft.nftmngr.GenesisState",
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -152,36 +104,6 @@ export const GenesisState = {
     for (const v of message.nftCollectionList) {
       NftCollection.encode(v!, writer.uint32(90).fork()).ldelim();
     }
-    for (const v of message.actionExecutorList) {
-      ActionExecutor.encode(v!, writer.uint32(98).fork()).ldelim();
-    }
-    for (const v of message.schemaAttributeList) {
-      SchemaAttribute.encode(v!, writer.uint32(106).fork()).ldelim();
-    }
-    for (const v of message.actionOfSchemaList) {
-      ActionOfSchema.encode(v!, writer.uint32(114).fork()).ldelim();
-    }
-    for (const v of message.executorOfSchemaList) {
-      ExecutorOfSchema.encode(v!, writer.uint32(122).fork()).ldelim();
-    }
-    for (const v of message.virtualActionList) {
-      VirtualAction.encode(v!, writer.uint32(130).fork()).ldelim();
-    }
-    for (const v of message.virtualSchemaList) {
-      VirtualSchema.encode(v!, writer.uint32(138).fork()).ldelim();
-    }
-    for (const v of message.virtualSchemaProposalList) {
-      VirtualSchemaProposal.encode(v!, writer.uint32(154).fork()).ldelim();
-    }
-    for (const v of message.activeVirtualSchemaProposalList) {
-      ActiveVirtualSchemaProposal.encode(v!, writer.uint32(162).fork()).ldelim();
-    }
-    for (const v of message.inactiveVirtualSchemaProposalList) {
-      InactiveVirtualSchemaProposal.encode(v!, writer.uint32(170).fork()).ldelim();
-    }
-    for (const v of message.lockSchemaFeeList) {
-      LockSchemaFee.encode(v!, writer.uint32(178).fork()).ldelim();
-    }
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState {
@@ -191,69 +113,39 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.params = Params.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.nFTSchemaList.push(NFTSchema.decode(reader, reader.uint32()));
-        break;
-      case 3:
-        message.nftDataList.push(NftData.decode(reader, reader.uint32()));
-        break;
-      case 4:
-        message.actionByRefIdList.push(ActionByRefId.decode(reader, reader.uint32()));
-        break;
-      case 5:
-        message.organizationList.push(Organization.decode(reader, reader.uint32()));
-        break;
-      case 7:
-        message.nFTSchemaByContractList.push(NFTSchemaByContract.decode(reader, reader.uint32()));
-        break;
-      case 8:
-        message.nftFeeConfig = NFTFeeConfig.decode(reader, reader.uint32());
-        break;
-      case 9:
-        message.nFTFeeBalance = NFTFeeBalance.decode(reader, reader.uint32());
-        break;
-      case 10:
-        message.metadataCreatorList.push(MetadataCreator.decode(reader, reader.uint32()));
-        break;
-      case 11:
-        message.nftCollectionList.push(NftCollection.decode(reader, reader.uint32()));
-        break;
-      case 12:
-        message.actionExecutorList.push(ActionExecutor.decode(reader, reader.uint32()));
-        break;
-      case 13:
-        message.schemaAttributeList.push(SchemaAttribute.decode(reader, reader.uint32()));
-        break;
-      case 14:
-        message.actionOfSchemaList.push(ActionOfSchema.decode(reader, reader.uint32()));
-        break;
-      case 15:
-        message.executorOfSchemaList.push(ExecutorOfSchema.decode(reader, reader.uint32()));
-        break;
-      case 16:
-        message.virtualActionList.push(VirtualAction.decode(reader, reader.uint32()));
-        break;
-      case 17:
-        message.virtualSchemaList.push(VirtualSchema.decode(reader, reader.uint32()));
-        break;
-      case 19:
-        message.virtualSchemaProposalList.push(VirtualSchemaProposal.decode(reader, reader.uint32()));
-        break;
-      case 20:
-        message.activeVirtualSchemaProposalList.push(ActiveVirtualSchemaProposal.decode(reader, reader.uint32()));
-        break;
-      case 21:
-        message.inactiveVirtualSchemaProposalList.push(InactiveVirtualSchemaProposal.decode(reader, reader.uint32()));
-        break;
-      case 22:
-        message.lockSchemaFeeList.push(LockSchemaFee.decode(reader, reader.uint32()));
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.nFTSchemaList.push(NFTSchema.decode(reader, reader.uint32()));
+          break;
+        case 3:
+          message.nftDataList.push(NftData.decode(reader, reader.uint32()));
+          break;
+        case 4:
+          message.actionByRefIdList.push(ActionByRefId.decode(reader, reader.uint32()));
+          break;
+        case 5:
+          message.organizationList.push(Organization.decode(reader, reader.uint32()));
+          break;
+        case 7:
+          message.nFTSchemaByContractList.push(NFTSchemaByContract.decode(reader, reader.uint32()));
+          break;
+        case 8:
+          message.nftFeeConfig = NFTFeeConfig.decode(reader, reader.uint32());
+          break;
+        case 9:
+          message.nFTFeeBalance = NFTFeeBalance.decode(reader, reader.uint32());
+          break;
+        case 10:
+          message.metadataCreatorList.push(MetadataCreator.decode(reader, reader.uint32()));
+          break;
+        case 11:
+          message.nftCollectionList.push(NftCollection.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -270,16 +162,6 @@ export const GenesisState = {
     message.nFTFeeBalance = object.nFTFeeBalance !== undefined && object.nFTFeeBalance !== null ? NFTFeeBalance.fromPartial(object.nFTFeeBalance) : undefined;
     message.metadataCreatorList = object.metadataCreatorList?.map(e => MetadataCreator.fromPartial(e)) || [];
     message.nftCollectionList = object.nftCollectionList?.map(e => NftCollection.fromPartial(e)) || [];
-    message.actionExecutorList = object.actionExecutorList?.map(e => ActionExecutor.fromPartial(e)) || [];
-    message.schemaAttributeList = object.schemaAttributeList?.map(e => SchemaAttribute.fromPartial(e)) || [];
-    message.actionOfSchemaList = object.actionOfSchemaList?.map(e => ActionOfSchema.fromPartial(e)) || [];
-    message.executorOfSchemaList = object.executorOfSchemaList?.map(e => ExecutorOfSchema.fromPartial(e)) || [];
-    message.virtualActionList = object.virtualActionList?.map(e => VirtualAction.fromPartial(e)) || [];
-    message.virtualSchemaList = object.virtualSchemaList?.map(e => VirtualSchema.fromPartial(e)) || [];
-    message.virtualSchemaProposalList = object.virtualSchemaProposalList?.map(e => VirtualSchemaProposal.fromPartial(e)) || [];
-    message.activeVirtualSchemaProposalList = object.activeVirtualSchemaProposalList?.map(e => ActiveVirtualSchemaProposal.fromPartial(e)) || [];
-    message.inactiveVirtualSchemaProposalList = object.inactiveVirtualSchemaProposalList?.map(e => InactiveVirtualSchemaProposal.fromPartial(e)) || [];
-    message.lockSchemaFeeList = object.lockSchemaFeeList?.map(e => LockSchemaFee.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -300,16 +182,6 @@ export const GenesisState = {
     }
     message.metadataCreatorList = object.metadataCreatorList?.map(e => MetadataCreator.fromAmino(e)) || [];
     message.nftCollectionList = object.nftCollectionList?.map(e => NftCollection.fromAmino(e)) || [];
-    message.actionExecutorList = object.actionExecutorList?.map(e => ActionExecutor.fromAmino(e)) || [];
-    message.schemaAttributeList = object.schemaAttributeList?.map(e => SchemaAttribute.fromAmino(e)) || [];
-    message.actionOfSchemaList = object.actionOfSchemaList?.map(e => ActionOfSchema.fromAmino(e)) || [];
-    message.executorOfSchemaList = object.executorOfSchemaList?.map(e => ExecutorOfSchema.fromAmino(e)) || [];
-    message.virtualActionList = object.virtualActionList?.map(e => VirtualAction.fromAmino(e)) || [];
-    message.virtualSchemaList = object.virtualSchemaList?.map(e => VirtualSchema.fromAmino(e)) || [];
-    message.virtualSchemaProposalList = object.virtualSchemaProposalList?.map(e => VirtualSchemaProposal.fromAmino(e)) || [];
-    message.activeVirtualSchemaProposalList = object.activeVirtualSchemaProposalList?.map(e => ActiveVirtualSchemaProposal.fromAmino(e)) || [];
-    message.inactiveVirtualSchemaProposalList = object.inactiveVirtualSchemaProposalList?.map(e => InactiveVirtualSchemaProposal.fromAmino(e)) || [];
-    message.lockSchemaFeeList = object.lockSchemaFeeList?.map(e => LockSchemaFee.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -352,56 +224,6 @@ export const GenesisState = {
     } else {
       obj.nftCollectionList = message.nftCollectionList;
     }
-    if (message.actionExecutorList) {
-      obj.actionExecutorList = message.actionExecutorList.map(e => e ? ActionExecutor.toAmino(e) : undefined);
-    } else {
-      obj.actionExecutorList = message.actionExecutorList;
-    }
-    if (message.schemaAttributeList) {
-      obj.schemaAttributeList = message.schemaAttributeList.map(e => e ? SchemaAttribute.toAmino(e) : undefined);
-    } else {
-      obj.schemaAttributeList = message.schemaAttributeList;
-    }
-    if (message.actionOfSchemaList) {
-      obj.actionOfSchemaList = message.actionOfSchemaList.map(e => e ? ActionOfSchema.toAmino(e) : undefined);
-    } else {
-      obj.actionOfSchemaList = message.actionOfSchemaList;
-    }
-    if (message.executorOfSchemaList) {
-      obj.executorOfSchemaList = message.executorOfSchemaList.map(e => e ? ExecutorOfSchema.toAmino(e) : undefined);
-    } else {
-      obj.executorOfSchemaList = message.executorOfSchemaList;
-    }
-    if (message.virtualActionList) {
-      obj.virtualActionList = message.virtualActionList.map(e => e ? VirtualAction.toAmino(e) : undefined);
-    } else {
-      obj.virtualActionList = message.virtualActionList;
-    }
-    if (message.virtualSchemaList) {
-      obj.virtualSchemaList = message.virtualSchemaList.map(e => e ? VirtualSchema.toAmino(e) : undefined);
-    } else {
-      obj.virtualSchemaList = message.virtualSchemaList;
-    }
-    if (message.virtualSchemaProposalList) {
-      obj.virtualSchemaProposalList = message.virtualSchemaProposalList.map(e => e ? VirtualSchemaProposal.toAmino(e) : undefined);
-    } else {
-      obj.virtualSchemaProposalList = message.virtualSchemaProposalList;
-    }
-    if (message.activeVirtualSchemaProposalList) {
-      obj.activeVirtualSchemaProposalList = message.activeVirtualSchemaProposalList.map(e => e ? ActiveVirtualSchemaProposal.toAmino(e) : undefined);
-    } else {
-      obj.activeVirtualSchemaProposalList = message.activeVirtualSchemaProposalList;
-    }
-    if (message.inactiveVirtualSchemaProposalList) {
-      obj.inactiveVirtualSchemaProposalList = message.inactiveVirtualSchemaProposalList.map(e => e ? InactiveVirtualSchemaProposal.toAmino(e) : undefined);
-    } else {
-      obj.inactiveVirtualSchemaProposalList = message.inactiveVirtualSchemaProposalList;
-    }
-    if (message.lockSchemaFeeList) {
-      obj.lockSchemaFeeList = message.lockSchemaFeeList.map(e => e ? LockSchemaFee.toAmino(e) : undefined);
-    } else {
-      obj.lockSchemaFeeList = message.lockSchemaFeeList;
-    }
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -415,7 +237,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftmngr.GenesisState',
+      typeUrl: "/thesixnetwork.sixnft.nftmngr.GenesisState",
       value: GenesisState.encode(message).finish()
     };
   }

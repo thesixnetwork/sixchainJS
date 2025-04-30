@@ -1,16 +1,15 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Long } from '../helpers';
-import { ActionOracleRequest, ActionOracleRequestAmino, ActionOracleRequestSDKType } from './action_request';
-import { ActionSigner, ActionSignerAmino, ActionSignerSDKType } from './action_signer';
-import { ActionSignerConfig, ActionSignerConfigAmino, ActionSignerConfigSDKType } from './action_signer_config';
-import { BindedSigner, BindedSignerAmino, BindedSignerSDKType } from './binded_signer';
-import { CollectionOwnerRequest, CollectionOwnerRequestAmino, CollectionOwnerRequestSDKType } from './collection_owner_request';
-import { MintRequest, MintRequestAmino, MintRequestSDKType } from './mint_request';
-import { OracleConfig, OracleConfigAmino, OracleConfigSDKType } from './oracle_config';
-import { Params, ParamsAmino, ParamsSDKType } from './params';
-import { SyncActionSigner, SyncActionSignerAmino, SyncActionSignerSDKType } from './sync_action_signer';
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { MintRequest, MintRequestAmino, MintRequestSDKType } from "./mint_request";
+import { ActionOracleRequest, ActionOracleRequestAmino, ActionOracleRequestSDKType } from "./action_request";
+import { CollectionOwnerRequest, CollectionOwnerRequestAmino, CollectionOwnerRequestSDKType } from "./collection_owner_request";
+import { OracleConfig, OracleConfigAmino, OracleConfigSDKType } from "./oracle_config";
+import { ActionSigner, ActionSignerAmino, ActionSignerSDKType } from "./action_signer";
+import { BindedSigner, BindedSignerAmino, BindedSignerSDKType } from "./binded_signer";
+import { ActionSignerConfig, ActionSignerConfigAmino, ActionSignerConfigSDKType } from "./action_signer_config";
+import { SyncActionSigner, SyncActionSignerAmino, SyncActionSignerSDKType } from "./sync_action_signer";
+import { Long } from "../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the nftoracle module's genesis state. */
 export interface GenesisState {
   params: Params;
@@ -28,7 +27,7 @@ export interface GenesisState {
   syncActionSignerCount: Long;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.GenesisState';
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.GenesisState";
   value: Uint8Array;
 }
 /** GenesisState defines the nftoracle module's genesis state. */
@@ -48,7 +47,7 @@ export interface GenesisStateAmino {
   syncActionSignerCount?: string;
 }
 export interface GenesisStateAminoMsg {
-  type: '/thesixnetwork.sixprotocol.nftoracle.GenesisState';
+  type: "/thesixnetwork.sixnft.nftoracle.GenesisState";
   value: GenesisStateAmino;
 }
 /** GenesisState defines the nftoracle module's genesis state. */
@@ -85,7 +84,7 @@ function createBaseGenesisState(): GenesisState {
   };
 }
 export const GenesisState = {
-  typeUrl: '/thesixnetwork.sixprotocol.nftoracle.GenesisState',
+  typeUrl: "/thesixnetwork.sixnft.nftoracle.GenesisState",
   encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -135,48 +134,48 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.params = Params.decode(reader, reader.uint32());
-        break;
-      case 2:
-        message.mintRequestList.push(MintRequest.decode(reader, reader.uint32()));
-        break;
-      case 3:
-        message.mintRequestCount = reader.uint64() as Long;
-        break;
-      case 4:
-        message.actionRequestList.push(ActionOracleRequest.decode(reader, reader.uint32()));
-        break;
-      case 5:
-        message.actionRequestCount = reader.uint64() as Long;
-        break;
-      case 6:
-        message.collectionOwnerRequestList.push(CollectionOwnerRequest.decode(reader, reader.uint32()));
-        break;
-      case 7:
-        message.collectionOwnerRequestCount = reader.uint64() as Long;
-        break;
-      case 8:
-        message.oracleConfig = OracleConfig.decode(reader, reader.uint32());
-        break;
-      case 9:
-        message.actionSignerList.push(ActionSigner.decode(reader, reader.uint32()));
-        break;
-      case 10:
-        message.bindedSignerList.push(BindedSigner.decode(reader, reader.uint32()));
-        break;
-      case 13:
-        message.actionSignerConfigList.push(ActionSignerConfig.decode(reader, reader.uint32()));
-        break;
-      case 14:
-        message.syncActionSignerList.push(SyncActionSigner.decode(reader, reader.uint32()));
-        break;
-      case 15:
-        message.syncActionSignerCount = reader.uint64() as Long;
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.mintRequestList.push(MintRequest.decode(reader, reader.uint32()));
+          break;
+        case 3:
+          message.mintRequestCount = reader.uint64() as Long;
+          break;
+        case 4:
+          message.actionRequestList.push(ActionOracleRequest.decode(reader, reader.uint32()));
+          break;
+        case 5:
+          message.actionRequestCount = reader.uint64() as Long;
+          break;
+        case 6:
+          message.collectionOwnerRequestList.push(CollectionOwnerRequest.decode(reader, reader.uint32()));
+          break;
+        case 7:
+          message.collectionOwnerRequestCount = reader.uint64() as Long;
+          break;
+        case 8:
+          message.oracleConfig = OracleConfig.decode(reader, reader.uint32());
+          break;
+        case 9:
+          message.actionSignerList.push(ActionSigner.decode(reader, reader.uint32()));
+          break;
+        case 10:
+          message.bindedSignerList.push(BindedSigner.decode(reader, reader.uint32()));
+          break;
+        case 13:
+          message.actionSignerConfigList.push(ActionSignerConfig.decode(reader, reader.uint32()));
+          break;
+        case 14:
+          message.syncActionSignerList.push(SyncActionSigner.decode(reader, reader.uint32()));
+          break;
+        case 15:
+          message.syncActionSignerCount = reader.uint64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -235,19 +234,19 @@ export const GenesisState = {
     } else {
       obj.mintRequestList = message.mintRequestList;
     }
-    obj.mintRequestCount = !message.mintRequestCount.isZero() ? message.mintRequestCount?.toString() : undefined;
+    obj.mintRequestCount = !message.mintRequestCount.isZero() ? (message.mintRequestCount?.toString)() : undefined;
     if (message.actionRequestList) {
       obj.actionRequestList = message.actionRequestList.map(e => e ? ActionOracleRequest.toAmino(e) : undefined);
     } else {
       obj.actionRequestList = message.actionRequestList;
     }
-    obj.actionRequestCount = !message.actionRequestCount.isZero() ? message.actionRequestCount?.toString() : undefined;
+    obj.actionRequestCount = !message.actionRequestCount.isZero() ? (message.actionRequestCount?.toString)() : undefined;
     if (message.collectionOwnerRequestList) {
       obj.collectionOwnerRequestList = message.collectionOwnerRequestList.map(e => e ? CollectionOwnerRequest.toAmino(e) : undefined);
     } else {
       obj.collectionOwnerRequestList = message.collectionOwnerRequestList;
     }
-    obj.collectionOwnerRequestCount = !message.collectionOwnerRequestCount.isZero() ? message.collectionOwnerRequestCount?.toString() : undefined;
+    obj.collectionOwnerRequestCount = !message.collectionOwnerRequestCount.isZero() ? (message.collectionOwnerRequestCount?.toString)() : undefined;
     obj.oracle_config = message.oracleConfig ? OracleConfig.toAmino(message.oracleConfig) : undefined;
     if (message.actionSignerList) {
       obj.actionSignerList = message.actionSignerList.map(e => e ? ActionSigner.toAmino(e) : undefined);
@@ -269,7 +268,7 @@ export const GenesisState = {
     } else {
       obj.syncActionSignerList = message.syncActionSignerList;
     }
-    obj.syncActionSignerCount = !message.syncActionSignerCount.isZero() ? message.syncActionSignerCount?.toString() : undefined;
+    obj.syncActionSignerCount = !message.syncActionSignerCount.isZero() ? (message.syncActionSignerCount?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -283,7 +282,7 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.nftoracle.GenesisState',
+      typeUrl: "/thesixnetwork.sixnft.nftoracle.GenesisState",
       value: GenesisState.encode(message).finish()
     };
   }

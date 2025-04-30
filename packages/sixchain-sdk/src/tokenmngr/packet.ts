@@ -1,17 +1,17 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
+import * as _m0 from "protobufjs/minimal";
 export interface TokenmngrPacketData {
   noData?: NoData;
 }
 export interface TokenmngrPacketDataProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.TokenmngrPacketData';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenmngrPacketData";
   value: Uint8Array;
 }
 export interface TokenmngrPacketDataAmino {
   noData?: NoDataAmino;
 }
 export interface TokenmngrPacketDataAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.TokenmngrPacketData';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.TokenmngrPacketData";
   value: TokenmngrPacketDataAmino;
 }
 export interface TokenmngrPacketDataSDKType {
@@ -19,12 +19,12 @@ export interface TokenmngrPacketDataSDKType {
 }
 export interface NoData {}
 export interface NoDataProtoMsg {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.NoData';
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.NoData";
   value: Uint8Array;
 }
 export interface NoDataAmino {}
 export interface NoDataAminoMsg {
-  type: '/thesixnetwork.sixprotocol.tokenmngr.NoData';
+  type: "/thesixnetwork.sixprotocol.tokenmngr.NoData";
   value: NoDataAmino;
 }
 export interface NoDataSDKType {}
@@ -34,7 +34,7 @@ function createBaseTokenmngrPacketData(): TokenmngrPacketData {
   };
 }
 export const TokenmngrPacketData = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.TokenmngrPacketData',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenmngrPacketData",
   encode(message: TokenmngrPacketData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.noData !== undefined) {
       NoData.encode(message.noData, writer.uint32(10).fork()).ldelim();
@@ -48,12 +48,12 @@ export const TokenmngrPacketData = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      case 1:
-        message.noData = NoData.decode(reader, reader.uint32());
-        break;
-      default:
-        reader.skipType(tag & 7);
-        break;
+        case 1:
+          message.noData = NoData.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -86,7 +86,7 @@ export const TokenmngrPacketData = {
   },
   toProtoMsg(message: TokenmngrPacketData): TokenmngrPacketDataProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.TokenmngrPacketData',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenmngrPacketData",
       value: TokenmngrPacketData.encode(message).finish()
     };
   }
@@ -95,7 +95,7 @@ function createBaseNoData(): NoData {
   return {};
 }
 export const NoData = {
-  typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.NoData',
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.NoData",
   encode(_: NoData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
@@ -106,9 +106,9 @@ export const NoData = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-      default:
-        reader.skipType(tag & 7);
-        break;
+        default:
+          reader.skipType(tag & 7);
+          break;
       }
     }
     return message;
@@ -136,7 +136,7 @@ export const NoData = {
   },
   toProtoMsg(message: NoData): NoDataProtoMsg {
     return {
-      typeUrl: '/thesixnetwork.sixprotocol.tokenmngr.NoData',
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.NoData",
       value: NoData.encode(message).finish()
     };
   }

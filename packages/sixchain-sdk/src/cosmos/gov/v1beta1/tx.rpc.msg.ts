@@ -1,8 +1,7 @@
 //@ts-nocheck
-import * as _m0 from 'protobufjs/minimal';
-
-import { Rpc } from '../../../helpers';
-import { MsgDeposit, MsgDepositResponse,MsgSubmitProposal, MsgSubmitProposalResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse } from './tx';
+import { Rpc } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
+import { MsgSubmitProposal, MsgSubmitProposalResponse, MsgVote, MsgVoteResponse, MsgVoteWeighted, MsgVoteWeightedResponse, MsgDeposit, MsgDepositResponse } from "./tx";
 /** Msg defines the bank Msg service. */
 export interface Msg {
   /** SubmitProposal defines a method to create new proposal given a content. */
@@ -29,22 +28,22 @@ export class MsgClientImpl implements Msg {
   }
   submitProposal(request: MsgSubmitProposal): Promise<MsgSubmitProposalResponse> {
     const data = MsgSubmitProposal.encode(request).finish();
-    const promise = this.rpc.request('cosmos.gov.v1beta1.Msg', 'SubmitProposal', data);
+    const promise = this.rpc.request("cosmos.gov.v1beta1.Msg", "SubmitProposal", data);
     return promise.then(data => MsgSubmitProposalResponse.decode(new _m0.Reader(data)));
   }
   vote(request: MsgVote): Promise<MsgVoteResponse> {
     const data = MsgVote.encode(request).finish();
-    const promise = this.rpc.request('cosmos.gov.v1beta1.Msg', 'Vote', data);
+    const promise = this.rpc.request("cosmos.gov.v1beta1.Msg", "Vote", data);
     return promise.then(data => MsgVoteResponse.decode(new _m0.Reader(data)));
   }
   voteWeighted(request: MsgVoteWeighted): Promise<MsgVoteWeightedResponse> {
     const data = MsgVoteWeighted.encode(request).finish();
-    const promise = this.rpc.request('cosmos.gov.v1beta1.Msg', 'VoteWeighted', data);
+    const promise = this.rpc.request("cosmos.gov.v1beta1.Msg", "VoteWeighted", data);
     return promise.then(data => MsgVoteWeightedResponse.decode(new _m0.Reader(data)));
   }
   deposit(request: MsgDeposit): Promise<MsgDepositResponse> {
     const data = MsgDeposit.encode(request).finish();
-    const promise = this.rpc.request('cosmos.gov.v1beta1.Msg', 'Deposit', data);
+    const promise = this.rpc.request("cosmos.gov.v1beta1.Msg", "Deposit", data);
     return promise.then(data => MsgDepositResponse.decode(new _m0.Reader(data)));
   }
 }
