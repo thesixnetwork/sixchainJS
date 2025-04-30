@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn, MsgWrapToken, MsgUnwrapToken, MsgSetConverterParams, MsgEnableContractConverter, MsgSendWrapToken } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken", MsgCreateToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken", MsgUpdateToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken", MsgDeleteToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm", MsgCreateMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm", MsgUpdateMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm", MsgDeleteMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgMint", MsgMint], ["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions", MsgCreateOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions", MsgUpdateOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions", MsgDeleteOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgBurn", MsgBurn], ["/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken", MsgWrapToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken", MsgUnwrapToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgSetConverterParams", MsgSetConverterParams], ["/thesixnetwork.sixprotocol.tokenmngr.MsgEnableContractConverter", MsgEnableContractConverter], ["/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken", MsgSendWrapToken]];
+import { MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn, MsgConvertToAtto, MsgConvertToMicro } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken", MsgCreateToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateToken", MsgUpdateToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteToken", MsgDeleteToken], ["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateMintperm", MsgCreateMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateMintperm", MsgUpdateMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteMintperm", MsgDeleteMintperm], ["/thesixnetwork.sixprotocol.tokenmngr.MsgMint", MsgMint], ["/thesixnetwork.sixprotocol.tokenmngr.MsgCreateOptions", MsgCreateOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgUpdateOptions", MsgUpdateOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgDeleteOptions", MsgDeleteOptions], ["/thesixnetwork.sixprotocol.tokenmngr.MsgBurn", MsgBurn], ["/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto", MsgConvertToAtto], ["/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro", MsgConvertToMicro]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -75,34 +75,16 @@ export const MessageComposer = {
         value: MsgBurn.encode(value).finish()
       };
     },
-    wrapToken(value: MsgWrapToken) {
+    convertToAtto(value: MsgConvertToAtto) {
       return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken",
-        value: MsgWrapToken.encode(value).finish()
+        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto",
+        value: MsgConvertToAtto.encode(value).finish()
       };
     },
-    unwrapToken(value: MsgUnwrapToken) {
+    convertToMicro(value: MsgConvertToMicro) {
       return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken",
-        value: MsgUnwrapToken.encode(value).finish()
-      };
-    },
-    setConverterParams(value: MsgSetConverterParams) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSetConverterParams",
-        value: MsgSetConverterParams.encode(value).finish()
-      };
-    },
-    enableContractConverter(value: MsgEnableContractConverter) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgEnableContractConverter",
-        value: MsgEnableContractConverter.encode(value).finish()
-      };
-    },
-    sendWrapToken(value: MsgSendWrapToken) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken",
-        value: MsgSendWrapToken.encode(value).finish()
+        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro",
+        value: MsgConvertToMicro.encode(value).finish()
       };
     }
   },
@@ -173,33 +155,15 @@ export const MessageComposer = {
         value
       };
     },
-    wrapToken(value: MsgWrapToken) {
+    convertToAtto(value: MsgConvertToAtto) {
       return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken",
+        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto",
         value
       };
     },
-    unwrapToken(value: MsgUnwrapToken) {
+    convertToMicro(value: MsgConvertToMicro) {
       return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken",
-        value
-      };
-    },
-    setConverterParams(value: MsgSetConverterParams) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSetConverterParams",
-        value
-      };
-    },
-    enableContractConverter(value: MsgEnableContractConverter) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgEnableContractConverter",
-        value
-      };
-    },
-    sendWrapToken(value: MsgSendWrapToken) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken",
+        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro",
         value
       };
     }
@@ -271,34 +235,16 @@ export const MessageComposer = {
         value: MsgBurn.fromPartial(value)
       };
     },
-    wrapToken(value: MsgWrapToken) {
+    convertToAtto(value: MsgConvertToAtto) {
       return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken",
-        value: MsgWrapToken.fromPartial(value)
+        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto",
+        value: MsgConvertToAtto.fromPartial(value)
       };
     },
-    unwrapToken(value: MsgUnwrapToken) {
+    convertToMicro(value: MsgConvertToMicro) {
       return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken",
-        value: MsgUnwrapToken.fromPartial(value)
-      };
-    },
-    setConverterParams(value: MsgSetConverterParams) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSetConverterParams",
-        value: MsgSetConverterParams.fromPartial(value)
-      };
-    },
-    enableContractConverter(value: MsgEnableContractConverter) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgEnableContractConverter",
-        value: MsgEnableContractConverter.fromPartial(value)
-      };
-    },
-    sendWrapToken(value: MsgSendWrapToken) {
-      return {
-        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken",
-        value: MsgSendWrapToken.fromPartial(value)
+        typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro",
+        value: MsgConvertToMicro.fromPartial(value)
       };
     }
   }

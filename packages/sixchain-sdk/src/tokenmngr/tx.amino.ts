@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn, MsgWrapToken, MsgUnwrapToken, MsgSetConverterParams, MsgEnableContractConverter, MsgSendWrapToken } from "./tx";
+import { MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn, MsgConvertToAtto, MsgConvertToMicro } from "./tx";
 export const AminoConverter = {
   "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken": {
     aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken",
@@ -56,29 +56,14 @@ export const AminoConverter = {
     toAmino: MsgBurn.toAmino,
     fromAmino: MsgBurn.fromAmino
   },
-  "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken": {
-    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken",
-    toAmino: MsgWrapToken.toAmino,
-    fromAmino: MsgWrapToken.fromAmino
+  "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto": {
+    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToAtto",
+    toAmino: MsgConvertToAtto.toAmino,
+    fromAmino: MsgConvertToAtto.fromAmino
   },
-  "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken": {
-    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken",
-    toAmino: MsgUnwrapToken.toAmino,
-    fromAmino: MsgUnwrapToken.fromAmino
-  },
-  "/thesixnetwork.sixprotocol.tokenmngr.MsgSetConverterParams": {
-    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgSetConverterParams",
-    toAmino: MsgSetConverterParams.toAmino,
-    fromAmino: MsgSetConverterParams.fromAmino
-  },
-  "/thesixnetwork.sixprotocol.tokenmngr.MsgEnableContractConverter": {
-    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgEnableContractConverter",
-    toAmino: MsgEnableContractConverter.toAmino,
-    fromAmino: MsgEnableContractConverter.fromAmino
-  },
-  "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken": {
-    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken",
-    toAmino: MsgSendWrapToken.toAmino,
-    fromAmino: MsgSendWrapToken.fromAmino
+  "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro": {
+    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgConvertToMicro",
+    toAmino: MsgConvertToMicro.toAmino,
+    fromAmino: MsgConvertToMicro.fromAmino
   }
 };

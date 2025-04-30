@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { Rpc } from "../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgCreateToken, MsgCreateTokenResponse, MsgUpdateToken, MsgUpdateTokenResponse, MsgDeleteToken, MsgDeleteTokenResponse, MsgCreateMintperm, MsgCreateMintpermResponse, MsgUpdateMintperm, MsgUpdateMintpermResponse, MsgDeleteMintperm, MsgDeleteMintpermResponse, MsgMint, MsgMintResponse, MsgCreateOptions, MsgCreateOptionsResponse, MsgUpdateOptions, MsgUpdateOptionsResponse, MsgDeleteOptions, MsgDeleteOptionsResponse, MsgBurn, MsgBurnResponse, MsgWrapToken, MsgWrapTokenResponse, MsgUnwrapToken, MsgUnwrapTokenResponse, MsgSetConverterParams, MsgSetConverterParamsResponse, MsgEnableContractConverter, MsgEnableContractConverterResponse, MsgSendWrapToken, MsgSendWrapTokenResponse } from "./tx";
+import { MsgCreateToken, MsgCreateTokenResponse, MsgUpdateToken, MsgUpdateTokenResponse, MsgDeleteToken, MsgDeleteTokenResponse, MsgCreateMintperm, MsgCreateMintpermResponse, MsgUpdateMintperm, MsgUpdateMintpermResponse, MsgDeleteMintperm, MsgDeleteMintpermResponse, MsgMint, MsgMintResponse, MsgCreateOptions, MsgCreateOptionsResponse, MsgUpdateOptions, MsgUpdateOptionsResponse, MsgDeleteOptions, MsgDeleteOptionsResponse, MsgBurn, MsgBurnResponse, MsgConvertToAtto, MsgConvertToAttoResponse, MsgConvertToMicro, MsgConvertToMicroResponse } from "./tx";
 /** Msg defines the Msg service. */
 export interface Msg {
   createToken(request: MsgCreateToken): Promise<MsgCreateTokenResponse>;
@@ -15,11 +15,8 @@ export interface Msg {
   updateOptions(request: MsgUpdateOptions): Promise<MsgUpdateOptionsResponse>;
   deleteOptions(request: MsgDeleteOptions): Promise<MsgDeleteOptionsResponse>;
   burn(request: MsgBurn): Promise<MsgBurnResponse>;
-  wrapToken(request: MsgWrapToken): Promise<MsgWrapTokenResponse>;
-  unwrapToken(request: MsgUnwrapToken): Promise<MsgUnwrapTokenResponse>;
-  setConverterParams(request: MsgSetConverterParams): Promise<MsgSetConverterParamsResponse>;
-  enableContractConverter(request: MsgEnableContractConverter): Promise<MsgEnableContractConverterResponse>;
-  sendWrapToken(request: MsgSendWrapToken): Promise<MsgSendWrapTokenResponse>;
+  convertToAtto(request: MsgConvertToAtto): Promise<MsgConvertToAttoResponse>;
+  convertToMicro(request: MsgConvertToMicro): Promise<MsgConvertToMicroResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -36,11 +33,8 @@ export class MsgClientImpl implements Msg {
     this.updateOptions = this.updateOptions.bind(this);
     this.deleteOptions = this.deleteOptions.bind(this);
     this.burn = this.burn.bind(this);
-    this.wrapToken = this.wrapToken.bind(this);
-    this.unwrapToken = this.unwrapToken.bind(this);
-    this.setConverterParams = this.setConverterParams.bind(this);
-    this.enableContractConverter = this.enableContractConverter.bind(this);
-    this.sendWrapToken = this.sendWrapToken.bind(this);
+    this.convertToAtto = this.convertToAtto.bind(this);
+    this.convertToMicro = this.convertToMicro.bind(this);
   }
   createToken(request: MsgCreateToken): Promise<MsgCreateTokenResponse> {
     const data = MsgCreateToken.encode(request).finish();
@@ -97,29 +91,14 @@ export class MsgClientImpl implements Msg {
     const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "Burn", data);
     return promise.then(data => MsgBurnResponse.decode(new _m0.Reader(data)));
   }
-  wrapToken(request: MsgWrapToken): Promise<MsgWrapTokenResponse> {
-    const data = MsgWrapToken.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "WrapToken", data);
-    return promise.then(data => MsgWrapTokenResponse.decode(new _m0.Reader(data)));
+  convertToAtto(request: MsgConvertToAtto): Promise<MsgConvertToAttoResponse> {
+    const data = MsgConvertToAtto.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "ConvertToAtto", data);
+    return promise.then(data => MsgConvertToAttoResponse.decode(new _m0.Reader(data)));
   }
-  unwrapToken(request: MsgUnwrapToken): Promise<MsgUnwrapTokenResponse> {
-    const data = MsgUnwrapToken.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "UnwrapToken", data);
-    return promise.then(data => MsgUnwrapTokenResponse.decode(new _m0.Reader(data)));
-  }
-  setConverterParams(request: MsgSetConverterParams): Promise<MsgSetConverterParamsResponse> {
-    const data = MsgSetConverterParams.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "SetConverterParams", data);
-    return promise.then(data => MsgSetConverterParamsResponse.decode(new _m0.Reader(data)));
-  }
-  enableContractConverter(request: MsgEnableContractConverter): Promise<MsgEnableContractConverterResponse> {
-    const data = MsgEnableContractConverter.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "EnableContractConverter", data);
-    return promise.then(data => MsgEnableContractConverterResponse.decode(new _m0.Reader(data)));
-  }
-  sendWrapToken(request: MsgSendWrapToken): Promise<MsgSendWrapTokenResponse> {
-    const data = MsgSendWrapToken.encode(request).finish();
-    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "SendWrapToken", data);
-    return promise.then(data => MsgSendWrapTokenResponse.decode(new _m0.Reader(data)));
+  convertToMicro(request: MsgConvertToMicro): Promise<MsgConvertToMicroResponse> {
+    const data = MsgConvertToMicro.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "ConvertToMicro", data);
+    return promise.then(data => MsgConvertToMicroResponse.decode(new _m0.Reader(data)));
   }
 }

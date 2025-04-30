@@ -2,7 +2,7 @@
 import { Rpc } from "../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetTokenRequest, QueryGetTokenResponse, QueryAllTokenRequest, QueryAllTokenResponse, QueryGetMintpermRequest, QueryGetMintpermResponse, QueryAllMintpermRequest, QueryAllMintpermResponse, QueryGetOptionsRequest, QueryGetOptionsResponse, QueryBurnsRequest, QueryBurnsResponse, QueryGetTokenBurnRequest, QueryGetTokenBurnResponse, QueryAllTokenBurnRequest, QueryAllTokenBurnResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryGetTokenRequest, QueryGetTokenResponse, QueryAllTokenRequest, QueryAllTokenResponse, QueryGetMintpermRequest, QueryGetMintpermResponse, QueryAllMintpermRequest, QueryAllMintpermResponse, QueryGetOptionsRequest, QueryGetOptionsResponse, QueryBurnsRequest, QueryBurnsResponse, QueryBurnsResponseV202, QueryGetTokenBurnRequest, QueryGetTokenBurnResponse, QueryGetTokenBurnResponseV202, QueryAllTokenBurnRequest, QueryAllTokenBurnResponse, QueryAllTokenBurnResponseV202 } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -19,10 +19,16 @@ export interface Query {
   options(request?: QueryGetOptionsRequest): Promise<QueryGetOptionsResponse>;
   /** Queries a list of Burns items. */
   burns(request?: QueryBurnsRequest): Promise<QueryBurnsResponse>;
+  /** Queries a list of Burns items. */
+  burnsV202(request?: QueryBurnsRequest): Promise<QueryBurnsResponseV202>;
   /** Queries a TokenBurn by index. */
   tokenBurn(request: QueryGetTokenBurnRequest): Promise<QueryGetTokenBurnResponse>;
+  /** Queries a TokenBurn by index. */
+  tokenBurnV202(request: QueryGetTokenBurnRequest): Promise<QueryGetTokenBurnResponseV202>;
   /** Queries a list of TokenBurn items. */
   tokenBurnAll(request?: QueryAllTokenBurnRequest): Promise<QueryAllTokenBurnResponse>;
+  /** Queries a list of TokenBurn items. */
+  tokenBurnAllV202(request?: QueryAllTokenBurnRequest): Promise<QueryAllTokenBurnResponseV202>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -35,8 +41,11 @@ export class QueryClientImpl implements Query {
     this.mintpermAll = this.mintpermAll.bind(this);
     this.options = this.options.bind(this);
     this.burns = this.burns.bind(this);
+    this.burnsV202 = this.burnsV202.bind(this);
     this.tokenBurn = this.tokenBurn.bind(this);
+    this.tokenBurnV202 = this.tokenBurnV202.bind(this);
     this.tokenBurnAll = this.tokenBurnAll.bind(this);
+    this.tokenBurnAllV202 = this.tokenBurnAllV202.bind(this);
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
@@ -79,10 +88,22 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "Burns", data);
     return promise.then(data => QueryBurnsResponse.decode(new _m0.Reader(data)));
   }
+  burnsV202(request: QueryBurnsRequest = {
+    pagination: undefined
+  }): Promise<QueryBurnsResponseV202> {
+    const data = QueryBurnsRequest.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "BurnsV202", data);
+    return promise.then(data => QueryBurnsResponseV202.decode(new _m0.Reader(data)));
+  }
   tokenBurn(request: QueryGetTokenBurnRequest): Promise<QueryGetTokenBurnResponse> {
     const data = QueryGetTokenBurnRequest.encode(request).finish();
     const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "TokenBurn", data);
     return promise.then(data => QueryGetTokenBurnResponse.decode(new _m0.Reader(data)));
+  }
+  tokenBurnV202(request: QueryGetTokenBurnRequest): Promise<QueryGetTokenBurnResponseV202> {
+    const data = QueryGetTokenBurnRequest.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "TokenBurnV202", data);
+    return promise.then(data => QueryGetTokenBurnResponseV202.decode(new _m0.Reader(data)));
   }
   tokenBurnAll(request: QueryAllTokenBurnRequest = {
     pagination: undefined
@@ -90,6 +111,13 @@ export class QueryClientImpl implements Query {
     const data = QueryAllTokenBurnRequest.encode(request).finish();
     const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "TokenBurnAll", data);
     return promise.then(data => QueryAllTokenBurnResponse.decode(new _m0.Reader(data)));
+  }
+  tokenBurnAllV202(request: QueryAllTokenBurnRequest = {
+    pagination: undefined
+  }): Promise<QueryAllTokenBurnResponseV202> {
+    const data = QueryAllTokenBurnRequest.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Query", "TokenBurnAllV202", data);
+    return promise.then(data => QueryAllTokenBurnResponseV202.decode(new _m0.Reader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
@@ -117,11 +145,20 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     burns(request?: QueryBurnsRequest): Promise<QueryBurnsResponse> {
       return queryService.burns(request);
     },
+    burnsV202(request?: QueryBurnsRequest): Promise<QueryBurnsResponseV202> {
+      return queryService.burnsV202(request);
+    },
     tokenBurn(request: QueryGetTokenBurnRequest): Promise<QueryGetTokenBurnResponse> {
       return queryService.tokenBurn(request);
     },
+    tokenBurnV202(request: QueryGetTokenBurnRequest): Promise<QueryGetTokenBurnResponseV202> {
+      return queryService.tokenBurnV202(request);
+    },
     tokenBurnAll(request?: QueryAllTokenBurnRequest): Promise<QueryAllTokenBurnResponse> {
       return queryService.tokenBurnAll(request);
+    },
+    tokenBurnAllV202(request?: QueryAllTokenBurnRequest): Promise<QueryAllTokenBurnResponseV202> {
+      return queryService.tokenBurnAllV202(request);
     }
   };
 };

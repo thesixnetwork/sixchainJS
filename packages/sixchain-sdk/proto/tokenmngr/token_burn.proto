@@ -11,3 +11,9 @@ message TokenBurn {
   [(gogoproto.nullable) = false, (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coin"];
   
 }
+
+message TokenBurnV202 {
+  string token = 1; 
+  uint64 amount = 2; 
+  
+}
