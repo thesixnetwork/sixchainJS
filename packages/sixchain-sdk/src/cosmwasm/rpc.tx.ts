@@ -28,10 +28,9 @@ export const createRPCMsgClient = async ({
       v1beta1: new (await import("../cosmos/vesting/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     }
   },
-  thesixnetwork: {
-    sixprotocol: {
-      protocoladmin: new (await import("../protocoladmin/tx.rpc.msg")).MsgClientImpl(rpc),
-      tokenmngr: new (await import("../tokenmngr/tx.rpc.msg")).MsgClientImpl(rpc)
+  cosmwasm: {
+    wasm: {
+      v1: new (await import("./wasm/v1/tx.rpc.msg")).MsgClientImpl(rpc)
     }
   }
 });

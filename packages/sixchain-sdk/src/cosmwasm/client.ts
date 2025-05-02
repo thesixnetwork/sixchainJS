@@ -2,16 +2,13 @@
 import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
 import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
-import * as protocoladminTxRegistry from "../protocoladmin/tx.registry";
-import * as tokenmngrTxRegistry from "../tokenmngr/tx.registry";
-import * as protocoladminTxAmino from "../protocoladmin/tx.amino";
-import * as tokenmngrTxAmino from "../tokenmngr/tx.amino";
-export const thesixnetworkAminoConverters = {
-  ...protocoladminTxAmino.AminoConverter,
-  ...tokenmngrTxAmino.AminoConverter
+import * as cosmwasmWasmV1TxRegistry from "./wasm/v1/tx.registry";
+import * as cosmwasmWasmV1TxAmino from "./wasm/v1/tx.amino";
+export const cosmwasmAminoConverters = {
+  ...cosmwasmWasmV1TxAmino.AminoConverter
 };
-export const thesixnetworkProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...protocoladminTxRegistry.registry, ...tokenmngrTxRegistry.registry];
-export const getSigningThesixnetworkClientOptions = ({
+export const cosmwasmProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...cosmwasmWasmV1TxRegistry.registry];
+export const getSigningCosmwasmClientOptions = ({
   defaultTypes = defaultRegistryTypes
 }: {
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
@@ -19,16 +16,16 @@ export const getSigningThesixnetworkClientOptions = ({
   registry: Registry;
   aminoTypes: AminoTypes;
 } => {
-  const registry = new Registry([...defaultTypes, ...thesixnetworkProtoRegistry]);
+  const registry = new Registry([...defaultTypes, ...cosmwasmProtoRegistry]);
   const aminoTypes = new AminoTypes({
-    ...thesixnetworkAminoConverters
+    ...cosmwasmAminoConverters
   });
   return {
     registry,
     aminoTypes
   };
 };
-export const getSigningThesixnetworkClient = async ({
+export const getSigningCosmwasmClient = async ({
   rpcEndpoint,
   signer,
   defaultTypes = defaultRegistryTypes
@@ -40,7 +37,7 @@ export const getSigningThesixnetworkClient = async ({
   const {
     registry,
     aminoTypes
-  } = getSigningThesixnetworkClientOptions({
+  } = getSigningCosmwasmClientOptions({
     defaultTypes
   });
   const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {

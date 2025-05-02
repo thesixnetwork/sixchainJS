@@ -44,10 +44,9 @@ export const createRPCQueryClient = async ({
         v1beta1: (await import("../cosmos/upgrade/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       }
     },
-    thesixnetwork: {
-      sixprotocol: {
-        protocoladmin: (await import("../protocoladmin/query.rpc.Query")).createRpcQueryExtension(client),
-        tokenmngr: (await import("../tokenmngr/query.rpc.Query")).createRpcQueryExtension(client)
+    cosmwasm: {
+      wasm: {
+        v1: (await import("./wasm/v1/query.rpc.Query")).createRpcQueryExtension(client)
       }
     }
   };
