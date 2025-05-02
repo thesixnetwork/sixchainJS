@@ -46,6 +46,9 @@ export const createRPCQueryClient = async ({
     },
     thesixnetwork: {
       sixprotocol: {
+        nftadmin: (await import("../nftadmin/query.rpc.Query")).createRpcQueryExtension(client),
+        nftmngr: (await import("../nftmngr/query.rpc.Query")).createRpcQueryExtension(client),
+        nftoracle: (await import("../nftoracle/query.rpc.Query")).createRpcQueryExtension(client),
         protocoladmin: (await import("../protocoladmin/query.rpc.Query")).createRpcQueryExtension(client),
         tokenmngr: (await import("../tokenmngr/query.rpc.Query")).createRpcQueryExtension(client)
       }

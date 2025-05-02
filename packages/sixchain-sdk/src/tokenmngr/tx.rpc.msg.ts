@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { Rpc } from "../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgCreateToken, MsgCreateTokenResponse, MsgUpdateToken, MsgUpdateTokenResponse, MsgDeleteToken, MsgDeleteTokenResponse, MsgCreateMintperm, MsgCreateMintpermResponse, MsgUpdateMintperm, MsgUpdateMintpermResponse, MsgDeleteMintperm, MsgDeleteMintpermResponse, MsgMint, MsgMintResponse, MsgCreateOptions, MsgCreateOptionsResponse, MsgUpdateOptions, MsgUpdateOptionsResponse, MsgDeleteOptions, MsgDeleteOptionsResponse, MsgBurn, MsgBurnResponse } from "./tx";
+import { MsgCreateToken, MsgCreateTokenResponse, MsgUpdateToken, MsgUpdateTokenResponse, MsgDeleteToken, MsgDeleteTokenResponse, MsgCreateMintperm, MsgCreateMintpermResponse, MsgUpdateMintperm, MsgUpdateMintpermResponse, MsgDeleteMintperm, MsgDeleteMintpermResponse, MsgMint, MsgMintResponse, MsgCreateOptions, MsgCreateOptionsResponse, MsgUpdateOptions, MsgUpdateOptionsResponse, MsgDeleteOptions, MsgDeleteOptionsResponse, MsgBurn, MsgBurnResponse, MsgWrapToken, MsgWrapTokenResponse, MsgUnwrapToken, MsgUnwrapTokenResponse, MsgSendWrapToken, MsgSendWrapTokenResponse } from "./tx";
 /** Msg defines the Msg service. */
 export interface Msg {
   createToken(request: MsgCreateToken): Promise<MsgCreateTokenResponse>;
@@ -15,6 +15,9 @@ export interface Msg {
   updateOptions(request: MsgUpdateOptions): Promise<MsgUpdateOptionsResponse>;
   deleteOptions(request: MsgDeleteOptions): Promise<MsgDeleteOptionsResponse>;
   burn(request: MsgBurn): Promise<MsgBurnResponse>;
+  wrapToken(request: MsgWrapToken): Promise<MsgWrapTokenResponse>;
+  unwrapToken(request: MsgUnwrapToken): Promise<MsgUnwrapTokenResponse>;
+  sendWrapToken(request: MsgSendWrapToken): Promise<MsgSendWrapTokenResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -31,6 +34,9 @@ export class MsgClientImpl implements Msg {
     this.updateOptions = this.updateOptions.bind(this);
     this.deleteOptions = this.deleteOptions.bind(this);
     this.burn = this.burn.bind(this);
+    this.wrapToken = this.wrapToken.bind(this);
+    this.unwrapToken = this.unwrapToken.bind(this);
+    this.sendWrapToken = this.sendWrapToken.bind(this);
   }
   createToken(request: MsgCreateToken): Promise<MsgCreateTokenResponse> {
     const data = MsgCreateToken.encode(request).finish();
@@ -86,5 +92,20 @@ export class MsgClientImpl implements Msg {
     const data = MsgBurn.encode(request).finish();
     const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "Burn", data);
     return promise.then(data => MsgBurnResponse.decode(new _m0.Reader(data)));
+  }
+  wrapToken(request: MsgWrapToken): Promise<MsgWrapTokenResponse> {
+    const data = MsgWrapToken.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "WrapToken", data);
+    return promise.then(data => MsgWrapTokenResponse.decode(new _m0.Reader(data)));
+  }
+  unwrapToken(request: MsgUnwrapToken): Promise<MsgUnwrapTokenResponse> {
+    const data = MsgUnwrapToken.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "UnwrapToken", data);
+    return promise.then(data => MsgUnwrapTokenResponse.decode(new _m0.Reader(data)));
+  }
+  sendWrapToken(request: MsgSendWrapToken): Promise<MsgSendWrapTokenResponse> {
+    const data = MsgSendWrapToken.encode(request).finish();
+    const promise = this.rpc.request("thesixnetwork.sixprotocol.tokenmngr.Msg", "SendWrapToken", data);
+    return promise.then(data => MsgSendWrapTokenResponse.decode(new _m0.Reader(data)));
   }
 }

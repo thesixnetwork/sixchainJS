@@ -1,10 +1,11 @@
 //@ts-nocheck
+import { Coin, CoinAmino, CoinSDKType } from "../cosmos/base/v1beta1/coin";
 import { Long } from "../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface MsgCreateToken {
   creator: string;
   name: string;
-  maxSupply: Long;
+  maxSupply: Coin;
   denomMetaData: string;
   mintee: string;
 }
@@ -15,7 +16,7 @@ export interface MsgCreateTokenProtoMsg {
 export interface MsgCreateTokenAmino {
   creator?: string;
   name?: string;
-  maxSupply?: string;
+  maxSupply?: CoinAmino;
   denomMetaData?: string;
   mintee?: string;
 }
@@ -26,7 +27,7 @@ export interface MsgCreateTokenAminoMsg {
 export interface MsgCreateTokenSDKType {
   creator: string;
   name: string;
-  maxSupply: Long;
+  maxSupply: CoinSDKType;
   denomMetaData: string;
   mintee: string;
 }
@@ -44,7 +45,7 @@ export interface MsgCreateTokenResponseSDKType {}
 export interface MsgUpdateToken {
   creator: string;
   name: string;
-  maxSupply: Long;
+  maxSupply: Coin;
   mintee: string;
 }
 export interface MsgUpdateTokenProtoMsg {
@@ -54,7 +55,7 @@ export interface MsgUpdateTokenProtoMsg {
 export interface MsgUpdateTokenAmino {
   creator?: string;
   name?: string;
-  maxSupply?: string;
+  maxSupply?: CoinAmino;
   mintee?: string;
 }
 export interface MsgUpdateTokenAminoMsg {
@@ -64,7 +65,7 @@ export interface MsgUpdateTokenAminoMsg {
 export interface MsgUpdateTokenSDKType {
   creator: string;
   name: string;
-  maxSupply: Long;
+  maxSupply: CoinSDKType;
   mintee: string;
 }
 export interface MsgUpdateTokenResponse {}
@@ -213,8 +214,7 @@ export interface MsgDeleteMintpermResponseAminoMsg {
 export interface MsgDeleteMintpermResponseSDKType {}
 export interface MsgMint {
   creator: string;
-  amount: Long;
-  token: string;
+  amount: Coin;
 }
 export interface MsgMintProtoMsg {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgMint";
@@ -222,8 +222,7 @@ export interface MsgMintProtoMsg {
 }
 export interface MsgMintAmino {
   creator?: string;
-  amount?: string;
-  token?: string;
+  amount?: CoinAmino;
 }
 export interface MsgMintAminoMsg {
   type: "/thesixnetwork.sixprotocol.tokenmngr.MsgMint";
@@ -231,8 +230,7 @@ export interface MsgMintAminoMsg {
 }
 export interface MsgMintSDKType {
   creator: string;
-  amount: Long;
-  token: string;
+  amount: CoinSDKType;
 }
 export interface MsgMintResponse {}
 export interface MsgMintResponseProtoMsg {
@@ -245,6 +243,43 @@ export interface MsgMintResponseAminoMsg {
   value: MsgMintResponseAmino;
 }
 export interface MsgMintResponseSDKType {}
+export interface MsgBurn {
+  creator: string;
+  amount: Coin;
+}
+export interface MsgBurnProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn";
+  value: Uint8Array;
+}
+export interface MsgBurnAmino {
+  creator?: string;
+  amount?: CoinAmino;
+}
+export interface MsgBurnAminoMsg {
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn";
+  value: MsgBurnAmino;
+}
+export interface MsgBurnSDKType {
+  creator: string;
+  amount: CoinSDKType;
+}
+export interface MsgBurnResponse {
+  id: Long;
+}
+export interface MsgBurnResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse";
+  value: Uint8Array;
+}
+export interface MsgBurnResponseAmino {
+  id?: string;
+}
+export interface MsgBurnResponseAminoMsg {
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse";
+  value: MsgBurnResponseAmino;
+}
+export interface MsgBurnResponseSDKType {
+  id: Long;
+}
 export interface MsgCreateOptions {
   creator: string;
   defaultMintee: string;
@@ -335,51 +370,134 @@ export interface MsgDeleteOptionsResponseAminoMsg {
   value: MsgDeleteOptionsResponseAmino;
 }
 export interface MsgDeleteOptionsResponseSDKType {}
-export interface MsgBurn {
+export interface MsgWrapToken {
   creator: string;
-  amount: Long;
-  token: string;
+  amount: Coin;
+  receiver: string;
 }
-export interface MsgBurnProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn";
+export interface MsgWrapTokenProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken";
   value: Uint8Array;
 }
-export interface MsgBurnAmino {
+export interface MsgWrapTokenAmino {
   creator?: string;
-  amount?: string;
-  token?: string;
+  amount?: CoinAmino;
+  receiver?: string;
 }
-export interface MsgBurnAminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn";
-  value: MsgBurnAmino;
+export interface MsgWrapTokenAminoMsg {
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken";
+  value: MsgWrapTokenAmino;
 }
-export interface MsgBurnSDKType {
+export interface MsgWrapTokenSDKType {
   creator: string;
-  amount: Long;
-  token: string;
+  amount: CoinSDKType;
+  receiver: string;
 }
-export interface MsgBurnResponse {
-  id: Long;
+export interface MsgWrapTokenResponse {
+  amount: Coin;
 }
-export interface MsgBurnResponseProtoMsg {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse";
+export interface MsgWrapTokenResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse";
   value: Uint8Array;
 }
-export interface MsgBurnResponseAmino {
-  id?: string;
+export interface MsgWrapTokenResponseAmino {
+  amount?: CoinAmino;
 }
-export interface MsgBurnResponseAminoMsg {
-  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse";
-  value: MsgBurnResponseAmino;
+export interface MsgWrapTokenResponseAminoMsg {
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse";
+  value: MsgWrapTokenResponseAmino;
 }
-export interface MsgBurnResponseSDKType {
-  id: Long;
+export interface MsgWrapTokenResponseSDKType {
+  amount: CoinSDKType;
+}
+export interface MsgUnwrapToken {
+  creator: string;
+  amount: Coin;
+  receiver: string;
+}
+export interface MsgUnwrapTokenProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken";
+  value: Uint8Array;
+}
+export interface MsgUnwrapTokenAmino {
+  creator?: string;
+  amount?: CoinAmino;
+  receiver?: string;
+}
+export interface MsgUnwrapTokenAminoMsg {
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken";
+  value: MsgUnwrapTokenAmino;
+}
+export interface MsgUnwrapTokenSDKType {
+  creator: string;
+  amount: CoinSDKType;
+  receiver: string;
+}
+export interface MsgUnwrapTokenResponse {
+  amount: Coin;
+}
+export interface MsgUnwrapTokenResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse";
+  value: Uint8Array;
+}
+export interface MsgUnwrapTokenResponseAmino {
+  amount?: CoinAmino;
+}
+export interface MsgUnwrapTokenResponseAminoMsg {
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse";
+  value: MsgUnwrapTokenResponseAmino;
+}
+export interface MsgUnwrapTokenResponseSDKType {
+  amount: CoinSDKType;
+}
+export interface MsgSendWrapToken {
+  creator: string;
+  ethAddress: string;
+  amount: Coin;
+}
+export interface MsgSendWrapTokenProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken";
+  value: Uint8Array;
+}
+export interface MsgSendWrapTokenAmino {
+  creator?: string;
+  ethAddress?: string;
+  amount?: CoinAmino;
+}
+export interface MsgSendWrapTokenAminoMsg {
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken";
+  value: MsgSendWrapTokenAmino;
+}
+export interface MsgSendWrapTokenSDKType {
+  creator: string;
+  ethAddress: string;
+  amount: CoinSDKType;
+}
+export interface MsgSendWrapTokenResponse {
+  receiver: string;
+  amount: string;
+}
+export interface MsgSendWrapTokenResponseProtoMsg {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse";
+  value: Uint8Array;
+}
+export interface MsgSendWrapTokenResponseAmino {
+  receiver?: string;
+  amount?: string;
+}
+export interface MsgSendWrapTokenResponseAminoMsg {
+  type: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse";
+  value: MsgSendWrapTokenResponseAmino;
+}
+export interface MsgSendWrapTokenResponseSDKType {
+  receiver: string;
+  amount: string;
 }
 function createBaseMsgCreateToken(): MsgCreateToken {
   return {
     creator: "",
     name: "",
-    maxSupply: Long.UZERO,
+    maxSupply: Coin.fromPartial({}),
     denomMetaData: "",
     mintee: ""
   };
@@ -393,8 +511,8 @@ export const MsgCreateToken = {
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
-    if (!message.maxSupply.isZero()) {
-      writer.uint32(24).uint64(message.maxSupply);
+    if (message.maxSupply !== undefined) {
+      Coin.encode(message.maxSupply, writer.uint32(26).fork()).ldelim();
     }
     if (message.denomMetaData !== "") {
       writer.uint32(34).string(message.denomMetaData);
@@ -418,7 +536,7 @@ export const MsgCreateToken = {
           message.name = reader.string();
           break;
         case 3:
-          message.maxSupply = reader.uint64() as Long;
+          message.maxSupply = Coin.decode(reader, reader.uint32());
           break;
         case 4:
           message.denomMetaData = reader.string();
@@ -437,7 +555,7 @@ export const MsgCreateToken = {
     const message = createBaseMsgCreateToken();
     message.creator = object.creator ?? "";
     message.name = object.name ?? "";
-    message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Long.fromValue(object.maxSupply) : Long.UZERO;
+    message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Coin.fromPartial(object.maxSupply) : undefined;
     message.denomMetaData = object.denomMetaData ?? "";
     message.mintee = object.mintee ?? "";
     return message;
@@ -451,7 +569,7 @@ export const MsgCreateToken = {
       message.name = object.name;
     }
     if (object.maxSupply !== undefined && object.maxSupply !== null) {
-      message.maxSupply = Long.fromString(object.maxSupply);
+      message.maxSupply = Coin.fromAmino(object.maxSupply);
     }
     if (object.denomMetaData !== undefined && object.denomMetaData !== null) {
       message.denomMetaData = object.denomMetaData;
@@ -465,7 +583,7 @@ export const MsgCreateToken = {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.name = message.name === "" ? undefined : message.name;
-    obj.maxSupply = !message.maxSupply.isZero() ? (message.maxSupply?.toString)() : undefined;
+    obj.maxSupply = message.maxSupply ? Coin.toAmino(message.maxSupply) : undefined;
     obj.denomMetaData = message.denomMetaData === "" ? undefined : message.denomMetaData;
     obj.mintee = message.mintee === "" ? undefined : message.mintee;
     return obj;
@@ -540,7 +658,7 @@ function createBaseMsgUpdateToken(): MsgUpdateToken {
   return {
     creator: "",
     name: "",
-    maxSupply: Long.UZERO,
+    maxSupply: Coin.fromPartial({}),
     mintee: ""
   };
 }
@@ -553,8 +671,8 @@ export const MsgUpdateToken = {
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
-    if (!message.maxSupply.isZero()) {
-      writer.uint32(32).uint64(message.maxSupply);
+    if (message.maxSupply !== undefined) {
+      Coin.encode(message.maxSupply, writer.uint32(34).fork()).ldelim();
     }
     if (message.mintee !== "") {
       writer.uint32(42).string(message.mintee);
@@ -575,7 +693,7 @@ export const MsgUpdateToken = {
           message.name = reader.string();
           break;
         case 4:
-          message.maxSupply = reader.uint64() as Long;
+          message.maxSupply = Coin.decode(reader, reader.uint32());
           break;
         case 5:
           message.mintee = reader.string();
@@ -591,7 +709,7 @@ export const MsgUpdateToken = {
     const message = createBaseMsgUpdateToken();
     message.creator = object.creator ?? "";
     message.name = object.name ?? "";
-    message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Long.fromValue(object.maxSupply) : Long.UZERO;
+    message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Coin.fromPartial(object.maxSupply) : undefined;
     message.mintee = object.mintee ?? "";
     return message;
   },
@@ -604,7 +722,7 @@ export const MsgUpdateToken = {
       message.name = object.name;
     }
     if (object.maxSupply !== undefined && object.maxSupply !== null) {
-      message.maxSupply = Long.fromString(object.maxSupply);
+      message.maxSupply = Coin.fromAmino(object.maxSupply);
     }
     if (object.mintee !== undefined && object.mintee !== null) {
       message.mintee = object.mintee;
@@ -615,7 +733,7 @@ export const MsgUpdateToken = {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.name = message.name === "" ? undefined : message.name;
-    obj.maxSupply = !message.maxSupply.isZero() ? (message.maxSupply?.toString)() : undefined;
+    obj.maxSupply = message.maxSupply ? Coin.toAmino(message.maxSupply) : undefined;
     obj.mintee = message.mintee === "" ? undefined : message.mintee;
     return obj;
   },
@@ -1224,8 +1342,7 @@ export const MsgDeleteMintpermResponse = {
 function createBaseMsgMint(): MsgMint {
   return {
     creator: "",
-    amount: Long.UZERO,
-    token: ""
+    amount: Coin.fromPartial({})
   };
 }
 export const MsgMint = {
@@ -1234,11 +1351,8 @@ export const MsgMint = {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (!message.amount.isZero()) {
-      writer.uint32(16).uint64(message.amount);
-    }
-    if (message.token !== "") {
-      writer.uint32(26).string(message.token);
+    if (message.amount !== undefined) {
+      Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
@@ -1253,10 +1367,7 @@ export const MsgMint = {
           message.creator = reader.string();
           break;
         case 2:
-          message.amount = reader.uint64() as Long;
-          break;
-        case 3:
-          message.token = reader.string();
+          message.amount = Coin.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1268,8 +1379,7 @@ export const MsgMint = {
   fromPartial(object: Partial<MsgMint>): MsgMint {
     const message = createBaseMsgMint();
     message.creator = object.creator ?? "";
-    message.amount = object.amount !== undefined && object.amount !== null ? Long.fromValue(object.amount) : Long.UZERO;
-    message.token = object.token ?? "";
+    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
   },
   fromAmino(object: MsgMintAmino): MsgMint {
@@ -1278,18 +1388,14 @@ export const MsgMint = {
       message.creator = object.creator;
     }
     if (object.amount !== undefined && object.amount !== null) {
-      message.amount = Long.fromString(object.amount);
-    }
-    if (object.token !== undefined && object.token !== null) {
-      message.token = object.token;
+      message.amount = Coin.fromAmino(object.amount);
     }
     return message;
   },
   toAmino(message: MsgMint): MsgMintAmino {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.amount = !message.amount.isZero() ? (message.amount?.toString)() : undefined;
-    obj.token = message.token === "" ? undefined : message.token;
+    obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgMintAminoMsg): MsgMint {
@@ -1355,6 +1461,144 @@ export const MsgMintResponse = {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgMintResponse",
       value: MsgMintResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgBurn(): MsgBurn {
+  return {
+    creator: "",
+    amount: Coin.fromPartial({})
+  };
+}
+export const MsgBurn = {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn",
+  encode(message: MsgBurn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.amount !== undefined) {
+      Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurn {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgBurn();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgBurn>): MsgBurn {
+    const message = createBaseMsgBurn();
+    message.creator = object.creator ?? "";
+    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    return message;
+  },
+  fromAmino(object: MsgBurnAmino): MsgBurn {
+    const message = createBaseMsgBurn();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Coin.fromAmino(object.amount);
+    }
+    return message;
+  },
+  toAmino(message: MsgBurn): MsgBurnAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MsgBurnAminoMsg): MsgBurn {
+    return MsgBurn.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgBurnProtoMsg): MsgBurn {
+    return MsgBurn.decode(message.value);
+  },
+  toProto(message: MsgBurn): Uint8Array {
+    return MsgBurn.encode(message).finish();
+  },
+  toProtoMsg(message: MsgBurn): MsgBurnProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn",
+      value: MsgBurn.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgBurnResponse(): MsgBurnResponse {
+  return {
+    id: Long.UZERO
+  };
+}
+export const MsgBurnResponse = {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse",
+  encode(message: MsgBurnResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (!message.id.isZero()) {
+      writer.uint32(8).uint64(message.id);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgBurnResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.id = reader.uint64() as Long;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgBurnResponse>): MsgBurnResponse {
+    const message = createBaseMsgBurnResponse();
+    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
+    return message;
+  },
+  fromAmino(object: MsgBurnResponseAmino): MsgBurnResponse {
+    const message = createBaseMsgBurnResponse();
+    if (object.id !== undefined && object.id !== null) {
+      message.id = Long.fromString(object.id);
+    }
+    return message;
+  },
+  toAmino(message: MsgBurnResponse): MsgBurnResponseAmino {
+    const obj: any = {};
+    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MsgBurnResponseAminoMsg): MsgBurnResponse {
+    return MsgBurnResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgBurnResponseProtoMsg): MsgBurnResponse {
+    return MsgBurnResponse.decode(message.value);
+  },
+  toProto(message: MsgBurnResponse): Uint8Array {
+    return MsgBurnResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgBurnResponse): MsgBurnResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse",
+      value: MsgBurnResponse.encode(message).finish()
     };
   }
 };
@@ -1721,31 +1965,31 @@ export const MsgDeleteOptionsResponse = {
     };
   }
 };
-function createBaseMsgBurn(): MsgBurn {
+function createBaseMsgWrapToken(): MsgWrapToken {
   return {
     creator: "",
-    amount: Long.UZERO,
-    token: ""
+    amount: Coin.fromPartial({}),
+    receiver: ""
   };
 }
-export const MsgBurn = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn",
-  encode(message: MsgBurn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const MsgWrapToken = {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken",
+  encode(message: MsgWrapToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (!message.amount.isZero()) {
-      writer.uint32(16).uint64(message.amount);
+    if (message.amount !== undefined) {
+      Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
     }
-    if (message.token !== "") {
-      writer.uint32(26).string(message.token);
+    if (message.receiver !== "") {
+      writer.uint32(26).string(message.receiver);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurn {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgWrapToken {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgBurn();
+    const message = createBaseMsgWrapToken();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1753,10 +1997,10 @@ export const MsgBurn = {
           message.creator = reader.string();
           break;
         case 2:
-          message.amount = reader.uint64() as Long;
+          message.amount = Coin.decode(reader, reader.uint32());
           break;
         case 3:
-          message.token = reader.string();
+          message.receiver = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1765,71 +2009,71 @@ export const MsgBurn = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgBurn>): MsgBurn {
-    const message = createBaseMsgBurn();
+  fromPartial(object: Partial<MsgWrapToken>): MsgWrapToken {
+    const message = createBaseMsgWrapToken();
     message.creator = object.creator ?? "";
-    message.amount = object.amount !== undefined && object.amount !== null ? Long.fromValue(object.amount) : Long.UZERO;
-    message.token = object.token ?? "";
+    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.receiver = object.receiver ?? "";
     return message;
   },
-  fromAmino(object: MsgBurnAmino): MsgBurn {
-    const message = createBaseMsgBurn();
+  fromAmino(object: MsgWrapTokenAmino): MsgWrapToken {
+    const message = createBaseMsgWrapToken();
     if (object.creator !== undefined && object.creator !== null) {
       message.creator = object.creator;
     }
     if (object.amount !== undefined && object.amount !== null) {
-      message.amount = Long.fromString(object.amount);
+      message.amount = Coin.fromAmino(object.amount);
     }
-    if (object.token !== undefined && object.token !== null) {
-      message.token = object.token;
+    if (object.receiver !== undefined && object.receiver !== null) {
+      message.receiver = object.receiver;
     }
     return message;
   },
-  toAmino(message: MsgBurn): MsgBurnAmino {
+  toAmino(message: MsgWrapToken): MsgWrapTokenAmino {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.amount = !message.amount.isZero() ? (message.amount?.toString)() : undefined;
-    obj.token = message.token === "" ? undefined : message.token;
+    obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
+    obj.receiver = message.receiver === "" ? undefined : message.receiver;
     return obj;
   },
-  fromAminoMsg(object: MsgBurnAminoMsg): MsgBurn {
-    return MsgBurn.fromAmino(object.value);
+  fromAminoMsg(object: MsgWrapTokenAminoMsg): MsgWrapToken {
+    return MsgWrapToken.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgBurnProtoMsg): MsgBurn {
-    return MsgBurn.decode(message.value);
+  fromProtoMsg(message: MsgWrapTokenProtoMsg): MsgWrapToken {
+    return MsgWrapToken.decode(message.value);
   },
-  toProto(message: MsgBurn): Uint8Array {
-    return MsgBurn.encode(message).finish();
+  toProto(message: MsgWrapToken): Uint8Array {
+    return MsgWrapToken.encode(message).finish();
   },
-  toProtoMsg(message: MsgBurn): MsgBurnProtoMsg {
+  toProtoMsg(message: MsgWrapToken): MsgWrapTokenProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn",
-      value: MsgBurn.encode(message).finish()
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken",
+      value: MsgWrapToken.encode(message).finish()
     };
   }
 };
-function createBaseMsgBurnResponse(): MsgBurnResponse {
+function createBaseMsgWrapTokenResponse(): MsgWrapTokenResponse {
   return {
-    id: Long.UZERO
+    amount: Coin.fromPartial({})
   };
 }
-export const MsgBurnResponse = {
-  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse",
-  encode(message: MsgBurnResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.isZero()) {
-      writer.uint32(8).uint64(message.id);
+export const MsgWrapTokenResponse = {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse",
+  encode(message: MsgWrapTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.amount !== undefined) {
+      Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgWrapTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgBurnResponse();
+    const message = createBaseMsgWrapTokenResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.id = reader.uint64() as Long;
+          message.amount = Coin.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1838,36 +2082,348 @@ export const MsgBurnResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgBurnResponse>): MsgBurnResponse {
-    const message = createBaseMsgBurnResponse();
-    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
+  fromPartial(object: Partial<MsgWrapTokenResponse>): MsgWrapTokenResponse {
+    const message = createBaseMsgWrapTokenResponse();
+    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
   },
-  fromAmino(object: MsgBurnResponseAmino): MsgBurnResponse {
-    const message = createBaseMsgBurnResponse();
-    if (object.id !== undefined && object.id !== null) {
-      message.id = Long.fromString(object.id);
+  fromAmino(object: MsgWrapTokenResponseAmino): MsgWrapTokenResponse {
+    const message = createBaseMsgWrapTokenResponse();
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Coin.fromAmino(object.amount);
     }
     return message;
   },
-  toAmino(message: MsgBurnResponse): MsgBurnResponseAmino {
+  toAmino(message: MsgWrapTokenResponse): MsgWrapTokenResponseAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
     return obj;
   },
-  fromAminoMsg(object: MsgBurnResponseAminoMsg): MsgBurnResponse {
-    return MsgBurnResponse.fromAmino(object.value);
+  fromAminoMsg(object: MsgWrapTokenResponseAminoMsg): MsgWrapTokenResponse {
+    return MsgWrapTokenResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgBurnResponseProtoMsg): MsgBurnResponse {
-    return MsgBurnResponse.decode(message.value);
+  fromProtoMsg(message: MsgWrapTokenResponseProtoMsg): MsgWrapTokenResponse {
+    return MsgWrapTokenResponse.decode(message.value);
   },
-  toProto(message: MsgBurnResponse): Uint8Array {
-    return MsgBurnResponse.encode(message).finish();
+  toProto(message: MsgWrapTokenResponse): Uint8Array {
+    return MsgWrapTokenResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgBurnResponse): MsgBurnResponseProtoMsg {
+  toProtoMsg(message: MsgWrapTokenResponse): MsgWrapTokenResponseProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurnResponse",
-      value: MsgBurnResponse.encode(message).finish()
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapTokenResponse",
+      value: MsgWrapTokenResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUnwrapToken(): MsgUnwrapToken {
+  return {
+    creator: "",
+    amount: Coin.fromPartial({}),
+    receiver: ""
+  };
+}
+export const MsgUnwrapToken = {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken",
+  encode(message: MsgUnwrapToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.amount !== undefined) {
+      Coin.encode(message.amount, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.receiver !== "") {
+      writer.uint32(26).string(message.receiver);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnwrapToken {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUnwrapToken();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        case 3:
+          message.receiver = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUnwrapToken>): MsgUnwrapToken {
+    const message = createBaseMsgUnwrapToken();
+    message.creator = object.creator ?? "";
+    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.receiver = object.receiver ?? "";
+    return message;
+  },
+  fromAmino(object: MsgUnwrapTokenAmino): MsgUnwrapToken {
+    const message = createBaseMsgUnwrapToken();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Coin.fromAmino(object.amount);
+    }
+    if (object.receiver !== undefined && object.receiver !== null) {
+      message.receiver = object.receiver;
+    }
+    return message;
+  },
+  toAmino(message: MsgUnwrapToken): MsgUnwrapTokenAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
+    obj.receiver = message.receiver === "" ? undefined : message.receiver;
+    return obj;
+  },
+  fromAminoMsg(object: MsgUnwrapTokenAminoMsg): MsgUnwrapToken {
+    return MsgUnwrapToken.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUnwrapTokenProtoMsg): MsgUnwrapToken {
+    return MsgUnwrapToken.decode(message.value);
+  },
+  toProto(message: MsgUnwrapToken): Uint8Array {
+    return MsgUnwrapToken.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUnwrapToken): MsgUnwrapTokenProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken",
+      value: MsgUnwrapToken.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUnwrapTokenResponse(): MsgUnwrapTokenResponse {
+  return {
+    amount: Coin.fromPartial({})
+  };
+}
+export const MsgUnwrapTokenResponse = {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse",
+  encode(message: MsgUnwrapTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.amount !== undefined) {
+      Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnwrapTokenResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUnwrapTokenResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUnwrapTokenResponse>): MsgUnwrapTokenResponse {
+    const message = createBaseMsgUnwrapTokenResponse();
+    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    return message;
+  },
+  fromAmino(object: MsgUnwrapTokenResponseAmino): MsgUnwrapTokenResponse {
+    const message = createBaseMsgUnwrapTokenResponse();
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Coin.fromAmino(object.amount);
+    }
+    return message;
+  },
+  toAmino(message: MsgUnwrapTokenResponse): MsgUnwrapTokenResponseAmino {
+    const obj: any = {};
+    obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MsgUnwrapTokenResponseAminoMsg): MsgUnwrapTokenResponse {
+    return MsgUnwrapTokenResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUnwrapTokenResponseProtoMsg): MsgUnwrapTokenResponse {
+    return MsgUnwrapTokenResponse.decode(message.value);
+  },
+  toProto(message: MsgUnwrapTokenResponse): Uint8Array {
+    return MsgUnwrapTokenResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUnwrapTokenResponse): MsgUnwrapTokenResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapTokenResponse",
+      value: MsgUnwrapTokenResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSendWrapToken(): MsgSendWrapToken {
+  return {
+    creator: "",
+    ethAddress: "",
+    amount: Coin.fromPartial({})
+  };
+}
+export const MsgSendWrapToken = {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken",
+  encode(message: MsgSendWrapToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.ethAddress !== "") {
+      writer.uint32(18).string(message.ethAddress);
+    }
+    if (message.amount !== undefined) {
+      Coin.encode(message.amount, writer.uint32(26).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendWrapToken {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSendWrapToken();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.ethAddress = reader.string();
+          break;
+        case 3:
+          message.amount = Coin.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSendWrapToken>): MsgSendWrapToken {
+    const message = createBaseMsgSendWrapToken();
+    message.creator = object.creator ?? "";
+    message.ethAddress = object.ethAddress ?? "";
+    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    return message;
+  },
+  fromAmino(object: MsgSendWrapTokenAmino): MsgSendWrapToken {
+    const message = createBaseMsgSendWrapToken();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.ethAddress !== undefined && object.ethAddress !== null) {
+      message.ethAddress = object.ethAddress;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Coin.fromAmino(object.amount);
+    }
+    return message;
+  },
+  toAmino(message: MsgSendWrapToken): MsgSendWrapTokenAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.ethAddress = message.ethAddress === "" ? undefined : message.ethAddress;
+    obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSendWrapTokenAminoMsg): MsgSendWrapToken {
+    return MsgSendWrapToken.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSendWrapTokenProtoMsg): MsgSendWrapToken {
+    return MsgSendWrapToken.decode(message.value);
+  },
+  toProto(message: MsgSendWrapToken): Uint8Array {
+    return MsgSendWrapToken.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSendWrapToken): MsgSendWrapTokenProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken",
+      value: MsgSendWrapToken.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSendWrapTokenResponse(): MsgSendWrapTokenResponse {
+  return {
+    receiver: "",
+    amount: ""
+  };
+}
+export const MsgSendWrapTokenResponse = {
+  typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse",
+  encode(message: MsgSendWrapTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.receiver !== "") {
+      writer.uint32(10).string(message.receiver);
+    }
+    if (message.amount !== "") {
+      writer.uint32(18).string(message.amount);
+    }
+    return writer;
+  },
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendWrapTokenResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSendWrapTokenResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.receiver = reader.string();
+          break;
+        case 2:
+          message.amount = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSendWrapTokenResponse>): MsgSendWrapTokenResponse {
+    const message = createBaseMsgSendWrapTokenResponse();
+    message.receiver = object.receiver ?? "";
+    message.amount = object.amount ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSendWrapTokenResponseAmino): MsgSendWrapTokenResponse {
+    const message = createBaseMsgSendWrapTokenResponse();
+    if (object.receiver !== undefined && object.receiver !== null) {
+      message.receiver = object.receiver;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = object.amount;
+    }
+    return message;
+  },
+  toAmino(message: MsgSendWrapTokenResponse): MsgSendWrapTokenResponseAmino {
+    const obj: any = {};
+    obj.receiver = message.receiver === "" ? undefined : message.receiver;
+    obj.amount = message.amount === "" ? undefined : message.amount;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSendWrapTokenResponseAminoMsg): MsgSendWrapTokenResponse {
+    return MsgSendWrapTokenResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSendWrapTokenResponseProtoMsg): MsgSendWrapTokenResponse {
+    return MsgSendWrapTokenResponse.decode(message.value);
+  },
+  toProto(message: MsgSendWrapTokenResponse): Uint8Array {
+    return MsgSendWrapTokenResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSendWrapTokenResponse): MsgSendWrapTokenResponseProtoMsg {
+    return {
+      typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapTokenResponse",
+      value: MsgSendWrapTokenResponse.encode(message).finish()
     };
   }
 };

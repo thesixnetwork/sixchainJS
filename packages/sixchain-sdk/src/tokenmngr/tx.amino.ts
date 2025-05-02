@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn } from "./tx";
+import { MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn, MsgWrapToken, MsgUnwrapToken, MsgSendWrapToken } from "./tx";
 export const AminoConverter = {
   "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken": {
     aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgCreateToken",
@@ -55,5 +55,20 @@ export const AminoConverter = {
     aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgBurn",
     toAmino: MsgBurn.toAmino,
     fromAmino: MsgBurn.fromAmino
+  },
+  "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken": {
+    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgWrapToken",
+    toAmino: MsgWrapToken.toAmino,
+    fromAmino: MsgWrapToken.fromAmino
+  },
+  "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken": {
+    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgUnwrapToken",
+    toAmino: MsgUnwrapToken.toAmino,
+    fromAmino: MsgUnwrapToken.fromAmino
+  },
+  "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken": {
+    aminoType: "/thesixnetwork.sixprotocol.tokenmngr.MsgSendWrapToken",
+    toAmino: MsgSendWrapToken.toAmino,
+    fromAmino: MsgSendWrapToken.fromAmino
   }
 };
