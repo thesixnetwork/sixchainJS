@@ -7,6 +7,6 @@ option go_package = "github.com/cosmos/cosmos-sdk/x/staking/types";
 
 // list of special delegator
 message WhitelistDelegator {
-  string          validator_address = 1 [(gogoproto.moretags) = "yaml:\"validator_address\""];
-  repeated string delegator_address = 2 [(gogoproto.moretags) = "yaml:\"delegator_address\""];
+  string          validator_address = 1;
+  repeated string delegator_address = 2;
 }

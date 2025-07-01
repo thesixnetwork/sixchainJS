@@ -1,30 +1,10 @@
 //@ts-nocheck
+import { Params, ParamsAmino, ParamsSDKType, ValidatorApproval, ValidatorApprovalAmino, ValidatorApprovalSDKType, Validator, ValidatorAmino, ValidatorSDKType, Delegation, DelegationAmino, DelegationSDKType, UnbondingDelegation, UnbondingDelegationAmino, UnbondingDelegationSDKType, Redelegation, RedelegationAmino, RedelegationSDKType } from "./staking";
+import { Long, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-
-import { base64FromBytes, bytesFromBase64, Long } from "../../../helpers";
-import {
-  Delegation,
-  DelegationAmino,
-  DelegationSDKType,
-  Params,
-  ParamsAmino,
-  ParamsSDKType,
-  Redelegation,
-  RedelegationAmino,
-  RedelegationSDKType,
-  UnbondingDelegation,
-  UnbondingDelegationAmino,
-  UnbondingDelegationSDKType,
-  Validator,
-  ValidatorAmino,
-  ValidatorApproval,
-  ValidatorApprovalAmino,
-  ValidatorApprovalSDKType,
-  ValidatorSDKType,
-} from "./staking";
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisState {
-  /** params defines all the paramaters of related to deposit. */
+  /** params defines all the parameters of related to deposit. */
   params: Params;
   /**
    * last_total_power tracks the total amounts of bonded tokens recorded during
@@ -38,7 +18,7 @@ export interface GenesisState {
   lastValidatorPowers: LastValidatorPower[];
   /** validator approval */
   validatorApproval: ValidatorApproval;
-  /** delegations defines the validator set at genesis. */
+  /** validators defines the validator set at genesis. */
   validators: Validator[];
   /** delegations defines the delegations active at genesis. */
   delegations: Delegation[];
@@ -46,6 +26,7 @@ export interface GenesisState {
   unbondingDelegations: UnbondingDelegation[];
   /** redelegations defines the redelegations active at genesis. */
   redelegations: Redelegation[];
+  /** exported defines a bool to identify whether the chain dealing with exported or initialized genesis. */
   exported: boolean;
 }
 export interface GenesisStateProtoMsg {
@@ -54,28 +35,29 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisStateAmino {
-  /** params defines all the paramaters of related to deposit. */
-  params?: ParamsAmino;
+  /** params defines all the parameters of related to deposit. */
+  params: ParamsAmino;
   /**
    * last_total_power tracks the total amounts of bonded tokens recorded during
    * the previous end block.
    */
-  last_total_power?: string;
+  last_total_power: string;
   /**
    * last_validator_powers is a special index that provides a historical list
    * of the last-block's bonded validators.
    */
-  last_validator_powers?: LastValidatorPowerAmino[];
+  last_validator_powers: LastValidatorPowerAmino[];
   /** validator approval */
   validator_approval?: ValidatorApprovalAmino;
-  /** delegations defines the validator set at genesis. */
-  validators?: ValidatorAmino[];
+  /** validators defines the validator set at genesis. */
+  validators: ValidatorAmino[];
   /** delegations defines the delegations active at genesis. */
-  delegations?: DelegationAmino[];
+  delegations: DelegationAmino[];
   /** unbonding_delegations defines the unbonding delegations active at genesis. */
-  unbonding_delegations?: UnbondingDelegationAmino[];
+  unbonding_delegations: UnbondingDelegationAmino[];
   /** redelegations defines the redelegations active at genesis. */
-  redelegations?: RedelegationAmino[];
+  redelegations: RedelegationAmino[];
+  /** exported defines a bool to identify whether the chain dealing with exported or initialized genesis. */
   exported?: boolean;
 }
 export interface GenesisStateAminoMsg {
@@ -131,15 +113,12 @@ function createBaseGenesisState(): GenesisState {
     delegations: [],
     unbondingDelegations: [],
     redelegations: [],
-    exported: false,
+    exported: false
   };
 }
 export const GenesisState = {
   typeUrl: "/cosmos.staking.v1beta1.GenesisState",
-  encode(
-    message: GenesisState,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -150,10 +129,7 @@ export const GenesisState = {
       LastValidatorPower.encode(v!, writer.uint32(26).fork()).ldelim();
     }
     if (message.validatorApproval !== undefined) {
-      ValidatorApproval.encode(
-        message.validatorApproval,
-        writer.uint32(34).fork()
-      ).ldelim();
+      ValidatorApproval.encode(message.validatorApproval, writer.uint32(34).fork()).ldelim();
     }
     for (const v of message.validators) {
       Validator.encode(v!, writer.uint32(42).fork()).ldelim();
@@ -186,15 +162,10 @@ export const GenesisState = {
           message.lastTotalPower = reader.bytes();
           break;
         case 3:
-          message.lastValidatorPowers.push(
-            LastValidatorPower.decode(reader, reader.uint32())
-          );
+          message.lastValidatorPowers.push(LastValidatorPower.decode(reader, reader.uint32()));
           break;
         case 4:
-          message.validatorApproval = ValidatorApproval.decode(
-            reader,
-            reader.uint32()
-          );
+          message.validatorApproval = ValidatorApproval.decode(reader, reader.uint32());
           break;
         case 5:
           message.validators.push(Validator.decode(reader, reader.uint32()));
@@ -203,14 +174,10 @@ export const GenesisState = {
           message.delegations.push(Delegation.decode(reader, reader.uint32()));
           break;
         case 7:
-          message.unbondingDelegations.push(
-            UnbondingDelegation.decode(reader, reader.uint32())
-          );
+          message.unbondingDelegations.push(UnbondingDelegation.decode(reader, reader.uint32()));
           break;
         case 8:
-          message.redelegations.push(
-            Redelegation.decode(reader, reader.uint32())
-          );
+          message.redelegations.push(Redelegation.decode(reader, reader.uint32()));
           break;
         case 9:
           message.exported = reader.bool();
@@ -224,30 +191,14 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.params =
-      object.params !== undefined && object.params !== null
-        ? Params.fromPartial(object.params)
-        : undefined;
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.lastTotalPower = object.lastTotalPower ?? new Uint8Array();
-    message.lastValidatorPowers =
-      object.lastValidatorPowers?.map((e) =>
-        LastValidatorPower.fromPartial(e)
-      ) || [];
-    message.validatorApproval =
-      object.validatorApproval !== undefined &&
-      object.validatorApproval !== null
-        ? ValidatorApproval.fromPartial(object.validatorApproval)
-        : undefined;
-    message.validators =
-      object.validators?.map((e) => Validator.fromPartial(e)) || [];
-    message.delegations =
-      object.delegations?.map((e) => Delegation.fromPartial(e)) || [];
-    message.unbondingDelegations =
-      object.unbondingDelegations?.map((e) =>
-        UnbondingDelegation.fromPartial(e)
-      ) || [];
-    message.redelegations =
-      object.redelegations?.map((e) => Redelegation.fromPartial(e)) || [];
+    message.lastValidatorPowers = object.lastValidatorPowers?.map(e => LastValidatorPower.fromPartial(e)) || [];
+    message.validatorApproval = object.validatorApproval !== undefined && object.validatorApproval !== null ? ValidatorApproval.fromPartial(object.validatorApproval) : undefined;
+    message.validators = object.validators?.map(e => Validator.fromPartial(e)) || [];
+    message.delegations = object.delegations?.map(e => Delegation.fromPartial(e)) || [];
+    message.unbondingDelegations = object.unbondingDelegations?.map(e => UnbondingDelegation.fromPartial(e)) || [];
+    message.redelegations = object.redelegations?.map(e => Redelegation.fromPartial(e)) || [];
     message.exported = object.exported ?? false;
     return message;
   },
@@ -256,34 +207,17 @@ export const GenesisState = {
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromAmino(object.params);
     }
-    if (
-      object.last_total_power !== undefined &&
-      object.last_total_power !== null
-    ) {
+    if (object.last_total_power !== undefined && object.last_total_power !== null) {
       message.lastTotalPower = bytesFromBase64(object.last_total_power);
     }
-    message.lastValidatorPowers =
-      object.last_validator_powers?.map((e) =>
-        LastValidatorPower.fromAmino(e)
-      ) || [];
-    if (
-      object.validator_approval !== undefined &&
-      object.validator_approval !== null
-    ) {
-      message.validatorApproval = ValidatorApproval.fromAmino(
-        object.validator_approval
-      );
+    message.lastValidatorPowers = object.last_validator_powers?.map(e => LastValidatorPower.fromAmino(e)) || [];
+    if (object.validator_approval !== undefined && object.validator_approval !== null) {
+      message.validatorApproval = ValidatorApproval.fromAmino(object.validator_approval);
     }
-    message.validators =
-      object.validators?.map((e) => Validator.fromAmino(e)) || [];
-    message.delegations =
-      object.delegations?.map((e) => Delegation.fromAmino(e)) || [];
-    message.unbondingDelegations =
-      object.unbonding_delegations?.map((e) =>
-        UnbondingDelegation.fromAmino(e)
-      ) || [];
-    message.redelegations =
-      object.redelegations?.map((e) => Redelegation.fromAmino(e)) || [];
+    message.validators = object.validators?.map(e => Validator.fromAmino(e)) || [];
+    message.delegations = object.delegations?.map(e => Delegation.fromAmino(e)) || [];
+    message.unbondingDelegations = object.unbonding_delegations?.map(e => UnbondingDelegation.fromAmino(e)) || [];
+    message.redelegations = object.redelegations?.map(e => Redelegation.fromAmino(e)) || [];
     if (object.exported !== undefined && object.exported !== null) {
       message.exported = object.exported;
     }
@@ -291,45 +225,31 @@ export const GenesisState = {
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : undefined;
-    obj.last_total_power = message.lastTotalPower
-      ? base64FromBytes(message.lastTotalPower)
-      : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.last_total_power = message.lastTotalPower ? base64FromBytes(message.lastTotalPower) : "";
     if (message.lastValidatorPowers) {
-      obj.last_validator_powers = message.lastValidatorPowers.map((e) =>
-        e ? LastValidatorPower.toAmino(e) : undefined
-      );
+      obj.last_validator_powers = message.lastValidatorPowers.map(e => e ? LastValidatorPower.toAmino(e) : undefined);
     } else {
       obj.last_validator_powers = message.lastValidatorPowers;
     }
-    obj.validator_approval = message.validatorApproval
-      ? ValidatorApproval.toAmino(message.validatorApproval)
-      : undefined;
+    obj.validator_approval = message.validatorApproval ? ValidatorApproval.toAmino(message.validatorApproval) : undefined;
     if (message.validators) {
-      obj.validators = message.validators.map((e) =>
-        e ? Validator.toAmino(e) : undefined
-      );
+      obj.validators = message.validators.map(e => e ? Validator.toAmino(e) : undefined);
     } else {
       obj.validators = message.validators;
     }
     if (message.delegations) {
-      obj.delegations = message.delegations.map((e) =>
-        e ? Delegation.toAmino(e) : undefined
-      );
+      obj.delegations = message.delegations.map(e => e ? Delegation.toAmino(e) : undefined);
     } else {
       obj.delegations = message.delegations;
     }
     if (message.unbondingDelegations) {
-      obj.unbonding_delegations = message.unbondingDelegations.map((e) =>
-        e ? UnbondingDelegation.toAmino(e) : undefined
-      );
+      obj.unbonding_delegations = message.unbondingDelegations.map(e => e ? UnbondingDelegation.toAmino(e) : undefined);
     } else {
       obj.unbonding_delegations = message.unbondingDelegations;
     }
     if (message.redelegations) {
-      obj.redelegations = message.redelegations.map((e) =>
-        e ? Redelegation.toAmino(e) : undefined
-      );
+      obj.redelegations = message.redelegations.map(e => e ? Redelegation.toAmino(e) : undefined);
     } else {
       obj.redelegations = message.redelegations;
     }
@@ -342,7 +262,7 @@ export const GenesisState = {
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
       type: "cosmos-sdk/GenesisState",
-      value: GenesisState.toAmino(message),
+      value: GenesisState.toAmino(message)
     };
   },
   fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
@@ -354,22 +274,19 @@ export const GenesisState = {
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
       typeUrl: "/cosmos.staking.v1beta1.GenesisState",
-      value: GenesisState.encode(message).finish(),
+      value: GenesisState.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseLastValidatorPower(): LastValidatorPower {
   return {
     address: "",
-    power: Long.ZERO,
+    power: Long.ZERO
   };
 }
 export const LastValidatorPower = {
   typeUrl: "/cosmos.staking.v1beta1.LastValidatorPower",
-  encode(
-    message: LastValidatorPower,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: LastValidatorPower, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
@@ -401,10 +318,7 @@ export const LastValidatorPower = {
   fromPartial(object: Partial<LastValidatorPower>): LastValidatorPower {
     const message = createBaseLastValidatorPower();
     message.address = object.address ?? "";
-    message.power =
-      object.power !== undefined && object.power !== null
-        ? Long.fromValue(object.power)
-        : Long.ZERO;
+    message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;
     return message;
   },
   fromAmino(object: LastValidatorPowerAmino): LastValidatorPower {
@@ -420,9 +334,7 @@ export const LastValidatorPower = {
   toAmino(message: LastValidatorPower): LastValidatorPowerAmino {
     const obj: any = {};
     obj.address = message.address === "" ? undefined : message.address;
-    obj.power = !message.power.isZero()
-      ? (message.power?.toString)()
-      : undefined;
+    obj.power = !message.power.isZero() ? (message.power?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: LastValidatorPowerAminoMsg): LastValidatorPower {
@@ -431,7 +343,7 @@ export const LastValidatorPower = {
   toAminoMsg(message: LastValidatorPower): LastValidatorPowerAminoMsg {
     return {
       type: "cosmos-sdk/LastValidatorPower",
-      value: LastValidatorPower.toAmino(message),
+      value: LastValidatorPower.toAmino(message)
     };
   },
   fromProtoMsg(message: LastValidatorPowerProtoMsg): LastValidatorPower {
@@ -443,7 +355,7 @@ export const LastValidatorPower = {
   toProtoMsg(message: LastValidatorPower): LastValidatorPowerProtoMsg {
     return {
       typeUrl: "/cosmos.staking.v1beta1.LastValidatorPower",
-      value: LastValidatorPower.encode(message).finish(),
+      value: LastValidatorPower.encode(message).finish()
     };
-  },
+  }
 };

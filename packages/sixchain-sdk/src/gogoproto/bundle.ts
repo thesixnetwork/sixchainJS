@@ -1,5 +1,5 @@
 //@ts-nocheck
-import * as _59 from "./gogo";
+import * as _110 from "./gogo";
 export const gogoproto = {
-  ..._59,
+  ..._110
 };
