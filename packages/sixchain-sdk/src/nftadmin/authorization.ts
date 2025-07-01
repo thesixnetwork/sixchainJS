@@ -1,6 +1,11 @@
 //@ts-nocheck
-import { Permissions, PermissionsAmino, PermissionsSDKType } from "./permissions";
 import * as _m0 from "protobufjs/minimal";
+
+import {
+  Permissions,
+  PermissionsAmino,
+  PermissionsSDKType,
+} from "./permissions";
 export interface Authorization {
   rootAdmin: string;
   permissions?: Permissions;
@@ -24,17 +29,23 @@ export interface AuthorizationSDKType {
 function createBaseAuthorization(): Authorization {
   return {
     rootAdmin: "",
-    permissions: undefined
+    permissions: undefined,
   };
 }
 export const Authorization = {
   typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Authorization",
-  encode(message: Authorization, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Authorization,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.rootAdmin !== "") {
       writer.uint32(10).string(message.rootAdmin);
     }
     if (message.permissions !== undefined) {
-      Permissions.encode(message.permissions, writer.uint32(18).fork()).ldelim();
+      Permissions.encode(
+        message.permissions,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -61,7 +72,10 @@ export const Authorization = {
   fromPartial(object: Partial<Authorization>): Authorization {
     const message = createBaseAuthorization();
     message.rootAdmin = object.rootAdmin ?? "";
-    message.permissions = object.permissions !== undefined && object.permissions !== null ? Permissions.fromPartial(object.permissions) : undefined;
+    message.permissions =
+      object.permissions !== undefined && object.permissions !== null
+        ? Permissions.fromPartial(object.permissions)
+        : undefined;
     return message;
   },
   fromAmino(object: AuthorizationAmino): Authorization {
@@ -77,7 +91,9 @@ export const Authorization = {
   toAmino(message: Authorization): AuthorizationAmino {
     const obj: any = {};
     obj.root_admin = message.rootAdmin === "" ? undefined : message.rootAdmin;
-    obj.permissions = message.permissions ? Permissions.toAmino(message.permissions) : undefined;
+    obj.permissions = message.permissions
+      ? Permissions.toAmino(message.permissions)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: AuthorizationAminoMsg): Authorization {
@@ -92,7 +108,7 @@ export const Authorization = {
   toProtoMsg(message: Authorization): AuthorizationProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.nftadmin.Authorization",
-      value: Authorization.encode(message).finish()
+      value: Authorization.encode(message).finish(),
     };
-  }
+  },
 };

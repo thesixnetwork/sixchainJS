@@ -1,4 +1,8 @@
-import { SixDataChainConnector, fee, typesTxTokenManager } from "@sixnetwork/sixchain-client"; // from "@sixnetwork/six-data-chain-sdk";
+import {
+  SixDataChainConnector,
+  fee,
+  typesTxTokenManager,
+} from "@sixnetwork/sixchain-client"; // from "@sixnetwork/six-data-chain-sdk";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee";
 import dotenv from "dotenv";
@@ -34,7 +38,8 @@ const main = async () => {
     },
   };
 
-  const msg = await rpcClient.tokenmngrModule.msgSendWrapToken(sendWrapTokenMsg);
+  const msg =
+    await rpcClient.tokenmngrModule.msgSendWrapToken(sendWrapTokenMsg);
   msgArray.push(msg);
   const txResponse = await rpcClient.tokenmngrModule.signAndBroadcast(
     msgArray,

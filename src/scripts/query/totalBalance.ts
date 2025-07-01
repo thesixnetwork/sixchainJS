@@ -25,16 +25,17 @@ const Balance = async () => {
     throw new Error("Invalid network");
   }
   const apiClient = await sixConnector.connectAPIClient();
-  const totalBalance = await apiClient.cosmosBankModule.queryTotalSupply()
+  const totalBalance = await apiClient.cosmosBankModule.queryTotalSupply();
   console.log(totalBalance.data);
-
 };
 
 // create one metadata for test on production which is token_id = 2531
-Balance().then(() => {
-  console.log("Done");
-  process.exit(0);
-}).catch((e) => {
-  console.log(e);
-  process.exit(1);
-});
+Balance()
+  .then(() => {
+    console.log("Done");
+    process.exit(0);
+  })
+  .catch((e) => {
+    console.log(e);
+    process.exit(1);
+  });

@@ -535,16 +535,18 @@ export const GenesisState = {
       obj.virtualSchemaProposalList = [];
     }
     if (message.activeVirtualSchemaProposalList) {
-      obj.activeVirtualSchemaProposalList = message.activeVirtualSchemaProposalList.map(
-        (e) => (e ? ActiveVirtualSchemaProposal.toJSON(e) : undefined)
-      );
+      obj.activeVirtualSchemaProposalList =
+        message.activeVirtualSchemaProposalList.map((e) =>
+          e ? ActiveVirtualSchemaProposal.toJSON(e) : undefined
+        );
     } else {
       obj.activeVirtualSchemaProposalList = [];
     }
     if (message.inactiveVirtualSchemaProposalList) {
-      obj.inactiveVirtualSchemaProposalList = message.inactiveVirtualSchemaProposalList.map(
-        (e) => (e ? InactiveVirtualSchemaProposal.toJSON(e) : undefined)
-      );
+      obj.inactiveVirtualSchemaProposalList =
+        message.inactiveVirtualSchemaProposalList.map((e) =>
+          e ? InactiveVirtualSchemaProposal.toJSON(e) : undefined
+        );
     } else {
       obj.inactiveVirtualSchemaProposalList = [];
     }
@@ -738,9 +740,9 @@ type Builtin = Date | Function | Uint8Array | string | number | undefined;
 export type DeepPartial<T> = T extends Builtin
   ? T
   : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
-  : Partial<T>;
+    ? Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+      ? ReadonlyArray<DeepPartial<U>>
+      : T extends {}
+        ? { [K in keyof T]?: DeepPartial<T[K]> }
+        : Partial<T>;

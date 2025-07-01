@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Long } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
+
+import { Long } from "../../helpers";
 /**
  * A Duration represents a signed, fixed-length span of time represented
  * as a count of seconds and fractions of seconds at nanosecond
@@ -8,18 +9,18 @@ import * as _m0 from "protobufjs/minimal";
  * or "month". It is related to Timestamp in that the difference between
  * two Timestamp values is a Duration and it can be added or subtracted
  * from a Timestamp. Range is approximately +-10,000 years.
- * 
+ *
  * # Examples
- * 
+ *
  * Example 1: Compute Duration from two Timestamps in pseudo code.
- * 
+ *
  *     Timestamp start = ...;
  *     Timestamp end = ...;
  *     Duration duration = ...;
- * 
+ *
  *     duration.seconds = end.seconds - start.seconds;
  *     duration.nanos = end.nanos - start.nanos;
- * 
+ *
  *     if (duration.seconds < 0 && duration.nanos > 0) {
  *       duration.seconds += 1;
  *       duration.nanos -= 1000000000;
@@ -27,16 +28,16 @@ import * as _m0 from "protobufjs/minimal";
  *       duration.seconds -= 1;
  *       duration.nanos += 1000000000;
  *     }
- * 
+ *
  * Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
- * 
+ *
  *     Timestamp start = ...;
  *     Duration duration = ...;
  *     Timestamp end = ...;
- * 
+ *
  *     end.seconds = start.seconds + duration.seconds;
  *     end.nanos = start.nanos + duration.nanos;
- * 
+ *
  *     if (end.nanos < 0) {
  *       end.seconds -= 1;
  *       end.nanos += 1000000000;
@@ -44,15 +45,15 @@ import * as _m0 from "protobufjs/minimal";
  *       end.seconds += 1;
  *       end.nanos -= 1000000000;
  *     }
- * 
+ *
  * Example 3: Compute Duration from datetime.timedelta in Python.
- * 
+ *
  *     td = datetime.timedelta(days=3, minutes=10)
  *     duration = Duration()
  *     duration.FromTimedelta(td)
- * 
+ *
  * # JSON Mapping
- * 
+ *
  * In JSON format, the Duration type is encoded as a string rather than an
  * object, where the string ends in the suffix "s" (indicating seconds) and
  * is preceded by the number of seconds, with nanoseconds expressed as
@@ -89,18 +90,18 @@ export interface DurationProtoMsg {
  * or "month". It is related to Timestamp in that the difference between
  * two Timestamp values is a Duration and it can be added or subtracted
  * from a Timestamp. Range is approximately +-10,000 years.
- * 
+ *
  * # Examples
- * 
+ *
  * Example 1: Compute Duration from two Timestamps in pseudo code.
- * 
+ *
  *     Timestamp start = ...;
  *     Timestamp end = ...;
  *     Duration duration = ...;
- * 
+ *
  *     duration.seconds = end.seconds - start.seconds;
  *     duration.nanos = end.nanos - start.nanos;
- * 
+ *
  *     if (duration.seconds < 0 && duration.nanos > 0) {
  *       duration.seconds += 1;
  *       duration.nanos -= 1000000000;
@@ -108,16 +109,16 @@ export interface DurationProtoMsg {
  *       duration.seconds -= 1;
  *       duration.nanos += 1000000000;
  *     }
- * 
+ *
  * Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
- * 
+ *
  *     Timestamp start = ...;
  *     Duration duration = ...;
  *     Timestamp end = ...;
- * 
+ *
  *     end.seconds = start.seconds + duration.seconds;
  *     end.nanos = start.nanos + duration.nanos;
- * 
+ *
  *     if (end.nanos < 0) {
  *       end.seconds -= 1;
  *       end.nanos += 1000000000;
@@ -125,15 +126,15 @@ export interface DurationProtoMsg {
  *       end.seconds += 1;
  *       end.nanos -= 1000000000;
  *     }
- * 
+ *
  * Example 3: Compute Duration from datetime.timedelta in Python.
- * 
+ *
  *     td = datetime.timedelta(days=3, minutes=10)
  *     duration = Duration()
  *     duration.FromTimedelta(td)
- * 
+ *
  * # JSON Mapping
- * 
+ *
  * In JSON format, the Duration type is encoded as a string rather than an
  * object, where the string ends in the suffix "s" (indicating seconds) and
  * is preceded by the number of seconds, with nanoseconds expressed as
@@ -154,18 +155,18 @@ export interface DurationAminoMsg {
  * or "month". It is related to Timestamp in that the difference between
  * two Timestamp values is a Duration and it can be added or subtracted
  * from a Timestamp. Range is approximately +-10,000 years.
- * 
+ *
  * # Examples
- * 
+ *
  * Example 1: Compute Duration from two Timestamps in pseudo code.
- * 
+ *
  *     Timestamp start = ...;
  *     Timestamp end = ...;
  *     Duration duration = ...;
- * 
+ *
  *     duration.seconds = end.seconds - start.seconds;
  *     duration.nanos = end.nanos - start.nanos;
- * 
+ *
  *     if (duration.seconds < 0 && duration.nanos > 0) {
  *       duration.seconds += 1;
  *       duration.nanos -= 1000000000;
@@ -173,16 +174,16 @@ export interface DurationAminoMsg {
  *       duration.seconds -= 1;
  *       duration.nanos += 1000000000;
  *     }
- * 
+ *
  * Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
- * 
+ *
  *     Timestamp start = ...;
  *     Duration duration = ...;
  *     Timestamp end = ...;
- * 
+ *
  *     end.seconds = start.seconds + duration.seconds;
  *     end.nanos = start.nanos + duration.nanos;
- * 
+ *
  *     if (end.nanos < 0) {
  *       end.seconds -= 1;
  *       end.nanos += 1000000000;
@@ -190,15 +191,15 @@ export interface DurationAminoMsg {
  *       end.seconds += 1;
  *       end.nanos -= 1000000000;
  *     }
- * 
+ *
  * Example 3: Compute Duration from datetime.timedelta in Python.
- * 
+ *
  *     td = datetime.timedelta(days=3, minutes=10)
  *     duration = Duration()
  *     duration.FromTimedelta(td)
- * 
+ *
  * # JSON Mapping
- * 
+ *
  * In JSON format, the Duration type is encoded as a string rather than an
  * object, where the string ends in the suffix "s" (indicating seconds) and
  * is preceded by the number of seconds, with nanoseconds expressed as
@@ -214,12 +215,15 @@ export interface DurationSDKType {
 function createBaseDuration(): Duration {
   return {
     seconds: Long.ZERO,
-    nanos: 0
+    nanos: 0,
   };
 }
 export const Duration = {
   typeUrl: "/google.protobuf.Duration",
-  encode(message: Duration, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Duration,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.seconds.isZero()) {
       writer.uint32(8).int64(message.seconds);
     }
@@ -250,7 +254,10 @@ export const Duration = {
   },
   fromPartial(object: Partial<Duration>): Duration {
     const message = createBaseDuration();
-    message.seconds = object.seconds !== undefined && object.seconds !== null ? Long.fromValue(object.seconds) : Long.ZERO;
+    message.seconds =
+      object.seconds !== undefined && object.seconds !== null
+        ? Long.fromValue(object.seconds)
+        : Long.ZERO;
     message.nanos = object.nanos ?? 0;
     return message;
   },
@@ -258,7 +265,7 @@ export const Duration = {
     const value = parseInt(object);
     return {
       seconds: Long.fromNumber(Math.floor(value / 1_000_000_000)),
-      nanos: value % 1_000_000_000
+      nanos: value % 1_000_000_000,
     };
   },
   toAmino(message: Duration): DurationAmino {
@@ -276,7 +283,7 @@ export const Duration = {
   toProtoMsg(message: Duration): DurationProtoMsg {
     return {
       typeUrl: "/google.protobuf.Duration",
-      value: Duration.encode(message).finish()
+      value: Duration.encode(message).finish(),
     };
-  }
+  },
 };

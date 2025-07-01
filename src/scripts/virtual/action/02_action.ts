@@ -1,4 +1,8 @@
-import { SixDataChainConnector, ITxNFTmngr, fee } from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  ITxNFTmngr,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "../../client";
 import { GasPrice } from "@cosmjs/stargate";
@@ -7,71 +11,72 @@ import { v4 as uuidv4 } from "uuid";
 dotenv.config();
 
 const main = async () => {
-    const network = process.argv[2];
+  const network = process.argv[2];
 
-    let msgArray: EncodeObject[] = [];
-    if (!network) {
-        throw new Error(
-            "Network not specified. Please provide a network as an argument (local, fivenet, sixnet).",
-        );
-    }
+  let msgArray: EncodeObject[] = [];
+  if (!network) {
+    throw new Error(
+      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
+    );
+  }
 
-    const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(network);
-    const sixConnector = new SixDataChainConnector();
-    sixConnector.rpcUrl = rpcUrl;
-    sixConnector.apiUrl = apiUrl;
+  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(network);
+  const sixConnector = new SixDataChainConnector();
+  sixConnector.rpcUrl = rpcUrl;
+  sixConnector.apiUrl = apiUrl;
 
-    const accountSigner =
-        await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-    const address = (await accountSigner.getAccounts())[0].address;
-    const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-        gasPrice: GasPrice.fromString("1.25usix"),
-    });
+  const accountSigner =
+    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
+  const address = (await accountSigner.getAccounts())[0].address;
+  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
+    gasPrice: GasPrice.fromString("1.25usix"),
+  });
 
+  let schema_name = "sixprotocol.medical";
+  const ref_id = uuidv4();
 
-    let schema_name = "sixprotocol.medical"
-    const ref_id = uuidv4();
+  const virualAction: ITxNFTmngr.MsgPerformVirtualAction = {
+    creator: address,
+    nftSchemaName: schema_name,
+    action: "bridge_3_to_1",
+    parameters: [],
+    refId: ref_id,
+    tokenIdMap: [
+      {
+        nftSchemaName: "sixprotocol.divine_elite",
+        tokenId: "1",
+      },
+      {
+        nftSchemaName: "sixprotocol.membership",
+        tokenId: "5",
+      },
+      {
+        nftSchemaName: "sixprotocol.preventive",
+        tokenId: "3",
+      },
+      {
+        nftSchemaName: "sixprotocol.lifestyle",
+        tokenId: "6",
+      },
+    ],
+  };
 
-    const virualAction: ITxNFTmngr.MsgPerformVirtualAction = {
-        creator: address,
-        nftSchemaName: schema_name,
-        action: "bridge_3_to_1",
-        parameters: [],
-        refId: ref_id,
-        tokenIdMap: [
-            {
-                nftSchemaName: "sixprotocol.divine_elite",
-                tokenId: "1"
-            },
-            {
-                nftSchemaName: "sixprotocol.membership",
-                tokenId: "5"
-            },
-            {
-                nftSchemaName: "sixprotocol.preventive",
-                tokenId: "3"
-            },
-            {
-                nftSchemaName: "sixprotocol.lifestyle",
-                tokenId: "6"
-            }
-        ]
-    }
+  msgArray.push(rpcClient.nftmngrModule.msgPerformVirtualAction(virualAction));
 
-    msgArray.push(rpcClient.nftmngrModule.msgPerformVirtualAction(virualAction))
-
-    try {
-        const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(msgArray, {
-            fee: "auto",
-            memo: "perfrom virtual action"
-        })
-        console.log(txResponse);
-    } catch (err) {
-        console.error("Transaction failed:", err);
-    }
-
-}
+  try {
+    const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(
+      msgArray,
+      {
+        fee: "auto",
+        memo: "perfrom virtual action",
+      }
+    );
+    console.log(txResponse);
+  } catch (err) {
+    console.error("Transaction failed:", err);
+  }
+};
 
 main().catch((err) => {
-    console.error("Error in main execution:", err);
+  console.error("Error in main execution:", err);
 });

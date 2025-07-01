@@ -1,8 +1,9 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { Group, GroupAmino, GroupSDKType } from "./group";
-import { Admin, AdminAmino, AdminSDKType } from "./admin";
 import * as _m0 from "protobufjs/minimal";
+
+import { Admin, AdminAmino, AdminSDKType } from "./admin";
+import { Group, GroupAmino, GroupSDKType } from "./group";
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
 /** GenesisState defines the protocoladmin module's genesis state. */
 export interface GenesisState {
   params: Params;
@@ -37,12 +38,15 @@ function createBaseGenesisState(): GenesisState {
     params: Params.fromPartial({}),
     portId: "",
     groupList: [],
-    adminList: []
+    adminList: [],
   };
 }
 export const GenesisState = {
   typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.GenesisState",
-  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: GenesisState,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -85,10 +89,15 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     message.portId = object.portId ?? "";
-    message.groupList = object.groupList?.map(e => Group.fromPartial(e)) || [];
-    message.adminList = object.adminList?.map(e => Admin.fromPartial(e)) || [];
+    message.groupList =
+      object.groupList?.map((e) => Group.fromPartial(e)) || [];
+    message.adminList =
+      object.adminList?.map((e) => Admin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -99,8 +108,8 @@ export const GenesisState = {
     if (object.port_id !== undefined && object.port_id !== null) {
       message.portId = object.port_id;
     }
-    message.groupList = object.groupList?.map(e => Group.fromAmino(e)) || [];
-    message.adminList = object.adminList?.map(e => Admin.fromAmino(e)) || [];
+    message.groupList = object.groupList?.map((e) => Group.fromAmino(e)) || [];
+    message.adminList = object.adminList?.map((e) => Admin.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -108,12 +117,16 @@ export const GenesisState = {
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
     obj.port_id = message.portId === "" ? undefined : message.portId;
     if (message.groupList) {
-      obj.groupList = message.groupList.map(e => e ? Group.toAmino(e) : undefined);
+      obj.groupList = message.groupList.map((e) =>
+        e ? Group.toAmino(e) : undefined
+      );
     } else {
       obj.groupList = message.groupList;
     }
     if (message.adminList) {
-      obj.adminList = message.adminList.map(e => e ? Admin.toAmino(e) : undefined);
+      obj.adminList = message.adminList.map((e) =>
+        e ? Admin.toAmino(e) : undefined
+      );
     } else {
       obj.adminList = message.adminList;
     }
@@ -131,7 +144,7 @@ export const GenesisState = {
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.GenesisState",
-      value: GenesisState.encode(message).finish()
+      value: GenesisState.encode(message).finish(),
     };
-  }
+  },
 };

@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Long } from "../helpers";
 import * as _m0 from "protobufjs/minimal";
+
+import { Long } from "../helpers";
 export interface OpenseaDisplayOption {
   displayType: string;
   traitType: string;
@@ -28,12 +29,15 @@ function createBaseOpenseaDisplayOption(): OpenseaDisplayOption {
   return {
     displayType: "",
     traitType: "",
-    maxValue: Long.UZERO
+    maxValue: Long.UZERO,
   };
 }
 export const OpenseaDisplayOption = {
   typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OpenseaDisplayOption",
-  encode(message: OpenseaDisplayOption, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: OpenseaDisplayOption,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.displayType !== "") {
       writer.uint32(10).string(message.displayType);
     }
@@ -45,7 +49,10 @@ export const OpenseaDisplayOption = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): OpenseaDisplayOption {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): OpenseaDisplayOption {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseOpenseaDisplayOption();
@@ -72,7 +79,10 @@ export const OpenseaDisplayOption = {
     const message = createBaseOpenseaDisplayOption();
     message.displayType = object.displayType ?? "";
     message.traitType = object.traitType ?? "";
-    message.maxValue = object.maxValue !== undefined && object.maxValue !== null ? Long.fromValue(object.maxValue) : Long.UZERO;
+    message.maxValue =
+      object.maxValue !== undefined && object.maxValue !== null
+        ? Long.fromValue(object.maxValue)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: OpenseaDisplayOptionAmino): OpenseaDisplayOption {
@@ -90,9 +100,12 @@ export const OpenseaDisplayOption = {
   },
   toAmino(message: OpenseaDisplayOption): OpenseaDisplayOptionAmino {
     const obj: any = {};
-    obj.display_type = message.displayType === "" ? undefined : message.displayType;
+    obj.display_type =
+      message.displayType === "" ? undefined : message.displayType;
     obj.trait_type = message.traitType === "" ? undefined : message.traitType;
-    obj.max_value = !message.maxValue.isZero() ? (message.maxValue?.toString)() : undefined;
+    obj.max_value = !message.maxValue.isZero()
+      ? (message.maxValue?.toString)()
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: OpenseaDisplayOptionAminoMsg): OpenseaDisplayOption {
@@ -107,7 +120,7 @@ export const OpenseaDisplayOption = {
   toProtoMsg(message: OpenseaDisplayOption): OpenseaDisplayOptionProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OpenseaDisplayOption",
-      value: OpenseaDisplayOption.encode(message).finish()
+      value: OpenseaDisplayOption.encode(message).finish(),
     };
-  }
+  },
 };

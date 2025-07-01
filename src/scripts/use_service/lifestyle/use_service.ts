@@ -1,4 +1,8 @@
-import { SixDataChainConnector, ITxNFTmngr, fee } from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  ITxNFTmngr,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/lifestyle-nft-schema.json";
 import { GasPrice } from "@cosmjs/stargate";
@@ -13,7 +17,7 @@ const main = async () => {
 
   if (!network) {
     throw new Error(
-      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet).",
+      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
 
@@ -56,7 +60,7 @@ const main = async () => {
       {
         fee: "auto",
         memo: ref_id,
-      },
+      }
     );
     console.log(txResponse);
   } catch (err) {

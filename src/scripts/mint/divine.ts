@@ -1,4 +1,8 @@
-import { SixDataChainConnector, ITxNFTmngr, fee } from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  ITxNFTmngr,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import ZERO_YEAR from "../../resources/metadatas/divine_elite/nft-data_0_years.json";
 import THREE_YEAR from "../../resources/metadatas/divine_elite/nft-data_3_years.json";
 import FIVE_YEAR from "../../resources/metadatas/divine_elite/nft-data_5_years.json";
@@ -43,12 +47,12 @@ async function generateNFTData(tier: string, tokenId: string): Promise<any> {
 async function isTokenMinted(
   apiClient: any,
   schemaCode: string,
-  tokenId: string,
+  tokenId: string
 ): Promise<boolean> {
   try {
     const token = await apiClient.nftmngrModule.queryNftData(
       schemaCode,
-      tokenId,
+      tokenId
     );
     return !!token.data;
   } catch (error) {
@@ -61,7 +65,7 @@ async function mintNFT(tier: string, tokenId: number) {
 
   if (!NETWORK) {
     throw new Error(
-      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet).",
+      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
 
@@ -88,7 +92,7 @@ async function mintNFT(tier: string, tokenId: number) {
 
   const nftData = await generateNFTData(tier, token_id);
   const encodeBase64Metadata = Buffer.from(JSON.stringify(nftData)).toString(
-    "base64",
+    "base64"
   );
 
   const msgCreateMetaData: ITxNFTmngr.MsgCreateMetadata = {
@@ -106,14 +110,14 @@ async function mintNFT(tier: string, tokenId: number) {
     {
       fee: "auto",
       memo: "Mint NFT Metadata Token",
-    },
+    }
   );
 
   if (txResponse.code !== 0) {
     console.error(`Error minting NFT: ${txResponse.rawLog}`);
   } else {
     console.log(
-      `Minting successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`,
+      `Minting successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
   }
 }

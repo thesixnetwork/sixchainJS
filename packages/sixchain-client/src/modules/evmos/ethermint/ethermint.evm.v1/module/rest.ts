@@ -448,7 +448,10 @@ export interface FullRequestParams extends Omit<RequestInit, "body"> {
   cancelToken?: CancelToken;
 }
 
-export type RequestParams = Omit<FullRequestParams, "body" | "method" | "query" | "path">;
+export type RequestParams = Omit<
+  FullRequestParams,
+  "body" | "method" | "query" | "path"
+>;
 
 export interface ApiConfig<SecurityDataType = unknown> {
   baseUrl?: string;
@@ -456,7 +459,8 @@ export interface ApiConfig<SecurityDataType = unknown> {
   securityWorker?: (securityData: SecurityDataType) => RequestParams | void;
 }
 
-export interface HttpResponse<D extends unknown, E extends unknown = unknown> extends Response {
+export interface HttpResponse<D extends unknown, E extends unknown = unknown>
+  extends Response {
   data: D;
   error: E;
 }
@@ -472,7 +476,8 @@ export enum ContentType {
 export class HttpClient<SecurityDataType = unknown> {
   public baseUrl: string = "";
   private securityData: SecurityDataType = null as any;
-  private securityWorker: null | ApiConfig<SecurityDataType>["securityWorker"] = null;
+  private securityWorker: null | ApiConfig<SecurityDataType>["securityWorker"] =
+    null;
   private abortControllers = new Map<CancelToken, AbortController>();
 
   private baseApiParams: RequestParams = {
@@ -496,18 +501,26 @@ export class HttpClient<SecurityDataType = unknown> {
     return (
       encodeURIComponent(key) +
       "=" +
-      encodeURIComponent(Array.isArray(value) ? value.join(",") : typeof value === "number" ? value : `${value}`)
+      encodeURIComponent(
+        Array.isArray(value)
+          ? value.join(",")
+          : typeof value === "number"
+            ? value
+            : `${value}`
+      )
     );
   }
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
     const query = rawQuery || {};
-    const keys = Object.keys(query).filter((key) => "undefined" !== typeof query[key]);
+    const keys = Object.keys(query).filter(
+      (key) => "undefined" !== typeof query[key]
+    );
     return keys
       .map((key) =>
         typeof query[key] === "object" && !Array.isArray(query[key])
           ? this.toQueryString(query[key] as QueryParamsType)
-          : this.addQueryParam(query, key),
+          : this.addQueryParam(query, key)
       )
       .join("&");
   }
@@ -519,7 +532,9 @@ export class HttpClient<SecurityDataType = unknown> {
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string") ? JSON.stringify(input) : input,
+      input !== null && (typeof input === "object" || typeof input === "string")
+        ? JSON.stringify(input)
+        : input,
     [ContentType.FormData]: (input: any) =>
       Object.keys(input || {}).reduce((data, key) => {
         data.append(key, input[key]);
@@ -528,7 +543,10 @@ export class HttpClient<SecurityDataType = unknown> {
     [ContentType.UrlEncoded]: (input: any) => this.toQueryString(input),
   };
 
-  private mergeRequestParams(params1: RequestParams, params2?: RequestParams): RequestParams {
+  private mergeRequestParams(
+    params1: RequestParams,
+    params2?: RequestParams
+  ): RequestParams {
     return {
       ...this.baseApiParams,
       ...params1,
@@ -541,7 +559,9 @@ export class HttpClient<SecurityDataType = unknown> {
     };
   }
 
-  private createAbortSignal = (cancelToken: CancelToken): AbortSignal | undefined => {
+  private createAbortSignal = (
+    cancelToken: CancelToken
+  ): AbortSignal | undefined => {
     if (this.abortControllers.has(cancelToken)) {
       const abortController = this.abortControllers.get(cancelToken);
       if (abortController) {
@@ -575,23 +595,35 @@ export class HttpClient<SecurityDataType = unknown> {
     cancelToken,
     ...params
   }: FullRequestParams): Promise<HttpResponse<T, E>> => {
-    const secureParams = (secure && this.securityWorker && this.securityWorker(this.securityData)) || {};
+    const secureParams =
+      (secure &&
+        this.securityWorker &&
+        this.securityWorker(this.securityData)) ||
+      {};
     const requestParams = this.mergeRequestParams(params, secureParams);
     const queryString = query && this.toQueryString(query);
     const payloadFormatter = this.contentFormatters[type || ContentType.Json];
 
-    return fetch(`${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`, {
-      ...requestParams,
-      headers: {
-        ...(type && type !== ContentType.FormData ? { "Content-Type": type } : {}),
-        ...(requestParams.headers || {}),
-      },
-      signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
-      body: typeof body === "undefined" || body === null ? null : payloadFormatter(body),
-    }).then(async (response) => {
+    return fetch(
+      `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
+      {
+        ...requestParams,
+        headers: {
+          ...(type && type !== ContentType.FormData
+            ? { "Content-Type": type }
+            : {}),
+          ...(requestParams.headers || {}),
+        },
+        signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
+        body:
+          typeof body === "undefined" || body === null
+            ? null
+            : payloadFormatter(body),
+      }
+    ).then(async (response) => {
       const r = response as HttpResponse<T, E>;
-      r.data = (null as unknown) as T;
-      r.error = (null as unknown) as E;
+      r.data = null as unknown as T;
+      r.error = null as unknown as E;
 
       const data = await response[format]()
         .then((data) => {
@@ -621,7 +653,9 @@ export class HttpClient<SecurityDataType = unknown> {
  * @title ethermint/evm/v1/evm.proto
  * @version version not set
  */
-export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+export class Api<
+  SecurityDataType extends unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
@@ -712,7 +746,10 @@ it's similar to feemarket module's method, but also checks london hardfork statu
    * @summary EstimateGas implements the `eth_estimateGas` rpc api
    * @request GET:/ethermint/evm/v1/estimate_gas
    */
-  queryEstimateGas = (query?: { args?: string; gas_cap?: string }, params: RequestParams = {}) =>
+  queryEstimateGas = (
+    query?: { args?: string; gas_cap?: string },
+    params: RequestParams = {}
+  ) =>
     this.request<V1EstimateGasResponse, RpcStatus>({
       path: `/ethermint/evm/v1/estimate_gas`,
       method: "GET",
@@ -729,8 +766,12 @@ it's similar to feemarket module's method, but also checks london hardfork statu
    * @request GET:/ethermint/evm/v1/estimate_gas_overides
    */
   queryEstimateGasWithOverride = (
-    query?: { args?: string; gas_cap?: string; "overrides.accounts[string][string]"?: any },
-    params: RequestParams = {},
+    query?: {
+      args?: string;
+      gas_cap?: string;
+      "overrides.accounts[string][string]"?: any;
+    },
+    params: RequestParams = {}
   ) =>
     this.request<V1EstimateGasResponse, RpcStatus>({
       path: `/ethermint/evm/v1/estimate_gas_overides`,
@@ -748,7 +789,10 @@ it's similar to feemarket module's method, but also checks london hardfork statu
    * @summary EthCall implements the `eth_call` rpc api
    * @request GET:/ethermint/evm/v1/eth_call
    */
-  queryEthCall = (query?: { args?: string; gas_cap?: string }, params: RequestParams = {}) =>
+  queryEthCall = (
+    query?: { args?: string; gas_cap?: string },
+    params: RequestParams = {}
+  ) =>
     this.request<V1MsgEthereumTxResponse, RpcStatus>({
       path: `/ethermint/evm/v1/eth_call`,
       method: "GET",
@@ -766,8 +810,12 @@ it's similar to feemarket module's method, but also checks london hardfork statu
    * @request GET:/ethermint/evm/v1/eth_call_overides
    */
   queryEthCallWithOverride = (
-    query?: { args?: string; gas_cap?: string; "overrides.accounts[string]"?: any },
-    params: RequestParams = {},
+    query?: {
+      args?: string;
+      gas_cap?: string;
+      "overrides.accounts[string]"?: any;
+    },
+    params: RequestParams = {}
   ) =>
     this.request<V1MsgEthereumTxResponse, RpcStatus>({
       path: `/ethermint/evm/v1/eth_call_overides`,
@@ -786,8 +834,14 @@ it's similar to feemarket module's method, but also checks london hardfork statu
    * @request POST:/ethermint/evm/v1/ethereum_tx
    */
   msgEthereumTx = (
-    query?: { "data.type_url"?: string; "data.value"?: string; size?: number; hash?: string; from?: string },
-    params: RequestParams = {},
+    query?: {
+      "data.type_url"?: string;
+      "data.value"?: string;
+      size?: number;
+      hash?: string;
+      from?: string;
+    },
+    params: RequestParams = {}
   ) =>
     this.request<V1MsgEthereumTxResponse, RpcStatus>({
       path: `/ethermint/evm/v1/ethereum_tx`,
@@ -868,7 +922,7 @@ it's similar to feemarket module's method, but also checks london hardfork statu
       block_hash?: string;
       block_time?: string;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<V1QueryTraceBlockResponse, RpcStatus>({
       path: `/ethermint/evm/v1/trace_block`,
@@ -925,7 +979,7 @@ it's similar to feemarket module's method, but also checks london hardfork statu
       "config.block_overrieds.base_fee"?: string;
       "config.block_overrieds.blob_base_fee"?: string;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<V1QueryTraceTxResponse, RpcStatus>({
       path: `/ethermint/evm/v1/trace_call`,
@@ -979,7 +1033,7 @@ it's similar to feemarket module's method, but also checks london hardfork statu
       block_hash?: string;
       block_time?: string;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<V1QueryTraceTxResponse, RpcStatus>({
       path: `/ethermint/evm/v1/trace_tx`,

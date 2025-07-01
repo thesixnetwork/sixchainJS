@@ -23,12 +23,15 @@ export interface ActionSignatureSDKType {
 function createBaseActionSignature(): ActionSignature {
   return {
     signature: "",
-    message: ""
+    message: "",
   };
 }
 export const ActionSignature = {
   typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionSignature",
-  encode(message: ActionSignature, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ActionSignature,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.signature !== "") {
       writer.uint32(10).string(message.signature);
     }
@@ -91,7 +94,7 @@ export const ActionSignature = {
   toProtoMsg(message: ActionSignature): ActionSignatureProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.nftoracle.ActionSignature",
-      value: ActionSignature.encode(message).finish()
+      value: ActionSignature.encode(message).finish(),
     };
-  }
+  },
 };

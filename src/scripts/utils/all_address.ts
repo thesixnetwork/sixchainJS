@@ -28,7 +28,7 @@ const list_all_recipient = [
   "6x1lzz0k5ghfm6n9h7jcu2dr238rgwgtn8zjmlz6t",
   "6x1e8zglmrq7u3xs5u40majdpkayjvm7p7e5054cm",
   "6x1ksxe8fn4u8ngtaakp4dgcp5qqn58xvut92ttgy",
-  "6x1x5xxynstd4hzf5dlw4h7hxh6zsfw6y0cy0aexn"
+  "6x1x5xxynstd4hzf5dlw4h7hxh6zsfw6y0cy0aexn",
 ];
 
 export default list_all_recipient;

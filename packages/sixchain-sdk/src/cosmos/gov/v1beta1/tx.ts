@@ -1,9 +1,23 @@
 //@ts-nocheck
-import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import { VoteOption, WeightedVoteOption, WeightedVoteOptionAmino, WeightedVoteOptionSDKType, TextProposal, TextProposalProtoMsg, TextProposalSDKType } from "./gov";
-import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+
+import {
+  Any,
+  AnyAmino,
+  AnyProtoMsg,
+  AnySDKType,
+} from "../../../google/protobuf/any";
+import { Long } from "../../../helpers";
+import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
+import {
+  TextProposal,
+  TextProposalProtoMsg,
+  TextProposalSDKType,
+  VoteOption,
+  WeightedVoteOption,
+  WeightedVoteOptionAmino,
+  WeightedVoteOptionSDKType,
+} from "./gov";
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
@@ -104,7 +118,7 @@ export interface MsgVoteResponseAminoMsg {
 export interface MsgVoteResponseSDKType {}
 /**
  * MsgVoteWeighted defines a message to cast a vote.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeighted {
@@ -118,7 +132,7 @@ export interface MsgVoteWeightedProtoMsg {
 }
 /**
  * MsgVoteWeighted defines a message to cast a vote.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedAmino {
@@ -132,7 +146,7 @@ export interface MsgVoteWeightedAminoMsg {
 }
 /**
  * MsgVoteWeighted defines a message to cast a vote.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedSDKType {
@@ -142,7 +156,7 @@ export interface MsgVoteWeightedSDKType {
 }
 /**
  * MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedResponse {}
@@ -152,7 +166,7 @@ export interface MsgVoteWeightedResponseProtoMsg {
 }
 /**
  * MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedResponseAmino {}
@@ -162,7 +176,7 @@ export interface MsgVoteWeightedResponseAminoMsg {
 }
 /**
  * MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedResponseSDKType {}
@@ -210,12 +224,15 @@ function createBaseMsgSubmitProposal(): MsgSubmitProposal {
   return {
     content: undefined,
     initialDeposit: [],
-    proposer: ""
+    proposer: "",
   };
 }
 export const MsgSubmitProposal = {
   typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal",
-  encode(message: MsgSubmitProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgSubmitProposal,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.content !== undefined) {
       Any.encode(message.content as Any, writer.uint32(10).fork()).ldelim();
     }
@@ -252,8 +269,12 @@ export const MsgSubmitProposal = {
   },
   fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal {
     const message = createBaseMsgSubmitProposal();
-    message.content = object.content !== undefined && object.content !== null ? Any.fromPartial(object.content) : undefined;
-    message.initialDeposit = object.initialDeposit?.map(e => Coin.fromPartial(e)) || [];
+    message.content =
+      object.content !== undefined && object.content !== null
+        ? Any.fromPartial(object.content)
+        : undefined;
+    message.initialDeposit =
+      object.initialDeposit?.map((e) => Coin.fromPartial(e)) || [];
     message.proposer = object.proposer ?? "";
     return message;
   },
@@ -262,7 +283,8 @@ export const MsgSubmitProposal = {
     if (object.content !== undefined && object.content !== null) {
       message.content = Content_FromAmino(object.content);
     }
-    message.initialDeposit = object.initial_deposit?.map(e => Coin.fromAmino(e)) || [];
+    message.initialDeposit =
+      object.initial_deposit?.map((e) => Coin.fromAmino(e)) || [];
     if (object.proposer !== undefined && object.proposer !== null) {
       message.proposer = object.proposer;
     }
@@ -270,9 +292,13 @@ export const MsgSubmitProposal = {
   },
   toAmino(message: MsgSubmitProposal): MsgSubmitProposalAmino {
     const obj: any = {};
-    obj.content = message.content ? Content_ToAmino(message.content as Any) : undefined;
+    obj.content = message.content
+      ? Content_ToAmino(message.content as Any)
+      : undefined;
     if (message.initialDeposit) {
-      obj.initial_deposit = message.initialDeposit.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.initial_deposit = message.initialDeposit.map((e) =>
+        e ? Coin.toAmino(e) : undefined
+      );
     } else {
       obj.initial_deposit = message.initialDeposit;
     }
@@ -285,7 +311,7 @@ export const MsgSubmitProposal = {
   toAminoMsg(message: MsgSubmitProposal): MsgSubmitProposalAminoMsg {
     return {
       type: "cosmos-sdk/MsgSubmitProposal",
-      value: MsgSubmitProposal.toAmino(message)
+      value: MsgSubmitProposal.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgSubmitProposalProtoMsg): MsgSubmitProposal {
@@ -297,24 +323,30 @@ export const MsgSubmitProposal = {
   toProtoMsg(message: MsgSubmitProposal): MsgSubmitProposalProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal",
-      value: MsgSubmitProposal.encode(message).finish()
+      value: MsgSubmitProposal.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgSubmitProposalResponse(): MsgSubmitProposalResponse {
   return {
-    proposalId: Long.UZERO
+    proposalId: Long.UZERO,
   };
 }
 export const MsgSubmitProposalResponse = {
   typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposalResponse",
-  encode(message: MsgSubmitProposalResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgSubmitProposalResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.proposalId.isZero()) {
       writer.uint32(8).uint64(message.proposalId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposalResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgSubmitProposalResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSubmitProposalResponse();
@@ -331,9 +363,14 @@ export const MsgSubmitProposalResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse {
+  fromPartial(
+    object: Partial<MsgSubmitProposalResponse>
+  ): MsgSubmitProposalResponse {
     const message = createBaseMsgSubmitProposalResponse();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? Long.fromValue(object.proposalId)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: MsgSubmitProposalResponseAmino): MsgSubmitProposalResponse {
@@ -345,41 +382,54 @@ export const MsgSubmitProposalResponse = {
   },
   toAmino(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? (message.proposalId?.toString)() : "0";
+    obj.proposal_id = message.proposalId
+      ? (message.proposalId?.toString)()
+      : "0";
     return obj;
   },
-  fromAminoMsg(object: MsgSubmitProposalResponseAminoMsg): MsgSubmitProposalResponse {
+  fromAminoMsg(
+    object: MsgSubmitProposalResponseAminoMsg
+  ): MsgSubmitProposalResponse {
     return MsgSubmitProposalResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseAminoMsg {
+  toAminoMsg(
+    message: MsgSubmitProposalResponse
+  ): MsgSubmitProposalResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgSubmitProposalResponse",
-      value: MsgSubmitProposalResponse.toAmino(message)
+      value: MsgSubmitProposalResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgSubmitProposalResponseProtoMsg): MsgSubmitProposalResponse {
+  fromProtoMsg(
+    message: MsgSubmitProposalResponseProtoMsg
+  ): MsgSubmitProposalResponse {
     return MsgSubmitProposalResponse.decode(message.value);
   },
   toProto(message: MsgSubmitProposalResponse): Uint8Array {
     return MsgSubmitProposalResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseProtoMsg {
+  toProtoMsg(
+    message: MsgSubmitProposalResponse
+  ): MsgSubmitProposalResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposalResponse",
-      value: MsgSubmitProposalResponse.encode(message).finish()
+      value: MsgSubmitProposalResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgVote(): MsgVote {
   return {
     proposalId: Long.UZERO,
     voter: "",
-    option: 0
+    option: 0,
   };
 }
 export const MsgVote = {
   typeUrl: "/cosmos.gov.v1beta1.MsgVote",
-  encode(message: MsgVote, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgVote,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.proposalId.isZero()) {
       writer.uint32(8).uint64(message.proposalId);
     }
@@ -416,7 +466,10 @@ export const MsgVote = {
   },
   fromPartial(object: Partial<MsgVote>): MsgVote {
     const message = createBaseMsgVote();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? Long.fromValue(object.proposalId)
+        : Long.UZERO;
     message.voter = object.voter ?? "";
     message.option = object.option ?? 0;
     return message;
@@ -436,7 +489,9 @@ export const MsgVote = {
   },
   toAmino(message: MsgVote): MsgVoteAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? (message.proposalId?.toString)() : "0";
+    obj.proposal_id = message.proposalId
+      ? (message.proposalId?.toString)()
+      : "0";
     obj.voter = message.voter === "" ? undefined : message.voter;
     obj.option = message.option === 0 ? undefined : message.option;
     return obj;
@@ -447,7 +502,7 @@ export const MsgVote = {
   toAminoMsg(message: MsgVote): MsgVoteAminoMsg {
     return {
       type: "cosmos-sdk/MsgVote",
-      value: MsgVote.toAmino(message)
+      value: MsgVote.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgVoteProtoMsg): MsgVote {
@@ -459,16 +514,19 @@ export const MsgVote = {
   toProtoMsg(message: MsgVote): MsgVoteProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1beta1.MsgVote",
-      value: MsgVote.encode(message).finish()
+      value: MsgVote.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgVoteResponse(): MsgVoteResponse {
   return {};
 }
 export const MsgVoteResponse = {
   typeUrl: "/cosmos.gov.v1beta1.MsgVoteResponse",
-  encode(_: MsgVoteResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgVoteResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteResponse {
@@ -503,7 +561,7 @@ export const MsgVoteResponse = {
   toAminoMsg(message: MsgVoteResponse): MsgVoteResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgVoteResponse",
-      value: MsgVoteResponse.toAmino(message)
+      value: MsgVoteResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgVoteResponseProtoMsg): MsgVoteResponse {
@@ -515,20 +573,23 @@ export const MsgVoteResponse = {
   toProtoMsg(message: MsgVoteResponse): MsgVoteResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1beta1.MsgVoteResponse",
-      value: MsgVoteResponse.encode(message).finish()
+      value: MsgVoteResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgVoteWeighted(): MsgVoteWeighted {
   return {
     proposalId: Long.UZERO,
     voter: "",
-    options: []
+    options: [],
   };
 }
 export const MsgVoteWeighted = {
   typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeighted",
-  encode(message: MsgVoteWeighted, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgVoteWeighted,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.proposalId.isZero()) {
       writer.uint32(8).uint64(message.proposalId);
     }
@@ -554,7 +615,9 @@ export const MsgVoteWeighted = {
           message.voter = reader.string();
           break;
         case 3:
-          message.options.push(WeightedVoteOption.decode(reader, reader.uint32()));
+          message.options.push(
+            WeightedVoteOption.decode(reader, reader.uint32())
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -565,9 +628,13 @@ export const MsgVoteWeighted = {
   },
   fromPartial(object: Partial<MsgVoteWeighted>): MsgVoteWeighted {
     const message = createBaseMsgVoteWeighted();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? Long.fromValue(object.proposalId)
+        : Long.UZERO;
     message.voter = object.voter ?? "";
-    message.options = object.options?.map(e => WeightedVoteOption.fromPartial(e)) || [];
+    message.options =
+      object.options?.map((e) => WeightedVoteOption.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: MsgVoteWeightedAmino): MsgVoteWeighted {
@@ -578,15 +645,20 @@ export const MsgVoteWeighted = {
     if (object.voter !== undefined && object.voter !== null) {
       message.voter = object.voter;
     }
-    message.options = object.options?.map(e => WeightedVoteOption.fromAmino(e)) || [];
+    message.options =
+      object.options?.map((e) => WeightedVoteOption.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: MsgVoteWeighted): MsgVoteWeightedAmino {
     const obj: any = {};
-    obj.proposal_id = !message.proposalId.isZero() ? (message.proposalId?.toString)() : undefined;
+    obj.proposal_id = !message.proposalId.isZero()
+      ? (message.proposalId?.toString)()
+      : undefined;
     obj.voter = message.voter === "" ? undefined : message.voter;
     if (message.options) {
-      obj.options = message.options.map(e => e ? WeightedVoteOption.toAmino(e) : undefined);
+      obj.options = message.options.map((e) =>
+        e ? WeightedVoteOption.toAmino(e) : undefined
+      );
     } else {
       obj.options = message.options;
     }
@@ -598,7 +670,7 @@ export const MsgVoteWeighted = {
   toAminoMsg(message: MsgVoteWeighted): MsgVoteWeightedAminoMsg {
     return {
       type: "cosmos-sdk/MsgVoteWeighted",
-      value: MsgVoteWeighted.toAmino(message)
+      value: MsgVoteWeighted.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgVoteWeightedProtoMsg): MsgVoteWeighted {
@@ -610,19 +682,25 @@ export const MsgVoteWeighted = {
   toProtoMsg(message: MsgVoteWeighted): MsgVoteWeightedProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeighted",
-      value: MsgVoteWeighted.encode(message).finish()
+      value: MsgVoteWeighted.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgVoteWeightedResponse(): MsgVoteWeightedResponse {
   return {};
 }
 export const MsgVoteWeightedResponse = {
   typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeightedResponse",
-  encode(_: MsgVoteWeightedResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgVoteWeightedResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeightedResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgVoteWeightedResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgVoteWeightedResponse();
@@ -648,38 +726,49 @@ export const MsgVoteWeightedResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgVoteWeightedResponseAminoMsg): MsgVoteWeightedResponse {
+  fromAminoMsg(
+    object: MsgVoteWeightedResponseAminoMsg
+  ): MsgVoteWeightedResponse {
     return MsgVoteWeightedResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgVoteWeightedResponse): MsgVoteWeightedResponseAminoMsg {
+  toAminoMsg(
+    message: MsgVoteWeightedResponse
+  ): MsgVoteWeightedResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgVoteWeightedResponse",
-      value: MsgVoteWeightedResponse.toAmino(message)
+      value: MsgVoteWeightedResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgVoteWeightedResponseProtoMsg): MsgVoteWeightedResponse {
+  fromProtoMsg(
+    message: MsgVoteWeightedResponseProtoMsg
+  ): MsgVoteWeightedResponse {
     return MsgVoteWeightedResponse.decode(message.value);
   },
   toProto(message: MsgVoteWeightedResponse): Uint8Array {
     return MsgVoteWeightedResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgVoteWeightedResponse): MsgVoteWeightedResponseProtoMsg {
+  toProtoMsg(
+    message: MsgVoteWeightedResponse
+  ): MsgVoteWeightedResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeightedResponse",
-      value: MsgVoteWeightedResponse.encode(message).finish()
+      value: MsgVoteWeightedResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgDeposit(): MsgDeposit {
   return {
     proposalId: Long.UZERO,
     depositor: "",
-    amount: []
+    amount: [],
   };
 }
 export const MsgDeposit = {
   typeUrl: "/cosmos.gov.v1beta1.MsgDeposit",
-  encode(message: MsgDeposit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgDeposit,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.proposalId.isZero()) {
       writer.uint32(8).uint64(message.proposalId);
     }
@@ -716,9 +805,12 @@ export const MsgDeposit = {
   },
   fromPartial(object: Partial<MsgDeposit>): MsgDeposit {
     const message = createBaseMsgDeposit();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? Long.fromValue(object.proposalId)
+        : Long.UZERO;
     message.depositor = object.depositor ?? "";
-    message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
+    message.amount = object.amount?.map((e) => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: MsgDepositAmino): MsgDeposit {
@@ -729,15 +821,17 @@ export const MsgDeposit = {
     if (object.depositor !== undefined && object.depositor !== null) {
       message.depositor = object.depositor;
     }
-    message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+    message.amount = object.amount?.map((e) => Coin.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: MsgDeposit): MsgDepositAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? (message.proposalId?.toString)() : "0";
+    obj.proposal_id = message.proposalId
+      ? (message.proposalId?.toString)()
+      : "0";
     obj.depositor = message.depositor === "" ? undefined : message.depositor;
     if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.amount = message.amount.map((e) => (e ? Coin.toAmino(e) : undefined));
     } else {
       obj.amount = message.amount;
     }
@@ -749,7 +843,7 @@ export const MsgDeposit = {
   toAminoMsg(message: MsgDeposit): MsgDepositAminoMsg {
     return {
       type: "cosmos-sdk/MsgDeposit",
-      value: MsgDeposit.toAmino(message)
+      value: MsgDeposit.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgDepositProtoMsg): MsgDeposit {
@@ -761,16 +855,19 @@ export const MsgDeposit = {
   toProtoMsg(message: MsgDeposit): MsgDepositProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1beta1.MsgDeposit",
-      value: MsgDeposit.encode(message).finish()
+      value: MsgDeposit.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgDepositResponse(): MsgDepositResponse {
   return {};
 }
 export const MsgDepositResponse = {
   typeUrl: "/cosmos.gov.v1beta1.MsgDepositResponse",
-  encode(_: MsgDepositResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgDepositResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): MsgDepositResponse {
@@ -805,7 +902,7 @@ export const MsgDepositResponse = {
   toAminoMsg(message: MsgDepositResponse): MsgDepositResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgDepositResponse",
-      value: MsgDepositResponse.toAmino(message)
+      value: MsgDepositResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgDepositResponseProtoMsg): MsgDepositResponse {
@@ -817,11 +914,13 @@ export const MsgDepositResponse = {
   toProtoMsg(message: MsgDepositResponse): MsgDepositResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1beta1.MsgDepositResponse",
-      value: MsgDepositResponse.encode(message).finish()
+      value: MsgDepositResponse.encode(message).finish(),
     };
-  }
+  },
 };
-export const Content_InterfaceDecoder = (input: _m0.Reader | Uint8Array): TextProposal | Any => {
+export const Content_InterfaceDecoder = (
+  input: _m0.Reader | Uint8Array
+): TextProposal | Any => {
   const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
@@ -836,7 +935,9 @@ export const Content_FromAmino = (content: AnyAmino): Any => {
     case "cosmos-sdk/TextProposal":
       return Any.fromPartial({
         typeUrl: "/cosmos.gov.v1beta1.TextProposal",
-        value: TextProposal.encode(TextProposal.fromPartial(TextProposal.fromAmino(content.value))).finish()
+        value: TextProposal.encode(
+          TextProposal.fromPartial(TextProposal.fromAmino(content.value))
+        ).finish(),
       });
     default:
       return Any.fromAmino(content);
@@ -847,7 +948,9 @@ export const Content_ToAmino = (content: Any) => {
     case "/cosmos.gov.v1beta1.TextProposal":
       return {
         type: "cosmos-sdk/TextProposal",
-        value: TextProposal.toAmino(TextProposal.decode(content.value, undefined))
+        value: TextProposal.toAmino(
+          TextProposal.decode(content.value, undefined)
+        ),
       };
     default:
       return Any.toAmino(content);

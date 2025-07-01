@@ -1,4 +1,8 @@
-import { SixDataChainConnector, ITxNFTmngr, fee } from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  ITxNFTmngr,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { v4 } from "uuid";
 import dotenv from "dotenv";
@@ -7,7 +11,7 @@ dotenv.config();
 const network: string = "local";
 const schemaCode: string = "TechSauce.GlobalSummit2023";
 
-const main = async (tokenID: number):Promise<any> => {
+const main = async (tokenID: number): Promise<any> => {
   const sixConnector = new SixDataChainConnector();
   let accountSigner;
 
@@ -53,7 +57,7 @@ const main = async (tokenID: number):Promise<any> => {
       schemaCode,
       String(tokenID)
     );
-  } catch (error:any) {
+  } catch (error: any) {
     console.log("token not found", error.error);
     metadata = null;
     // return fail

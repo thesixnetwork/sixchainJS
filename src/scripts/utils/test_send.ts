@@ -1,4 +1,8 @@
-import { SixDataChainConnector, typesTxBank, fee } from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  typesTxBank,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import { StdFee } from "@cosmjs/stargate";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee";
@@ -14,7 +18,7 @@ const using_amount = parseInt(amount) * 1_000_000; // convert to usix
 const cosmosSendAuto = async () => {
   if (!NETOWRK) {
     throw new Error(
-      "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet",
+      "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet"
     );
   }
 
@@ -54,16 +58,16 @@ const cosmosSendAuto = async () => {
   const txResponse = await rpcClient.cosmosBankModule.signAndBroadcast(
     msgArray,
     {
-      fee: 'auto',
+      fee: "auto",
       memo: "send balance to action executor",
-    },
+    }
   );
   if (txResponse.code !== 0) {
     console.error(`Error minting NFT: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `AUTO successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`,
+      `AUTO successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }
@@ -72,7 +76,7 @@ const cosmosSendAuto = async () => {
 const cosmosSendFixed = async () => {
   if (!NETOWRK) {
     throw new Error(
-      "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet",
+      "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet"
     );
   }
 
@@ -115,14 +119,14 @@ const cosmosSendFixed = async () => {
     {
       fee: fee,
       memo: "send balance to action executor",
-    },
+    }
   );
   if (txResponse.code !== 0) {
     console.error(`Error minting NFT: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `FIXED successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`,
+      `FIXED successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }
@@ -131,7 +135,7 @@ const cosmosSendFixed = async () => {
 async function main() {
   if (!NETOWRK) {
     throw new Error(
-      "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet",
+      "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet"
     );
   }
 

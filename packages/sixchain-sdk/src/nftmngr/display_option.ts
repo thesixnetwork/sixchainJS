@@ -1,6 +1,11 @@
 //@ts-nocheck
-import { OpenseaDisplayOption, OpenseaDisplayOptionAmino, OpenseaDisplayOptionSDKType } from "./opensea_display_option";
 import * as _m0 from "protobufjs/minimal";
+
+import {
+  OpenseaDisplayOption,
+  OpenseaDisplayOptionAmino,
+  OpenseaDisplayOptionSDKType,
+} from "./opensea_display_option";
 export interface DisplayOption {
   boolTrueValue: string;
   boolFalseValue: string;
@@ -28,12 +33,15 @@ function createBaseDisplayOption(): DisplayOption {
   return {
     boolTrueValue: "",
     boolFalseValue: "",
-    opensea: undefined
+    opensea: undefined,
   };
 }
 export const DisplayOption = {
   typeUrl: "/thesixnetwork.sixprotocol.nftmngr.DisplayOption",
-  encode(message: DisplayOption, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: DisplayOption,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.boolTrueValue !== "") {
       writer.uint32(10).string(message.boolTrueValue);
     }
@@ -41,7 +49,10 @@ export const DisplayOption = {
       writer.uint32(18).string(message.boolFalseValue);
     }
     if (message.opensea !== undefined) {
-      OpenseaDisplayOption.encode(message.opensea, writer.uint32(26).fork()).ldelim();
+      OpenseaDisplayOption.encode(
+        message.opensea,
+        writer.uint32(26).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -59,7 +70,10 @@ export const DisplayOption = {
           message.boolFalseValue = reader.string();
           break;
         case 3:
-          message.opensea = OpenseaDisplayOption.decode(reader, reader.uint32());
+          message.opensea = OpenseaDisplayOption.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -72,15 +86,24 @@ export const DisplayOption = {
     const message = createBaseDisplayOption();
     message.boolTrueValue = object.boolTrueValue ?? "";
     message.boolFalseValue = object.boolFalseValue ?? "";
-    message.opensea = object.opensea !== undefined && object.opensea !== null ? OpenseaDisplayOption.fromPartial(object.opensea) : undefined;
+    message.opensea =
+      object.opensea !== undefined && object.opensea !== null
+        ? OpenseaDisplayOption.fromPartial(object.opensea)
+        : undefined;
     return message;
   },
   fromAmino(object: DisplayOptionAmino): DisplayOption {
     const message = createBaseDisplayOption();
-    if (object.bool_true_value !== undefined && object.bool_true_value !== null) {
+    if (
+      object.bool_true_value !== undefined &&
+      object.bool_true_value !== null
+    ) {
       message.boolTrueValue = object.bool_true_value;
     }
-    if (object.bool_false_value !== undefined && object.bool_false_value !== null) {
+    if (
+      object.bool_false_value !== undefined &&
+      object.bool_false_value !== null
+    ) {
       message.boolFalseValue = object.bool_false_value;
     }
     if (object.opensea !== undefined && object.opensea !== null) {
@@ -90,9 +113,13 @@ export const DisplayOption = {
   },
   toAmino(message: DisplayOption): DisplayOptionAmino {
     const obj: any = {};
-    obj.bool_true_value = message.boolTrueValue === "" ? undefined : message.boolTrueValue;
-    obj.bool_false_value = message.boolFalseValue === "" ? undefined : message.boolFalseValue;
-    obj.opensea = message.opensea ? OpenseaDisplayOption.toAmino(message.opensea) : undefined;
+    obj.bool_true_value =
+      message.boolTrueValue === "" ? undefined : message.boolTrueValue;
+    obj.bool_false_value =
+      message.boolFalseValue === "" ? undefined : message.boolFalseValue;
+    obj.opensea = message.opensea
+      ? OpenseaDisplayOption.toAmino(message.opensea)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: DisplayOptionAminoMsg): DisplayOption {
@@ -107,7 +134,7 @@ export const DisplayOption = {
   toProtoMsg(message: DisplayOption): DisplayOptionProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.nftmngr.DisplayOption",
-      value: DisplayOption.encode(message).finish()
+      value: DisplayOption.encode(message).finish(),
     };
-  }
+  },
 };

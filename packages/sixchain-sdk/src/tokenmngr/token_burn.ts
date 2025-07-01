@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Coin, CoinAmino, CoinSDKType } from "../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+
+import { Coin, CoinAmino, CoinSDKType } from "../cosmos/base/v1beta1/coin";
 export interface TokenBurn {
   amount: Coin;
 }
@@ -20,12 +21,15 @@ export interface TokenBurnSDKType {
 }
 function createBaseTokenBurn(): TokenBurn {
   return {
-    amount: Coin.fromPartial({})
+    amount: Coin.fromPartial({}),
   };
 }
 export const TokenBurn = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenBurn",
-  encode(message: TokenBurn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: TokenBurn,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
     }
@@ -50,7 +54,10 @@ export const TokenBurn = {
   },
   fromPartial(object: Partial<TokenBurn>): TokenBurn {
     const message = createBaseTokenBurn();
-    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.amount =
+      object.amount !== undefined && object.amount !== null
+        ? Coin.fromPartial(object.amount)
+        : undefined;
     return message;
   },
   fromAmino(object: TokenBurnAmino): TokenBurn {
@@ -77,7 +84,7 @@ export const TokenBurn = {
   toProtoMsg(message: TokenBurn): TokenBurnProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenBurn",
-      value: TokenBurn.encode(message).finish()
+      value: TokenBurn.encode(message).finish(),
     };
-  }
+  },
 };

@@ -1,12 +1,20 @@
 //@ts-nocheck
-import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../cosmos/base/query/v1beta1/pagination";
-import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { Token, TokenAmino, TokenSDKType } from "./token";
+import * as _m0 from "protobufjs/minimal";
+
+import {
+  PageRequest,
+  PageRequestAmino,
+  PageRequestSDKType,
+  PageResponse,
+  PageResponseAmino,
+  PageResponseSDKType,
+} from "../cosmos/base/query/v1beta1/pagination";
+import { Burn, BurnAmino, BurnSDKType } from "./burn";
 import { Mintperm, MintpermAmino, MintpermSDKType } from "./mintperm";
 import { Options, OptionsAmino, OptionsSDKType } from "./options";
-import { Burn, BurnAmino, BurnSDKType } from "./burn";
+import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Token, TokenAmino, TokenSDKType } from "./token";
 import { TokenBurn, TokenBurnAmino, TokenBurnSDKType } from "./token_burn";
-import * as _m0 from "protobufjs/minimal";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
@@ -333,7 +341,10 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 export const QueryParamsRequest = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsRequest",
-  encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: QueryParamsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest {
@@ -374,18 +385,21 @@ export const QueryParamsRequest = {
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsRequest",
-      value: QueryParamsRequest.encode(message).finish()
+      value: QueryParamsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
-    params: Params.fromPartial({})
+    params: Params.fromPartial({}),
   };
 }
 export const QueryParamsResponse = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsResponse",
-  encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryParamsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -410,7 +424,10 @@ export const QueryParamsResponse = {
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
@@ -437,24 +454,30 @@ export const QueryParamsResponse = {
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryParamsResponse",
-      value: QueryParamsResponse.encode(message).finish()
+      value: QueryParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryGetTokenRequest(): QueryGetTokenRequest {
   return {
-    name: ""
+    name: "",
   };
 }
 export const QueryGetTokenRequest = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenRequest",
-  encode(message: QueryGetTokenRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryGetTokenRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetTokenRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryGetTokenRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetTokenRequest();
@@ -500,24 +523,30 @@ export const QueryGetTokenRequest = {
   toProtoMsg(message: QueryGetTokenRequest): QueryGetTokenRequestProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenRequest",
-      value: QueryGetTokenRequest.encode(message).finish()
+      value: QueryGetTokenRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryGetTokenResponse(): QueryGetTokenResponse {
   return {
-    token: Token.fromPartial({})
+    token: Token.fromPartial({}),
   };
 }
 export const QueryGetTokenResponse = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenResponse",
-  encode(message: QueryGetTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryGetTokenResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.token !== undefined) {
       Token.encode(message.token, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetTokenResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryGetTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetTokenResponse();
@@ -536,7 +565,10 @@ export const QueryGetTokenResponse = {
   },
   fromPartial(object: Partial<QueryGetTokenResponse>): QueryGetTokenResponse {
     const message = createBaseQueryGetTokenResponse();
-    message.token = object.token !== undefined && object.token !== null ? Token.fromPartial(object.token) : undefined;
+    message.token =
+      object.token !== undefined && object.token !== null
+        ? Token.fromPartial(object.token)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryGetTokenResponseAmino): QueryGetTokenResponse {
@@ -563,24 +595,30 @@ export const QueryGetTokenResponse = {
   toProtoMsg(message: QueryGetTokenResponse): QueryGetTokenResponseProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenResponse",
-      value: QueryGetTokenResponse.encode(message).finish()
+      value: QueryGetTokenResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllTokenRequest(): QueryAllTokenRequest {
   return {
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryAllTokenRequest = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenRequest",
-  encode(message: QueryAllTokenRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryAllTokenRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllTokenRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryAllTokenRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllTokenRequest();
@@ -599,7 +637,10 @@ export const QueryAllTokenRequest = {
   },
   fromPartial(object: Partial<QueryAllTokenRequest>): QueryAllTokenRequest {
     const message = createBaseQueryAllTokenRequest();
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryAllTokenRequestAmino): QueryAllTokenRequest {
@@ -611,7 +652,9 @@ export const QueryAllTokenRequest = {
   },
   toAmino(message: QueryAllTokenRequest): QueryAllTokenRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryAllTokenRequestAminoMsg): QueryAllTokenRequest {
@@ -626,28 +669,37 @@ export const QueryAllTokenRequest = {
   toProtoMsg(message: QueryAllTokenRequest): QueryAllTokenRequestProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenRequest",
-      value: QueryAllTokenRequest.encode(message).finish()
+      value: QueryAllTokenRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllTokenResponse(): QueryAllTokenResponse {
   return {
     token: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryAllTokenResponse = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenResponse",
-  encode(message: QueryAllTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryAllTokenResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.token) {
       Token.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllTokenResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryAllTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllTokenResponse();
@@ -669,13 +721,16 @@ export const QueryAllTokenResponse = {
   },
   fromPartial(object: Partial<QueryAllTokenResponse>): QueryAllTokenResponse {
     const message = createBaseQueryAllTokenResponse();
-    message.token = object.token?.map(e => Token.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.token = object.token?.map((e) => Token.fromPartial(e)) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryAllTokenResponseAmino): QueryAllTokenResponse {
     const message = createBaseQueryAllTokenResponse();
-    message.token = object.token?.map(e => Token.fromAmino(e)) || [];
+    message.token = object.token?.map((e) => Token.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -684,11 +739,13 @@ export const QueryAllTokenResponse = {
   toAmino(message: QueryAllTokenResponse): QueryAllTokenResponseAmino {
     const obj: any = {};
     if (message.token) {
-      obj.token = message.token.map(e => e ? Token.toAmino(e) : undefined);
+      obj.token = message.token.map((e) => (e ? Token.toAmino(e) : undefined));
     } else {
       obj.token = message.token;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryAllTokenResponseAminoMsg): QueryAllTokenResponse {
@@ -703,19 +760,22 @@ export const QueryAllTokenResponse = {
   toProtoMsg(message: QueryAllTokenResponse): QueryAllTokenResponseProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenResponse",
-      value: QueryAllTokenResponse.encode(message).finish()
+      value: QueryAllTokenResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryGetMintpermRequest(): QueryGetMintpermRequest {
   return {
     token: "",
-    address: ""
+    address: "",
   };
 }
 export const QueryGetMintpermRequest = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermRequest",
-  encode(message: QueryGetMintpermRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryGetMintpermRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.token !== "") {
       writer.uint32(10).string(message.token);
     }
@@ -724,7 +784,10 @@ export const QueryGetMintpermRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetMintpermRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryGetMintpermRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetMintpermRequest();
@@ -744,7 +807,9 @@ export const QueryGetMintpermRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryGetMintpermRequest>): QueryGetMintpermRequest {
+  fromPartial(
+    object: Partial<QueryGetMintpermRequest>
+  ): QueryGetMintpermRequest {
     const message = createBaseQueryGetMintpermRequest();
     message.token = object.token ?? "";
     message.address = object.address ?? "";
@@ -766,36 +831,48 @@ export const QueryGetMintpermRequest = {
     obj.address = message.address === "" ? undefined : message.address;
     return obj;
   },
-  fromAminoMsg(object: QueryGetMintpermRequestAminoMsg): QueryGetMintpermRequest {
+  fromAminoMsg(
+    object: QueryGetMintpermRequestAminoMsg
+  ): QueryGetMintpermRequest {
     return QueryGetMintpermRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryGetMintpermRequestProtoMsg): QueryGetMintpermRequest {
+  fromProtoMsg(
+    message: QueryGetMintpermRequestProtoMsg
+  ): QueryGetMintpermRequest {
     return QueryGetMintpermRequest.decode(message.value);
   },
   toProto(message: QueryGetMintpermRequest): Uint8Array {
     return QueryGetMintpermRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryGetMintpermRequest): QueryGetMintpermRequestProtoMsg {
+  toProtoMsg(
+    message: QueryGetMintpermRequest
+  ): QueryGetMintpermRequestProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermRequest",
-      value: QueryGetMintpermRequest.encode(message).finish()
+      value: QueryGetMintpermRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryGetMintpermResponse(): QueryGetMintpermResponse {
   return {
-    mintperm: Mintperm.fromPartial({})
+    mintperm: Mintperm.fromPartial({}),
   };
 }
 export const QueryGetMintpermResponse = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermResponse",
-  encode(message: QueryGetMintpermResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryGetMintpermResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.mintperm !== undefined) {
       Mintperm.encode(message.mintperm, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetMintpermResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryGetMintpermResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetMintpermResponse();
@@ -812,9 +889,14 @@ export const QueryGetMintpermResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryGetMintpermResponse>): QueryGetMintpermResponse {
+  fromPartial(
+    object: Partial<QueryGetMintpermResponse>
+  ): QueryGetMintpermResponse {
     const message = createBaseQueryGetMintpermResponse();
-    message.mintperm = object.mintperm !== undefined && object.mintperm !== null ? Mintperm.fromPartial(object.mintperm) : undefined;
+    message.mintperm =
+      object.mintperm !== undefined && object.mintperm !== null
+        ? Mintperm.fromPartial(object.mintperm)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryGetMintpermResponseAmino): QueryGetMintpermResponse {
@@ -826,39 +908,53 @@ export const QueryGetMintpermResponse = {
   },
   toAmino(message: QueryGetMintpermResponse): QueryGetMintpermResponseAmino {
     const obj: any = {};
-    obj.mintperm = message.mintperm ? Mintperm.toAmino(message.mintperm) : undefined;
+    obj.mintperm = message.mintperm
+      ? Mintperm.toAmino(message.mintperm)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryGetMintpermResponseAminoMsg): QueryGetMintpermResponse {
+  fromAminoMsg(
+    object: QueryGetMintpermResponseAminoMsg
+  ): QueryGetMintpermResponse {
     return QueryGetMintpermResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryGetMintpermResponseProtoMsg): QueryGetMintpermResponse {
+  fromProtoMsg(
+    message: QueryGetMintpermResponseProtoMsg
+  ): QueryGetMintpermResponse {
     return QueryGetMintpermResponse.decode(message.value);
   },
   toProto(message: QueryGetMintpermResponse): Uint8Array {
     return QueryGetMintpermResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryGetMintpermResponse): QueryGetMintpermResponseProtoMsg {
+  toProtoMsg(
+    message: QueryGetMintpermResponse
+  ): QueryGetMintpermResponseProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetMintpermResponse",
-      value: QueryGetMintpermResponse.encode(message).finish()
+      value: QueryGetMintpermResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllMintpermRequest(): QueryAllMintpermRequest {
   return {
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryAllMintpermRequest = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermRequest",
-  encode(message: QueryAllMintpermRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryAllMintpermRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllMintpermRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryAllMintpermRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllMintpermRequest();
@@ -875,9 +971,14 @@ export const QueryAllMintpermRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAllMintpermRequest>): QueryAllMintpermRequest {
+  fromPartial(
+    object: Partial<QueryAllMintpermRequest>
+  ): QueryAllMintpermRequest {
     const message = createBaseQueryAllMintpermRequest();
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryAllMintpermRequestAmino): QueryAllMintpermRequest {
@@ -889,43 +990,60 @@ export const QueryAllMintpermRequest = {
   },
   toAmino(message: QueryAllMintpermRequest): QueryAllMintpermRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryAllMintpermRequestAminoMsg): QueryAllMintpermRequest {
+  fromAminoMsg(
+    object: QueryAllMintpermRequestAminoMsg
+  ): QueryAllMintpermRequest {
     return QueryAllMintpermRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllMintpermRequestProtoMsg): QueryAllMintpermRequest {
+  fromProtoMsg(
+    message: QueryAllMintpermRequestProtoMsg
+  ): QueryAllMintpermRequest {
     return QueryAllMintpermRequest.decode(message.value);
   },
   toProto(message: QueryAllMintpermRequest): Uint8Array {
     return QueryAllMintpermRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllMintpermRequest): QueryAllMintpermRequestProtoMsg {
+  toProtoMsg(
+    message: QueryAllMintpermRequest
+  ): QueryAllMintpermRequestProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermRequest",
-      value: QueryAllMintpermRequest.encode(message).finish()
+      value: QueryAllMintpermRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllMintpermResponse(): QueryAllMintpermResponse {
   return {
     mintperm: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryAllMintpermResponse = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermResponse",
-  encode(message: QueryAllMintpermResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryAllMintpermResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.mintperm) {
       Mintperm.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllMintpermResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryAllMintpermResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllMintpermResponse();
@@ -945,15 +1063,21 @@ export const QueryAllMintpermResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAllMintpermResponse>): QueryAllMintpermResponse {
+  fromPartial(
+    object: Partial<QueryAllMintpermResponse>
+  ): QueryAllMintpermResponse {
     const message = createBaseQueryAllMintpermResponse();
-    message.mintperm = object.mintperm?.map(e => Mintperm.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.mintperm =
+      object.mintperm?.map((e) => Mintperm.fromPartial(e)) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryAllMintpermResponseAmino): QueryAllMintpermResponse {
     const message = createBaseQueryAllMintpermResponse();
-    message.mintperm = object.mintperm?.map(e => Mintperm.fromAmino(e)) || [];
+    message.mintperm = object.mintperm?.map((e) => Mintperm.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -962,38 +1086,54 @@ export const QueryAllMintpermResponse = {
   toAmino(message: QueryAllMintpermResponse): QueryAllMintpermResponseAmino {
     const obj: any = {};
     if (message.mintperm) {
-      obj.mintperm = message.mintperm.map(e => e ? Mintperm.toAmino(e) : undefined);
+      obj.mintperm = message.mintperm.map((e) =>
+        e ? Mintperm.toAmino(e) : undefined
+      );
     } else {
       obj.mintperm = message.mintperm;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryAllMintpermResponseAminoMsg): QueryAllMintpermResponse {
+  fromAminoMsg(
+    object: QueryAllMintpermResponseAminoMsg
+  ): QueryAllMintpermResponse {
     return QueryAllMintpermResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllMintpermResponseProtoMsg): QueryAllMintpermResponse {
+  fromProtoMsg(
+    message: QueryAllMintpermResponseProtoMsg
+  ): QueryAllMintpermResponse {
     return QueryAllMintpermResponse.decode(message.value);
   },
   toProto(message: QueryAllMintpermResponse): Uint8Array {
     return QueryAllMintpermResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllMintpermResponse): QueryAllMintpermResponseProtoMsg {
+  toProtoMsg(
+    message: QueryAllMintpermResponse
+  ): QueryAllMintpermResponseProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllMintpermResponse",
-      value: QueryAllMintpermResponse.encode(message).finish()
+      value: QueryAllMintpermResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryGetOptionsRequest(): QueryGetOptionsRequest {
   return {};
 }
 export const QueryGetOptionsRequest = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsRequest",
-  encode(_: QueryGetOptionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: QueryGetOptionsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetOptionsRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryGetOptionsRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetOptionsRequest();
@@ -1022,7 +1162,9 @@ export const QueryGetOptionsRequest = {
   fromAminoMsg(object: QueryGetOptionsRequestAminoMsg): QueryGetOptionsRequest {
     return QueryGetOptionsRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryGetOptionsRequestProtoMsg): QueryGetOptionsRequest {
+  fromProtoMsg(
+    message: QueryGetOptionsRequestProtoMsg
+  ): QueryGetOptionsRequest {
     return QueryGetOptionsRequest.decode(message.value);
   },
   toProto(message: QueryGetOptionsRequest): Uint8Array {
@@ -1031,24 +1173,30 @@ export const QueryGetOptionsRequest = {
   toProtoMsg(message: QueryGetOptionsRequest): QueryGetOptionsRequestProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsRequest",
-      value: QueryGetOptionsRequest.encode(message).finish()
+      value: QueryGetOptionsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryGetOptionsResponse(): QueryGetOptionsResponse {
   return {
-    options: Options.fromPartial({})
+    options: Options.fromPartial({}),
   };
 }
 export const QueryGetOptionsResponse = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsResponse",
-  encode(message: QueryGetOptionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryGetOptionsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.options !== undefined) {
       Options.encode(message.options, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetOptionsResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryGetOptionsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetOptionsResponse();
@@ -1065,9 +1213,14 @@ export const QueryGetOptionsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryGetOptionsResponse>): QueryGetOptionsResponse {
+  fromPartial(
+    object: Partial<QueryGetOptionsResponse>
+  ): QueryGetOptionsResponse {
     const message = createBaseQueryGetOptionsResponse();
-    message.options = object.options !== undefined && object.options !== null ? Options.fromPartial(object.options) : undefined;
+    message.options =
+      object.options !== undefined && object.options !== null
+        ? Options.fromPartial(object.options)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryGetOptionsResponseAmino): QueryGetOptionsResponse {
@@ -1079,33 +1232,44 @@ export const QueryGetOptionsResponse = {
   },
   toAmino(message: QueryGetOptionsResponse): QueryGetOptionsResponseAmino {
     const obj: any = {};
-    obj.Options = message.options ? Options.toAmino(message.options) : undefined;
+    obj.Options = message.options
+      ? Options.toAmino(message.options)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryGetOptionsResponseAminoMsg): QueryGetOptionsResponse {
+  fromAminoMsg(
+    object: QueryGetOptionsResponseAminoMsg
+  ): QueryGetOptionsResponse {
     return QueryGetOptionsResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryGetOptionsResponseProtoMsg): QueryGetOptionsResponse {
+  fromProtoMsg(
+    message: QueryGetOptionsResponseProtoMsg
+  ): QueryGetOptionsResponse {
     return QueryGetOptionsResponse.decode(message.value);
   },
   toProto(message: QueryGetOptionsResponse): Uint8Array {
     return QueryGetOptionsResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryGetOptionsResponse): QueryGetOptionsResponseProtoMsg {
+  toProtoMsg(
+    message: QueryGetOptionsResponse
+  ): QueryGetOptionsResponseProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetOptionsResponse",
-      value: QueryGetOptionsResponse.encode(message).finish()
+      value: QueryGetOptionsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryBurnsRequest(): QueryBurnsRequest {
   return {
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryBurnsRequest = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsRequest",
-  encode(message: QueryBurnsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryBurnsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
@@ -1130,7 +1294,10 @@ export const QueryBurnsRequest = {
   },
   fromPartial(object: Partial<QueryBurnsRequest>): QueryBurnsRequest {
     const message = createBaseQueryBurnsRequest();
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryBurnsRequestAmino): QueryBurnsRequest {
@@ -1142,7 +1309,9 @@ export const QueryBurnsRequest = {
   },
   toAmino(message: QueryBurnsRequest): QueryBurnsRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryBurnsRequestAminoMsg): QueryBurnsRequest {
@@ -1157,24 +1326,30 @@ export const QueryBurnsRequest = {
   toProtoMsg(message: QueryBurnsRequest): QueryBurnsRequestProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsRequest",
-      value: QueryBurnsRequest.encode(message).finish()
+      value: QueryBurnsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryBurnsResponse(): QueryBurnsResponse {
   return {
     burn: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryBurnsResponse = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponse",
-  encode(message: QueryBurnsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryBurnsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.burn) {
       Burn.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -1200,13 +1375,16 @@ export const QueryBurnsResponse = {
   },
   fromPartial(object: Partial<QueryBurnsResponse>): QueryBurnsResponse {
     const message = createBaseQueryBurnsResponse();
-    message.burn = object.burn?.map(e => Burn.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.burn = object.burn?.map((e) => Burn.fromPartial(e)) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryBurnsResponseAmino): QueryBurnsResponse {
     const message = createBaseQueryBurnsResponse();
-    message.burn = object.Burn?.map(e => Burn.fromAmino(e)) || [];
+    message.burn = object.Burn?.map((e) => Burn.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -1215,11 +1393,13 @@ export const QueryBurnsResponse = {
   toAmino(message: QueryBurnsResponse): QueryBurnsResponseAmino {
     const obj: any = {};
     if (message.burn) {
-      obj.Burn = message.burn.map(e => e ? Burn.toAmino(e) : undefined);
+      obj.Burn = message.burn.map((e) => (e ? Burn.toAmino(e) : undefined));
     } else {
       obj.Burn = message.burn;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryBurnsResponseAminoMsg): QueryBurnsResponse {
@@ -1234,24 +1414,30 @@ export const QueryBurnsResponse = {
   toProtoMsg(message: QueryBurnsResponse): QueryBurnsResponseProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryBurnsResponse",
-      value: QueryBurnsResponse.encode(message).finish()
+      value: QueryBurnsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryGetTokenBurnRequest(): QueryGetTokenBurnRequest {
   return {
-    token: ""
+    token: "",
   };
 }
 export const QueryGetTokenBurnRequest = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnRequest",
-  encode(message: QueryGetTokenBurnRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryGetTokenBurnRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.token !== "") {
       writer.uint32(10).string(message.token);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetTokenBurnRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryGetTokenBurnRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetTokenBurnRequest();
@@ -1268,7 +1454,9 @@ export const QueryGetTokenBurnRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryGetTokenBurnRequest>): QueryGetTokenBurnRequest {
+  fromPartial(
+    object: Partial<QueryGetTokenBurnRequest>
+  ): QueryGetTokenBurnRequest {
     const message = createBaseQueryGetTokenBurnRequest();
     message.token = object.token ?? "";
     return message;
@@ -1285,36 +1473,48 @@ export const QueryGetTokenBurnRequest = {
     obj.token = message.token === "" ? undefined : message.token;
     return obj;
   },
-  fromAminoMsg(object: QueryGetTokenBurnRequestAminoMsg): QueryGetTokenBurnRequest {
+  fromAminoMsg(
+    object: QueryGetTokenBurnRequestAminoMsg
+  ): QueryGetTokenBurnRequest {
     return QueryGetTokenBurnRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryGetTokenBurnRequestProtoMsg): QueryGetTokenBurnRequest {
+  fromProtoMsg(
+    message: QueryGetTokenBurnRequestProtoMsg
+  ): QueryGetTokenBurnRequest {
     return QueryGetTokenBurnRequest.decode(message.value);
   },
   toProto(message: QueryGetTokenBurnRequest): Uint8Array {
     return QueryGetTokenBurnRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryGetTokenBurnRequest): QueryGetTokenBurnRequestProtoMsg {
+  toProtoMsg(
+    message: QueryGetTokenBurnRequest
+  ): QueryGetTokenBurnRequestProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnRequest",
-      value: QueryGetTokenBurnRequest.encode(message).finish()
+      value: QueryGetTokenBurnRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryGetTokenBurnResponse(): QueryGetTokenBurnResponse {
   return {
-    tokenBurn: TokenBurn.fromPartial({})
+    tokenBurn: TokenBurn.fromPartial({}),
   };
 }
 export const QueryGetTokenBurnResponse = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponse",
-  encode(message: QueryGetTokenBurnResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryGetTokenBurnResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.tokenBurn !== undefined) {
       TokenBurn.encode(message.tokenBurn, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetTokenBurnResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryGetTokenBurnResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetTokenBurnResponse();
@@ -1331,9 +1531,14 @@ export const QueryGetTokenBurnResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryGetTokenBurnResponse>): QueryGetTokenBurnResponse {
+  fromPartial(
+    object: Partial<QueryGetTokenBurnResponse>
+  ): QueryGetTokenBurnResponse {
     const message = createBaseQueryGetTokenBurnResponse();
-    message.tokenBurn = object.tokenBurn !== undefined && object.tokenBurn !== null ? TokenBurn.fromPartial(object.tokenBurn) : undefined;
+    message.tokenBurn =
+      object.tokenBurn !== undefined && object.tokenBurn !== null
+        ? TokenBurn.fromPartial(object.tokenBurn)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryGetTokenBurnResponseAmino): QueryGetTokenBurnResponse {
@@ -1345,39 +1550,53 @@ export const QueryGetTokenBurnResponse = {
   },
   toAmino(message: QueryGetTokenBurnResponse): QueryGetTokenBurnResponseAmino {
     const obj: any = {};
-    obj.tokenBurn = message.tokenBurn ? TokenBurn.toAmino(message.tokenBurn) : undefined;
+    obj.tokenBurn = message.tokenBurn
+      ? TokenBurn.toAmino(message.tokenBurn)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryGetTokenBurnResponseAminoMsg): QueryGetTokenBurnResponse {
+  fromAminoMsg(
+    object: QueryGetTokenBurnResponseAminoMsg
+  ): QueryGetTokenBurnResponse {
     return QueryGetTokenBurnResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryGetTokenBurnResponseProtoMsg): QueryGetTokenBurnResponse {
+  fromProtoMsg(
+    message: QueryGetTokenBurnResponseProtoMsg
+  ): QueryGetTokenBurnResponse {
     return QueryGetTokenBurnResponse.decode(message.value);
   },
   toProto(message: QueryGetTokenBurnResponse): Uint8Array {
     return QueryGetTokenBurnResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryGetTokenBurnResponse): QueryGetTokenBurnResponseProtoMsg {
+  toProtoMsg(
+    message: QueryGetTokenBurnResponse
+  ): QueryGetTokenBurnResponseProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryGetTokenBurnResponse",
-      value: QueryGetTokenBurnResponse.encode(message).finish()
+      value: QueryGetTokenBurnResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllTokenBurnRequest(): QueryAllTokenBurnRequest {
   return {
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryAllTokenBurnRequest = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnRequest",
-  encode(message: QueryAllTokenBurnRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryAllTokenBurnRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllTokenBurnRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryAllTokenBurnRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllTokenBurnRequest();
@@ -1394,9 +1613,14 @@ export const QueryAllTokenBurnRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAllTokenBurnRequest>): QueryAllTokenBurnRequest {
+  fromPartial(
+    object: Partial<QueryAllTokenBurnRequest>
+  ): QueryAllTokenBurnRequest {
     const message = createBaseQueryAllTokenBurnRequest();
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryAllTokenBurnRequestAmino): QueryAllTokenBurnRequest {
@@ -1408,43 +1632,60 @@ export const QueryAllTokenBurnRequest = {
   },
   toAmino(message: QueryAllTokenBurnRequest): QueryAllTokenBurnRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryAllTokenBurnRequestAminoMsg): QueryAllTokenBurnRequest {
+  fromAminoMsg(
+    object: QueryAllTokenBurnRequestAminoMsg
+  ): QueryAllTokenBurnRequest {
     return QueryAllTokenBurnRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllTokenBurnRequestProtoMsg): QueryAllTokenBurnRequest {
+  fromProtoMsg(
+    message: QueryAllTokenBurnRequestProtoMsg
+  ): QueryAllTokenBurnRequest {
     return QueryAllTokenBurnRequest.decode(message.value);
   },
   toProto(message: QueryAllTokenBurnRequest): Uint8Array {
     return QueryAllTokenBurnRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllTokenBurnRequest): QueryAllTokenBurnRequestProtoMsg {
+  toProtoMsg(
+    message: QueryAllTokenBurnRequest
+  ): QueryAllTokenBurnRequestProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnRequest",
-      value: QueryAllTokenBurnRequest.encode(message).finish()
+      value: QueryAllTokenBurnRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllTokenBurnResponse(): QueryAllTokenBurnResponse {
   return {
     tokenBurn: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryAllTokenBurnResponse = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponse",
-  encode(message: QueryAllTokenBurnResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryAllTokenBurnResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.tokenBurn) {
       TokenBurn.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllTokenBurnResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryAllTokenBurnResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllTokenBurnResponse();
@@ -1464,15 +1705,22 @@ export const QueryAllTokenBurnResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAllTokenBurnResponse>): QueryAllTokenBurnResponse {
+  fromPartial(
+    object: Partial<QueryAllTokenBurnResponse>
+  ): QueryAllTokenBurnResponse {
     const message = createBaseQueryAllTokenBurnResponse();
-    message.tokenBurn = object.tokenBurn?.map(e => TokenBurn.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.tokenBurn =
+      object.tokenBurn?.map((e) => TokenBurn.fromPartial(e)) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryAllTokenBurnResponseAmino): QueryAllTokenBurnResponse {
     const message = createBaseQueryAllTokenBurnResponse();
-    message.tokenBurn = object.tokenBurn?.map(e => TokenBurn.fromAmino(e)) || [];
+    message.tokenBurn =
+      object.tokenBurn?.map((e) => TokenBurn.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -1481,26 +1729,36 @@ export const QueryAllTokenBurnResponse = {
   toAmino(message: QueryAllTokenBurnResponse): QueryAllTokenBurnResponseAmino {
     const obj: any = {};
     if (message.tokenBurn) {
-      obj.tokenBurn = message.tokenBurn.map(e => e ? TokenBurn.toAmino(e) : undefined);
+      obj.tokenBurn = message.tokenBurn.map((e) =>
+        e ? TokenBurn.toAmino(e) : undefined
+      );
     } else {
       obj.tokenBurn = message.tokenBurn;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryAllTokenBurnResponseAminoMsg): QueryAllTokenBurnResponse {
+  fromAminoMsg(
+    object: QueryAllTokenBurnResponseAminoMsg
+  ): QueryAllTokenBurnResponse {
     return QueryAllTokenBurnResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllTokenBurnResponseProtoMsg): QueryAllTokenBurnResponse {
+  fromProtoMsg(
+    message: QueryAllTokenBurnResponseProtoMsg
+  ): QueryAllTokenBurnResponse {
     return QueryAllTokenBurnResponse.decode(message.value);
   },
   toProto(message: QueryAllTokenBurnResponse): Uint8Array {
     return QueryAllTokenBurnResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllTokenBurnResponse): QueryAllTokenBurnResponseProtoMsg {
+  toProtoMsg(
+    message: QueryAllTokenBurnResponse
+  ): QueryAllTokenBurnResponseProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.QueryAllTokenBurnResponse",
-      value: QueryAllTokenBurnResponse.encode(message).finish()
+      value: QueryAllTokenBurnResponse.encode(message).finish(),
     };
-  }
+  },
 };

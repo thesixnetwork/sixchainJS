@@ -1,8 +1,17 @@
 //@ts-nocheck
-import { AttributeDefinition, AttributeDefinitionAmino, AttributeDefinitionSDKType } from "./attribute_definition";
-import { Action, ActionAmino, ActionSDKType } from "./action";
-import { VirtualAction, VirtualActionAmino, VirtualActionSDKType } from "./virtual_action";
 import * as _m0 from "protobufjs/minimal";
+
+import { Action, ActionAmino, ActionSDKType } from "./action";
+import {
+  AttributeDefinition,
+  AttributeDefinitionAmino,
+  AttributeDefinitionSDKType,
+} from "./attribute_definition";
+import {
+  VirtualAction,
+  VirtualActionAmino,
+  VirtualActionSDKType,
+} from "./virtual_action";
 export interface FlagStatus {
   statusName: string;
   statusValue: boolean;
@@ -81,12 +90,15 @@ export interface OnChainDataResultSDKType {
 function createBaseFlagStatus(): FlagStatus {
   return {
     statusName: "",
-    statusValue: false
+    statusValue: false,
   };
 }
 export const FlagStatus = {
   typeUrl: "/thesixnetwork.sixprotocol.nftmngr.FlagStatus",
-  encode(message: FlagStatus, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: FlagStatus,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.statusName !== "") {
       writer.uint32(10).string(message.statusName);
     }
@@ -133,8 +145,10 @@ export const FlagStatus = {
   },
   toAmino(message: FlagStatus): FlagStatusAmino {
     const obj: any = {};
-    obj.status_name = message.statusName === "" ? undefined : message.statusName;
-    obj.status_value = message.statusValue === false ? undefined : message.statusValue;
+    obj.status_name =
+      message.statusName === "" ? undefined : message.statusName;
+    obj.status_value =
+      message.statusValue === false ? undefined : message.statusValue;
     return obj;
   },
   fromAminoMsg(object: FlagStatusAminoMsg): FlagStatus {
@@ -149,21 +163,24 @@ export const FlagStatus = {
   toProtoMsg(message: FlagStatus): FlagStatusProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.nftmngr.FlagStatus",
-      value: FlagStatus.encode(message).finish()
+      value: FlagStatus.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseOnChainData(): OnChainData {
   return {
     nftAttributes: [],
     tokenAttributes: [],
     actions: [],
-    status: []
+    status: [],
   };
 }
 export const OnChainData = {
   typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OnChainData",
-  encode(message: OnChainData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: OnChainData,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.nftAttributes) {
       AttributeDefinition.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -186,10 +203,14 @@ export const OnChainData = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.nftAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
+          message.nftAttributes.push(
+            AttributeDefinition.decode(reader, reader.uint32())
+          );
           break;
         case 2:
-          message.tokenAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
+          message.tokenAttributes.push(
+            AttributeDefinition.decode(reader, reader.uint32())
+          );
           break;
         case 3:
           message.actions.push(Action.decode(reader, reader.uint32()));
@@ -206,39 +227,54 @@ export const OnChainData = {
   },
   fromPartial(object: Partial<OnChainData>): OnChainData {
     const message = createBaseOnChainData();
-    message.nftAttributes = object.nftAttributes?.map(e => AttributeDefinition.fromPartial(e)) || [];
-    message.tokenAttributes = object.tokenAttributes?.map(e => AttributeDefinition.fromPartial(e)) || [];
-    message.actions = object.actions?.map(e => Action.fromPartial(e)) || [];
-    message.status = object.status?.map(e => FlagStatus.fromPartial(e)) || [];
+    message.nftAttributes =
+      object.nftAttributes?.map((e) => AttributeDefinition.fromPartial(e)) ||
+      [];
+    message.tokenAttributes =
+      object.tokenAttributes?.map((e) => AttributeDefinition.fromPartial(e)) ||
+      [];
+    message.actions = object.actions?.map((e) => Action.fromPartial(e)) || [];
+    message.status = object.status?.map((e) => FlagStatus.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: OnChainDataAmino): OnChainData {
     const message = createBaseOnChainData();
-    message.nftAttributes = object.nft_attributes?.map(e => AttributeDefinition.fromAmino(e)) || [];
-    message.tokenAttributes = object.token_attributes?.map(e => AttributeDefinition.fromAmino(e)) || [];
-    message.actions = object.actions?.map(e => Action.fromAmino(e)) || [];
-    message.status = object.status?.map(e => FlagStatus.fromAmino(e)) || [];
+    message.nftAttributes =
+      object.nft_attributes?.map((e) => AttributeDefinition.fromAmino(e)) || [];
+    message.tokenAttributes =
+      object.token_attributes?.map((e) => AttributeDefinition.fromAmino(e)) ||
+      [];
+    message.actions = object.actions?.map((e) => Action.fromAmino(e)) || [];
+    message.status = object.status?.map((e) => FlagStatus.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: OnChainData): OnChainDataAmino {
     const obj: any = {};
     if (message.nftAttributes) {
-      obj.nft_attributes = message.nftAttributes.map(e => e ? AttributeDefinition.toAmino(e) : undefined);
+      obj.nft_attributes = message.nftAttributes.map((e) =>
+        e ? AttributeDefinition.toAmino(e) : undefined
+      );
     } else {
       obj.nft_attributes = message.nftAttributes;
     }
     if (message.tokenAttributes) {
-      obj.token_attributes = message.tokenAttributes.map(e => e ? AttributeDefinition.toAmino(e) : undefined);
+      obj.token_attributes = message.tokenAttributes.map((e) =>
+        e ? AttributeDefinition.toAmino(e) : undefined
+      );
     } else {
       obj.token_attributes = message.tokenAttributes;
     }
     if (message.actions) {
-      obj.actions = message.actions.map(e => e ? Action.toAmino(e) : undefined);
+      obj.actions = message.actions.map((e) =>
+        e ? Action.toAmino(e) : undefined
+      );
     } else {
       obj.actions = message.actions;
     }
     if (message.status) {
-      obj.status = message.status.map(e => e ? FlagStatus.toAmino(e) : undefined);
+      obj.status = message.status.map((e) =>
+        e ? FlagStatus.toAmino(e) : undefined
+      );
     } else {
       obj.status = message.status;
     }
@@ -256,9 +292,9 @@ export const OnChainData = {
   toProtoMsg(message: OnChainData): OnChainDataProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OnChainData",
-      value: OnChainData.encode(message).finish()
+      value: OnChainData.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseOnChainDataResult(): OnChainDataResult {
   return {
@@ -266,12 +302,15 @@ function createBaseOnChainDataResult(): OnChainDataResult {
     tokenAttributes: [],
     actions: [],
     virtualActions: [],
-    status: []
+    status: [],
   };
 }
 export const OnChainDataResult = {
   typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OnChainDataResult",
-  encode(message: OnChainDataResult, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: OnChainDataResult,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.nftAttributes) {
       AttributeDefinition.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -297,16 +336,22 @@ export const OnChainDataResult = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.nftAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
+          message.nftAttributes.push(
+            AttributeDefinition.decode(reader, reader.uint32())
+          );
           break;
         case 2:
-          message.tokenAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
+          message.tokenAttributes.push(
+            AttributeDefinition.decode(reader, reader.uint32())
+          );
           break;
         case 3:
           message.actions.push(Action.decode(reader, reader.uint32()));
           break;
         case 4:
-          message.virtualActions.push(VirtualAction.decode(reader, reader.uint32()));
+          message.virtualActions.push(
+            VirtualAction.decode(reader, reader.uint32())
+          );
           break;
         case 5:
           message.status.push(FlagStatus.decode(reader, reader.uint32()));
@@ -320,46 +365,65 @@ export const OnChainDataResult = {
   },
   fromPartial(object: Partial<OnChainDataResult>): OnChainDataResult {
     const message = createBaseOnChainDataResult();
-    message.nftAttributes = object.nftAttributes?.map(e => AttributeDefinition.fromPartial(e)) || [];
-    message.tokenAttributes = object.tokenAttributes?.map(e => AttributeDefinition.fromPartial(e)) || [];
-    message.actions = object.actions?.map(e => Action.fromPartial(e)) || [];
-    message.virtualActions = object.virtualActions?.map(e => VirtualAction.fromPartial(e)) || [];
-    message.status = object.status?.map(e => FlagStatus.fromPartial(e)) || [];
+    message.nftAttributes =
+      object.nftAttributes?.map((e) => AttributeDefinition.fromPartial(e)) ||
+      [];
+    message.tokenAttributes =
+      object.tokenAttributes?.map((e) => AttributeDefinition.fromPartial(e)) ||
+      [];
+    message.actions = object.actions?.map((e) => Action.fromPartial(e)) || [];
+    message.virtualActions =
+      object.virtualActions?.map((e) => VirtualAction.fromPartial(e)) || [];
+    message.status = object.status?.map((e) => FlagStatus.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: OnChainDataResultAmino): OnChainDataResult {
     const message = createBaseOnChainDataResult();
-    message.nftAttributes = object.nft_attributes?.map(e => AttributeDefinition.fromAmino(e)) || [];
-    message.tokenAttributes = object.token_attributes?.map(e => AttributeDefinition.fromAmino(e)) || [];
-    message.actions = object.actions?.map(e => Action.fromAmino(e)) || [];
-    message.virtualActions = object.virtual_actions?.map(e => VirtualAction.fromAmino(e)) || [];
-    message.status = object.status?.map(e => FlagStatus.fromAmino(e)) || [];
+    message.nftAttributes =
+      object.nft_attributes?.map((e) => AttributeDefinition.fromAmino(e)) || [];
+    message.tokenAttributes =
+      object.token_attributes?.map((e) => AttributeDefinition.fromAmino(e)) ||
+      [];
+    message.actions = object.actions?.map((e) => Action.fromAmino(e)) || [];
+    message.virtualActions =
+      object.virtual_actions?.map((e) => VirtualAction.fromAmino(e)) || [];
+    message.status = object.status?.map((e) => FlagStatus.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: OnChainDataResult): OnChainDataResultAmino {
     const obj: any = {};
     if (message.nftAttributes) {
-      obj.nft_attributes = message.nftAttributes.map(e => e ? AttributeDefinition.toAmino(e) : undefined);
+      obj.nft_attributes = message.nftAttributes.map((e) =>
+        e ? AttributeDefinition.toAmino(e) : undefined
+      );
     } else {
       obj.nft_attributes = message.nftAttributes;
     }
     if (message.tokenAttributes) {
-      obj.token_attributes = message.tokenAttributes.map(e => e ? AttributeDefinition.toAmino(e) : undefined);
+      obj.token_attributes = message.tokenAttributes.map((e) =>
+        e ? AttributeDefinition.toAmino(e) : undefined
+      );
     } else {
       obj.token_attributes = message.tokenAttributes;
     }
     if (message.actions) {
-      obj.actions = message.actions.map(e => e ? Action.toAmino(e) : undefined);
+      obj.actions = message.actions.map((e) =>
+        e ? Action.toAmino(e) : undefined
+      );
     } else {
       obj.actions = message.actions;
     }
     if (message.virtualActions) {
-      obj.virtual_actions = message.virtualActions.map(e => e ? VirtualAction.toAmino(e) : undefined);
+      obj.virtual_actions = message.virtualActions.map((e) =>
+        e ? VirtualAction.toAmino(e) : undefined
+      );
     } else {
       obj.virtual_actions = message.virtualActions;
     }
     if (message.status) {
-      obj.status = message.status.map(e => e ? FlagStatus.toAmino(e) : undefined);
+      obj.status = message.status.map((e) =>
+        e ? FlagStatus.toAmino(e) : undefined
+      );
     } else {
       obj.status = message.status;
     }
@@ -377,7 +441,7 @@ export const OnChainDataResult = {
   toProtoMsg(message: OnChainDataResult): OnChainDataResultProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.nftmngr.OnChainDataResult",
-      value: OnChainDataResult.encode(message).finish()
+      value: OnChainDataResult.encode(message).finish(),
     };
-  }
+  },
 };

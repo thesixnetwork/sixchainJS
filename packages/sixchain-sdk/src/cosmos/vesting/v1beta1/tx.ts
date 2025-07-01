@@ -1,7 +1,8 @@
 //@ts-nocheck
-import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+
+import { Long } from "../../../helpers";
+import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 /**
  * MsgCreateVestingAccount defines a message that enables creating a vesting
  * account.
@@ -63,12 +64,15 @@ function createBaseMsgCreateVestingAccount(): MsgCreateVestingAccount {
     toAddress: "",
     amount: [],
     endTime: Long.ZERO,
-    delayed: false
+    delayed: false,
   };
 }
 export const MsgCreateVestingAccount = {
   typeUrl: "/cosmos.vesting.v1beta1.MsgCreateVestingAccount",
-  encode(message: MsgCreateVestingAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgCreateVestingAccount,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.fromAddress !== "") {
       writer.uint32(10).string(message.fromAddress);
     }
@@ -86,7 +90,10 @@ export const MsgCreateVestingAccount = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVestingAccount {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgCreateVestingAccount {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateVestingAccount();
@@ -115,12 +122,17 @@ export const MsgCreateVestingAccount = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgCreateVestingAccount>): MsgCreateVestingAccount {
+  fromPartial(
+    object: Partial<MsgCreateVestingAccount>
+  ): MsgCreateVestingAccount {
     const message = createBaseMsgCreateVestingAccount();
     message.fromAddress = object.fromAddress ?? "";
     message.toAddress = object.toAddress ?? "";
-    message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
-    message.endTime = object.endTime !== undefined && object.endTime !== null ? Long.fromValue(object.endTime) : Long.ZERO;
+    message.amount = object.amount?.map((e) => Coin.fromPartial(e)) || [];
+    message.endTime =
+      object.endTime !== undefined && object.endTime !== null
+        ? Long.fromValue(object.endTime)
+        : Long.ZERO;
     message.delayed = object.delayed ?? false;
     return message;
   },
@@ -132,7 +144,7 @@ export const MsgCreateVestingAccount = {
     if (object.to_address !== undefined && object.to_address !== null) {
       message.toAddress = object.to_address;
     }
-    message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+    message.amount = object.amount?.map((e) => Coin.fromAmino(e)) || [];
     if (object.end_time !== undefined && object.end_time !== null) {
       message.endTime = Long.fromString(object.end_time);
     }
@@ -143,48 +155,65 @@ export const MsgCreateVestingAccount = {
   },
   toAmino(message: MsgCreateVestingAccount): MsgCreateVestingAccountAmino {
     const obj: any = {};
-    obj.from_address = message.fromAddress === "" ? undefined : message.fromAddress;
+    obj.from_address =
+      message.fromAddress === "" ? undefined : message.fromAddress;
     obj.to_address = message.toAddress === "" ? undefined : message.toAddress;
     if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.amount = message.amount.map((e) => (e ? Coin.toAmino(e) : undefined));
     } else {
       obj.amount = message.amount;
     }
-    obj.end_time = !message.endTime.isZero() ? (message.endTime?.toString)() : undefined;
+    obj.end_time = !message.endTime.isZero()
+      ? (message.endTime?.toString)()
+      : undefined;
     obj.delayed = message.delayed === false ? undefined : message.delayed;
     return obj;
   },
-  fromAminoMsg(object: MsgCreateVestingAccountAminoMsg): MsgCreateVestingAccount {
+  fromAminoMsg(
+    object: MsgCreateVestingAccountAminoMsg
+  ): MsgCreateVestingAccount {
     return MsgCreateVestingAccount.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgCreateVestingAccount): MsgCreateVestingAccountAminoMsg {
+  toAminoMsg(
+    message: MsgCreateVestingAccount
+  ): MsgCreateVestingAccountAminoMsg {
     return {
       type: "cosmos-sdk/MsgCreateVestingAccount",
-      value: MsgCreateVestingAccount.toAmino(message)
+      value: MsgCreateVestingAccount.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgCreateVestingAccountProtoMsg): MsgCreateVestingAccount {
+  fromProtoMsg(
+    message: MsgCreateVestingAccountProtoMsg
+  ): MsgCreateVestingAccount {
     return MsgCreateVestingAccount.decode(message.value);
   },
   toProto(message: MsgCreateVestingAccount): Uint8Array {
     return MsgCreateVestingAccount.encode(message).finish();
   },
-  toProtoMsg(message: MsgCreateVestingAccount): MsgCreateVestingAccountProtoMsg {
+  toProtoMsg(
+    message: MsgCreateVestingAccount
+  ): MsgCreateVestingAccountProtoMsg {
     return {
       typeUrl: "/cosmos.vesting.v1beta1.MsgCreateVestingAccount",
-      value: MsgCreateVestingAccount.encode(message).finish()
+      value: MsgCreateVestingAccount.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgCreateVestingAccountResponse(): MsgCreateVestingAccountResponse {
   return {};
 }
 export const MsgCreateVestingAccountResponse = {
   typeUrl: "/cosmos.vesting.v1beta1.MsgCreateVestingAccountResponse",
-  encode(_: MsgCreateVestingAccountResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgCreateVestingAccountResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVestingAccountResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgCreateVestingAccountResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateVestingAccountResponse();
@@ -198,37 +227,51 @@ export const MsgCreateVestingAccountResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgCreateVestingAccountResponse>): MsgCreateVestingAccountResponse {
+  fromPartial(
+    _: Partial<MsgCreateVestingAccountResponse>
+  ): MsgCreateVestingAccountResponse {
     const message = createBaseMsgCreateVestingAccountResponse();
     return message;
   },
-  fromAmino(_: MsgCreateVestingAccountResponseAmino): MsgCreateVestingAccountResponse {
+  fromAmino(
+    _: MsgCreateVestingAccountResponseAmino
+  ): MsgCreateVestingAccountResponse {
     const message = createBaseMsgCreateVestingAccountResponse();
     return message;
   },
-  toAmino(_: MsgCreateVestingAccountResponse): MsgCreateVestingAccountResponseAmino {
+  toAmino(
+    _: MsgCreateVestingAccountResponse
+  ): MsgCreateVestingAccountResponseAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgCreateVestingAccountResponseAminoMsg): MsgCreateVestingAccountResponse {
+  fromAminoMsg(
+    object: MsgCreateVestingAccountResponseAminoMsg
+  ): MsgCreateVestingAccountResponse {
     return MsgCreateVestingAccountResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgCreateVestingAccountResponse): MsgCreateVestingAccountResponseAminoMsg {
+  toAminoMsg(
+    message: MsgCreateVestingAccountResponse
+  ): MsgCreateVestingAccountResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgCreateVestingAccountResponse",
-      value: MsgCreateVestingAccountResponse.toAmino(message)
+      value: MsgCreateVestingAccountResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgCreateVestingAccountResponseProtoMsg): MsgCreateVestingAccountResponse {
+  fromProtoMsg(
+    message: MsgCreateVestingAccountResponseProtoMsg
+  ): MsgCreateVestingAccountResponse {
     return MsgCreateVestingAccountResponse.decode(message.value);
   },
   toProto(message: MsgCreateVestingAccountResponse): Uint8Array {
     return MsgCreateVestingAccountResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgCreateVestingAccountResponse): MsgCreateVestingAccountResponseProtoMsg {
+  toProtoMsg(
+    message: MsgCreateVestingAccountResponse
+  ): MsgCreateVestingAccountResponseProtoMsg {
     return {
       typeUrl: "/cosmos.vesting.v1beta1.MsgCreateVestingAccountResponse",
-      value: MsgCreateVestingAccountResponse.encode(message).finish()
+      value: MsgCreateVestingAccountResponse.encode(message).finish(),
     };
-  }
+  },
 };

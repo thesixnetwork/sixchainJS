@@ -22,7 +22,7 @@
       "data_type": "number",
       "required": true,
       "default_value": ""
-    },    
+    },
     {
       "name": "expire_date",
       "desc": "set expire date of Privileges",

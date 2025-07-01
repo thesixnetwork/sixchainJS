@@ -1,8 +1,13 @@
 //@ts-nocheck
-import { BaseAccount, BaseAccountAmino, BaseAccountSDKType } from "../../auth/v1beta1/auth";
-import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+
+import { Long } from "../../../helpers";
+import {
+  BaseAccount,
+  BaseAccountAmino,
+  BaseAccountSDKType,
+} from "../../auth/v1beta1/auth";
+import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 /**
  * BaseVestingAccount implements the VestingAccount interface. It contains all
  * the necessary fields needed for any vesting account implementation.
@@ -170,7 +175,7 @@ export interface PeriodicVestingAccountSDKType {
  * PermanentLockedAccount implements the VestingAccount interface. It does
  * not ever release coins, locking them indefinitely. Coins in this account can
  * still be used for delegating and for governance votes even while locked.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface PermanentLockedAccount {
@@ -184,7 +189,7 @@ export interface PermanentLockedAccountProtoMsg {
  * PermanentLockedAccount implements the VestingAccount interface. It does
  * not ever release coins, locking them indefinitely. Coins in this account can
  * still be used for delegating and for governance votes even while locked.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface PermanentLockedAccountAmino {
@@ -198,7 +203,7 @@ export interface PermanentLockedAccountAminoMsg {
  * PermanentLockedAccount implements the VestingAccount interface. It does
  * not ever release coins, locking them indefinitely. Coins in this account can
  * still be used for delegating and for governance votes even while locked.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface PermanentLockedAccountSDKType {
@@ -210,14 +215,20 @@ function createBaseBaseVestingAccount(): BaseVestingAccount {
     originalVesting: [],
     delegatedFree: [],
     delegatedVesting: [],
-    endTime: Long.ZERO
+    endTime: Long.ZERO,
   };
 }
 export const BaseVestingAccount = {
   typeUrl: "/cosmos.vesting.v1beta1.BaseVestingAccount",
-  encode(message: BaseVestingAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: BaseVestingAccount,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.baseAccount !== undefined) {
-      BaseAccount.encode(message.baseAccount, writer.uint32(10).fork()).ldelim();
+      BaseAccount.encode(
+        message.baseAccount,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     for (const v of message.originalVesting) {
       Coin.encode(v!, writer.uint32(18).fork()).ldelim();
@@ -264,11 +275,20 @@ export const BaseVestingAccount = {
   },
   fromPartial(object: Partial<BaseVestingAccount>): BaseVestingAccount {
     const message = createBaseBaseVestingAccount();
-    message.baseAccount = object.baseAccount !== undefined && object.baseAccount !== null ? BaseAccount.fromPartial(object.baseAccount) : undefined;
-    message.originalVesting = object.originalVesting?.map(e => Coin.fromPartial(e)) || [];
-    message.delegatedFree = object.delegatedFree?.map(e => Coin.fromPartial(e)) || [];
-    message.delegatedVesting = object.delegatedVesting?.map(e => Coin.fromPartial(e)) || [];
-    message.endTime = object.endTime !== undefined && object.endTime !== null ? Long.fromValue(object.endTime) : Long.ZERO;
+    message.baseAccount =
+      object.baseAccount !== undefined && object.baseAccount !== null
+        ? BaseAccount.fromPartial(object.baseAccount)
+        : undefined;
+    message.originalVesting =
+      object.originalVesting?.map((e) => Coin.fromPartial(e)) || [];
+    message.delegatedFree =
+      object.delegatedFree?.map((e) => Coin.fromPartial(e)) || [];
+    message.delegatedVesting =
+      object.delegatedVesting?.map((e) => Coin.fromPartial(e)) || [];
+    message.endTime =
+      object.endTime !== undefined && object.endTime !== null
+        ? Long.fromValue(object.endTime)
+        : Long.ZERO;
     return message;
   },
   fromAmino(object: BaseVestingAccountAmino): BaseVestingAccount {
@@ -276,9 +296,12 @@ export const BaseVestingAccount = {
     if (object.base_account !== undefined && object.base_account !== null) {
       message.baseAccount = BaseAccount.fromAmino(object.base_account);
     }
-    message.originalVesting = object.original_vesting?.map(e => Coin.fromAmino(e)) || [];
-    message.delegatedFree = object.delegated_free?.map(e => Coin.fromAmino(e)) || [];
-    message.delegatedVesting = object.delegated_vesting?.map(e => Coin.fromAmino(e)) || [];
+    message.originalVesting =
+      object.original_vesting?.map((e) => Coin.fromAmino(e)) || [];
+    message.delegatedFree =
+      object.delegated_free?.map((e) => Coin.fromAmino(e)) || [];
+    message.delegatedVesting =
+      object.delegated_vesting?.map((e) => Coin.fromAmino(e)) || [];
     if (object.end_time !== undefined && object.end_time !== null) {
       message.endTime = Long.fromString(object.end_time);
     }
@@ -286,23 +309,33 @@ export const BaseVestingAccount = {
   },
   toAmino(message: BaseVestingAccount): BaseVestingAccountAmino {
     const obj: any = {};
-    obj.base_account = message.baseAccount ? BaseAccount.toAmino(message.baseAccount) : undefined;
+    obj.base_account = message.baseAccount
+      ? BaseAccount.toAmino(message.baseAccount)
+      : undefined;
     if (message.originalVesting) {
-      obj.original_vesting = message.originalVesting.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.original_vesting = message.originalVesting.map((e) =>
+        e ? Coin.toAmino(e) : undefined
+      );
     } else {
       obj.original_vesting = message.originalVesting;
     }
     if (message.delegatedFree) {
-      obj.delegated_free = message.delegatedFree.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.delegated_free = message.delegatedFree.map((e) =>
+        e ? Coin.toAmino(e) : undefined
+      );
     } else {
       obj.delegated_free = message.delegatedFree;
     }
     if (message.delegatedVesting) {
-      obj.delegated_vesting = message.delegatedVesting.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.delegated_vesting = message.delegatedVesting.map((e) =>
+        e ? Coin.toAmino(e) : undefined
+      );
     } else {
       obj.delegated_vesting = message.delegatedVesting;
     }
-    obj.end_time = !message.endTime.isZero() ? (message.endTime?.toString)() : undefined;
+    obj.end_time = !message.endTime.isZero()
+      ? (message.endTime?.toString)()
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: BaseVestingAccountAminoMsg): BaseVestingAccount {
@@ -311,7 +344,7 @@ export const BaseVestingAccount = {
   toAminoMsg(message: BaseVestingAccount): BaseVestingAccountAminoMsg {
     return {
       type: "cosmos-sdk/BaseVestingAccount",
-      value: BaseVestingAccount.toAmino(message)
+      value: BaseVestingAccount.toAmino(message),
     };
   },
   fromProtoMsg(message: BaseVestingAccountProtoMsg): BaseVestingAccount {
@@ -323,28 +356,37 @@ export const BaseVestingAccount = {
   toProtoMsg(message: BaseVestingAccount): BaseVestingAccountProtoMsg {
     return {
       typeUrl: "/cosmos.vesting.v1beta1.BaseVestingAccount",
-      value: BaseVestingAccount.encode(message).finish()
+      value: BaseVestingAccount.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseContinuousVestingAccount(): ContinuousVestingAccount {
   return {
     baseVestingAccount: undefined,
-    startTime: Long.ZERO
+    startTime: Long.ZERO,
   };
 }
 export const ContinuousVestingAccount = {
   typeUrl: "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
-  encode(message: ContinuousVestingAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ContinuousVestingAccount,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.baseVestingAccount !== undefined) {
-      BaseVestingAccount.encode(message.baseVestingAccount, writer.uint32(10).fork()).ldelim();
+      BaseVestingAccount.encode(
+        message.baseVestingAccount,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (!message.startTime.isZero()) {
       writer.uint32(16).int64(message.startTime);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ContinuousVestingAccount {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): ContinuousVestingAccount {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseContinuousVestingAccount();
@@ -352,7 +394,10 @@ export const ContinuousVestingAccount = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.baseVestingAccount = BaseVestingAccount.decode(reader, reader.uint32());
+          message.baseVestingAccount = BaseVestingAccount.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         case 2:
           message.startTime = reader.int64() as Long;
@@ -364,16 +409,30 @@ export const ContinuousVestingAccount = {
     }
     return message;
   },
-  fromPartial(object: Partial<ContinuousVestingAccount>): ContinuousVestingAccount {
+  fromPartial(
+    object: Partial<ContinuousVestingAccount>
+  ): ContinuousVestingAccount {
     const message = createBaseContinuousVestingAccount();
-    message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
-    message.startTime = object.startTime !== undefined && object.startTime !== null ? Long.fromValue(object.startTime) : Long.ZERO;
+    message.baseVestingAccount =
+      object.baseVestingAccount !== undefined &&
+      object.baseVestingAccount !== null
+        ? BaseVestingAccount.fromPartial(object.baseVestingAccount)
+        : undefined;
+    message.startTime =
+      object.startTime !== undefined && object.startTime !== null
+        ? Long.fromValue(object.startTime)
+        : Long.ZERO;
     return message;
   },
   fromAmino(object: ContinuousVestingAccountAmino): ContinuousVestingAccount {
     const message = createBaseContinuousVestingAccount();
-    if (object.base_vesting_account !== undefined && object.base_vesting_account !== null) {
-      message.baseVestingAccount = BaseVestingAccount.fromAmino(object.base_vesting_account);
+    if (
+      object.base_vesting_account !== undefined &&
+      object.base_vesting_account !== null
+    ) {
+      message.baseVestingAccount = BaseVestingAccount.fromAmino(
+        object.base_vesting_account
+      );
     }
     if (object.start_time !== undefined && object.start_time !== null) {
       message.startTime = Long.fromString(object.start_time);
@@ -382,46 +441,67 @@ export const ContinuousVestingAccount = {
   },
   toAmino(message: ContinuousVestingAccount): ContinuousVestingAccountAmino {
     const obj: any = {};
-    obj.base_vesting_account = message.baseVestingAccount ? BaseVestingAccount.toAmino(message.baseVestingAccount) : undefined;
-    obj.start_time = !message.startTime.isZero() ? (message.startTime?.toString)() : undefined;
+    obj.base_vesting_account = message.baseVestingAccount
+      ? BaseVestingAccount.toAmino(message.baseVestingAccount)
+      : undefined;
+    obj.start_time = !message.startTime.isZero()
+      ? (message.startTime?.toString)()
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: ContinuousVestingAccountAminoMsg): ContinuousVestingAccount {
+  fromAminoMsg(
+    object: ContinuousVestingAccountAminoMsg
+  ): ContinuousVestingAccount {
     return ContinuousVestingAccount.fromAmino(object.value);
   },
-  toAminoMsg(message: ContinuousVestingAccount): ContinuousVestingAccountAminoMsg {
+  toAminoMsg(
+    message: ContinuousVestingAccount
+  ): ContinuousVestingAccountAminoMsg {
     return {
       type: "cosmos-sdk/ContinuousVestingAccount",
-      value: ContinuousVestingAccount.toAmino(message)
+      value: ContinuousVestingAccount.toAmino(message),
     };
   },
-  fromProtoMsg(message: ContinuousVestingAccountProtoMsg): ContinuousVestingAccount {
+  fromProtoMsg(
+    message: ContinuousVestingAccountProtoMsg
+  ): ContinuousVestingAccount {
     return ContinuousVestingAccount.decode(message.value);
   },
   toProto(message: ContinuousVestingAccount): Uint8Array {
     return ContinuousVestingAccount.encode(message).finish();
   },
-  toProtoMsg(message: ContinuousVestingAccount): ContinuousVestingAccountProtoMsg {
+  toProtoMsg(
+    message: ContinuousVestingAccount
+  ): ContinuousVestingAccountProtoMsg {
     return {
       typeUrl: "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
-      value: ContinuousVestingAccount.encode(message).finish()
+      value: ContinuousVestingAccount.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseDelayedVestingAccount(): DelayedVestingAccount {
   return {
-    baseVestingAccount: undefined
+    baseVestingAccount: undefined,
   };
 }
 export const DelayedVestingAccount = {
   typeUrl: "/cosmos.vesting.v1beta1.DelayedVestingAccount",
-  encode(message: DelayedVestingAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: DelayedVestingAccount,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.baseVestingAccount !== undefined) {
-      BaseVestingAccount.encode(message.baseVestingAccount, writer.uint32(10).fork()).ldelim();
+      BaseVestingAccount.encode(
+        message.baseVestingAccount,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): DelayedVestingAccount {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): DelayedVestingAccount {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDelayedVestingAccount();
@@ -429,7 +509,10 @@ export const DelayedVestingAccount = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.baseVestingAccount = BaseVestingAccount.decode(reader, reader.uint32());
+          message.baseVestingAccount = BaseVestingAccount.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -440,19 +523,30 @@ export const DelayedVestingAccount = {
   },
   fromPartial(object: Partial<DelayedVestingAccount>): DelayedVestingAccount {
     const message = createBaseDelayedVestingAccount();
-    message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
+    message.baseVestingAccount =
+      object.baseVestingAccount !== undefined &&
+      object.baseVestingAccount !== null
+        ? BaseVestingAccount.fromPartial(object.baseVestingAccount)
+        : undefined;
     return message;
   },
   fromAmino(object: DelayedVestingAccountAmino): DelayedVestingAccount {
     const message = createBaseDelayedVestingAccount();
-    if (object.base_vesting_account !== undefined && object.base_vesting_account !== null) {
-      message.baseVestingAccount = BaseVestingAccount.fromAmino(object.base_vesting_account);
+    if (
+      object.base_vesting_account !== undefined &&
+      object.base_vesting_account !== null
+    ) {
+      message.baseVestingAccount = BaseVestingAccount.fromAmino(
+        object.base_vesting_account
+      );
     }
     return message;
   },
   toAmino(message: DelayedVestingAccount): DelayedVestingAccountAmino {
     const obj: any = {};
-    obj.base_vesting_account = message.baseVestingAccount ? BaseVestingAccount.toAmino(message.baseVestingAccount) : undefined;
+    obj.base_vesting_account = message.baseVestingAccount
+      ? BaseVestingAccount.toAmino(message.baseVestingAccount)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: DelayedVestingAccountAminoMsg): DelayedVestingAccount {
@@ -461,7 +555,7 @@ export const DelayedVestingAccount = {
   toAminoMsg(message: DelayedVestingAccount): DelayedVestingAccountAminoMsg {
     return {
       type: "cosmos-sdk/DelayedVestingAccount",
-      value: DelayedVestingAccount.toAmino(message)
+      value: DelayedVestingAccount.toAmino(message),
     };
   },
   fromProtoMsg(message: DelayedVestingAccountProtoMsg): DelayedVestingAccount {
@@ -473,19 +567,22 @@ export const DelayedVestingAccount = {
   toProtoMsg(message: DelayedVestingAccount): DelayedVestingAccountProtoMsg {
     return {
       typeUrl: "/cosmos.vesting.v1beta1.DelayedVestingAccount",
-      value: DelayedVestingAccount.encode(message).finish()
+      value: DelayedVestingAccount.encode(message).finish(),
     };
-  }
+  },
 };
 function createBasePeriod(): Period {
   return {
     length: Long.ZERO,
-    amount: []
+    amount: [],
   };
 }
 export const Period = {
   typeUrl: "/cosmos.vesting.v1beta1.Period",
-  encode(message: Period, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Period,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.length.isZero()) {
       writer.uint32(8).int64(message.length);
     }
@@ -516,8 +613,11 @@ export const Period = {
   },
   fromPartial(object: Partial<Period>): Period {
     const message = createBasePeriod();
-    message.length = object.length !== undefined && object.length !== null ? Long.fromValue(object.length) : Long.ZERO;
-    message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
+    message.length =
+      object.length !== undefined && object.length !== null
+        ? Long.fromValue(object.length)
+        : Long.ZERO;
+    message.amount = object.amount?.map((e) => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: PeriodAmino): Period {
@@ -525,14 +625,16 @@ export const Period = {
     if (object.length !== undefined && object.length !== null) {
       message.length = Long.fromString(object.length);
     }
-    message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+    message.amount = object.amount?.map((e) => Coin.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: Period): PeriodAmino {
     const obj: any = {};
-    obj.length = !message.length.isZero() ? (message.length?.toString)() : undefined;
+    obj.length = !message.length.isZero()
+      ? (message.length?.toString)()
+      : undefined;
     if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.amount = message.amount.map((e) => (e ? Coin.toAmino(e) : undefined));
     } else {
       obj.amount = message.amount;
     }
@@ -544,7 +646,7 @@ export const Period = {
   toAminoMsg(message: Period): PeriodAminoMsg {
     return {
       type: "cosmos-sdk/Period",
-      value: Period.toAmino(message)
+      value: Period.toAmino(message),
     };
   },
   fromProtoMsg(message: PeriodProtoMsg): Period {
@@ -556,22 +658,28 @@ export const Period = {
   toProtoMsg(message: Period): PeriodProtoMsg {
     return {
       typeUrl: "/cosmos.vesting.v1beta1.Period",
-      value: Period.encode(message).finish()
+      value: Period.encode(message).finish(),
     };
-  }
+  },
 };
 function createBasePeriodicVestingAccount(): PeriodicVestingAccount {
   return {
     baseVestingAccount: undefined,
     startTime: Long.ZERO,
-    vestingPeriods: []
+    vestingPeriods: [],
   };
 }
 export const PeriodicVestingAccount = {
   typeUrl: "/cosmos.vesting.v1beta1.PeriodicVestingAccount",
-  encode(message: PeriodicVestingAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: PeriodicVestingAccount,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.baseVestingAccount !== undefined) {
-      BaseVestingAccount.encode(message.baseVestingAccount, writer.uint32(10).fork()).ldelim();
+      BaseVestingAccount.encode(
+        message.baseVestingAccount,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (!message.startTime.isZero()) {
       writer.uint32(16).int64(message.startTime);
@@ -581,7 +689,10 @@ export const PeriodicVestingAccount = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): PeriodicVestingAccount {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): PeriodicVestingAccount {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePeriodicVestingAccount();
@@ -589,7 +700,10 @@ export const PeriodicVestingAccount = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.baseVestingAccount = BaseVestingAccount.decode(reader, reader.uint32());
+          message.baseVestingAccount = BaseVestingAccount.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         case 2:
           message.startTime = reader.int64() as Long;
@@ -606,28 +720,48 @@ export const PeriodicVestingAccount = {
   },
   fromPartial(object: Partial<PeriodicVestingAccount>): PeriodicVestingAccount {
     const message = createBasePeriodicVestingAccount();
-    message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
-    message.startTime = object.startTime !== undefined && object.startTime !== null ? Long.fromValue(object.startTime) : Long.ZERO;
-    message.vestingPeriods = object.vestingPeriods?.map(e => Period.fromPartial(e)) || [];
+    message.baseVestingAccount =
+      object.baseVestingAccount !== undefined &&
+      object.baseVestingAccount !== null
+        ? BaseVestingAccount.fromPartial(object.baseVestingAccount)
+        : undefined;
+    message.startTime =
+      object.startTime !== undefined && object.startTime !== null
+        ? Long.fromValue(object.startTime)
+        : Long.ZERO;
+    message.vestingPeriods =
+      object.vestingPeriods?.map((e) => Period.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: PeriodicVestingAccountAmino): PeriodicVestingAccount {
     const message = createBasePeriodicVestingAccount();
-    if (object.base_vesting_account !== undefined && object.base_vesting_account !== null) {
-      message.baseVestingAccount = BaseVestingAccount.fromAmino(object.base_vesting_account);
+    if (
+      object.base_vesting_account !== undefined &&
+      object.base_vesting_account !== null
+    ) {
+      message.baseVestingAccount = BaseVestingAccount.fromAmino(
+        object.base_vesting_account
+      );
     }
     if (object.start_time !== undefined && object.start_time !== null) {
       message.startTime = Long.fromString(object.start_time);
     }
-    message.vestingPeriods = object.vesting_periods?.map(e => Period.fromAmino(e)) || [];
+    message.vestingPeriods =
+      object.vesting_periods?.map((e) => Period.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: PeriodicVestingAccount): PeriodicVestingAccountAmino {
     const obj: any = {};
-    obj.base_vesting_account = message.baseVestingAccount ? BaseVestingAccount.toAmino(message.baseVestingAccount) : undefined;
-    obj.start_time = !message.startTime.isZero() ? (message.startTime?.toString)() : undefined;
+    obj.base_vesting_account = message.baseVestingAccount
+      ? BaseVestingAccount.toAmino(message.baseVestingAccount)
+      : undefined;
+    obj.start_time = !message.startTime.isZero()
+      ? (message.startTime?.toString)()
+      : undefined;
     if (message.vestingPeriods) {
-      obj.vesting_periods = message.vestingPeriods.map(e => e ? Period.toAmino(e) : undefined);
+      obj.vesting_periods = message.vestingPeriods.map((e) =>
+        e ? Period.toAmino(e) : undefined
+      );
     } else {
       obj.vesting_periods = message.vestingPeriods;
     }
@@ -639,10 +773,12 @@ export const PeriodicVestingAccount = {
   toAminoMsg(message: PeriodicVestingAccount): PeriodicVestingAccountAminoMsg {
     return {
       type: "cosmos-sdk/PeriodicVestingAccount",
-      value: PeriodicVestingAccount.toAmino(message)
+      value: PeriodicVestingAccount.toAmino(message),
     };
   },
-  fromProtoMsg(message: PeriodicVestingAccountProtoMsg): PeriodicVestingAccount {
+  fromProtoMsg(
+    message: PeriodicVestingAccountProtoMsg
+  ): PeriodicVestingAccount {
     return PeriodicVestingAccount.decode(message.value);
   },
   toProto(message: PeriodicVestingAccount): Uint8Array {
@@ -651,24 +787,33 @@ export const PeriodicVestingAccount = {
   toProtoMsg(message: PeriodicVestingAccount): PeriodicVestingAccountProtoMsg {
     return {
       typeUrl: "/cosmos.vesting.v1beta1.PeriodicVestingAccount",
-      value: PeriodicVestingAccount.encode(message).finish()
+      value: PeriodicVestingAccount.encode(message).finish(),
     };
-  }
+  },
 };
 function createBasePermanentLockedAccount(): PermanentLockedAccount {
   return {
-    baseVestingAccount: undefined
+    baseVestingAccount: undefined,
   };
 }
 export const PermanentLockedAccount = {
   typeUrl: "/cosmos.vesting.v1beta1.PermanentLockedAccount",
-  encode(message: PermanentLockedAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: PermanentLockedAccount,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.baseVestingAccount !== undefined) {
-      BaseVestingAccount.encode(message.baseVestingAccount, writer.uint32(10).fork()).ldelim();
+      BaseVestingAccount.encode(
+        message.baseVestingAccount,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): PermanentLockedAccount {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): PermanentLockedAccount {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePermanentLockedAccount();
@@ -676,7 +821,10 @@ export const PermanentLockedAccount = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.baseVestingAccount = BaseVestingAccount.decode(reader, reader.uint32());
+          message.baseVestingAccount = BaseVestingAccount.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -687,19 +835,30 @@ export const PermanentLockedAccount = {
   },
   fromPartial(object: Partial<PermanentLockedAccount>): PermanentLockedAccount {
     const message = createBasePermanentLockedAccount();
-    message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
+    message.baseVestingAccount =
+      object.baseVestingAccount !== undefined &&
+      object.baseVestingAccount !== null
+        ? BaseVestingAccount.fromPartial(object.baseVestingAccount)
+        : undefined;
     return message;
   },
   fromAmino(object: PermanentLockedAccountAmino): PermanentLockedAccount {
     const message = createBasePermanentLockedAccount();
-    if (object.base_vesting_account !== undefined && object.base_vesting_account !== null) {
-      message.baseVestingAccount = BaseVestingAccount.fromAmino(object.base_vesting_account);
+    if (
+      object.base_vesting_account !== undefined &&
+      object.base_vesting_account !== null
+    ) {
+      message.baseVestingAccount = BaseVestingAccount.fromAmino(
+        object.base_vesting_account
+      );
     }
     return message;
   },
   toAmino(message: PermanentLockedAccount): PermanentLockedAccountAmino {
     const obj: any = {};
-    obj.base_vesting_account = message.baseVestingAccount ? BaseVestingAccount.toAmino(message.baseVestingAccount) : undefined;
+    obj.base_vesting_account = message.baseVestingAccount
+      ? BaseVestingAccount.toAmino(message.baseVestingAccount)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: PermanentLockedAccountAminoMsg): PermanentLockedAccount {
@@ -708,10 +867,12 @@ export const PermanentLockedAccount = {
   toAminoMsg(message: PermanentLockedAccount): PermanentLockedAccountAminoMsg {
     return {
       type: "cosmos-sdk/PermanentLockedAccount",
-      value: PermanentLockedAccount.toAmino(message)
+      value: PermanentLockedAccount.toAmino(message),
     };
   },
-  fromProtoMsg(message: PermanentLockedAccountProtoMsg): PermanentLockedAccount {
+  fromProtoMsg(
+    message: PermanentLockedAccountProtoMsg
+  ): PermanentLockedAccount {
     return PermanentLockedAccount.decode(message.value);
   },
   toProto(message: PermanentLockedAccount): Uint8Array {
@@ -720,7 +881,7 @@ export const PermanentLockedAccount = {
   toProtoMsg(message: PermanentLockedAccount): PermanentLockedAccountProtoMsg {
     return {
       typeUrl: "/cosmos.vesting.v1beta1.PermanentLockedAccount",
-      value: PermanentLockedAccount.encode(message).finish()
+      value: PermanentLockedAccount.encode(message).finish(),
     };
-  }
+  },
 };

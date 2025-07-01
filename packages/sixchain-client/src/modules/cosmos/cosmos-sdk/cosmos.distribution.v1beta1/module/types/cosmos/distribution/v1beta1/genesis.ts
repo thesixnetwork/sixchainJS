@@ -1155,8 +1155,8 @@ export const GenesisState = {
         ? FeePool.toJSON(message.fee_pool)
         : undefined);
     if (message.delegator_withdraw_infos) {
-      obj.delegator_withdraw_infos = message.delegator_withdraw_infos.map((e) =>
-        e ? DelegatorWithdrawInfo.toJSON(e) : undefined
+      obj.delegator_withdraw_infos = message.delegator_withdraw_infos.map(
+        (e) => (e ? DelegatorWithdrawInfo.toJSON(e) : undefined)
       );
     } else {
       obj.delegator_withdraw_infos = [];
@@ -1171,16 +1171,18 @@ export const GenesisState = {
       obj.outstanding_rewards = [];
     }
     if (message.validator_accumulated_commissions) {
-      obj.validator_accumulated_commissions = message.validator_accumulated_commissions.map(
-        (e) => (e ? ValidatorAccumulatedCommissionRecord.toJSON(e) : undefined)
-      );
+      obj.validator_accumulated_commissions =
+        message.validator_accumulated_commissions.map((e) =>
+          e ? ValidatorAccumulatedCommissionRecord.toJSON(e) : undefined
+        );
     } else {
       obj.validator_accumulated_commissions = [];
     }
     if (message.validator_historical_rewards) {
-      obj.validator_historical_rewards = message.validator_historical_rewards.map(
-        (e) => (e ? ValidatorHistoricalRewardsRecord.toJSON(e) : undefined)
-      );
+      obj.validator_historical_rewards =
+        message.validator_historical_rewards.map((e) =>
+          e ? ValidatorHistoricalRewardsRecord.toJSON(e) : undefined
+        );
     } else {
       obj.validator_historical_rewards = [];
     }
@@ -1192,8 +1194,8 @@ export const GenesisState = {
       obj.validator_current_rewards = [];
     }
     if (message.delegator_starting_infos) {
-      obj.delegator_starting_infos = message.delegator_starting_infos.map((e) =>
-        e ? DelegatorStartingInfoRecord.toJSON(e) : undefined
+      obj.delegator_starting_infos = message.delegator_starting_infos.map(
+        (e) => (e ? DelegatorStartingInfoRecord.toJSON(e) : undefined)
       );
     } else {
       obj.delegator_starting_infos = [];
@@ -1323,12 +1325,12 @@ type Builtin = Date | Function | Uint8Array | string | number | undefined;
 export type DeepPartial<T> = T extends Builtin
   ? T
   : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
-  : Partial<T>;
+    ? Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+      ? ReadonlyArray<DeepPartial<U>>
+      : T extends {}
+        ? { [K in keyof T]?: DeepPartial<T[K]> }
+        : Partial<T>;
 
 function longToNumber(long: Long): number {
   if (long.gt(Number.MAX_SAFE_INTEGER)) {
@@ -1336,5 +1338,3 @@ function longToNumber(long: Long): number {
   }
   return long.toNumber();
 }
-
-

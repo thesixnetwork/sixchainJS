@@ -1,6 +1,7 @@
 //@ts-nocheck
 import * as _m0 from "protobufjs/minimal";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+
+import { base64FromBytes, bytesFromBase64 } from "../../../helpers";
 /** PubKey defines a secp256r1 ECDSA public key. */
 export interface PubKey {
   /**
@@ -53,12 +54,15 @@ export interface PrivKeySDKType {
 }
 function createBasePubKey(): PubKey {
   return {
-    key: new Uint8Array()
+    key: new Uint8Array(),
   };
 }
 export const PubKey = {
   typeUrl: "/cosmos.crypto.secp256r1.PubKey",
-  encode(message: PubKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: PubKey,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
     }
@@ -104,7 +108,7 @@ export const PubKey = {
   toAminoMsg(message: PubKey): PubKeyAminoMsg {
     return {
       type: "cosmos-sdk/PubKey",
-      value: PubKey.toAmino(message)
+      value: PubKey.toAmino(message),
     };
   },
   fromProtoMsg(message: PubKeyProtoMsg): PubKey {
@@ -116,18 +120,21 @@ export const PubKey = {
   toProtoMsg(message: PubKey): PubKeyProtoMsg {
     return {
       typeUrl: "/cosmos.crypto.secp256r1.PubKey",
-      value: PubKey.encode(message).finish()
+      value: PubKey.encode(message).finish(),
     };
-  }
+  },
 };
 function createBasePrivKey(): PrivKey {
   return {
-    secret: new Uint8Array()
+    secret: new Uint8Array(),
   };
 }
 export const PrivKey = {
   typeUrl: "/cosmos.crypto.secp256r1.PrivKey",
-  encode(message: PrivKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: PrivKey,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.secret.length !== 0) {
       writer.uint32(10).bytes(message.secret);
     }
@@ -173,7 +180,7 @@ export const PrivKey = {
   toAminoMsg(message: PrivKey): PrivKeyAminoMsg {
     return {
       type: "cosmos-sdk/PrivKey",
-      value: PrivKey.toAmino(message)
+      value: PrivKey.toAmino(message),
     };
   },
   fromProtoMsg(message: PrivKeyProtoMsg): PrivKey {
@@ -185,7 +192,7 @@ export const PrivKey = {
   toProtoMsg(message: PrivKey): PrivKeyProtoMsg {
     return {
       typeUrl: "/cosmos.crypto.secp256r1.PrivKey",
-      value: PrivKey.encode(message).finish()
+      value: PrivKey.encode(message).finish(),
     };
-  }
+  },
 };

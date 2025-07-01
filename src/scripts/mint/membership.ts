@@ -1,4 +1,8 @@
-import { SixDataChainConnector, ITxNFTmngr, fee } from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  ITxNFTmngr,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import S_ZERO_YEAR from "../../resources/metadatas/membership/senior/nft-data_0_years.json";
 import S_THREE_YEAR from "../../resources/metadatas/membership/senior/nft-data_3_years.json";
 import S_FIVE_YEAR from "../../resources/metadatas/membership/senior/nft-data_5_years.json";
@@ -22,7 +26,7 @@ const JUNIOR_TIER_FILE_NAME: { [key: string]: any } = {
   "10": J_TEN_YEAR,
 };
 
-const SENIOR_TIER_FILE_NAME : { [key: string]: any } = {
+const SENIOR_TIER_FILE_NAME: { [key: string]: any } = {
   "0": S_ZERO_YEAR,
   "3": S_THREE_YEAR,
   "5": S_FIVE_YEAR,
@@ -36,21 +40,25 @@ const SENIOR = process.argv[5]!;
 
 let schemaCode: string; // Make sure to initialize this variable before using
 
-async function generateNFTData(tier: string, tokenId: string, senior:boolean): Promise<any> {
+async function generateNFTData(
+  tier: string,
+  tokenId: string,
+  senior: boolean
+): Promise<any> {
   let tierFileName = JUNIOR_TIER_FILE_NAME[tier];
-  if(senior){
-    tierFileName = SENIOR_TIER_FILE_NAME[tier]
+  if (senior) {
+    tierFileName = SENIOR_TIER_FILE_NAME[tier];
   }
   const split_schema = tierFileName.nft_schema_code.split(".");
   const _name = split_schema[1];
-  const org_name = process.env.ORG_NAME
+  const org_name = process.env.ORG_NAME;
   schemaCode = `${org_name}.${_name}`;
-  tierFileName.nft_schema_code = schemaCode
+  tierFileName.nft_schema_code = schemaCode;
 
   var today = moment().utc().format();
-  var expire = moment().utc().add(Number(tier),'years').format()
+  var expire = moment().utc().add(Number(tier), "years").format();
 
-  tierFileName.onchain_attributes.forEach((attribute:any) => {
+  tierFileName.onchain_attributes.forEach((attribute: any) => {
     if (attribute.name === "start_date" && attribute.string_attribute_value) {
       attribute.string_attribute_value.value = today;
     }
@@ -71,12 +79,12 @@ async function generateNFTData(tier: string, tokenId: string, senior:boolean): P
 async function isTokenMinted(
   apiClient: any,
   schemaCode: string,
-  tokenId: string,
+  tokenId: string
 ): Promise<boolean> {
   try {
     const token = await apiClient.nftmngrModule.queryNftData(
       schemaCode,
-      tokenId,
+      tokenId
     );
     return !!token.data;
   } catch (error) {
@@ -84,12 +92,12 @@ async function isTokenMinted(
   }
 }
 
-async function mintNFT(tier: string, tokenId: number, senior:boolean) {
+async function mintNFT(tier: string, tokenId: number, senior: boolean) {
   console.log(`Minting... tier: ${tier}, tokenId: ${tokenId}`);
 
   if (!NETWORK) {
     throw new Error(
-      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet).",
+      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
 
@@ -104,7 +112,7 @@ async function mintNFT(tier: string, tokenId: number, senior:boolean) {
   const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
     gasPrice: fee.GasPrice.fromString("1.25usix"),
   });
-  
+
   const apiClient = await sixConnector.connectAPIClient();
 
   const token_id = tokenId.toString();
@@ -116,7 +124,7 @@ async function mintNFT(tier: string, tokenId: number, senior:boolean) {
 
   const nftData = await generateNFTData(tier, token_id, senior);
   const encodeBase64Metadata = Buffer.from(JSON.stringify(nftData)).toString(
-    "base64",
+    "base64"
   );
 
   const msgCreateMetaData: ITxNFTmngr.MsgCreateMetadata = {
@@ -134,16 +142,18 @@ async function mintNFT(tier: string, tokenId: number, senior:boolean) {
     {
       fee: "auto",
       memo: "Mint NFT Metadata Token",
-    },
+    }
   );
 
   if (txResponse.code !== 0) {
     console.error(`Error minting NFT: ${txResponse.rawLog}`);
   } else {
     console.log(
-      `Minting successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`,
+      `Minting successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
   }
 }
 
-mintNFT(String(TIER), Number(TOKEN_ID), Boolean(SENIOR)) .then(() => console.log("Minting completed")) .catch((err) => console.error(err));
+mintNFT(String(TIER), Number(TOKEN_ID), Boolean(SENIOR))
+  .then(() => console.log("Minting completed"))
+  .catch((err) => console.error(err));

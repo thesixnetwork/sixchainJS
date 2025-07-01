@@ -60,7 +60,7 @@ export const Params = {
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Params",
-      value: Params.encode(message).finish()
+      value: Params.encode(message).finish(),
     };
-  }
+  },
 };

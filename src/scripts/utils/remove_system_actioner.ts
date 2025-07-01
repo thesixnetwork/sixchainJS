@@ -1,10 +1,14 @@
-import { SixDataChainConnector, typesTxNFTManager, fee } from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  typesTxNFTManager,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate/build/fee";
 import dotenv from "dotenv";
 // import list_recipient  from "./list_address"
 // import list_recipient_71_250 from "./list_address_71-250";
-const list_recipient_71_250:Array<string> = []
+const list_recipient_71_250: Array<string> = [];
 dotenv.config();
 
 const schemaCode = "TechSauce.GlobalSummit2023";
@@ -53,9 +57,8 @@ const addSystemActioner = async (start: number, end: number) => {
       executorAddress: list_recipient_71_250[i],
     };
 
-    const msg = await rpcClient.nftmngrModule.msgDeleteActionExecutor(
-      addSystemAction
-    );
+    const msg =
+      await rpcClient.nftmngrModule.msgDeleteActionExecutor(addSystemAction);
     msgArray.push(msg);
   }
 
@@ -65,7 +68,6 @@ const addSystemActioner = async (start: number, end: number) => {
   });
   console.log(txResponse);
 };
-
 
 const multiAddSystemActioner = async () => {
   let sentCount = 0;
@@ -85,7 +87,6 @@ const multiAddSystemActioner = async () => {
   }
 };
 
-
 // ask to enter confirmmation
 const readline = require("readline").createInterface({
   input: process.stdin,
@@ -94,7 +95,7 @@ const readline = require("readline").createInterface({
 
 readline.question(
   `Are you sure you want to add System actioner ${schemaCode} to ${process.argv[2]} (y/n)?`,
-  (answer:any) => {
+  (answer: any) => {
     if (
       answer === "y" ||
       answer === "Y" ||
@@ -116,4 +117,3 @@ readline.question(
     readline.close();
   }
 );
-

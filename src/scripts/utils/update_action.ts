@@ -1,4 +1,8 @@
-import { SixDataChainConnector, ITxNFTmngr, fee } from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  ITxNFTmngr,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "../client";
 import dotenv from "dotenv";
@@ -17,7 +21,7 @@ import member_update from "../../resources/utils/updateAction/membership/extend_
 
 import set_privilege from "../../resources/utils/updateAction/set_service.json";
 
-import update_tier_name from "../../resources/utils/updateAction/update_tier_name.json"
+import update_tier_name from "../../resources/utils/updateAction/update_tier_name.json";
 
 const SCHEMA_LIST = [divine, lifestyle, membership, preventive];
 
@@ -37,7 +41,7 @@ let schemaCode: string; // Make sure to initialize this variable before using
 async function updateAction() {
   if (!NETWORK) {
     throw new Error(
-      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet).",
+      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
 
@@ -63,7 +67,7 @@ async function updateAction() {
     schemaCode = `${org_name}.${_name}`;
 
     const base64updateAction = Buffer.from(
-      JSON.stringify(UPDATE_LIST[i]),
+      JSON.stringify(UPDATE_LIST[i])
     ).toString("base64");
 
     const msgUpdateAction: ITxNFTmngr.MsgUpdateAction = {
@@ -76,7 +80,7 @@ async function updateAction() {
     msgArray.push(msgUpdate);
 
     const base64updateTierName = Buffer.from(
-      JSON.stringify(update_tier_name),
+      JSON.stringify(update_tier_name)
     ).toString("base64");
 
     const msgSetPrivilege: ITxNFTmngr.MsgUpdateAction = {
@@ -85,7 +89,8 @@ async function updateAction() {
       base64UpdateAction: base64updateTierName,
     };
 
-    const msgUpdateTierName = rpcClient.nftmngrModule.msgUpdateAction(msgSetPrivilege);
+    const msgUpdateTierName =
+      rpcClient.nftmngrModule.msgUpdateAction(msgSetPrivilege);
     msgArray.push(msgUpdateTierName);
   }
 
@@ -98,7 +103,7 @@ async function updateAction() {
     console.error(`Error minting NFT: ${txResponse.rawLog}`);
   } else {
     console.log(
-      `Minting successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`,
+      `Minting successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
   }
 }

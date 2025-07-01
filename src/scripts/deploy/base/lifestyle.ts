@@ -1,4 +1,4 @@
-import { SixDataChainConnector, ITxNFTmngr  } from "@sixnetwork/sixchain-client";
+import { SixDataChainConnector, ITxNFTmngr } from "@sixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee";
 import { getConnectorConfig } from "../../client";
@@ -7,17 +7,18 @@ dotenv.config();
 
 import exmapleSchema from "../../../resources/schemas/lifestyle-nft-schema.json";
 
-
 const NETOWRK = process.argv[2]!;
 
-if(!NETOWRK){
-  throw new Error("INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet");
+if (!NETOWRK) {
+  throw new Error(
+    "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet"
+  );
 }
 
 let schema_name = exmapleSchema.code;
-const split_schema = schema_name.split(".")
-const _name = split_schema[1]
-const org_name = process.env.ORG_NAME
+const split_schema = schema_name.split(".");
+const _name = split_schema[1];
+const org_name = process.env.ORG_NAME;
 let schemaCode: string;
 schemaCode = `${org_name}.${_name}`;
 exmapleSchema.code = schemaCode;
@@ -26,7 +27,7 @@ exmapleSchema.code = "divineXmembership";
 export const Deploy = async () => {
   if (!NETOWRK) {
     throw new Error(
-      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet).",
+      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
 
@@ -52,9 +53,8 @@ export const Deploy = async () => {
     nftSchemaBase64: encodeBase64Schema,
   };
 
-  const msg = await rpcClient.nftmngrModule.msgCreateNFTSchema(
-    msgCreateNFTSchema
-  );
+  const msg =
+    await rpcClient.nftmngrModule.msgCreateNFTSchema(msgCreateNFTSchema);
 
   msgArray.push(msg);
 
@@ -78,7 +78,7 @@ const readline = require("readline").createInterface({
 
 readline.question(
   `Are you sure you want to deploy ${schemaCode} to ${NETOWRK} (y/n)?`,
-  (answer:any) => {
+  (answer: any) => {
     if (
       answer === "y" ||
       answer === "Y" ||

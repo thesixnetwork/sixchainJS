@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+
+import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 /**
  * MsgSetWithdrawAddress sets the withdraw address for
  * a delegator (or validator self-delegation).
@@ -185,12 +186,15 @@ export interface MsgFundCommunityPoolResponseSDKType {}
 function createBaseMsgSetWithdrawAddress(): MsgSetWithdrawAddress {
   return {
     delegatorAddress: "",
-    withdrawAddress: ""
+    withdrawAddress: "",
   };
 }
 export const MsgSetWithdrawAddress = {
   typeUrl: "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress",
-  encode(message: MsgSetWithdrawAddress, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgSetWithdrawAddress,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.delegatorAddress !== "") {
       writer.uint32(10).string(message.delegatorAddress);
     }
@@ -199,7 +203,10 @@ export const MsgSetWithdrawAddress = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetWithdrawAddress {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgSetWithdrawAddress {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetWithdrawAddress();
@@ -227,18 +234,26 @@ export const MsgSetWithdrawAddress = {
   },
   fromAmino(object: MsgSetWithdrawAddressAmino): MsgSetWithdrawAddress {
     const message = createBaseMsgSetWithdrawAddress();
-    if (object.delegator_address !== undefined && object.delegator_address !== null) {
+    if (
+      object.delegator_address !== undefined &&
+      object.delegator_address !== null
+    ) {
       message.delegatorAddress = object.delegator_address;
     }
-    if (object.withdraw_address !== undefined && object.withdraw_address !== null) {
+    if (
+      object.withdraw_address !== undefined &&
+      object.withdraw_address !== null
+    ) {
       message.withdrawAddress = object.withdraw_address;
     }
     return message;
   },
   toAmino(message: MsgSetWithdrawAddress): MsgSetWithdrawAddressAmino {
     const obj: any = {};
-    obj.delegator_address = message.delegatorAddress === "" ? undefined : message.delegatorAddress;
-    obj.withdraw_address = message.withdrawAddress === "" ? undefined : message.withdrawAddress;
+    obj.delegator_address =
+      message.delegatorAddress === "" ? undefined : message.delegatorAddress;
+    obj.withdraw_address =
+      message.withdrawAddress === "" ? undefined : message.withdrawAddress;
     return obj;
   },
   fromAminoMsg(object: MsgSetWithdrawAddressAminoMsg): MsgSetWithdrawAddress {
@@ -247,7 +262,7 @@ export const MsgSetWithdrawAddress = {
   toAminoMsg(message: MsgSetWithdrawAddress): MsgSetWithdrawAddressAminoMsg {
     return {
       type: "cosmos-sdk/MsgModifyWithdrawAddress",
-      value: MsgSetWithdrawAddress.toAmino(message)
+      value: MsgSetWithdrawAddress.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgSetWithdrawAddressProtoMsg): MsgSetWithdrawAddress {
@@ -259,19 +274,25 @@ export const MsgSetWithdrawAddress = {
   toProtoMsg(message: MsgSetWithdrawAddress): MsgSetWithdrawAddressProtoMsg {
     return {
       typeUrl: "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress",
-      value: MsgSetWithdrawAddress.encode(message).finish()
+      value: MsgSetWithdrawAddress.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgSetWithdrawAddressResponse(): MsgSetWithdrawAddressResponse {
   return {};
 }
 export const MsgSetWithdrawAddressResponse = {
   typeUrl: "/cosmos.distribution.v1beta1.MsgSetWithdrawAddressResponse",
-  encode(_: MsgSetWithdrawAddressResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgSetWithdrawAddressResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetWithdrawAddressResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgSetWithdrawAddressResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSetWithdrawAddressResponse();
@@ -285,49 +306,66 @@ export const MsgSetWithdrawAddressResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgSetWithdrawAddressResponse>): MsgSetWithdrawAddressResponse {
+  fromPartial(
+    _: Partial<MsgSetWithdrawAddressResponse>
+  ): MsgSetWithdrawAddressResponse {
     const message = createBaseMsgSetWithdrawAddressResponse();
     return message;
   },
-  fromAmino(_: MsgSetWithdrawAddressResponseAmino): MsgSetWithdrawAddressResponse {
+  fromAmino(
+    _: MsgSetWithdrawAddressResponseAmino
+  ): MsgSetWithdrawAddressResponse {
     const message = createBaseMsgSetWithdrawAddressResponse();
     return message;
   },
-  toAmino(_: MsgSetWithdrawAddressResponse): MsgSetWithdrawAddressResponseAmino {
+  toAmino(
+    _: MsgSetWithdrawAddressResponse
+  ): MsgSetWithdrawAddressResponseAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgSetWithdrawAddressResponseAminoMsg): MsgSetWithdrawAddressResponse {
+  fromAminoMsg(
+    object: MsgSetWithdrawAddressResponseAminoMsg
+  ): MsgSetWithdrawAddressResponse {
     return MsgSetWithdrawAddressResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgSetWithdrawAddressResponse): MsgSetWithdrawAddressResponseAminoMsg {
+  toAminoMsg(
+    message: MsgSetWithdrawAddressResponse
+  ): MsgSetWithdrawAddressResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgSetWithdrawAddressResponse",
-      value: MsgSetWithdrawAddressResponse.toAmino(message)
+      value: MsgSetWithdrawAddressResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgSetWithdrawAddressResponseProtoMsg): MsgSetWithdrawAddressResponse {
+  fromProtoMsg(
+    message: MsgSetWithdrawAddressResponseProtoMsg
+  ): MsgSetWithdrawAddressResponse {
     return MsgSetWithdrawAddressResponse.decode(message.value);
   },
   toProto(message: MsgSetWithdrawAddressResponse): Uint8Array {
     return MsgSetWithdrawAddressResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgSetWithdrawAddressResponse): MsgSetWithdrawAddressResponseProtoMsg {
+  toProtoMsg(
+    message: MsgSetWithdrawAddressResponse
+  ): MsgSetWithdrawAddressResponseProtoMsg {
     return {
       typeUrl: "/cosmos.distribution.v1beta1.MsgSetWithdrawAddressResponse",
-      value: MsgSetWithdrawAddressResponse.encode(message).finish()
+      value: MsgSetWithdrawAddressResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgWithdrawDelegatorReward(): MsgWithdrawDelegatorReward {
   return {
     delegatorAddress: "",
-    validatorAddress: ""
+    validatorAddress: "",
   };
 }
 export const MsgWithdrawDelegatorReward = {
   typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
-  encode(message: MsgWithdrawDelegatorReward, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgWithdrawDelegatorReward,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.delegatorAddress !== "") {
       writer.uint32(10).string(message.delegatorAddress);
     }
@@ -336,7 +374,10 @@ export const MsgWithdrawDelegatorReward = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegatorReward {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgWithdrawDelegatorReward {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgWithdrawDelegatorReward();
@@ -356,59 +397,87 @@ export const MsgWithdrawDelegatorReward = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgWithdrawDelegatorReward>): MsgWithdrawDelegatorReward {
+  fromPartial(
+    object: Partial<MsgWithdrawDelegatorReward>
+  ): MsgWithdrawDelegatorReward {
     const message = createBaseMsgWithdrawDelegatorReward();
     message.delegatorAddress = object.delegatorAddress ?? "";
     message.validatorAddress = object.validatorAddress ?? "";
     return message;
   },
-  fromAmino(object: MsgWithdrawDelegatorRewardAmino): MsgWithdrawDelegatorReward {
+  fromAmino(
+    object: MsgWithdrawDelegatorRewardAmino
+  ): MsgWithdrawDelegatorReward {
     const message = createBaseMsgWithdrawDelegatorReward();
-    if (object.delegator_address !== undefined && object.delegator_address !== null) {
+    if (
+      object.delegator_address !== undefined &&
+      object.delegator_address !== null
+    ) {
       message.delegatorAddress = object.delegator_address;
     }
-    if (object.validator_address !== undefined && object.validator_address !== null) {
+    if (
+      object.validator_address !== undefined &&
+      object.validator_address !== null
+    ) {
       message.validatorAddress = object.validator_address;
     }
     return message;
   },
-  toAmino(message: MsgWithdrawDelegatorReward): MsgWithdrawDelegatorRewardAmino {
+  toAmino(
+    message: MsgWithdrawDelegatorReward
+  ): MsgWithdrawDelegatorRewardAmino {
     const obj: any = {};
-    obj.delegator_address = message.delegatorAddress === "" ? undefined : message.delegatorAddress;
-    obj.validator_address = message.validatorAddress === "" ? undefined : message.validatorAddress;
+    obj.delegator_address =
+      message.delegatorAddress === "" ? undefined : message.delegatorAddress;
+    obj.validator_address =
+      message.validatorAddress === "" ? undefined : message.validatorAddress;
     return obj;
   },
-  fromAminoMsg(object: MsgWithdrawDelegatorRewardAminoMsg): MsgWithdrawDelegatorReward {
+  fromAminoMsg(
+    object: MsgWithdrawDelegatorRewardAminoMsg
+  ): MsgWithdrawDelegatorReward {
     return MsgWithdrawDelegatorReward.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgWithdrawDelegatorReward): MsgWithdrawDelegatorRewardAminoMsg {
+  toAminoMsg(
+    message: MsgWithdrawDelegatorReward
+  ): MsgWithdrawDelegatorRewardAminoMsg {
     return {
       type: "cosmos-sdk/MsgWithdrawDelegationReward",
-      value: MsgWithdrawDelegatorReward.toAmino(message)
+      value: MsgWithdrawDelegatorReward.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgWithdrawDelegatorRewardProtoMsg): MsgWithdrawDelegatorReward {
+  fromProtoMsg(
+    message: MsgWithdrawDelegatorRewardProtoMsg
+  ): MsgWithdrawDelegatorReward {
     return MsgWithdrawDelegatorReward.decode(message.value);
   },
   toProto(message: MsgWithdrawDelegatorReward): Uint8Array {
     return MsgWithdrawDelegatorReward.encode(message).finish();
   },
-  toProtoMsg(message: MsgWithdrawDelegatorReward): MsgWithdrawDelegatorRewardProtoMsg {
+  toProtoMsg(
+    message: MsgWithdrawDelegatorReward
+  ): MsgWithdrawDelegatorRewardProtoMsg {
     return {
       typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
-      value: MsgWithdrawDelegatorReward.encode(message).finish()
+      value: MsgWithdrawDelegatorReward.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgWithdrawDelegatorRewardResponse(): MsgWithdrawDelegatorRewardResponse {
   return {};
 }
 export const MsgWithdrawDelegatorRewardResponse = {
   typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorRewardResponse",
-  encode(_: MsgWithdrawDelegatorRewardResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgWithdrawDelegatorRewardResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegatorRewardResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgWithdrawDelegatorRewardResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgWithdrawDelegatorRewardResponse();
@@ -422,54 +491,75 @@ export const MsgWithdrawDelegatorRewardResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgWithdrawDelegatorRewardResponse>): MsgWithdrawDelegatorRewardResponse {
+  fromPartial(
+    _: Partial<MsgWithdrawDelegatorRewardResponse>
+  ): MsgWithdrawDelegatorRewardResponse {
     const message = createBaseMsgWithdrawDelegatorRewardResponse();
     return message;
   },
-  fromAmino(_: MsgWithdrawDelegatorRewardResponseAmino): MsgWithdrawDelegatorRewardResponse {
+  fromAmino(
+    _: MsgWithdrawDelegatorRewardResponseAmino
+  ): MsgWithdrawDelegatorRewardResponse {
     const message = createBaseMsgWithdrawDelegatorRewardResponse();
     return message;
   },
-  toAmino(_: MsgWithdrawDelegatorRewardResponse): MsgWithdrawDelegatorRewardResponseAmino {
+  toAmino(
+    _: MsgWithdrawDelegatorRewardResponse
+  ): MsgWithdrawDelegatorRewardResponseAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgWithdrawDelegatorRewardResponseAminoMsg): MsgWithdrawDelegatorRewardResponse {
+  fromAminoMsg(
+    object: MsgWithdrawDelegatorRewardResponseAminoMsg
+  ): MsgWithdrawDelegatorRewardResponse {
     return MsgWithdrawDelegatorRewardResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgWithdrawDelegatorRewardResponse): MsgWithdrawDelegatorRewardResponseAminoMsg {
+  toAminoMsg(
+    message: MsgWithdrawDelegatorRewardResponse
+  ): MsgWithdrawDelegatorRewardResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgWithdrawDelegatorRewardResponse",
-      value: MsgWithdrawDelegatorRewardResponse.toAmino(message)
+      value: MsgWithdrawDelegatorRewardResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgWithdrawDelegatorRewardResponseProtoMsg): MsgWithdrawDelegatorRewardResponse {
+  fromProtoMsg(
+    message: MsgWithdrawDelegatorRewardResponseProtoMsg
+  ): MsgWithdrawDelegatorRewardResponse {
     return MsgWithdrawDelegatorRewardResponse.decode(message.value);
   },
   toProto(message: MsgWithdrawDelegatorRewardResponse): Uint8Array {
     return MsgWithdrawDelegatorRewardResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgWithdrawDelegatorRewardResponse): MsgWithdrawDelegatorRewardResponseProtoMsg {
+  toProtoMsg(
+    message: MsgWithdrawDelegatorRewardResponse
+  ): MsgWithdrawDelegatorRewardResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorRewardResponse",
-      value: MsgWithdrawDelegatorRewardResponse.encode(message).finish()
+      typeUrl:
+        "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorRewardResponse",
+      value: MsgWithdrawDelegatorRewardResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgWithdrawValidatorCommission(): MsgWithdrawValidatorCommission {
   return {
-    validatorAddress: ""
+    validatorAddress: "",
   };
 }
 export const MsgWithdrawValidatorCommission = {
   typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission",
-  encode(message: MsgWithdrawValidatorCommission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgWithdrawValidatorCommission,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.validatorAddress !== "") {
       writer.uint32(10).string(message.validatorAddress);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawValidatorCommission {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgWithdrawValidatorCommission {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgWithdrawValidatorCommission();
@@ -486,54 +576,79 @@ export const MsgWithdrawValidatorCommission = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgWithdrawValidatorCommission>): MsgWithdrawValidatorCommission {
+  fromPartial(
+    object: Partial<MsgWithdrawValidatorCommission>
+  ): MsgWithdrawValidatorCommission {
     const message = createBaseMsgWithdrawValidatorCommission();
     message.validatorAddress = object.validatorAddress ?? "";
     return message;
   },
-  fromAmino(object: MsgWithdrawValidatorCommissionAmino): MsgWithdrawValidatorCommission {
+  fromAmino(
+    object: MsgWithdrawValidatorCommissionAmino
+  ): MsgWithdrawValidatorCommission {
     const message = createBaseMsgWithdrawValidatorCommission();
-    if (object.validator_address !== undefined && object.validator_address !== null) {
+    if (
+      object.validator_address !== undefined &&
+      object.validator_address !== null
+    ) {
       message.validatorAddress = object.validator_address;
     }
     return message;
   },
-  toAmino(message: MsgWithdrawValidatorCommission): MsgWithdrawValidatorCommissionAmino {
+  toAmino(
+    message: MsgWithdrawValidatorCommission
+  ): MsgWithdrawValidatorCommissionAmino {
     const obj: any = {};
-    obj.validator_address = message.validatorAddress === "" ? undefined : message.validatorAddress;
+    obj.validator_address =
+      message.validatorAddress === "" ? undefined : message.validatorAddress;
     return obj;
   },
-  fromAminoMsg(object: MsgWithdrawValidatorCommissionAminoMsg): MsgWithdrawValidatorCommission {
+  fromAminoMsg(
+    object: MsgWithdrawValidatorCommissionAminoMsg
+  ): MsgWithdrawValidatorCommission {
     return MsgWithdrawValidatorCommission.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgWithdrawValidatorCommission): MsgWithdrawValidatorCommissionAminoMsg {
+  toAminoMsg(
+    message: MsgWithdrawValidatorCommission
+  ): MsgWithdrawValidatorCommissionAminoMsg {
     return {
       type: "cosmos-sdk/MsgWithdrawValidatorCommission",
-      value: MsgWithdrawValidatorCommission.toAmino(message)
+      value: MsgWithdrawValidatorCommission.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgWithdrawValidatorCommissionProtoMsg): MsgWithdrawValidatorCommission {
+  fromProtoMsg(
+    message: MsgWithdrawValidatorCommissionProtoMsg
+  ): MsgWithdrawValidatorCommission {
     return MsgWithdrawValidatorCommission.decode(message.value);
   },
   toProto(message: MsgWithdrawValidatorCommission): Uint8Array {
     return MsgWithdrawValidatorCommission.encode(message).finish();
   },
-  toProtoMsg(message: MsgWithdrawValidatorCommission): MsgWithdrawValidatorCommissionProtoMsg {
+  toProtoMsg(
+    message: MsgWithdrawValidatorCommission
+  ): MsgWithdrawValidatorCommissionProtoMsg {
     return {
       typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission",
-      value: MsgWithdrawValidatorCommission.encode(message).finish()
+      value: MsgWithdrawValidatorCommission.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgWithdrawValidatorCommissionResponse(): MsgWithdrawValidatorCommissionResponse {
   return {};
 }
 export const MsgWithdrawValidatorCommissionResponse = {
-  typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommissionResponse",
-  encode(_: MsgWithdrawValidatorCommissionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl:
+    "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommissionResponse",
+  encode(
+    _: MsgWithdrawValidatorCommissionResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawValidatorCommissionResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgWithdrawValidatorCommissionResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgWithdrawValidatorCommissionResponse();
@@ -547,49 +662,67 @@ export const MsgWithdrawValidatorCommissionResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgWithdrawValidatorCommissionResponse>): MsgWithdrawValidatorCommissionResponse {
+  fromPartial(
+    _: Partial<MsgWithdrawValidatorCommissionResponse>
+  ): MsgWithdrawValidatorCommissionResponse {
     const message = createBaseMsgWithdrawValidatorCommissionResponse();
     return message;
   },
-  fromAmino(_: MsgWithdrawValidatorCommissionResponseAmino): MsgWithdrawValidatorCommissionResponse {
+  fromAmino(
+    _: MsgWithdrawValidatorCommissionResponseAmino
+  ): MsgWithdrawValidatorCommissionResponse {
     const message = createBaseMsgWithdrawValidatorCommissionResponse();
     return message;
   },
-  toAmino(_: MsgWithdrawValidatorCommissionResponse): MsgWithdrawValidatorCommissionResponseAmino {
+  toAmino(
+    _: MsgWithdrawValidatorCommissionResponse
+  ): MsgWithdrawValidatorCommissionResponseAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgWithdrawValidatorCommissionResponseAminoMsg): MsgWithdrawValidatorCommissionResponse {
+  fromAminoMsg(
+    object: MsgWithdrawValidatorCommissionResponseAminoMsg
+  ): MsgWithdrawValidatorCommissionResponse {
     return MsgWithdrawValidatorCommissionResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgWithdrawValidatorCommissionResponse): MsgWithdrawValidatorCommissionResponseAminoMsg {
+  toAminoMsg(
+    message: MsgWithdrawValidatorCommissionResponse
+  ): MsgWithdrawValidatorCommissionResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgWithdrawValidatorCommissionResponse",
-      value: MsgWithdrawValidatorCommissionResponse.toAmino(message)
+      value: MsgWithdrawValidatorCommissionResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgWithdrawValidatorCommissionResponseProtoMsg): MsgWithdrawValidatorCommissionResponse {
+  fromProtoMsg(
+    message: MsgWithdrawValidatorCommissionResponseProtoMsg
+  ): MsgWithdrawValidatorCommissionResponse {
     return MsgWithdrawValidatorCommissionResponse.decode(message.value);
   },
   toProto(message: MsgWithdrawValidatorCommissionResponse): Uint8Array {
     return MsgWithdrawValidatorCommissionResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgWithdrawValidatorCommissionResponse): MsgWithdrawValidatorCommissionResponseProtoMsg {
+  toProtoMsg(
+    message: MsgWithdrawValidatorCommissionResponse
+  ): MsgWithdrawValidatorCommissionResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommissionResponse",
-      value: MsgWithdrawValidatorCommissionResponse.encode(message).finish()
+      typeUrl:
+        "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommissionResponse",
+      value: MsgWithdrawValidatorCommissionResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgFundCommunityPool(): MsgFundCommunityPool {
   return {
     amount: [],
-    depositor: ""
+    depositor: "",
   };
 }
 export const MsgFundCommunityPool = {
   typeUrl: "/cosmos.distribution.v1beta1.MsgFundCommunityPool",
-  encode(message: MsgFundCommunityPool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgFundCommunityPool,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.amount) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -598,7 +731,10 @@ export const MsgFundCommunityPool = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgFundCommunityPool {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgFundCommunityPool {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgFundCommunityPool();
@@ -620,13 +756,13 @@ export const MsgFundCommunityPool = {
   },
   fromPartial(object: Partial<MsgFundCommunityPool>): MsgFundCommunityPool {
     const message = createBaseMsgFundCommunityPool();
-    message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
+    message.amount = object.amount?.map((e) => Coin.fromPartial(e)) || [];
     message.depositor = object.depositor ?? "";
     return message;
   },
   fromAmino(object: MsgFundCommunityPoolAmino): MsgFundCommunityPool {
     const message = createBaseMsgFundCommunityPool();
-    message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+    message.amount = object.amount?.map((e) => Coin.fromAmino(e)) || [];
     if (object.depositor !== undefined && object.depositor !== null) {
       message.depositor = object.depositor;
     }
@@ -635,7 +771,7 @@ export const MsgFundCommunityPool = {
   toAmino(message: MsgFundCommunityPool): MsgFundCommunityPoolAmino {
     const obj: any = {};
     if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.amount = message.amount.map((e) => (e ? Coin.toAmino(e) : undefined));
     } else {
       obj.amount = message.amount;
     }
@@ -648,7 +784,7 @@ export const MsgFundCommunityPool = {
   toAminoMsg(message: MsgFundCommunityPool): MsgFundCommunityPoolAminoMsg {
     return {
       type: "cosmos-sdk/MsgFundCommunityPool",
-      value: MsgFundCommunityPool.toAmino(message)
+      value: MsgFundCommunityPool.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgFundCommunityPoolProtoMsg): MsgFundCommunityPool {
@@ -660,19 +796,25 @@ export const MsgFundCommunityPool = {
   toProtoMsg(message: MsgFundCommunityPool): MsgFundCommunityPoolProtoMsg {
     return {
       typeUrl: "/cosmos.distribution.v1beta1.MsgFundCommunityPool",
-      value: MsgFundCommunityPool.encode(message).finish()
+      value: MsgFundCommunityPool.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgFundCommunityPoolResponse(): MsgFundCommunityPoolResponse {
   return {};
 }
 export const MsgFundCommunityPoolResponse = {
   typeUrl: "/cosmos.distribution.v1beta1.MsgFundCommunityPoolResponse",
-  encode(_: MsgFundCommunityPoolResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgFundCommunityPoolResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgFundCommunityPoolResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgFundCommunityPoolResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgFundCommunityPoolResponse();
@@ -686,11 +828,15 @@ export const MsgFundCommunityPoolResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgFundCommunityPoolResponse>): MsgFundCommunityPoolResponse {
+  fromPartial(
+    _: Partial<MsgFundCommunityPoolResponse>
+  ): MsgFundCommunityPoolResponse {
     const message = createBaseMsgFundCommunityPoolResponse();
     return message;
   },
-  fromAmino(_: MsgFundCommunityPoolResponseAmino): MsgFundCommunityPoolResponse {
+  fromAmino(
+    _: MsgFundCommunityPoolResponseAmino
+  ): MsgFundCommunityPoolResponse {
     const message = createBaseMsgFundCommunityPoolResponse();
     return message;
   },
@@ -698,25 +844,33 @@ export const MsgFundCommunityPoolResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgFundCommunityPoolResponseAminoMsg): MsgFundCommunityPoolResponse {
+  fromAminoMsg(
+    object: MsgFundCommunityPoolResponseAminoMsg
+  ): MsgFundCommunityPoolResponse {
     return MsgFundCommunityPoolResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgFundCommunityPoolResponse): MsgFundCommunityPoolResponseAminoMsg {
+  toAminoMsg(
+    message: MsgFundCommunityPoolResponse
+  ): MsgFundCommunityPoolResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgFundCommunityPoolResponse",
-      value: MsgFundCommunityPoolResponse.toAmino(message)
+      value: MsgFundCommunityPoolResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgFundCommunityPoolResponseProtoMsg): MsgFundCommunityPoolResponse {
+  fromProtoMsg(
+    message: MsgFundCommunityPoolResponseProtoMsg
+  ): MsgFundCommunityPoolResponse {
     return MsgFundCommunityPoolResponse.decode(message.value);
   },
   toProto(message: MsgFundCommunityPoolResponse): Uint8Array {
     return MsgFundCommunityPoolResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgFundCommunityPoolResponse): MsgFundCommunityPoolResponseProtoMsg {
+  toProtoMsg(
+    message: MsgFundCommunityPoolResponse
+  ): MsgFundCommunityPoolResponseProtoMsg {
     return {
       typeUrl: "/cosmos.distribution.v1beta1.MsgFundCommunityPoolResponse",
-      value: MsgFundCommunityPoolResponse.encode(message).finish()
+      value: MsgFundCommunityPoolResponse.encode(message).finish(),
     };
-  }
+  },
 };

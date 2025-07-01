@@ -1,7 +1,8 @@
 //@ts-nocheck
+import * as _m0 from "protobufjs/minimal";
+
 import { Coin, CoinAmino, CoinSDKType } from "../cosmos/base/v1beta1/coin";
 import { Long } from "../helpers";
-import * as _m0 from "protobufjs/minimal";
 export interface Burn {
   id: Long;
   creator: string;
@@ -29,7 +30,7 @@ function createBaseBurn(): Burn {
   return {
     id: Long.UZERO,
     creator: "",
-    amount: Coin.fromPartial({})
+    amount: Coin.fromPartial({}),
   };
 }
 export const Burn = {
@@ -71,9 +72,15 @@ export const Burn = {
   },
   fromPartial(object: Partial<Burn>): Burn {
     const message = createBaseBurn();
-    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
+    message.id =
+      object.id !== undefined && object.id !== null
+        ? Long.fromValue(object.id)
+        : Long.UZERO;
     message.creator = object.creator ?? "";
-    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.amount =
+      object.amount !== undefined && object.amount !== null
+        ? Coin.fromPartial(object.amount)
+        : undefined;
     return message;
   },
   fromAmino(object: BurnAmino): Burn {
@@ -108,7 +115,7 @@ export const Burn = {
   toProtoMsg(message: Burn): BurnProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.Burn",
-      value: Burn.encode(message).finish()
+      value: Burn.encode(message).finish(),
     };
-  }
+  },
 };

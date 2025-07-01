@@ -1,4 +1,10 @@
-import { SixDataChainConnector, ITxNFTmngr, fee, BASE64, typesTxNFTManager } from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  ITxNFTmngr,
+  fee,
+  BASE64,
+  typesTxNFTManager,
+} from "@sixnetwork/sixchain-client";
 import newAttribute from "../../resources/utils/new-attribute.json";
 import divine_elite from "../../resources/schemas/divineelite-nft-schema.json";
 import { getConnectorConfig } from "../client";
@@ -7,9 +13,9 @@ const main = async () => {
   const NETWORK = process.argv[2]!;
 
   let schemaCode: string;
-  schemaCode = divine_elite.code
-  const _name = schemaCode.split('.');
-  const org_name = process.env.ORG_NAME
+  schemaCode = divine_elite.code;
+  const _name = schemaCode.split(".");
+  const org_name = process.env.ORG_NAME;
   schemaCode = `${org_name}.${_name}`;
 
   const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETWORK);
@@ -26,9 +32,7 @@ const main = async () => {
     gasPrice: fee.GasPrice.fromString("1.25usix"),
   });
   // Encode NFT data to base64
-  const encodeBase64NewAttribute = BASE64.encode(
-    JSON.stringify(newAttribute),
-  );
+  const encodeBase64NewAttribute = BASE64.encode(JSON.stringify(newAttribute));
   // Create message
   const updateAttribute: typesTxNFTManager.MsgUpdateSchemaAttribute = {
     creator: address,

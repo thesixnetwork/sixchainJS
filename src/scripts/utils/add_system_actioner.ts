@@ -1,4 +1,8 @@
-import { SixDataChainConnector, typesTxNFTManager, fee } from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  typesTxNFTManager,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate/build/fee";
 import dotenv from "dotenv";
@@ -10,18 +14,15 @@ import preventive from "../../resources/schemas/preventive-nft-schema.json";
 import membership from "../../resources/schemas/membership-nft-schema.json";
 import lifestyle from "../../resources/schemas/lifestyle-nft-schema.json";
 
-const schemaList = [
-  divine_elite,
-  preventive,
-  membership,
-  lifestyle
-];
+const schemaList = [divine_elite, preventive, membership, lifestyle];
 
 const NETOWRK = process.argv[2]!;
 
 const addSystemActioner = async (start: number, end: number) => {
   if (!NETOWRK) {
-    throw new Error("INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet");
+    throw new Error(
+      "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet"
+    );
   }
 
   const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETOWRK);
@@ -29,7 +30,8 @@ const addSystemActioner = async (start: number, end: number) => {
   sixConnector.rpcUrl = rpcUrl;
   sixConnector.apiUrl = apiUrl;
 
-  const accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
+  const accountSigner =
+    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
 
   const address = (await accountSigner.getAccounts())[0].address;
   const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
@@ -47,7 +49,6 @@ const addSystemActioner = async (start: number, end: number) => {
     schemaCode = `${org_name}.${_name}`;
     schemaList[i].code = schemaCode;
 
-
     // loop trough all addresses of list_recipient according to start and end
     for (let j = start; j < end; j++) {
       const addSystemAction: typesTxNFTManager.MsgCreateActionExecutor = {
@@ -56,28 +57,29 @@ const addSystemActioner = async (start: number, end: number) => {
         executorAddress: allAddress[j],
       };
 
-      const msg = rpcClient.nftmngrModule.msgCreateActionExecutor(
-        addSystemAction
-      );
+      const msg =
+        rpcClient.nftmngrModule.msgCreateActionExecutor(addSystemAction);
       msgArray.push(msg);
     }
 
-    const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(msgArray, {
-      fee: "auto",
-      memo: "add System",
-    });
+    const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(
+      msgArray,
+      {
+        fee: "auto",
+        memo: "add System",
+      }
+    );
 
     if (txResponse.code) {
       console.log(txResponse.rawLog);
     }
     console.log(
-      `gasUsed: ${txResponse.gasUsed}\ngasWanted:${txResponse.gasWanted}\n${txResponse.transactionHash}`,
+      `gasUsed: ${txResponse.gasUsed}\ngasWanted:${txResponse.gasWanted}\n${txResponse.transactionHash}`
     );
-  };
+  }
 
-  return
-}
-
+  return;
+};
 
 const multiAddSystemActioner = async () => {
   let sentCount = 0;
@@ -86,7 +88,6 @@ const multiAddSystemActioner = async () => {
   const round = Math.floor(actionNumber / numberPerRound);
   const remain = actionNumber % numberPerRound;
   console.log("remain", remain);
-
 
   for (let i = 0; i < round; i++) {
     await addSystemActioner(sentCount, sentCount + numberPerRound);
@@ -99,7 +100,6 @@ const multiAddSystemActioner = async () => {
   }
 };
 
-
 // ask to enter confirmmation
 const readline = require("readline").createInterface({
   input: process.stdin,
@@ -108,7 +108,7 @@ const readline = require("readline").createInterface({
 
 readline.question(
   `Are you sure you want to add System actioner to ${process.argv[2]} (y/n)?`,
-  (answer:any) => {
+  (answer: any) => {
     if (
       answer === "y" ||
       answer === "Y" ||
@@ -130,4 +130,3 @@ readline.question(
     readline.close();
   }
 );
-

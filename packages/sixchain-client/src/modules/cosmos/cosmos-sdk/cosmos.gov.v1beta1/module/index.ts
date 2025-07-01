@@ -1,70 +1,91 @@
 // THIS FILE IS GENERATED AUTOMATICALLY. DO NOT MODIFY.
 
-import { StdFee } from '@cosmjs/launchpad';
-import {EncodeObject, OfflineSigner, Registry } from '@cosmjs/proto-signing';
-import { SigningStargateClient, SigningStargateClientOptions} from '@cosmjs/stargate';
+import { StdFee } from "@cosmjs/launchpad";
+import { EncodeObject, OfflineSigner, Registry } from "@cosmjs/proto-signing";
+import {
+  SigningStargateClient,
+  SigningStargateClientOptions,
+} from "@cosmjs/stargate";
 
-import { Api } from './rest';
-import { MsgDeposit } from './types/cosmos/gov/v1beta1/tx';
-import { MsgVote } from './types/cosmos/gov/v1beta1/tx';
-import { MsgVoteWeighted } from './types/cosmos/gov/v1beta1/tx';
-import { MsgSubmitProposal } from './types/cosmos/gov/v1beta1/tx';
-
+import { Api } from "./rest";
+import { MsgDeposit } from "./types/cosmos/gov/v1beta1/tx";
+import { MsgVote } from "./types/cosmos/gov/v1beta1/tx";
+import { MsgVoteWeighted } from "./types/cosmos/gov/v1beta1/tx";
+import { MsgSubmitProposal } from "./types/cosmos/gov/v1beta1/tx";
 
 const types = [
-  ['/cosmos.gov.v1beta1.MsgDeposit', MsgDeposit],
-  ['/cosmos.gov.v1beta1.MsgVote', MsgVote],
-  ['/cosmos.gov.v1beta1.MsgVoteWeighted', MsgVoteWeighted],
-  ['/cosmos.gov.v1beta1.MsgSubmitProposal', MsgSubmitProposal],
-  
+  ["/cosmos.gov.v1beta1.MsgDeposit", MsgDeposit],
+  ["/cosmos.gov.v1beta1.MsgVote", MsgVote],
+  ["/cosmos.gov.v1beta1.MsgVoteWeighted", MsgVoteWeighted],
+  ["/cosmos.gov.v1beta1.MsgSubmitProposal", MsgSubmitProposal],
 ];
-export const MissingWalletError = new Error('wallet is required');
+export const MissingWalletError = new Error("wallet is required");
 
 export const registry = new Registry(<any>types);
 
 const defaultFee = {
   amount: [],
-  gas: '200000',
+  gas: "200000",
 };
 
 interface TxClientOptions {
-  addr: string
+  addr: string;
 }
 
 export interface SignAndBroadcastOptions {
-  fee: StdFee | 'auto',
-  memo?: string
+  fee: StdFee | "auto";
+  memo?: string;
 }
 
-const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions = { addr: 'http://localhost:26657' }, options?: SigningStargateClientOptions) => {
+const txClient = async (
+  wallet: OfflineSigner,
+  { addr: addr }: TxClientOptions = { addr: "http://localhost:26657" },
+  options?: SigningStargateClientOptions
+) => {
   if (!wallet) throw MissingWalletError;
   let client;
   if (addr) {
-    client = await SigningStargateClient.connectWithSigner(addr, wallet, { registry, ...options});
-  }else{
-    client = await SigningStargateClient.offline( wallet, { registry });
+    client = await SigningStargateClient.connectWithSigner(addr, wallet, {
+      registry,
+      ...options,
+    });
+  } else {
+    client = await SigningStargateClient.offline(wallet, { registry });
   }
   const { address } = (await wallet.getAccounts())[0];
 
   return {
-    signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ''}) => client.signAndBroadcast(address, msgs, fee,memo),
-    msgDeposit: (data: MsgDeposit): EncodeObject => ({ typeUrl: '/cosmos.gov.v1beta1.MsgDeposit', value: MsgDeposit.fromPartial( data ) }),
-    msgVote: (data: MsgVote): EncodeObject => ({ typeUrl: '/cosmos.gov.v1beta1.MsgVote', value: MsgVote.fromPartial( data ) }),
-    msgVoteWeighted: (data: MsgVoteWeighted): EncodeObject => ({ typeUrl: '/cosmos.gov.v1beta1.MsgVoteWeighted', value: MsgVoteWeighted.fromPartial( data ) }),
-    msgSubmitProposal: (data: MsgSubmitProposal): EncodeObject => ({ typeUrl: '/cosmos.gov.v1beta1.MsgSubmitProposal', value: MsgSubmitProposal.fromPartial( data ) }),
-    
+    signAndBroadcast: (
+      msgs: EncodeObject[],
+      { fee, memo }: SignAndBroadcastOptions = { fee: defaultFee, memo: "" }
+    ) => client.signAndBroadcast(address, msgs, fee, memo),
+    msgDeposit: (data: MsgDeposit): EncodeObject => ({
+      typeUrl: "/cosmos.gov.v1beta1.MsgDeposit",
+      value: MsgDeposit.fromPartial(data),
+    }),
+    msgVote: (data: MsgVote): EncodeObject => ({
+      typeUrl: "/cosmos.gov.v1beta1.MsgVote",
+      value: MsgVote.fromPartial(data),
+    }),
+    msgVoteWeighted: (data: MsgVoteWeighted): EncodeObject => ({
+      typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeighted",
+      value: MsgVoteWeighted.fromPartial(data),
+    }),
+    msgSubmitProposal: (data: MsgSubmitProposal): EncodeObject => ({
+      typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal",
+      value: MsgSubmitProposal.fromPartial(data),
+    }),
   };
 };
 
 interface QueryClientOptions {
-  addr: string
+  addr: string;
 }
 
-const queryClient = async ({ addr: addr }: QueryClientOptions = { addr: 'http://localhost:1317' }) => {
+const queryClient = async (
+  { addr: addr }: QueryClientOptions = { addr: "http://localhost:1317" }
+) => {
   return new Api({ baseUrl: addr });
 };
 
-export {
-  queryClient,
-  txClient,
-};
+export { queryClient, txClient };

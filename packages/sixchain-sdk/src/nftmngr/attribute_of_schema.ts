@@ -1,6 +1,11 @@
 //@ts-nocheck
-import { SchemaAttribute, SchemaAttributeAmino, SchemaAttributeSDKType } from "./schema_attribute";
 import * as _m0 from "protobufjs/minimal";
+
+import {
+  SchemaAttribute,
+  SchemaAttributeAmino,
+  SchemaAttributeSDKType,
+} from "./schema_attribute";
 export interface AttributeOfSchema {
   nftSchemaCode: string;
   schemaAttributes: SchemaAttribute[];
@@ -24,12 +29,15 @@ export interface AttributeOfSchemaSDKType {
 function createBaseAttributeOfSchema(): AttributeOfSchema {
   return {
     nftSchemaCode: "",
-    schemaAttributes: []
+    schemaAttributes: [],
   };
 }
 export const AttributeOfSchema = {
   typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeOfSchema",
-  encode(message: AttributeOfSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: AttributeOfSchema,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -49,7 +57,9 @@ export const AttributeOfSchema = {
           message.nftSchemaCode = reader.string();
           break;
         case 2:
-          message.schemaAttributes.push(SchemaAttribute.decode(reader, reader.uint32()));
+          message.schemaAttributes.push(
+            SchemaAttribute.decode(reader, reader.uint32())
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -61,7 +71,8 @@ export const AttributeOfSchema = {
   fromPartial(object: Partial<AttributeOfSchema>): AttributeOfSchema {
     const message = createBaseAttributeOfSchema();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
-    message.schemaAttributes = object.schemaAttributes?.map(e => SchemaAttribute.fromPartial(e)) || [];
+    message.schemaAttributes =
+      object.schemaAttributes?.map((e) => SchemaAttribute.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: AttributeOfSchemaAmino): AttributeOfSchema {
@@ -69,14 +80,18 @@ export const AttributeOfSchema = {
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
     }
-    message.schemaAttributes = object.schemaAttributes?.map(e => SchemaAttribute.fromAmino(e)) || [];
+    message.schemaAttributes =
+      object.schemaAttributes?.map((e) => SchemaAttribute.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: AttributeOfSchema): AttributeOfSchemaAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode =
+      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     if (message.schemaAttributes) {
-      obj.schemaAttributes = message.schemaAttributes.map(e => e ? SchemaAttribute.toAmino(e) : undefined);
+      obj.schemaAttributes = message.schemaAttributes.map((e) =>
+        e ? SchemaAttribute.toAmino(e) : undefined
+      );
     } else {
       obj.schemaAttributes = message.schemaAttributes;
     }
@@ -94,7 +109,7 @@ export const AttributeOfSchema = {
   toProtoMsg(message: AttributeOfSchema): AttributeOfSchemaProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.nftmngr.AttributeOfSchema",
-      value: AttributeOfSchema.encode(message).finish()
+      value: AttributeOfSchema.encode(message).finish(),
     };
-  }
+  },
 };

@@ -1,7 +1,15 @@
 //@ts-nocheck
-import { Plan, PlanAmino, PlanSDKType, ModuleVersion, ModuleVersionAmino, ModuleVersionSDKType } from "./upgrade";
-import { Long, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+
+import { base64FromBytes, bytesFromBase64, Long } from "../../../helpers";
+import {
+  ModuleVersion,
+  ModuleVersionAmino,
+  ModuleVersionSDKType,
+  Plan,
+  PlanAmino,
+  PlanSDKType,
+} from "./upgrade";
 /**
  * QueryCurrentPlanRequest is the request type for the Query/CurrentPlan RPC
  * method.
@@ -195,7 +203,7 @@ export interface QueryUpgradedConsensusStateResponseSDKType {
 /**
  * QueryModuleVersionsRequest is the request type for the Query/ModuleVersions
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface QueryModuleVersionsRequest {
@@ -213,7 +221,7 @@ export interface QueryModuleVersionsRequestProtoMsg {
 /**
  * QueryModuleVersionsRequest is the request type for the Query/ModuleVersions
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface QueryModuleVersionsRequestAmino {
@@ -231,7 +239,7 @@ export interface QueryModuleVersionsRequestAminoMsg {
 /**
  * QueryModuleVersionsRequest is the request type for the Query/ModuleVersions
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface QueryModuleVersionsRequestSDKType {
@@ -240,7 +248,7 @@ export interface QueryModuleVersionsRequestSDKType {
 /**
  * QueryModuleVersionsResponse is the response type for the Query/ModuleVersions
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface QueryModuleVersionsResponse {
@@ -254,7 +262,7 @@ export interface QueryModuleVersionsResponseProtoMsg {
 /**
  * QueryModuleVersionsResponse is the response type for the Query/ModuleVersions
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface QueryModuleVersionsResponseAmino {
@@ -268,7 +276,7 @@ export interface QueryModuleVersionsResponseAminoMsg {
 /**
  * QueryModuleVersionsResponse is the response type for the Query/ModuleVersions
  * RPC method.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface QueryModuleVersionsResponseSDKType {
@@ -279,10 +287,16 @@ function createBaseQueryCurrentPlanRequest(): QueryCurrentPlanRequest {
 }
 export const QueryCurrentPlanRequest = {
   typeUrl: "/cosmos.upgrade.v1beta1.QueryCurrentPlanRequest",
-  encode(_: QueryCurrentPlanRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: QueryCurrentPlanRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentPlanRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryCurrentPlanRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCurrentPlanRequest();
@@ -308,42 +322,56 @@ export const QueryCurrentPlanRequest = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: QueryCurrentPlanRequestAminoMsg): QueryCurrentPlanRequest {
+  fromAminoMsg(
+    object: QueryCurrentPlanRequestAminoMsg
+  ): QueryCurrentPlanRequest {
     return QueryCurrentPlanRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryCurrentPlanRequest): QueryCurrentPlanRequestAminoMsg {
+  toAminoMsg(
+    message: QueryCurrentPlanRequest
+  ): QueryCurrentPlanRequestAminoMsg {
     return {
       type: "cosmos-sdk/QueryCurrentPlanRequest",
-      value: QueryCurrentPlanRequest.toAmino(message)
+      value: QueryCurrentPlanRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryCurrentPlanRequestProtoMsg): QueryCurrentPlanRequest {
+  fromProtoMsg(
+    message: QueryCurrentPlanRequestProtoMsg
+  ): QueryCurrentPlanRequest {
     return QueryCurrentPlanRequest.decode(message.value);
   },
   toProto(message: QueryCurrentPlanRequest): Uint8Array {
     return QueryCurrentPlanRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryCurrentPlanRequest): QueryCurrentPlanRequestProtoMsg {
+  toProtoMsg(
+    message: QueryCurrentPlanRequest
+  ): QueryCurrentPlanRequestProtoMsg {
     return {
       typeUrl: "/cosmos.upgrade.v1beta1.QueryCurrentPlanRequest",
-      value: QueryCurrentPlanRequest.encode(message).finish()
+      value: QueryCurrentPlanRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryCurrentPlanResponse(): QueryCurrentPlanResponse {
   return {
-    plan: undefined
+    plan: undefined,
   };
 }
 export const QueryCurrentPlanResponse = {
   typeUrl: "/cosmos.upgrade.v1beta1.QueryCurrentPlanResponse",
-  encode(message: QueryCurrentPlanResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryCurrentPlanResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.plan !== undefined) {
       Plan.encode(message.plan, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentPlanResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryCurrentPlanResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCurrentPlanResponse();
@@ -360,9 +388,14 @@ export const QueryCurrentPlanResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryCurrentPlanResponse>): QueryCurrentPlanResponse {
+  fromPartial(
+    object: Partial<QueryCurrentPlanResponse>
+  ): QueryCurrentPlanResponse {
     const message = createBaseQueryCurrentPlanResponse();
-    message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
+    message.plan =
+      object.plan !== undefined && object.plan !== null
+        ? Plan.fromPartial(object.plan)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryCurrentPlanResponseAmino): QueryCurrentPlanResponse {
@@ -377,42 +410,56 @@ export const QueryCurrentPlanResponse = {
     obj.plan = message.plan ? Plan.toAmino(message.plan) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryCurrentPlanResponseAminoMsg): QueryCurrentPlanResponse {
+  fromAminoMsg(
+    object: QueryCurrentPlanResponseAminoMsg
+  ): QueryCurrentPlanResponse {
     return QueryCurrentPlanResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryCurrentPlanResponse): QueryCurrentPlanResponseAminoMsg {
+  toAminoMsg(
+    message: QueryCurrentPlanResponse
+  ): QueryCurrentPlanResponseAminoMsg {
     return {
       type: "cosmos-sdk/QueryCurrentPlanResponse",
-      value: QueryCurrentPlanResponse.toAmino(message)
+      value: QueryCurrentPlanResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryCurrentPlanResponseProtoMsg): QueryCurrentPlanResponse {
+  fromProtoMsg(
+    message: QueryCurrentPlanResponseProtoMsg
+  ): QueryCurrentPlanResponse {
     return QueryCurrentPlanResponse.decode(message.value);
   },
   toProto(message: QueryCurrentPlanResponse): Uint8Array {
     return QueryCurrentPlanResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryCurrentPlanResponse): QueryCurrentPlanResponseProtoMsg {
+  toProtoMsg(
+    message: QueryCurrentPlanResponse
+  ): QueryCurrentPlanResponseProtoMsg {
     return {
       typeUrl: "/cosmos.upgrade.v1beta1.QueryCurrentPlanResponse",
-      value: QueryCurrentPlanResponse.encode(message).finish()
+      value: QueryCurrentPlanResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAppliedPlanRequest(): QueryAppliedPlanRequest {
   return {
-    name: ""
+    name: "",
   };
 }
 export const QueryAppliedPlanRequest = {
   typeUrl: "/cosmos.upgrade.v1beta1.QueryAppliedPlanRequest",
-  encode(message: QueryAppliedPlanRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryAppliedPlanRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppliedPlanRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryAppliedPlanRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAppliedPlanRequest();
@@ -429,7 +476,9 @@ export const QueryAppliedPlanRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAppliedPlanRequest>): QueryAppliedPlanRequest {
+  fromPartial(
+    object: Partial<QueryAppliedPlanRequest>
+  ): QueryAppliedPlanRequest {
     const message = createBaseQueryAppliedPlanRequest();
     message.name = object.name ?? "";
     return message;
@@ -446,42 +495,56 @@ export const QueryAppliedPlanRequest = {
     obj.name = message.name === "" ? undefined : message.name;
     return obj;
   },
-  fromAminoMsg(object: QueryAppliedPlanRequestAminoMsg): QueryAppliedPlanRequest {
+  fromAminoMsg(
+    object: QueryAppliedPlanRequestAminoMsg
+  ): QueryAppliedPlanRequest {
     return QueryAppliedPlanRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryAppliedPlanRequest): QueryAppliedPlanRequestAminoMsg {
+  toAminoMsg(
+    message: QueryAppliedPlanRequest
+  ): QueryAppliedPlanRequestAminoMsg {
     return {
       type: "cosmos-sdk/QueryAppliedPlanRequest",
-      value: QueryAppliedPlanRequest.toAmino(message)
+      value: QueryAppliedPlanRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryAppliedPlanRequestProtoMsg): QueryAppliedPlanRequest {
+  fromProtoMsg(
+    message: QueryAppliedPlanRequestProtoMsg
+  ): QueryAppliedPlanRequest {
     return QueryAppliedPlanRequest.decode(message.value);
   },
   toProto(message: QueryAppliedPlanRequest): Uint8Array {
     return QueryAppliedPlanRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryAppliedPlanRequest): QueryAppliedPlanRequestProtoMsg {
+  toProtoMsg(
+    message: QueryAppliedPlanRequest
+  ): QueryAppliedPlanRequestProtoMsg {
     return {
       typeUrl: "/cosmos.upgrade.v1beta1.QueryAppliedPlanRequest",
-      value: QueryAppliedPlanRequest.encode(message).finish()
+      value: QueryAppliedPlanRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAppliedPlanResponse(): QueryAppliedPlanResponse {
   return {
-    height: Long.ZERO
+    height: Long.ZERO,
   };
 }
 export const QueryAppliedPlanResponse = {
   typeUrl: "/cosmos.upgrade.v1beta1.QueryAppliedPlanResponse",
-  encode(message: QueryAppliedPlanResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryAppliedPlanResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.height.isZero()) {
       writer.uint32(8).int64(message.height);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppliedPlanResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryAppliedPlanResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAppliedPlanResponse();
@@ -498,9 +561,14 @@ export const QueryAppliedPlanResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAppliedPlanResponse>): QueryAppliedPlanResponse {
+  fromPartial(
+    object: Partial<QueryAppliedPlanResponse>
+  ): QueryAppliedPlanResponse {
     const message = createBaseQueryAppliedPlanResponse();
-    message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
+    message.height =
+      object.height !== undefined && object.height !== null
+        ? Long.fromValue(object.height)
+        : Long.ZERO;
     return message;
   },
   fromAmino(object: QueryAppliedPlanResponseAmino): QueryAppliedPlanResponse {
@@ -512,45 +580,61 @@ export const QueryAppliedPlanResponse = {
   },
   toAmino(message: QueryAppliedPlanResponse): QueryAppliedPlanResponseAmino {
     const obj: any = {};
-    obj.height = !message.height.isZero() ? (message.height?.toString)() : undefined;
+    obj.height = !message.height.isZero()
+      ? (message.height?.toString)()
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryAppliedPlanResponseAminoMsg): QueryAppliedPlanResponse {
+  fromAminoMsg(
+    object: QueryAppliedPlanResponseAminoMsg
+  ): QueryAppliedPlanResponse {
     return QueryAppliedPlanResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryAppliedPlanResponse): QueryAppliedPlanResponseAminoMsg {
+  toAminoMsg(
+    message: QueryAppliedPlanResponse
+  ): QueryAppliedPlanResponseAminoMsg {
     return {
       type: "cosmos-sdk/QueryAppliedPlanResponse",
-      value: QueryAppliedPlanResponse.toAmino(message)
+      value: QueryAppliedPlanResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryAppliedPlanResponseProtoMsg): QueryAppliedPlanResponse {
+  fromProtoMsg(
+    message: QueryAppliedPlanResponseProtoMsg
+  ): QueryAppliedPlanResponse {
     return QueryAppliedPlanResponse.decode(message.value);
   },
   toProto(message: QueryAppliedPlanResponse): Uint8Array {
     return QueryAppliedPlanResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryAppliedPlanResponse): QueryAppliedPlanResponseProtoMsg {
+  toProtoMsg(
+    message: QueryAppliedPlanResponse
+  ): QueryAppliedPlanResponseProtoMsg {
     return {
       typeUrl: "/cosmos.upgrade.v1beta1.QueryAppliedPlanResponse",
-      value: QueryAppliedPlanResponse.encode(message).finish()
+      value: QueryAppliedPlanResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryUpgradedConsensusStateRequest(): QueryUpgradedConsensusStateRequest {
   return {
-    lastHeight: Long.ZERO
+    lastHeight: Long.ZERO,
   };
 }
 export const QueryUpgradedConsensusStateRequest = {
   typeUrl: "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateRequest",
-  encode(message: QueryUpgradedConsensusStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryUpgradedConsensusStateRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.lastHeight.isZero()) {
       writer.uint32(8).int64(message.lastHeight);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryUpgradedConsensusStateRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryUpgradedConsensusStateRequest();
@@ -567,59 +651,84 @@ export const QueryUpgradedConsensusStateRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest {
+  fromPartial(
+    object: Partial<QueryUpgradedConsensusStateRequest>
+  ): QueryUpgradedConsensusStateRequest {
     const message = createBaseQueryUpgradedConsensusStateRequest();
-    message.lastHeight = object.lastHeight !== undefined && object.lastHeight !== null ? Long.fromValue(object.lastHeight) : Long.ZERO;
+    message.lastHeight =
+      object.lastHeight !== undefined && object.lastHeight !== null
+        ? Long.fromValue(object.lastHeight)
+        : Long.ZERO;
     return message;
   },
-  fromAmino(object: QueryUpgradedConsensusStateRequestAmino): QueryUpgradedConsensusStateRequest {
+  fromAmino(
+    object: QueryUpgradedConsensusStateRequestAmino
+  ): QueryUpgradedConsensusStateRequest {
     const message = createBaseQueryUpgradedConsensusStateRequest();
     if (object.last_height !== undefined && object.last_height !== null) {
       message.lastHeight = Long.fromString(object.last_height);
     }
     return message;
   },
-  toAmino(message: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequestAmino {
+  toAmino(
+    message: QueryUpgradedConsensusStateRequest
+  ): QueryUpgradedConsensusStateRequestAmino {
     const obj: any = {};
-    obj.last_height = !message.lastHeight.isZero() ? (message.lastHeight?.toString)() : undefined;
+    obj.last_height = !message.lastHeight.isZero()
+      ? (message.lastHeight?.toString)()
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryUpgradedConsensusStateRequestAminoMsg): QueryUpgradedConsensusStateRequest {
+  fromAminoMsg(
+    object: QueryUpgradedConsensusStateRequestAminoMsg
+  ): QueryUpgradedConsensusStateRequest {
     return QueryUpgradedConsensusStateRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequestAminoMsg {
+  toAminoMsg(
+    message: QueryUpgradedConsensusStateRequest
+  ): QueryUpgradedConsensusStateRequestAminoMsg {
     return {
       type: "cosmos-sdk/QueryUpgradedConsensusStateRequest",
-      value: QueryUpgradedConsensusStateRequest.toAmino(message)
+      value: QueryUpgradedConsensusStateRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryUpgradedConsensusStateRequestProtoMsg): QueryUpgradedConsensusStateRequest {
+  fromProtoMsg(
+    message: QueryUpgradedConsensusStateRequestProtoMsg
+  ): QueryUpgradedConsensusStateRequest {
     return QueryUpgradedConsensusStateRequest.decode(message.value);
   },
   toProto(message: QueryUpgradedConsensusStateRequest): Uint8Array {
     return QueryUpgradedConsensusStateRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequestProtoMsg {
+  toProtoMsg(
+    message: QueryUpgradedConsensusStateRequest
+  ): QueryUpgradedConsensusStateRequestProtoMsg {
     return {
       typeUrl: "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateRequest",
-      value: QueryUpgradedConsensusStateRequest.encode(message).finish()
+      value: QueryUpgradedConsensusStateRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryUpgradedConsensusStateResponse(): QueryUpgradedConsensusStateResponse {
   return {
-    upgradedConsensusState: new Uint8Array()
+    upgradedConsensusState: new Uint8Array(),
   };
 }
 export const QueryUpgradedConsensusStateResponse = {
   typeUrl: "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateResponse",
-  encode(message: QueryUpgradedConsensusStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryUpgradedConsensusStateResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.upgradedConsensusState.length !== 0) {
       writer.uint32(18).bytes(message.upgradedConsensusState);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryUpgradedConsensusStateResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryUpgradedConsensusStateResponse();
@@ -636,59 +745,87 @@ export const QueryUpgradedConsensusStateResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse {
+  fromPartial(
+    object: Partial<QueryUpgradedConsensusStateResponse>
+  ): QueryUpgradedConsensusStateResponse {
     const message = createBaseQueryUpgradedConsensusStateResponse();
-    message.upgradedConsensusState = object.upgradedConsensusState ?? new Uint8Array();
+    message.upgradedConsensusState =
+      object.upgradedConsensusState ?? new Uint8Array();
     return message;
   },
-  fromAmino(object: QueryUpgradedConsensusStateResponseAmino): QueryUpgradedConsensusStateResponse {
+  fromAmino(
+    object: QueryUpgradedConsensusStateResponseAmino
+  ): QueryUpgradedConsensusStateResponse {
     const message = createBaseQueryUpgradedConsensusStateResponse();
-    if (object.upgraded_consensus_state !== undefined && object.upgraded_consensus_state !== null) {
-      message.upgradedConsensusState = bytesFromBase64(object.upgraded_consensus_state);
+    if (
+      object.upgraded_consensus_state !== undefined &&
+      object.upgraded_consensus_state !== null
+    ) {
+      message.upgradedConsensusState = bytesFromBase64(
+        object.upgraded_consensus_state
+      );
     }
     return message;
   },
-  toAmino(message: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponseAmino {
+  toAmino(
+    message: QueryUpgradedConsensusStateResponse
+  ): QueryUpgradedConsensusStateResponseAmino {
     const obj: any = {};
-    obj.upgraded_consensus_state = message.upgradedConsensusState ? base64FromBytes(message.upgradedConsensusState) : undefined;
+    obj.upgraded_consensus_state = message.upgradedConsensusState
+      ? base64FromBytes(message.upgradedConsensusState)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryUpgradedConsensusStateResponseAminoMsg): QueryUpgradedConsensusStateResponse {
+  fromAminoMsg(
+    object: QueryUpgradedConsensusStateResponseAminoMsg
+  ): QueryUpgradedConsensusStateResponse {
     return QueryUpgradedConsensusStateResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponseAminoMsg {
+  toAminoMsg(
+    message: QueryUpgradedConsensusStateResponse
+  ): QueryUpgradedConsensusStateResponseAminoMsg {
     return {
       type: "cosmos-sdk/QueryUpgradedConsensusStateResponse",
-      value: QueryUpgradedConsensusStateResponse.toAmino(message)
+      value: QueryUpgradedConsensusStateResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryUpgradedConsensusStateResponseProtoMsg): QueryUpgradedConsensusStateResponse {
+  fromProtoMsg(
+    message: QueryUpgradedConsensusStateResponseProtoMsg
+  ): QueryUpgradedConsensusStateResponse {
     return QueryUpgradedConsensusStateResponse.decode(message.value);
   },
   toProto(message: QueryUpgradedConsensusStateResponse): Uint8Array {
     return QueryUpgradedConsensusStateResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponseProtoMsg {
+  toProtoMsg(
+    message: QueryUpgradedConsensusStateResponse
+  ): QueryUpgradedConsensusStateResponseProtoMsg {
     return {
       typeUrl: "/cosmos.upgrade.v1beta1.QueryUpgradedConsensusStateResponse",
-      value: QueryUpgradedConsensusStateResponse.encode(message).finish()
+      value: QueryUpgradedConsensusStateResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryModuleVersionsRequest(): QueryModuleVersionsRequest {
   return {
-    moduleName: ""
+    moduleName: "",
   };
 }
 export const QueryModuleVersionsRequest = {
   typeUrl: "/cosmos.upgrade.v1beta1.QueryModuleVersionsRequest",
-  encode(message: QueryModuleVersionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryModuleVersionsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.moduleName !== "") {
       writer.uint32(10).string(message.moduleName);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleVersionsRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryModuleVersionsRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryModuleVersionsRequest();
@@ -705,59 +842,80 @@ export const QueryModuleVersionsRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryModuleVersionsRequest>): QueryModuleVersionsRequest {
+  fromPartial(
+    object: Partial<QueryModuleVersionsRequest>
+  ): QueryModuleVersionsRequest {
     const message = createBaseQueryModuleVersionsRequest();
     message.moduleName = object.moduleName ?? "";
     return message;
   },
-  fromAmino(object: QueryModuleVersionsRequestAmino): QueryModuleVersionsRequest {
+  fromAmino(
+    object: QueryModuleVersionsRequestAmino
+  ): QueryModuleVersionsRequest {
     const message = createBaseQueryModuleVersionsRequest();
     if (object.module_name !== undefined && object.module_name !== null) {
       message.moduleName = object.module_name;
     }
     return message;
   },
-  toAmino(message: QueryModuleVersionsRequest): QueryModuleVersionsRequestAmino {
+  toAmino(
+    message: QueryModuleVersionsRequest
+  ): QueryModuleVersionsRequestAmino {
     const obj: any = {};
-    obj.module_name = message.moduleName === "" ? undefined : message.moduleName;
+    obj.module_name =
+      message.moduleName === "" ? undefined : message.moduleName;
     return obj;
   },
-  fromAminoMsg(object: QueryModuleVersionsRequestAminoMsg): QueryModuleVersionsRequest {
+  fromAminoMsg(
+    object: QueryModuleVersionsRequestAminoMsg
+  ): QueryModuleVersionsRequest {
     return QueryModuleVersionsRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryModuleVersionsRequest): QueryModuleVersionsRequestAminoMsg {
+  toAminoMsg(
+    message: QueryModuleVersionsRequest
+  ): QueryModuleVersionsRequestAminoMsg {
     return {
       type: "cosmos-sdk/QueryModuleVersionsRequest",
-      value: QueryModuleVersionsRequest.toAmino(message)
+      value: QueryModuleVersionsRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryModuleVersionsRequestProtoMsg): QueryModuleVersionsRequest {
+  fromProtoMsg(
+    message: QueryModuleVersionsRequestProtoMsg
+  ): QueryModuleVersionsRequest {
     return QueryModuleVersionsRequest.decode(message.value);
   },
   toProto(message: QueryModuleVersionsRequest): Uint8Array {
     return QueryModuleVersionsRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryModuleVersionsRequest): QueryModuleVersionsRequestProtoMsg {
+  toProtoMsg(
+    message: QueryModuleVersionsRequest
+  ): QueryModuleVersionsRequestProtoMsg {
     return {
       typeUrl: "/cosmos.upgrade.v1beta1.QueryModuleVersionsRequest",
-      value: QueryModuleVersionsRequest.encode(message).finish()
+      value: QueryModuleVersionsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryModuleVersionsResponse(): QueryModuleVersionsResponse {
   return {
-    moduleVersions: []
+    moduleVersions: [],
   };
 }
 export const QueryModuleVersionsResponse = {
   typeUrl: "/cosmos.upgrade.v1beta1.QueryModuleVersionsResponse",
-  encode(message: QueryModuleVersionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryModuleVersionsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.moduleVersions) {
       ModuleVersion.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleVersionsResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryModuleVersionsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryModuleVersionsResponse();
@@ -765,7 +923,9 @@ export const QueryModuleVersionsResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.moduleVersions.push(ModuleVersion.decode(reader, reader.uint32()));
+          message.moduleVersions.push(
+            ModuleVersion.decode(reader, reader.uint32())
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -774,44 +934,62 @@ export const QueryModuleVersionsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryModuleVersionsResponse>): QueryModuleVersionsResponse {
+  fromPartial(
+    object: Partial<QueryModuleVersionsResponse>
+  ): QueryModuleVersionsResponse {
     const message = createBaseQueryModuleVersionsResponse();
-    message.moduleVersions = object.moduleVersions?.map(e => ModuleVersion.fromPartial(e)) || [];
+    message.moduleVersions =
+      object.moduleVersions?.map((e) => ModuleVersion.fromPartial(e)) || [];
     return message;
   },
-  fromAmino(object: QueryModuleVersionsResponseAmino): QueryModuleVersionsResponse {
+  fromAmino(
+    object: QueryModuleVersionsResponseAmino
+  ): QueryModuleVersionsResponse {
     const message = createBaseQueryModuleVersionsResponse();
-    message.moduleVersions = object.module_versions?.map(e => ModuleVersion.fromAmino(e)) || [];
+    message.moduleVersions =
+      object.module_versions?.map((e) => ModuleVersion.fromAmino(e)) || [];
     return message;
   },
-  toAmino(message: QueryModuleVersionsResponse): QueryModuleVersionsResponseAmino {
+  toAmino(
+    message: QueryModuleVersionsResponse
+  ): QueryModuleVersionsResponseAmino {
     const obj: any = {};
     if (message.moduleVersions) {
-      obj.module_versions = message.moduleVersions.map(e => e ? ModuleVersion.toAmino(e) : undefined);
+      obj.module_versions = message.moduleVersions.map((e) =>
+        e ? ModuleVersion.toAmino(e) : undefined
+      );
     } else {
       obj.module_versions = message.moduleVersions;
     }
     return obj;
   },
-  fromAminoMsg(object: QueryModuleVersionsResponseAminoMsg): QueryModuleVersionsResponse {
+  fromAminoMsg(
+    object: QueryModuleVersionsResponseAminoMsg
+  ): QueryModuleVersionsResponse {
     return QueryModuleVersionsResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryModuleVersionsResponse): QueryModuleVersionsResponseAminoMsg {
+  toAminoMsg(
+    message: QueryModuleVersionsResponse
+  ): QueryModuleVersionsResponseAminoMsg {
     return {
       type: "cosmos-sdk/QueryModuleVersionsResponse",
-      value: QueryModuleVersionsResponse.toAmino(message)
+      value: QueryModuleVersionsResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryModuleVersionsResponseProtoMsg): QueryModuleVersionsResponse {
+  fromProtoMsg(
+    message: QueryModuleVersionsResponseProtoMsg
+  ): QueryModuleVersionsResponse {
     return QueryModuleVersionsResponse.decode(message.value);
   },
   toProto(message: QueryModuleVersionsResponse): Uint8Array {
     return QueryModuleVersionsResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryModuleVersionsResponse): QueryModuleVersionsResponseProtoMsg {
+  toProtoMsg(
+    message: QueryModuleVersionsResponse
+  ): QueryModuleVersionsResponseProtoMsg {
     return {
       typeUrl: "/cosmos.upgrade.v1beta1.QueryModuleVersionsResponse",
-      value: QueryModuleVersionsResponse.encode(message).finish()
+      value: QueryModuleVersionsResponse.encode(message).finish(),
     };
-  }
+  },
 };

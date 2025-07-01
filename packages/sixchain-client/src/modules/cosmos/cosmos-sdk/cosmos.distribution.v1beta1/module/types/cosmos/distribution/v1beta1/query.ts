@@ -1691,9 +1691,8 @@ export class QueryClientImpl implements Query {
   ValidatorOutstandingRewards(
     request: QueryValidatorOutstandingRewardsRequest
   ): Promise<QueryValidatorOutstandingRewardsResponse> {
-    const data = QueryValidatorOutstandingRewardsRequest.encode(
-      request
-    ).finish();
+    const data =
+      QueryValidatorOutstandingRewardsRequest.encode(request).finish();
     const promise = this.rpc.request(
       "cosmos.distribution.v1beta1.Query",
       "ValidatorOutstandingRewards",
@@ -1825,12 +1824,12 @@ type Builtin = Date | Function | Uint8Array | string | number | undefined;
 export type DeepPartial<T> = T extends Builtin
   ? T
   : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
-  : Partial<T>;
+    ? Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+      ? ReadonlyArray<DeepPartial<U>>
+      : T extends {}
+        ? { [K in keyof T]?: DeepPartial<T[K]> }
+        : Partial<T>;
 
 function longToNumber(long: Long): number {
   if (long.gt(Number.MAX_SAFE_INTEGER)) {
@@ -1838,5 +1837,3 @@ function longToNumber(long: Long): number {
   }
   return long.toNumber();
 }
-
-

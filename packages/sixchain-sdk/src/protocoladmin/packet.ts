@@ -30,18 +30,24 @@ export interface NoDataAminoMsg {
 export interface NoDataSDKType {}
 function createBaseProtocoladminPacketData(): ProtocoladminPacketData {
   return {
-    noData: undefined
+    noData: undefined,
   };
 }
 export const ProtocoladminPacketData = {
   typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.ProtocoladminPacketData",
-  encode(message: ProtocoladminPacketData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ProtocoladminPacketData,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.noData !== undefined) {
       NoData.encode(message.noData, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ProtocoladminPacketData {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): ProtocoladminPacketData {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseProtocoladminPacketData();
@@ -58,9 +64,14 @@ export const ProtocoladminPacketData = {
     }
     return message;
   },
-  fromPartial(object: Partial<ProtocoladminPacketData>): ProtocoladminPacketData {
+  fromPartial(
+    object: Partial<ProtocoladminPacketData>
+  ): ProtocoladminPacketData {
     const message = createBaseProtocoladminPacketData();
-    message.noData = object.noData !== undefined && object.noData !== null ? NoData.fromPartial(object.noData) : undefined;
+    message.noData =
+      object.noData !== undefined && object.noData !== null
+        ? NoData.fromPartial(object.noData)
+        : undefined;
     return message;
   },
   fromAmino(object: ProtocoladminPacketDataAmino): ProtocoladminPacketData {
@@ -75,21 +86,28 @@ export const ProtocoladminPacketData = {
     obj.noData = message.noData ? NoData.toAmino(message.noData) : undefined;
     return obj;
   },
-  fromAminoMsg(object: ProtocoladminPacketDataAminoMsg): ProtocoladminPacketData {
+  fromAminoMsg(
+    object: ProtocoladminPacketDataAminoMsg
+  ): ProtocoladminPacketData {
     return ProtocoladminPacketData.fromAmino(object.value);
   },
-  fromProtoMsg(message: ProtocoladminPacketDataProtoMsg): ProtocoladminPacketData {
+  fromProtoMsg(
+    message: ProtocoladminPacketDataProtoMsg
+  ): ProtocoladminPacketData {
     return ProtocoladminPacketData.decode(message.value);
   },
   toProto(message: ProtocoladminPacketData): Uint8Array {
     return ProtocoladminPacketData.encode(message).finish();
   },
-  toProtoMsg(message: ProtocoladminPacketData): ProtocoladminPacketDataProtoMsg {
+  toProtoMsg(
+    message: ProtocoladminPacketData
+  ): ProtocoladminPacketDataProtoMsg {
     return {
-      typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.ProtocoladminPacketData",
-      value: ProtocoladminPacketData.encode(message).finish()
+      typeUrl:
+        "/thesixnetwork.sixprotocol.protocoladmin.ProtocoladminPacketData",
+      value: ProtocoladminPacketData.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseNoData(): NoData {
   return {};
@@ -137,7 +155,7 @@ export const NoData = {
   toProtoMsg(message: NoData): NoDataProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.protocoladmin.NoData",
-      value: NoData.encode(message).finish()
+      value: NoData.encode(message).finish(),
     };
-  }
+  },
 };

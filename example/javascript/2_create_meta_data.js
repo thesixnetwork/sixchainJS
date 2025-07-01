@@ -26,4 +26,3 @@ const main = async () => {
   console.log(txResponse);
 };
 main();
-

@@ -1,4 +1,8 @@
-import { SixDataChainConnector, ITxNFTmngr, fee } from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  ITxNFTmngr,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/preventive-nft-schema.json";
 import { GasPrice } from "@cosmjs/stargate";
@@ -13,15 +17,16 @@ const main = async () => {
 
   if (!network) {
     throw new Error(
-      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet).",
+      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(network); const sixConnector = new SixDataChainConnector();
+  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(network);
+  const sixConnector = new SixDataChainConnector();
   sixConnector.rpcUrl = rpcUrl;
   sixConnector.apiUrl = apiUrl;
 
-  const accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-
+  const accountSigner =
+    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
 
   const address = (await accountSigner.getAccounts())[0].address;
   const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
@@ -59,7 +64,7 @@ const main = async () => {
       {
         fee: "auto",
         memo: ref_id,
-      },
+      }
     );
     console.log(txResponse);
   } catch (err) {

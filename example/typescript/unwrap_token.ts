@@ -1,4 +1,8 @@
-import { SixDataChainConnector, typesTxTokenManager, fee} from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  typesTxTokenManager,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import dotenv from "dotenv";
 dotenv.config();
@@ -30,18 +34,18 @@ const main = async () => {
       denom: "asix",
       amount: "200000000000000000000",
     },
-    receiver:address, // wrap to self
+    receiver: address, // wrap to self
   };
 
-  const msg = await rpcClient.tokenmngrModule.msgUnwrapToken(
-    wrapTokenMsg
-  );
+  const msg = await rpcClient.tokenmngrModule.msgUnwrapToken(wrapTokenMsg);
   msgArray.push(msg);
-  const txResponse =
-    await rpcClient.tokenmngrModule.signAndBroadcast(msgArray, {
+  const txResponse = await rpcClient.tokenmngrModule.signAndBroadcast(
+    msgArray,
+    {
       fee: "auto",
       memo: "convert asix to alice",
-    });
+    }
+  );
   if (txResponse.code) {
     console.log(txResponse.rawLog);
   }

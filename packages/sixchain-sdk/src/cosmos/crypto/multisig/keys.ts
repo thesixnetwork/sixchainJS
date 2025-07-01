@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
+
+import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 /**
  * LegacyAminoPubKey specifies a public key type
  * which nests multiple public keys and a threshold,
@@ -39,12 +40,15 @@ export interface LegacyAminoPubKeySDKType {
 function createBaseLegacyAminoPubKey(): LegacyAminoPubKey {
   return {
     threshold: 0,
-    publicKeys: []
+    publicKeys: [],
   };
 }
 export const LegacyAminoPubKey = {
   typeUrl: "/cosmos.crypto.multisig.LegacyAminoPubKey",
-  encode(message: LegacyAminoPubKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: LegacyAminoPubKey,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.threshold !== 0) {
       writer.uint32(8).uint32(message.threshold);
     }
@@ -76,7 +80,8 @@ export const LegacyAminoPubKey = {
   fromPartial(object: Partial<LegacyAminoPubKey>): LegacyAminoPubKey {
     const message = createBaseLegacyAminoPubKey();
     message.threshold = object.threshold ?? 0;
-    message.publicKeys = object.publicKeys?.map(e => Any.fromPartial(e)) || [];
+    message.publicKeys =
+      object.publicKeys?.map((e) => Any.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: LegacyAminoPubKeyAmino): LegacyAminoPubKey {
@@ -84,14 +89,16 @@ export const LegacyAminoPubKey = {
     if (object.threshold !== undefined && object.threshold !== null) {
       message.threshold = object.threshold;
     }
-    message.publicKeys = object.public_keys?.map(e => Any.fromAmino(e)) || [];
+    message.publicKeys = object.public_keys?.map((e) => Any.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: LegacyAminoPubKey): LegacyAminoPubKeyAmino {
     const obj: any = {};
     obj.threshold = message.threshold === 0 ? undefined : message.threshold;
     if (message.publicKeys) {
-      obj.public_keys = message.publicKeys.map(e => e ? Any.toAmino(e) : undefined);
+      obj.public_keys = message.publicKeys.map((e) =>
+        e ? Any.toAmino(e) : undefined
+      );
     } else {
       obj.public_keys = message.publicKeys;
     }
@@ -103,7 +110,7 @@ export const LegacyAminoPubKey = {
   toAminoMsg(message: LegacyAminoPubKey): LegacyAminoPubKeyAminoMsg {
     return {
       type: "cosmos-sdk/LegacyAminoPubKey",
-      value: LegacyAminoPubKey.toAmino(message)
+      value: LegacyAminoPubKey.toAmino(message),
     };
   },
   fromProtoMsg(message: LegacyAminoPubKeyProtoMsg): LegacyAminoPubKey {
@@ -115,7 +122,7 @@ export const LegacyAminoPubKey = {
   toProtoMsg(message: LegacyAminoPubKey): LegacyAminoPubKeyProtoMsg {
     return {
       typeUrl: "/cosmos.crypto.multisig.LegacyAminoPubKey",
-      value: LegacyAminoPubKey.encode(message).finish()
+      value: LegacyAminoPubKey.encode(message).finish(),
     };
-  }
+  },
 };

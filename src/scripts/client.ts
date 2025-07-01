@@ -6,23 +6,23 @@ dotenv.config();
 
 export const getSigner = async (
   sixConnector: SixDataChainConnector,
-  network: string,
+  network: string
 ): Promise<OfflineSigner> => {
   switch (network) {
     case "local":
       sixConnector.rpcUrl = "http://localhost:26657";
       return await sixConnector.accounts.mnemonicKeyToAccount(
-        process.env.ALICE_MNEMONIC!,
+        process.env.ALICE_MNEMONIC!
       );
     case "fivenet":
       sixConnector.rpcUrl = "https://rpc1.fivenet.sixprotocol.net:443";
       return await sixConnector.accounts.mnemonicKeyToAccount(
-        process.env.FIVENET_MNEMONIC!,
+        process.env.FIVENET_MNEMONIC!
       );
     case "sixnet":
       sixConnector.rpcUrl = "https://sixnet-rpc.sixprotocol.net:443";
       return await sixConnector.accounts.mnemonicKeyToAccount(
-        process.env.SIXNET_MNEMONIC!,
+        process.env.SIXNET_MNEMONIC!
       );
     default:
       throw new Error("Invalid network");
@@ -30,7 +30,7 @@ export const getSigner = async (
 };
 
 export async function getConnectorConfig(
-  network: string,
+  network: string
 ): Promise<{ rpcUrl: string; apiUrl: string; mnemonic: string }> {
   switch (network) {
     case "local":
@@ -56,7 +56,7 @@ export async function getConnectorConfig(
   }
 }
 
-export async function getConnection(network:string) {
+export async function getConnection(network: string) {
   switch (network) {
     case "local":
       return {
@@ -77,4 +77,3 @@ export async function getConnection(network:string) {
       throw new Error("Invalid network");
   }
 }
-

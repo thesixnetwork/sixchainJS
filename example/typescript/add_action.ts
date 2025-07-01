@@ -1,4 +1,9 @@
-import { SixDataChainConnector, typesTxNFTManager, BASE64, fee} from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  typesTxNFTManager,
+  BASE64,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import exampleNewAction from "../resource/new-action.json";
 
 const main = async () => {
@@ -12,15 +17,17 @@ const main = async () => {
   );
   // Get index of account
   const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, { gasPrice: fee.GasPrice.fromString("1.25usix") })
+  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
+    gasPrice: fee.GasPrice.fromString("1.25usix"),
+  });
   // Encode NFT data to base64
   const encodeBase64NewAction = BASE64.encode(JSON.stringify(exampleNewAction));
   // Create message
-  const addAction:typesTxNFTManager.MsgAddAction = {
+  const addAction: typesTxNFTManager.MsgAddAction = {
     creator: address,
     code: "six.rocket_ticket",
     base64NewAction: encodeBase64NewAction,
-  }
+  };
   const msg = await rpcClient.nftmngrModule.msgAddAction(addAction);
   const txResponse = await rpcClient.nftmngrModule.signAndBroadcast([msg], {
     fee: "auto",

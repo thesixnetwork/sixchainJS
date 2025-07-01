@@ -938,7 +938,10 @@ export interface FullRequestParams extends Omit<RequestInit, "body"> {
   cancelToken?: CancelToken;
 }
 
-export type RequestParams = Omit<FullRequestParams, "body" | "method" | "query" | "path">;
+export type RequestParams = Omit<
+  FullRequestParams,
+  "body" | "method" | "query" | "path"
+>;
 
 export interface ApiConfig<SecurityDataType = unknown> {
   baseUrl?: string;
@@ -946,7 +949,8 @@ export interface ApiConfig<SecurityDataType = unknown> {
   securityWorker?: (securityData: SecurityDataType) => RequestParams | void;
 }
 
-export interface HttpResponse<D extends unknown, E extends unknown = unknown> extends Response {
+export interface HttpResponse<D extends unknown, E extends unknown = unknown>
+  extends Response {
   data: D;
   error: E;
 }
@@ -962,7 +966,8 @@ export enum ContentType {
 export class HttpClient<SecurityDataType = unknown> {
   public baseUrl: string = "";
   private securityData: SecurityDataType = null as any;
-  private securityWorker: null | ApiConfig<SecurityDataType>["securityWorker"] = null;
+  private securityWorker: null | ApiConfig<SecurityDataType>["securityWorker"] =
+    null;
   private abortControllers = new Map<CancelToken, AbortController>();
 
   private baseApiParams: RequestParams = {
@@ -986,18 +991,26 @@ export class HttpClient<SecurityDataType = unknown> {
     return (
       encodeURIComponent(key) +
       "=" +
-      encodeURIComponent(Array.isArray(value) ? value.join(",") : typeof value === "number" ? value : `${value}`)
+      encodeURIComponent(
+        Array.isArray(value)
+          ? value.join(",")
+          : typeof value === "number"
+            ? value
+            : `${value}`
+      )
     );
   }
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
     const query = rawQuery || {};
-    const keys = Object.keys(query).filter((key) => "undefined" !== typeof query[key]);
+    const keys = Object.keys(query).filter(
+      (key) => "undefined" !== typeof query[key]
+    );
     return keys
       .map((key) =>
         typeof query[key] === "object" && !Array.isArray(query[key])
           ? this.toQueryString(query[key] as QueryParamsType)
-          : this.addQueryParam(query, key),
+          : this.addQueryParam(query, key)
       )
       .join("&");
   }
@@ -1009,7 +1022,9 @@ export class HttpClient<SecurityDataType = unknown> {
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string") ? JSON.stringify(input) : input,
+      input !== null && (typeof input === "object" || typeof input === "string")
+        ? JSON.stringify(input)
+        : input,
     [ContentType.FormData]: (input: any) =>
       Object.keys(input || {}).reduce((data, key) => {
         data.append(key, input[key]);
@@ -1018,7 +1033,10 @@ export class HttpClient<SecurityDataType = unknown> {
     [ContentType.UrlEncoded]: (input: any) => this.toQueryString(input),
   };
 
-  private mergeRequestParams(params1: RequestParams, params2?: RequestParams): RequestParams {
+  private mergeRequestParams(
+    params1: RequestParams,
+    params2?: RequestParams
+  ): RequestParams {
     return {
       ...this.baseApiParams,
       ...params1,
@@ -1031,7 +1049,9 @@ export class HttpClient<SecurityDataType = unknown> {
     };
   }
 
-  private createAbortSignal = (cancelToken: CancelToken): AbortSignal | undefined => {
+  private createAbortSignal = (
+    cancelToken: CancelToken
+  ): AbortSignal | undefined => {
     if (this.abortControllers.has(cancelToken)) {
       const abortController = this.abortControllers.get(cancelToken);
       if (abortController) {
@@ -1065,23 +1085,35 @@ export class HttpClient<SecurityDataType = unknown> {
     cancelToken,
     ...params
   }: FullRequestParams): Promise<HttpResponse<T, E>> => {
-    const secureParams = (secure && this.securityWorker && this.securityWorker(this.securityData)) || {};
+    const secureParams =
+      (secure &&
+        this.securityWorker &&
+        this.securityWorker(this.securityData)) ||
+      {};
     const requestParams = this.mergeRequestParams(params, secureParams);
     const queryString = query && this.toQueryString(query);
     const payloadFormatter = this.contentFormatters[type || ContentType.Json];
 
-    return fetch(`${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`, {
-      ...requestParams,
-      headers: {
-        ...(type && type !== ContentType.FormData ? { "Content-Type": type } : {}),
-        ...(requestParams.headers || {}),
-      },
-      signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
-      body: typeof body === "undefined" || body === null ? null : payloadFormatter(body),
-    }).then(async (response) => {
+    return fetch(
+      `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
+      {
+        ...requestParams,
+        headers: {
+          ...(type && type !== ContentType.FormData
+            ? { "Content-Type": type }
+            : {}),
+          ...(requestParams.headers || {}),
+        },
+        signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
+        body:
+          typeof body === "undefined" || body === null
+            ? null
+            : payloadFormatter(body),
+      }
+    ).then(async (response) => {
       const r = response as HttpResponse<T, E>;
-      r.data = (null as unknown) as T;
-      r.error = (null as unknown) as E;
+      r.data = null as unknown as T;
+      r.error = null as unknown as E;
 
       const data = await response[format]()
         .then((data) => {
@@ -1111,7 +1143,9 @@ export class HttpClient<SecurityDataType = unknown> {
  * @title ibc/core/channel/v1/channel.proto
  * @version version not set
  */
-export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+export class Api<
+  SecurityDataType extends unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
@@ -1127,7 +1161,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.limit"?: string;
       "pagination.count_total"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<V1QueryChannelsResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels`,
@@ -1145,7 +1179,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @summary Channel queries an IBC Channel.
    * @request GET:/ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}
    */
-  queryChannel = (channel_id: string, port_id: string, params: RequestParams = {}) =>
+  queryChannel = (
+    channel_id: string,
+    port_id: string,
+    params: RequestParams = {}
+  ) =>
     this.request<V1QueryChannelResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels/${channel_id}/ports/${port_id}`,
       method: "GET",
@@ -1162,7 +1200,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
 with the provided channel identifiers.
  * @request GET:/ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/client_state
  */
-  queryChannelClientState = (channel_id: string, port_id: string, params: RequestParams = {}) =>
+  queryChannelClientState = (
+    channel_id: string,
+    port_id: string,
+    params: RequestParams = {}
+  ) =>
     this.request<V1QueryChannelClientStateResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels/${channel_id}/ports/${port_id}/client_state`,
       method: "GET",
@@ -1184,7 +1226,7 @@ associated with the provided channel identifiers.
     port_id: string,
     revision_number: string,
     revision_height: string,
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<V1QueryChannelConsensusStateResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels/${channel_id}/ports/${port_id}/consensus_state/revision/${revision_number}/height/${revision_height}`,
@@ -1201,7 +1243,11 @@ associated with the provided channel identifiers.
    * @summary NextSequenceReceive returns the next receive sequence for a given channel.
    * @request GET:/ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/next_sequence
    */
-  queryNextSequenceReceive = (channel_id: string, port_id: string, params: RequestParams = {}) =>
+  queryNextSequenceReceive = (
+    channel_id: string,
+    port_id: string,
+    params: RequestParams = {}
+  ) =>
     this.request<V1QueryNextSequenceReceiveResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels/${channel_id}/ports/${port_id}/next_sequence`,
       method: "GET",
@@ -1228,7 +1274,7 @@ with a channel.
       "pagination.count_total"?: boolean;
       packet_commitment_sequences?: string[];
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<V1QueryPacketAcknowledgementsResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels/${channel_id}/ports/${port_id}/packet_acknowledgements`,
@@ -1246,7 +1292,12 @@ with a channel.
    * @summary PacketAcknowledgement queries a stored packet acknowledgement hash.
    * @request GET:/ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_acks/{sequence}
    */
-  queryPacketAcknowledgement = (channel_id: string, port_id: string, sequence: string, params: RequestParams = {}) =>
+  queryPacketAcknowledgement = (
+    channel_id: string,
+    port_id: string,
+    sequence: string,
+    params: RequestParams = {}
+  ) =>
     this.request<V1QueryPacketAcknowledgementResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels/${channel_id}/ports/${port_id}/packet_acks/${sequence}`,
       method: "GET",
@@ -1272,7 +1323,7 @@ with a channel.
       "pagination.limit"?: string;
       "pagination.count_total"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<V1QueryPacketCommitmentsResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels/${channel_id}/ports/${port_id}/packet_commitments`,
@@ -1295,7 +1346,7 @@ with a channel and sequences.
     channel_id: string,
     port_id: string,
     packet_ack_sequences: string[],
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<V1QueryUnreceivedAcksResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels/${channel_id}/ports/${port_id}/packet_commitments/${packet_ack_sequences}/unreceived_acks`,
@@ -1317,7 +1368,7 @@ channel and sequences.
     channel_id: string,
     port_id: string,
     packet_commitment_sequences: string[],
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<V1QueryUnreceivedPacketsResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels/${channel_id}/ports/${port_id}/packet_commitments/${packet_commitment_sequences}/unreceived_packets`,
@@ -1334,7 +1385,12 @@ channel and sequences.
    * @summary PacketCommitment queries a stored packet commitment hash.
    * @request GET:/ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_commitments/{sequence}
    */
-  queryPacketCommitment = (channel_id: string, port_id: string, sequence: string, params: RequestParams = {}) =>
+  queryPacketCommitment = (
+    channel_id: string,
+    port_id: string,
+    sequence: string,
+    params: RequestParams = {}
+  ) =>
     this.request<V1QueryPacketCommitmentResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels/${channel_id}/ports/${port_id}/packet_commitments/${sequence}`,
       method: "GET",
@@ -1351,7 +1407,12 @@ channel and sequences.
 queried chain
  * @request GET:/ibc/core/channel/v1/channels/{channel_id}/ports/{port_id}/packet_receipts/{sequence}
  */
-  queryPacketReceipt = (channel_id: string, port_id: string, sequence: string, params: RequestParams = {}) =>
+  queryPacketReceipt = (
+    channel_id: string,
+    port_id: string,
+    sequence: string,
+    params: RequestParams = {}
+  ) =>
     this.request<V1QueryPacketReceiptResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/channels/${channel_id}/ports/${port_id}/packet_receipts/${sequence}`,
       method: "GET",
@@ -1376,7 +1437,7 @@ end.
       "pagination.limit"?: string;
       "pagination.count_total"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<V1QueryConnectionChannelsResponse, RpcStatus>({
       path: `/ibc/core/channel/v1/connections/${connection}/channels`,

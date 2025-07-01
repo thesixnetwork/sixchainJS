@@ -13,16 +13,11 @@ const NETOWRK = process.argv[2]!;
 
 if (!NETOWRK) {
   throw new Error(
-    "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet",
+    "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet"
   );
 }
 
-const schemaList = [
-  divine_elite,
-  preventive,
-  membership,
-  lifestyle
-];
+const schemaList = [divine_elite, preventive, membership, lifestyle];
 
 export const Deploy = async () => {
   const sixConnector = new SixDataChainConnector();
@@ -48,7 +43,7 @@ export const Deploy = async () => {
     schemaCode = `${org_name}.${_name}`;
     schemaList[i].code = schemaCode;
     let encodeBase64Schema = Buffer.from(
-      JSON.stringify(schemaList[i]),
+      JSON.stringify(schemaList[i])
     ).toString("base64");
     const msgCreateNFTSchema: ITxNFTmngr.MsgCreateNFTSchema = {
       creator: address,
@@ -67,7 +62,7 @@ export const Deploy = async () => {
     console.log(txResponse.rawLog);
   }
   console.log(
-    `gasUsed: ${txResponse.gasUsed}\ngasWanted:${txResponse.gasWanted}\n`,
+    `gasUsed: ${txResponse.gasUsed}\ngasWanted:${txResponse.gasWanted}\n`
   );
   return txResponse;
 };
@@ -94,5 +89,5 @@ readline.question(
       process.exit(1);
     }
     readline.close();
-  },
+  }
 );

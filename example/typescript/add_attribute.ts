@@ -1,6 +1,11 @@
-import { SixDataChainConnector, typesTxNFTManager, BASE64, fee} from "@sixnetwork/sixchain-client";
+import {
+  SixDataChainConnector,
+  typesTxNFTManager,
+  BASE64,
+  fee,
+} from "@sixnetwork/sixchain-client";
 import exampleNewAttribute from "../resource/new-attribute.json";
-import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee"
+import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee";
 const main = async () => {
   const sixConnector = new SixDataChainConnector();
   // specify the RPC URL of the chain
@@ -12,16 +17,20 @@ const main = async () => {
   );
   // Get index of account
   const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, { gasPrice: fee.GasPrice.fromString("1.25usix") })
+  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
+    gasPrice: fee.GasPrice.fromString("1.25usix"),
+  });
   // Encode NFT data to base64
-  const encodeBase64NewAttribute = BASE64.encode(JSON.stringify(exampleNewAttribute));
+  const encodeBase64NewAttribute = BASE64.encode(
+    JSON.stringify(exampleNewAttribute)
+  );
   // Create message
-  const addAttribute:typesTxNFTManager.MsgAddAttribute = {
+  const addAttribute: typesTxNFTManager.MsgAddAttribute = {
     creator: address,
     code: "six.rocket_ticket",
-    location:1, // 0: NFT Attribute(non-Dynamic Attribute), 1: Token Attribute (Dynamic Attribute)
+    location: 1, // 0: NFT Attribute(non-Dynamic Attribute), 1: Token Attribute (Dynamic Attribute)
     base64NewAttriuteDefenition: encodeBase64NewAttribute,
-  }
+  };
   const msg = await rpcClient.nftmngrModule.msgAddAttribute(addAttribute);
   const txResponse = await rpcClient.nftmngrModule.signAndBroadcast([msg], {
     fee: { amount: [{ denom: "usix", amount: "10000000" }], gas: "1500000" },

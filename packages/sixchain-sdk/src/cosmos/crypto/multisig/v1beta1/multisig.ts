@@ -1,6 +1,7 @@
 //@ts-nocheck
 import * as _m0 from "protobufjs/minimal";
-import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+
+import { base64FromBytes, bytesFromBase64 } from "../../../../helpers";
 /**
  * MultiSignature wraps the signatures from a multisig.LegacyAminoPubKey.
  * See cosmos.tx.v1betata1.ModeInfo.Multi for how to specify which signers
@@ -73,12 +74,15 @@ export interface CompactBitArraySDKType {
 }
 function createBaseMultiSignature(): MultiSignature {
   return {
-    signatures: []
+    signatures: [],
   };
 }
 export const MultiSignature = {
   typeUrl: "/cosmos.crypto.multisig.v1beta1.MultiSignature",
-  encode(message: MultiSignature, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MultiSignature,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.signatures) {
       writer.uint32(10).bytes(v!);
     }
@@ -103,18 +107,19 @@ export const MultiSignature = {
   },
   fromPartial(object: Partial<MultiSignature>): MultiSignature {
     const message = createBaseMultiSignature();
-    message.signatures = object.signatures?.map(e => e) || [];
+    message.signatures = object.signatures?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: MultiSignatureAmino): MultiSignature {
     const message = createBaseMultiSignature();
-    message.signatures = object.signatures?.map(e => bytesFromBase64(e)) || [];
+    message.signatures =
+      object.signatures?.map((e) => bytesFromBase64(e)) || [];
     return message;
   },
   toAmino(message: MultiSignature): MultiSignatureAmino {
     const obj: any = {};
     if (message.signatures) {
-      obj.signatures = message.signatures.map(e => base64FromBytes(e));
+      obj.signatures = message.signatures.map((e) => base64FromBytes(e));
     } else {
       obj.signatures = message.signatures;
     }
@@ -126,7 +131,7 @@ export const MultiSignature = {
   toAminoMsg(message: MultiSignature): MultiSignatureAminoMsg {
     return {
       type: "cosmos-sdk/MultiSignature",
-      value: MultiSignature.toAmino(message)
+      value: MultiSignature.toAmino(message),
     };
   },
   fromProtoMsg(message: MultiSignatureProtoMsg): MultiSignature {
@@ -138,19 +143,22 @@ export const MultiSignature = {
   toProtoMsg(message: MultiSignature): MultiSignatureProtoMsg {
     return {
       typeUrl: "/cosmos.crypto.multisig.v1beta1.MultiSignature",
-      value: MultiSignature.encode(message).finish()
+      value: MultiSignature.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseCompactBitArray(): CompactBitArray {
   return {
     extraBitsStored: 0,
-    elems: new Uint8Array()
+    elems: new Uint8Array(),
   };
 }
 export const CompactBitArray = {
   typeUrl: "/cosmos.crypto.multisig.v1beta1.CompactBitArray",
-  encode(message: CompactBitArray, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: CompactBitArray,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.extraBitsStored !== 0) {
       writer.uint32(8).uint32(message.extraBitsStored);
     }
@@ -187,7 +195,10 @@ export const CompactBitArray = {
   },
   fromAmino(object: CompactBitArrayAmino): CompactBitArray {
     const message = createBaseCompactBitArray();
-    if (object.extra_bits_stored !== undefined && object.extra_bits_stored !== null) {
+    if (
+      object.extra_bits_stored !== undefined &&
+      object.extra_bits_stored !== null
+    ) {
       message.extraBitsStored = object.extra_bits_stored;
     }
     if (object.elems !== undefined && object.elems !== null) {
@@ -197,7 +208,8 @@ export const CompactBitArray = {
   },
   toAmino(message: CompactBitArray): CompactBitArrayAmino {
     const obj: any = {};
-    obj.extra_bits_stored = message.extraBitsStored === 0 ? undefined : message.extraBitsStored;
+    obj.extra_bits_stored =
+      message.extraBitsStored === 0 ? undefined : message.extraBitsStored;
     obj.elems = message.elems ? base64FromBytes(message.elems) : undefined;
     return obj;
   },
@@ -207,7 +219,7 @@ export const CompactBitArray = {
   toAminoMsg(message: CompactBitArray): CompactBitArrayAminoMsg {
     return {
       type: "cosmos-sdk/CompactBitArray",
-      value: CompactBitArray.toAmino(message)
+      value: CompactBitArray.toAmino(message),
     };
   },
   fromProtoMsg(message: CompactBitArrayProtoMsg): CompactBitArray {
@@ -219,7 +231,7 @@ export const CompactBitArray = {
   toProtoMsg(message: CompactBitArray): CompactBitArrayProtoMsg {
     return {
       typeUrl: "/cosmos.crypto.multisig.v1beta1.CompactBitArray",
-      value: CompactBitArray.encode(message).finish()
+      value: CompactBitArray.encode(message).finish(),
     };
-  }
+  },
 };

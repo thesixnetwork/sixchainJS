@@ -980,7 +980,10 @@ export interface FullRequestParams extends Omit<RequestInit, "body"> {
   cancelToken?: CancelToken;
 }
 
-export type RequestParams = Omit<FullRequestParams, "body" | "method" | "query" | "path">;
+export type RequestParams = Omit<
+  FullRequestParams,
+  "body" | "method" | "query" | "path"
+>;
 
 export interface ApiConfig<SecurityDataType = unknown> {
   baseUrl?: string;
@@ -988,7 +991,8 @@ export interface ApiConfig<SecurityDataType = unknown> {
   securityWorker?: (securityData: SecurityDataType) => RequestParams | void;
 }
 
-export interface HttpResponse<D extends unknown, E extends unknown = unknown> extends Response {
+export interface HttpResponse<D extends unknown, E extends unknown = unknown>
+  extends Response {
   data: D;
   error: E;
 }
@@ -1004,7 +1008,8 @@ export enum ContentType {
 export class HttpClient<SecurityDataType = unknown> {
   public baseUrl: string = "";
   private securityData: SecurityDataType = null as any;
-  private securityWorker: null | ApiConfig<SecurityDataType>["securityWorker"] = null;
+  private securityWorker: null | ApiConfig<SecurityDataType>["securityWorker"] =
+    null;
   private abortControllers = new Map<CancelToken, AbortController>();
 
   private baseApiParams: RequestParams = {
@@ -1028,18 +1033,26 @@ export class HttpClient<SecurityDataType = unknown> {
     return (
       encodeURIComponent(key) +
       "=" +
-      encodeURIComponent(Array.isArray(value) ? value.join(",") : typeof value === "number" ? value : `${value}`)
+      encodeURIComponent(
+        Array.isArray(value)
+          ? value.join(",")
+          : typeof value === "number"
+            ? value
+            : `${value}`
+      )
     );
   }
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
     const query = rawQuery || {};
-    const keys = Object.keys(query).filter((key) => "undefined" !== typeof query[key]);
+    const keys = Object.keys(query).filter(
+      (key) => "undefined" !== typeof query[key]
+    );
     return keys
       .map((key) =>
         typeof query[key] === "object" && !Array.isArray(query[key])
           ? this.toQueryString(query[key] as QueryParamsType)
-          : this.addQueryParam(query, key),
+          : this.addQueryParam(query, key)
       )
       .join("&");
   }
@@ -1051,7 +1064,9 @@ export class HttpClient<SecurityDataType = unknown> {
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string") ? JSON.stringify(input) : input,
+      input !== null && (typeof input === "object" || typeof input === "string")
+        ? JSON.stringify(input)
+        : input,
     [ContentType.FormData]: (input: any) =>
       Object.keys(input || {}).reduce((data, key) => {
         data.append(key, input[key]);
@@ -1060,7 +1075,10 @@ export class HttpClient<SecurityDataType = unknown> {
     [ContentType.UrlEncoded]: (input: any) => this.toQueryString(input),
   };
 
-  private mergeRequestParams(params1: RequestParams, params2?: RequestParams): RequestParams {
+  private mergeRequestParams(
+    params1: RequestParams,
+    params2?: RequestParams
+  ): RequestParams {
     return {
       ...this.baseApiParams,
       ...params1,
@@ -1073,7 +1091,9 @@ export class HttpClient<SecurityDataType = unknown> {
     };
   }
 
-  private createAbortSignal = (cancelToken: CancelToken): AbortSignal | undefined => {
+  private createAbortSignal = (
+    cancelToken: CancelToken
+  ): AbortSignal | undefined => {
     if (this.abortControllers.has(cancelToken)) {
       const abortController = this.abortControllers.get(cancelToken);
       if (abortController) {
@@ -1107,23 +1127,35 @@ export class HttpClient<SecurityDataType = unknown> {
     cancelToken,
     ...params
   }: FullRequestParams): Promise<HttpResponse<T, E>> => {
-    const secureParams = (secure && this.securityWorker && this.securityWorker(this.securityData)) || {};
+    const secureParams =
+      (secure &&
+        this.securityWorker &&
+        this.securityWorker(this.securityData)) ||
+      {};
     const requestParams = this.mergeRequestParams(params, secureParams);
     const queryString = query && this.toQueryString(query);
     const payloadFormatter = this.contentFormatters[type || ContentType.Json];
 
-    return fetch(`${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`, {
-      ...requestParams,
-      headers: {
-        ...(type && type !== ContentType.FormData ? { "Content-Type": type } : {}),
-        ...(requestParams.headers || {}),
-      },
-      signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
-      body: typeof body === "undefined" || body === null ? null : payloadFormatter(body),
-    }).then(async (response) => {
+    return fetch(
+      `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
+      {
+        ...requestParams,
+        headers: {
+          ...(type && type !== ContentType.FormData
+            ? { "Content-Type": type }
+            : {}),
+          ...(requestParams.headers || {}),
+        },
+        signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
+        body:
+          typeof body === "undefined" || body === null
+            ? null
+            : payloadFormatter(body),
+      }
+    ).then(async (response) => {
       const r = response as HttpResponse<T, E>;
-      r.data = (null as unknown) as T;
-      r.error = (null as unknown) as E;
+      r.data = null as unknown as T;
+      r.error = null as unknown as E;
 
       const data = await response[format]()
         .then((data) => {
@@ -1153,7 +1185,9 @@ export class HttpClient<SecurityDataType = unknown> {
  * @title nftmngr/action.proto
  * @version version not set
  */
-export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+export class Api<
+  SecurityDataType extends unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
@@ -1186,7 +1220,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllLockSchemaFeeResponse, RpcStatus>({
       path: `/thesixnetwork/six-protocol/nftmngr/lock_schema_fee`,
@@ -1228,7 +1262,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllActionByRefIdResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/action_by_ref_id`,
@@ -1270,7 +1304,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllActionExecutorResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/action_executor`,
@@ -1288,7 +1322,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @summary Queries a ActionExecutor by index.
    * @request GET:/thesixnetwork/sixnft/nftmngr/action_executor/{nftSchemaCode}/{executorAddress}
    */
-  queryActionExecutor = (nftSchemaCode: string, executorAddress: string, params: RequestParams = {}) =>
+  queryActionExecutor = (
+    nftSchemaCode: string,
+    executorAddress: string,
+    params: RequestParams = {}
+  ) =>
     this.request<NftmngrQueryGetActionExecutorResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/action_executor/${nftSchemaCode}/${executorAddress}`,
       method: "GET",
@@ -1312,7 +1350,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllActionOfSchemaResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/action_of_schema`,
@@ -1330,7 +1368,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @summary Queries a ActionOfSchema by index.
    * @request GET:/thesixnetwork/sixnft/nftmngr/action_of_schema/{nftSchemaCode}/{name}
    */
-  queryActionOfSchema = (nftSchemaCode: string, name: string, params: RequestParams = {}) =>
+  queryActionOfSchema = (
+    nftSchemaCode: string,
+    name: string,
+    params: RequestParams = {}
+  ) =>
     this.request<NftmngrQueryGetActionOfSchemaResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/action_of_schema/${nftSchemaCode}/${name}`,
       method: "GET",
@@ -1354,7 +1396,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllExecutorOfSchemaResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/executor_of_schema`,
@@ -1388,7 +1430,10 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @summary Queries a list of ListAttributeBySchema items.
    * @request GET:/thesixnetwork/sixnft/nftmngr/list_attribute_by_schema/{nftSchemaCode}
    */
-  queryListAttributeBySchema = (nftSchemaCode: string, params: RequestParams = {}) =>
+  queryListAttributeBySchema = (
+    nftSchemaCode: string,
+    params: RequestParams = {}
+  ) =>
     this.request<NftmngrQueryListAttributeBySchemaResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/list_attribute_by_schema/${nftSchemaCode}`,
       method: "GET",
@@ -1412,7 +1457,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllMetadataCreatorResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/metadata_creator`,
@@ -1455,7 +1500,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryGetNftCollectionResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/nft_collection/${nftSchemaCode}`,
@@ -1482,7 +1527,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllNftDataResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/nft_data`,
@@ -1504,7 +1549,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     nftSchemaCode: string,
     tokenId: string,
     query?: { withGlobal?: boolean },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryGetNftDataResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/nft_data/${nftSchemaCode}/${tokenId}`,
@@ -1562,7 +1607,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllNFTSchemaResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/nft_schema`,
@@ -1604,7 +1649,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllNFTSchemaByContractResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/nft_schema_by_contract`,
@@ -1622,7 +1667,10 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @summary Queries a NFTSchemaByContract by index.
    * @request GET:/thesixnetwork/sixnft/nftmngr/nft_schema_by_contract/{originContractAddress}
    */
-  queryNftSchemaByContract = (originContractAddress: string, params: RequestParams = {}) =>
+  queryNftSchemaByContract = (
+    originContractAddress: string,
+    params: RequestParams = {}
+  ) =>
     this.request<NftmngrQueryGetNFTSchemaByContractResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/nft_schema_by_contract/${originContractAddress}`,
       method: "GET",
@@ -1646,7 +1694,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllOrganizationResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/organization`,
@@ -1705,7 +1753,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllSchemaAttributeResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/schema_attribute`,
@@ -1723,7 +1771,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @summary Queries a SchemaAttribute by index.
    * @request GET:/thesixnetwork/sixnft/nftmngr/schema_attribute/{nftSchemaCode}/{name}
    */
-  querySchemaAttribute = (nftSchemaCode: string, name: string, params: RequestParams = {}) =>
+  querySchemaAttribute = (
+    nftSchemaCode: string,
+    name: string,
+    params: RequestParams = {}
+  ) =>
     this.request<NftmngrQueryGetSchemaAttributeResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/schema_attribute/${nftSchemaCode}/${name}`,
       method: "GET",
@@ -1748,7 +1800,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllVirtualActionResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/virtual_action`,
@@ -1766,7 +1818,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
    * @summary Queries a Virtual by index
    * @request GET:/thesixnetwork/sixnft/nftmngr/virtual_action/{nftSchemaCode}
    */
-  queryVirtualAction = (nftSchemaCode: string, query?: { name?: string }, params: RequestParams = {}) =>
+  queryVirtualAction = (
+    nftSchemaCode: string,
+    query?: { name?: string },
+    params: RequestParams = {}
+  ) =>
     this.request<NftmngrQueryGetVirtualActionResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/virtual_action/${nftSchemaCode}`,
       method: "GET",
@@ -1791,7 +1847,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllVirtualSchemaResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/virtual_schema`,
@@ -1833,7 +1889,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       "pagination.count_total"?: boolean;
       "pagination.reverse"?: boolean;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<NftmngrQueryAllVirtualSchemaProposalResponse, RpcStatus>({
       path: `/thesixnetwork/sixnft/nftmngr/virtual_schema_proposal`,

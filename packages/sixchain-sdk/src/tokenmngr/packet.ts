@@ -30,12 +30,15 @@ export interface NoDataAminoMsg {
 export interface NoDataSDKType {}
 function createBaseTokenmngrPacketData(): TokenmngrPacketData {
   return {
-    noData: undefined
+    noData: undefined,
   };
 }
 export const TokenmngrPacketData = {
   typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenmngrPacketData",
-  encode(message: TokenmngrPacketData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: TokenmngrPacketData,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.noData !== undefined) {
       NoData.encode(message.noData, writer.uint32(10).fork()).ldelim();
     }
@@ -60,7 +63,10 @@ export const TokenmngrPacketData = {
   },
   fromPartial(object: Partial<TokenmngrPacketData>): TokenmngrPacketData {
     const message = createBaseTokenmngrPacketData();
-    message.noData = object.noData !== undefined && object.noData !== null ? NoData.fromPartial(object.noData) : undefined;
+    message.noData =
+      object.noData !== undefined && object.noData !== null
+        ? NoData.fromPartial(object.noData)
+        : undefined;
     return message;
   },
   fromAmino(object: TokenmngrPacketDataAmino): TokenmngrPacketData {
@@ -87,9 +93,9 @@ export const TokenmngrPacketData = {
   toProtoMsg(message: TokenmngrPacketData): TokenmngrPacketDataProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.TokenmngrPacketData",
-      value: TokenmngrPacketData.encode(message).finish()
+      value: TokenmngrPacketData.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseNoData(): NoData {
   return {};
@@ -137,7 +143,7 @@ export const NoData = {
   toProtoMsg(message: NoData): NoDataProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.tokenmngr.NoData",
-      value: NoData.encode(message).finish()
+      value: NoData.encode(message).finish(),
     };
-  }
+  },
 };

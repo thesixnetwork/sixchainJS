@@ -1,5 +1,5 @@
 import * as bip39 from "bip39";
-import { SixDataChainConnector} from "@sixnetwork/sixchain-client";
+import { SixDataChainConnector } from "@sixnetwork/sixchain-client";
 import crypto from "crypto";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EnglishMnemonic } from "@cosmjs/crypto";
@@ -74,7 +74,7 @@ export async function checkBalance(address: string, chain: string) {
         : 0;
       console.log(balancAmount);
     }
-  } catch (e:any) {
+  } catch (e: any) {
     console.log("token not found", e.error);
   }
 }

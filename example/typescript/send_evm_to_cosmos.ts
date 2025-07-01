@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import abi from "../resource/UnwrapSIXToken_metadata.json"
+import abi from "../resource/UnwrapSIXToken_metadata.json";
 
 const contractABI = abi.output.abi;
 const precompileContract = "0x249D6DFBb6476e976A228a03E6449659749FA472";
@@ -22,4 +22,4 @@ async function sendToCosmos(dst: string, amount: number) {
   }
 }
 
-sendToCosmos("DESTINATION_ADDRESS_HERE", 1)
+sendToCosmos("DESTINATION_ADDRESS_HERE", 1);

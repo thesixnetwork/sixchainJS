@@ -34,4 +34,3 @@ delegate()
   .catch(() => {
     console.log;
   });
-

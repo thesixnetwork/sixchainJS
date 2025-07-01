@@ -21,12 +21,15 @@ export interface NFTFeeBalanceSDKType {
 }
 function createBaseNFTFeeBalance(): NFTFeeBalance {
   return {
-    feeBalances: []
+    feeBalances: [],
   };
 }
 export const NFTFeeBalance = {
   typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTFeeBalance",
-  encode(message: NFTFeeBalance, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: NFTFeeBalance,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.feeBalances) {
       writer.uint32(10).string(v!);
     }
@@ -51,18 +54,18 @@ export const NFTFeeBalance = {
   },
   fromPartial(object: Partial<NFTFeeBalance>): NFTFeeBalance {
     const message = createBaseNFTFeeBalance();
-    message.feeBalances = object.feeBalances?.map(e => e) || [];
+    message.feeBalances = object.feeBalances?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: NFTFeeBalanceAmino): NFTFeeBalance {
     const message = createBaseNFTFeeBalance();
-    message.feeBalances = object.fee_balances?.map(e => e) || [];
+    message.feeBalances = object.fee_balances?.map((e) => e) || [];
     return message;
   },
   toAmino(message: NFTFeeBalance): NFTFeeBalanceAmino {
     const obj: any = {};
     if (message.feeBalances) {
-      obj.fee_balances = message.feeBalances.map(e => e);
+      obj.fee_balances = message.feeBalances.map((e) => e);
     } else {
       obj.fee_balances = message.feeBalances;
     }
@@ -80,7 +83,7 @@ export const NFTFeeBalance = {
   toProtoMsg(message: NFTFeeBalance): NFTFeeBalanceProtoMsg {
     return {
       typeUrl: "/thesixnetwork.sixprotocol.nftmngr.NFTFeeBalance",
-      value: NFTFeeBalance.encode(message).finish()
+      value: NFTFeeBalance.encode(message).finish(),
     };
-  }
+  },
 };

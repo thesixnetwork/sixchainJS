@@ -14,15 +14,11 @@ const Balance = async () => {
   sixConnector.rpcUrl = rpcUrl;
   sixConnector.apiUrl = apiUrl;
 
-  fs.appendFile(
-    `balance.csv`,
-    `address,token\n`,
-    function (err) {
-      if (err) throw err;
-    }
-  );
+  fs.appendFile(`balance.csv`, `address,token\n`, function (err) {
+    if (err) throw err;
+  });
 
-  let balances:any = {};
+  let balances: any = {};
   if (fs.existsSync("balances.json")) {
     balances = JSON.parse(fs.readFileSync("balances.json").toString());
   }
@@ -38,18 +34,22 @@ const Balance = async () => {
     // map of address and balance
     let token = {
       address: list_all_recipient[i],
-      balance: 0
+      balance: 0,
     };
     try {
-      const balance = await apiClient.cosmosBankModule.queryBalance(list_all_recipient[i], {
-        denom: "usix"
-      });
+      const balance = await apiClient.cosmosBankModule.queryBalance(
+        list_all_recipient[i],
+        {
+          denom: "usix",
+        }
+      );
       // if token has been minted, skip to next token
       // update to key
       if (balance.data) {
         isQueried = true;
-        const balanceAmount = parseInt(balance.data?.balance.amount) / 1_000_000;
-        token.balance = balanceAmount
+        const balanceAmount =
+          parseInt(balance.data?.balance.amount) / 1_000_000;
+        token.balance = balanceAmount;
         console.log(token);
 
         // Update balance for address
@@ -61,7 +61,7 @@ const Balance = async () => {
         // Write updated balances to JSON file
         fs.writeFileSync("balances.json", JSON.stringify(balances));
       }
-    } catch (e:any) {
+    } catch (e: any) {
       console.log("token not found", e.error);
     }
     records.push(token);
@@ -69,10 +69,12 @@ const Balance = async () => {
 };
 
 // create one metadata for test on production which is token_id = 2531
-Balance().then(() => {
-  console.log("Done");
-  process.exit(0);
-}).catch((e) => {
-  console.log(e);
-  process.exit(1);
-});
+Balance()
+  .then(() => {
+    console.log("Done");
+    process.exit(0);
+  })
+  .catch((e) => {
+    console.log(e);
+    process.exit(1);
+  });
