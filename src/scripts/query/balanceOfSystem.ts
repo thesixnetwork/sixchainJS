@@ -1,4 +1,4 @@
-import { SixDataChainConnector } from "@sixnetwork/sixchain-client";
+import { sixprotocol } from "@sixnetwork/sixchain-sdk";
 import { getConnectorConfig } from "../client";
 import list_all_recipient from "../utils/all_address";
 import fs from "fs";
@@ -8,27 +8,23 @@ dotenv.config();
 
 const NETWORK = process.argv[2]!;
 const Balance = async () => {
-  // console.time("Minting time");
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETWORK);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
+    const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+    const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({ rpcEndpoint: rpcUrl });
 
-  fs.appendFile(`balance.csv`, `address,token\n`, function (err) {
-    if (err) throw err;
-  });
+    fs.appendFile(`balance.csv`, `address,token\n`, function (err) {
+        if (err) throw err;
+    });
 
-  let balances: any = {};
-  if (fs.existsSync("balances.json")) {
-    balances = JSON.parse(fs.readFileSync("balances.json").toString());
-  }
+    let balances: any = {};
+    if (fs.existsSync("balances.json")) {
+        balances = JSON.parse(fs.readFileSync("balances.json").toString());
+    }
 
-  // ** MINT NFT **
-  // loop through all token id
-  const records = [];
-  for (let i = 0; i < list_all_recipient.length; i++) {
-    // find the token has been minted or not
-    const apiClient = await sixConnector.connectAPIClient();
+    // ** QUERY BALANCES **
+    // loop through all addresses
+    const records = [];
+    for (let i = 0; i < list_all_recipient.length; i++) {
+    const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({ rpcEndpoint: rpcUrl });
     let balance;
     let isQueried = false;
     // map of address and balance
@@ -37,18 +33,17 @@ const Balance = async () => {
       balance: 0,
     };
     try {
-      const balance = await apiClient.cosmosBankModule.queryBalance(
-        list_all_recipient[i],
-        {
-          denom: "usix",
-        }
-      );
+      const balance = await queryClient.cosmos.bank.v1beta1.balance({
+        address: list_all_recipient[i],
+        denom: "usix"
+      })
+
       // if token has been minted, skip to next token
       // update to key
-      if (balance.data) {
+      if (balance.balance) {
         isQueried = true;
         const balanceAmount =
-          parseInt(balance.data?.balance.amount) / 1_000_000;
+          parseInt(balance?.balance.amount) / 1_000_000; 
         token.balance = balanceAmount;
         console.log(token);
 

@@ -1,4 +1,4 @@
-import { SixDataChainConnector, fee } from "@sixnetwork/sixchain-client";
+import { sixprotocol } from "@sixnetwork/sixchain-sdk";
 import { getConnectorConfig } from "../client";
 import dotenv from "dotenv";
 
@@ -8,38 +8,27 @@ const default_schemaCode: string = "sixprotocol.sleeptest";
 const NETWORK = process.argv[2]!;
 
 const query = async (TOKEN_ID: number) => {
-  // console.time("Minting time");
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETWORK);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
-
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: fee.GasPrice.fromString("1.25usix"),
-  });
-
-  // find the token has been minted or not
-  const apiClient = await sixConnector.connectAPIClient();
-  let token;
-  let isMinted = false;
-  try {
-    token = await apiClient.nftmngrModule.queryNftData(
-      default_schemaCode,
-      TOKEN_ID.toString()
-    );
-    if (token.data) {
-      isMinted = true;
+    const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+    
+    const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({ rpcEndpoint: rpcUrl });
+    let token;
+    let isMinted = false;
+    try {
+        token = await queryClient.sixprotocol.nftmngr.nftData({
+            nftSchemaCode: default_schemaCode,
+            tokenId: TOKEN_ID.toString(),
+            withGlobal: false,
+        });
+        if (token) {
+            isMinted = true;
+        }
+    } catch (e: any) {
+        console.log("token not found", e.message);
+        token = null;
+        isMinted = false;
     }
-  } catch (e: any) {
-    console.log("token not found", e.error);
-    token = null;
-    isMinted = false;
-  }
 
-  console.log(token);
+    console.log(token);
 };
 
 query(2531);

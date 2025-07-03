@@ -1,26 +1,28 @@
-import {
-  SixDataChainConnector,
-  BASE64,
-  typesTxCosmosStaking,
-  fee,
-} from "@sixnetwork/sixchain-client";
+import { getSigningSixprotocolClient, cosmos } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { Coin } from "@cosmjs/amino";
 import dotenv from "dotenv";
+
 dotenv.config();
 
-const unDelegate = async () => {
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = "https://rpc1.fivenet.sixprotocol.net:443";
+const undelegate = async () => {
+  const rpcEndpoint = "http://localhost:26657";
 
-  // Retrieve acctount signer from private key or mnemonic
-  const accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(
-    process.env.ALICE_MNEMONIC!
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    process.env.ALICE_MNEMONIC!,
+    { prefix: "6x" }
   );
-  // Get index of account
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: fee.GasPrice.fromString("1.25usix"),
+
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint,
+    signer: wallet,
   });
+
+  // Get account address
+  const accounts = await wallet.getAccounts();
+  const address = accounts[0].address;
 
   const validator_address = "6xvaloper13dwxflzhc3qlkcy9syfnhr8tu2kdvuavhzdf9f";
 
@@ -29,26 +31,24 @@ const unDelegate = async () => {
     denom: "usix",
   };
 
-  const msgDelegate: typesTxCosmosStaking.MsgUndelegate = {
+  const msgUndelegate = cosmos.staking.v1beta1.MessageComposer.withTypeUrl.undelegate({
     amount: delegate_amount,
-    delegator_address: address,
-    validator_address: validator_address,
-  };
+    delegatorAddress: address,
+    validatorAddress: validator_address,
+  });
 
-  const msg = rpcClient.cosmosStakingModule.msgUndelegate(msgDelegate);
-  const txResponse = await rpcClient.cosmosStakingModule.signAndBroadcast(
-    [msg],
-    {
-      fee: "auto",
-      memo: "memo",
-    }
+  const txResponse = await client.signAndBroadcast(
+    address,
+    [msgUndelegate],
+    "auto",
+    "memo"
   );
   console.log(txResponse);
 };
 
-unDelegate()
+undelegate()
   .then((res) => {
-    console.log;
+    console.log(res);
   })
   .catch((err) => {
     console.log(err);

@@ -1,6 +1,6 @@
-import { SixDataChainConnector, ITxNFTmngr } from "@sixnetwork/sixchain-client";
-import { EncodeObject } from "@cosmjs/proto-signing";
-import { GasPrice } from "@cosmjs/stargate/build/fee";
+import { EncodeObject } from '@cosmjs/proto-signing';
+import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 
 import divine_elite from "../../resources/schemas/divineelite-nft-schema.json";
 import preventive from "../../resources/schemas/preventive-nft-schema.json";
@@ -20,17 +20,21 @@ if (!NETOWRK) {
 const schemaList = [divine_elite, preventive, membership, lifestyle];
 
 export const Deploy = async () => {
-  const sixConnector = new SixDataChainConnector();
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETOWRK);
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
 
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: GasPrice.fromString("1.25usix"),
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    mnemonic,
+    { prefix: "6x" }
+  );
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
   });
+
+  const accounts = await wallet.getAccounts()
+  const address = accounts[0].address;
 
   let msgArray: Array<EncodeObject> = [];
 
@@ -45,19 +49,20 @@ export const Deploy = async () => {
     let encodeBase64Schema = Buffer.from(
       JSON.stringify(schemaList[i])
     ).toString("base64");
-    const msgCreateNFTSchema: ITxNFTmngr.MsgCreateNFTSchema = {
+    const msgCreateNFTSchema = sixprotocol.nftmngr.MessageComposer.withTypeUrl.createNFTSchema({
       creator: address,
       nftSchemaBase64: encodeBase64Schema,
-    };
+    })
 
-    const msg = rpcClient.nftmngrModule.msgCreateNFTSchema(msgCreateNFTSchema);
-
-    msgArray.push(msg);
+    msgArray.push(msgCreateNFTSchema);
   }
 
-  const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(msgArray, {
-    fee: "auto",
-  });
+  const txResponse = await client.signAndBroadcast(
+    address,
+    msgArray,
+    "auto",
+    "memo"
+  );
   if (txResponse.code != 0) {
     console.log(txResponse.rawLog);
   }

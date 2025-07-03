@@ -1,6 +1,6 @@
-import { SixDataChainConnector, ITxNFTmngr } from "@sixnetwork/sixchain-client";
-import { EncodeObject } from "@cosmjs/proto-signing";
-import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee";
+import { EncodeObject } from '@cosmjs/proto-signing';
+import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "../../client";
 import dotenv from "dotenv";
 dotenv.config();
@@ -31,36 +31,43 @@ export const Deploy = async () => {
     );
   }
 
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETOWRK);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
+    // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    mnemonic,
+    { prefix: "6x" }
+  );
 
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: GasPrice.fromString("1.25usix"),
+    // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
   });
+
+
+  const accounts = await wallet.getAccounts()
+  const address = accounts[0].address;
 
   let msgArray: Array<EncodeObject> = [];
 
   let encodeBase64Schema = Buffer.from(JSON.stringify(exmapleSchema)).toString(
     "base64"
   );
-  const msgCreateNFTSchema: ITxNFTmngr.MsgCreateNFTSchema = {
+
+  const msgCreateNFTSchema = sixprotocol.nftmngr.MessageComposer.withTypeUrl.createNFTSchema({
     creator: address,
     nftSchemaBase64: encodeBase64Schema,
-  };
+  })
 
-  const msg =
-    await rpcClient.nftmngrModule.msgCreateNFTSchema(msgCreateNFTSchema);
+  msgArray.push(msgCreateNFTSchema);
 
-  msgArray.push(msg);
-
-  const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(msgArray, {
-    fee: "auto",
-  });
+  const txResponse = await client.signAndBroadcast(
+    address,
+    msgArray,
+    "auto",
+    "memo"
+  );
+  
   if (txResponse.code) {
     console.log(txResponse.rawLog);
   }

@@ -29,8 +29,7 @@ export const Deploy = async () => {
   sixConnector.rpcUrl = rpcUrl;
   sixConnector.apiUrl = apiUrl;
 
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
+  const accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
   const address = (await accountSigner.getAccounts())[0].address;
   const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
     gasPrice: GasPrice.fromString("1.25usix"),

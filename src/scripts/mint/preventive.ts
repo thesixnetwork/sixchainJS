@@ -1,8 +1,5 @@
-import {
-  SixDataChainConnector,
-  ITxNFTmngr,
-  fee,
-} from "@sixnetwork/sixchain-client";
+import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import ZERO_YEAR from "../../resources/metadatas/preventive/nft-data_0_years.json";
 import THREE_YEAR from "../../resources/metadatas/preventive/nft-data_3_years.json";
 import FIVE_YEAR from "../../resources/metadatas/preventive/nft-data_5_years.json";
@@ -80,23 +77,26 @@ async function mintNFT(tier: string, tokenId: number) {
     );
   }
 
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETWORK);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    mnemonic,
+    { prefix: "6x" }
+  );
 
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: fee.GasPrice.fromString("1.25usix"),
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
   });
 
-  const apiClient = await sixConnector.connectAPIClient();
+  // Get account address
+  const accounts = await wallet.getAccounts();
+  const address = accounts[0].address;
 
   const token_id = tokenId.toString();
 
-  if (await isTokenMinted(apiClient, schemaCode, token_id)) {
+  if (await isTokenMinted(client, schemaCode, token_id)) {
     console.log(`Token ID ${token_id} is already minted.`);
     return;
   }
@@ -106,22 +106,19 @@ async function mintNFT(tier: string, tokenId: number) {
     "base64"
   );
 
-  const msgCreateMetaData: ITxNFTmngr.MsgCreateMetadata = {
+  const msgCreateMetadata = sixprotocol.nftmngr.MessageComposer.withTypeUrl.createMetadata({
     creator: address,
     nftSchemaCode: schemaCode,
     tokenId: token_id,
     base64NFTData: encodeBase64Metadata,
-  };
+  });
 
-  const msgMintData =
-    rpcClient.nftmngrModule.msgCreateMetadata(msgCreateMetaData);
 
-  const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(
-    [msgMintData],
-    {
-      fee: "auto",
-      memo: "Mint NFT Metadata Token",
-    }
+  const txResponse = await client.signAndBroadcast(
+    address,
+    [msgCreateMetadata],
+    "auto",
+    "Mint NFT Metadata Token"
   );
 
   if (txResponse.code !== 0) {

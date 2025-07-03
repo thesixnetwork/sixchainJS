@@ -1,36 +1,32 @@
-import { SixDataChainConnector } from "@sixnetwork/sixchain-client";
+import { sixprotocol } from "@sixnetwork/sixchain-sdk";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-const Balance = async () => {
-  // console.time("Minting time");
-  const sixConnector = new SixDataChainConnector();
-  let accountSigner;
+const getTotalBalance = async () => {
   const network = process.argv[2];
+  let rpcEndpoint: string;
 
   if (network === "local") {
     // ** LOCAL TESTNET **
-    sixConnector.rpcUrl = "http://localhost:26657";
-    sixConnector.apiUrl = "http://localhost:1317";
+    rpcEndpoint = "http://localhost:26657";
   } else if (network === "fivenet") {
     // ** FIVENET **
-    sixConnector.rpcUrl = "https://rpc1.fivenet.sixprotocol.net:443";
-    sixConnector.apiUrl = "https://api1.fivenet.sixprotocol.net:443";
+    rpcEndpoint = "https://rpc1.fivenet.sixprotocol.net:443";
   } else if (network === "sixnet") {
     // ** SIXNET **
-    sixConnector.rpcUrl = "https://sixnet-rpc.sixprotocol.net:443";
-    sixConnector.apiUrl = "https://sixnet-api.sixprotocol.net:443";
+    rpcEndpoint = "https://sixnet-rpc.sixprotocol.net:443";
   } else {
     throw new Error("Invalid network");
   }
-  const apiClient = await sixConnector.connectAPIClient();
-  const totalBalance = await apiClient.cosmosBankModule.queryTotalSupply();
-  console.log(totalBalance.data);
+
+  const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({ rpcEndpoint });
+  const totalBalance = await queryClient.cosmos.bank.v1beta1.totalSupply();
+  console.log(totalBalance);
 };
 
 // create one metadata for test on production which is token_id = 2531
-Balance()
+getTotalBalance()
   .then(() => {
     console.log("Done");
     process.exit(0);
