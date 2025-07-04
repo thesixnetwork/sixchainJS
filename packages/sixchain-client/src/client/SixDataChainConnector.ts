@@ -1,11 +1,11 @@
 import { OfflineSigner } from "@cosmjs/proto-signing";
 import { SigningStargateClientOptions } from "@cosmjs/stargate";
 
-import * as cosmosbankModuleGenerate from "../modules/cosmos/cosmos-sdk/cosmos.bank.v1beta1/module/index";
-import * as distributionModuleGenerate from "../modules/cosmos/cosmos-sdk/cosmos.distribution.v1beta1/module/index";
-import * as cosmosstakingLegacyModuleGenerate from "../modules/cosmos/cosmos-sdk/cosmos.staking.v1beta1/module/index";
-import * as cosmosstakingModuleGenerate from "../modules/cosmos/cosmos-sdk/cosmos.staking.v1beta1/module/index";
-import * as cosmosTx from "../modules/cosmos/cosmos-sdk/cosmos.tx.v1beta1/module/index";
+import * as cosmosbankModuleGenerate from "../modules/cosmos/cosmos.bank.v1beta1/module/index";
+import * as distributionModuleGenerate from "../modules/cosmos/cosmos.distribution.v1beta1/module/index";
+import * as cosmosstakingLegacyModuleGenerate from "../modules/cosmos/cosmos.staking.v1beta1/module/index";
+import * as cosmosstakingModuleGenerate from "../modules/cosmos/cosmos.staking.v1beta1/module/index";
+import * as cosmosTx from "../modules/cosmos/cosmos.tx.v1beta1/module/index";
 import * as nftadminModuleGenerate from "../modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.nftadmin/module/index";
 import * as nftmngrModuleGenerate from "../modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.nftmngr/module/index";
 import * as nftoracleModuleGenerate from "../modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.nftoracle/module/";
