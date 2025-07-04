@@ -1,13 +1,8 @@
-import {
-  SixDataChainConnector,
-  ITxNFTmngr,
-  fee,
-} from "@sixnetwork/sixchain-client";
+import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "../client";
-import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";
-import { AllowedActioner } from "@sixnetwork/sixchain-client/modules/thesixnetwork/six-protocol/thesixnetwork.sixprotocol.nftmngr/module/types/nftmngr/action";
 dotenv.config();
 
 const main = async () => {
@@ -20,21 +15,27 @@ const main = async () => {
     );
   }
 
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(network);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
+  const { rpcUrl, mnemonic } = await getConnectorConfig(network);
 
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: GasPrice.fromString("1.25usix"),
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    mnemonic,
+    { prefix: "6x" }
+  );
+
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
   });
+
+  // Get account address
+  const accounts = await wallet.getAccounts();
+  const address = accounts[0].address;
 
   let schema_name = "divineXmembership";
 
-  const virtualSchemaProp: ITxNFTmngr.MsgProposalVirtualSchema = {
+  const virtualSchemaProp = {
     creator: address,
     virtualNftSchemaCode: schema_name,
     registry: [
@@ -48,16 +49,16 @@ const main = async () => {
     actions: [
       {
         name: "bridge_4_to_2",
-        allowed_actioner: AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY,
+        allowedActioner: sixprotocol.nftmngr.AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY,
         desc: "Bridge service 4 to service 2",
         disable: false,
         params: [
           {
             name: "amount",
             desc: "Service 4 Amount",
-            data_type: "number",
+            dataType: "number",
             required: true,
-            default_value: "0",
+            defaultValue: "0",
           },
         ],
         then: [
@@ -71,16 +72,16 @@ const main = async () => {
       },
       {
         name: "bridge_12_to_17",
-        allowed_actioner: AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY,
+        allowedActioner: sixprotocol.nftmngr.AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY,
         desc: "Bridge service 4 to service 2",
         disable: false,
         params: [
           {
             name: "amount",
             desc: "Service 4 Amount",
-            data_type: "number",
+            dataType: "number",
             required: true,
-            default_value: "0",
+            defaultValue: "0",
           },
         ],
         then: [
@@ -94,7 +95,7 @@ const main = async () => {
       },
       {
         name: "bridge_3_to_1",
-        allowed_actioner: AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY,
+        allowedActioner: sixprotocol.nftmngr.AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY,
         desc: "Bridge service 1 to service 4",
         disable: false,
         params: [],
@@ -109,16 +110,16 @@ const main = async () => {
       },
       {
         name: "native_bridge",
-        allowed_actioner: AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY,
+        allowedActioner: sixprotocol.nftmngr.AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY,
         desc: "Send Value across schema",
         disable: false,
         params: [
           {
             name: "amount",
             desc: "Service 7 Amount",
-            data_type: "number",
+            dataType: "number",
             required: true,
-            default_value: "0",
+            defaultValue: "0",
           },
         ],
         then: [
@@ -128,7 +129,7 @@ const main = async () => {
       },
       {
         name: "transform",
-        allowed_actioner: AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY,
+        allowedActioner: sixprotocol.nftmngr.AllowedActioner.ALLOWED_ACTIONER_SYSTEM_ONLY,
         desc: "Transform Metadata Image",
         disable: false,
         params: [],
@@ -150,17 +151,15 @@ const main = async () => {
     proposalType: 0,
   };
 
-  msgArray.push(
-    rpcClient.nftmngrModule.msgProposalVirtualSchema(virtualSchemaProp)
-  );
+  const msgProposalVirtualSchema = sixprotocol.nftmngr.MessageComposer.withTypeUrl.proposalVirtualSchema(virtualSchemaProp);
+  msgArray.push(msgProposalVirtualSchema);
 
   try {
-    const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(
+    const txResponse = await client.signAndBroadcast(
+      address,
       msgArray,
-      {
-        fee: "auto",
-        memo: "create virtual schema proposal",
-      }
+      "auto",
+      "create virtual schema proposal"
     );
     console.log(txResponse);
   } catch (err) {

@@ -21,7 +21,7 @@ const main = async () => {
   const { rpcUrl, mnemonic } = await getConnectorConfig(network);
   // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    process.env.ALICE_MNEMONIC!,
+    mnemonic,
     { prefix: "6x" }
   );
 
@@ -64,7 +64,7 @@ const main = async () => {
       address,
       msgArray,
       "auto",
-      "memo"
+      ref_id
     );
     console.log(txResponse);
   } catch (err) {

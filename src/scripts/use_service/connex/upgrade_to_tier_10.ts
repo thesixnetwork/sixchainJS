@@ -1,8 +1,5 @@
-import {
-  SixDataChainConnector,
-  ITxNFTmngr,
-  fee,
-} from "@sixnetwork/sixchain-client";
+import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/divineelite-nft-schema.json";
 import { GasPrice } from "@cosmjs/stargate";
@@ -25,17 +22,22 @@ const main = async () => {
     );
   }
 
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(network);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
+  const { rpcUrl, mnemonic } = await getConnectorConfig(network);
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    mnemonic,
+    { prefix: "6x" }
+  );
 
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: GasPrice.fromString("1.25usix"),
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
   });
+
+  // Get account address
+  const accounts = await wallet.getAccounts();
+  const address = accounts[0].address;
 
   let schema_name = NFTSchema.code;
   const split_schema = schema_name.split(".");
@@ -45,8 +47,10 @@ const main = async () => {
   schemaCode = `${org_name}.${_name}`;
 
   const ref_id = uuidv4();
+  const msgArray: EncodeObject[] = [];
 
-  let action: ITxNFTmngr.MsgPerformActionByAdmin;
+  let action: any
+
   const todayDate = new Date();
   const expire_date: string = moment(todayDate.toUTCString())
     .utc()
@@ -54,12 +58,12 @@ const main = async () => {
     .toString();
 
   if (senior) {
-    const action40p: ITxNFTmngr.MsgPerformActionByAdmin = {
+    const action40p = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
       creator: address,
-      nft_schema_code: schemaCode,
+      nftSchemaCode: schemaCode,
       tokenId: TOKEN_ID,
       action: "extend_privilege",
-      ref_id,
+      refId: ref_id,
       parameters: [
         { name: "tier", value: "10" },
         { name: "group_one", value: "10" },
@@ -67,16 +71,16 @@ const main = async () => {
         { name: "group_three", value: "0" },
         { name: "expire_date", value: expire_date },
       ],
-    };
+    });
 
     action = action40p;
   } else {
-    const action40l: ITxNFTmngr.MsgPerformActionByAdmin = {
+    const action40l = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
       creator: address,
-      nft_schema_code: schemaCode,
+      nftSchemaCode: schemaCode,
       tokenId: TOKEN_ID,
       action: "extend_privilege",
-      ref_id,
+      refId: ref_id,
       parameters: [
         { name: "tier", value: "10" },
         { name: "group_one", value: "0" },
@@ -84,21 +88,17 @@ const main = async () => {
         { name: "group_three", value: "0" },
         { name: "expire_date", value: expire_date },
       ],
-    };
+    });
     action = action40l;
   }
 
-  const msgArray: EncodeObject[] = [
-    rpcClient.nftmngrModule.msgPerformActionByAdmin(action),
-  ];
-
+  msgArray.push(action);
   try {
-    const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(
+    const txResponse = await client.signAndBroadcast(
+      address,
       msgArray,
-      {
-        fee: "auto",
-        memo: ref_id,
-      }
+      "auto",
+      ref_id
     );
     console.log(txResponse);
   } catch (err) {
