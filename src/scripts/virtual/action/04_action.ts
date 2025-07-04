@@ -7,31 +7,35 @@ import { v4 as uuidv4 } from "uuid";
 dotenv.config();
 
 const main = async () => {
-  const network = process.argv[2];
+  const NETOWRK = process.argv[2];
 
   let msgArray: EncodeObject[] = [];
-  if (!network) {
+  if (!NETOWRK) {
     throw new Error(
       "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
 
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(network);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
 
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: GasPrice.fromString("1.25usix"),
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    mnemonic,
+    { prefix: "6x" }
+  );
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
   });
+
+  const accounts = await wallet.getAccounts()
+  const address = accounts[0].address;
 
   let schema_name = "divineXmembership";
   const ref_id = uuidv4();
 
-  const virualAction: ITxNFTmngr.MsgPerformVirtualAction = {
+  const virualAction= sixprotocol.nftmngr.MessageComposer.withTypeUrl.performVirtualAction({
     creator: address,
     nftSchemaName: schema_name,
     action: "transform",
@@ -47,17 +51,16 @@ const main = async () => {
         tokenId: "5",
       },
     ],
-  };
+  });
 
-  msgArray.push(rpcClient.nftmngrModule.msgPerformVirtualAction(virualAction));
+  msgArray.push(virualAction);
 
   try {
-    const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(
+    const txResponse = await client.signAndBroadcast(
+      address,
       msgArray,
-      {
-        fee: "auto",
-        memo: "perfrom virtual action",
-      }
+      "auto",
+      "memo"
     );
     console.log(txResponse);
   } catch (err) {

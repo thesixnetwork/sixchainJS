@@ -10,27 +10,30 @@ import divine_elite from "../../resources/schemas/divineelite-nft-schema.json";
 import { getConnectorConfig } from "../client";
 
 const main = async () => {
-  const NETWORK = process.argv[2]!;
+  const NETOWRK = process.argv[2];
 
-  let schemaCode: string;
-  schemaCode = divine_elite.code;
-  const _name = schemaCode.split(".");
-  const org_name = process.env.ORG_NAME;
-  schemaCode = `${org_name}.${_name}`;
+  let msgArray: EncodeObject[] = [];
+  if (!NETOWRK) {
+    throw new Error(
+      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
+    );
+  }
 
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETWORK);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
 
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-
-  // Get index of account
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: fee.GasPrice.fromString("1.25usix"),
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    mnemonic,
+    { prefix: "6x" }
+  );
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
   });
+
+  const accounts = await wallet.getAccounts()
+  const address = accounts[0].address;
   // Encode NFT data to base64
   const encodeBase64NewAttribute = BASE64.encode(JSON.stringify(newAttribute));
   // Create message

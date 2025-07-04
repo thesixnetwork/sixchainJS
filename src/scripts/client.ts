@@ -1,9 +1,8 @@
 import dotenv from "dotenv";
-
 dotenv.config();
 
 export async function getConnectorConfig(
-    network: string
+    network: string,
 ): Promise<{ rpcUrl: string; apiUrl: string; mnemonic: string }> {
     switch (network) {
         case "local":
@@ -16,13 +15,13 @@ export async function getConnectorConfig(
             return {
                 rpcUrl: "https://rpc1.fivenet.sixprotocol.net:443",
                 apiUrl: "https://api1.fivenet.sixprotocol.net:443",
-                mnemonic: process.env.ALICE_MNEMONIC!,
+                mnemonic: process.env.FIVENET_MNEMONIC!,
             };
         case "sixnet":
             return {
                 rpcUrl: "https://sixnet-rpc.sixprotocol.net:443",
                 apiUrl: "https://sixnet-api.sixprotocol.net:443",
-                mnemonic: process.env.ALICE_MNEMONIC!,
+                mnemonic: process.env.SIXNET_MNEMONIC!,
             };
         default:
             throw new Error("Invalid network");
@@ -34,16 +33,20 @@ export async function getConnection(network: string) {
         case "local":
             return {
                 rpcUrl: "http://localhost:26657",
+                apiUrl: "http://localhost:1317",
             };
         case "fivenet":
             return {
                 rpcUrl: "https://rpc1.fivenet.sixprotocol.net:443",
+                apiUrl: "https://api1.fivenet.sixprotocol.net:443",
             };
         case "sixnet":
             return {
                 rpcUrl: "https://sixnet-rpc.sixprotocol.net:443",
-      };
-    default:
-      throw new Error("Invalid network");
-  }
+                apiUrl: "https://sixnet-api.sixprotocol.net:443",
+            };
+        default:
+            throw new Error("Invalid network");
+    }
 }
+

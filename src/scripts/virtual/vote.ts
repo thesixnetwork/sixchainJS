@@ -1,16 +1,19 @@
-import {
-  SixDataChainConnector,
-  ITxNFTmngr,
-  fee,
-} from "@sixnetwork/sixchain-client";
-import { EncodeObject } from "@cosmjs/proto-signing";
+import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
+import { EncodeObject } from '@cosmjs/proto-signing';
 import { getConnectorConfig } from "../client";
-import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";
 dotenv.config();
 
 const main = async () => {
-  const network = process.argv[2];
+  const NETOWRK = process.argv[2];
+
+  if (!NETOWRK) {
+    throw new Error(
+      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
+    );
+  }
+
   const propId = process.argv[3];
   const schemaName = process.argv[4];
 
@@ -19,42 +22,36 @@ const main = async () => {
   }
 
   let msgArray: EncodeObject[] = [];
-  if (!network) {
-    throw new Error(
-      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
-    );
-  }
 
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(network);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
-
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: GasPrice.fromString("1.25usix"),
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    mnemonic,
+    { prefix: "6x" }
+  );
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
   });
 
-  const voteCreateSchema: ITxNFTmngr.MsgVoteVirtualSchemaProposal = {
+  const accounts = await wallet.getAccounts()
+  const address = accounts[0].address;
+
+  const voteCreateSchema = sixprotocol.nftmngr.MessageComposer.withTypeUrl.voteVirtualSchemaProposal({
     creator: address,
     id: propId,
     nftSchemaCode: schemaName,
     option: 2,
-  };
+  });
 
-  msgArray.push(
-    rpcClient.nftmngrModule.msgVoteVirtualSchemaProposal(voteCreateSchema)
-  );
-
+  msgArray.push(voteCreateSchema);
   try {
-    const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(
+    const txResponse = await client.signAndBroadcast(
+      address,
       msgArray,
-      {
-        fee: "auto",
-        memo: "vote create virtual schema",
-      }
+      "auto",
+      "memo"
     );
     console.log(txResponse);
   } catch (err) {
