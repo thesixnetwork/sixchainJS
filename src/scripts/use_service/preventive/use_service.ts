@@ -1,37 +1,35 @@
-import {
-  SixDataChainConnector,
-  ITxNFTmngr,
-  fee,
-} from "@sixnetwork/sixchain-client";
+import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
+import { getConnectorConfig } from "../../client";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/preventive-nft-schema.json";
-import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
-import { getConnectorConfig } from "../../client";
 dotenv.config();
 
 const main = async () => {
-  const network = process.argv[2];
-  const TOKENID = process.argv[3];
-
-  if (!network) {
+  const NETOWRK = process.argv[2];
+  if (!NETOWRK) {
     throw new Error(
       "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
+  const TOKENID = process.argv[3];
 
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(network);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
-
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: GasPrice.fromString("1.25usix"),
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    mnemonic,
+    { prefix: "6x" }
+  );
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
   });
+
+  const accounts = await wallet.getAccounts()
+  const address = accounts[0].address;
 
   let schema_name = NFTSchema.code;
   const split_schema = schema_name.split(".");
@@ -41,26 +39,25 @@ const main = async () => {
   schemaCode = `${org_name}.${_name}`;
 
   const ref_id = uuidv4();
-  const action: ITxNFTmngr.MsgPerformActionByAdmin = {
+  const msgArray: EncodeObject[] = [];
+
+  const action = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
     creator: address,
-    nft_schema_code: schemaCode,
+    nftSchemaCode: schemaCode,
     tokenId: TOKENID,
     action: "use_service",
-    ref_id,
-    parameters: [{ name: "service_name", value: "service_12" }],
-  };
+    refId: ref_id,
+    parameters: [{ name: "service_name", value: "service_3" }],
+  });
 
-  const msgArray: EncodeObject[] = [
-    rpcClient.nftmngrModule.msgPerformActionByAdmin(action),
-  ];
+  msgArray.push(action);
 
   try {
-    const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(
+    const txResponse = await client.signAndBroadcast(
+      address,
       msgArray,
-      {
-        fee: "auto",
-        memo: ref_id,
-      }
+      "auto",
+      ref_id
     );
     console.log(txResponse);
   } catch (err) {
