@@ -2,7 +2,6 @@ import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-s
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/divineelite-nft-schema.json";
-import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
 import { getConnectorConfig } from "../../client";
@@ -20,7 +19,7 @@ const main = async () => {
   const { rpcUrl, mnemonic } = await getConnectorConfig(network);
   // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    process.env.ALICE_MNEMONIC!,
+    mnemonic,
     { prefix: "6x" }
   );
 

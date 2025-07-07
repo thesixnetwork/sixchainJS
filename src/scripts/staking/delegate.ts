@@ -31,11 +31,12 @@ const delegate = async () => {
     denom: "usix",
   };
 
-  const msgDelegate = cosmos.staking.v1beta1.MessageComposer.withTypeUrl.delegate({
-    amount: delegate_amount,
-    delegatorAddress: address,
-    validatorAddress: validator_address,
-  });
+  const msgDelegate =
+    cosmos.staking.v1beta1.MessageComposer.withTypeUrl.delegate({
+      amount: delegate_amount,
+      delegatorAddress: address,
+      validatorAddress: validator_address,
+    });
 
   const txResponse = await client.signAndBroadcast(
     address,

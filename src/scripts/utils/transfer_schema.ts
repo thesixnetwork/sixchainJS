@@ -1,63 +1,58 @@
-import {
-  SixDataChainConnector,
-  typesTxNFTManager,
-  fee,
-} from "@sixnetwork/sixchain-client";
+import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
+import { getConnectorConfig } from "../client";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { GasPrice } from "@cosmjs/stargate/build/fee";
 import dotenv from "dotenv";
+dotenv.config();
 
 const TransferSchema = async (schemaCode: string, newOwner: string) => {
-  const sixConnector = new SixDataChainConnector();
   let accountSigner;
   const network = process.argv[2];
-
-  if (network === "local") {
-    // ** LOCAL TESTNET **
-    sixConnector.rpcUrl = "http://localhost:26657";
-    accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(
-      process.env.ALICE_MNEMONIC!
+  if (!network) {
+    throw new Error(
+      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
-  } else if (network === "fivenet") {
-    // ** FIVENET **
-    sixConnector.rpcUrl = "https://rpc1.fivenet.sixprotocol.net:443";
-    // const accountSigner = await sixConnector.accounts.privateKeyToAccount(process.env.PRIVATE_KEY);
-    accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(
-      process.env.ADDRESS_KLANG_MNEMONIC
-    );
-  } else if (network === "sixnet") {
-    // ** SIXNET **
-    sixConnector.rpcUrl = "https://sixnet-rpc.sixprotocol.net:443";
-    // const accountSigner = await sixConnector.accounts.privateKeyToAccount(process.env.PRIVATE_KEY);
-    accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(
-      process.env.TECHSAUCE_MNEMONIC
-    );
-  } else {
-    throw new Error("Invalid network");
   }
+  const { rpcUrl, mnemonic } = await getConnectorConfig(network);
 
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: GasPrice.fromString("1.25usix"),
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    mnemonic,
+    { prefix: "6x" }
+  );
+
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
   });
+
+  // Get account address
+  const accounts = await wallet.getAccounts();
+  const address = accounts[0].address;
 
   let msgArray: Array<EncodeObject> = [];
 
   // loop trough all addresses of list_recipient according to start and end
-  const addSystemAction: typesTxNFTManager.MsgChangeSchemaOwner = {
+  const addSystemAction = sixprotocol.nftmngr.MessageComposer.withTypeUrl.changeSchemaOwner({
     creator: address,
     nftSchemaCode: schemaCode,
     newOwner: newOwner,
-  };
-
-  const msg = rpcClient.nftmngrModule.msgChangeSchemaOwner(addSystemAction);
-  msgArray.push(msg);
-
-  const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(msgArray, {
-    fee: "auto",
-    memo: "add System To TechSauce.GlobalSummit2023Mockingv9",
   });
-  console.log(txResponse);
+
+  msgArray.push(addSystemAction);
+
+  try {
+    const txResponse = await client.signAndBroadcast(
+      address,
+      msgArray,
+      "auto",
+      "transfer schema"
+    );
+    console.log(txResponse);
+  } catch (err) {
+    console.error("Transaction failed:", err);
+  }
 };
 
 // ask to enter confirmmation

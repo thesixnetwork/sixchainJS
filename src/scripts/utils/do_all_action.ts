@@ -1,10 +1,8 @@
-import {
-  SixDataChainConnector,
-  ITxNFTmngr,
-  fee,
-} from "@sixnetwork/sixchain-client";
+import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { v4 } from "uuid";
+import { getConnectorConfig } from "../client";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -12,51 +10,29 @@ const network: string = "local";
 const schemaCode: string = "TechSauce.GlobalSummit2023";
 
 const main = async (tokenID: number): Promise<any> => {
-  const sixConnector = new SixDataChainConnector();
-  let accountSigner;
-
-  if (network === "local") {
-    // ** LOCAL TESTNET **
-    sixConnector.rpcUrl = "http://localhost:26657";
-    sixConnector.apiUrl = "http://localhost:1317";
-    // const accountSigner = await sixConnector.accounts.privateKeyToAccount(
-    //   process.env.ALICE_PRIVATE_KEY
-    // );
-    accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(
-      process.env.ALICE_MNEMONIC!
-    );
-  } else if (network === "fivenet") {
-    // ** FIVENET **
-    sixConnector.rpcUrl = "https://rpc2.fivenet.sixprotocol.net:443";
-    sixConnector.apiUrl = "https://api1.fivenet.sixprotocol.net:443";
-    // const accountSigner = await sixConnector.accounts.privateKeyToAccount(process.env.PRIVATE_KEY);
-    accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(
-      process.env.ADDRESS_KLANG_MNEMONIC
-    );
-  } else if (network === "sixnet") {
-    // ** SIXNET **
-    // sixConnector.rpcUrl = "https://sixnet-rpc.sixprotocol.net:443";
-    sixConnector.apiUrl = "https://sixnet-api.sixprotocol.net:443";
-    // const accountSigner = await sixConnector.accounts.privateKeyToAccount(process.env.PRIVATE_KEY);
-    accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(
-      process.env.TECHSAUCE_MNEMONIC
-    );
-  } else {
-    throw new Error("Invalid network");
-  }
-
-  // ** CORE CONCEPT **
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: fee.GasPrice.fromString("1.25usix"),
+  const { rpcUrl, mnemonic } = await getConnectorConfig(network);
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+    mnemonic,
+    { prefix: "6x" }
+  );
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
   });
-  const apiClient = await sixConnector.connectAPIClient();
+
+  const accounts = await wallet.getAccounts()
+  const address = accounts[0].address;
   let metadata;
+
+  const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({ rpcEndpoint: rpcUrl });
   try {
-    metadata = await apiClient.nftmngrModule.queryNftData(
-      schemaCode,
-      String(tokenID)
-    );
+    metadata = await queryClient.sixprotocol.nftmngr.nftData({
+      nftSchemaCode: schemaCode,
+      tokenId: String(tokenID),
+      withGlobal: false,
+    });
   } catch (error: any) {
     console.log("token not found", error.error);
     metadata = null;
@@ -65,7 +41,7 @@ const main = async (tokenID: number): Promise<any> => {
   }
   //   console.log(metadata.data.nftData.onchain_attributes);
 
-  const onChainAttribute = metadata.data.nftData.onchain_attributes;
+  const onChainAttribute = metadata.nftData.onchainAttributes;
   //   console.log(onChainAttribute);
 
   const mustDoList = [
@@ -88,7 +64,7 @@ const main = async (tokenID: number): Promise<any> => {
   for (let i = 0; i < onChainAttribute.length; i++) {
     const element = onChainAttribute[i];
     if (mustDoList.includes(element.name)) {
-      if (element.boolean_attribute_value.value === true) {
+      if (element.booleanAttributeValue.value === true) {
         continue;
       } else {
         unDoneAttrubtes.push(element.name);
@@ -108,16 +84,15 @@ const main = async (tokenID: number): Promise<any> => {
       // build msg
       const ref_id = v4();
       let token_id = String(tokenID);
-      const action: ITxNFTmngr.MsgPerformActionByAdmin = {
+      const action = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
         creator: address,
-        nft_schema_code: schemaCode,
+        nftSchemaCode: schemaCode,
         tokenId: token_id,
         action: "attend_stage",
-        ref_id: `${ref_id}`,
+        refId: `${ref_id}`,
         parameters: [{ name: "stage", value: stage_list[i] }],
-      };
-      const msg = await rpcClient.nftmngrModule.msgPerformActionByAdmin(action);
-      msgArray.push(msg);
+      });
+      msgArray.push(action);
     }
   }
 
@@ -127,16 +102,15 @@ const main = async (tokenID: number): Promise<any> => {
       // build msg
       const ref_id = v4();
       let token_id = String(tokenID);
-      const action: ITxNFTmngr.MsgPerformActionByAdmin = {
+      const action = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
         creator: address,
-        nft_schema_code: schemaCode,
+        nftSchemaCode: schemaCode,
         tokenId: token_id,
         action: "attend_exhibition",
-        ref_id: `${ref_id}`,
+        refId: `${ref_id}`,
         parameters: [{ name: "exhibition", value: exhibition_list[i] }],
-      };
-      const msg = await rpcClient.nftmngrModule.msgPerformActionByAdmin(action);
-      msgArray.push(msg);
+      });
+      msgArray.push(action);
     }
   }
 
@@ -146,16 +120,15 @@ const main = async (tokenID: number): Promise<any> => {
       // build msg
       const ref_id = v4();
       let token_id = String(tokenID);
-      const action: ITxNFTmngr.MsgPerformActionByAdmin = {
+      const action = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
         creator: address,
-        nft_schema_code: schemaCode,
+        nftSchemaCode: schemaCode,
         tokenId: token_id,
         action: "attend_zone",
-        ref_id: `${ref_id}`,
+        refId: `${ref_id}`,
         parameters: [{ name: "zone", value: zone_list[i] }],
-      };
-      const msg = await rpcClient.nftmngrModule.msgPerformActionByAdmin(action);
-      msgArray.push(msg);
+      });
+      msgArray.push(action);
     }
   }
 
@@ -165,27 +138,30 @@ const main = async (tokenID: number): Promise<any> => {
       // build msg
       const ref_id = v4();
       let token_id = String(tokenID);
-      const action: ITxNFTmngr.MsgPerformActionByAdmin = {
+      const action = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
         creator: address,
-        nft_schema_code: schemaCode,
+        nftSchemaCode: schemaCode,
         tokenId: token_id,
         action: "check_in",
-        ref_id: `${ref_id}`,
+        refId: `${ref_id}`,
         parameters: [],
-      };
-      const msg = await rpcClient.nftmngrModule.msgPerformActionByAdmin(action);
-      msgArray.push(msg);
+      });
+      msgArray.push(action);
     }
   }
 
-  //   console.log(msgArray);
+  try {
+    const txResponse = await client.signAndBroadcast(
+      address,
+      msgArray,
+      "auto",
+      "memo"
+    );
+    console.log(txResponse);
+  } catch (err) {
+    console.error("Transaction failed:", err);
+  }
 
-  const txResponse = await rpcClient.nftmngrModule.signAndBroadcast(msgArray, {
-    fee: "auto",
-    memo: `privilege`,
-  });
-
-  console.log(txResponse);
 };
 
 main(2)

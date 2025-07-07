@@ -1,11 +1,7 @@
-import {
-  SixDataChainConnector,
-  typesTxBank,
-  fee,
-} from "@sixnetwork/sixchain-client";
-import { StdFee } from "@cosmjs/stargate";
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { GasPrice, calculateFee } from "@cosmjs/stargate/build/fee";
+import { GasPrice, calculateFee } from "@cosmjs/stargate";
 import { getConnectorConfig } from "../client";
 import dotenv from "dotenv";
 
@@ -14,6 +10,7 @@ dotenv.config();
 const NETOWRK = process.argv[2]!;
 const amount = process.argv[3]; // input six amount
 const using_amount = parseInt(amount) * 1_000_000; // convert to usix
+const gasPrice = GasPrice.fromString("1.25usix");
 
 const cosmosSendAuto = async () => {
   if (!NETOWRK) {
@@ -22,45 +19,41 @@ const cosmosSendAuto = async () => {
     );
   }
 
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETOWRK);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
-
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: GasPrice.fromString("1.25usix"),
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
   });
 
+  // Get signing client
+  const client = await getSigningCosmosClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
+    gasPrice: gasPrice,
+  });
+
+  // Get account address
+  const accounts = await wallet.getAccounts();
+  const address = accounts[0].address;
+
   let msgArray: Array<EncodeObject> = [];
-  const send: typesTxBank.MsgSend = {
-    from_address: address,
-    to_address: "6x1t3p2vzd7w036ahxf4kefsc9sn24pvlqphcuauv",
+  const send = cosmos.bank.v1beta1.MessageComposer.withTypeUrl.send({
+    fromAddress: address,
+    toAddress: "6x1t3p2vzd7w036ahxf4kefsc9sn24pvlqphcuauv",
     amount: [
       {
         denom: "usix",
         amount: using_amount.toString(),
       },
     ],
-  };
+  });
+  msgArray.push(send);
 
-  const msg = rpcClient.cosmosBankModule.msgSend(send);
-  msgArray.push(msg);
-  const amount = { denom: "usix", amount: "12500000" };
-  const fee: StdFee = {
-    amount: [amount],
-    gas: "2000000",
-  };
-
-  const txResponse = await rpcClient.cosmosBankModule.signAndBroadcast(
+  const txResponse = await client.signAndBroadcast(
+    address,
     msgArray,
-    {
-      fee: "auto",
-      memo: "send balance to action executor",
-    }
+    "auto",
+    "Send Balance"
   );
   if (txResponse.code !== 0) {
     console.error(`Error minting NFT: ${txResponse.rawLog}`);
@@ -80,46 +73,43 @@ const cosmosSendFixed = async () => {
     );
   }
 
-  const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETOWRK);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
-
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
-
-  const address = (await accountSigner.getAccounts())[0].address;
-  const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-    gasPrice: GasPrice.fromString("1.25usix"),
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
   });
 
+  // Get signing client
+  const client = await getSigningCosmosClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
+    gasPrice: gasPrice,
+  });
+
+  // Get account address
+  const accounts = await wallet.getAccounts();
+  const address = accounts[0].address;
+
   let msgArray: Array<EncodeObject> = [];
-  const send: typesTxBank.MsgSend = {
-    from_address: address,
-    to_address: "6x1t3p2vzd7w036ahxf4kefsc9sn24pvlqphcuauv",
+
+  const send = cosmos.bank.v1beta1.MessageComposer.withTypeUrl.send({
+    fromAddress: address,
+    toAddress: "6x1t3p2vzd7w036ahxf4kefsc9sn24pvlqphcuauv",
     amount: [
       {
         denom: "usix",
         amount: using_amount.toString(),
       },
     ],
-  };
+  });
 
-  const msg = rpcClient.cosmosBankModule.msgSend(send);
-  msgArray.push(msg);
+  msgArray.push(send);
 
-  const amount = { denom: "usix", amount: "12500000" };
-  const fee: StdFee = {
-    amount: [amount],
-    gas: "2000000",
-  };
-
-  const txResponse = await rpcClient.cosmosBankModule.signAndBroadcast(
+  const txResponse = await client.signAndBroadcast(
+    address,
     msgArray,
-    {
-      fee: fee,
-      memo: "send balance to action executor",
-    }
+    "auto",
+    "send"
   );
   if (txResponse.code !== 0) {
     console.error(`Error minting NFT: ${txResponse.rawLog}`);

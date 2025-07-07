@@ -1,6 +1,5 @@
-//@ts-nocheck
 import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
-import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
+import { defaultRegistryTypes, AminoTypes, SigningStargateClient, SigningStargateClientOptions, GasPrice } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 import * as sixprotocolNftadminTxRegistry from "./nftadmin/tx.registry";
 import * as sixprotocolNftmngrTxRegistry from "./nftmngr/tx.registry";
@@ -21,12 +20,15 @@ export const sixprotocolAminoConverters = {
 };
 export const sixprotocolProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...sixprotocolNftadminTxRegistry.registry, ...sixprotocolNftmngrTxRegistry.registry, ...sixprotocolNftoracleTxRegistry.registry, ...sixprotocolProtocoladminTxRegistry.registry, ...sixprotocolTokenmngrTxRegistry.registry];
 export const getSigningSixprotocolClientOptions = ({
-  defaultTypes = defaultRegistryTypes
+  defaultTypes = defaultRegistryTypes,
+  gasPrice
 }: {
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
+  gasPrice?: GasPrice;
 } = {}): {
   registry: Registry;
   aminoTypes: AminoTypes;
+  gasPrice?: GasPrice;
 } => {
   const registry = new Registry([...defaultTypes, ...sixprotocolProtoRegistry]);
   const aminoTypes = new AminoTypes({
@@ -34,27 +36,32 @@ export const getSigningSixprotocolClientOptions = ({
   });
   return {
     registry,
-    aminoTypes
+    aminoTypes,
+    ...(gasPrice ? { gasPrice } : {})
   };
 };
 export const getSigningSixprotocolClient = async ({
   rpcEndpoint,
   signer,
+  gasPrice,
   defaultTypes = defaultRegistryTypes
 }: {
   rpcEndpoint: string | HttpEndpoint;
   signer: OfflineSigner;
+  gasPrice?: GasPrice;
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => {
   const {
     registry,
     aminoTypes
   } = getSigningSixprotocolClientOptions({
-    defaultTypes
+    defaultTypes,
+    gasPrice
   });
   const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
     registry: registry as any,
-    aminoTypes
+    aminoTypes,
+    ...(gasPrice ? { gasPrice } : {})
   });
   return client;
 };

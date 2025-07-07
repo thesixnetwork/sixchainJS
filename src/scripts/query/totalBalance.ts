@@ -20,8 +20,12 @@ const getTotalBalance = async () => {
     throw new Error("Invalid network");
   }
 
-  const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({ rpcEndpoint });
+  const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({
+    rpcEndpoint,
+  });
+
   const totalBalance = await queryClient.cosmos.bank.v1beta1.totalSupply();
+
   console.log(totalBalance);
 };
 

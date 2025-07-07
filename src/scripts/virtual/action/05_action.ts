@@ -1,4 +1,8 @@
-import { SixDataChainConnector, ITxNFTmngr } from "@sixnetwork/sixchain-client";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "../../client";
 import { GasPrice } from "@cosmjs/stargate";
@@ -35,7 +39,7 @@ const main = async () => {
   let schema_name = "sixprotocol.medical";
   const ref_id = uuidv4();
 
-  const virualAction= sixprotocol.nftmngr.MessageComposer.withTypeUrl.performVirtualAction({
+  const virualAction = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performVirtualAction({
     creator: address,
     nftSchemaName: schema_name,
     action: "bridge_12_to_17",

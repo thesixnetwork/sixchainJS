@@ -2,7 +2,6 @@ import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-s
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from '@cosmjs/proto-signing';
 import { getConnectorConfig } from "../client";
-import { GasPrice } from "@cosmjs/stargate";
 import divine_elite from "../../resources/schemas/divineelite-nft-schema.json";
 import preventive from "../../resources/schemas/preventive-nft-schema.json";
 import membership from "../../resources/schemas/membership-nft-schema.json";

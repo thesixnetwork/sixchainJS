@@ -8,23 +8,23 @@ dotenv.config();
 
 const NETWORK = process.argv[2]!;
 const Balance = async () => {
-    const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
-    const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({ rpcEndpoint: rpcUrl });
+  const { rpcUrl } = await getConnectorConfig(NETWORK);
+  fs.appendFile(`balance.csv`, `address,token\n`, function (err) {
+    if (err) throw err;
+  });
 
-    fs.appendFile(`balance.csv`, `address,token\n`, function (err) {
-        if (err) throw err;
+  let balances: any = {};
+  if (fs.existsSync("balances.json")) {
+    balances = JSON.parse(fs.readFileSync("balances.json").toString());
+  }
+
+  // ** QUERY BALANCES **
+  // loop through all addresses
+  const records = [];
+  for (let i = 0; i < list_all_recipient.length; i++) {
+    const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({
+      rpcEndpoint: rpcUrl,
     });
-
-    let balances: any = {};
-    if (fs.existsSync("balances.json")) {
-        balances = JSON.parse(fs.readFileSync("balances.json").toString());
-    }
-
-    // ** QUERY BALANCES **
-    // loop through all addresses
-    const records = [];
-    for (let i = 0; i < list_all_recipient.length; i++) {
-    const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({ rpcEndpoint: rpcUrl });
     let balance;
     let isQueried = false;
     // map of address and balance
@@ -32,18 +32,18 @@ const Balance = async () => {
       address: list_all_recipient[i],
       balance: 0,
     };
+
     try {
       const balance = await queryClient.cosmos.bank.v1beta1.balance({
         address: list_all_recipient[i],
-        denom: "usix"
-      })
+        denom: "usix",
+      });
 
       // if token has been minted, skip to next token
       // update to key
       if (balance.balance) {
         isQueried = true;
-        const balanceAmount =
-          parseInt(balance?.balance.amount) / 1_000_000; 
+        const balanceAmount = parseInt(balance.balance?.amount) / 1_000_000;
         token.balance = balanceAmount;
         console.log(token);
 
