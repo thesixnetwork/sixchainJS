@@ -46,7 +46,7 @@ export const cosmosAminoConverters = {
   ...cosmosVestingV1beta1TxAmino.AminoConverter
 };
 export const cosmosProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...cosmosAuthV1beta1TxRegistry.registry, ...cosmosAuthzV1beta1TxRegistry.registry, ...cosmosBankV1beta1TxRegistry.registry, ...cosmosCircuitV1TxRegistry.registry, ...cosmosConsensusV1TxRegistry.registry, ...cosmosDistributionV1beta1TxRegistry.registry, ...cosmosFeegrantV1beta1TxRegistry.registry, ...cosmosGovV1TxRegistry.registry, ...cosmosGovV1beta1TxRegistry.registry, ...cosmosGroupV1TxRegistry.registry, ...cosmosMintV1beta1TxRegistry.registry, ...cosmosStakingV1beta1TxRegistry.registry, ...cosmosUpgradeV1beta1TxRegistry.registry, ...cosmosVestingV1beta1TxRegistry.registry];
-export const getSigningCosmosClientOptions = (options: SigningStargateClientOptions): {
+export const getSigningCosmosClientOptions = ({ options }: { options?: SigningStargateClientOptions }): {
   registry: Registry;
   aminoTypes: AminoTypes;
   options?: SigningStargateClientOptions
@@ -73,7 +73,7 @@ export const getSigningCosmosClient = async ({
   const {
     registry,
     aminoTypes
-  } = getSigningCosmosClientOptions(options);
+  } = getSigningCosmosClientOptions({options});
   const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
     registry: registry as any,
     aminoTypes,
