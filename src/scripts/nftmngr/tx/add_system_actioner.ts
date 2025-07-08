@@ -2,13 +2,13 @@ import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-s
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import dotenv from "dotenv";
-import allAddress from "./all_address";
-import { getConnectorConfig } from "../client";
+import allAddress from "../../utils/all_address";
+import { getConnectorConfig } from "../../client";
 dotenv.config();
-import divine_elite from "../../resources/schemas/divineelite-nft-schema.json";
-import preventive from "../../resources/schemas/preventive-nft-schema.json";
-import membership from "../../resources/schemas/membership-nft-schema.json";
-import lifestyle from "../../resources/schemas/lifestyle-nft-schema.json";
+import divine_elite from "../../../resources/schemas/divineelite-nft-schema.json";
+import preventive from "../../../resources/schemas/preventive-nft-schema.json";
+import membership from "../../../resources/schemas/membership-nft-schema.json";
+import lifestyle from "../../../resources/schemas/lifestyle-nft-schema.json";
 
 const schemaList = [divine_elite, preventive, membership, lifestyle];
 

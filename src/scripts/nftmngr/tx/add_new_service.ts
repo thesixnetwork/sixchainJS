@@ -4,9 +4,9 @@ import {
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import newAttribute from "../../resources/utils/new-attribute.json";
-import divine_elite from "../../resources/schemas/divineelite-nft-schema.json";
-import { getConnectorConfig } from "../client";
+import newAttribute from "../../../resources/utils/new-attribute.json";
+import divine_elite from "../../../resources/schemas/divineelite-nft-schema.json";
+import { getConnectorConfig } from "../../client";
 
 const main = async () => {
   const NETWORK = process.argv[2];

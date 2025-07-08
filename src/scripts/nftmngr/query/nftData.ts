@@ -1,5 +1,5 @@
 import { sixprotocol } from "@sixnetwork/sixchain-sdk";
-import { getConnectorConfig } from "../client";
+import { getConnectorConfig } from "../../client";
 import dotenv from "dotenv";
 
 dotenv.config();

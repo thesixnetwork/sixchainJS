@@ -2,7 +2,7 @@ import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-s
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { v4 } from "uuid";
-import { getConnectorConfig } from "../client";
+import { getConnectorConfig } from "../../client";
 import dotenv from "dotenv";
 dotenv.config();
 
