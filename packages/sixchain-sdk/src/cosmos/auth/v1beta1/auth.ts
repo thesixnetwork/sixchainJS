@@ -230,8 +230,8 @@ export const BaseAccount = {
     const obj: any = {};
     obj.address = message.address === "" ? undefined : message.address;
     obj.pub_key = message.pubKey ? Any.toAmino(message.pubKey) : undefined;
-    obj.account_number = !message.accountNumber.isZero() ? (message.accountNumber?.toString)() : undefined;
-    obj.sequence = !message.sequence.isZero() ? (message.sequence?.toString)() : undefined;
+    obj.account_number = !message.accountNumber.isZero() ? message.accountNumber?.toString() : undefined;
+    obj.sequence = !message.sequence.isZero() ? message.sequence?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: BaseAccountAminoMsg): BaseAccount {
@@ -523,11 +523,11 @@ export const Params = {
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.max_memo_characters = !message.maxMemoCharacters.isZero() ? (message.maxMemoCharacters?.toString)() : undefined;
-    obj.tx_sig_limit = !message.txSigLimit.isZero() ? (message.txSigLimit?.toString)() : undefined;
-    obj.tx_size_cost_per_byte = !message.txSizeCostPerByte.isZero() ? (message.txSizeCostPerByte?.toString)() : undefined;
-    obj.sig_verify_cost_ed25519 = !message.sigVerifyCostEd25519.isZero() ? (message.sigVerifyCostEd25519?.toString)() : undefined;
-    obj.sig_verify_cost_secp256k1 = !message.sigVerifyCostSecp256k1.isZero() ? (message.sigVerifyCostSecp256k1?.toString)() : undefined;
+    obj.max_memo_characters = !message.maxMemoCharacters.isZero() ? message.maxMemoCharacters?.toString() : undefined;
+    obj.tx_sig_limit = !message.txSigLimit.isZero() ? message.txSigLimit?.toString() : undefined;
+    obj.tx_size_cost_per_byte = !message.txSizeCostPerByte.isZero() ? message.txSizeCostPerByte?.toString() : undefined;
+    obj.sig_verify_cost_ed25519 = !message.sigVerifyCostEd25519.isZero() ? message.sigVerifyCostEd25519?.toString() : undefined;
+    obj.sig_verify_cost_secp256k1 = !message.sigVerifyCostSecp256k1.isZero() ? message.sigVerifyCostSecp256k1?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {

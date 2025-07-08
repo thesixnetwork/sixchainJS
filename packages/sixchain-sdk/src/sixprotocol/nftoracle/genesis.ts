@@ -236,19 +236,19 @@ export const GenesisState = {
     } else {
       obj.mintRequestList = message.mintRequestList;
     }
-    obj.mintRequestCount = !message.mintRequestCount.isZero() ? (message.mintRequestCount?.toString)() : undefined;
+    obj.mintRequestCount = !message.mintRequestCount.isZero() ? message.mintRequestCount?.toString() : undefined;
     if (message.actionRequestList) {
       obj.actionRequestList = message.actionRequestList.map(e => e ? ActionOracleRequest.toAmino(e) : undefined);
     } else {
       obj.actionRequestList = message.actionRequestList;
     }
-    obj.actionRequestCount = !message.actionRequestCount.isZero() ? (message.actionRequestCount?.toString)() : undefined;
+    obj.actionRequestCount = !message.actionRequestCount.isZero() ? message.actionRequestCount?.toString() : undefined;
     if (message.collectionOwnerRequestList) {
       obj.collectionOwnerRequestList = message.collectionOwnerRequestList.map(e => e ? CollectionOwnerRequest.toAmino(e) : undefined);
     } else {
       obj.collectionOwnerRequestList = message.collectionOwnerRequestList;
     }
-    obj.collectionOwnerRequestCount = !message.collectionOwnerRequestCount.isZero() ? (message.collectionOwnerRequestCount?.toString)() : undefined;
+    obj.collectionOwnerRequestCount = !message.collectionOwnerRequestCount.isZero() ? message.collectionOwnerRequestCount?.toString() : undefined;
     obj.oracle_config = message.oracleConfig ? OracleConfig.toAmino(message.oracleConfig) : undefined;
     if (message.actionSignerList) {
       obj.actionSignerList = message.actionSignerList.map(e => e ? ActionSigner.toAmino(e) : undefined);
@@ -270,7 +270,7 @@ export const GenesisState = {
     } else {
       obj.syncActionSignerList = message.syncActionSignerList;
     }
-    obj.syncActionSignerCount = !message.syncActionSignerCount.isZero() ? (message.syncActionSignerCount?.toString)() : undefined;
+    obj.syncActionSignerCount = !message.syncActionSignerCount.isZero() ? message.syncActionSignerCount?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {

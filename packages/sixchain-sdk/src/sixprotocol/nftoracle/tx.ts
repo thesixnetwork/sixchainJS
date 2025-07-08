@@ -982,7 +982,7 @@ export const MsgCreateMintRequest = {
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.tokenId = message.tokenId === "" ? undefined : message.tokenId;
-    obj.requiredConfirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
+    obj.requiredConfirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgCreateMintRequestAminoMsg): MsgCreateMintRequest {
@@ -1067,7 +1067,7 @@ export const MsgCreateMintRequestResponse = {
   },
   toAmino(message: MsgCreateMintRequestResponse): MsgCreateMintRequestResponseAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.tokenId = message.tokenId === "" ? undefined : message.tokenId;
     return obj;
@@ -1155,7 +1155,7 @@ export const MsgSubmitMintResponse = {
   toAmino(message: MsgSubmitMintResponse): MsgSubmitMintResponseAmino {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.mintRequestID = !message.mintRequestID.isZero() ? (message.mintRequestID?.toString)() : undefined;
+    obj.mintRequestID = !message.mintRequestID.isZero() ? message.mintRequestID?.toString() : undefined;
     obj.base64NftData = message.base64NftData === "" ? undefined : message.base64NftData;
     return obj;
   },
@@ -1318,7 +1318,7 @@ export const MsgCreateActionRequest = {
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.vm = message.vm === "" ? undefined : message.vm;
     obj.base64ActionSignature = message.base64ActionSignature === "" ? undefined : message.base64ActionSignature;
-    obj.requiredConfirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
+    obj.requiredConfirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgCreateActionRequestAminoMsg): MsgCreateActionRequest {
@@ -1381,7 +1381,7 @@ export const MsgCreateActionRequestResponse = {
   },
   toAmino(message: MsgCreateActionRequestResponse): MsgCreateActionRequestResponseAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgCreateActionRequestResponseAminoMsg): MsgCreateActionRequestResponse {
@@ -1467,7 +1467,7 @@ export const MsgSubmitActionResponse = {
   toAmino(message: MsgSubmitActionResponse): MsgSubmitActionResponseAmino {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.actionRequestID = !message.actionRequestID.isZero() ? (message.actionRequestID?.toString)() : undefined;
+    obj.actionRequestID = !message.actionRequestID.isZero() ? message.actionRequestID?.toString() : undefined;
     obj.base64NftData = message.base64NftData === "" ? undefined : message.base64NftData;
     return obj;
   },
@@ -1630,7 +1630,7 @@ export const MsgCreateVerifyCollectionOwnerRequest = {
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.base64VerifyRequestorSignature = message.base64VerifyRequestorSignature === "" ? undefined : message.base64VerifyRequestorSignature;
-    obj.requiredConfirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
+    obj.requiredConfirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgCreateVerifyCollectionOwnerRequestAminoMsg): MsgCreateVerifyCollectionOwnerRequest {
@@ -1715,7 +1715,7 @@ export const MsgCreateVerifyCollectionOwnerRequestResponse = {
   },
   toAmino(message: MsgCreateVerifyCollectionOwnerRequestResponse): MsgCreateVerifyCollectionOwnerRequestResponseAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.ownerAddress = message.ownerAddress === "" ? undefined : message.ownerAddress;
     return obj;
@@ -1814,7 +1814,7 @@ export const MsgSubmitVerifyCollectionOwner = {
   toAmino(message: MsgSubmitVerifyCollectionOwner): MsgSubmitVerifyCollectionOwnerAmino {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.verifyRequestID = !message.verifyRequestID.isZero() ? (message.verifyRequestID?.toString)() : undefined;
+    obj.verifyRequestID = !message.verifyRequestID.isZero() ? message.verifyRequestID?.toString() : undefined;
     obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.base64OriginContractInfo = message.base64OriginContractInfo === "" ? undefined : message.base64OriginContractInfo;
     return obj;
@@ -1879,7 +1879,7 @@ export const MsgSubmitVerifyCollectionOwnerResponse = {
   },
   toAmino(message: MsgSubmitVerifyCollectionOwnerResponse): MsgSubmitVerifyCollectionOwnerResponseAmino {
     const obj: any = {};
-    obj.verifyRequestID = !message.verifyRequestID.isZero() ? (message.verifyRequestID?.toString)() : undefined;
+    obj.verifyRequestID = !message.verifyRequestID.isZero() ? message.verifyRequestID?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgSubmitVerifyCollectionOwnerResponseAminoMsg): MsgSubmitVerifyCollectionOwnerResponse {
@@ -3256,7 +3256,7 @@ export const MsgCreateSyncActionSigner = {
     obj.chain = message.chain === "" ? undefined : message.chain;
     obj.actorAddress = message.actorAddress === "" ? undefined : message.actorAddress;
     obj.ownerAddress = message.ownerAddress === "" ? undefined : message.ownerAddress;
-    obj.requiredConfirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
+    obj.requiredConfirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgCreateSyncActionSignerAminoMsg): MsgCreateSyncActionSigner {
@@ -3352,7 +3352,7 @@ export const MsgCreateSyncActionSignerResponse = {
   },
   toAmino(message: MsgCreateSyncActionSignerResponse): MsgCreateSyncActionSignerResponseAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     obj.chain = message.chain === "" ? undefined : message.chain;
     obj.ownerAddress = message.ownerAddress === "" ? undefined : message.ownerAddress;
     obj.actorAddress = message.actorAddress === "" ? undefined : message.actorAddress;
@@ -3474,7 +3474,7 @@ export const MsgSubmitSyncActionSigner = {
   toAmino(message: MsgSubmitSyncActionSigner): MsgSubmitSyncActionSignerAmino {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.syncId = !message.syncId.isZero() ? (message.syncId?.toString)() : undefined;
+    obj.syncId = !message.syncId.isZero() ? message.syncId?.toString() : undefined;
     obj.chain = message.chain === "" ? undefined : message.chain;
     obj.actorAddress = message.actorAddress === "" ? undefined : message.actorAddress;
     obj.ownerAddress = message.ownerAddress === "" ? undefined : message.ownerAddress;
@@ -3552,7 +3552,7 @@ export const MsgSubmitSyncActionSignerResponse = {
   },
   toAmino(message: MsgSubmitSyncActionSignerResponse): MsgSubmitSyncActionSignerResponseAmino {
     const obj: any = {};
-    obj.verifyRequestID = !message.verifyRequestID.isZero() ? (message.verifyRequestID?.toString)() : undefined;
+    obj.verifyRequestID = !message.verifyRequestID.isZero() ? message.verifyRequestID?.toString() : undefined;
     obj.expireAt = message.expireAt === "" ? undefined : message.expireAt;
     return obj;
   },

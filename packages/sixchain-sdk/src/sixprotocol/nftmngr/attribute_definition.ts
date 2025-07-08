@@ -311,7 +311,7 @@ export const AttributeDefinition = {
     obj.default_mint_value = message.defaultMintValue ? DefaultMintValue.toAmino(message.defaultMintValue) : undefined;
     obj.hidden_overide = message.hiddenOveride === false ? undefined : message.hiddenOveride;
     obj.hidden_to_marketplace = message.hiddenToMarketplace === false ? undefined : message.hiddenToMarketplace;
-    obj.index = !message.index.isZero() ? (message.index?.toString)() : undefined;
+    obj.index = !message.index.isZero() ? message.index?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: AttributeDefinitionAminoMsg): AttributeDefinition {

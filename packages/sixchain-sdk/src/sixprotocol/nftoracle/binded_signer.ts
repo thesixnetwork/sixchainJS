@@ -190,7 +190,7 @@ export const BindedSigner = {
     } else {
       obj.signers = message.signers;
     }
-    obj.actorCount = !message.actorCount.isZero() ? (message.actorCount?.toString)() : undefined;
+    obj.actorCount = !message.actorCount.isZero() ? message.actorCount?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: BindedSignerAminoMsg): BindedSigner {

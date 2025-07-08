@@ -957,8 +957,8 @@ export const GetTxsEventRequest = {
     }
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     obj.order_by = message.orderBy === 0 ? undefined : message.orderBy;
-    obj.page = !message.page.isZero() ? (message.page?.toString)() : undefined;
-    obj.limit = !message.limit.isZero() ? (message.limit?.toString)() : undefined;
+    obj.page = !message.page.isZero() ? message.page?.toString() : undefined;
+    obj.limit = !message.limit.isZero() ? message.limit?.toString() : undefined;
     obj.query = message.query === "" ? undefined : message.query;
     return obj;
   },
@@ -1068,7 +1068,7 @@ export const GetTxsEventResponse = {
       obj.tx_responses = message.txResponses;
     }
     obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
-    obj.total = !message.total.isZero() ? (message.total?.toString)() : undefined;
+    obj.total = !message.total.isZero() ? message.total?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: GetTxsEventResponseAminoMsg): GetTxsEventResponse {
@@ -1610,7 +1610,7 @@ export const GetBlockWithTxsRequest = {
   },
   toAmino(message: GetBlockWithTxsRequest): GetBlockWithTxsRequestAmino {
     const obj: any = {};
-    obj.height = !message.height.isZero() ? (message.height?.toString)() : undefined;
+    obj.height = !message.height.isZero() ? message.height?.toString() : undefined;
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },

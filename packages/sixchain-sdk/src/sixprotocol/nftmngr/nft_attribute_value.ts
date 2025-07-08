@@ -268,7 +268,7 @@ export const NumberAttributeValue = {
   },
   toAmino(message: NumberAttributeValue): NumberAttributeValueAmino {
     const obj: any = {};
-    obj.value = !message.value.isZero() ? (message.value?.toString)() : undefined;
+    obj.value = !message.value.isZero() ? message.value?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: NumberAttributeValueAminoMsg): NumberAttributeValue {

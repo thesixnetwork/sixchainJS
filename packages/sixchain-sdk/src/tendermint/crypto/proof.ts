@@ -207,8 +207,8 @@ export const Proof = {
   },
   toAmino(message: Proof): ProofAmino {
     const obj: any = {};
-    obj.total = !message.total.isZero() ? (message.total?.toString)() : undefined;
-    obj.index = !message.index.isZero() ? (message.index?.toString)() : undefined;
+    obj.total = !message.total.isZero() ? message.total?.toString() : undefined;
+    obj.index = !message.index.isZero() ? message.index?.toString() : undefined;
     obj.leaf_hash = message.leafHash ? base64FromBytes(message.leafHash) : undefined;
     if (message.aunts) {
       obj.aunts = message.aunts.map(e => base64FromBytes(e));

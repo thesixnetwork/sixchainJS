@@ -91,7 +91,7 @@ export const Burn = {
   },
   toAmino(message: Burn): BurnAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
     return obj;

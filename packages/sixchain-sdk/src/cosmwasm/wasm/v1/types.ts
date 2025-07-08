@@ -593,7 +593,7 @@ export const Params = {
     const obj: any = {};
     obj.code_upload_access = message.codeUploadAccess ? AccessConfig.toAmino(message.codeUploadAccess) : undefined;
     obj.instantiate_default_permission = message.instantiateDefaultPermission === 0 ? undefined : message.instantiateDefaultPermission;
-    obj.max_wasm_code_size = !message.maxWasmCodeSize.isZero() ? (message.maxWasmCodeSize?.toString)() : undefined;
+    obj.max_wasm_code_size = !message.maxWasmCodeSize.isZero() ? message.maxWasmCodeSize?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {
@@ -821,7 +821,7 @@ export const ContractInfo = {
   },
   toAmino(message: ContractInfo): ContractInfoAmino {
     const obj: any = {};
-    obj.code_id = !message.codeId.isZero() ? (message.codeId?.toString)() : undefined;
+    obj.code_id = !message.codeId.isZero() ? message.codeId?.toString() : undefined;
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.admin = message.admin === "" ? undefined : message.admin;
     obj.label = message.label === "" ? undefined : message.label;
@@ -930,7 +930,7 @@ export const ContractCodeHistoryEntry = {
   toAmino(message: ContractCodeHistoryEntry): ContractCodeHistoryEntryAmino {
     const obj: any = {};
     obj.operation = message.operation === 0 ? undefined : message.operation;
-    obj.code_id = !message.codeId.isZero() ? (message.codeId?.toString)() : undefined;
+    obj.code_id = !message.codeId.isZero() ? message.codeId?.toString() : undefined;
     obj.updated = message.updated ? AbsoluteTxPosition.toAmino(message.updated) : undefined;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
     return obj;
@@ -1012,8 +1012,8 @@ export const AbsoluteTxPosition = {
   },
   toAmino(message: AbsoluteTxPosition): AbsoluteTxPositionAmino {
     const obj: any = {};
-    obj.block_height = !message.blockHeight.isZero() ? (message.blockHeight?.toString)() : undefined;
-    obj.tx_index = !message.txIndex.isZero() ? (message.txIndex?.toString)() : undefined;
+    obj.block_height = !message.blockHeight.isZero() ? message.blockHeight?.toString() : undefined;
+    obj.tx_index = !message.txIndex.isZero() ? message.txIndex?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: AbsoluteTxPositionAminoMsg): AbsoluteTxPosition {

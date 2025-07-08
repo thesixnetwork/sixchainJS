@@ -1978,7 +1978,7 @@ export const MsgBurnResponse = {
   },
   toAmino(message: MsgBurnResponse): MsgBurnResponseAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgBurnResponseAminoMsg): MsgBurnResponse {

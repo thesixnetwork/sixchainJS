@@ -202,12 +202,12 @@ export const MintRequest = {
   },
   toAmino(message: MintRequest): MintRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     obj.nft_schema_code = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.token_id = message.tokenId === "" ? undefined : message.tokenId;
-    obj.required_confirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
+    obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
-    obj.current_confirm = !message.currentConfirm.isZero() ? (message.currentConfirm?.toString)() : undefined;
+    obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
     if (message.confirmers) {
       obj.confirmers = message.confirmers.map(e => e);
     } else {
@@ -220,7 +220,7 @@ export const MintRequest = {
     } else {
       obj.data_hashes = message.dataHashes;
     }
-    obj.expired_height = !message.expiredHeight.isZero() ? (message.expiredHeight?.toString)() : undefined;
+    obj.expired_height = !message.expiredHeight.isZero() ? message.expiredHeight?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MintRequestAminoMsg): MintRequest {

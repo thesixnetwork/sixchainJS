@@ -258,9 +258,9 @@ export const ProtocolVersion = {
   },
   toAmino(message: ProtocolVersion): ProtocolVersionAmino {
     const obj: any = {};
-    obj.p2p = !message.p2p.isZero() ? (message.p2p?.toString)() : undefined;
-    obj.block = !message.block.isZero() ? (message.block?.toString)() : undefined;
-    obj.app = !message.app.isZero() ? (message.app?.toString)() : undefined;
+    obj.p2p = !message.p2p.isZero() ? message.p2p?.toString() : undefined;
+    obj.block = !message.block.isZero() ? message.block?.toString() : undefined;
+    obj.app = !message.app.isZero() ? message.app?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ProtocolVersionAminoMsg): ProtocolVersion {

@@ -90,7 +90,7 @@ export const NftCollection = {
   toAmino(message: NftCollection): NftCollectionAmino {
     const obj: any = {};
     obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
-    obj.total = !message.total.isZero() ? (message.total?.toString)() : undefined;
+    obj.total = !message.total.isZero() ? message.total?.toString() : undefined;
     if (message.nftDatas) {
       obj.nftDatas = message.nftDatas.map(e => e ? NftData.toAmino(e) : undefined);
     } else {

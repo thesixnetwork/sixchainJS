@@ -299,14 +299,14 @@ export const SyncActionSigner = {
   },
   toAmino(message: SyncActionSigner): SyncActionSignerAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     obj.chain = message.chain === "" ? undefined : message.chain;
     obj.actor_address = message.actorAddress === "" ? undefined : message.actorAddress;
     obj.owner_address = message.ownerAddress === "" ? undefined : message.ownerAddress;
     obj.caller = message.caller === "" ? undefined : message.caller;
-    obj.required_confirm = !message.requiredConfirm.isZero() ? (message.requiredConfirm?.toString)() : undefined;
+    obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
-    obj.current_confirm = !message.currentConfirm.isZero() ? (message.currentConfirm?.toString)() : undefined;
+    obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
     if (message.confirmers) {
       obj.confirmers = message.confirmers.map(e => e);
     } else {
@@ -319,7 +319,7 @@ export const SyncActionSigner = {
     } else {
       obj.data_hashes = message.dataHashes;
     }
-    obj.expired_height = !message.expiredHeight.isZero() ? (message.expiredHeight?.toString)() : undefined;
+    obj.expired_height = !message.expiredHeight.isZero() ? message.expiredHeight?.toString() : undefined;
     obj.execution_error_message = message.executionErrorMessage === "" ? undefined : message.executionErrorMessage;
     return obj;
   },

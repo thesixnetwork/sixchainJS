@@ -92,7 +92,7 @@ export const OpenseaDisplayOption = {
     const obj: any = {};
     obj.display_type = message.displayType === "" ? undefined : message.displayType;
     obj.trait_type = message.traitType === "" ? undefined : message.traitType;
-    obj.max_value = !message.maxValue.isZero() ? (message.maxValue?.toString)() : undefined;
+    obj.max_value = !message.maxValue.isZero() ? message.maxValue?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: OpenseaDisplayOptionAminoMsg): OpenseaDisplayOption {

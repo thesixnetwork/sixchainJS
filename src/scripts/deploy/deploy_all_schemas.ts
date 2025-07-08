@@ -1,7 +1,10 @@
-import { EncodeObject } from '@cosmjs/proto-signing';
-import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import { EncodeObject } from "@cosmjs/proto-signing";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-
+import { GasPrice } from "@cosmjs/stargate";
 import divine_elite from "../../resources/schemas/divineelite-nft-schema.json";
 import preventive from "../../resources/schemas/preventive-nft-schema.json";
 import membership from "../../resources/schemas/membership-nft-schema.json";
@@ -18,22 +21,25 @@ if (!NETOWRK) {
 }
 
 const schemaList = [divine_elite, preventive, membership, lifestyle];
+const gasPrice = GasPrice.fromString("1.25usix");
 
 export const Deploy = async () => {
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
 
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    mnemonic,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
   // Get signing client
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
-  const accounts = await wallet.getAccounts()
+  const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
   let msgArray: Array<EncodeObject> = [];
@@ -49,10 +55,11 @@ export const Deploy = async () => {
     let encodeBase64Schema = Buffer.from(
       JSON.stringify(schemaList[i])
     ).toString("base64");
-    const msgCreateNFTSchema = sixprotocol.nftmngr.MessageComposer.withTypeUrl.createNFTSchema({
-      creator: address,
-      nftSchemaBase64: encodeBase64Schema,
-    })
+    const msgCreateNFTSchema =
+      sixprotocol.nftmngr.MessageComposer.withTypeUrl.createNFTSchema({
+        creator: address,
+        nftSchemaBase64: encodeBase64Schema,
+      });
 
     msgArray.push(msgCreateNFTSchema);
   }
@@ -67,7 +74,7 @@ export const Deploy = async () => {
     console.log(txResponse.rawLog);
   }
   console.log(
-    `gasUsed: ${txResponse.gasUsed}\ngasWanted:${txResponse.gasWanted}\n`
+    `gasUsed: ${txResponse.gasUsed}\ngasWanted:${txResponse.gasWanted}, hash=${txResponse.transactionHash}\n`
   );
   return txResponse;
 };

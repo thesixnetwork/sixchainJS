@@ -695,7 +695,7 @@ export const QueryGetMintRequestRequest = {
   },
   toAmino(message: QueryGetMintRequestRequest): QueryGetMintRequestRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryGetMintRequestRequestAminoMsg): QueryGetMintRequestRequest {
@@ -961,7 +961,7 @@ export const QueryGetActionRequestRequest = {
   },
   toAmino(message: QueryGetActionRequestRequest): QueryGetActionRequestRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryGetActionRequestRequestAminoMsg): QueryGetActionRequestRequest {
@@ -1227,7 +1227,7 @@ export const QueryGetCollectionOwnerRequestRequest = {
   },
   toAmino(message: QueryGetCollectionOwnerRequestRequest): QueryGetCollectionOwnerRequestRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryGetCollectionOwnerRequestRequestAminoMsg): QueryGetCollectionOwnerRequestRequest {
@@ -2276,7 +2276,7 @@ export const QueryGetSyncActionSignerRequest = {
   },
   toAmino(message: QueryGetSyncActionSignerRequest): QueryGetSyncActionSignerRequestAmino {
     const obj: any = {};
-    obj.id = !message.id.isZero() ? (message.id?.toString)() : undefined;
+    obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryGetSyncActionSignerRequestAminoMsg): QueryGetSyncActionSignerRequest {

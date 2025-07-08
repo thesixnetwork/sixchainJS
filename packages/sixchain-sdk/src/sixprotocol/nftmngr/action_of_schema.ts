@@ -92,7 +92,7 @@ export const ActionOfSchema = {
     const obj: any = {};
     obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.name = message.name === "" ? undefined : message.name;
-    obj.index = !message.index.isZero() ? (message.index?.toString)() : undefined;
+    obj.index = !message.index.isZero() ? message.index?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ActionOfSchemaAminoMsg): ActionOfSchema {

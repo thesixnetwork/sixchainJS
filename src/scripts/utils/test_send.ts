@@ -1,7 +1,7 @@
-import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
+import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { GasPrice, calculateFee } from "@cosmjs/stargate";
+import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "../client";
 import dotenv from "dotenv";
 
@@ -10,7 +10,7 @@ dotenv.config();
 const NETOWRK = process.argv[2]!;
 const amount = process.argv[3]; // input six amount
 const using_amount = parseInt(amount) * 1_000_000; // convert to usix
-const gasPrice = GasPrice.fromString("1.25usix");
+const gasPrice = GasPrice.fromString("1.25usix")
 
 const cosmosSendAuto = async () => {
   if (!NETOWRK) {
@@ -29,7 +29,9 @@ const cosmosSendAuto = async () => {
   const client = await getSigningCosmosClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
-    gasPrice: gasPrice,
+    options: {
+      gasPrice: gasPrice
+    }
   });
 
   // Get account address
@@ -83,7 +85,9 @@ const cosmosSendFixed = async () => {
   const client = await getSigningCosmosClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
-    gasPrice: gasPrice,
+    options: {
+      gasPrice: gasPrice
+    }
   });
 
   // Get account address
@@ -149,6 +153,6 @@ async function main() {
   }
 }
 
-main().then(() => {
+cosmosSendAuto().then(() => {
   console.log;
 });

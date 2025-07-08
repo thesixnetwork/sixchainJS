@@ -237,7 +237,7 @@ export const ConfigResponse = {
     obj.minimum_gas_price = message.minimumGasPrice === "" ? undefined : message.minimumGasPrice;
     obj.pruning_keep_recent = message.pruningKeepRecent === "" ? undefined : message.pruningKeepRecent;
     obj.pruning_interval = message.pruningInterval === "" ? undefined : message.pruningInterval;
-    obj.halt_height = !message.haltHeight.isZero() ? (message.haltHeight?.toString)() : undefined;
+    obj.halt_height = !message.haltHeight.isZero() ? message.haltHeight?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ConfigResponseAminoMsg): ConfigResponse {
@@ -406,8 +406,8 @@ export const StatusResponse = {
   },
   toAmino(message: StatusResponse): StatusResponseAmino {
     const obj: any = {};
-    obj.earliest_store_height = !message.earliestStoreHeight.isZero() ? (message.earliestStoreHeight?.toString)() : undefined;
-    obj.height = !message.height.isZero() ? (message.height?.toString)() : undefined;
+    obj.earliest_store_height = !message.earliestStoreHeight.isZero() ? message.earliestStoreHeight?.toString() : undefined;
+    obj.height = !message.height.isZero() ? message.height?.toString() : undefined;
     obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
     obj.app_hash = message.appHash ? base64FromBytes(message.appHash) : undefined;
     obj.validator_hash = message.validatorHash ? base64FromBytes(message.validatorHash) : undefined;

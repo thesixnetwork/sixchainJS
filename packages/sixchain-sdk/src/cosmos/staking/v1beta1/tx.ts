@@ -1820,7 +1820,7 @@ export const MsgCancelUnbondingDelegation = {
     obj.delegator_address = message.delegatorAddress === "" ? undefined : message.delegatorAddress;
     obj.validator_address = message.validatorAddress === "" ? undefined : message.validatorAddress;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : Coin.toAmino(Coin.fromPartial({}));
-    obj.creation_height = !message.creationHeight.isZero() ? (message.creationHeight?.toString)() : undefined;
+    obj.creation_height = !message.creationHeight.isZero() ? message.creationHeight?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgCancelUnbondingDelegationAminoMsg): MsgCancelUnbondingDelegation {

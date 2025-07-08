@@ -716,7 +716,7 @@ export const ValidatorCurrentRewards = {
     } else {
       obj.rewards = message.rewards;
     }
-    obj.period = !message.period.isZero() ? (message.period?.toString)() : undefined;
+    obj.period = !message.period.isZero() ? message.period?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ValidatorCurrentRewardsAminoMsg): ValidatorCurrentRewards {
@@ -938,7 +938,7 @@ export const ValidatorSlashEvent = {
   },
   toAmino(message: ValidatorSlashEvent): ValidatorSlashEventAmino {
     const obj: any = {};
-    obj.validator_period = !message.validatorPeriod.isZero() ? (message.validatorPeriod?.toString)() : undefined;
+    obj.validator_period = !message.validatorPeriod.isZero() ? message.validatorPeriod?.toString() : undefined;
     obj.fraction = message.fraction === "" ? undefined : message.fraction;
     return obj;
   },
@@ -1280,9 +1280,9 @@ export const DelegatorStartingInfo = {
   },
   toAmino(message: DelegatorStartingInfo): DelegatorStartingInfoAmino {
     const obj: any = {};
-    obj.previous_period = !message.previousPeriod.isZero() ? (message.previousPeriod?.toString)() : undefined;
+    obj.previous_period = !message.previousPeriod.isZero() ? message.previousPeriod?.toString() : undefined;
     obj.stake = message.stake ?? "";
-    obj.height = message.height ? (message.height?.toString)() : "0";
+    obj.height = message.height ? message.height?.toString() : "0";
     return obj;
   },
   fromAminoMsg(object: DelegatorStartingInfoAminoMsg): DelegatorStartingInfo {

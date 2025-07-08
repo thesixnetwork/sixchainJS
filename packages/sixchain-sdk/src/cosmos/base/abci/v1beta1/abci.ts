@@ -692,7 +692,7 @@ export const TxResponse = {
   },
   toAmino(message: TxResponse): TxResponseAmino {
     const obj: any = {};
-    obj.height = !message.height.isZero() ? (message.height?.toString)() : undefined;
+    obj.height = !message.height.isZero() ? message.height?.toString() : undefined;
     obj.txhash = message.txhash === "" ? undefined : message.txhash;
     obj.codespace = message.codespace === "" ? undefined : message.codespace;
     obj.code = message.code === 0 ? undefined : message.code;
@@ -704,8 +704,8 @@ export const TxResponse = {
       obj.logs = message.logs;
     }
     obj.info = message.info === "" ? undefined : message.info;
-    obj.gas_wanted = !message.gasWanted.isZero() ? (message.gasWanted?.toString)() : undefined;
-    obj.gas_used = !message.gasUsed.isZero() ? (message.gasUsed?.toString)() : undefined;
+    obj.gas_wanted = !message.gasWanted.isZero() ? message.gasWanted?.toString() : undefined;
+    obj.gas_used = !message.gasUsed.isZero() ? message.gasUsed?.toString() : undefined;
     obj.tx = message.tx ? Any.toAmino(message.tx) : undefined;
     obj.timestamp = message.timestamp === "" ? undefined : message.timestamp;
     if (message.events) {
@@ -1051,8 +1051,8 @@ export const GasInfo = {
   },
   toAmino(message: GasInfo): GasInfoAmino {
     const obj: any = {};
-    obj.gas_wanted = !message.gasWanted.isZero() ? (message.gasWanted?.toString)() : undefined;
-    obj.gas_used = !message.gasUsed.isZero() ? (message.gasUsed?.toString)() : undefined;
+    obj.gas_wanted = !message.gasWanted.isZero() ? message.gasWanted?.toString() : undefined;
+    obj.gas_used = !message.gasUsed.isZero() ? message.gasUsed?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: GasInfoAminoMsg): GasInfo {
@@ -1530,11 +1530,11 @@ export const SearchTxsResult = {
   },
   toAmino(message: SearchTxsResult): SearchTxsResultAmino {
     const obj: any = {};
-    obj.total_count = !message.totalCount.isZero() ? (message.totalCount?.toString)() : undefined;
-    obj.count = !message.count.isZero() ? (message.count?.toString)() : undefined;
-    obj.page_number = !message.pageNumber.isZero() ? (message.pageNumber?.toString)() : undefined;
-    obj.page_total = !message.pageTotal.isZero() ? (message.pageTotal?.toString)() : undefined;
-    obj.limit = !message.limit.isZero() ? (message.limit?.toString)() : undefined;
+    obj.total_count = !message.totalCount.isZero() ? message.totalCount?.toString() : undefined;
+    obj.count = !message.count.isZero() ? message.count?.toString() : undefined;
+    obj.page_number = !message.pageNumber.isZero() ? message.pageNumber?.toString() : undefined;
+    obj.page_total = !message.pageTotal.isZero() ? message.pageTotal?.toString() : undefined;
+    obj.limit = !message.limit.isZero() ? message.limit?.toString() : undefined;
     if (message.txs) {
       obj.txs = message.txs.map(e => e ? TxResponse.toAmino(e) : undefined);
     } else {
@@ -1661,11 +1661,11 @@ export const SearchBlocksResult = {
   },
   toAmino(message: SearchBlocksResult): SearchBlocksResultAmino {
     const obj: any = {};
-    obj.total_count = !message.totalCount.isZero() ? (message.totalCount?.toString)() : undefined;
-    obj.count = !message.count.isZero() ? (message.count?.toString)() : undefined;
-    obj.page_number = !message.pageNumber.isZero() ? (message.pageNumber?.toString)() : undefined;
-    obj.page_total = !message.pageTotal.isZero() ? (message.pageTotal?.toString)() : undefined;
-    obj.limit = !message.limit.isZero() ? (message.limit?.toString)() : undefined;
+    obj.total_count = !message.totalCount.isZero() ? message.totalCount?.toString() : undefined;
+    obj.count = !message.count.isZero() ? message.count?.toString() : undefined;
+    obj.page_number = !message.pageNumber.isZero() ? message.pageNumber?.toString() : undefined;
+    obj.page_total = !message.pageTotal.isZero() ? message.pageTotal?.toString() : undefined;
+    obj.limit = !message.limit.isZero() ? message.limit?.toString() : undefined;
     if (message.blocks) {
       obj.blocks = message.blocks.map(e => e ? Block.toAmino(e) : undefined);
     } else {

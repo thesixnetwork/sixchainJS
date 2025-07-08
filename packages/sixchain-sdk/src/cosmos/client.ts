@@ -46,10 +46,10 @@ export const cosmosAminoConverters = {
   ...cosmosVestingV1beta1TxAmino.AminoConverter
 };
 export const cosmosProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...cosmosAuthV1beta1TxRegistry.registry, ...cosmosAuthzV1beta1TxRegistry.registry, ...cosmosBankV1beta1TxRegistry.registry, ...cosmosCircuitV1TxRegistry.registry, ...cosmosConsensusV1TxRegistry.registry, ...cosmosDistributionV1beta1TxRegistry.registry, ...cosmosFeegrantV1beta1TxRegistry.registry, ...cosmosGovV1TxRegistry.registry, ...cosmosGovV1beta1TxRegistry.registry, ...cosmosGroupV1TxRegistry.registry, ...cosmosMintV1beta1TxRegistry.registry, ...cosmosStakingV1beta1TxRegistry.registry, ...cosmosUpgradeV1beta1TxRegistry.registry, ...cosmosVestingV1beta1TxRegistry.registry];
-export const getSigningCosmosClientOptions = (gasPrice?: GasPrice): {
+export const getSigningCosmosClientOptions = (options: SigningStargateClientOptions): {
   registry: Registry;
   aminoTypes: AminoTypes;
-  gasPrice?: GasPrice;
+  options?: SigningStargateClientOptions
 } => {
   const registry = new Registry([...cosmosProtoRegistry]);
   const aminoTypes = new AminoTypes({
@@ -58,26 +58,26 @@ export const getSigningCosmosClientOptions = (gasPrice?: GasPrice): {
   return {
     registry,
     aminoTypes,
-    ...(gasPrice ? { gasPrice } : {})
+    options
   };
 };
 export const getSigningCosmosClient = async ({
   rpcEndpoint,
   signer,
-  gasPrice
+  options,
 }: {
   rpcEndpoint: string | HttpEndpoint;
   signer: OfflineSigner;
-  gasPrice?: GasPrice;
+  options?: SigningStargateClientOptions
 }) => {
   const {
     registry,
     aminoTypes
-  } = getSigningCosmosClientOptions(gasPrice);
+  } = getSigningCosmosClientOptions(options);
   const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
     registry: registry as any,
     aminoTypes,
-    ...(gasPrice ? { gasPrice } : {})
+    ...options
   });
   return client;
 };
