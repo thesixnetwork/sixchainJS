@@ -1,6 +1,6 @@
 import { sixprotocol } from "@sixnetwork/sixchain-sdk";
-import { getConnectorConfig } from "../../client";
-import list_all_recipient from "../../nftmngr/tx/all_address";
+import { getConnectorConfig } from "../../../client";
+import list_all_recipient from "../../../nftmngr/tx/all_address";
 import fs from "fs";
 import dotenv from "dotenv";
 

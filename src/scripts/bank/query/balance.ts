@@ -18,9 +18,12 @@ const getTotalBalance = async () => {
   const queryClient = await cosmos.ClientFactory.createRPCQueryClient({
     rpcEndpoint: rpcUrl,
   });
-  const totalBalance = await queryClient.cosmos.bank.v1beta1.totalSupply();
+  const balance = await queryClient.cosmos.bank.v1beta1.balance({
+    address: "6x1myrlxmmasv6yq4axrxmdswj9kv5gc0ppx95rmq",
+    denom: "usix",
+  });
 
-  console.log(totalBalance.supply);
+  console.log(balance.balance);
 };
 
 // create one metadata for test on production which is token_id = 2531
