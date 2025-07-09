@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -29,8 +29,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -39,26 +39,25 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual messages to execute on behalf of granter
   const messagesToExecute = [
     {
       typeUrl: "/cosmos.bank.v1beta1.MsgSend",
       value: cosmos.bank.v1beta1.MsgSend.encode({
-        fromAddress: "6x1example_granter_address", // TODO: Replace with granter address
-        toAddress: "6x1example_recipient_address", // TODO: Replace with recipient address
+        fromAddress: "6x1myrlxmmasv6yq4axrxmdswj9kv5gc0ppx95rmq",
+        toAddress: "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp",
         amount: [
           {
             denom: "usix",
             amount: "1000000", // 1 SIX
           },
         ],
-      }).finish()
-    }
+      }).finish(),
+    },
   ];
 
   const exec = cosmos.authz.v1beta1.MessageComposer.withTypeUrl.exec({
     grantee: address,
-    msgs: messagesToExecute
+    msgs: messagesToExecute,
   });
 
   msgArray.push(exec);

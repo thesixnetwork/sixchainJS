@@ -39,8 +39,7 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual validator address
-  const validatorAddress = "6xvaloper1example_validator_address";
+  const validatorAddress = "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76";
 
   const withdrawRewards = cosmos.distribution.v1beta1.MessageComposer.withTypeUrl.withdrawDelegatorReward({
     delegatorAddress: address,

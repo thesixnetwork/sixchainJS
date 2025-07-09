@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -29,8 +29,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -39,26 +39,28 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual grantee address
-  const granteeAddress = "6x1example_grantee_address";
+  const granteeAddress = "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp";
 
   // Basic allowance grant
   const basicAllowance = {
     typeUrl: "/cosmos.feegrant.v1beta1.BasicAllowance",
     value: cosmos.feegrant.v1beta1.BasicAllowance.encode({
-      spendLimit: [{
-        denom: "usix",
-        amount: "1000000" // 1 SIX
-      }],
-      expiration: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) // 1 year from now, TODO: Adjust as needed
-    }).finish()
+      spendLimit: [
+        {
+          denom: "usix",
+          amount: "1000000", // 1 SIX
+        },
+      ],
+      expiration: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // 1 year from now
+    }).finish(),
   };
 
-  const grantAllowance = cosmos.feegrant.v1beta1.MessageComposer.withTypeUrl.grantAllowance({
-    granter: address,
-    grantee: granteeAddress,
-    allowance: basicAllowance
-  });
+  const grantAllowance =
+    cosmos.feegrant.v1beta1.MessageComposer.withTypeUrl.grantAllowance({
+      granter: address,
+      grantee: granteeAddress,
+      allowance: basicAllowance,
+    });
 
   msgArray.push(grantAllowance);
 

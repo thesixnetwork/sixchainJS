@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -29,8 +29,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -39,15 +39,15 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual grantee address and permissions
-  const authorize = cosmos.circuit.v1.MessageComposer.withTypeUrl.authorizeCircuitBreaker({
-    granter: address,
-    grantee: "6x1example_grantee_address", // TODO: Replace with actual grantee address
-    permissions: {
-      level: 1, // TODO: Set appropriate permission level
-      limitTypeUrls: ["/cosmos.bank.v1beta1.MsgSend"] // TODO: Set appropriate message types
-    }
-  });
+  const authorize =
+    cosmos.circuit.v1.MessageComposer.withTypeUrl.authorizeCircuitBreaker({
+      granter: address,
+      grantee: "6x1myrlxmmasv6yq4axrxmdswj9kv5gc0ppx95rmq",
+      permissions: {
+        level: 1,
+        limitTypeUrls: ["/cosmos.bank.v1beta1.MsgSend"],
+      },
+    });
 
   msgArray.push(authorize);
 

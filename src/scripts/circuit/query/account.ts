@@ -20,8 +20,7 @@ const main = async () => {
   });
 
   try {
-    // TODO: Replace with actual account address
-    const accountAddress = "6x1example_account_address";
+    const accountAddress = "6x1myrlxmmasv6yq4axrxmdswj9kv5gc0ppx95rmq";
 
     // Query account permissions
     const account = await queryClient.cosmos.circuit.v1.account({

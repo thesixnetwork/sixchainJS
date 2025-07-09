@@ -22,12 +22,13 @@ const main = async () => {
   try {
     // Note: Crisis module typically doesn't have many query endpoints
     // The main functionality is through invariant checks and halt-on-error
-    
+
     // TODO: Crisis module queries are limited, this is a placeholder
     // Most crisis functionality happens through invariant checks
     console.log("Crisis module queries are limited to invariant checks");
-    console.log("Crisis module is primarily used for emergency halt functionality");
-    
+    console.log(
+      "Crisis module is primarily used for emergency halt functionality"
+    );
   } catch (error) {
     console.error("Error querying crisis:", error);
   }

@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -29,8 +29,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -39,13 +39,13 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual grantee address
-  const granteeAddress = "6x1example_grantee_address";
+  const granteeAddress = "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp";
 
-  const revokeAllowance = cosmos.feegrant.v1beta1.MessageComposer.withTypeUrl.revokeAllowance({
-    granter: address,
-    grantee: granteeAddress
-  });
+  const revokeAllowance =
+    cosmos.feegrant.v1beta1.MessageComposer.withTypeUrl.revokeAllowance({
+      granter: address,
+      grantee: granteeAddress,
+    });
 
   msgArray.push(revokeAllowance);
 

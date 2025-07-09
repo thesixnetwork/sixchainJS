@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -29,8 +29,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -40,18 +40,26 @@ const main = async () => {
   let msgArray: Array<EncodeObject> = [];
 
   // TODO: Replace with actual proposal details
-  const submitProposal = cosmos.gov.v1.MessageComposer.withTypeUrl.submitProposal({
-    messages: [], // TODO: Add actual proposal messages
-    initialDeposit: [{
-      denom: "usix",
-      amount: "10000000" // 10 SIX, TODO: Adjust based on governance params
-    }],
-    proposer: address,
-    metadata: "TODO: Add proposal metadata",
-    title: "TODO: Add proposal title",
-    summary: "TODO: Add proposal summary",
-    expedited: false // TODO: Set to true for expedited proposals
-  });
+  const submitProposal =
+    cosmos.gov.v1.MessageComposer.withTypeUrl.submitProposal({
+      messages: [
+        {
+          typeUrl: "/cosmos.upgrade.v1beta1.msgsoftwareupgrade",
+          value: undefined,
+        },
+      ], // TODO: Add actual proposal messages
+      initialDeposit: [
+        {
+          denom: "usix",
+          amount: "10000000", // 10 SIX, TODO: Adjust based on governance params
+        },
+      ],
+      proposer: address,
+      metadata: "TODO: Add proposal metadata",
+      title: "TODO: Add proposal title",
+      summary: "TODO: Add proposal summary",
+      expedited: false, // TODO: Set to true for expedited proposals
+    });
 
   msgArray.push(submitProposal);
 

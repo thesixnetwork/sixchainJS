@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -29,8 +29,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -39,10 +39,8 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual grantee address
-  const granteeAddress = "6x1example_grantee_address";
-  
-  // TODO: Replace with actual authorization type and expiration
+  const granteeAddress = "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp";
+
   const grant = cosmos.authz.v1beta1.MessageComposer.withTypeUrl.grant({
     granter: address,
     grantee: granteeAddress,
@@ -50,16 +48,17 @@ const main = async () => {
       authorization: {
         typeUrl: "/cosmos.bank.v1beta1.SendAuthorization",
         value: cosmos.bank.v1beta1.SendAuthorization.encode({
-          spendLimit: [{
-            denom: "usix",
-            amount: "1000000" // 1 SIX
-          }],
-          allowList: [] // TODO: Add allowed recipient addresses if needed
-        }).finish()
+          spendLimit: [
+            {
+              denom: "usix",
+              amount: "1000000", // 1 SIX
+            },
+          ],
+          allowList: [],
+        }).finish(),
       },
-      // TODO: Set appropriate expiration time
-      expiration: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) // 1 year from now
-    }
+      expiration: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // 1 year from now
+    },
   });
 
   msgArray.push(grant);

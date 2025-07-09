@@ -20,28 +20,30 @@ const main = async () => {
   });
 
   try {
-    // TODO: Replace with actual delegator address
-    const delegatorAddress = "6x1example_delegator_address";
-    
+    const delegatorAddress = "6x1myrlxmmasv6yq4axrxmdswj9kv5gc0ppx95rmq";
+
     // Query delegation rewards
-    const delegationRewards = await queryClient.cosmos.distribution.v1beta1.delegationRewards({
-      delegatorAddress: delegatorAddress,
-      validatorAddress: "6xvaloper1example_validator_address" // TODO: Replace with actual validator
-    });
+    const delegationRewards =
+      await queryClient.cosmos.distribution.v1beta1.delegationRewards({
+        delegatorAddress: delegatorAddress,
+        validatorAddress: "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76",
+      });
 
     console.log("Delegation rewards:", delegationRewards);
 
     // Query total delegation rewards
-    const totalRewards = await queryClient.cosmos.distribution.v1beta1.delegationTotalRewards({
-      delegatorAddress: delegatorAddress
-    });
+    const totalRewards =
+      await queryClient.cosmos.distribution.v1beta1.delegationTotalRewards({
+        delegatorAddress: delegatorAddress,
+      });
 
     console.log("Total delegation rewards:", totalRewards);
 
     // Query validator commission
-    const validatorCommission = await queryClient.cosmos.distribution.v1beta1.validatorCommission({
-      validatorAddress: "6xvaloper1example_validator_address" // TODO: Replace with actual validator
-    });
+    const validatorCommission =
+      await queryClient.cosmos.distribution.v1beta1.validatorCommission({
+        validatorAddress: "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76",
+      });
 
     console.log("Validator commission:", validatorCommission);
 

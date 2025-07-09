@@ -20,9 +20,8 @@ const main = async () => {
   });
 
   try {
-    // TODO: Replace with actual granter and grantee addresses
-    const granter = "6x1example_granter_address";
-    const grantee = "6x1example_grantee_address";
+    const granter = "6x1myrlxmmasv6yq4axrxmdswj9kv5gc0ppx95rmq";
+    const grantee = "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp";
 
     // Query specific allowance
     const allowance = await queryClient.cosmos.feegrant.v1beta1.allowance({

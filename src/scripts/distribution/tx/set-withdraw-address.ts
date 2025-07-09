@@ -39,8 +39,7 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual withdraw address
-  const withdrawAddress = "6x1example_withdraw_address";
+  const withdrawAddress = "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp";
 
   const setWithdrawAddress = cosmos.distribution.v1beta1.MessageComposer.withTypeUrl.setWithdrawAddress({
     delegatorAddress: address,

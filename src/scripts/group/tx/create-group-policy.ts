@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -30,8 +30,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -40,33 +40,33 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual group ID and decision policy
-  const groupId = Long.fromNumber(1); // TODO: Replace with actual group ID
+  const groupId = Long.fromNumber(1);
 
   // Threshold decision policy
   const decisionPolicy = {
     typeUrl: "/cosmos.group.v1.ThresholdDecisionPolicy",
     value: cosmos.group.v1.ThresholdDecisionPolicy.encode({
-      threshold: "1", // TODO: Set appropriate threshold
+      threshold: "1",
       windows: {
         votingPeriod: {
-          seconds: Long.fromNumber(86400), // 24 hours, TODO: Adjust as needed
-          nanos: 0
+          seconds: Long.fromNumber(86400),
+          nanos: 0,
         },
         minExecutionPeriod: {
           seconds: Long.fromNumber(0),
-          nanos: 0
-        }
-      }
-    }).finish()
+          nanos: 0,
+        },
+      },
+    }).finish(),
   };
 
-  const createGroupPolicy = cosmos.group.v1.MessageComposer.withTypeUrl.createGroupPolicy({
-    admin: address,
-    groupId: groupId,
-    metadata: "TODO: Add group policy metadata",
-    decisionPolicy: decisionPolicy
-  });
+  const createGroupPolicy =
+    cosmos.group.v1.MessageComposer.withTypeUrl.createGroupPolicy({
+      admin: address,
+      groupId: groupId,
+      metadata: "IDK",
+      decisionPolicy: decisionPolicy,
+    });
 
   msgArray.push(createGroupPolicy);
 

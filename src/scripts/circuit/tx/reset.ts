@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -29,8 +29,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -39,11 +39,11 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual message types to reset
-  const reset = cosmos.circuit.v1.MessageComposer.withTypeUrl.resetCircuitBreaker({
-    authority: address,
-    msgTypeUrls: ["/cosmos.bank.v1beta1.MsgSend"] // TODO: Set appropriate message types to re-enable
-  });
+  const reset =
+    cosmos.circuit.v1.MessageComposer.withTypeUrl.resetCircuitBreaker({
+      authority: address,
+      msgTypeUrls: ["/cosmos.bank.v1beta1.MsgSend"],
+    });
 
   msgArray.push(reset);
 

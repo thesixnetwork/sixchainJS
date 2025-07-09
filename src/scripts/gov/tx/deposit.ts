@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -30,8 +30,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -40,16 +40,17 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual proposal ID and deposit amount
-  const proposalId = Long.fromNumber(1); // TODO: Replace with actual proposal ID
+  const proposalId = Long.fromNumber(1);
 
   const deposit = cosmos.gov.v1.MessageComposer.withTypeUrl.deposit({
     proposalId: proposalId,
     depositor: address,
-    amount: [{
-      denom: "usix",
-      amount: "1000000" // 1 SIX, TODO: Adjust deposit amount as needed
-    }]
+    amount: [
+      {
+        denom: "usix",
+        amount: "1000000", // 1 SIX
+      },
+    ],
   });
 
   msgArray.push(deposit);
