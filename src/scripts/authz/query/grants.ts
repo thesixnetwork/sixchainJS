@@ -30,21 +30,21 @@ const main = async () => {
       msgTypeUrl: "",
     });
 
-    console.log("Grants:", grants);
+    console.log("Grants:", grants.grants);
 
     // Query grants by granter
     const granterGrants = await queryClient.cosmos.authz.v1beta1.granterGrants({
       granter: granter,
     });
 
-    console.log("Granter grants:", granterGrants);
+    console.log("Granter grants:", granterGrants.grants);
 
     // Query grants by grantee
     const granteeGrants = await queryClient.cosmos.authz.v1beta1.granteeGrants({
       grantee: grantee,
     });
 
-    console.log("Grantee grants:", granteeGrants);
+    console.log("Grantee grants:", granteeGrants.grants);
   } catch (error) {
     console.error("Error querying grants:", error);
   }

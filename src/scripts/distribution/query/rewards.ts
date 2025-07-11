@@ -20,7 +20,7 @@ const main = async () => {
   });
 
   try {
-    const delegatorAddress = "6x1myrlxmmasv6yq4axrxmdswj9kv5gc0ppx95rmq";
+    const delegatorAddress = "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp";
 
     // Query delegation rewards
     const delegationRewards =
@@ -29,7 +29,7 @@ const main = async () => {
         validatorAddress: "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76",
       });
 
-    console.log("Delegation rewards:", delegationRewards);
+    console.log("Delegation rewards:", delegationRewards.rewards);
 
     // Query total delegation rewards
     const totalRewards =
@@ -45,7 +45,7 @@ const main = async () => {
         validatorAddress: "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76",
       });
 
-    console.log("Validator commission:", validatorCommission);
+    console.log("Validator commission:", validatorCommission.commission);
 
     // Query distribution params
     const params = await queryClient.cosmos.distribution.v1beta1.params({});
