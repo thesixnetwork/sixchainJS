@@ -21,14 +21,29 @@ async function main() {
     prefix: "6x",
   });
 
-  // Get signing client
-  const client = await getSigningCosmosClient({
-    rpcEndpoint: rpcUrl,
-    signer: wallet,
-    options: {
-      gasPrice: gasPrice,
-    },
-  });
+  for (let i = 0; i < 10; i++) {
+    // Get signing client
+    try {
+      const client = await getSigningCosmosClient({
+        rpcEndpoint: rpcUrl,
+        signer: wallet,
+        options: {
+          gasPrice: gasPrice,
+        },
+      });
 
-  client.disconnect()
+      console.log("Connection success", i);
+      client.disconnect();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
+
+main()
+  .then(() => {
+    console.log;
+  })
+  .catch((err: any) => {
+    console.log(err);
+  });
