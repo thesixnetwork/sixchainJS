@@ -13,7 +13,7 @@ export async function getConnectorConfig(
       };
     case "fivenet":
       return {
-        rpcUrl: "https://rpc2.fivenet.sixprotocol.net:443",
+        rpcUrl: "https://rpc1.fivenet.sixprotocol.net:443",
         apiUrl: "https://api1.fivenet.sixprotocol.net:443",
         mnemonic: process.env.FIVENET_MNEMONIC!,
       };
