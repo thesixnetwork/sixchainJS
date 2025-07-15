@@ -15,9 +15,10 @@ async function main() {
     );
   }
 
+  console.time("RPC")
   const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETOWRK);
   const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl 
+  sixConnector.rpcUrl = rpcUrl
   sixConnector.apiUrl = apiUrl;
   const accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
 
@@ -35,6 +36,7 @@ async function main() {
       await new Promise(r => setTimeout(r, 10000));
     }
   }
+  console.timeEnd("RPC")
 }
 
 main()
