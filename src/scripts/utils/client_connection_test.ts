@@ -26,7 +26,7 @@ async function main() {
     // Get signing client
     try {
       const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-        gasPrice: GasPrice.fromString("1.25usix"),
+        gasPrice: gasPrice,
       });
       if (rpcClient) {
         console.log("Connection success", i);
