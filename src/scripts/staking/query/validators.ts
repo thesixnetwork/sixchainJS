@@ -22,43 +22,52 @@ const main = async () => {
   try {
     // Query all validators
     const validators = await queryClient.cosmos.staking.v1beta1.validators({
-      status: "BOND_STATUS_BONDED" // TODO: Can be "BOND_STATUS_UNBONDED", "BOND_STATUS_UNBONDING", or ""
+      status: "BOND_STATUS_BONDED", // TODO: Can be "BOND_STATUS_UNBONDED", "BOND_STATUS_UNBONDING", or ""
     });
 
-    console.log("Validators:", validators);
+    console.log("Validators:", validators.validators);
 
     // Query specific validator
-    const validatorAddr = "6xvaloper1example_validator_address"; // TODO: Replace with actual validator address
+    const validatorAddr = "6xvaloper1myrlxmmasv6yq4axrxmdswj9kv5gc0pp2tkm4m";
     const validator = await queryClient.cosmos.staking.v1beta1.validator({
-      validatorAddr: validatorAddr
+      validatorAddr: validatorAddr,
     });
 
-    console.log("Validator:", validator);
+    console.log("Validator:", validator.validator);
 
     // Query validator delegations
-    const validatorDelegations = await queryClient.cosmos.staking.v1beta1.validatorDelegations({
-      validatorAddr: validatorAddr
-    });
+    const validatorDelegations =
+      await queryClient.cosmos.staking.v1beta1.validatorDelegations({
+        validatorAddr: validatorAddr,
+      });
 
-    console.log("Validator delegations:", validatorDelegations);
+    console.log(
+      "Validator delegations:",
+      validatorDelegations.delegationResponses
+    );
 
     // Query delegator delegations
-    const delegatorAddr = "6x1example_delegator_address"; // TODO: Replace with actual delegator address
-    const delegatorDelegations = await queryClient.cosmos.staking.v1beta1.delegatorDelegations({
-      delegatorAddr: delegatorAddr
-    });
+    const delegatorAddr = "6x1myrlxmmasv6yq4axrxmdswj9kv5gc0ppx95rmq";
+    const delegatorDelegations =
+      await queryClient.cosmos.staking.v1beta1.delegatorDelegations({
+        delegatorAddr: delegatorAddr,
+      });
 
-    console.log("Delegator delegations:", delegatorDelegations);
+    console.log(
+      "Delegator delegations:",
+      delegatorDelegations.delegationResponses
+    );
 
-    // Query staking params
-    const params = await queryClient.cosmos.staking.v1beta1.params({});
-
-    console.log("Staking params:", params);
+    /* 
+    * Query staking params
+    * const params = await queryClient.cosmos.staking.v1beta1.params({});
+    * console.log("Staking params:", params.params);
+    */
 
     // Query staking pool
     const pool = await queryClient.cosmos.staking.v1beta1.pool({});
 
-    console.log("Staking pool:", pool);
+    console.log("Staking pool:", pool.pool);
   } catch (error) {
     console.error("Error querying staking:", error);
   }
