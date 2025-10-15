@@ -4,6 +4,7 @@ import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "../../client";
 import dotenv from "dotenv";
+import { fee } from "@sixnetwork/sixchain-client";
 
 dotenv.config();
 
@@ -52,7 +53,7 @@ const main = async () => {
   const txResponse = await client.signAndBroadcast(
     address,
     msgArray,
-    "auto",
+    fee.calculateFee(80000, gasPrice),
     "authz revoke"
   );
 
