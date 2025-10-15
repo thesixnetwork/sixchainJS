@@ -39,7 +39,7 @@ function createBaseToken(): Token {
     base: "",
     maxSupply: Coin.fromPartial({}),
     mintee: "",
-    creator: ""
+    creator: "",
   };
 }
 export const Token = {
@@ -95,7 +95,10 @@ export const Token = {
     const message = createBaseToken();
     message.name = object.name ?? "";
     message.base = object.base ?? "";
-    message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Coin.fromPartial(object.maxSupply) : undefined;
+    message.maxSupply =
+      object.maxSupply !== undefined && object.maxSupply !== null
+        ? Coin.fromPartial(object.maxSupply)
+        : undefined;
     message.mintee = object.mintee ?? "";
     message.creator = object.creator ?? "";
     return message;
@@ -123,7 +126,9 @@ export const Token = {
     const obj: any = {};
     obj.name = message.name === "" ? undefined : message.name;
     obj.base = message.base === "" ? undefined : message.base;
-    obj.maxSupply = message.maxSupply ? Coin.toAmino(message.maxSupply) : Coin.toAmino(Coin.fromPartial({}));
+    obj.maxSupply = message.maxSupply
+      ? Coin.toAmino(message.maxSupply)
+      : Coin.toAmino(Coin.fromPartial({}));
     obj.mintee = message.mintee === "" ? undefined : message.mintee;
     obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;
@@ -140,7 +145,7 @@ export const Token = {
   toProtoMsg(message: Token): TokenProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.Token",
-      value: Token.encode(message).finish()
+      value: Token.encode(message).finish(),
     };
-  }
+  },
 };

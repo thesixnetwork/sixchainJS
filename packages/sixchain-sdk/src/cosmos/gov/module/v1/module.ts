@@ -37,12 +37,15 @@ export interface ModuleSDKType {
 function createBaseModule(): Module {
   return {
     maxMetadataLen: Long.UZERO,
-    authority: ""
+    authority: "",
   };
 }
 export const Module = {
   typeUrl: "/cosmos.gov.module.v1.Module",
-  encode(message: Module, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Module,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.maxMetadataLen.isZero()) {
       writer.uint32(8).uint64(message.maxMetadataLen);
     }
@@ -73,13 +76,19 @@ export const Module = {
   },
   fromPartial(object: Partial<Module>): Module {
     const message = createBaseModule();
-    message.maxMetadataLen = object.maxMetadataLen !== undefined && object.maxMetadataLen !== null ? Long.fromValue(object.maxMetadataLen) : Long.UZERO;
+    message.maxMetadataLen =
+      object.maxMetadataLen !== undefined && object.maxMetadataLen !== null
+        ? Long.fromValue(object.maxMetadataLen)
+        : Long.UZERO;
     message.authority = object.authority ?? "";
     return message;
   },
   fromAmino(object: ModuleAmino): Module {
     const message = createBaseModule();
-    if (object.max_metadata_len !== undefined && object.max_metadata_len !== null) {
+    if (
+      object.max_metadata_len !== undefined &&
+      object.max_metadata_len !== null
+    ) {
       message.maxMetadataLen = Long.fromString(object.max_metadata_len);
     }
     if (object.authority !== undefined && object.authority !== null) {
@@ -89,7 +98,9 @@ export const Module = {
   },
   toAmino(message: Module): ModuleAmino {
     const obj: any = {};
-    obj.max_metadata_len = !message.maxMetadataLen.isZero() ? message.maxMetadataLen?.toString() : undefined;
+    obj.max_metadata_len = !message.maxMetadataLen.isZero()
+      ? message.maxMetadataLen?.toString()
+      : undefined;
     obj.authority = message.authority === "" ? undefined : message.authority;
     return obj;
   },
@@ -99,7 +110,7 @@ export const Module = {
   toAminoMsg(message: Module): ModuleAminoMsg {
     return {
       type: "cosmos-sdk/Module",
-      value: Module.toAmino(message)
+      value: Module.toAmino(message),
     };
   },
   fromProtoMsg(message: ModuleProtoMsg): Module {
@@ -111,7 +122,7 @@ export const Module = {
   toProtoMsg(message: Module): ModuleProtoMsg {
     return {
       typeUrl: "/cosmos.gov.module.v1.Module",
-      value: Module.encode(message).finish()
+      value: Module.encode(message).finish(),
     };
-  }
+  },
 };

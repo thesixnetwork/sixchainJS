@@ -1,7 +1,13 @@
 //@ts-nocheck
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { RequestStatus } from "./request";
-import { Long, toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "../../helpers";
+import {
+  Long,
+  toTimestamp,
+  fromTimestamp,
+  bytesFromBase64,
+  base64FromBytes,
+} from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface OriginContractParam {
   chain: string;
@@ -104,12 +110,15 @@ function createBaseOriginContractParam(): OriginContractParam {
     chain: "",
     contractAddress: "",
     contractOwner: "",
-    requestExpire: new Date()
+    requestExpire: new Date(),
   };
 }
 export const OriginContractParam = {
   typeUrl: "/sixprotocol.nftoracle.OriginContractParam",
-  encode(message: OriginContractParam, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: OriginContractParam,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
     }
@@ -120,7 +129,10 @@ export const OriginContractParam = {
       writer.uint32(26).string(message.contractOwner);
     }
     if (message.requestExpire !== undefined) {
-      Timestamp.encode(toTimestamp(message.requestExpire), writer.uint32(34).fork()).ldelim();
+      Timestamp.encode(
+        toTimestamp(message.requestExpire),
+        writer.uint32(34).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -141,7 +153,9 @@ export const OriginContractParam = {
           message.contractOwner = reader.string();
           break;
         case 4:
-          message.requestExpire = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.requestExpire = fromTimestamp(
+            Timestamp.decode(reader, reader.uint32())
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -163,23 +177,32 @@ export const OriginContractParam = {
     if (object.chain !== undefined && object.chain !== null) {
       message.chain = object.chain;
     }
-    if (object.contract_address !== undefined && object.contract_address !== null) {
+    if (
+      object.contract_address !== undefined &&
+      object.contract_address !== null
+    ) {
       message.contractAddress = object.contract_address;
     }
     if (object.contract_owner !== undefined && object.contract_owner !== null) {
       message.contractOwner = object.contract_owner;
     }
     if (object.request_expire !== undefined && object.request_expire !== null) {
-      message.requestExpire = fromTimestamp(Timestamp.fromAmino(object.request_expire));
+      message.requestExpire = fromTimestamp(
+        Timestamp.fromAmino(object.request_expire)
+      );
     }
     return message;
   },
   toAmino(message: OriginContractParam): OriginContractParamAmino {
     const obj: any = {};
     obj.chain = message.chain === "" ? undefined : message.chain;
-    obj.contract_address = message.contractAddress === "" ? undefined : message.contractAddress;
-    obj.contract_owner = message.contractOwner === "" ? undefined : message.contractOwner;
-    obj.request_expire = message.requestExpire ? Timestamp.toAmino(toTimestamp(message.requestExpire)) : undefined;
+    obj.contract_address =
+      message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.contract_owner =
+      message.contractOwner === "" ? undefined : message.contractOwner;
+    obj.request_expire = message.requestExpire
+      ? Timestamp.toAmino(toTimestamp(message.requestExpire))
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: OriginContractParamAminoMsg): OriginContractParam {
@@ -194,9 +217,9 @@ export const OriginContractParam = {
   toProtoMsg(message: OriginContractParam): OriginContractParamProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.OriginContractParam",
-      value: OriginContractParam.encode(message).finish()
+      value: OriginContractParam.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseCollectionOwnerRequest(): CollectionOwnerRequest {
   return {
@@ -210,12 +233,15 @@ function createBaseCollectionOwnerRequest(): CollectionOwnerRequest {
     createdAt: new Date(),
     validUntil: new Date(),
     contractInfo: [],
-    expiredHeight: Long.ZERO
+    expiredHeight: Long.ZERO,
   };
 }
 export const CollectionOwnerRequest = {
   typeUrl: "/sixprotocol.nftoracle.CollectionOwnerRequest",
-  encode(message: CollectionOwnerRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: CollectionOwnerRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
     }
@@ -238,10 +264,16 @@ export const CollectionOwnerRequest = {
       writer.uint32(58).string(v!);
     }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(66).fork()).ldelim();
+      Timestamp.encode(
+        toTimestamp(message.createdAt),
+        writer.uint32(66).fork()
+      ).ldelim();
     }
     if (message.validUntil !== undefined) {
-      Timestamp.encode(toTimestamp(message.validUntil), writer.uint32(74).fork()).ldelim();
+      Timestamp.encode(
+        toTimestamp(message.validUntil),
+        writer.uint32(74).fork()
+      ).ldelim();
     }
     for (const v of message.contractInfo) {
       OriginContractInfo.encode(v!, writer.uint32(82).fork()).ldelim();
@@ -251,7 +283,10 @@ export const CollectionOwnerRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): CollectionOwnerRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): CollectionOwnerRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCollectionOwnerRequest();
@@ -280,13 +315,19 @@ export const CollectionOwnerRequest = {
           message.confirmers.push(reader.string());
           break;
         case 8:
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.createdAt = fromTimestamp(
+            Timestamp.decode(reader, reader.uint32())
+          );
           break;
         case 9:
-          message.validUntil = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.validUntil = fromTimestamp(
+            Timestamp.decode(reader, reader.uint32())
+          );
           break;
         case 10:
-          message.contractInfo.push(OriginContractInfo.decode(reader, reader.uint32()));
+          message.contractInfo.push(
+            OriginContractInfo.decode(reader, reader.uint32())
+          );
           break;
         case 11:
           message.expiredHeight = reader.int64() as Long;
@@ -300,17 +341,30 @@ export const CollectionOwnerRequest = {
   },
   fromPartial(object: Partial<CollectionOwnerRequest>): CollectionOwnerRequest {
     const message = createBaseCollectionOwnerRequest();
-    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
+    message.id =
+      object.id !== undefined && object.id !== null
+        ? Long.fromValue(object.id)
+        : Long.UZERO;
     message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.signer = object.signer ?? "";
-    message.requiredConfirm = object.requiredConfirm !== undefined && object.requiredConfirm !== null ? Long.fromValue(object.requiredConfirm) : Long.UZERO;
+    message.requiredConfirm =
+      object.requiredConfirm !== undefined && object.requiredConfirm !== null
+        ? Long.fromValue(object.requiredConfirm)
+        : Long.UZERO;
     message.status = object.status ?? 0;
-    message.currentConfirm = object.currentConfirm !== undefined && object.currentConfirm !== null ? Long.fromValue(object.currentConfirm) : Long.UZERO;
-    message.confirmers = object.confirmers?.map(e => e) || [];
+    message.currentConfirm =
+      object.currentConfirm !== undefined && object.currentConfirm !== null
+        ? Long.fromValue(object.currentConfirm)
+        : Long.UZERO;
+    message.confirmers = object.confirmers?.map((e) => e) || [];
     message.createdAt = object.createdAt ?? undefined;
     message.validUntil = object.validUntil ?? undefined;
-    message.contractInfo = object.contractInfo?.map(e => OriginContractInfo.fromPartial(e)) || [];
-    message.expiredHeight = object.expiredHeight !== undefined && object.expiredHeight !== null ? Long.fromValue(object.expiredHeight) : Long.ZERO;
+    message.contractInfo =
+      object.contractInfo?.map((e) => OriginContractInfo.fromPartial(e)) || [];
+    message.expiredHeight =
+      object.expiredHeight !== undefined && object.expiredHeight !== null
+        ? Long.fromValue(object.expiredHeight)
+        : Long.ZERO;
     return message;
   },
   fromAmino(object: CollectionOwnerRequestAmino): CollectionOwnerRequest {
@@ -324,23 +378,32 @@ export const CollectionOwnerRequest = {
     if (object.signer !== undefined && object.signer !== null) {
       message.signer = object.signer;
     }
-    if (object.required_confirm !== undefined && object.required_confirm !== null) {
+    if (
+      object.required_confirm !== undefined &&
+      object.required_confirm !== null
+    ) {
       message.requiredConfirm = Long.fromString(object.required_confirm);
     }
     if (object.status !== undefined && object.status !== null) {
       message.status = object.status;
     }
-    if (object.current_confirm !== undefined && object.current_confirm !== null) {
+    if (
+      object.current_confirm !== undefined &&
+      object.current_confirm !== null
+    ) {
       message.currentConfirm = Long.fromString(object.current_confirm);
     }
-    message.confirmers = object.confirmers?.map(e => e) || [];
+    message.confirmers = object.confirmers?.map((e) => e) || [];
     if (object.created_at !== undefined && object.created_at !== null) {
       message.createdAt = fromTimestamp(Timestamp.fromAmino(object.created_at));
     }
     if (object.valid_until !== undefined && object.valid_until !== null) {
-      message.validUntil = fromTimestamp(Timestamp.fromAmino(object.valid_until));
+      message.validUntil = fromTimestamp(
+        Timestamp.fromAmino(object.valid_until)
+      );
     }
-    message.contractInfo = object.contract_info?.map(e => OriginContractInfo.fromAmino(e)) || [];
+    message.contractInfo =
+      object.contract_info?.map((e) => OriginContractInfo.fromAmino(e)) || [];
     if (object.expired_height !== undefined && object.expired_height !== null) {
       message.expiredHeight = Long.fromString(object.expired_height);
     }
@@ -349,30 +412,45 @@ export const CollectionOwnerRequest = {
   toAmino(message: CollectionOwnerRequest): CollectionOwnerRequestAmino {
     const obj: any = {};
     obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
-    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode =
+      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.signer = message.signer === "" ? undefined : message.signer;
-    obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
+    obj.required_confirm = !message.requiredConfirm.isZero()
+      ? message.requiredConfirm?.toString()
+      : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
-    obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
+    obj.current_confirm = !message.currentConfirm.isZero()
+      ? message.currentConfirm?.toString()
+      : undefined;
     if (message.confirmers) {
-      obj.confirmers = message.confirmers.map(e => e);
+      obj.confirmers = message.confirmers.map((e) => e);
     } else {
       obj.confirmers = message.confirmers;
     }
-    obj.created_at = message.createdAt ? Timestamp.toAmino(toTimestamp(message.createdAt)) : undefined;
-    obj.valid_until = message.validUntil ? Timestamp.toAmino(toTimestamp(message.validUntil)) : undefined;
+    obj.created_at = message.createdAt
+      ? Timestamp.toAmino(toTimestamp(message.createdAt))
+      : undefined;
+    obj.valid_until = message.validUntil
+      ? Timestamp.toAmino(toTimestamp(message.validUntil))
+      : undefined;
     if (message.contractInfo) {
-      obj.contract_info = message.contractInfo.map(e => e ? OriginContractInfo.toAmino(e) : undefined);
+      obj.contract_info = message.contractInfo.map((e) =>
+        e ? OriginContractInfo.toAmino(e) : undefined
+      );
     } else {
       obj.contract_info = message.contractInfo;
     }
-    obj.expired_height = !message.expiredHeight.isZero() ? message.expiredHeight?.toString() : undefined;
+    obj.expired_height = !message.expiredHeight.isZero()
+      ? message.expiredHeight?.toString()
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: CollectionOwnerRequestAminoMsg): CollectionOwnerRequest {
     return CollectionOwnerRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: CollectionOwnerRequestProtoMsg): CollectionOwnerRequest {
+  fromProtoMsg(
+    message: CollectionOwnerRequestProtoMsg
+  ): CollectionOwnerRequest {
     return CollectionOwnerRequest.decode(message.value);
   },
   toProto(message: CollectionOwnerRequest): Uint8Array {
@@ -381,22 +459,28 @@ export const CollectionOwnerRequest = {
   toProtoMsg(message: CollectionOwnerRequest): CollectionOwnerRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.CollectionOwnerRequest",
-      value: CollectionOwnerRequest.encode(message).finish()
+      value: CollectionOwnerRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseOriginContractInfo(): OriginContractInfo {
   return {
     contractOriginDataInfo: undefined,
     hash: new Uint8Array(),
-    confirmers: []
+    confirmers: [],
   };
 }
 export const OriginContractInfo = {
   typeUrl: "/sixprotocol.nftoracle.OriginContractInfo",
-  encode(message: OriginContractInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: OriginContractInfo,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.contractOriginDataInfo !== undefined) {
-      OriginContractParam.encode(message.contractOriginDataInfo, writer.uint32(10).fork()).ldelim();
+      OriginContractParam.encode(
+        message.contractOriginDataInfo,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (message.hash.length !== 0) {
       writer.uint32(18).bytes(message.hash);
@@ -414,7 +498,10 @@ export const OriginContractInfo = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.contractOriginDataInfo = OriginContractParam.decode(reader, reader.uint32());
+          message.contractOriginDataInfo = OriginContractParam.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         case 2:
           message.hash = reader.bytes();
@@ -431,28 +518,39 @@ export const OriginContractInfo = {
   },
   fromPartial(object: Partial<OriginContractInfo>): OriginContractInfo {
     const message = createBaseOriginContractInfo();
-    message.contractOriginDataInfo = object.contractOriginDataInfo !== undefined && object.contractOriginDataInfo !== null ? OriginContractParam.fromPartial(object.contractOriginDataInfo) : undefined;
+    message.contractOriginDataInfo =
+      object.contractOriginDataInfo !== undefined &&
+      object.contractOriginDataInfo !== null
+        ? OriginContractParam.fromPartial(object.contractOriginDataInfo)
+        : undefined;
     message.hash = object.hash ?? new Uint8Array();
-    message.confirmers = object.confirmers?.map(e => e) || [];
+    message.confirmers = object.confirmers?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: OriginContractInfoAmino): OriginContractInfo {
     const message = createBaseOriginContractInfo();
-    if (object.contractOriginDataInfo !== undefined && object.contractOriginDataInfo !== null) {
-      message.contractOriginDataInfo = OriginContractParam.fromAmino(object.contractOriginDataInfo);
+    if (
+      object.contractOriginDataInfo !== undefined &&
+      object.contractOriginDataInfo !== null
+    ) {
+      message.contractOriginDataInfo = OriginContractParam.fromAmino(
+        object.contractOriginDataInfo
+      );
     }
     if (object.hash !== undefined && object.hash !== null) {
       message.hash = bytesFromBase64(object.hash);
     }
-    message.confirmers = object.confirmers?.map(e => e) || [];
+    message.confirmers = object.confirmers?.map((e) => e) || [];
     return message;
   },
   toAmino(message: OriginContractInfo): OriginContractInfoAmino {
     const obj: any = {};
-    obj.contractOriginDataInfo = message.contractOriginDataInfo ? OriginContractParam.toAmino(message.contractOriginDataInfo) : undefined;
+    obj.contractOriginDataInfo = message.contractOriginDataInfo
+      ? OriginContractParam.toAmino(message.contractOriginDataInfo)
+      : undefined;
     obj.hash = message.hash ? base64FromBytes(message.hash) : undefined;
     if (message.confirmers) {
-      obj.confirmers = message.confirmers.map(e => e);
+      obj.confirmers = message.confirmers.map((e) => e);
     } else {
       obj.confirmers = message.confirmers;
     }
@@ -470,7 +568,7 @@ export const OriginContractInfo = {
   toProtoMsg(message: OriginContractInfo): OriginContractInfoProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.OriginContractInfo",
-      value: OriginContractInfo.encode(message).finish()
+      value: OriginContractInfo.encode(message).finish(),
     };
-  }
+  },
 };

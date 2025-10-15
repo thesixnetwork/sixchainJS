@@ -23,7 +23,7 @@ export interface GroupSDKType {
 function createBaseGroup(): Group {
   return {
     name: "",
-    owner: ""
+    owner: "",
   };
 }
 export const Group = {
@@ -91,7 +91,7 @@ export const Group = {
   toProtoMsg(message: Group): GroupProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.Group",
-      value: Group.encode(message).finish()
+      value: Group.encode(message).finish(),
     };
-  }
+  },
 };

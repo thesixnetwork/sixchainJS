@@ -24,12 +24,15 @@ export interface ModuleSDKType {
 }
 function createBaseModule(): Module {
   return {
-    authority: ""
+    authority: "",
   };
 }
 export const Module = {
   typeUrl: "/cosmos.consensus.module.v1.Module",
-  encode(message: Module, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Module,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
     }
@@ -75,7 +78,7 @@ export const Module = {
   toAminoMsg(message: Module): ModuleAminoMsg {
     return {
       type: "cosmos-sdk/Module",
-      value: Module.toAmino(message)
+      value: Module.toAmino(message),
     };
   },
   fromProtoMsg(message: ModuleProtoMsg): Module {
@@ -87,7 +90,7 @@ export const Module = {
   toProtoMsg(message: Module): ModuleProtoMsg {
     return {
       typeUrl: "/cosmos.consensus.module.v1.Module",
-      value: Module.encode(message).finish()
+      value: Module.encode(message).finish(),
     };
-  }
+  },
 };

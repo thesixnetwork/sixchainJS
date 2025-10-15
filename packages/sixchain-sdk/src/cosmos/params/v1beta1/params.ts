@@ -68,12 +68,15 @@ function createBaseParameterChangeProposal(): ParameterChangeProposal {
     $typeUrl: "/cosmos.params.v1beta1.ParameterChangeProposal",
     title: "",
     description: "",
-    changes: []
+    changes: [],
   };
 }
 export const ParameterChangeProposal = {
   typeUrl: "/cosmos.params.v1beta1.ParameterChangeProposal",
-  encode(message: ParameterChangeProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ParameterChangeProposal,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -85,7 +88,10 @@ export const ParameterChangeProposal = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ParameterChangeProposal {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): ParameterChangeProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParameterChangeProposal();
@@ -108,11 +114,14 @@ export const ParameterChangeProposal = {
     }
     return message;
   },
-  fromPartial(object: Partial<ParameterChangeProposal>): ParameterChangeProposal {
+  fromPartial(
+    object: Partial<ParameterChangeProposal>
+  ): ParameterChangeProposal {
     const message = createBaseParameterChangeProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.changes = object.changes?.map(e => ParamChange.fromPartial(e)) || [];
+    message.changes =
+      object.changes?.map((e) => ParamChange.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: ParameterChangeProposalAmino): ParameterChangeProposal {
@@ -123,52 +132,67 @@ export const ParameterChangeProposal = {
     if (object.description !== undefined && object.description !== null) {
       message.description = object.description;
     }
-    message.changes = object.changes?.map(e => ParamChange.fromAmino(e)) || [];
+    message.changes =
+      object.changes?.map((e) => ParamChange.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: ParameterChangeProposal): ParameterChangeProposalAmino {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
-    obj.description = message.description === "" ? undefined : message.description;
+    obj.description =
+      message.description === "" ? undefined : message.description;
     if (message.changes) {
-      obj.changes = message.changes.map(e => e ? ParamChange.toAmino(e) : undefined);
+      obj.changes = message.changes.map((e) =>
+        e ? ParamChange.toAmino(e) : undefined
+      );
     } else {
       obj.changes = message.changes;
     }
     return obj;
   },
-  fromAminoMsg(object: ParameterChangeProposalAminoMsg): ParameterChangeProposal {
+  fromAminoMsg(
+    object: ParameterChangeProposalAminoMsg
+  ): ParameterChangeProposal {
     return ParameterChangeProposal.fromAmino(object.value);
   },
-  toAminoMsg(message: ParameterChangeProposal): ParameterChangeProposalAminoMsg {
+  toAminoMsg(
+    message: ParameterChangeProposal
+  ): ParameterChangeProposalAminoMsg {
     return {
       type: "cosmos-sdk/ParameterChangeProposal",
-      value: ParameterChangeProposal.toAmino(message)
+      value: ParameterChangeProposal.toAmino(message),
     };
   },
-  fromProtoMsg(message: ParameterChangeProposalProtoMsg): ParameterChangeProposal {
+  fromProtoMsg(
+    message: ParameterChangeProposalProtoMsg
+  ): ParameterChangeProposal {
     return ParameterChangeProposal.decode(message.value);
   },
   toProto(message: ParameterChangeProposal): Uint8Array {
     return ParameterChangeProposal.encode(message).finish();
   },
-  toProtoMsg(message: ParameterChangeProposal): ParameterChangeProposalProtoMsg {
+  toProtoMsg(
+    message: ParameterChangeProposal
+  ): ParameterChangeProposalProtoMsg {
     return {
       typeUrl: "/cosmos.params.v1beta1.ParameterChangeProposal",
-      value: ParameterChangeProposal.encode(message).finish()
+      value: ParameterChangeProposal.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseParamChange(): ParamChange {
   return {
     subspace: "",
     key: "",
-    value: ""
+    value: "",
   };
 }
 export const ParamChange = {
   typeUrl: "/cosmos.params.v1beta1.ParamChange",
-  encode(message: ParamChange, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ParamChange,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.subspace !== "") {
       writer.uint32(10).string(message.subspace);
     }
@@ -236,7 +260,7 @@ export const ParamChange = {
   toAminoMsg(message: ParamChange): ParamChangeAminoMsg {
     return {
       type: "cosmos-sdk/ParamChange",
-      value: ParamChange.toAmino(message)
+      value: ParamChange.toAmino(message),
     };
   },
   fromProtoMsg(message: ParamChangeProtoMsg): ParamChange {
@@ -248,7 +272,7 @@ export const ParamChange = {
   toProtoMsg(message: ParamChange): ParamChangeProtoMsg {
     return {
       typeUrl: "/cosmos.params.v1beta1.ParamChange",
-      value: ParamChange.encode(message).finish()
+      value: ParamChange.encode(message).finish(),
     };
-  }
+  },
 };

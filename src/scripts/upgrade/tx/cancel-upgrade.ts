@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -29,8 +29,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -39,9 +39,10 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  const cancelUpgrade = cosmos.upgrade.v1beta1.MessageComposer.withTypeUrl.cancelUpgrade({
-    authority: address // TODO: This should be the governance module address in production
-  });
+  const cancelUpgrade =
+    cosmos.upgrade.v1beta1.MessageComposer.withTypeUrl.cancelUpgrade({
+      authority: address, // TODO: This should be the governance module address in production
+    });
 
   msgArray.push(cancelUpgrade);
 

@@ -54,12 +54,15 @@ function createBaseBIP44Params(): BIP44Params {
     coinType: 0,
     account: 0,
     change: false,
-    addressIndex: 0
+    addressIndex: 0,
   };
 }
 export const BIP44Params = {
   typeUrl: "/cosmos.crypto.hd.v1.BIP44Params",
-  encode(message: BIP44Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: BIP44Params,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.purpose !== 0) {
       writer.uint32(8).uint32(message.purpose);
     }
@@ -140,7 +143,8 @@ export const BIP44Params = {
     obj.coin_type = message.coinType === 0 ? undefined : message.coinType;
     obj.account = message.account === 0 ? undefined : message.account;
     obj.change = message.change === false ? undefined : message.change;
-    obj.address_index = message.addressIndex === 0 ? undefined : message.addressIndex;
+    obj.address_index =
+      message.addressIndex === 0 ? undefined : message.addressIndex;
     return obj;
   },
   fromAminoMsg(object: BIP44ParamsAminoMsg): BIP44Params {
@@ -149,7 +153,7 @@ export const BIP44Params = {
   toAminoMsg(message: BIP44Params): BIP44ParamsAminoMsg {
     return {
       type: "crypto/keys/hd/BIP44Params",
-      value: BIP44Params.toAmino(message)
+      value: BIP44Params.toAmino(message),
     };
   },
   fromProtoMsg(message: BIP44ParamsProtoMsg): BIP44Params {
@@ -161,7 +165,7 @@ export const BIP44Params = {
   toProtoMsg(message: BIP44Params): BIP44ParamsProtoMsg {
     return {
       typeUrl: "/cosmos.crypto.hd.v1.BIP44Params",
-      value: BIP44Params.encode(message).finish()
+      value: BIP44Params.encode(message).finish(),
     };
-  }
+  },
 };

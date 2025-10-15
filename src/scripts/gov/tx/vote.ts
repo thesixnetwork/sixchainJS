@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -30,8 +30,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -48,7 +48,7 @@ const main = async () => {
     proposalId: proposalId,
     voter: address,
     option: voteOption,
-    metadata: "TODO: Add vote metadata if needed"
+    metadata: "TODO: Add vote metadata if needed",
   });
 
   msgArray.push(vote);

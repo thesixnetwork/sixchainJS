@@ -116,12 +116,15 @@ function createBaseActionSigner(): ActionSigner {
     createdAt: new Date(),
     expiredAt: new Date(),
     creator: "",
-    creationFlow: 0
+    creationFlow: 0,
   };
 }
 export const ActionSigner = {
   typeUrl: "/sixprotocol.nftoracle.ActionSigner",
-  encode(message: ActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ActionSigner,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.actorAddress !== "") {
       writer.uint32(10).string(message.actorAddress);
     }
@@ -129,10 +132,16 @@ export const ActionSigner = {
       writer.uint32(18).string(message.ownerAddress);
     }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(26).fork()).ldelim();
+      Timestamp.encode(
+        toTimestamp(message.createdAt),
+        writer.uint32(26).fork()
+      ).ldelim();
     }
     if (message.expiredAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.expiredAt), writer.uint32(34).fork()).ldelim();
+      Timestamp.encode(
+        toTimestamp(message.expiredAt),
+        writer.uint32(34).fork()
+      ).ldelim();
     }
     if (message.creator !== "") {
       writer.uint32(42).string(message.creator);
@@ -156,10 +165,14 @@ export const ActionSigner = {
           message.ownerAddress = reader.string();
           break;
         case 3:
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.createdAt = fromTimestamp(
+            Timestamp.decode(reader, reader.uint32())
+          );
           break;
         case 4:
-          message.expiredAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.expiredAt = fromTimestamp(
+            Timestamp.decode(reader, reader.uint32())
+          );
           break;
         case 5:
           message.creator = reader.string();
@@ -208,12 +221,19 @@ export const ActionSigner = {
   },
   toAmino(message: ActionSigner): ActionSignerAmino {
     const obj: any = {};
-    obj.actor_address = message.actorAddress === "" ? undefined : message.actorAddress;
-    obj.owner_address = message.ownerAddress === "" ? undefined : message.ownerAddress;
-    obj.created_at = message.createdAt ? Timestamp.toAmino(toTimestamp(message.createdAt)) : undefined;
-    obj.expired_at = message.expiredAt ? Timestamp.toAmino(toTimestamp(message.expiredAt)) : undefined;
+    obj.actor_address =
+      message.actorAddress === "" ? undefined : message.actorAddress;
+    obj.owner_address =
+      message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.created_at = message.createdAt
+      ? Timestamp.toAmino(toTimestamp(message.createdAt))
+      : undefined;
+    obj.expired_at = message.expiredAt
+      ? Timestamp.toAmino(toTimestamp(message.expiredAt))
+      : undefined;
     obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.creation_flow = message.creationFlow === 0 ? undefined : message.creationFlow;
+    obj.creation_flow =
+      message.creationFlow === 0 ? undefined : message.creationFlow;
     return obj;
   },
   fromAminoMsg(object: ActionSignerAminoMsg): ActionSigner {
@@ -228,19 +248,22 @@ export const ActionSigner = {
   toProtoMsg(message: ActionSigner): ActionSignerProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.ActionSigner",
-      value: ActionSigner.encode(message).finish()
+      value: ActionSigner.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseSetSignerSignature(): SetSignerSignature {
   return {
     signature: "",
-    message: ""
+    message: "",
   };
 }
 export const SetSignerSignature = {
   typeUrl: "/sixprotocol.nftoracle.SetSignerSignature",
-  encode(message: SetSignerSignature, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: SetSignerSignature,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.signature !== "") {
       writer.uint32(10).string(message.signature);
     }
@@ -303,20 +326,23 @@ export const SetSignerSignature = {
   toProtoMsg(message: SetSignerSignature): SetSignerSignatureProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.SetSignerSignature",
-      value: SetSignerSignature.encode(message).finish()
+      value: SetSignerSignature.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseSetSignerParams(): SetSignerParams {
   return {
     ownerAddress: "",
     actorAddress: "",
-    expiredAt: new Date()
+    expiredAt: new Date(),
   };
 }
 export const SetSignerParams = {
   typeUrl: "/sixprotocol.nftoracle.SetSignerParams",
-  encode(message: SetSignerParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: SetSignerParams,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.ownerAddress !== "") {
       writer.uint32(10).string(message.ownerAddress);
     }
@@ -324,7 +350,10 @@ export const SetSignerParams = {
       writer.uint32(18).string(message.actorAddress);
     }
     if (message.expiredAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.expiredAt), writer.uint32(26).fork()).ldelim();
+      Timestamp.encode(
+        toTimestamp(message.expiredAt),
+        writer.uint32(26).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -342,7 +371,9 @@ export const SetSignerParams = {
           message.actorAddress = reader.string();
           break;
         case 3:
-          message.expiredAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.expiredAt = fromTimestamp(
+            Timestamp.decode(reader, reader.uint32())
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -373,9 +404,13 @@ export const SetSignerParams = {
   },
   toAmino(message: SetSignerParams): SetSignerParamsAmino {
     const obj: any = {};
-    obj.owner_address = message.ownerAddress === "" ? undefined : message.ownerAddress;
-    obj.actor_address = message.actorAddress === "" ? undefined : message.actorAddress;
-    obj.expired_at = message.expiredAt ? Timestamp.toAmino(toTimestamp(message.expiredAt)) : undefined;
+    obj.owner_address =
+      message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.actor_address =
+      message.actorAddress === "" ? undefined : message.actorAddress;
+    obj.expired_at = message.expiredAt
+      ? Timestamp.toAmino(toTimestamp(message.expiredAt))
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: SetSignerParamsAminoMsg): SetSignerParams {
@@ -390,7 +425,7 @@ export const SetSignerParams = {
   toProtoMsg(message: SetSignerParams): SetSignerParamsProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.SetSignerParams",
-      value: SetSignerParams.encode(message).finish()
+      value: SetSignerParams.encode(message).finish(),
     };
-  }
+  },
 };

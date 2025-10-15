@@ -26,29 +26,30 @@ const main = async () => {
 
     // Query group info
     const groupInfo = await queryClient.cosmos.group.v1.groupInfo({
-      groupId: groupId
+      groupId: groupId,
     });
 
     console.log("Group info:", groupInfo);
 
     // Query group members
     const groupMembers = await queryClient.cosmos.group.v1.groupMembers({
-      groupId: groupId
+      groupId: groupId,
     });
 
     console.log("Group members:", groupMembers);
 
     // Query groups by admin
     const groupsByAdmin = await queryClient.cosmos.group.v1.groupsByAdmin({
-      admin: "6x1example_admin_address" // TODO: Replace with actual admin address
+      admin: "6x1example_admin_address", // TODO: Replace with actual admin address
     });
 
     console.log("Groups by admin:", groupsByAdmin);
 
     // Query group policies by group
-    const groupPolicies = await queryClient.cosmos.group.v1.groupPoliciesByGroup({
-      groupId: groupId
-    });
+    const groupPolicies =
+      await queryClient.cosmos.group.v1.groupPoliciesByGroup({
+        groupId: groupId,
+      });
 
     console.log("Group policies:", groupPolicies);
 
@@ -56,7 +57,7 @@ const main = async () => {
     if (groupPolicies.groupPolicies.length > 0) {
       const policyAddress = groupPolicies.groupPolicies[0].address;
       const policyInfo = await queryClient.cosmos.group.v1.groupPolicyInfo({
-        address: policyAddress
+        address: policyAddress,
       });
 
       console.log("Group policy info:", policyInfo);

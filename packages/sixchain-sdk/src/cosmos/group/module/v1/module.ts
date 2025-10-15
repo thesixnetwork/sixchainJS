@@ -1,5 +1,9 @@
 //@ts-nocheck
-import { Duration, DurationAmino, DurationSDKType } from "../../../../google/protobuf/duration";
+import {
+  Duration,
+  DurationAmino,
+  DurationSDKType,
+} from "../../../../google/protobuf/duration";
 import { Long } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** Module is the config object of the group module. */
@@ -44,14 +48,20 @@ export interface ModuleSDKType {
 function createBaseModule(): Module {
   return {
     maxExecutionPeriod: Duration.fromPartial({}),
-    maxMetadataLen: Long.UZERO
+    maxMetadataLen: Long.UZERO,
   };
 }
 export const Module = {
   typeUrl: "/cosmos.group.module.v1.Module",
-  encode(message: Module, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Module,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.maxExecutionPeriod !== undefined) {
-      Duration.encode(message.maxExecutionPeriod, writer.uint32(10).fork()).ldelim();
+      Duration.encode(
+        message.maxExecutionPeriod,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (!message.maxMetadataLen.isZero()) {
       writer.uint32(16).uint64(message.maxMetadataLen);
@@ -80,24 +90,43 @@ export const Module = {
   },
   fromPartial(object: Partial<Module>): Module {
     const message = createBaseModule();
-    message.maxExecutionPeriod = object.maxExecutionPeriod !== undefined && object.maxExecutionPeriod !== null ? Duration.fromPartial(object.maxExecutionPeriod) : undefined;
-    message.maxMetadataLen = object.maxMetadataLen !== undefined && object.maxMetadataLen !== null ? Long.fromValue(object.maxMetadataLen) : Long.UZERO;
+    message.maxExecutionPeriod =
+      object.maxExecutionPeriod !== undefined &&
+      object.maxExecutionPeriod !== null
+        ? Duration.fromPartial(object.maxExecutionPeriod)
+        : undefined;
+    message.maxMetadataLen =
+      object.maxMetadataLen !== undefined && object.maxMetadataLen !== null
+        ? Long.fromValue(object.maxMetadataLen)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: ModuleAmino): Module {
     const message = createBaseModule();
-    if (object.max_execution_period !== undefined && object.max_execution_period !== null) {
-      message.maxExecutionPeriod = Duration.fromAmino(object.max_execution_period);
+    if (
+      object.max_execution_period !== undefined &&
+      object.max_execution_period !== null
+    ) {
+      message.maxExecutionPeriod = Duration.fromAmino(
+        object.max_execution_period
+      );
     }
-    if (object.max_metadata_len !== undefined && object.max_metadata_len !== null) {
+    if (
+      object.max_metadata_len !== undefined &&
+      object.max_metadata_len !== null
+    ) {
       message.maxMetadataLen = Long.fromString(object.max_metadata_len);
     }
     return message;
   },
   toAmino(message: Module): ModuleAmino {
     const obj: any = {};
-    obj.max_execution_period = message.maxExecutionPeriod ? Duration.toAmino(message.maxExecutionPeriod) : Duration.toAmino(Duration.fromPartial({}));
-    obj.max_metadata_len = !message.maxMetadataLen.isZero() ? message.maxMetadataLen?.toString() : undefined;
+    obj.max_execution_period = message.maxExecutionPeriod
+      ? Duration.toAmino(message.maxExecutionPeriod)
+      : Duration.toAmino(Duration.fromPartial({}));
+    obj.max_metadata_len = !message.maxMetadataLen.isZero()
+      ? message.maxMetadataLen?.toString()
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: ModuleAminoMsg): Module {
@@ -106,7 +135,7 @@ export const Module = {
   toAminoMsg(message: Module): ModuleAminoMsg {
     return {
       type: "cosmos-sdk/Module",
-      value: Module.toAmino(message)
+      value: Module.toAmino(message),
     };
   },
   fromProtoMsg(message: ModuleProtoMsg): Module {
@@ -118,7 +147,7 @@ export const Module = {
   toProtoMsg(message: Module): ModuleProtoMsg {
     return {
       typeUrl: "/cosmos.group.module.v1.Module",
-      value: Module.encode(message).finish()
+      value: Module.encode(message).finish(),
     };
-  }
+  },
 };

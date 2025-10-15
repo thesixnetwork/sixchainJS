@@ -1,6 +1,5 @@
 # `sixchain-client`
 
-
 ## Usage
 
 ```

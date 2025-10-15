@@ -313,8 +313,6 @@ AS DESCRIBED IN THE LICENSES, THE SOFTWARE IS PROVIDED “AS IS”, AT YOUR OWN 
 
 No developer or entity involved in creating this software will be liable for any claims or damages whatsoever associated with your use, inability to use, or your interaction with other users of the code, including any direct, indirect, incidental, special, exemplary, punitive or consequential damages, or loss of profits, cryptocurrencies, tokens, or anything else of value.
 
-
-
         +------------------------+
         |  Google Cloud Gateway  |
         +----------+-------------+
@@ -323,12 +321,13 @@ No developer or entity involved in creating this software will be liable for any
         +------------------------+
         |  HUAWEI LOAD BALANCE   |
         +----------+-------------+
-                   
-                   |                  
+
                    |
-   +---------------+---------------+
-   |               |               |
-+--+--+         +--+--+         +--+--+
-|Node1|         |Node2|         |Node3|
-+-----+         +-----+         +-----+
-HW NDOE.        HW NDOE         HW NDOE
+                   |
+
++---------------+---------------+
+| | |
++--+--+ +--+--+ +--+--+
+|Node1| |Node2| |Node3|
++-----+ +-----+ +-----+
+HW NDOE. HW NDOE HW NDOE

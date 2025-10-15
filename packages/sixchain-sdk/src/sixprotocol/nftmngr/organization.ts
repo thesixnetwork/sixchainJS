@@ -23,12 +23,15 @@ export interface OrganizationSDKType {
 function createBaseOrganization(): Organization {
   return {
     name: "",
-    owner: ""
+    owner: "",
   };
 }
 export const Organization = {
   typeUrl: "/sixprotocol.nftmngr.Organization",
-  encode(message: Organization, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Organization,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
@@ -91,7 +94,7 @@ export const Organization = {
   toProtoMsg(message: Organization): OrganizationProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.Organization",
-      value: Organization.encode(message).finish()
+      value: Organization.encode(message).finish(),
     };
-  }
+  },
 };

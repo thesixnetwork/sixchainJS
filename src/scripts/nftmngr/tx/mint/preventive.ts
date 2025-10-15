@@ -1,4 +1,7 @@
-import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import ZERO_YEAR from "../../resources/metadatas/preventive/nft-data_0_years.json";
 import THREE_YEAR from "../../resources/metadatas/preventive/nft-data_3_years.json";
@@ -79,10 +82,9 @@ async function mintNFT(tier: string, tokenId: number) {
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    mnemonic,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
 
   // Get signing client
   const client = await getSigningSixprotocolClient({
@@ -106,13 +108,13 @@ async function mintNFT(tier: string, tokenId: number) {
     "base64"
   );
 
-  const msgCreateMetadata = sixprotocol.nftmngr.MessageComposer.withTypeUrl.createMetadata({
-    creator: address,
-    nftSchemaCode: schemaCode,
-    tokenId: token_id,
-    base64NFTData: encodeBase64Metadata,
-  });
-
+  const msgCreateMetadata =
+    sixprotocol.nftmngr.MessageComposer.withTypeUrl.createMetadata({
+      creator: address,
+      nftSchemaCode: schemaCode,
+      tokenId: token_id,
+      base64NFTData: encodeBase64Metadata,
+    });
 
   const txResponse = await client.signAndBroadcast(
     address,

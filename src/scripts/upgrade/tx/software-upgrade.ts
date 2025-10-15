@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -30,8 +30,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -46,13 +46,14 @@ const main = async () => {
     time: new Date(0), // TODO: Set appropriate upgrade time, or use height-based upgrade
     height: Long.fromNumber(1000000), // TODO: Set appropriate upgrade height
     info: "TODO: Set upgrade info",
-    upgradedClientState: undefined as any
+    upgradedClientState: undefined as any,
   };
 
-  const softwareUpgrade = cosmos.upgrade.v1beta1.MessageComposer.withTypeUrl.softwareUpgrade({
-    authority: address, // TODO: This should be the governance module address in production
-    plan: plan
-  });
+  const softwareUpgrade =
+    cosmos.upgrade.v1beta1.MessageComposer.withTypeUrl.softwareUpgrade({
+      authority: address, // TODO: This should be the governance module address in production
+      plan: plan,
+    });
 
   msgArray.push(softwareUpgrade);
 

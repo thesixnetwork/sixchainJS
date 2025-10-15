@@ -1,4 +1,7 @@
-import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/divineelite-nft-schema.json";
@@ -18,10 +21,9 @@ const main = async () => {
   }
   const { rpcUrl, mnemonic } = await getConnectorConfig(network);
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    mnemonic,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
 
   // Get signing client
   const client = await getSigningSixprotocolClient({
@@ -43,18 +45,19 @@ const main = async () => {
   const refId = uuidv4();
   const msgArray: EncodeObject[] = [];
 
-  const action = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
-    creator: address,
-    nftSchemaCode: schemaCode,
-    tokenId: TOKENID,
-    action: "transfer_service",
-    refId,
-    parameters: [
-      { name: "service_name", value: "service_2" },
-      { name: "amount", value: "1" },
-      { name: "token_id", value: "1" },
-    ],
-  });
+  const action =
+    sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
+      creator: address,
+      nftSchemaCode: schemaCode,
+      tokenId: TOKENID,
+      action: "transfer_service",
+      refId,
+      parameters: [
+        { name: "service_name", value: "service_2" },
+        { name: "amount", value: "1" },
+        { name: "token_id", value: "1" },
+      ],
+    });
 
   msgArray.push(action);
 

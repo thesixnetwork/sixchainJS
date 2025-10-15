@@ -58,11 +58,11 @@ const main = async () => {
       delegatorDelegations.delegationResponses
     );
 
-    /* 
-    * Query staking params
-    * const params = await queryClient.cosmos.staking.v1beta1.params({});
-    * console.log("Staking params:", params.params);
-    */
+    /*
+     * Query staking params
+     * const params = await queryClient.cosmos.staking.v1beta1.params({});
+     * console.log("Staking params:", params.params);
+     */
 
     // Query staking pool
     const pool = await queryClient.cosmos.staking.v1beta1.pool({});

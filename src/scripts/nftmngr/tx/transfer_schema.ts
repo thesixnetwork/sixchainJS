@@ -1,4 +1,7 @@
-import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "../../client";
 import { EncodeObject } from "@cosmjs/proto-signing";
@@ -16,10 +19,9 @@ const TransferSchema = async (schemaCode: string, newOwner: string) => {
   const { rpcUrl, mnemonic } = await getConnectorConfig(network);
 
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    mnemonic,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
 
   // Get signing client
   const client = await getSigningSixprotocolClient({
@@ -34,11 +36,12 @@ const TransferSchema = async (schemaCode: string, newOwner: string) => {
   let msgArray: Array<EncodeObject> = [];
 
   // loop trough all addresses of list_recipient according to start and end
-  const addSystemAction = sixprotocol.nftmngr.MessageComposer.withTypeUrl.changeSchemaOwner({
-    creator: address,
-    nftSchemaCode: schemaCode,
-    newOwner: newOwner,
-  });
+  const addSystemAction =
+    sixprotocol.nftmngr.MessageComposer.withTypeUrl.changeSchemaOwner({
+      creator: address,
+      nftSchemaCode: schemaCode,
+      newOwner: newOwner,
+    });
 
   msgArray.push(addSystemAction);
 

@@ -1,6 +1,9 @@
-import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { EncodeObject } from '@cosmjs/proto-signing';
+import { EncodeObject } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "../client";
 import divine_elite from "../../resources/schemas/divineelite-nft-schema.json";
 import preventive from "../../resources/schemas/preventive-nft-schema.json";
@@ -19,7 +22,7 @@ const main = async () => {
       "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
-  
+
   const propId = process.argv[3];
 
   if (!propId || propId == "") {
@@ -30,17 +33,16 @@ const main = async () => {
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    mnemonic,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
   // Get signing client
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
   });
 
-  const accounts = await wallet.getAccounts()
+  const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
   for (let i = 0; i < schemaList.length; i++) {
@@ -50,12 +52,15 @@ const main = async () => {
     const org_name = process.env.ORG_NAME;
     let schemaCode: string;
     schemaCode = `${org_name}.${_name}`;
-    const voteCreateSchema = sixprotocol.nftmngr.MessageComposer.withTypeUrl.voteVirtualSchemaProposal({
-      creator: address,
-      id: String(propId),
-      nftSchemaCode: schemaCode,
-      option: 2,
-    });
+    const voteCreateSchema =
+      sixprotocol.nftmngr.MessageComposer.withTypeUrl.voteVirtualSchemaProposal(
+        {
+          creator: address,
+          id: String(propId),
+          nftSchemaCode: schemaCode,
+          option: 2,
+        }
+      );
 
     msgArray.push(voteCreateSchema);
   }

@@ -31,7 +31,8 @@ const main = async () => {
     console.log("Current inflation:", inflation);
 
     // Query annual provisions
-    const annualProvisions = await queryClient.cosmos.mint.v1beta1.annualProvisions({});
+    const annualProvisions =
+      await queryClient.cosmos.mint.v1beta1.annualProvisions({});
 
     console.log("Annual provisions:", annualProvisions);
   } catch (error) {

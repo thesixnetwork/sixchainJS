@@ -157,21 +157,24 @@ export const Params = {
         ? Duration.toJSON(message.mint_request_active_duration)
         : undefined);
     message.action_request_active_duration !== undefined &&
-      (obj.action_request_active_duration = message.action_request_active_duration
-        ? Duration.toJSON(message.action_request_active_duration)
-        : undefined);
+      (obj.action_request_active_duration =
+        message.action_request_active_duration
+          ? Duration.toJSON(message.action_request_active_duration)
+          : undefined);
     message.verify_request_active_duration !== undefined &&
-      (obj.verify_request_active_duration = message.verify_request_active_duration
-        ? Duration.toJSON(message.verify_request_active_duration)
-        : undefined);
+      (obj.verify_request_active_duration =
+        message.verify_request_active_duration
+          ? Duration.toJSON(message.verify_request_active_duration)
+          : undefined);
     message.action_signer_active_duration !== undefined &&
       (obj.action_signer_active_duration = message.action_signer_active_duration
         ? Duration.toJSON(message.action_signer_active_duration)
         : undefined);
     message.sync_action_signer_active_duration !== undefined &&
-      (obj.sync_action_signer_active_duration = message.sync_action_signer_active_duration
-        ? Duration.toJSON(message.sync_action_signer_active_duration)
-        : undefined);
+      (obj.sync_action_signer_active_duration =
+        message.sync_action_signer_active_duration
+          ? Duration.toJSON(message.sync_action_signer_active_duration)
+          : undefined);
     return obj;
   },
 
@@ -235,9 +238,9 @@ type Builtin = Date | Function | Uint8Array | string | number | undefined;
 export type DeepPartial<T> = T extends Builtin
   ? T
   : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
-  : Partial<T>;
+    ? Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+      ? ReadonlyArray<DeepPartial<U>>
+      : T extends {}
+        ? { [K in keyof T]?: DeepPartial<T[K]> }
+        : Partial<T>;

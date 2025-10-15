@@ -1,12 +1,22 @@
 //@ts-nocheck
-import { ResponseCommit, ResponseCommitAmino, ResponseCommitSDKType, RequestFinalizeBlock, RequestFinalizeBlockAmino, RequestFinalizeBlockSDKType, ResponseFinalizeBlock, ResponseFinalizeBlockAmino, ResponseFinalizeBlockSDKType } from "../../../tendermint/abci/types";
+import {
+  ResponseCommit,
+  ResponseCommitAmino,
+  ResponseCommitSDKType,
+  RequestFinalizeBlock,
+  RequestFinalizeBlockAmino,
+  RequestFinalizeBlockSDKType,
+  ResponseFinalizeBlock,
+  ResponseFinalizeBlockAmino,
+  ResponseFinalizeBlockSDKType,
+} from "../../../tendermint/abci/types";
 import * as _m0 from "protobufjs/minimal";
 import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /**
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
  * Deletes
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface StoreKVPair {
@@ -25,7 +35,7 @@ export interface StoreKVPairProtoMsg {
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
  * Deletes
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface StoreKVPairAmino {
@@ -44,7 +54,7 @@ export interface StoreKVPairAminoMsg {
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
  * Deletes
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface StoreKVPairSDKType {
@@ -95,12 +105,15 @@ function createBaseStoreKVPair(): StoreKVPair {
     storeKey: "",
     delete: false,
     key: new Uint8Array(),
-    value: new Uint8Array()
+    value: new Uint8Array(),
   };
 }
 export const StoreKVPair = {
   typeUrl: "/cosmos.store.v1beta1.StoreKVPair",
-  encode(message: StoreKVPair, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: StoreKVPair,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.storeKey !== "") {
       writer.uint32(10).string(message.storeKey);
     }
@@ -179,7 +192,7 @@ export const StoreKVPair = {
   toAminoMsg(message: StoreKVPair): StoreKVPairAminoMsg {
     return {
       type: "cosmos-sdk/StoreKVPair",
-      value: StoreKVPair.toAmino(message)
+      value: StoreKVPair.toAmino(message),
     };
   },
   fromProtoMsg(message: StoreKVPairProtoMsg): StoreKVPair {
@@ -191,28 +204,40 @@ export const StoreKVPair = {
   toProtoMsg(message: StoreKVPair): StoreKVPairProtoMsg {
     return {
       typeUrl: "/cosmos.store.v1beta1.StoreKVPair",
-      value: StoreKVPair.encode(message).finish()
+      value: StoreKVPair.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseBlockMetadata(): BlockMetadata {
   return {
     responseCommit: undefined,
     requestFinalizeBlock: undefined,
-    responseFinalizeBlock: undefined
+    responseFinalizeBlock: undefined,
   };
 }
 export const BlockMetadata = {
   typeUrl: "/cosmos.store.v1beta1.BlockMetadata",
-  encode(message: BlockMetadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: BlockMetadata,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.responseCommit !== undefined) {
-      ResponseCommit.encode(message.responseCommit, writer.uint32(50).fork()).ldelim();
+      ResponseCommit.encode(
+        message.responseCommit,
+        writer.uint32(50).fork()
+      ).ldelim();
     }
     if (message.requestFinalizeBlock !== undefined) {
-      RequestFinalizeBlock.encode(message.requestFinalizeBlock, writer.uint32(58).fork()).ldelim();
+      RequestFinalizeBlock.encode(
+        message.requestFinalizeBlock,
+        writer.uint32(58).fork()
+      ).ldelim();
     }
     if (message.responseFinalizeBlock !== undefined) {
-      ResponseFinalizeBlock.encode(message.responseFinalizeBlock, writer.uint32(66).fork()).ldelim();
+      ResponseFinalizeBlock.encode(
+        message.responseFinalizeBlock,
+        writer.uint32(66).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -224,13 +249,22 @@ export const BlockMetadata = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 6:
-          message.responseCommit = ResponseCommit.decode(reader, reader.uint32());
+          message.responseCommit = ResponseCommit.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         case 7:
-          message.requestFinalizeBlock = RequestFinalizeBlock.decode(reader, reader.uint32());
+          message.requestFinalizeBlock = RequestFinalizeBlock.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         case 8:
-          message.responseFinalizeBlock = ResponseFinalizeBlock.decode(reader, reader.uint32());
+          message.responseFinalizeBlock = ResponseFinalizeBlock.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -241,29 +275,59 @@ export const BlockMetadata = {
   },
   fromPartial(object: Partial<BlockMetadata>): BlockMetadata {
     const message = createBaseBlockMetadata();
-    message.responseCommit = object.responseCommit !== undefined && object.responseCommit !== null ? ResponseCommit.fromPartial(object.responseCommit) : undefined;
-    message.requestFinalizeBlock = object.requestFinalizeBlock !== undefined && object.requestFinalizeBlock !== null ? RequestFinalizeBlock.fromPartial(object.requestFinalizeBlock) : undefined;
-    message.responseFinalizeBlock = object.responseFinalizeBlock !== undefined && object.responseFinalizeBlock !== null ? ResponseFinalizeBlock.fromPartial(object.responseFinalizeBlock) : undefined;
+    message.responseCommit =
+      object.responseCommit !== undefined && object.responseCommit !== null
+        ? ResponseCommit.fromPartial(object.responseCommit)
+        : undefined;
+    message.requestFinalizeBlock =
+      object.requestFinalizeBlock !== undefined &&
+      object.requestFinalizeBlock !== null
+        ? RequestFinalizeBlock.fromPartial(object.requestFinalizeBlock)
+        : undefined;
+    message.responseFinalizeBlock =
+      object.responseFinalizeBlock !== undefined &&
+      object.responseFinalizeBlock !== null
+        ? ResponseFinalizeBlock.fromPartial(object.responseFinalizeBlock)
+        : undefined;
     return message;
   },
   fromAmino(object: BlockMetadataAmino): BlockMetadata {
     const message = createBaseBlockMetadata();
-    if (object.response_commit !== undefined && object.response_commit !== null) {
+    if (
+      object.response_commit !== undefined &&
+      object.response_commit !== null
+    ) {
       message.responseCommit = ResponseCommit.fromAmino(object.response_commit);
     }
-    if (object.request_finalize_block !== undefined && object.request_finalize_block !== null) {
-      message.requestFinalizeBlock = RequestFinalizeBlock.fromAmino(object.request_finalize_block);
+    if (
+      object.request_finalize_block !== undefined &&
+      object.request_finalize_block !== null
+    ) {
+      message.requestFinalizeBlock = RequestFinalizeBlock.fromAmino(
+        object.request_finalize_block
+      );
     }
-    if (object.response_finalize_block !== undefined && object.response_finalize_block !== null) {
-      message.responseFinalizeBlock = ResponseFinalizeBlock.fromAmino(object.response_finalize_block);
+    if (
+      object.response_finalize_block !== undefined &&
+      object.response_finalize_block !== null
+    ) {
+      message.responseFinalizeBlock = ResponseFinalizeBlock.fromAmino(
+        object.response_finalize_block
+      );
     }
     return message;
   },
   toAmino(message: BlockMetadata): BlockMetadataAmino {
     const obj: any = {};
-    obj.response_commit = message.responseCommit ? ResponseCommit.toAmino(message.responseCommit) : undefined;
-    obj.request_finalize_block = message.requestFinalizeBlock ? RequestFinalizeBlock.toAmino(message.requestFinalizeBlock) : undefined;
-    obj.response_finalize_block = message.responseFinalizeBlock ? ResponseFinalizeBlock.toAmino(message.responseFinalizeBlock) : undefined;
+    obj.response_commit = message.responseCommit
+      ? ResponseCommit.toAmino(message.responseCommit)
+      : undefined;
+    obj.request_finalize_block = message.requestFinalizeBlock
+      ? RequestFinalizeBlock.toAmino(message.requestFinalizeBlock)
+      : undefined;
+    obj.response_finalize_block = message.responseFinalizeBlock
+      ? ResponseFinalizeBlock.toAmino(message.responseFinalizeBlock)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: BlockMetadataAminoMsg): BlockMetadata {
@@ -272,7 +336,7 @@ export const BlockMetadata = {
   toAminoMsg(message: BlockMetadata): BlockMetadataAminoMsg {
     return {
       type: "cosmos-sdk/BlockMetadata",
-      value: BlockMetadata.toAmino(message)
+      value: BlockMetadata.toAmino(message),
     };
   },
   fromProtoMsg(message: BlockMetadataProtoMsg): BlockMetadata {
@@ -284,7 +348,7 @@ export const BlockMetadata = {
   toProtoMsg(message: BlockMetadata): BlockMetadataProtoMsg {
     return {
       typeUrl: "/cosmos.store.v1beta1.BlockMetadata",
-      value: BlockMetadata.encode(message).finish()
+      value: BlockMetadata.encode(message).finish(),
     };
-  }
+  },
 };

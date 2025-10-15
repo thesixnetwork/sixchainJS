@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -30,8 +30,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -42,20 +42,25 @@ const main = async () => {
 
   // TODO: Replace with actual vesting account details
   const toAddress = "6x1example_vesting_account_address";
-  const amount = [{
-    denom: "usix",
-    amount: "1000000000" // 1000 SIX
-  }];
-  const endTime = Long.fromNumber(Math.floor(Date.now() / 1000) + 365 * 24 * 60 * 60); // 1 year from now
+  const amount = [
+    {
+      denom: "usix",
+      amount: "1000000000", // 1000 SIX
+    },
+  ];
+  const endTime = Long.fromNumber(
+    Math.floor(Date.now() / 1000) + 365 * 24 * 60 * 60
+  ); // 1 year from now
   const delayed = false; // TODO: Set to true for delayed vesting
 
-  const createVestingAccount = cosmos.vesting.v1beta1.MessageComposer.withTypeUrl.createVestingAccount({
-    fromAddress: address,
-    toAddress: toAddress,
-    amount: amount,
-    endTime: endTime,
-    delayed: delayed
-  });
+  const createVestingAccount =
+    cosmos.vesting.v1beta1.MessageComposer.withTypeUrl.createVestingAccount({
+      fromAddress: address,
+      toAddress: toAddress,
+      amount: amount,
+      endTime: endTime,
+      delayed: delayed,
+    });
 
   msgArray.push(createVestingAccount);
 

@@ -15,12 +15,13 @@ async function main() {
     );
   }
 
-  console.time("RPC")
+  console.time("RPC");
   const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETOWRK);
   const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl
+  sixConnector.rpcUrl = rpcUrl;
   sixConnector.apiUrl = apiUrl;
-  const accountSigner = await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
+  const accountSigner =
+    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
 
   for (let i = 0; i < 10; i++) {
     // Get signing client
@@ -33,10 +34,10 @@ async function main() {
       }
     } catch (error) {
       console.log(error);
-      await new Promise(r => setTimeout(r, 10000));
+      await new Promise((r) => setTimeout(r, 10000));
     }
   }
-  console.timeEnd("RPC")
+  console.timeEnd("RPC");
 }
 
 main()
@@ -46,4 +47,3 @@ main()
   .catch((err: any) => {
     console.log(err);
   });
-

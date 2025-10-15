@@ -26,22 +26,24 @@ const main = async () => {
     // Query specific allowance
     const allowance = await queryClient.cosmos.feegrant.v1beta1.allowance({
       granter: granter,
-      grantee: grantee
+      grantee: grantee,
     });
 
     console.log("Allowance:", allowance);
 
     // Query allowances by granter
-    const allowancesByGranter = await queryClient.cosmos.feegrant.v1beta1.allowancesByGranter({
-      granter: granter
-    });
+    const allowancesByGranter =
+      await queryClient.cosmos.feegrant.v1beta1.allowancesByGranter({
+        granter: granter,
+      });
 
     console.log("Allowances by granter:", allowancesByGranter);
 
     // Query allowances for a specific grantee
-    const allowancesForGrantee = await queryClient.cosmos.feegrant.v1beta1.allowances({
-      grantee: grantee
-    });
+    const allowancesForGrantee =
+      await queryClient.cosmos.feegrant.v1beta1.allowances({
+        grantee: grantee,
+      });
 
     console.log("Allowances for grantee:", allowancesForGrantee);
   } catch (error) {

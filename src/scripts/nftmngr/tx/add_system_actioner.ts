@@ -1,4 +1,7 @@
-import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import dotenv from "dotenv";
@@ -23,19 +26,17 @@ const addSystemActioner = async (start: number, end: number) => {
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    mnemonic,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
   // Get signing client
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
   });
 
-  const accounts = await wallet.getAccounts()
+  const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
-
 
   let msgArray: Array<EncodeObject> = [];
 
@@ -50,20 +51,17 @@ const addSystemActioner = async (start: number, end: number) => {
 
     // loop trough all addresses of list_recipient according to start and end
     for (let j = start; j < end; j++) {
-      const addSystemAction = sixprotocol.nftmngr.MessageComposer.withTypeUrl.createActionExecutor({
-        creator: address,
-        nftSchemaCode: schemaCode,
-        executorAddress: allAddress[j],
-      });
+      const addSystemAction =
+        sixprotocol.nftmngr.MessageComposer.withTypeUrl.createActionExecutor({
+          creator: address,
+          nftSchemaCode: schemaCode,
+          executorAddress: allAddress[j],
+        });
 
-      msgArray.push(addSystemAction)
+      msgArray.push(addSystemAction);
     }
 
-    const txResponse = await client.signAndBroadcast(
-      address,
-      msgArray,
-      "auto",
-    );
+    const txResponse = await client.signAndBroadcast(address, msgArray, "auto");
 
     if (txResponse.code) {
       console.log(txResponse.rawLog);

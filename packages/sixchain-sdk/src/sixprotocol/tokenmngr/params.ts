@@ -54,7 +54,7 @@ export const Params = {
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
       type: "sixprotocol/x/tokenmngr/Params",
-      value: Params.toAmino(message)
+      value: Params.toAmino(message),
     };
   },
   fromProtoMsg(message: ParamsProtoMsg): Params {
@@ -66,7 +66,7 @@ export const Params = {
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.Params",
-      value: Params.encode(message).finish()
+      value: Params.encode(message).finish(),
     };
-  }
+  },
 };

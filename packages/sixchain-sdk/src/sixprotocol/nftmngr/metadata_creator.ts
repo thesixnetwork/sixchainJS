@@ -43,12 +43,15 @@ export interface MetadataCreatorSDKType {
 function createBaseMapTokenToMinter(): MapTokenToMinter {
   return {
     tokenId: "",
-    minter: ""
+    minter: "",
   };
 }
 export const MapTokenToMinter = {
   typeUrl: "/sixprotocol.nftmngr.MapTokenToMinter",
-  encode(message: MapTokenToMinter, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MapTokenToMinter,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.tokenId !== "") {
       writer.uint32(10).string(message.tokenId);
     }
@@ -111,19 +114,22 @@ export const MapTokenToMinter = {
   toProtoMsg(message: MapTokenToMinter): MapTokenToMinterProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.MapTokenToMinter",
-      value: MapTokenToMinter.encode(message).finish()
+      value: MapTokenToMinter.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMetadataCreator(): MetadataCreator {
   return {
     nftSchemaCode: "",
-    metadataMintedBy: []
+    metadataMintedBy: [],
   };
 }
 export const MetadataCreator = {
   typeUrl: "/sixprotocol.nftmngr.MetadataCreator",
-  encode(message: MetadataCreator, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MetadataCreator,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -143,7 +149,9 @@ export const MetadataCreator = {
           message.nftSchemaCode = reader.string();
           break;
         case 2:
-          message.metadataMintedBy.push(MapTokenToMinter.decode(reader, reader.uint32()));
+          message.metadataMintedBy.push(
+            MapTokenToMinter.decode(reader, reader.uint32())
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -155,7 +163,9 @@ export const MetadataCreator = {
   fromPartial(object: Partial<MetadataCreator>): MetadataCreator {
     const message = createBaseMetadataCreator();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
-    message.metadataMintedBy = object.metadataMintedBy?.map(e => MapTokenToMinter.fromPartial(e)) || [];
+    message.metadataMintedBy =
+      object.metadataMintedBy?.map((e) => MapTokenToMinter.fromPartial(e)) ||
+      [];
     return message;
   },
   fromAmino(object: MetadataCreatorAmino): MetadataCreator {
@@ -163,14 +173,18 @@ export const MetadataCreator = {
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
     }
-    message.metadataMintedBy = object.metadataMintedBy?.map(e => MapTokenToMinter.fromAmino(e)) || [];
+    message.metadataMintedBy =
+      object.metadataMintedBy?.map((e) => MapTokenToMinter.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: MetadataCreator): MetadataCreatorAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode =
+      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     if (message.metadataMintedBy) {
-      obj.metadataMintedBy = message.metadataMintedBy.map(e => e ? MapTokenToMinter.toAmino(e) : undefined);
+      obj.metadataMintedBy = message.metadataMintedBy.map((e) =>
+        e ? MapTokenToMinter.toAmino(e) : undefined
+      );
     } else {
       obj.metadataMintedBy = message.metadataMintedBy;
     }
@@ -188,7 +202,7 @@ export const MetadataCreator = {
   toProtoMsg(message: MetadataCreator): MetadataCreatorProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.MetadataCreator",
-      value: MetadataCreator.encode(message).finish()
+      value: MetadataCreator.encode(message).finish(),
     };
-  }
+  },
 };

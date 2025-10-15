@@ -1,4 +1,4 @@
-import { getSigningCosmosClient, cosmos } from '@sixnetwork/sixchain-sdk';
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -29,8 +29,8 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
-      gasPrice: gasPrice
-    }
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -44,19 +44,19 @@ const main = async () => {
     {
       address: address,
       weight: "1",
-      metadata: "Group admin"
+      metadata: "Group admin",
     },
     {
       address: "6x1example_member_address", // TODO: Replace with actual member address
       weight: "1",
-      metadata: "Group member"
-    }
+      metadata: "Group member",
+    },
   ];
 
   const createGroup = cosmos.group.v1.MessageComposer.withTypeUrl.createGroup({
     admin: address,
     members: members,
-    metadata: "TODO: Add group metadata"
+    metadata: "TODO: Add group metadata",
   });
 
   msgArray.push(createGroup);

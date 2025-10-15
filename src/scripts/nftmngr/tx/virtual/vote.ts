@@ -1,6 +1,9 @@
-import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { EncodeObject } from '@cosmjs/proto-signing';
+import { EncodeObject } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "../client";
 import dotenv from "dotenv";
 dotenv.config();
@@ -25,25 +28,25 @@ const main = async () => {
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    mnemonic,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
   // Get signing client
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
   });
 
-  const accounts = await wallet.getAccounts()
+  const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
-  const voteCreateSchema = sixprotocol.nftmngr.MessageComposer.withTypeUrl.voteVirtualSchemaProposal({
-    creator: address,
-    id: propId,
-    nftSchemaCode: schemaName,
-    option: 2,
-  });
+  const voteCreateSchema =
+    sixprotocol.nftmngr.MessageComposer.withTypeUrl.voteVirtualSchemaProposal({
+      creator: address,
+      id: propId,
+      nftSchemaCode: schemaName,
+      option: 2,
+    });
 
   msgArray.push(voteCreateSchema);
   try {

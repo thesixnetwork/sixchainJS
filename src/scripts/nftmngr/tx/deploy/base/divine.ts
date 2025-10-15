@@ -1,5 +1,8 @@
-import { EncodeObject } from '@cosmjs/proto-signing';
-import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import { EncodeObject } from "@cosmjs/proto-signing";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "../../client";
 import dotenv from "dotenv";
@@ -30,21 +33,19 @@ if (!NETOWRK) {
 }
 
 export const Deploy = async () => {
-
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
 
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    mnemonic,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
   // Get signing client
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
   });
 
-  const accounts = await wallet.getAccounts()
+  const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
   let msgArray: Array<EncodeObject> = [];
@@ -53,10 +54,11 @@ export const Deploy = async () => {
     "base64"
   );
 
-  const msgCreateNFTSchema = sixprotocol.nftmngr.MessageComposer.withTypeUrl.createNFTSchema({
-    creator: address,
-    nftSchemaBase64: encodeBase64Schema,
-  })
+  const msgCreateNFTSchema =
+    sixprotocol.nftmngr.MessageComposer.withTypeUrl.createNFTSchema({
+      creator: address,
+      nftSchemaBase64: encodeBase64Schema,
+    });
 
   msgArray.push(msgCreateNFTSchema);
 

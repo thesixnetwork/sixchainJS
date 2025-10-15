@@ -1,4 +1,7 @@
-import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/lifestyle-nft-schema.json";
@@ -23,10 +26,9 @@ const main = async () => {
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(network);
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    mnemonic,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
 
   // Get signing client
   const client = await getSigningSixprotocolClient({
@@ -48,7 +50,7 @@ const main = async () => {
   const ref_id = uuidv4();
   const msgArray: EncodeObject[] = [];
 
-  let action: any
+  let action: any;
 
   const todayDate = new Date();
   const expire_date: string = moment(todayDate.toUTCString())
@@ -57,37 +59,39 @@ const main = async () => {
     .toString();
 
   if (senior) {
-    const action40p = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
-      creator: address,
-      nftSchemaCode: schemaCode,
-      tokenId: TOKEN_ID,
-      action: "extend_privilege",
-      refId: ref_id,
-      parameters: [
-        { name: "tier", value: "10" },
-        { name: "group_one", value: "10" },
-        { name: "group_two", value: "0" },
-        { name: "group_three", value: "0" },
-        { name: "expire_date", value: expire_date },
-      ],
-    });
+    const action40p =
+      sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
+        creator: address,
+        nftSchemaCode: schemaCode,
+        tokenId: TOKEN_ID,
+        action: "extend_privilege",
+        refId: ref_id,
+        parameters: [
+          { name: "tier", value: "10" },
+          { name: "group_one", value: "10" },
+          { name: "group_two", value: "0" },
+          { name: "group_three", value: "0" },
+          { name: "expire_date", value: expire_date },
+        ],
+      });
 
     action = action40p;
   } else {
-    const action40l = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
-      creator: address,
-      nftSchemaCode: schemaCode,
-      tokenId: TOKEN_ID,
-      action: "extend_privilege",
-      refId: ref_id,
-      parameters: [
-        { name: "tier", value: "10" },
-        { name: "group_one", value: "0" },
-        { name: "group_two", value: "10" },
-        { name: "group_three", value: "0" },
-        { name: "expire_date", value: expire_date },
-      ],
-    });
+    const action40l =
+      sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
+        creator: address,
+        nftSchemaCode: schemaCode,
+        tokenId: TOKEN_ID,
+        action: "extend_privilege",
+        refId: ref_id,
+        parameters: [
+          { name: "tier", value: "10" },
+          { name: "group_one", value: "0" },
+          { name: "group_two", value: "10" },
+          { name: "group_three", value: "0" },
+          { name: "expire_date", value: expire_date },
+        ],
+      });
     action = action40l;
   }
 

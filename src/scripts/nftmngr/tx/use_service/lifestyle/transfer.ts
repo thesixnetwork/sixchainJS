@@ -1,4 +1,7 @@
-import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/lifestyle-nft-schema.json";
@@ -43,18 +46,19 @@ const main = async () => {
   const refId = uuidv4();
   const msgArray: EncodeObject[] = [];
 
-  const action = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
-    creator: address,
-    nftSchemaCode: schemaCode,
-    tokenId: TOKENID,
-    action: "transfer_service",
-    refId,
-    parameters: [
-      { name: "service_name", value: "service_2" },
-      { name: "amount", value: "1" },
-      { name: "token_id", value: "1" },
-    ],
-  });
+  const action =
+    sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
+      creator: address,
+      nftSchemaCode: schemaCode,
+      tokenId: TOKENID,
+      action: "transfer_service",
+      refId,
+      parameters: [
+        { name: "service_name", value: "service_2" },
+        { name: "amount", value: "1" },
+        { name: "token_id", value: "1" },
+      ],
+    });
 
   msgArray.push(action);
 

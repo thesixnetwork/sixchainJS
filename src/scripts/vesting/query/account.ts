@@ -25,7 +25,7 @@ const main = async () => {
 
     // Query account info (this will show if it's a vesting account)
     const accountInfo = await queryClient.cosmos.auth.v1beta1.account({
-      address: vestingAccountAddress
+      address: vestingAccountAddress,
     });
 
     console.log("Account info:", accountInfo);
@@ -33,7 +33,7 @@ const main = async () => {
     // Query account balance
     const balance = await queryClient.cosmos.bank.v1beta1.balance({
       address: vestingAccountAddress,
-      denom: "usix"
+      denom: "usix",
     });
 
     console.log("Account balance:", balance);
@@ -41,14 +41,16 @@ const main = async () => {
     // Query all balances
     const allBalances = await queryClient.cosmos.bank.v1beta1.allBalances({
       address: vestingAccountAddress,
-      resolveDenom: false
+      resolveDenom: false,
     });
 
     console.log("All balances:", allBalances);
 
     // Note: Vesting module doesn't have specific query endpoints
     // Vesting information is stored in the account type and can be accessed through auth module
-    console.log("Vesting details are available in the account type returned by auth module");
+    console.log(
+      "Vesting details are available in the account type returned by auth module"
+    );
   } catch (error) {
     console.error("Error querying vesting account:", error);
   }

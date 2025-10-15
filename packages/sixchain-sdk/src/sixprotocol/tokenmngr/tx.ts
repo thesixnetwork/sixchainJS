@@ -522,12 +522,15 @@ export interface MsgSendWrapTokenResponseSDKType {
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
-    params: Params.fromPartial({})
+    params: Params.fromPartial({}),
   };
 }
 export const MsgUpdateParams = {
   typeUrl: "/sixprotocol.tokenmngr.MsgUpdateParams",
-  encode(message: MsgUpdateParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgUpdateParams,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
     }
@@ -559,7 +562,10 @@ export const MsgUpdateParams = {
   fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams {
     const message = createBaseMsgUpdateParams();
     message.authority = object.authority ?? "";
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
@@ -575,7 +581,9 @@ export const MsgUpdateParams = {
   toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino {
     const obj: any = {};
     obj.authority = message.authority === "" ? undefined : message.authority;
-    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params
+      ? Params.toAmino(message.params)
+      : Params.toAmino(Params.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams {
@@ -584,7 +592,7 @@ export const MsgUpdateParams = {
   toAminoMsg(message: MsgUpdateParams): MsgUpdateParamsAminoMsg {
     return {
       type: "sixprotocol/x/tokenmngr/MsgUpdateParams",
-      value: MsgUpdateParams.toAmino(message)
+      value: MsgUpdateParams.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgUpdateParamsProtoMsg): MsgUpdateParams {
@@ -596,19 +604,25 @@ export const MsgUpdateParams = {
   toProtoMsg(message: MsgUpdateParams): MsgUpdateParamsProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgUpdateParams",
-      value: MsgUpdateParams.encode(message).finish()
+      value: MsgUpdateParams.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
   return {};
 }
 export const MsgUpdateParamsResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgUpdateParamsResponse",
-  encode(_: MsgUpdateParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgUpdateParamsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateParamsResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateParamsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateParamsResponse();
@@ -634,21 +648,27 @@ export const MsgUpdateParamsResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse {
+  fromAminoMsg(
+    object: MsgUpdateParamsResponseAminoMsg
+  ): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgUpdateParamsResponseProtoMsg): MsgUpdateParamsResponse {
+  fromProtoMsg(
+    message: MsgUpdateParamsResponseProtoMsg
+  ): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.decode(message.value);
   },
   toProto(message: MsgUpdateParamsResponse): Uint8Array {
     return MsgUpdateParamsResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseProtoMsg {
+  toProtoMsg(
+    message: MsgUpdateParamsResponse
+  ): MsgUpdateParamsResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgUpdateParamsResponse",
-      value: MsgUpdateParamsResponse.encode(message).finish()
+      value: MsgUpdateParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgCreateToken(): MsgCreateToken {
   return {
@@ -656,12 +676,15 @@ function createBaseMsgCreateToken(): MsgCreateToken {
     name: "",
     maxSupply: Coin.fromPartial({}),
     denomMetaData: "",
-    mintee: ""
+    mintee: "",
   };
 }
 export const MsgCreateToken = {
   typeUrl: "/sixprotocol.tokenmngr.MsgCreateToken",
-  encode(message: MsgCreateToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgCreateToken,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -712,7 +735,10 @@ export const MsgCreateToken = {
     const message = createBaseMsgCreateToken();
     message.creator = object.creator ?? "";
     message.name = object.name ?? "";
-    message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Coin.fromPartial(object.maxSupply) : undefined;
+    message.maxSupply =
+      object.maxSupply !== undefined && object.maxSupply !== null
+        ? Coin.fromPartial(object.maxSupply)
+        : undefined;
     message.denomMetaData = object.denomMetaData ?? "";
     message.mintee = object.mintee ?? "";
     return message;
@@ -740,8 +766,11 @@ export const MsgCreateToken = {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.name = message.name === "" ? undefined : message.name;
-    obj.maxSupply = message.maxSupply ? Coin.toAmino(message.maxSupply) : undefined;
-    obj.denomMetaData = message.denomMetaData === "" ? undefined : message.denomMetaData;
+    obj.maxSupply = message.maxSupply
+      ? Coin.toAmino(message.maxSupply)
+      : undefined;
+    obj.denomMetaData =
+      message.denomMetaData === "" ? undefined : message.denomMetaData;
     obj.mintee = message.mintee === "" ? undefined : message.mintee;
     return obj;
   },
@@ -757,19 +786,25 @@ export const MsgCreateToken = {
   toProtoMsg(message: MsgCreateToken): MsgCreateTokenProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgCreateToken",
-      value: MsgCreateToken.encode(message).finish()
+      value: MsgCreateToken.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgCreateTokenResponse(): MsgCreateTokenResponse {
   return {};
 }
 export const MsgCreateTokenResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgCreateTokenResponse",
-  encode(_: MsgCreateTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgCreateTokenResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateTokenResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgCreateTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateTokenResponse();
@@ -798,7 +833,9 @@ export const MsgCreateTokenResponse = {
   fromAminoMsg(object: MsgCreateTokenResponseAminoMsg): MsgCreateTokenResponse {
     return MsgCreateTokenResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgCreateTokenResponseProtoMsg): MsgCreateTokenResponse {
+  fromProtoMsg(
+    message: MsgCreateTokenResponseProtoMsg
+  ): MsgCreateTokenResponse {
     return MsgCreateTokenResponse.decode(message.value);
   },
   toProto(message: MsgCreateTokenResponse): Uint8Array {
@@ -807,21 +844,24 @@ export const MsgCreateTokenResponse = {
   toProtoMsg(message: MsgCreateTokenResponse): MsgCreateTokenResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgCreateTokenResponse",
-      value: MsgCreateTokenResponse.encode(message).finish()
+      value: MsgCreateTokenResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateToken(): MsgUpdateToken {
   return {
     creator: "",
     name: "",
     maxSupply: Coin.fromPartial({}),
-    mintee: ""
+    mintee: "",
   };
 }
 export const MsgUpdateToken = {
   typeUrl: "/sixprotocol.tokenmngr.MsgUpdateToken",
-  encode(message: MsgUpdateToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgUpdateToken,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -866,7 +906,10 @@ export const MsgUpdateToken = {
     const message = createBaseMsgUpdateToken();
     message.creator = object.creator ?? "";
     message.name = object.name ?? "";
-    message.maxSupply = object.maxSupply !== undefined && object.maxSupply !== null ? Coin.fromPartial(object.maxSupply) : undefined;
+    message.maxSupply =
+      object.maxSupply !== undefined && object.maxSupply !== null
+        ? Coin.fromPartial(object.maxSupply)
+        : undefined;
     message.mintee = object.mintee ?? "";
     return message;
   },
@@ -890,7 +933,9 @@ export const MsgUpdateToken = {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.name = message.name === "" ? undefined : message.name;
-    obj.maxSupply = message.maxSupply ? Coin.toAmino(message.maxSupply) : undefined;
+    obj.maxSupply = message.maxSupply
+      ? Coin.toAmino(message.maxSupply)
+      : undefined;
     obj.mintee = message.mintee === "" ? undefined : message.mintee;
     return obj;
   },
@@ -906,19 +951,25 @@ export const MsgUpdateToken = {
   toProtoMsg(message: MsgUpdateToken): MsgUpdateTokenProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgUpdateToken",
-      value: MsgUpdateToken.encode(message).finish()
+      value: MsgUpdateToken.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateTokenResponse(): MsgUpdateTokenResponse {
   return {};
 }
 export const MsgUpdateTokenResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgUpdateTokenResponse",
-  encode(_: MsgUpdateTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgUpdateTokenResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateTokenResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateTokenResponse();
@@ -947,7 +998,9 @@ export const MsgUpdateTokenResponse = {
   fromAminoMsg(object: MsgUpdateTokenResponseAminoMsg): MsgUpdateTokenResponse {
     return MsgUpdateTokenResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgUpdateTokenResponseProtoMsg): MsgUpdateTokenResponse {
+  fromProtoMsg(
+    message: MsgUpdateTokenResponseProtoMsg
+  ): MsgUpdateTokenResponse {
     return MsgUpdateTokenResponse.decode(message.value);
   },
   toProto(message: MsgUpdateTokenResponse): Uint8Array {
@@ -956,19 +1009,22 @@ export const MsgUpdateTokenResponse = {
   toProtoMsg(message: MsgUpdateTokenResponse): MsgUpdateTokenResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgUpdateTokenResponse",
-      value: MsgUpdateTokenResponse.encode(message).finish()
+      value: MsgUpdateTokenResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgDeleteToken(): MsgDeleteToken {
   return {
     creator: "",
-    name: ""
+    name: "",
   };
 }
 export const MsgDeleteToken = {
   typeUrl: "/sixprotocol.tokenmngr.MsgDeleteToken",
-  encode(message: MsgDeleteToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgDeleteToken,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -1031,19 +1087,25 @@ export const MsgDeleteToken = {
   toProtoMsg(message: MsgDeleteToken): MsgDeleteTokenProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgDeleteToken",
-      value: MsgDeleteToken.encode(message).finish()
+      value: MsgDeleteToken.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgDeleteTokenResponse(): MsgDeleteTokenResponse {
   return {};
 }
 export const MsgDeleteTokenResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgDeleteTokenResponse",
-  encode(_: MsgDeleteTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgDeleteTokenResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeleteTokenResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgDeleteTokenResponse();
@@ -1072,7 +1134,9 @@ export const MsgDeleteTokenResponse = {
   fromAminoMsg(object: MsgDeleteTokenResponseAminoMsg): MsgDeleteTokenResponse {
     return MsgDeleteTokenResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgDeleteTokenResponseProtoMsg): MsgDeleteTokenResponse {
+  fromProtoMsg(
+    message: MsgDeleteTokenResponseProtoMsg
+  ): MsgDeleteTokenResponse {
     return MsgDeleteTokenResponse.decode(message.value);
   },
   toProto(message: MsgDeleteTokenResponse): Uint8Array {
@@ -1081,20 +1145,23 @@ export const MsgDeleteTokenResponse = {
   toProtoMsg(message: MsgDeleteTokenResponse): MsgDeleteTokenResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgDeleteTokenResponse",
-      value: MsgDeleteTokenResponse.encode(message).finish()
+      value: MsgDeleteTokenResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgCreateMintperm(): MsgCreateMintperm {
   return {
     creator: "",
     token: "",
-    address: ""
+    address: "",
   };
 }
 export const MsgCreateMintperm = {
   typeUrl: "/sixprotocol.tokenmngr.MsgCreateMintperm",
-  encode(message: MsgCreateMintperm, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgCreateMintperm,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -1168,19 +1235,25 @@ export const MsgCreateMintperm = {
   toProtoMsg(message: MsgCreateMintperm): MsgCreateMintpermProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgCreateMintperm",
-      value: MsgCreateMintperm.encode(message).finish()
+      value: MsgCreateMintperm.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgCreateMintpermResponse(): MsgCreateMintpermResponse {
   return {};
 }
 export const MsgCreateMintpermResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgCreateMintpermResponse",
-  encode(_: MsgCreateMintpermResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgCreateMintpermResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateMintpermResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgCreateMintpermResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateMintpermResponse();
@@ -1194,7 +1267,9 @@ export const MsgCreateMintpermResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgCreateMintpermResponse>): MsgCreateMintpermResponse {
+  fromPartial(
+    _: Partial<MsgCreateMintpermResponse>
+  ): MsgCreateMintpermResponse {
     const message = createBaseMsgCreateMintpermResponse();
     return message;
   },
@@ -1206,32 +1281,41 @@ export const MsgCreateMintpermResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgCreateMintpermResponseAminoMsg): MsgCreateMintpermResponse {
+  fromAminoMsg(
+    object: MsgCreateMintpermResponseAminoMsg
+  ): MsgCreateMintpermResponse {
     return MsgCreateMintpermResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgCreateMintpermResponseProtoMsg): MsgCreateMintpermResponse {
+  fromProtoMsg(
+    message: MsgCreateMintpermResponseProtoMsg
+  ): MsgCreateMintpermResponse {
     return MsgCreateMintpermResponse.decode(message.value);
   },
   toProto(message: MsgCreateMintpermResponse): Uint8Array {
     return MsgCreateMintpermResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgCreateMintpermResponse): MsgCreateMintpermResponseProtoMsg {
+  toProtoMsg(
+    message: MsgCreateMintpermResponse
+  ): MsgCreateMintpermResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgCreateMintpermResponse",
-      value: MsgCreateMintpermResponse.encode(message).finish()
+      value: MsgCreateMintpermResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateMintperm(): MsgUpdateMintperm {
   return {
     creator: "",
     token: "",
-    address: ""
+    address: "",
   };
 }
 export const MsgUpdateMintperm = {
   typeUrl: "/sixprotocol.tokenmngr.MsgUpdateMintperm",
-  encode(message: MsgUpdateMintperm, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgUpdateMintperm,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -1305,19 +1389,25 @@ export const MsgUpdateMintperm = {
   toProtoMsg(message: MsgUpdateMintperm): MsgUpdateMintpermProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgUpdateMintperm",
-      value: MsgUpdateMintperm.encode(message).finish()
+      value: MsgUpdateMintperm.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateMintpermResponse(): MsgUpdateMintpermResponse {
   return {};
 }
 export const MsgUpdateMintpermResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgUpdateMintpermResponse",
-  encode(_: MsgUpdateMintpermResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgUpdateMintpermResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateMintpermResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateMintpermResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateMintpermResponse();
@@ -1331,7 +1421,9 @@ export const MsgUpdateMintpermResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgUpdateMintpermResponse>): MsgUpdateMintpermResponse {
+  fromPartial(
+    _: Partial<MsgUpdateMintpermResponse>
+  ): MsgUpdateMintpermResponse {
     const message = createBaseMsgUpdateMintpermResponse();
     return message;
   },
@@ -1343,32 +1435,41 @@ export const MsgUpdateMintpermResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateMintpermResponseAminoMsg): MsgUpdateMintpermResponse {
+  fromAminoMsg(
+    object: MsgUpdateMintpermResponseAminoMsg
+  ): MsgUpdateMintpermResponse {
     return MsgUpdateMintpermResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgUpdateMintpermResponseProtoMsg): MsgUpdateMintpermResponse {
+  fromProtoMsg(
+    message: MsgUpdateMintpermResponseProtoMsg
+  ): MsgUpdateMintpermResponse {
     return MsgUpdateMintpermResponse.decode(message.value);
   },
   toProto(message: MsgUpdateMintpermResponse): Uint8Array {
     return MsgUpdateMintpermResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateMintpermResponse): MsgUpdateMintpermResponseProtoMsg {
+  toProtoMsg(
+    message: MsgUpdateMintpermResponse
+  ): MsgUpdateMintpermResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgUpdateMintpermResponse",
-      value: MsgUpdateMintpermResponse.encode(message).finish()
+      value: MsgUpdateMintpermResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgDeleteMintperm(): MsgDeleteMintperm {
   return {
     creator: "",
     token: "",
-    address: ""
+    address: "",
   };
 }
 export const MsgDeleteMintperm = {
   typeUrl: "/sixprotocol.tokenmngr.MsgDeleteMintperm",
-  encode(message: MsgDeleteMintperm, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgDeleteMintperm,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -1442,19 +1543,25 @@ export const MsgDeleteMintperm = {
   toProtoMsg(message: MsgDeleteMintperm): MsgDeleteMintpermProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgDeleteMintperm",
-      value: MsgDeleteMintperm.encode(message).finish()
+      value: MsgDeleteMintperm.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgDeleteMintpermResponse(): MsgDeleteMintpermResponse {
   return {};
 }
 export const MsgDeleteMintpermResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgDeleteMintpermResponse",
-  encode(_: MsgDeleteMintpermResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgDeleteMintpermResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeleteMintpermResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteMintpermResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgDeleteMintpermResponse();
@@ -1468,7 +1575,9 @@ export const MsgDeleteMintpermResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgDeleteMintpermResponse>): MsgDeleteMintpermResponse {
+  fromPartial(
+    _: Partial<MsgDeleteMintpermResponse>
+  ): MsgDeleteMintpermResponse {
     const message = createBaseMsgDeleteMintpermResponse();
     return message;
   },
@@ -1480,31 +1589,40 @@ export const MsgDeleteMintpermResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgDeleteMintpermResponseAminoMsg): MsgDeleteMintpermResponse {
+  fromAminoMsg(
+    object: MsgDeleteMintpermResponseAminoMsg
+  ): MsgDeleteMintpermResponse {
     return MsgDeleteMintpermResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgDeleteMintpermResponseProtoMsg): MsgDeleteMintpermResponse {
+  fromProtoMsg(
+    message: MsgDeleteMintpermResponseProtoMsg
+  ): MsgDeleteMintpermResponse {
     return MsgDeleteMintpermResponse.decode(message.value);
   },
   toProto(message: MsgDeleteMintpermResponse): Uint8Array {
     return MsgDeleteMintpermResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgDeleteMintpermResponse): MsgDeleteMintpermResponseProtoMsg {
+  toProtoMsg(
+    message: MsgDeleteMintpermResponse
+  ): MsgDeleteMintpermResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgDeleteMintpermResponse",
-      value: MsgDeleteMintpermResponse.encode(message).finish()
+      value: MsgDeleteMintpermResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgCreateOptions(): MsgCreateOptions {
   return {
     creator: "",
-    defaultMintee: ""
+    defaultMintee: "",
   };
 }
 export const MsgCreateOptions = {
   typeUrl: "/sixprotocol.tokenmngr.MsgCreateOptions",
-  encode(message: MsgCreateOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgCreateOptions,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -1552,7 +1670,8 @@ export const MsgCreateOptions = {
   toAmino(message: MsgCreateOptions): MsgCreateOptionsAmino {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.defaultMintee = message.defaultMintee === "" ? undefined : message.defaultMintee;
+    obj.defaultMintee =
+      message.defaultMintee === "" ? undefined : message.defaultMintee;
     return obj;
   },
   fromAminoMsg(object: MsgCreateOptionsAminoMsg): MsgCreateOptions {
@@ -1567,19 +1686,25 @@ export const MsgCreateOptions = {
   toProtoMsg(message: MsgCreateOptions): MsgCreateOptionsProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgCreateOptions",
-      value: MsgCreateOptions.encode(message).finish()
+      value: MsgCreateOptions.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgCreateOptionsResponse(): MsgCreateOptionsResponse {
   return {};
 }
 export const MsgCreateOptionsResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgCreateOptionsResponse",
-  encode(_: MsgCreateOptionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgCreateOptionsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateOptionsResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgCreateOptionsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateOptionsResponse();
@@ -1605,31 +1730,40 @@ export const MsgCreateOptionsResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgCreateOptionsResponseAminoMsg): MsgCreateOptionsResponse {
+  fromAminoMsg(
+    object: MsgCreateOptionsResponseAminoMsg
+  ): MsgCreateOptionsResponse {
     return MsgCreateOptionsResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgCreateOptionsResponseProtoMsg): MsgCreateOptionsResponse {
+  fromProtoMsg(
+    message: MsgCreateOptionsResponseProtoMsg
+  ): MsgCreateOptionsResponse {
     return MsgCreateOptionsResponse.decode(message.value);
   },
   toProto(message: MsgCreateOptionsResponse): Uint8Array {
     return MsgCreateOptionsResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgCreateOptionsResponse): MsgCreateOptionsResponseProtoMsg {
+  toProtoMsg(
+    message: MsgCreateOptionsResponse
+  ): MsgCreateOptionsResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgCreateOptionsResponse",
-      value: MsgCreateOptionsResponse.encode(message).finish()
+      value: MsgCreateOptionsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateOptions(): MsgUpdateOptions {
   return {
     creator: "",
-    defaultMintee: ""
+    defaultMintee: "",
   };
 }
 export const MsgUpdateOptions = {
   typeUrl: "/sixprotocol.tokenmngr.MsgUpdateOptions",
-  encode(message: MsgUpdateOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgUpdateOptions,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -1677,7 +1811,8 @@ export const MsgUpdateOptions = {
   toAmino(message: MsgUpdateOptions): MsgUpdateOptionsAmino {
     const obj: any = {};
     obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.defaultMintee = message.defaultMintee === "" ? undefined : message.defaultMintee;
+    obj.defaultMintee =
+      message.defaultMintee === "" ? undefined : message.defaultMintee;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateOptionsAminoMsg): MsgUpdateOptions {
@@ -1692,19 +1827,25 @@ export const MsgUpdateOptions = {
   toProtoMsg(message: MsgUpdateOptions): MsgUpdateOptionsProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgUpdateOptions",
-      value: MsgUpdateOptions.encode(message).finish()
+      value: MsgUpdateOptions.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateOptionsResponse(): MsgUpdateOptionsResponse {
   return {};
 }
 export const MsgUpdateOptionsResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgUpdateOptionsResponse",
-  encode(_: MsgUpdateOptionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgUpdateOptionsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateOptionsResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateOptionsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateOptionsResponse();
@@ -1730,30 +1871,39 @@ export const MsgUpdateOptionsResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateOptionsResponseAminoMsg): MsgUpdateOptionsResponse {
+  fromAminoMsg(
+    object: MsgUpdateOptionsResponseAminoMsg
+  ): MsgUpdateOptionsResponse {
     return MsgUpdateOptionsResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgUpdateOptionsResponseProtoMsg): MsgUpdateOptionsResponse {
+  fromProtoMsg(
+    message: MsgUpdateOptionsResponseProtoMsg
+  ): MsgUpdateOptionsResponse {
     return MsgUpdateOptionsResponse.decode(message.value);
   },
   toProto(message: MsgUpdateOptionsResponse): Uint8Array {
     return MsgUpdateOptionsResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateOptionsResponse): MsgUpdateOptionsResponseProtoMsg {
+  toProtoMsg(
+    message: MsgUpdateOptionsResponse
+  ): MsgUpdateOptionsResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgUpdateOptionsResponse",
-      value: MsgUpdateOptionsResponse.encode(message).finish()
+      value: MsgUpdateOptionsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgDeleteOptions(): MsgDeleteOptions {
   return {
-    creator: ""
+    creator: "",
   };
 }
 export const MsgDeleteOptions = {
   typeUrl: "/sixprotocol.tokenmngr.MsgDeleteOptions",
-  encode(message: MsgDeleteOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgDeleteOptions,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -1805,19 +1955,25 @@ export const MsgDeleteOptions = {
   toProtoMsg(message: MsgDeleteOptions): MsgDeleteOptionsProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgDeleteOptions",
-      value: MsgDeleteOptions.encode(message).finish()
+      value: MsgDeleteOptions.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgDeleteOptionsResponse(): MsgDeleteOptionsResponse {
   return {};
 }
 export const MsgDeleteOptionsResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgDeleteOptionsResponse",
-  encode(_: MsgDeleteOptionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgDeleteOptionsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeleteOptionsResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgDeleteOptionsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgDeleteOptionsResponse();
@@ -1843,31 +1999,40 @@ export const MsgDeleteOptionsResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgDeleteOptionsResponseAminoMsg): MsgDeleteOptionsResponse {
+  fromAminoMsg(
+    object: MsgDeleteOptionsResponseAminoMsg
+  ): MsgDeleteOptionsResponse {
     return MsgDeleteOptionsResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgDeleteOptionsResponseProtoMsg): MsgDeleteOptionsResponse {
+  fromProtoMsg(
+    message: MsgDeleteOptionsResponseProtoMsg
+  ): MsgDeleteOptionsResponse {
     return MsgDeleteOptionsResponse.decode(message.value);
   },
   toProto(message: MsgDeleteOptionsResponse): Uint8Array {
     return MsgDeleteOptionsResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgDeleteOptionsResponse): MsgDeleteOptionsResponseProtoMsg {
+  toProtoMsg(
+    message: MsgDeleteOptionsResponse
+  ): MsgDeleteOptionsResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgDeleteOptionsResponse",
-      value: MsgDeleteOptionsResponse.encode(message).finish()
+      value: MsgDeleteOptionsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgBurn(): MsgBurn {
   return {
     creator: "",
-    amount: Coin.fromPartial({})
+    amount: Coin.fromPartial({}),
   };
 }
 export const MsgBurn = {
   typeUrl: "/sixprotocol.tokenmngr.MsgBurn",
-  encode(message: MsgBurn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgBurn,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -1899,7 +2064,10 @@ export const MsgBurn = {
   fromPartial(object: Partial<MsgBurn>): MsgBurn {
     const message = createBaseMsgBurn();
     message.creator = object.creator ?? "";
-    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.amount =
+      object.amount !== undefined && object.amount !== null
+        ? Coin.fromPartial(object.amount)
+        : undefined;
     return message;
   },
   fromAmino(object: MsgBurnAmino): MsgBurn {
@@ -1930,18 +2098,21 @@ export const MsgBurn = {
   toProtoMsg(message: MsgBurn): MsgBurnProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgBurn",
-      value: MsgBurn.encode(message).finish()
+      value: MsgBurn.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgBurnResponse(): MsgBurnResponse {
   return {
-    id: Long.UZERO
+    id: Long.UZERO,
   };
 }
 export const MsgBurnResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgBurnResponse",
-  encode(message: MsgBurnResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgBurnResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
     }
@@ -1966,7 +2137,10 @@ export const MsgBurnResponse = {
   },
   fromPartial(object: Partial<MsgBurnResponse>): MsgBurnResponse {
     const message = createBaseMsgBurnResponse();
-    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
+    message.id =
+      object.id !== undefined && object.id !== null
+        ? Long.fromValue(object.id)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: MsgBurnResponseAmino): MsgBurnResponse {
@@ -1993,20 +2167,23 @@ export const MsgBurnResponse = {
   toProtoMsg(message: MsgBurnResponse): MsgBurnResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgBurnResponse",
-      value: MsgBurnResponse.encode(message).finish()
+      value: MsgBurnResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgWrapToken(): MsgWrapToken {
   return {
     creator: "",
     amount: Coin.fromPartial({}),
-    receiver: ""
+    receiver: "",
   };
 }
 export const MsgWrapToken = {
   typeUrl: "/sixprotocol.tokenmngr.MsgWrapToken",
-  encode(message: MsgWrapToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgWrapToken,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -2044,7 +2221,10 @@ export const MsgWrapToken = {
   fromPartial(object: Partial<MsgWrapToken>): MsgWrapToken {
     const message = createBaseMsgWrapToken();
     message.creator = object.creator ?? "";
-    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.amount =
+      object.amount !== undefined && object.amount !== null
+        ? Coin.fromPartial(object.amount)
+        : undefined;
     message.receiver = object.receiver ?? "";
     return message;
   },
@@ -2080,24 +2260,30 @@ export const MsgWrapToken = {
   toProtoMsg(message: MsgWrapToken): MsgWrapTokenProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgWrapToken",
-      value: MsgWrapToken.encode(message).finish()
+      value: MsgWrapToken.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgWrapTokenResponse(): MsgWrapTokenResponse {
   return {
-    amount: Coin.fromPartial({})
+    amount: Coin.fromPartial({}),
   };
 }
 export const MsgWrapTokenResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgWrapTokenResponse",
-  encode(message: MsgWrapTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgWrapTokenResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgWrapTokenResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgWrapTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgWrapTokenResponse();
@@ -2116,7 +2302,10 @@ export const MsgWrapTokenResponse = {
   },
   fromPartial(object: Partial<MsgWrapTokenResponse>): MsgWrapTokenResponse {
     const message = createBaseMsgWrapTokenResponse();
-    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.amount =
+      object.amount !== undefined && object.amount !== null
+        ? Coin.fromPartial(object.amount)
+        : undefined;
     return message;
   },
   fromAmino(object: MsgWrapTokenResponseAmino): MsgWrapTokenResponse {
@@ -2143,20 +2332,23 @@ export const MsgWrapTokenResponse = {
   toProtoMsg(message: MsgWrapTokenResponse): MsgWrapTokenResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgWrapTokenResponse",
-      value: MsgWrapTokenResponse.encode(message).finish()
+      value: MsgWrapTokenResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUnwrapToken(): MsgUnwrapToken {
   return {
     creator: "",
     amount: Coin.fromPartial({}),
-    receiver: ""
+    receiver: "",
   };
 }
 export const MsgUnwrapToken = {
   typeUrl: "/sixprotocol.tokenmngr.MsgUnwrapToken",
-  encode(message: MsgUnwrapToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgUnwrapToken,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -2194,7 +2386,10 @@ export const MsgUnwrapToken = {
   fromPartial(object: Partial<MsgUnwrapToken>): MsgUnwrapToken {
     const message = createBaseMsgUnwrapToken();
     message.creator = object.creator ?? "";
-    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.amount =
+      object.amount !== undefined && object.amount !== null
+        ? Coin.fromPartial(object.amount)
+        : undefined;
     message.receiver = object.receiver ?? "";
     return message;
   },
@@ -2230,24 +2425,30 @@ export const MsgUnwrapToken = {
   toProtoMsg(message: MsgUnwrapToken): MsgUnwrapTokenProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgUnwrapToken",
-      value: MsgUnwrapToken.encode(message).finish()
+      value: MsgUnwrapToken.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUnwrapTokenResponse(): MsgUnwrapTokenResponse {
   return {
-    amount: Coin.fromPartial({})
+    amount: Coin.fromPartial({}),
   };
 }
 export const MsgUnwrapTokenResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgUnwrapTokenResponse",
-  encode(message: MsgUnwrapTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgUnwrapTokenResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnwrapTokenResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgUnwrapTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUnwrapTokenResponse();
@@ -2266,7 +2467,10 @@ export const MsgUnwrapTokenResponse = {
   },
   fromPartial(object: Partial<MsgUnwrapTokenResponse>): MsgUnwrapTokenResponse {
     const message = createBaseMsgUnwrapTokenResponse();
-    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.amount =
+      object.amount !== undefined && object.amount !== null
+        ? Coin.fromPartial(object.amount)
+        : undefined;
     return message;
   },
   fromAmino(object: MsgUnwrapTokenResponseAmino): MsgUnwrapTokenResponse {
@@ -2284,7 +2488,9 @@ export const MsgUnwrapTokenResponse = {
   fromAminoMsg(object: MsgUnwrapTokenResponseAminoMsg): MsgUnwrapTokenResponse {
     return MsgUnwrapTokenResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgUnwrapTokenResponseProtoMsg): MsgUnwrapTokenResponse {
+  fromProtoMsg(
+    message: MsgUnwrapTokenResponseProtoMsg
+  ): MsgUnwrapTokenResponse {
     return MsgUnwrapTokenResponse.decode(message.value);
   },
   toProto(message: MsgUnwrapTokenResponse): Uint8Array {
@@ -2293,20 +2499,23 @@ export const MsgUnwrapTokenResponse = {
   toProtoMsg(message: MsgUnwrapTokenResponse): MsgUnwrapTokenResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgUnwrapTokenResponse",
-      value: MsgUnwrapTokenResponse.encode(message).finish()
+      value: MsgUnwrapTokenResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgSendWrapToken(): MsgSendWrapToken {
   return {
     creator: "",
     ethAddress: "",
-    amount: Coin.fromPartial({})
+    amount: Coin.fromPartial({}),
   };
 }
 export const MsgSendWrapToken = {
   typeUrl: "/sixprotocol.tokenmngr.MsgSendWrapToken",
-  encode(message: MsgSendWrapToken, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgSendWrapToken,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -2345,7 +2554,10 @@ export const MsgSendWrapToken = {
     const message = createBaseMsgSendWrapToken();
     message.creator = object.creator ?? "";
     message.ethAddress = object.ethAddress ?? "";
-    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
+    message.amount =
+      object.amount !== undefined && object.amount !== null
+        ? Coin.fromPartial(object.amount)
+        : undefined;
     return message;
   },
   fromAmino(object: MsgSendWrapTokenAmino): MsgSendWrapToken {
@@ -2380,19 +2592,22 @@ export const MsgSendWrapToken = {
   toProtoMsg(message: MsgSendWrapToken): MsgSendWrapTokenProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgSendWrapToken",
-      value: MsgSendWrapToken.encode(message).finish()
+      value: MsgSendWrapToken.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgSendWrapTokenResponse(): MsgSendWrapTokenResponse {
   return {
     receiver: "",
-    amount: ""
+    amount: "",
   };
 }
 export const MsgSendWrapTokenResponse = {
   typeUrl: "/sixprotocol.tokenmngr.MsgSendWrapTokenResponse",
-  encode(message: MsgSendWrapTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgSendWrapTokenResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.receiver !== "") {
       writer.uint32(10).string(message.receiver);
     }
@@ -2401,7 +2616,10 @@ export const MsgSendWrapTokenResponse = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendWrapTokenResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgSendWrapTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSendWrapTokenResponse();
@@ -2421,7 +2639,9 @@ export const MsgSendWrapTokenResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgSendWrapTokenResponse>): MsgSendWrapTokenResponse {
+  fromPartial(
+    object: Partial<MsgSendWrapTokenResponse>
+  ): MsgSendWrapTokenResponse {
     const message = createBaseMsgSendWrapTokenResponse();
     message.receiver = object.receiver ?? "";
     message.amount = object.amount ?? "";
@@ -2443,19 +2663,25 @@ export const MsgSendWrapTokenResponse = {
     obj.amount = message.amount === "" ? undefined : message.amount;
     return obj;
   },
-  fromAminoMsg(object: MsgSendWrapTokenResponseAminoMsg): MsgSendWrapTokenResponse {
+  fromAminoMsg(
+    object: MsgSendWrapTokenResponseAminoMsg
+  ): MsgSendWrapTokenResponse {
     return MsgSendWrapTokenResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgSendWrapTokenResponseProtoMsg): MsgSendWrapTokenResponse {
+  fromProtoMsg(
+    message: MsgSendWrapTokenResponseProtoMsg
+  ): MsgSendWrapTokenResponse {
     return MsgSendWrapTokenResponse.decode(message.value);
   },
   toProto(message: MsgSendWrapTokenResponse): Uint8Array {
     return MsgSendWrapTokenResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgSendWrapTokenResponse): MsgSendWrapTokenResponseProtoMsg {
+  toProtoMsg(
+    message: MsgSendWrapTokenResponse
+  ): MsgSendWrapTokenResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.MsgSendWrapTokenResponse",
-      value: MsgSendWrapTokenResponse.encode(message).finish()
+      value: MsgSendWrapTokenResponse.encode(message).finish(),
     };
-  }
+  },
 };

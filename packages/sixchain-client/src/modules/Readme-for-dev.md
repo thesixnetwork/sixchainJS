@@ -12,14 +12,14 @@ if (util.Long !== Long) {
 ```
 
 - 4 export SignAndBroadcastOptions in all sixnft/{module name}/module/index
-export interface SignAndBroadcastOptions
+  export interface SignAndBroadcastOptions
 
 Find
 
 ```typescript
 interface SignAndBroadcastOptions {
-  fee: StdFee,
-  memo?: string
+  fee: StdFee;
+  memo?: string;
 }
 ```
 
@@ -27,8 +27,8 @@ Replace
 
 ```typescript
 export interface SignAndBroadcastOptions {
-  fee: StdFee | "auto",
-  memo?: string
+  fee: StdFee | "auto";
+  memo?: string;
 }
 ```
 
@@ -43,7 +43,10 @@ import { SigningStargateClient } from "@cosmjs/stargate";
 Replace
 
 ```typescript
-import { SigningStargateClient, SigningStargateClientOptions} from "@cosmjs/stargate";
+import {
+  SigningStargateClient,
+  SigningStargateClientOptions,
+} from "@cosmjs/stargate";
 ```
 
 - 6 add SigningStargateClientOptions to txClient
@@ -65,13 +68,18 @@ const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions =
 Find
 
 ```typescript
-client = await SigningStargateClient.connectWithSigner(addr, wallet, { registry });
+client = await SigningStargateClient.connectWithSigner(addr, wallet, {
+  registry,
+});
 ```
 
 Replace
 
 ```typescript
-client = await SigningStargateClient.connectWithSigner(addr, wallet, { registry, ...options});
+client = await SigningStargateClient.connectWithSigner(addr, wallet, {
+  registry,
+  ...options,
+});
 ```
 
 Find
