@@ -9,6 +9,11 @@ export interface ActionSignerConfigProtoMsg {
   typeUrl: "/sixprotocol.nftoracle.ActionSignerConfig";
   value: Uint8Array;
 }
+/**
+ * @name ActionSignerConfigAmino
+ * @package sixprotocol.nftoracle
+ * @see proto type: sixprotocol.nftoracle.ActionSignerConfig
+ */
 export interface ActionSignerConfigAmino {
   chain?: string;
   contractAddress?: string;
@@ -27,15 +32,12 @@ function createBaseActionSignerConfig(): ActionSignerConfig {
   return {
     chain: "",
     contractAddress: "",
-    creator: "",
+    creator: ""
   };
 }
 export const ActionSignerConfig = {
   typeUrl: "/sixprotocol.nftoracle.ActionSignerConfig",
-  encode(
-    message: ActionSignerConfig,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ActionSignerConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
     }
@@ -82,10 +84,7 @@ export const ActionSignerConfig = {
     if (object.chain !== undefined && object.chain !== null) {
       message.chain = object.chain;
     }
-    if (
-      object.contractAddress !== undefined &&
-      object.contractAddress !== null
-    ) {
+    if (object.contractAddress !== undefined && object.contractAddress !== null) {
       message.contractAddress = object.contractAddress;
     }
     if (object.creator !== undefined && object.creator !== null) {
@@ -96,8 +95,7 @@ export const ActionSignerConfig = {
   toAmino(message: ActionSignerConfig): ActionSignerConfigAmino {
     const obj: any = {};
     obj.chain = message.chain === "" ? undefined : message.chain;
-    obj.contractAddress =
-      message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.contractAddress = message.contractAddress === "" ? undefined : message.contractAddress;
     obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;
   },
@@ -113,7 +111,7 @@ export const ActionSignerConfig = {
   toProtoMsg(message: ActionSignerConfig): ActionSignerConfigProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.ActionSignerConfig",
-      value: ActionSignerConfig.encode(message).finish(),
+      value: ActionSignerConfig.encode(message).finish()
     };
-  },
+  }
 };

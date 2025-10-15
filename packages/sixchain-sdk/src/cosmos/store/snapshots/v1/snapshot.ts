@@ -13,7 +13,12 @@ export interface SnapshotProtoMsg {
   typeUrl: "/cosmos.store.snapshots.v1.Snapshot";
   value: Uint8Array;
 }
-/** Snapshot contains Tendermint state sync snapshot info. */
+/**
+ * Snapshot contains Tendermint state sync snapshot info.
+ * @name SnapshotAmino
+ * @package cosmos.store.snapshots.v1
+ * @see proto type: cosmos.store.snapshots.v1.Snapshot
+ */
 export interface SnapshotAmino {
   height?: string;
   format?: number;
@@ -42,9 +47,16 @@ export interface MetadataProtoMsg {
   typeUrl: "/cosmos.store.snapshots.v1.Metadata";
   value: Uint8Array;
 }
-/** Metadata contains SDK-specific snapshot metadata. */
+/**
+ * Metadata contains SDK-specific snapshot metadata.
+ * @name MetadataAmino
+ * @package cosmos.store.snapshots.v1
+ * @see proto type: cosmos.store.snapshots.v1.Metadata
+ */
 export interface MetadataAmino {
-  /** SHA-256 chunk hashes */
+  /**
+   * SHA-256 chunk hashes
+   */
   chunk_hashes?: string[];
 }
 export interface MetadataAminoMsg {
@@ -57,7 +69,7 @@ export interface MetadataSDKType {
 }
 /**
  * SnapshotItem is an item contained in a rootmulti.Store snapshot.
- *
+ * 
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotItem {
@@ -72,8 +84,11 @@ export interface SnapshotItemProtoMsg {
 }
 /**
  * SnapshotItem is an item contained in a rootmulti.Store snapshot.
- *
+ * 
  * Since: cosmos-sdk 0.46
+ * @name SnapshotItemAmino
+ * @package cosmos.store.snapshots.v1
+ * @see proto type: cosmos.store.snapshots.v1.SnapshotItem
  */
 export interface SnapshotItemAmino {
   store?: SnapshotStoreItemAmino;
@@ -87,7 +102,7 @@ export interface SnapshotItemAminoMsg {
 }
 /**
  * SnapshotItem is an item contained in a rootmulti.Store snapshot.
- *
+ * 
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotItemSDKType {
@@ -98,7 +113,7 @@ export interface SnapshotItemSDKType {
 }
 /**
  * SnapshotStoreItem contains metadata about a snapshotted store.
- *
+ * 
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotStoreItem {
@@ -110,8 +125,11 @@ export interface SnapshotStoreItemProtoMsg {
 }
 /**
  * SnapshotStoreItem contains metadata about a snapshotted store.
- *
+ * 
  * Since: cosmos-sdk 0.46
+ * @name SnapshotStoreItemAmino
+ * @package cosmos.store.snapshots.v1
+ * @see proto type: cosmos.store.snapshots.v1.SnapshotStoreItem
  */
 export interface SnapshotStoreItemAmino {
   name?: string;
@@ -122,7 +140,7 @@ export interface SnapshotStoreItemAminoMsg {
 }
 /**
  * SnapshotStoreItem contains metadata about a snapshotted store.
- *
+ * 
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotStoreItemSDKType {
@@ -130,7 +148,7 @@ export interface SnapshotStoreItemSDKType {
 }
 /**
  * SnapshotIAVLItem is an exported IAVL node.
- *
+ * 
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotIAVLItem {
@@ -147,15 +165,22 @@ export interface SnapshotIAVLItemProtoMsg {
 }
 /**
  * SnapshotIAVLItem is an exported IAVL node.
- *
+ * 
  * Since: cosmos-sdk 0.46
+ * @name SnapshotIAVLItemAmino
+ * @package cosmos.store.snapshots.v1
+ * @see proto type: cosmos.store.snapshots.v1.SnapshotIAVLItem
  */
 export interface SnapshotIAVLItemAmino {
   key?: string;
   value?: string;
-  /** version is block height */
+  /**
+   * version is block height
+   */
   version?: string;
-  /** height is depth of the tree. */
+  /**
+   * height is depth of the tree.
+   */
   height?: number;
 }
 export interface SnapshotIAVLItemAminoMsg {
@@ -164,7 +189,7 @@ export interface SnapshotIAVLItemAminoMsg {
 }
 /**
  * SnapshotIAVLItem is an exported IAVL node.
- *
+ * 
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotIAVLItemSDKType {
@@ -175,7 +200,7 @@ export interface SnapshotIAVLItemSDKType {
 }
 /**
  * SnapshotExtensionMeta contains metadata about an external snapshotter.
- *
+ * 
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotExtensionMeta {
@@ -188,8 +213,11 @@ export interface SnapshotExtensionMetaProtoMsg {
 }
 /**
  * SnapshotExtensionMeta contains metadata about an external snapshotter.
- *
+ * 
  * Since: cosmos-sdk 0.46
+ * @name SnapshotExtensionMetaAmino
+ * @package cosmos.store.snapshots.v1
+ * @see proto type: cosmos.store.snapshots.v1.SnapshotExtensionMeta
  */
 export interface SnapshotExtensionMetaAmino {
   name?: string;
@@ -201,7 +229,7 @@ export interface SnapshotExtensionMetaAminoMsg {
 }
 /**
  * SnapshotExtensionMeta contains metadata about an external snapshotter.
- *
+ * 
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotExtensionMetaSDKType {
@@ -210,7 +238,7 @@ export interface SnapshotExtensionMetaSDKType {
 }
 /**
  * SnapshotExtensionPayload contains payloads of an external snapshotter.
- *
+ * 
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotExtensionPayload {
@@ -222,8 +250,11 @@ export interface SnapshotExtensionPayloadProtoMsg {
 }
 /**
  * SnapshotExtensionPayload contains payloads of an external snapshotter.
- *
+ * 
  * Since: cosmos-sdk 0.46
+ * @name SnapshotExtensionPayloadAmino
+ * @package cosmos.store.snapshots.v1
+ * @see proto type: cosmos.store.snapshots.v1.SnapshotExtensionPayload
  */
 export interface SnapshotExtensionPayloadAmino {
   payload?: string;
@@ -234,7 +265,7 @@ export interface SnapshotExtensionPayloadAminoMsg {
 }
 /**
  * SnapshotExtensionPayload contains payloads of an external snapshotter.
- *
+ * 
  * Since: cosmos-sdk 0.46
  */
 export interface SnapshotExtensionPayloadSDKType {
@@ -246,15 +277,12 @@ function createBaseSnapshot(): Snapshot {
     format: 0,
     chunks: 0,
     hash: new Uint8Array(),
-    metadata: Metadata.fromPartial({}),
+    metadata: Metadata.fromPartial({})
   };
 }
 export const Snapshot = {
   typeUrl: "/cosmos.store.snapshots.v1.Snapshot",
-  encode(
-    message: Snapshot,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Snapshot, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.height.isZero()) {
       writer.uint32(8).uint64(message.height);
     }
@@ -303,17 +331,11 @@ export const Snapshot = {
   },
   fromPartial(object: Partial<Snapshot>): Snapshot {
     const message = createBaseSnapshot();
-    message.height =
-      object.height !== undefined && object.height !== null
-        ? Long.fromValue(object.height)
-        : Long.UZERO;
+    message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.UZERO;
     message.format = object.format ?? 0;
     message.chunks = object.chunks ?? 0;
     message.hash = object.hash ?? new Uint8Array();
-    message.metadata =
-      object.metadata !== undefined && object.metadata !== null
-        ? Metadata.fromPartial(object.metadata)
-        : undefined;
+    message.metadata = object.metadata !== undefined && object.metadata !== null ? Metadata.fromPartial(object.metadata) : undefined;
     return message;
   },
   fromAmino(object: SnapshotAmino): Snapshot {
@@ -337,15 +359,11 @@ export const Snapshot = {
   },
   toAmino(message: Snapshot): SnapshotAmino {
     const obj: any = {};
-    obj.height = !message.height.isZero()
-      ? message.height?.toString()
-      : undefined;
+    obj.height = !message.height.isZero() ? message.height?.toString() : undefined;
     obj.format = message.format === 0 ? undefined : message.format;
     obj.chunks = message.chunks === 0 ? undefined : message.chunks;
     obj.hash = message.hash ? base64FromBytes(message.hash) : undefined;
-    obj.metadata = message.metadata
-      ? Metadata.toAmino(message.metadata)
-      : undefined;
+    obj.metadata = message.metadata ? Metadata.toAmino(message.metadata) : undefined;
     return obj;
   },
   fromAminoMsg(object: SnapshotAminoMsg): Snapshot {
@@ -354,7 +372,7 @@ export const Snapshot = {
   toAminoMsg(message: Snapshot): SnapshotAminoMsg {
     return {
       type: "cosmos-sdk/Snapshot",
-      value: Snapshot.toAmino(message),
+      value: Snapshot.toAmino(message)
     };
   },
   fromProtoMsg(message: SnapshotProtoMsg): Snapshot {
@@ -366,21 +384,18 @@ export const Snapshot = {
   toProtoMsg(message: Snapshot): SnapshotProtoMsg {
     return {
       typeUrl: "/cosmos.store.snapshots.v1.Snapshot",
-      value: Snapshot.encode(message).finish(),
+      value: Snapshot.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseMetadata(): Metadata {
   return {
-    chunkHashes: [],
+    chunkHashes: []
   };
 }
 export const Metadata = {
   typeUrl: "/cosmos.store.snapshots.v1.Metadata",
-  encode(
-    message: Metadata,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Metadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.chunkHashes) {
       writer.uint32(10).bytes(v!);
     }
@@ -405,19 +420,18 @@ export const Metadata = {
   },
   fromPartial(object: Partial<Metadata>): Metadata {
     const message = createBaseMetadata();
-    message.chunkHashes = object.chunkHashes?.map((e) => e) || [];
+    message.chunkHashes = object.chunkHashes?.map(e => e) || [];
     return message;
   },
   fromAmino(object: MetadataAmino): Metadata {
     const message = createBaseMetadata();
-    message.chunkHashes =
-      object.chunk_hashes?.map((e) => bytesFromBase64(e)) || [];
+    message.chunkHashes = object.chunk_hashes?.map(e => bytesFromBase64(e)) || [];
     return message;
   },
   toAmino(message: Metadata): MetadataAmino {
     const obj: any = {};
     if (message.chunkHashes) {
-      obj.chunk_hashes = message.chunkHashes.map((e) => base64FromBytes(e));
+      obj.chunk_hashes = message.chunkHashes.map(e => base64FromBytes(e));
     } else {
       obj.chunk_hashes = message.chunkHashes;
     }
@@ -429,7 +443,7 @@ export const Metadata = {
   toAminoMsg(message: Metadata): MetadataAminoMsg {
     return {
       type: "cosmos-sdk/Metadata",
-      value: Metadata.toAmino(message),
+      value: Metadata.toAmino(message)
     };
   },
   fromProtoMsg(message: MetadataProtoMsg): Metadata {
@@ -441,44 +455,32 @@ export const Metadata = {
   toProtoMsg(message: Metadata): MetadataProtoMsg {
     return {
       typeUrl: "/cosmos.store.snapshots.v1.Metadata",
-      value: Metadata.encode(message).finish(),
+      value: Metadata.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseSnapshotItem(): SnapshotItem {
   return {
     store: undefined,
     iavl: undefined,
     extension: undefined,
-    extensionPayload: undefined,
+    extensionPayload: undefined
   };
 }
 export const SnapshotItem = {
   typeUrl: "/cosmos.store.snapshots.v1.SnapshotItem",
-  encode(
-    message: SnapshotItem,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: SnapshotItem, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.store !== undefined) {
-      SnapshotStoreItem.encode(
-        message.store,
-        writer.uint32(10).fork()
-      ).ldelim();
+      SnapshotStoreItem.encode(message.store, writer.uint32(10).fork()).ldelim();
     }
     if (message.iavl !== undefined) {
       SnapshotIAVLItem.encode(message.iavl, writer.uint32(18).fork()).ldelim();
     }
     if (message.extension !== undefined) {
-      SnapshotExtensionMeta.encode(
-        message.extension,
-        writer.uint32(26).fork()
-      ).ldelim();
+      SnapshotExtensionMeta.encode(message.extension, writer.uint32(26).fork()).ldelim();
     }
     if (message.extensionPayload !== undefined) {
-      SnapshotExtensionPayload.encode(
-        message.extensionPayload,
-        writer.uint32(34).fork()
-      ).ldelim();
+      SnapshotExtensionPayload.encode(message.extensionPayload, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -496,16 +498,10 @@ export const SnapshotItem = {
           message.iavl = SnapshotIAVLItem.decode(reader, reader.uint32());
           break;
         case 3:
-          message.extension = SnapshotExtensionMeta.decode(
-            reader,
-            reader.uint32()
-          );
+          message.extension = SnapshotExtensionMeta.decode(reader, reader.uint32());
           break;
         case 4:
-          message.extensionPayload = SnapshotExtensionPayload.decode(
-            reader,
-            reader.uint32()
-          );
+          message.extensionPayload = SnapshotExtensionPayload.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -516,22 +512,10 @@ export const SnapshotItem = {
   },
   fromPartial(object: Partial<SnapshotItem>): SnapshotItem {
     const message = createBaseSnapshotItem();
-    message.store =
-      object.store !== undefined && object.store !== null
-        ? SnapshotStoreItem.fromPartial(object.store)
-        : undefined;
-    message.iavl =
-      object.iavl !== undefined && object.iavl !== null
-        ? SnapshotIAVLItem.fromPartial(object.iavl)
-        : undefined;
-    message.extension =
-      object.extension !== undefined && object.extension !== null
-        ? SnapshotExtensionMeta.fromPartial(object.extension)
-        : undefined;
-    message.extensionPayload =
-      object.extensionPayload !== undefined && object.extensionPayload !== null
-        ? SnapshotExtensionPayload.fromPartial(object.extensionPayload)
-        : undefined;
+    message.store = object.store !== undefined && object.store !== null ? SnapshotStoreItem.fromPartial(object.store) : undefined;
+    message.iavl = object.iavl !== undefined && object.iavl !== null ? SnapshotIAVLItem.fromPartial(object.iavl) : undefined;
+    message.extension = object.extension !== undefined && object.extension !== null ? SnapshotExtensionMeta.fromPartial(object.extension) : undefined;
+    message.extensionPayload = object.extensionPayload !== undefined && object.extensionPayload !== null ? SnapshotExtensionPayload.fromPartial(object.extensionPayload) : undefined;
     return message;
   },
   fromAmino(object: SnapshotItemAmino): SnapshotItem {
@@ -545,30 +529,17 @@ export const SnapshotItem = {
     if (object.extension !== undefined && object.extension !== null) {
       message.extension = SnapshotExtensionMeta.fromAmino(object.extension);
     }
-    if (
-      object.extension_payload !== undefined &&
-      object.extension_payload !== null
-    ) {
-      message.extensionPayload = SnapshotExtensionPayload.fromAmino(
-        object.extension_payload
-      );
+    if (object.extension_payload !== undefined && object.extension_payload !== null) {
+      message.extensionPayload = SnapshotExtensionPayload.fromAmino(object.extension_payload);
     }
     return message;
   },
   toAmino(message: SnapshotItem): SnapshotItemAmino {
     const obj: any = {};
-    obj.store = message.store
-      ? SnapshotStoreItem.toAmino(message.store)
-      : undefined;
-    obj.iavl = message.iavl
-      ? SnapshotIAVLItem.toAmino(message.iavl)
-      : undefined;
-    obj.extension = message.extension
-      ? SnapshotExtensionMeta.toAmino(message.extension)
-      : undefined;
-    obj.extension_payload = message.extensionPayload
-      ? SnapshotExtensionPayload.toAmino(message.extensionPayload)
-      : undefined;
+    obj.store = message.store ? SnapshotStoreItem.toAmino(message.store) : undefined;
+    obj.iavl = message.iavl ? SnapshotIAVLItem.toAmino(message.iavl) : undefined;
+    obj.extension = message.extension ? SnapshotExtensionMeta.toAmino(message.extension) : undefined;
+    obj.extension_payload = message.extensionPayload ? SnapshotExtensionPayload.toAmino(message.extensionPayload) : undefined;
     return obj;
   },
   fromAminoMsg(object: SnapshotItemAminoMsg): SnapshotItem {
@@ -577,7 +548,7 @@ export const SnapshotItem = {
   toAminoMsg(message: SnapshotItem): SnapshotItemAminoMsg {
     return {
       type: "cosmos-sdk/SnapshotItem",
-      value: SnapshotItem.toAmino(message),
+      value: SnapshotItem.toAmino(message)
     };
   },
   fromProtoMsg(message: SnapshotItemProtoMsg): SnapshotItem {
@@ -589,21 +560,18 @@ export const SnapshotItem = {
   toProtoMsg(message: SnapshotItem): SnapshotItemProtoMsg {
     return {
       typeUrl: "/cosmos.store.snapshots.v1.SnapshotItem",
-      value: SnapshotItem.encode(message).finish(),
+      value: SnapshotItem.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseSnapshotStoreItem(): SnapshotStoreItem {
   return {
-    name: "",
+    name: ""
   };
 }
 export const SnapshotStoreItem = {
   typeUrl: "/cosmos.store.snapshots.v1.SnapshotStoreItem",
-  encode(
-    message: SnapshotStoreItem,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: SnapshotStoreItem, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
@@ -649,7 +617,7 @@ export const SnapshotStoreItem = {
   toAminoMsg(message: SnapshotStoreItem): SnapshotStoreItemAminoMsg {
     return {
       type: "cosmos-sdk/SnapshotStoreItem",
-      value: SnapshotStoreItem.toAmino(message),
+      value: SnapshotStoreItem.toAmino(message)
     };
   },
   fromProtoMsg(message: SnapshotStoreItemProtoMsg): SnapshotStoreItem {
@@ -661,24 +629,21 @@ export const SnapshotStoreItem = {
   toProtoMsg(message: SnapshotStoreItem): SnapshotStoreItemProtoMsg {
     return {
       typeUrl: "/cosmos.store.snapshots.v1.SnapshotStoreItem",
-      value: SnapshotStoreItem.encode(message).finish(),
+      value: SnapshotStoreItem.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseSnapshotIAVLItem(): SnapshotIAVLItem {
   return {
     key: new Uint8Array(),
     value: new Uint8Array(),
     version: Long.ZERO,
-    height: 0,
+    height: 0
   };
 }
 export const SnapshotIAVLItem = {
   typeUrl: "/cosmos.store.snapshots.v1.SnapshotIAVLItem",
-  encode(
-    message: SnapshotIAVLItem,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: SnapshotIAVLItem, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
     }
@@ -723,10 +688,7 @@ export const SnapshotIAVLItem = {
     const message = createBaseSnapshotIAVLItem();
     message.key = object.key ?? new Uint8Array();
     message.value = object.value ?? new Uint8Array();
-    message.version =
-      object.version !== undefined && object.version !== null
-        ? Long.fromValue(object.version)
-        : Long.ZERO;
+    message.version = object.version !== undefined && object.version !== null ? Long.fromValue(object.version) : Long.ZERO;
     message.height = object.height ?? 0;
     return message;
   },
@@ -750,9 +712,7 @@ export const SnapshotIAVLItem = {
     const obj: any = {};
     obj.key = message.key ? base64FromBytes(message.key) : undefined;
     obj.value = message.value ? base64FromBytes(message.value) : undefined;
-    obj.version = !message.version.isZero()
-      ? message.version?.toString()
-      : undefined;
+    obj.version = !message.version.isZero() ? message.version?.toString() : undefined;
     obj.height = message.height === 0 ? undefined : message.height;
     return obj;
   },
@@ -762,7 +722,7 @@ export const SnapshotIAVLItem = {
   toAminoMsg(message: SnapshotIAVLItem): SnapshotIAVLItemAminoMsg {
     return {
       type: "cosmos-sdk/SnapshotIAVLItem",
-      value: SnapshotIAVLItem.toAmino(message),
+      value: SnapshotIAVLItem.toAmino(message)
     };
   },
   fromProtoMsg(message: SnapshotIAVLItemProtoMsg): SnapshotIAVLItem {
@@ -774,22 +734,19 @@ export const SnapshotIAVLItem = {
   toProtoMsg(message: SnapshotIAVLItem): SnapshotIAVLItemProtoMsg {
     return {
       typeUrl: "/cosmos.store.snapshots.v1.SnapshotIAVLItem",
-      value: SnapshotIAVLItem.encode(message).finish(),
+      value: SnapshotIAVLItem.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseSnapshotExtensionMeta(): SnapshotExtensionMeta {
   return {
     name: "",
-    format: 0,
+    format: 0
   };
 }
 export const SnapshotExtensionMeta = {
   typeUrl: "/cosmos.store.snapshots.v1.SnapshotExtensionMeta",
-  encode(
-    message: SnapshotExtensionMeta,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: SnapshotExtensionMeta, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
@@ -798,10 +755,7 @@ export const SnapshotExtensionMeta = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): SnapshotExtensionMeta {
+  decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotExtensionMeta {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSnapshotExtensionMeta();
@@ -849,7 +803,7 @@ export const SnapshotExtensionMeta = {
   toAminoMsg(message: SnapshotExtensionMeta): SnapshotExtensionMetaAminoMsg {
     return {
       type: "cosmos-sdk/SnapshotExtensionMeta",
-      value: SnapshotExtensionMeta.toAmino(message),
+      value: SnapshotExtensionMeta.toAmino(message)
     };
   },
   fromProtoMsg(message: SnapshotExtensionMetaProtoMsg): SnapshotExtensionMeta {
@@ -861,30 +815,24 @@ export const SnapshotExtensionMeta = {
   toProtoMsg(message: SnapshotExtensionMeta): SnapshotExtensionMetaProtoMsg {
     return {
       typeUrl: "/cosmos.store.snapshots.v1.SnapshotExtensionMeta",
-      value: SnapshotExtensionMeta.encode(message).finish(),
+      value: SnapshotExtensionMeta.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseSnapshotExtensionPayload(): SnapshotExtensionPayload {
   return {
-    payload: new Uint8Array(),
+    payload: new Uint8Array()
   };
 }
 export const SnapshotExtensionPayload = {
   typeUrl: "/cosmos.store.snapshots.v1.SnapshotExtensionPayload",
-  encode(
-    message: SnapshotExtensionPayload,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: SnapshotExtensionPayload, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.payload.length !== 0) {
       writer.uint32(10).bytes(message.payload);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): SnapshotExtensionPayload {
+  decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotExtensionPayload {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSnapshotExtensionPayload();
@@ -901,9 +849,7 @@ export const SnapshotExtensionPayload = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<SnapshotExtensionPayload>
-  ): SnapshotExtensionPayload {
+  fromPartial(object: Partial<SnapshotExtensionPayload>): SnapshotExtensionPayload {
     const message = createBaseSnapshotExtensionPayload();
     message.payload = object.payload ?? new Uint8Array();
     return message;
@@ -917,38 +863,28 @@ export const SnapshotExtensionPayload = {
   },
   toAmino(message: SnapshotExtensionPayload): SnapshotExtensionPayloadAmino {
     const obj: any = {};
-    obj.payload = message.payload
-      ? base64FromBytes(message.payload)
-      : undefined;
+    obj.payload = message.payload ? base64FromBytes(message.payload) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: SnapshotExtensionPayloadAminoMsg
-  ): SnapshotExtensionPayload {
+  fromAminoMsg(object: SnapshotExtensionPayloadAminoMsg): SnapshotExtensionPayload {
     return SnapshotExtensionPayload.fromAmino(object.value);
   },
-  toAminoMsg(
-    message: SnapshotExtensionPayload
-  ): SnapshotExtensionPayloadAminoMsg {
+  toAminoMsg(message: SnapshotExtensionPayload): SnapshotExtensionPayloadAminoMsg {
     return {
       type: "cosmos-sdk/SnapshotExtensionPayload",
-      value: SnapshotExtensionPayload.toAmino(message),
+      value: SnapshotExtensionPayload.toAmino(message)
     };
   },
-  fromProtoMsg(
-    message: SnapshotExtensionPayloadProtoMsg
-  ): SnapshotExtensionPayload {
+  fromProtoMsg(message: SnapshotExtensionPayloadProtoMsg): SnapshotExtensionPayload {
     return SnapshotExtensionPayload.decode(message.value);
   },
   toProto(message: SnapshotExtensionPayload): Uint8Array {
     return SnapshotExtensionPayload.encode(message).finish();
   },
-  toProtoMsg(
-    message: SnapshotExtensionPayload
-  ): SnapshotExtensionPayloadProtoMsg {
+  toProtoMsg(message: SnapshotExtensionPayload): SnapshotExtensionPayloadProtoMsg {
     return {
       typeUrl: "/cosmos.store.snapshots.v1.SnapshotExtensionPayload",
-      value: SnapshotExtensionPayload.encode(message).finish(),
+      value: SnapshotExtensionPayload.encode(message).finish()
     };
-  },
+  }
 };

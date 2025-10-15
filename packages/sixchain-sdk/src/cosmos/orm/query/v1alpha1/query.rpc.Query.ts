@@ -19,21 +19,13 @@ export class QueryClientImpl implements Query {
   }
   get(request: GetRequest): Promise<GetResponse> {
     const data = GetRequest.encode(request).finish();
-    const promise = this.rpc.request(
-      "cosmos.orm.query.v1alpha1.Query",
-      "Get",
-      data
-    );
-    return promise.then((data) => GetResponse.decode(new _m0.Reader(data)));
+    const promise = this.rpc.request("cosmos.orm.query.v1alpha1.Query", "Get", data);
+    return promise.then(data => GetResponse.decode(new _m0.Reader(data)));
   }
   list(request: ListRequest): Promise<ListResponse> {
     const data = ListRequest.encode(request).finish();
-    const promise = this.rpc.request(
-      "cosmos.orm.query.v1alpha1.Query",
-      "List",
-      data
-    );
-    return promise.then((data) => ListResponse.decode(new _m0.Reader(data)));
+    const promise = this.rpc.request("cosmos.orm.query.v1alpha1.Query", "List", data);
+    return promise.then(data => ListResponse.decode(new _m0.Reader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
@@ -45,6 +37,6 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     list(request: ListRequest): Promise<ListResponse> {
       return queryService.list(request);
-    },
+    }
   };
 };

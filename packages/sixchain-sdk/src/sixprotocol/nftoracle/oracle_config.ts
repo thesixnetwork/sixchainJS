@@ -7,6 +7,11 @@ export interface OracleConfigProtoMsg {
   typeUrl: "/sixprotocol.nftoracle.OracleConfig";
   value: Uint8Array;
 }
+/**
+ * @name OracleConfigAmino
+ * @package sixprotocol.nftoracle
+ * @see proto type: sixprotocol.nftoracle.OracleConfig
+ */
 export interface OracleConfigAmino {
   minimum_confirmation?: number;
 }
@@ -19,15 +24,12 @@ export interface OracleConfigSDKType {
 }
 function createBaseOracleConfig(): OracleConfig {
   return {
-    minimumConfirmation: 0,
+    minimumConfirmation: 0
   };
 }
 export const OracleConfig = {
   typeUrl: "/sixprotocol.nftoracle.OracleConfig",
-  encode(
-    message: OracleConfig,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: OracleConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.minimumConfirmation !== 0) {
       writer.uint32(8).int32(message.minimumConfirmation);
     }
@@ -57,20 +59,14 @@ export const OracleConfig = {
   },
   fromAmino(object: OracleConfigAmino): OracleConfig {
     const message = createBaseOracleConfig();
-    if (
-      object.minimum_confirmation !== undefined &&
-      object.minimum_confirmation !== null
-    ) {
+    if (object.minimum_confirmation !== undefined && object.minimum_confirmation !== null) {
       message.minimumConfirmation = object.minimum_confirmation;
     }
     return message;
   },
   toAmino(message: OracleConfig): OracleConfigAmino {
     const obj: any = {};
-    obj.minimum_confirmation =
-      message.minimumConfirmation === 0
-        ? undefined
-        : message.minimumConfirmation;
+    obj.minimum_confirmation = message.minimumConfirmation === 0 ? undefined : message.minimumConfirmation;
     return obj;
   },
   fromAminoMsg(object: OracleConfigAminoMsg): OracleConfig {
@@ -85,7 +81,7 @@ export const OracleConfig = {
   toProtoMsg(message: OracleConfig): OracleConfigProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.OracleConfig",
-      value: OracleConfig.encode(message).finish(),
+      value: OracleConfig.encode(message).finish()
     };
-  },
+  }
 };

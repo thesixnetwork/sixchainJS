@@ -49,6 +49,11 @@ export interface ActionParamsProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.ActionParams";
   value: Uint8Array;
 }
+/**
+ * @name ActionParamsAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.ActionParams
+ */
 export interface ActionParamsAmino {
   name?: string;
   desc?: string;
@@ -80,6 +85,11 @@ export interface ActionProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.Action";
   value: Uint8Array;
 }
+/**
+ * @name ActionAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.Action
+ */
 export interface ActionAmino {
   name?: string;
   desc?: string;
@@ -108,15 +118,12 @@ function createBaseActionParams(): ActionParams {
     desc: "",
     dataType: "",
     required: false,
-    defaultValue: "",
+    defaultValue: ""
   };
 }
 export const ActionParams = {
   typeUrl: "/sixprotocol.nftmngr.ActionParams",
-  encode(
-    message: ActionParams,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ActionParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
@@ -197,8 +204,7 @@ export const ActionParams = {
     obj.desc = message.desc === "" ? undefined : message.desc;
     obj.data_type = message.dataType === "" ? undefined : message.dataType;
     obj.required = message.required === false ? undefined : message.required;
-    obj.default_value =
-      message.defaultValue === "" ? undefined : message.defaultValue;
+    obj.default_value = message.defaultValue === "" ? undefined : message.defaultValue;
     return obj;
   },
   fromAminoMsg(object: ActionParamsAminoMsg): ActionParams {
@@ -213,9 +219,9 @@ export const ActionParams = {
   toProtoMsg(message: ActionParams): ActionParamsProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.ActionParams",
-      value: ActionParams.encode(message).finish(),
+      value: ActionParams.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseAction(): Action {
   return {
@@ -225,15 +231,12 @@ function createBaseAction(): Action {
     when: "",
     then: [],
     allowedActioner: undefined,
-    params: [],
+    params: []
   };
 }
 export const Action = {
   typeUrl: "/sixprotocol.nftmngr.Action",
-  encode(
-    message: Action,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Action, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
@@ -298,10 +301,9 @@ export const Action = {
     message.desc = object.desc ?? "";
     message.disable = object.disable ?? false;
     message.when = object.when ?? "";
-    message.then = object.then?.map((e) => e) || [];
+    message.then = object.then?.map(e => e) || [];
     message.allowedActioner = object.allowedActioner ?? undefined;
-    message.params =
-      object.params?.map((e) => ActionParams.fromPartial(e)) || [];
+    message.params = object.params?.map(e => ActionParams.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: ActionAmino): Action {
@@ -318,14 +320,11 @@ export const Action = {
     if (object.when !== undefined && object.when !== null) {
       message.when = object.when;
     }
-    message.then = object.then?.map((e) => e) || [];
-    if (
-      object.allowed_actioner !== undefined &&
-      object.allowed_actioner !== null
-    ) {
+    message.then = object.then?.map(e => e) || [];
+    if (object.allowed_actioner !== undefined && object.allowed_actioner !== null) {
       message.allowedActioner = object.allowed_actioner;
     }
-    message.params = object.params?.map((e) => ActionParams.fromAmino(e)) || [];
+    message.params = object.params?.map(e => ActionParams.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: Action): ActionAmino {
@@ -335,16 +334,13 @@ export const Action = {
     obj.disable = message.disable === false ? undefined : message.disable;
     obj.when = message.when === "" ? undefined : message.when;
     if (message.then) {
-      obj.then = message.then.map((e) => e);
+      obj.then = message.then.map(e => e);
     } else {
       obj.then = message.then;
     }
-    obj.allowed_actioner =
-      message.allowedActioner === null ? undefined : message.allowedActioner;
+    obj.allowed_actioner = message.allowedActioner === null ? undefined : message.allowedActioner;
     if (message.params) {
-      obj.params = message.params.map((e) =>
-        e ? ActionParams.toAmino(e) : undefined
-      );
+      obj.params = message.params.map(e => e ? ActionParams.toAmino(e) : undefined);
     } else {
       obj.params = message.params;
     }
@@ -362,7 +358,7 @@ export const Action = {
   toProtoMsg(message: Action): ActionProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.Action",
-      value: Action.encode(message).finish(),
+      value: Action.encode(message).finish()
     };
-  },
+  }
 };

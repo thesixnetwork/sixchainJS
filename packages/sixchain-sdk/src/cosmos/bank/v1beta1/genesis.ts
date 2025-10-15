@@ -1,15 +1,5 @@
 //@ts-nocheck
-import {
-  Params,
-  ParamsAmino,
-  ParamsSDKType,
-  Metadata,
-  MetadataAmino,
-  MetadataSDKType,
-  SendEnabled,
-  SendEnabledAmino,
-  SendEnabledSDKType,
-} from "./bank";
+import { Params, ParamsAmino, ParamsSDKType, Metadata, MetadataAmino, MetadataSDKType, SendEnabled, SendEnabledAmino, SendEnabledSDKType } from "./bank";
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the bank module's genesis state. */
@@ -27,7 +17,7 @@ export interface GenesisState {
   denomMetadata: Metadata[];
   /**
    * send_enabled defines the denoms where send is enabled or disabled.
-   *
+   * 
    * Since: cosmos-sdk 0.47
    */
   sendEnabled: SendEnabled[];
@@ -36,22 +26,33 @@ export interface GenesisStateProtoMsg {
   typeUrl: "/cosmos.bank.v1beta1.GenesisState";
   value: Uint8Array;
 }
-/** GenesisState defines the bank module's genesis state. */
+/**
+ * GenesisState defines the bank module's genesis state.
+ * @name GenesisStateAmino
+ * @package cosmos.bank.v1beta1
+ * @see proto type: cosmos.bank.v1beta1.GenesisState
+ */
 export interface GenesisStateAmino {
-  /** params defines all the parameters of the module. */
+  /**
+   * params defines all the parameters of the module.
+   */
   params: ParamsAmino;
-  /** balances is an array containing the balances of all the accounts. */
+  /**
+   * balances is an array containing the balances of all the accounts.
+   */
   balances: BalanceAmino[];
   /**
    * supply represents the total supply. If it is left empty, then supply will be calculated based on the provided
    * balances. Otherwise, it will be used to validate that the sum of the balances equals this amount.
    */
   supply: CoinAmino[];
-  /** denom_metadata defines the metadata of the different coins. */
+  /**
+   * denom_metadata defines the metadata of the different coins.
+   */
   denom_metadata: MetadataAmino[];
   /**
    * send_enabled defines the denoms where send is enabled or disabled.
-   *
+   * 
    * Since: cosmos-sdk 0.47
    */
   send_enabled: SendEnabledAmino[];
@@ -85,11 +86,18 @@ export interface BalanceProtoMsg {
 /**
  * Balance defines an account address and balance pair used in the bank module's
  * genesis state.
+ * @name BalanceAmino
+ * @package cosmos.bank.v1beta1
+ * @see proto type: cosmos.bank.v1beta1.Balance
  */
 export interface BalanceAmino {
-  /** address is the address of the balance holder. */
+  /**
+   * address is the address of the balance holder.
+   */
   address?: string;
-  /** coins defines the different coins this balance holds. */
+  /**
+   * coins defines the different coins this balance holds.
+   */
   coins: CoinAmino[];
 }
 export interface BalanceAminoMsg {
@@ -110,15 +118,12 @@ function createBaseGenesisState(): GenesisState {
     balances: [],
     supply: [],
     denomMetadata: [],
-    sendEnabled: [],
+    sendEnabled: []
   };
 }
 export const GenesisState = {
   typeUrl: "/cosmos.bank.v1beta1.GenesisState",
-  encode(
-    message: GenesisState,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -167,17 +172,11 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.params =
-      object.params !== undefined && object.params !== null
-        ? Params.fromPartial(object.params)
-        : undefined;
-    message.balances =
-      object.balances?.map((e) => Balance.fromPartial(e)) || [];
-    message.supply = object.supply?.map((e) => Coin.fromPartial(e)) || [];
-    message.denomMetadata =
-      object.denomMetadata?.map((e) => Metadata.fromPartial(e)) || [];
-    message.sendEnabled =
-      object.sendEnabled?.map((e) => SendEnabled.fromPartial(e)) || [];
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.balances = object.balances?.map(e => Balance.fromPartial(e)) || [];
+    message.supply = object.supply?.map(e => Coin.fromPartial(e)) || [];
+    message.denomMetadata = object.denomMetadata?.map(e => Metadata.fromPartial(e)) || [];
+    message.sendEnabled = object.sendEnabled?.map(e => SendEnabled.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -185,42 +184,32 @@ export const GenesisState = {
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromAmino(object.params);
     }
-    message.balances = object.balances?.map((e) => Balance.fromAmino(e)) || [];
-    message.supply = object.supply?.map((e) => Coin.fromAmino(e)) || [];
-    message.denomMetadata =
-      object.denom_metadata?.map((e) => Metadata.fromAmino(e)) || [];
-    message.sendEnabled =
-      object.send_enabled?.map((e) => SendEnabled.fromAmino(e)) || [];
+    message.balances = object.balances?.map(e => Balance.fromAmino(e)) || [];
+    message.supply = object.supply?.map(e => Coin.fromAmino(e)) || [];
+    message.denomMetadata = object.denom_metadata?.map(e => Metadata.fromAmino(e)) || [];
+    message.sendEnabled = object.send_enabled?.map(e => SendEnabled.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params
-      ? Params.toAmino(message.params)
-      : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
     if (message.balances) {
-      obj.balances = message.balances.map((e) =>
-        e ? Balance.toAmino(e) : undefined
-      );
+      obj.balances = message.balances.map(e => e ? Balance.toAmino(e) : undefined);
     } else {
       obj.balances = message.balances;
     }
     if (message.supply) {
-      obj.supply = message.supply.map((e) => (e ? Coin.toAmino(e) : undefined));
+      obj.supply = message.supply.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
       obj.supply = message.supply;
     }
     if (message.denomMetadata) {
-      obj.denom_metadata = message.denomMetadata.map((e) =>
-        e ? Metadata.toAmino(e) : undefined
-      );
+      obj.denom_metadata = message.denomMetadata.map(e => e ? Metadata.toAmino(e) : undefined);
     } else {
       obj.denom_metadata = message.denomMetadata;
     }
     if (message.sendEnabled) {
-      obj.send_enabled = message.sendEnabled.map((e) =>
-        e ? SendEnabled.toAmino(e) : undefined
-      );
+      obj.send_enabled = message.sendEnabled.map(e => e ? SendEnabled.toAmino(e) : undefined);
     } else {
       obj.send_enabled = message.sendEnabled;
     }
@@ -232,7 +221,7 @@ export const GenesisState = {
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
       type: "cosmos-sdk/GenesisState",
-      value: GenesisState.toAmino(message),
+      value: GenesisState.toAmino(message)
     };
   },
   fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
@@ -244,22 +233,19 @@ export const GenesisState = {
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
       typeUrl: "/cosmos.bank.v1beta1.GenesisState",
-      value: GenesisState.encode(message).finish(),
+      value: GenesisState.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseBalance(): Balance {
   return {
     address: "",
-    coins: [],
+    coins: []
   };
 }
 export const Balance = {
   typeUrl: "/cosmos.bank.v1beta1.Balance",
-  encode(
-    message: Balance,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Balance, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
@@ -291,7 +277,7 @@ export const Balance = {
   fromPartial(object: Partial<Balance>): Balance {
     const message = createBaseBalance();
     message.address = object.address ?? "";
-    message.coins = object.coins?.map((e) => Coin.fromPartial(e)) || [];
+    message.coins = object.coins?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: BalanceAmino): Balance {
@@ -299,14 +285,14 @@ export const Balance = {
     if (object.address !== undefined && object.address !== null) {
       message.address = object.address;
     }
-    message.coins = object.coins?.map((e) => Coin.fromAmino(e)) || [];
+    message.coins = object.coins?.map(e => Coin.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: Balance): BalanceAmino {
     const obj: any = {};
     obj.address = message.address === "" ? undefined : message.address;
     if (message.coins) {
-      obj.coins = message.coins.map((e) => (e ? Coin.toAmino(e) : undefined));
+      obj.coins = message.coins.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
       obj.coins = message.coins;
     }
@@ -318,7 +304,7 @@ export const Balance = {
   toAminoMsg(message: Balance): BalanceAminoMsg {
     return {
       type: "cosmos-sdk/Balance",
-      value: Balance.toAmino(message),
+      value: Balance.toAmino(message)
     };
   },
   fromProtoMsg(message: BalanceProtoMsg): Balance {
@@ -330,7 +316,7 @@ export const Balance = {
   toProtoMsg(message: Balance): BalanceProtoMsg {
     return {
       typeUrl: "/cosmos.bank.v1beta1.Balance",
-      value: Balance.encode(message).finish(),
+      value: Balance.encode(message).finish()
     };
-  },
+  }
 };

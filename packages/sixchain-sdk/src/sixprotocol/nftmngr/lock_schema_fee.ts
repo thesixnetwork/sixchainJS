@@ -11,6 +11,11 @@ export interface LockSchemaFeeProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.LockSchemaFee";
   value: Uint8Array;
 }
+/**
+ * @name LockSchemaFeeAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.LockSchemaFee
+ */
 export interface LockSchemaFeeAmino {
   id?: string;
   virtualSchemaCode?: string;
@@ -32,15 +37,12 @@ function createBaseLockSchemaFee(): LockSchemaFee {
     id: "",
     virtualSchemaCode: "",
     amount: Coin.fromPartial({}),
-    proposer: "",
+    proposer: ""
   };
 }
 export const LockSchemaFee = {
   typeUrl: "/sixprotocol.nftmngr.LockSchemaFee",
-  encode(
-    message: LockSchemaFee,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: LockSchemaFee, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
@@ -85,10 +87,7 @@ export const LockSchemaFee = {
     const message = createBaseLockSchemaFee();
     message.id = object.id ?? "";
     message.virtualSchemaCode = object.virtualSchemaCode ?? "";
-    message.amount =
-      object.amount !== undefined && object.amount !== null
-        ? Coin.fromPartial(object.amount)
-        : undefined;
+    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     message.proposer = object.proposer ?? "";
     return message;
   },
@@ -97,10 +96,7 @@ export const LockSchemaFee = {
     if (object.id !== undefined && object.id !== null) {
       message.id = object.id;
     }
-    if (
-      object.virtualSchemaCode !== undefined &&
-      object.virtualSchemaCode !== null
-    ) {
+    if (object.virtualSchemaCode !== undefined && object.virtualSchemaCode !== null) {
       message.virtualSchemaCode = object.virtualSchemaCode;
     }
     if (object.amount !== undefined && object.amount !== null) {
@@ -114,8 +110,7 @@ export const LockSchemaFee = {
   toAmino(message: LockSchemaFee): LockSchemaFeeAmino {
     const obj: any = {};
     obj.id = message.id === "" ? undefined : message.id;
-    obj.virtualSchemaCode =
-      message.virtualSchemaCode === "" ? undefined : message.virtualSchemaCode;
+    obj.virtualSchemaCode = message.virtualSchemaCode === "" ? undefined : message.virtualSchemaCode;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
     obj.proposer = message.proposer === "" ? undefined : message.proposer;
     return obj;
@@ -132,7 +127,7 @@ export const LockSchemaFee = {
   toProtoMsg(message: LockSchemaFee): LockSchemaFeeProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.LockSchemaFee",
-      value: LockSchemaFee.encode(message).finish(),
+      value: LockSchemaFee.encode(message).finish()
     };
-  },
+  }
 };

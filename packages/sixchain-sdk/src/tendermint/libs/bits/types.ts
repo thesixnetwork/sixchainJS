@@ -9,6 +9,11 @@ export interface BitArrayProtoMsg {
   typeUrl: "/tendermint.libs.bits.BitArray";
   value: Uint8Array;
 }
+/**
+ * @name BitArrayAmino
+ * @package tendermint.libs.bits
+ * @see proto type: tendermint.libs.bits.BitArray
+ */
 export interface BitArrayAmino {
   bits?: string;
   elems?: string[];
@@ -24,15 +29,12 @@ export interface BitArraySDKType {
 function createBaseBitArray(): BitArray {
   return {
     bits: Long.ZERO,
-    elems: [],
+    elems: []
   };
 }
 export const BitArray = {
   typeUrl: "/tendermint.libs.bits.BitArray",
-  encode(
-    message: BitArray,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: BitArray, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.bits.isZero()) {
       writer.uint32(8).int64(message.bits);
     }
@@ -72,11 +74,8 @@ export const BitArray = {
   },
   fromPartial(object: Partial<BitArray>): BitArray {
     const message = createBaseBitArray();
-    message.bits =
-      object.bits !== undefined && object.bits !== null
-        ? Long.fromValue(object.bits)
-        : Long.ZERO;
-    message.elems = object.elems?.map((e) => Long.fromValue(e)) || [];
+    message.bits = object.bits !== undefined && object.bits !== null ? Long.fromValue(object.bits) : Long.ZERO;
+    message.elems = object.elems?.map(e => Long.fromValue(e)) || [];
     return message;
   },
   fromAmino(object: BitArrayAmino): BitArray {
@@ -84,14 +83,14 @@ export const BitArray = {
     if (object.bits !== undefined && object.bits !== null) {
       message.bits = Long.fromString(object.bits);
     }
-    message.elems = object.elems?.map((e) => Long.fromString(e)) || [];
+    message.elems = object.elems?.map(e => Long.fromString(e)) || [];
     return message;
   },
   toAmino(message: BitArray): BitArrayAmino {
     const obj: any = {};
     obj.bits = !message.bits.isZero() ? message.bits?.toString() : undefined;
     if (message.elems) {
-      obj.elems = message.elems.map((e) => e);
+      obj.elems = message.elems.map(e => e);
     } else {
       obj.elems = message.elems;
     }
@@ -109,7 +108,7 @@ export const BitArray = {
   toProtoMsg(message: BitArray): BitArrayProtoMsg {
     return {
       typeUrl: "/tendermint.libs.bits.BitArray",
-      value: BitArray.encode(message).finish(),
+      value: BitArray.encode(message).finish()
     };
-  },
+  }
 };

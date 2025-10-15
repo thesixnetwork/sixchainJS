@@ -14,6 +14,9 @@ export interface ModuleProtoMsg {
  * Module defines the ORM module which adds providers to the app container for
  * ORM ModuleDB's and in the future will automatically register query
  * services for modules that use the ORM.
+ * @name ModuleAmino
+ * @package cosmos.orm.module.v1alpha1
+ * @see proto type: cosmos.orm.module.v1alpha1.Module
  */
 export interface ModuleAmino {}
 export interface ModuleAminoMsg {
@@ -66,7 +69,7 @@ export const Module = {
   toAminoMsg(message: Module): ModuleAminoMsg {
     return {
       type: "cosmos-sdk/Module",
-      value: Module.toAmino(message),
+      value: Module.toAmino(message)
     };
   },
   fromProtoMsg(message: ModuleProtoMsg): Module {
@@ -78,7 +81,7 @@ export const Module = {
   toProtoMsg(message: Module): ModuleProtoMsg {
     return {
       typeUrl: "/cosmos.orm.module.v1alpha1.Module",
-      value: Module.encode(message).finish(),
+      value: Module.encode(message).finish()
     };
-  },
+  }
 };

@@ -1,87 +1,21 @@
 //@ts-nocheck
-import {
-  PageRequest,
-  PageRequestAmino,
-  PageRequestSDKType,
-  PageResponse,
-  PageResponseAmino,
-  PageResponseSDKType,
-} from "../../cosmos/base/query/v1beta1/pagination";
+import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../cosmos/base/query/v1beta1/pagination";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import {
-  NFTSchemaQueryResult,
-  NFTSchemaQueryResultAmino,
-  NFTSchemaQueryResultSDKType,
-} from "./nft_schema";
+import { NFTSchemaQueryResult, NFTSchemaQueryResultAmino, NFTSchemaQueryResultSDKType } from "./nft_schema";
 import { NftData, NftDataAmino, NftDataSDKType } from "./nft_data";
-import {
-  ActionByRefId,
-  ActionByRefIdAmino,
-  ActionByRefIdSDKType,
-} from "./action_by_ref_id";
-import {
-  Organization,
-  OrganizationAmino,
-  OrganizationSDKType,
-} from "./organization";
-import {
-  NFTSchemaByContract,
-  NFTSchemaByContractAmino,
-  NFTSchemaByContractSDKType,
-} from "./nft_schema_by_contract";
-import {
-  NFTFeeConfig,
-  NFTFeeConfigAmino,
-  NFTFeeConfigSDKType,
-} from "./nft_fee_config";
-import {
-  NFTFeeBalance,
-  NFTFeeBalanceAmino,
-  NFTFeeBalanceSDKType,
-} from "./nft_fee_balance";
-import {
-  MetadataCreator,
-  MetadataCreatorAmino,
-  MetadataCreatorSDKType,
-} from "./metadata_creator";
-import {
-  ActionExecutor,
-  ActionExecutorAmino,
-  ActionExecutorSDKType,
-} from "./action_executor";
-import {
-  SchemaAttribute,
-  SchemaAttributeAmino,
-  SchemaAttributeSDKType,
-} from "./schema_attribute";
-import {
-  ActionOfSchema,
-  ActionOfSchemaAmino,
-  ActionOfSchemaSDKType,
-} from "./action_of_schema";
-import {
-  ExecutorOfSchema,
-  ExecutorOfSchemaAmino,
-  ExecutorOfSchemaSDKType,
-} from "./executor_of_schema";
-import {
-  VirtualAction,
-  VirtualActionAmino,
-  VirtualActionSDKType,
-} from "./virtual_action";
-import {
-  VirtualSchema,
-  VirtualSchemaAmino,
-  VirtualSchemaSDKType,
-  VirtualSchemaProposal,
-  VirtualSchemaProposalAmino,
-  VirtualSchemaProposalSDKType,
-} from "./virtual_schema";
-import {
-  LockSchemaFee,
-  LockSchemaFeeAmino,
-  LockSchemaFeeSDKType,
-} from "./lock_schema_fee";
+import { ActionByRefId, ActionByRefIdAmino, ActionByRefIdSDKType } from "./action_by_ref_id";
+import { Organization, OrganizationAmino, OrganizationSDKType } from "./organization";
+import { NFTSchemaByContract, NFTSchemaByContractAmino, NFTSchemaByContractSDKType } from "./nft_schema_by_contract";
+import { NFTFeeConfig, NFTFeeConfigAmino, NFTFeeConfigSDKType } from "./nft_fee_config";
+import { NFTFeeBalance, NFTFeeBalanceAmino, NFTFeeBalanceSDKType } from "./nft_fee_balance";
+import { MetadataCreator, MetadataCreatorAmino, MetadataCreatorSDKType } from "./metadata_creator";
+import { ActionExecutor, ActionExecutorAmino, ActionExecutorSDKType } from "./action_executor";
+import { SchemaAttribute, SchemaAttributeAmino, SchemaAttributeSDKType } from "./schema_attribute";
+import { ActionOfSchema, ActionOfSchemaAmino, ActionOfSchemaSDKType } from "./action_of_schema";
+import { ExecutorOfSchema, ExecutorOfSchemaAmino, ExecutorOfSchemaSDKType } from "./executor_of_schema";
+import { VirtualAction, VirtualActionAmino, VirtualActionSDKType } from "./virtual_action";
+import { VirtualSchema, VirtualSchemaAmino, VirtualSchemaSDKType, VirtualSchemaProposal, VirtualSchemaProposalAmino, VirtualSchemaProposalSDKType } from "./virtual_schema";
+import { LockSchemaFee, LockSchemaFeeAmino, LockSchemaFeeSDKType } from "./lock_schema_fee";
 import * as _m0 from "protobufjs/minimal";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
@@ -89,7 +23,12 @@ export interface QueryParamsRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryParamsRequest";
   value: Uint8Array;
 }
-/** QueryParamsRequest is request type for the Query/Params RPC method. */
+/**
+ * QueryParamsRequest is request type for the Query/Params RPC method.
+ * @name QueryParamsRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryParamsRequest
+ */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
   type: "/sixprotocol.nftmngr.QueryParamsRequest";
@@ -106,9 +45,16 @@ export interface QueryParamsResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryParamsResponse";
   value: Uint8Array;
 }
-/** QueryParamsResponse is response type for the Query/Params RPC method. */
+/**
+ * QueryParamsResponse is response type for the Query/Params RPC method.
+ * @name QueryParamsResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryParamsResponse
+ */
 export interface QueryParamsResponseAmino {
-  /** params holds all the parameters of this module. */
+  /**
+   * params holds all the parameters of this module.
+   */
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
@@ -126,6 +72,11 @@ export interface QueryGetNFTSchemaRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNFTSchemaRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNFTSchemaRequest
+ */
 export interface QueryGetNFTSchemaRequestAmino {
   code?: string;
 }
@@ -143,6 +94,11 @@ export interface QueryGetNFTSchemaResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNFTSchemaResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNFTSchemaResponse
+ */
 export interface QueryGetNFTSchemaResponseAmino {
   nFTSchema?: NFTSchemaQueryResultAmino;
 }
@@ -160,6 +116,11 @@ export interface QueryAllNFTSchemaRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllNFTSchemaRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllNFTSchemaRequest
+ */
 export interface QueryAllNFTSchemaRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -178,6 +139,11 @@ export interface QueryAllNFTSchemaResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllNFTSchemaResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllNFTSchemaResponse
+ */
 export interface QueryAllNFTSchemaResponseAmino {
   nFTSchema?: NFTSchemaQueryResultAmino[];
   pagination?: PageResponseAmino;
@@ -199,6 +165,11 @@ export interface QueryGetNftDataRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNftDataRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNftDataRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNftDataRequest
+ */
 export interface QueryGetNftDataRequestAmino {
   nftSchemaCode?: string;
   tokenId?: string;
@@ -220,6 +191,11 @@ export interface QueryGetNftDataResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNftDataResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNftDataResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNftDataResponse
+ */
 export interface QueryGetNftDataResponseAmino {
   nftData?: NftDataAmino;
 }
@@ -238,6 +214,11 @@ export interface QueryAllNftDataRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNftDataRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllNftDataRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllNftDataRequest
+ */
 export interface QueryAllNftDataRequestAmino {
   withGlobal?: boolean;
   pagination?: PageRequestAmino;
@@ -258,6 +239,11 @@ export interface QueryAllNftDataResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNftDataResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllNftDataResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllNftDataResponse
+ */
 export interface QueryAllNftDataResponseAmino {
   nftData?: NftDataAmino[];
   pagination?: PageResponseAmino;
@@ -277,6 +263,11 @@ export interface QueryGetActionByRefIdRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionByRefIdRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetActionByRefIdRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetActionByRefIdRequest
+ */
 export interface QueryGetActionByRefIdRequestAmino {
   refId?: string;
 }
@@ -294,6 +285,11 @@ export interface QueryGetActionByRefIdResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionByRefIdResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetActionByRefIdResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetActionByRefIdResponse
+ */
 export interface QueryGetActionByRefIdResponseAmino {
   actionByRefId?: ActionByRefIdAmino;
 }
@@ -311,6 +307,11 @@ export interface QueryAllActionByRefIdRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionByRefIdRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllActionByRefIdRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllActionByRefIdRequest
+ */
 export interface QueryAllActionByRefIdRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -329,6 +330,11 @@ export interface QueryAllActionByRefIdResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionByRefIdResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllActionByRefIdResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllActionByRefIdResponse
+ */
 export interface QueryAllActionByRefIdResponseAmino {
   actionByRefId?: ActionByRefIdAmino[];
   pagination?: PageResponseAmino;
@@ -348,6 +354,11 @@ export interface QueryGetOrganizationRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetOrganizationRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetOrganizationRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetOrganizationRequest
+ */
 export interface QueryGetOrganizationRequestAmino {
   name?: string;
 }
@@ -365,6 +376,11 @@ export interface QueryGetOrganizationResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetOrganizationResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetOrganizationResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetOrganizationResponse
+ */
 export interface QueryGetOrganizationResponseAmino {
   organization?: OrganizationAmino;
 }
@@ -382,6 +398,11 @@ export interface QueryAllOrganizationRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllOrganizationRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllOrganizationRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllOrganizationRequest
+ */
 export interface QueryAllOrganizationRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -400,6 +421,11 @@ export interface QueryAllOrganizationResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllOrganizationResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllOrganizationResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllOrganizationResponse
+ */
 export interface QueryAllOrganizationResponseAmino {
   organization?: OrganizationAmino[];
   pagination?: PageResponseAmino;
@@ -420,6 +446,11 @@ export interface QueryGetNftCollectionRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNftCollectionRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNftCollectionRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNftCollectionRequest
+ */
 export interface QueryGetNftCollectionRequestAmino {
   nftSchemaCode?: string;
   pagination?: PageRequestAmino;
@@ -440,6 +471,11 @@ export interface QueryGetNftCollectionResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNftCollectionResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNftCollectionResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNftCollectionResponse
+ */
 export interface QueryGetNftCollectionResponseAmino {
   nftCollection?: NftDataAmino[];
   pagination?: PageResponseAmino;
@@ -459,6 +495,11 @@ export interface QueryGetNFTSchemaByContractRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaByContractRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNFTSchemaByContractRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNFTSchemaByContractRequest
+ */
 export interface QueryGetNFTSchemaByContractRequestAmino {
   originContractAddress?: string;
 }
@@ -476,6 +517,11 @@ export interface QueryGetNFTSchemaByContractResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaByContractResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNFTSchemaByContractResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNFTSchemaByContractResponse
+ */
 export interface QueryGetNFTSchemaByContractResponseAmino {
   nFTSchemaByContract?: NFTSchemaByContractAmino;
 }
@@ -493,6 +539,11 @@ export interface QueryAllNFTSchemaByContractRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaByContractRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllNFTSchemaByContractRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllNFTSchemaByContractRequest
+ */
 export interface QueryAllNFTSchemaByContractRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -511,6 +562,11 @@ export interface QueryAllNFTSchemaByContractResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaByContractResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllNFTSchemaByContractResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllNFTSchemaByContractResponse
+ */
 export interface QueryAllNFTSchemaByContractResponseAmino {
   nFTSchemaByContract?: NFTSchemaByContractAmino[];
   pagination?: PageResponseAmino;
@@ -528,6 +584,11 @@ export interface QueryGetNFTFeeConfigRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeConfigRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNFTFeeConfigRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNFTFeeConfigRequest
+ */
 export interface QueryGetNFTFeeConfigRequestAmino {}
 export interface QueryGetNFTFeeConfigRequestAminoMsg {
   type: "/sixprotocol.nftmngr.QueryGetNFTFeeConfigRequest";
@@ -541,6 +602,11 @@ export interface QueryGetNFTFeeConfigResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeConfigResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNFTFeeConfigResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNFTFeeConfigResponse
+ */
 export interface QueryGetNFTFeeConfigResponseAmino {
   NFTFeeConfig?: NFTFeeConfigAmino;
 }
@@ -556,6 +622,11 @@ export interface QueryGetNFTFeeBalanceRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeBalanceRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNFTFeeBalanceRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNFTFeeBalanceRequest
+ */
 export interface QueryGetNFTFeeBalanceRequestAmino {}
 export interface QueryGetNFTFeeBalanceRequestAminoMsg {
   type: "/sixprotocol.nftmngr.QueryGetNFTFeeBalanceRequest";
@@ -569,6 +640,11 @@ export interface QueryGetNFTFeeBalanceResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeBalanceResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetNFTFeeBalanceResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetNFTFeeBalanceResponse
+ */
 export interface QueryGetNFTFeeBalanceResponseAmino {
   NFTFeeBalance?: NFTFeeBalanceAmino;
 }
@@ -586,6 +662,11 @@ export interface QueryGetMetadataCreatorRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetMetadataCreatorRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetMetadataCreatorRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetMetadataCreatorRequest
+ */
 export interface QueryGetMetadataCreatorRequestAmino {
   nftSchemaCode?: string;
 }
@@ -603,6 +684,11 @@ export interface QueryGetMetadataCreatorResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetMetadataCreatorResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetMetadataCreatorResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetMetadataCreatorResponse
+ */
 export interface QueryGetMetadataCreatorResponseAmino {
   metadataCreator?: MetadataCreatorAmino;
 }
@@ -620,6 +706,11 @@ export interface QueryAllMetadataCreatorRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllMetadataCreatorRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllMetadataCreatorRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllMetadataCreatorRequest
+ */
 export interface QueryAllMetadataCreatorRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -638,6 +729,11 @@ export interface QueryAllMetadataCreatorResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllMetadataCreatorResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllMetadataCreatorResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllMetadataCreatorResponse
+ */
 export interface QueryAllMetadataCreatorResponseAmino {
   metadataCreator?: MetadataCreatorAmino[];
   pagination?: PageResponseAmino;
@@ -658,6 +754,11 @@ export interface QueryGetActionExecutorRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionExecutorRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetActionExecutorRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetActionExecutorRequest
+ */
 export interface QueryGetActionExecutorRequestAmino {
   nftSchemaCode?: string;
   executorAddress?: string;
@@ -677,6 +778,11 @@ export interface QueryGetActionExecutorResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionExecutorResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetActionExecutorResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetActionExecutorResponse
+ */
 export interface QueryGetActionExecutorResponseAmino {
   actionExecutor?: ActionExecutorAmino;
 }
@@ -694,6 +800,11 @@ export interface QueryAllActionExecutorRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionExecutorRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllActionExecutorRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllActionExecutorRequest
+ */
 export interface QueryAllActionExecutorRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -712,6 +823,11 @@ export interface QueryAllActionExecutorResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionExecutorResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllActionExecutorResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllActionExecutorResponse
+ */
 export interface QueryAllActionExecutorResponseAmino {
   actionExecutor?: ActionExecutorAmino[];
   pagination?: PageResponseAmino;
@@ -732,6 +848,11 @@ export interface QueryGetSchemaAttributeRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetSchemaAttributeRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetSchemaAttributeRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetSchemaAttributeRequest
+ */
 export interface QueryGetSchemaAttributeRequestAmino {
   nftSchemaCode?: string;
   name?: string;
@@ -751,6 +872,11 @@ export interface QueryGetSchemaAttributeResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetSchemaAttributeResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetSchemaAttributeResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetSchemaAttributeResponse
+ */
 export interface QueryGetSchemaAttributeResponseAmino {
   schemaAttribute?: SchemaAttributeAmino;
 }
@@ -769,6 +895,11 @@ export interface QueryAllSchemaAttributeRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllSchemaAttributeRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllSchemaAttributeRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllSchemaAttributeRequest
+ */
 export interface QueryAllSchemaAttributeRequestAmino {
   nftSchemaCode?: string;
   pagination?: PageRequestAmino;
@@ -789,6 +920,11 @@ export interface QueryAllSchemaAttributeResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllSchemaAttributeResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllSchemaAttributeResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllSchemaAttributeResponse
+ */
 export interface QueryAllSchemaAttributeResponseAmino {
   schemaAttribute?: SchemaAttributeAmino[];
   pagination?: PageResponseAmino;
@@ -808,6 +944,11 @@ export interface QueryListAttributeBySchemaRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryListAttributeBySchemaRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryListAttributeBySchemaRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryListAttributeBySchemaRequest
+ */
 export interface QueryListAttributeBySchemaRequestAmino {
   nftSchemaCode?: string;
 }
@@ -825,6 +966,11 @@ export interface QueryListAttributeBySchemaResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryListAttributeBySchemaResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryListAttributeBySchemaResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryListAttributeBySchemaResponse
+ */
 export interface QueryListAttributeBySchemaResponseAmino {
   schemaAttribute?: SchemaAttributeAmino[];
 }
@@ -843,6 +989,11 @@ export interface QueryGetActionOfSchemaRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionOfSchemaRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetActionOfSchemaRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetActionOfSchemaRequest
+ */
 export interface QueryGetActionOfSchemaRequestAmino {
   nftSchemaCode?: string;
   name?: string;
@@ -862,6 +1013,11 @@ export interface QueryGetActionOfSchemaResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionOfSchemaResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetActionOfSchemaResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetActionOfSchemaResponse
+ */
 export interface QueryGetActionOfSchemaResponseAmino {
   actionOfSchema?: ActionOfSchemaAmino;
 }
@@ -879,6 +1035,11 @@ export interface QueryAllActionOfSchemaRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionOfSchemaRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllActionOfSchemaRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllActionOfSchemaRequest
+ */
 export interface QueryAllActionOfSchemaRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -897,6 +1058,11 @@ export interface QueryAllActionOfSchemaResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionOfSchemaResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllActionOfSchemaResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllActionOfSchemaResponse
+ */
 export interface QueryAllActionOfSchemaResponseAmino {
   actionOfSchema?: ActionOfSchemaAmino[];
   pagination?: PageResponseAmino;
@@ -916,6 +1082,11 @@ export interface QueryGetExecutorOfSchemaRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetExecutorOfSchemaRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetExecutorOfSchemaRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetExecutorOfSchemaRequest
+ */
 export interface QueryGetExecutorOfSchemaRequestAmino {
   nftSchemaCode?: string;
 }
@@ -933,6 +1104,11 @@ export interface QueryGetExecutorOfSchemaResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetExecutorOfSchemaResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetExecutorOfSchemaResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetExecutorOfSchemaResponse
+ */
 export interface QueryGetExecutorOfSchemaResponseAmino {
   executorOfSchema?: ExecutorOfSchemaAmino;
 }
@@ -950,6 +1126,11 @@ export interface QueryAllExecutorOfSchemaRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllExecutorOfSchemaRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllExecutorOfSchemaRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllExecutorOfSchemaRequest
+ */
 export interface QueryAllExecutorOfSchemaRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -968,6 +1149,11 @@ export interface QueryAllExecutorOfSchemaResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllExecutorOfSchemaResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllExecutorOfSchemaResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllExecutorOfSchemaResponse
+ */
 export interface QueryAllExecutorOfSchemaResponseAmino {
   executorOfSchema?: ExecutorOfSchemaAmino[];
   pagination?: PageResponseAmino;
@@ -988,6 +1174,11 @@ export interface QueryGetVirtualActionRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualActionRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetVirtualActionRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetVirtualActionRequest
+ */
 export interface QueryGetVirtualActionRequestAmino {
   nftSchemaCode?: string;
   name?: string;
@@ -1007,6 +1198,11 @@ export interface QueryGetVirtualActionResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualActionResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetVirtualActionResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetVirtualActionResponse
+ */
 export interface QueryGetVirtualActionResponseAmino {
   virtualAction?: VirtualActionAmino;
 }
@@ -1025,6 +1221,11 @@ export interface QueryAllVirtualActionRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualActionRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllVirtualActionRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllVirtualActionRequest
+ */
 export interface QueryAllVirtualActionRequestAmino {
   nftSchemaCode?: string;
   pagination?: PageRequestAmino;
@@ -1045,6 +1246,11 @@ export interface QueryAllVirtualActionResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualActionResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllVirtualActionResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllVirtualActionResponse
+ */
 export interface QueryAllVirtualActionResponseAmino {
   virtualAction?: VirtualActionAmino[];
   pagination?: PageResponseAmino;
@@ -1064,6 +1270,11 @@ export interface QueryGetVirtualSchemaRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetVirtualSchemaRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetVirtualSchemaRequest
+ */
 export interface QueryGetVirtualSchemaRequestAmino {
   nftSchemaCode?: string;
 }
@@ -1081,6 +1292,11 @@ export interface QueryGetVirtualSchemaResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetVirtualSchemaResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetVirtualSchemaResponse
+ */
 export interface QueryGetVirtualSchemaResponseAmino {
   virtualSchema?: VirtualSchemaAmino;
 }
@@ -1098,6 +1314,11 @@ export interface QueryAllVirtualSchemaRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllVirtualSchemaRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllVirtualSchemaRequest
+ */
 export interface QueryAllVirtualSchemaRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -1116,6 +1337,11 @@ export interface QueryAllVirtualSchemaResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllVirtualSchemaResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllVirtualSchemaResponse
+ */
 export interface QueryAllVirtualSchemaResponseAmino {
   virtualSchema?: VirtualSchemaAmino[];
   pagination?: PageResponseAmino;
@@ -1135,6 +1361,11 @@ export interface QueryGetVirtualSchemaProposalRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaProposalRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetVirtualSchemaProposalRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetVirtualSchemaProposalRequest
+ */
 export interface QueryGetVirtualSchemaProposalRequestAmino {
   index?: string;
 }
@@ -1152,6 +1383,11 @@ export interface QueryGetVirtualSchemaProposalResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaProposalResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetVirtualSchemaProposalResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetVirtualSchemaProposalResponse
+ */
 export interface QueryGetVirtualSchemaProposalResponseAmino {
   virtualSchemaProposal?: VirtualSchemaProposalAmino;
 }
@@ -1169,6 +1405,11 @@ export interface QueryAllVirtualSchemaProposalRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaProposalRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllVirtualSchemaProposalRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllVirtualSchemaProposalRequest
+ */
 export interface QueryAllVirtualSchemaProposalRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -1187,6 +1428,11 @@ export interface QueryAllVirtualSchemaProposalResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaProposalResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllVirtualSchemaProposalResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllVirtualSchemaProposalResponse
+ */
 export interface QueryAllVirtualSchemaProposalResponseAmino {
   virtualSchemaProposal?: VirtualSchemaProposalAmino[];
   pagination?: PageResponseAmino;
@@ -1204,6 +1450,11 @@ export interface QueryListActiveProposalRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryListActiveProposalRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryListActiveProposalRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryListActiveProposalRequest
+ */
 export interface QueryListActiveProposalRequestAmino {}
 export interface QueryListActiveProposalRequestAminoMsg {
   type: "/sixprotocol.nftmngr.QueryListActiveProposalRequest";
@@ -1217,6 +1468,11 @@ export interface QueryListActiveProposalResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryListActiveProposalResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryListActiveProposalResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryListActiveProposalResponse
+ */
 export interface QueryListActiveProposalResponseAmino {
   virtualSchemaProposal?: VirtualSchemaProposalAmino[];
 }
@@ -1234,6 +1490,11 @@ export interface QueryGetLockSchemaFeeRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetLockSchemaFeeRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetLockSchemaFeeRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetLockSchemaFeeRequest
+ */
 export interface QueryGetLockSchemaFeeRequestAmino {
   index?: string;
 }
@@ -1251,6 +1512,11 @@ export interface QueryGetLockSchemaFeeResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryGetLockSchemaFeeResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetLockSchemaFeeResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryGetLockSchemaFeeResponse
+ */
 export interface QueryGetLockSchemaFeeResponseAmino {
   lockSchemaFee?: LockSchemaFeeAmino;
 }
@@ -1268,6 +1534,11 @@ export interface QueryAllLockSchemaFeeRequestProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllLockSchemaFeeRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllLockSchemaFeeRequestAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllLockSchemaFeeRequest
+ */
 export interface QueryAllLockSchemaFeeRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -1286,6 +1557,11 @@ export interface QueryAllLockSchemaFeeResponseProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.QueryAllLockSchemaFeeResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllLockSchemaFeeResponseAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.QueryAllLockSchemaFeeResponse
+ */
 export interface QueryAllLockSchemaFeeResponseAmino {
   lockSchemaFee?: LockSchemaFeeAmino[];
   pagination?: PageResponseAmino;
@@ -1303,10 +1579,7 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 export const QueryParamsRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryParamsRequest",
-  encode(
-    _: QueryParamsRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest {
@@ -1347,21 +1620,18 @@ export const QueryParamsRequest = {
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryParamsRequest",
-      value: QueryParamsRequest.encode(message).finish(),
+      value: QueryParamsRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
-    params: Params.fromPartial({}),
+    params: Params.fromPartial({})
   };
 }
 export const QueryParamsResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryParamsResponse",
-  encode(
-    message: QueryParamsResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -1386,10 +1656,7 @@ export const QueryParamsResponse = {
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
-    message.params =
-      object.params !== undefined && object.params !== null
-        ? Params.fromPartial(object.params)
-        : undefined;
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
@@ -1416,30 +1683,24 @@ export const QueryParamsResponse = {
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryParamsResponse",
-      value: QueryParamsResponse.encode(message).finish(),
+      value: QueryParamsResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNFTSchemaRequest(): QueryGetNFTSchemaRequest {
   return {
-    code: "",
+    code: ""
   };
 }
 export const QueryGetNFTSchemaRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaRequest",
-  encode(
-    message: QueryGetNFTSchemaRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetNFTSchemaRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.code !== "") {
       writer.uint32(10).string(message.code);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNFTSchemaRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNFTSchemaRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNFTSchemaRequest();
@@ -1456,9 +1717,7 @@ export const QueryGetNFTSchemaRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetNFTSchemaRequest>
-  ): QueryGetNFTSchemaRequest {
+  fromPartial(object: Partial<QueryGetNFTSchemaRequest>): QueryGetNFTSchemaRequest {
     const message = createBaseQueryGetNFTSchemaRequest();
     message.code = object.code ?? "";
     return message;
@@ -1475,51 +1734,36 @@ export const QueryGetNFTSchemaRequest = {
     obj.code = message.code === "" ? undefined : message.code;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetNFTSchemaRequestAminoMsg
-  ): QueryGetNFTSchemaRequest {
+  fromAminoMsg(object: QueryGetNFTSchemaRequestAminoMsg): QueryGetNFTSchemaRequest {
     return QueryGetNFTSchemaRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNFTSchemaRequestProtoMsg
-  ): QueryGetNFTSchemaRequest {
+  fromProtoMsg(message: QueryGetNFTSchemaRequestProtoMsg): QueryGetNFTSchemaRequest {
     return QueryGetNFTSchemaRequest.decode(message.value);
   },
   toProto(message: QueryGetNFTSchemaRequest): Uint8Array {
     return QueryGetNFTSchemaRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetNFTSchemaRequest
-  ): QueryGetNFTSchemaRequestProtoMsg {
+  toProtoMsg(message: QueryGetNFTSchemaRequest): QueryGetNFTSchemaRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaRequest",
-      value: QueryGetNFTSchemaRequest.encode(message).finish(),
+      value: QueryGetNFTSchemaRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNFTSchemaResponse(): QueryGetNFTSchemaResponse {
   return {
-    nFTSchema: NFTSchemaQueryResult.fromPartial({}),
+    nFTSchema: NFTSchemaQueryResult.fromPartial({})
   };
 }
 export const QueryGetNFTSchemaResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaResponse",
-  encode(
-    message: QueryGetNFTSchemaResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetNFTSchemaResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nFTSchema !== undefined) {
-      NFTSchemaQueryResult.encode(
-        message.nFTSchema,
-        writer.uint32(10).fork()
-      ).ldelim();
+      NFTSchemaQueryResult.encode(message.nFTSchema, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNFTSchemaResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNFTSchemaResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNFTSchemaResponse();
@@ -1527,10 +1771,7 @@ export const QueryGetNFTSchemaResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.nFTSchema = NFTSchemaQueryResult.decode(
-            reader,
-            reader.uint32()
-          );
+          message.nFTSchema = NFTSchemaQueryResult.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1539,14 +1780,9 @@ export const QueryGetNFTSchemaResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetNFTSchemaResponse>
-  ): QueryGetNFTSchemaResponse {
+  fromPartial(object: Partial<QueryGetNFTSchemaResponse>): QueryGetNFTSchemaResponse {
     const message = createBaseQueryGetNFTSchemaResponse();
-    message.nFTSchema =
-      object.nFTSchema !== undefined && object.nFTSchema !== null
-        ? NFTSchemaQueryResult.fromPartial(object.nFTSchema)
-        : undefined;
+    message.nFTSchema = object.nFTSchema !== undefined && object.nFTSchema !== null ? NFTSchemaQueryResult.fromPartial(object.nFTSchema) : undefined;
     return message;
   },
   fromAmino(object: QueryGetNFTSchemaResponseAmino): QueryGetNFTSchemaResponse {
@@ -1558,53 +1794,39 @@ export const QueryGetNFTSchemaResponse = {
   },
   toAmino(message: QueryGetNFTSchemaResponse): QueryGetNFTSchemaResponseAmino {
     const obj: any = {};
-    obj.nFTSchema = message.nFTSchema
-      ? NFTSchemaQueryResult.toAmino(message.nFTSchema)
-      : undefined;
+    obj.nFTSchema = message.nFTSchema ? NFTSchemaQueryResult.toAmino(message.nFTSchema) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetNFTSchemaResponseAminoMsg
-  ): QueryGetNFTSchemaResponse {
+  fromAminoMsg(object: QueryGetNFTSchemaResponseAminoMsg): QueryGetNFTSchemaResponse {
     return QueryGetNFTSchemaResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNFTSchemaResponseProtoMsg
-  ): QueryGetNFTSchemaResponse {
+  fromProtoMsg(message: QueryGetNFTSchemaResponseProtoMsg): QueryGetNFTSchemaResponse {
     return QueryGetNFTSchemaResponse.decode(message.value);
   },
   toProto(message: QueryGetNFTSchemaResponse): Uint8Array {
     return QueryGetNFTSchemaResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetNFTSchemaResponse
-  ): QueryGetNFTSchemaResponseProtoMsg {
+  toProtoMsg(message: QueryGetNFTSchemaResponse): QueryGetNFTSchemaResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaResponse",
-      value: QueryGetNFTSchemaResponse.encode(message).finish(),
+      value: QueryGetNFTSchemaResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllNFTSchemaRequest(): QueryAllNFTSchemaRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllNFTSchemaRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaRequest",
-  encode(
-    message: QueryAllNFTSchemaRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllNFTSchemaRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllNFTSchemaRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllNFTSchemaRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllNFTSchemaRequest();
@@ -1621,14 +1843,9 @@ export const QueryAllNFTSchemaRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllNFTSchemaRequest>
-  ): QueryAllNFTSchemaRequest {
+  fromPartial(object: Partial<QueryAllNFTSchemaRequest>): QueryAllNFTSchemaRequest {
     const message = createBaseQueryAllNFTSchemaRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryAllNFTSchemaRequestAmino): QueryAllNFTSchemaRequest {
@@ -1640,60 +1857,43 @@ export const QueryAllNFTSchemaRequest = {
   },
   toAmino(message: QueryAllNFTSchemaRequest): QueryAllNFTSchemaRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllNFTSchemaRequestAminoMsg
-  ): QueryAllNFTSchemaRequest {
+  fromAminoMsg(object: QueryAllNFTSchemaRequestAminoMsg): QueryAllNFTSchemaRequest {
     return QueryAllNFTSchemaRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllNFTSchemaRequestProtoMsg
-  ): QueryAllNFTSchemaRequest {
+  fromProtoMsg(message: QueryAllNFTSchemaRequestProtoMsg): QueryAllNFTSchemaRequest {
     return QueryAllNFTSchemaRequest.decode(message.value);
   },
   toProto(message: QueryAllNFTSchemaRequest): Uint8Array {
     return QueryAllNFTSchemaRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllNFTSchemaRequest
-  ): QueryAllNFTSchemaRequestProtoMsg {
+  toProtoMsg(message: QueryAllNFTSchemaRequest): QueryAllNFTSchemaRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaRequest",
-      value: QueryAllNFTSchemaRequest.encode(message).finish(),
+      value: QueryAllNFTSchemaRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllNFTSchemaResponse(): QueryAllNFTSchemaResponse {
   return {
     nFTSchema: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllNFTSchemaResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaResponse",
-  encode(
-    message: QueryAllNFTSchemaResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllNFTSchemaResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.nFTSchema) {
       NFTSchemaQueryResult.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllNFTSchemaResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllNFTSchemaResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllNFTSchemaResponse();
@@ -1701,9 +1901,7 @@ export const QueryAllNFTSchemaResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.nFTSchema.push(
-            NFTSchemaQueryResult.decode(reader, reader.uint32())
-          );
+          message.nFTSchema.push(NFTSchemaQueryResult.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -1715,22 +1913,15 @@ export const QueryAllNFTSchemaResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllNFTSchemaResponse>
-  ): QueryAllNFTSchemaResponse {
+  fromPartial(object: Partial<QueryAllNFTSchemaResponse>): QueryAllNFTSchemaResponse {
     const message = createBaseQueryAllNFTSchemaResponse();
-    message.nFTSchema =
-      object.nFTSchema?.map((e) => NFTSchemaQueryResult.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.nFTSchema = object.nFTSchema?.map(e => NFTSchemaQueryResult.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryAllNFTSchemaResponseAmino): QueryAllNFTSchemaResponse {
     const message = createBaseQueryAllNFTSchemaResponse();
-    message.nFTSchema =
-      object.nFTSchema?.map((e) => NFTSchemaQueryResult.fromAmino(e)) || [];
+    message.nFTSchema = object.nFTSchema?.map(e => NFTSchemaQueryResult.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -1739,52 +1930,39 @@ export const QueryAllNFTSchemaResponse = {
   toAmino(message: QueryAllNFTSchemaResponse): QueryAllNFTSchemaResponseAmino {
     const obj: any = {};
     if (message.nFTSchema) {
-      obj.nFTSchema = message.nFTSchema.map((e) =>
-        e ? NFTSchemaQueryResult.toAmino(e) : undefined
-      );
+      obj.nFTSchema = message.nFTSchema.map(e => e ? NFTSchemaQueryResult.toAmino(e) : undefined);
     } else {
       obj.nFTSchema = message.nFTSchema;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllNFTSchemaResponseAminoMsg
-  ): QueryAllNFTSchemaResponse {
+  fromAminoMsg(object: QueryAllNFTSchemaResponseAminoMsg): QueryAllNFTSchemaResponse {
     return QueryAllNFTSchemaResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllNFTSchemaResponseProtoMsg
-  ): QueryAllNFTSchemaResponse {
+  fromProtoMsg(message: QueryAllNFTSchemaResponseProtoMsg): QueryAllNFTSchemaResponse {
     return QueryAllNFTSchemaResponse.decode(message.value);
   },
   toProto(message: QueryAllNFTSchemaResponse): Uint8Array {
     return QueryAllNFTSchemaResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllNFTSchemaResponse
-  ): QueryAllNFTSchemaResponseProtoMsg {
+  toProtoMsg(message: QueryAllNFTSchemaResponse): QueryAllNFTSchemaResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaResponse",
-      value: QueryAllNFTSchemaResponse.encode(message).finish(),
+      value: QueryAllNFTSchemaResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNftDataRequest(): QueryGetNftDataRequest {
   return {
     nftSchemaCode: "",
     tokenId: "",
-    withGlobal: false,
+    withGlobal: false
   };
 }
 export const QueryGetNftDataRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNftDataRequest",
-  encode(
-    message: QueryGetNftDataRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetNftDataRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -1796,10 +1974,7 @@ export const QueryGetNftDataRequest = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNftDataRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNftDataRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNftDataRequest();
@@ -1844,19 +2019,15 @@ export const QueryGetNftDataRequest = {
   },
   toAmino(message: QueryGetNftDataRequest): QueryGetNftDataRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.tokenId = message.tokenId === "" ? undefined : message.tokenId;
-    obj.withGlobal =
-      message.withGlobal === false ? undefined : message.withGlobal;
+    obj.withGlobal = message.withGlobal === false ? undefined : message.withGlobal;
     return obj;
   },
   fromAminoMsg(object: QueryGetNftDataRequestAminoMsg): QueryGetNftDataRequest {
     return QueryGetNftDataRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNftDataRequestProtoMsg
-  ): QueryGetNftDataRequest {
+  fromProtoMsg(message: QueryGetNftDataRequestProtoMsg): QueryGetNftDataRequest {
     return QueryGetNftDataRequest.decode(message.value);
   },
   toProto(message: QueryGetNftDataRequest): Uint8Array {
@@ -1865,30 +2036,24 @@ export const QueryGetNftDataRequest = {
   toProtoMsg(message: QueryGetNftDataRequest): QueryGetNftDataRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNftDataRequest",
-      value: QueryGetNftDataRequest.encode(message).finish(),
+      value: QueryGetNftDataRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNftDataResponse(): QueryGetNftDataResponse {
   return {
-    nftData: NftData.fromPartial({}),
+    nftData: NftData.fromPartial({})
   };
 }
 export const QueryGetNftDataResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNftDataResponse",
-  encode(
-    message: QueryGetNftDataResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetNftDataResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftData !== undefined) {
       NftData.encode(message.nftData, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNftDataResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNftDataResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNftDataResponse();
@@ -1905,14 +2070,9 @@ export const QueryGetNftDataResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetNftDataResponse>
-  ): QueryGetNftDataResponse {
+  fromPartial(object: Partial<QueryGetNftDataResponse>): QueryGetNftDataResponse {
     const message = createBaseQueryGetNftDataResponse();
-    message.nftData =
-      object.nftData !== undefined && object.nftData !== null
-        ? NftData.fromPartial(object.nftData)
-        : undefined;
+    message.nftData = object.nftData !== undefined && object.nftData !== null ? NftData.fromPartial(object.nftData) : undefined;
     return message;
   },
   fromAmino(object: QueryGetNftDataResponseAmino): QueryGetNftDataResponse {
@@ -1924,45 +2084,34 @@ export const QueryGetNftDataResponse = {
   },
   toAmino(message: QueryGetNftDataResponse): QueryGetNftDataResponseAmino {
     const obj: any = {};
-    obj.nftData = message.nftData
-      ? NftData.toAmino(message.nftData)
-      : undefined;
+    obj.nftData = message.nftData ? NftData.toAmino(message.nftData) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetNftDataResponseAminoMsg
-  ): QueryGetNftDataResponse {
+  fromAminoMsg(object: QueryGetNftDataResponseAminoMsg): QueryGetNftDataResponse {
     return QueryGetNftDataResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNftDataResponseProtoMsg
-  ): QueryGetNftDataResponse {
+  fromProtoMsg(message: QueryGetNftDataResponseProtoMsg): QueryGetNftDataResponse {
     return QueryGetNftDataResponse.decode(message.value);
   },
   toProto(message: QueryGetNftDataResponse): Uint8Array {
     return QueryGetNftDataResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetNftDataResponse
-  ): QueryGetNftDataResponseProtoMsg {
+  toProtoMsg(message: QueryGetNftDataResponse): QueryGetNftDataResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNftDataResponse",
-      value: QueryGetNftDataResponse.encode(message).finish(),
+      value: QueryGetNftDataResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllNftDataRequest(): QueryAllNftDataRequest {
   return {
     withGlobal: false,
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllNftDataRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNftDataRequest",
-  encode(
-    message: QueryAllNftDataRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllNftDataRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.withGlobal === true) {
       writer.uint32(8).bool(message.withGlobal);
     }
@@ -1971,10 +2120,7 @@ export const QueryAllNftDataRequest = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllNftDataRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllNftDataRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllNftDataRequest();
@@ -1997,10 +2143,7 @@ export const QueryAllNftDataRequest = {
   fromPartial(object: Partial<QueryAllNftDataRequest>): QueryAllNftDataRequest {
     const message = createBaseQueryAllNftDataRequest();
     message.withGlobal = object.withGlobal ?? false;
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryAllNftDataRequestAmino): QueryAllNftDataRequest {
@@ -2015,19 +2158,14 @@ export const QueryAllNftDataRequest = {
   },
   toAmino(message: QueryAllNftDataRequest): QueryAllNftDataRequestAmino {
     const obj: any = {};
-    obj.withGlobal =
-      message.withGlobal === false ? undefined : message.withGlobal;
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.withGlobal = message.withGlobal === false ? undefined : message.withGlobal;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryAllNftDataRequestAminoMsg): QueryAllNftDataRequest {
     return QueryAllNftDataRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllNftDataRequestProtoMsg
-  ): QueryAllNftDataRequest {
+  fromProtoMsg(message: QueryAllNftDataRequestProtoMsg): QueryAllNftDataRequest {
     return QueryAllNftDataRequest.decode(message.value);
   },
   toProto(message: QueryAllNftDataRequest): Uint8Array {
@@ -2036,37 +2174,28 @@ export const QueryAllNftDataRequest = {
   toProtoMsg(message: QueryAllNftDataRequest): QueryAllNftDataRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllNftDataRequest",
-      value: QueryAllNftDataRequest.encode(message).finish(),
+      value: QueryAllNftDataRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllNftDataResponse(): QueryAllNftDataResponse {
   return {
     nftData: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllNftDataResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNftDataResponse",
-  encode(
-    message: QueryAllNftDataResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllNftDataResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.nftData) {
       NftData.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllNftDataResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllNftDataResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllNftDataResponse();
@@ -2086,20 +2215,15 @@ export const QueryAllNftDataResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllNftDataResponse>
-  ): QueryAllNftDataResponse {
+  fromPartial(object: Partial<QueryAllNftDataResponse>): QueryAllNftDataResponse {
     const message = createBaseQueryAllNftDataResponse();
-    message.nftData = object.nftData?.map((e) => NftData.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.nftData = object.nftData?.map(e => NftData.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryAllNftDataResponseAmino): QueryAllNftDataResponse {
     const message = createBaseQueryAllNftDataResponse();
-    message.nftData = object.nftData?.map((e) => NftData.fromAmino(e)) || [];
+    message.nftData = object.nftData?.map(e => NftData.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -2108,59 +2232,43 @@ export const QueryAllNftDataResponse = {
   toAmino(message: QueryAllNftDataResponse): QueryAllNftDataResponseAmino {
     const obj: any = {};
     if (message.nftData) {
-      obj.nftData = message.nftData.map((e) =>
-        e ? NftData.toAmino(e) : undefined
-      );
+      obj.nftData = message.nftData.map(e => e ? NftData.toAmino(e) : undefined);
     } else {
       obj.nftData = message.nftData;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllNftDataResponseAminoMsg
-  ): QueryAllNftDataResponse {
+  fromAminoMsg(object: QueryAllNftDataResponseAminoMsg): QueryAllNftDataResponse {
     return QueryAllNftDataResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllNftDataResponseProtoMsg
-  ): QueryAllNftDataResponse {
+  fromProtoMsg(message: QueryAllNftDataResponseProtoMsg): QueryAllNftDataResponse {
     return QueryAllNftDataResponse.decode(message.value);
   },
   toProto(message: QueryAllNftDataResponse): Uint8Array {
     return QueryAllNftDataResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllNftDataResponse
-  ): QueryAllNftDataResponseProtoMsg {
+  toProtoMsg(message: QueryAllNftDataResponse): QueryAllNftDataResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllNftDataResponse",
-      value: QueryAllNftDataResponse.encode(message).finish(),
+      value: QueryAllNftDataResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetActionByRefIdRequest(): QueryGetActionByRefIdRequest {
   return {
-    refId: "",
+    refId: ""
   };
 }
 export const QueryGetActionByRefIdRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionByRefIdRequest",
-  encode(
-    message: QueryGetActionByRefIdRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetActionByRefIdRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.refId !== "") {
       writer.uint32(10).string(message.refId);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetActionByRefIdRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetActionByRefIdRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetActionByRefIdRequest();
@@ -2177,74 +2285,53 @@ export const QueryGetActionByRefIdRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetActionByRefIdRequest>
-  ): QueryGetActionByRefIdRequest {
+  fromPartial(object: Partial<QueryGetActionByRefIdRequest>): QueryGetActionByRefIdRequest {
     const message = createBaseQueryGetActionByRefIdRequest();
     message.refId = object.refId ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetActionByRefIdRequestAmino
-  ): QueryGetActionByRefIdRequest {
+  fromAmino(object: QueryGetActionByRefIdRequestAmino): QueryGetActionByRefIdRequest {
     const message = createBaseQueryGetActionByRefIdRequest();
     if (object.refId !== undefined && object.refId !== null) {
       message.refId = object.refId;
     }
     return message;
   },
-  toAmino(
-    message: QueryGetActionByRefIdRequest
-  ): QueryGetActionByRefIdRequestAmino {
+  toAmino(message: QueryGetActionByRefIdRequest): QueryGetActionByRefIdRequestAmino {
     const obj: any = {};
     obj.refId = message.refId === "" ? undefined : message.refId;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetActionByRefIdRequestAminoMsg
-  ): QueryGetActionByRefIdRequest {
+  fromAminoMsg(object: QueryGetActionByRefIdRequestAminoMsg): QueryGetActionByRefIdRequest {
     return QueryGetActionByRefIdRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetActionByRefIdRequestProtoMsg
-  ): QueryGetActionByRefIdRequest {
+  fromProtoMsg(message: QueryGetActionByRefIdRequestProtoMsg): QueryGetActionByRefIdRequest {
     return QueryGetActionByRefIdRequest.decode(message.value);
   },
   toProto(message: QueryGetActionByRefIdRequest): Uint8Array {
     return QueryGetActionByRefIdRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetActionByRefIdRequest
-  ): QueryGetActionByRefIdRequestProtoMsg {
+  toProtoMsg(message: QueryGetActionByRefIdRequest): QueryGetActionByRefIdRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetActionByRefIdRequest",
-      value: QueryGetActionByRefIdRequest.encode(message).finish(),
+      value: QueryGetActionByRefIdRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetActionByRefIdResponse(): QueryGetActionByRefIdResponse {
   return {
-    actionByRefId: ActionByRefId.fromPartial({}),
+    actionByRefId: ActionByRefId.fromPartial({})
   };
 }
 export const QueryGetActionByRefIdResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionByRefIdResponse",
-  encode(
-    message: QueryGetActionByRefIdResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetActionByRefIdResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.actionByRefId !== undefined) {
-      ActionByRefId.encode(
-        message.actionByRefId,
-        writer.uint32(10).fork()
-      ).ldelim();
+      ActionByRefId.encode(message.actionByRefId, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetActionByRefIdResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetActionByRefIdResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetActionByRefIdResponse();
@@ -2261,76 +2348,53 @@ export const QueryGetActionByRefIdResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetActionByRefIdResponse>
-  ): QueryGetActionByRefIdResponse {
+  fromPartial(object: Partial<QueryGetActionByRefIdResponse>): QueryGetActionByRefIdResponse {
     const message = createBaseQueryGetActionByRefIdResponse();
-    message.actionByRefId =
-      object.actionByRefId !== undefined && object.actionByRefId !== null
-        ? ActionByRefId.fromPartial(object.actionByRefId)
-        : undefined;
+    message.actionByRefId = object.actionByRefId !== undefined && object.actionByRefId !== null ? ActionByRefId.fromPartial(object.actionByRefId) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetActionByRefIdResponseAmino
-  ): QueryGetActionByRefIdResponse {
+  fromAmino(object: QueryGetActionByRefIdResponseAmino): QueryGetActionByRefIdResponse {
     const message = createBaseQueryGetActionByRefIdResponse();
     if (object.actionByRefId !== undefined && object.actionByRefId !== null) {
       message.actionByRefId = ActionByRefId.fromAmino(object.actionByRefId);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetActionByRefIdResponse
-  ): QueryGetActionByRefIdResponseAmino {
+  toAmino(message: QueryGetActionByRefIdResponse): QueryGetActionByRefIdResponseAmino {
     const obj: any = {};
-    obj.actionByRefId = message.actionByRefId
-      ? ActionByRefId.toAmino(message.actionByRefId)
-      : undefined;
+    obj.actionByRefId = message.actionByRefId ? ActionByRefId.toAmino(message.actionByRefId) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetActionByRefIdResponseAminoMsg
-  ): QueryGetActionByRefIdResponse {
+  fromAminoMsg(object: QueryGetActionByRefIdResponseAminoMsg): QueryGetActionByRefIdResponse {
     return QueryGetActionByRefIdResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetActionByRefIdResponseProtoMsg
-  ): QueryGetActionByRefIdResponse {
+  fromProtoMsg(message: QueryGetActionByRefIdResponseProtoMsg): QueryGetActionByRefIdResponse {
     return QueryGetActionByRefIdResponse.decode(message.value);
   },
   toProto(message: QueryGetActionByRefIdResponse): Uint8Array {
     return QueryGetActionByRefIdResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetActionByRefIdResponse
-  ): QueryGetActionByRefIdResponseProtoMsg {
+  toProtoMsg(message: QueryGetActionByRefIdResponse): QueryGetActionByRefIdResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetActionByRefIdResponse",
-      value: QueryGetActionByRefIdResponse.encode(message).finish(),
+      value: QueryGetActionByRefIdResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllActionByRefIdRequest(): QueryAllActionByRefIdRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllActionByRefIdRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionByRefIdRequest",
-  encode(
-    message: QueryAllActionByRefIdRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllActionByRefIdRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllActionByRefIdRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllActionByRefIdRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllActionByRefIdRequest();
@@ -2347,83 +2411,57 @@ export const QueryAllActionByRefIdRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllActionByRefIdRequest>
-  ): QueryAllActionByRefIdRequest {
+  fromPartial(object: Partial<QueryAllActionByRefIdRequest>): QueryAllActionByRefIdRequest {
     const message = createBaseQueryAllActionByRefIdRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllActionByRefIdRequestAmino
-  ): QueryAllActionByRefIdRequest {
+  fromAmino(object: QueryAllActionByRefIdRequestAmino): QueryAllActionByRefIdRequest {
     const message = createBaseQueryAllActionByRefIdRequest();
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllActionByRefIdRequest
-  ): QueryAllActionByRefIdRequestAmino {
+  toAmino(message: QueryAllActionByRefIdRequest): QueryAllActionByRefIdRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllActionByRefIdRequestAminoMsg
-  ): QueryAllActionByRefIdRequest {
+  fromAminoMsg(object: QueryAllActionByRefIdRequestAminoMsg): QueryAllActionByRefIdRequest {
     return QueryAllActionByRefIdRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllActionByRefIdRequestProtoMsg
-  ): QueryAllActionByRefIdRequest {
+  fromProtoMsg(message: QueryAllActionByRefIdRequestProtoMsg): QueryAllActionByRefIdRequest {
     return QueryAllActionByRefIdRequest.decode(message.value);
   },
   toProto(message: QueryAllActionByRefIdRequest): Uint8Array {
     return QueryAllActionByRefIdRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllActionByRefIdRequest
-  ): QueryAllActionByRefIdRequestProtoMsg {
+  toProtoMsg(message: QueryAllActionByRefIdRequest): QueryAllActionByRefIdRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllActionByRefIdRequest",
-      value: QueryAllActionByRefIdRequest.encode(message).finish(),
+      value: QueryAllActionByRefIdRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllActionByRefIdResponse(): QueryAllActionByRefIdResponse {
   return {
     actionByRefId: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllActionByRefIdResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionByRefIdResponse",
-  encode(
-    message: QueryAllActionByRefIdResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllActionByRefIdResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.actionByRefId) {
       ActionByRefId.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllActionByRefIdResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllActionByRefIdResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllActionByRefIdResponse();
@@ -2431,9 +2469,7 @@ export const QueryAllActionByRefIdResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.actionByRefId.push(
-            ActionByRefId.decode(reader, reader.uint32())
-          );
+          message.actionByRefId.push(ActionByRefId.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -2445,87 +2481,60 @@ export const QueryAllActionByRefIdResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllActionByRefIdResponse>
-  ): QueryAllActionByRefIdResponse {
+  fromPartial(object: Partial<QueryAllActionByRefIdResponse>): QueryAllActionByRefIdResponse {
     const message = createBaseQueryAllActionByRefIdResponse();
-    message.actionByRefId =
-      object.actionByRefId?.map((e) => ActionByRefId.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.actionByRefId = object.actionByRefId?.map(e => ActionByRefId.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllActionByRefIdResponseAmino
-  ): QueryAllActionByRefIdResponse {
+  fromAmino(object: QueryAllActionByRefIdResponseAmino): QueryAllActionByRefIdResponse {
     const message = createBaseQueryAllActionByRefIdResponse();
-    message.actionByRefId =
-      object.actionByRefId?.map((e) => ActionByRefId.fromAmino(e)) || [];
+    message.actionByRefId = object.actionByRefId?.map(e => ActionByRefId.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllActionByRefIdResponse
-  ): QueryAllActionByRefIdResponseAmino {
+  toAmino(message: QueryAllActionByRefIdResponse): QueryAllActionByRefIdResponseAmino {
     const obj: any = {};
     if (message.actionByRefId) {
-      obj.actionByRefId = message.actionByRefId.map((e) =>
-        e ? ActionByRefId.toAmino(e) : undefined
-      );
+      obj.actionByRefId = message.actionByRefId.map(e => e ? ActionByRefId.toAmino(e) : undefined);
     } else {
       obj.actionByRefId = message.actionByRefId;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllActionByRefIdResponseAminoMsg
-  ): QueryAllActionByRefIdResponse {
+  fromAminoMsg(object: QueryAllActionByRefIdResponseAminoMsg): QueryAllActionByRefIdResponse {
     return QueryAllActionByRefIdResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllActionByRefIdResponseProtoMsg
-  ): QueryAllActionByRefIdResponse {
+  fromProtoMsg(message: QueryAllActionByRefIdResponseProtoMsg): QueryAllActionByRefIdResponse {
     return QueryAllActionByRefIdResponse.decode(message.value);
   },
   toProto(message: QueryAllActionByRefIdResponse): Uint8Array {
     return QueryAllActionByRefIdResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllActionByRefIdResponse
-  ): QueryAllActionByRefIdResponseProtoMsg {
+  toProtoMsg(message: QueryAllActionByRefIdResponse): QueryAllActionByRefIdResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllActionByRefIdResponse",
-      value: QueryAllActionByRefIdResponse.encode(message).finish(),
+      value: QueryAllActionByRefIdResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetOrganizationRequest(): QueryGetOrganizationRequest {
   return {
-    name: "",
+    name: ""
   };
 }
 export const QueryGetOrganizationRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetOrganizationRequest",
-  encode(
-    message: QueryGetOrganizationRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetOrganizationRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetOrganizationRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetOrganizationRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetOrganizationRequest();
@@ -2542,74 +2551,53 @@ export const QueryGetOrganizationRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetOrganizationRequest>
-  ): QueryGetOrganizationRequest {
+  fromPartial(object: Partial<QueryGetOrganizationRequest>): QueryGetOrganizationRequest {
     const message = createBaseQueryGetOrganizationRequest();
     message.name = object.name ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetOrganizationRequestAmino
-  ): QueryGetOrganizationRequest {
+  fromAmino(object: QueryGetOrganizationRequestAmino): QueryGetOrganizationRequest {
     const message = createBaseQueryGetOrganizationRequest();
     if (object.name !== undefined && object.name !== null) {
       message.name = object.name;
     }
     return message;
   },
-  toAmino(
-    message: QueryGetOrganizationRequest
-  ): QueryGetOrganizationRequestAmino {
+  toAmino(message: QueryGetOrganizationRequest): QueryGetOrganizationRequestAmino {
     const obj: any = {};
     obj.name = message.name === "" ? undefined : message.name;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetOrganizationRequestAminoMsg
-  ): QueryGetOrganizationRequest {
+  fromAminoMsg(object: QueryGetOrganizationRequestAminoMsg): QueryGetOrganizationRequest {
     return QueryGetOrganizationRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetOrganizationRequestProtoMsg
-  ): QueryGetOrganizationRequest {
+  fromProtoMsg(message: QueryGetOrganizationRequestProtoMsg): QueryGetOrganizationRequest {
     return QueryGetOrganizationRequest.decode(message.value);
   },
   toProto(message: QueryGetOrganizationRequest): Uint8Array {
     return QueryGetOrganizationRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetOrganizationRequest
-  ): QueryGetOrganizationRequestProtoMsg {
+  toProtoMsg(message: QueryGetOrganizationRequest): QueryGetOrganizationRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetOrganizationRequest",
-      value: QueryGetOrganizationRequest.encode(message).finish(),
+      value: QueryGetOrganizationRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetOrganizationResponse(): QueryGetOrganizationResponse {
   return {
-    organization: Organization.fromPartial({}),
+    organization: Organization.fromPartial({})
   };
 }
 export const QueryGetOrganizationResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetOrganizationResponse",
-  encode(
-    message: QueryGetOrganizationResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetOrganizationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.organization !== undefined) {
-      Organization.encode(
-        message.organization,
-        writer.uint32(10).fork()
-      ).ldelim();
+      Organization.encode(message.organization, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetOrganizationResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetOrganizationResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetOrganizationResponse();
@@ -2626,76 +2614,53 @@ export const QueryGetOrganizationResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetOrganizationResponse>
-  ): QueryGetOrganizationResponse {
+  fromPartial(object: Partial<QueryGetOrganizationResponse>): QueryGetOrganizationResponse {
     const message = createBaseQueryGetOrganizationResponse();
-    message.organization =
-      object.organization !== undefined && object.organization !== null
-        ? Organization.fromPartial(object.organization)
-        : undefined;
+    message.organization = object.organization !== undefined && object.organization !== null ? Organization.fromPartial(object.organization) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetOrganizationResponseAmino
-  ): QueryGetOrganizationResponse {
+  fromAmino(object: QueryGetOrganizationResponseAmino): QueryGetOrganizationResponse {
     const message = createBaseQueryGetOrganizationResponse();
     if (object.organization !== undefined && object.organization !== null) {
       message.organization = Organization.fromAmino(object.organization);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetOrganizationResponse
-  ): QueryGetOrganizationResponseAmino {
+  toAmino(message: QueryGetOrganizationResponse): QueryGetOrganizationResponseAmino {
     const obj: any = {};
-    obj.organization = message.organization
-      ? Organization.toAmino(message.organization)
-      : undefined;
+    obj.organization = message.organization ? Organization.toAmino(message.organization) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetOrganizationResponseAminoMsg
-  ): QueryGetOrganizationResponse {
+  fromAminoMsg(object: QueryGetOrganizationResponseAminoMsg): QueryGetOrganizationResponse {
     return QueryGetOrganizationResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetOrganizationResponseProtoMsg
-  ): QueryGetOrganizationResponse {
+  fromProtoMsg(message: QueryGetOrganizationResponseProtoMsg): QueryGetOrganizationResponse {
     return QueryGetOrganizationResponse.decode(message.value);
   },
   toProto(message: QueryGetOrganizationResponse): Uint8Array {
     return QueryGetOrganizationResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetOrganizationResponse
-  ): QueryGetOrganizationResponseProtoMsg {
+  toProtoMsg(message: QueryGetOrganizationResponse): QueryGetOrganizationResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetOrganizationResponse",
-      value: QueryGetOrganizationResponse.encode(message).finish(),
+      value: QueryGetOrganizationResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllOrganizationRequest(): QueryAllOrganizationRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllOrganizationRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllOrganizationRequest",
-  encode(
-    message: QueryAllOrganizationRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllOrganizationRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllOrganizationRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllOrganizationRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllOrganizationRequest();
@@ -2712,83 +2677,57 @@ export const QueryAllOrganizationRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllOrganizationRequest>
-  ): QueryAllOrganizationRequest {
+  fromPartial(object: Partial<QueryAllOrganizationRequest>): QueryAllOrganizationRequest {
     const message = createBaseQueryAllOrganizationRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllOrganizationRequestAmino
-  ): QueryAllOrganizationRequest {
+  fromAmino(object: QueryAllOrganizationRequestAmino): QueryAllOrganizationRequest {
     const message = createBaseQueryAllOrganizationRequest();
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllOrganizationRequest
-  ): QueryAllOrganizationRequestAmino {
+  toAmino(message: QueryAllOrganizationRequest): QueryAllOrganizationRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllOrganizationRequestAminoMsg
-  ): QueryAllOrganizationRequest {
+  fromAminoMsg(object: QueryAllOrganizationRequestAminoMsg): QueryAllOrganizationRequest {
     return QueryAllOrganizationRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllOrganizationRequestProtoMsg
-  ): QueryAllOrganizationRequest {
+  fromProtoMsg(message: QueryAllOrganizationRequestProtoMsg): QueryAllOrganizationRequest {
     return QueryAllOrganizationRequest.decode(message.value);
   },
   toProto(message: QueryAllOrganizationRequest): Uint8Array {
     return QueryAllOrganizationRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllOrganizationRequest
-  ): QueryAllOrganizationRequestProtoMsg {
+  toProtoMsg(message: QueryAllOrganizationRequest): QueryAllOrganizationRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllOrganizationRequest",
-      value: QueryAllOrganizationRequest.encode(message).finish(),
+      value: QueryAllOrganizationRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllOrganizationResponse(): QueryAllOrganizationResponse {
   return {
     organization: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllOrganizationResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllOrganizationResponse",
-  encode(
-    message: QueryAllOrganizationResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllOrganizationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.organization) {
       Organization.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllOrganizationResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllOrganizationResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllOrganizationResponse();
@@ -2796,9 +2735,7 @@ export const QueryAllOrganizationResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.organization.push(
-            Organization.decode(reader, reader.uint32())
-          );
+          message.organization.push(Organization.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -2810,79 +2747,55 @@ export const QueryAllOrganizationResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllOrganizationResponse>
-  ): QueryAllOrganizationResponse {
+  fromPartial(object: Partial<QueryAllOrganizationResponse>): QueryAllOrganizationResponse {
     const message = createBaseQueryAllOrganizationResponse();
-    message.organization =
-      object.organization?.map((e) => Organization.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.organization = object.organization?.map(e => Organization.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllOrganizationResponseAmino
-  ): QueryAllOrganizationResponse {
+  fromAmino(object: QueryAllOrganizationResponseAmino): QueryAllOrganizationResponse {
     const message = createBaseQueryAllOrganizationResponse();
-    message.organization =
-      object.organization?.map((e) => Organization.fromAmino(e)) || [];
+    message.organization = object.organization?.map(e => Organization.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllOrganizationResponse
-  ): QueryAllOrganizationResponseAmino {
+  toAmino(message: QueryAllOrganizationResponse): QueryAllOrganizationResponseAmino {
     const obj: any = {};
     if (message.organization) {
-      obj.organization = message.organization.map((e) =>
-        e ? Organization.toAmino(e) : undefined
-      );
+      obj.organization = message.organization.map(e => e ? Organization.toAmino(e) : undefined);
     } else {
       obj.organization = message.organization;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllOrganizationResponseAminoMsg
-  ): QueryAllOrganizationResponse {
+  fromAminoMsg(object: QueryAllOrganizationResponseAminoMsg): QueryAllOrganizationResponse {
     return QueryAllOrganizationResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllOrganizationResponseProtoMsg
-  ): QueryAllOrganizationResponse {
+  fromProtoMsg(message: QueryAllOrganizationResponseProtoMsg): QueryAllOrganizationResponse {
     return QueryAllOrganizationResponse.decode(message.value);
   },
   toProto(message: QueryAllOrganizationResponse): Uint8Array {
     return QueryAllOrganizationResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllOrganizationResponse
-  ): QueryAllOrganizationResponseProtoMsg {
+  toProtoMsg(message: QueryAllOrganizationResponse): QueryAllOrganizationResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllOrganizationResponse",
-      value: QueryAllOrganizationResponse.encode(message).finish(),
+      value: QueryAllOrganizationResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNftCollectionRequest(): QueryGetNftCollectionRequest {
   return {
     nftSchemaCode: "",
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryGetNftCollectionRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNftCollectionRequest",
-  encode(
-    message: QueryGetNftCollectionRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetNftCollectionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -2891,10 +2804,7 @@ export const QueryGetNftCollectionRequest = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNftCollectionRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNftCollectionRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNftCollectionRequest();
@@ -2914,20 +2824,13 @@ export const QueryGetNftCollectionRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetNftCollectionRequest>
-  ): QueryGetNftCollectionRequest {
+  fromPartial(object: Partial<QueryGetNftCollectionRequest>): QueryGetNftCollectionRequest {
     const message = createBaseQueryGetNftCollectionRequest();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetNftCollectionRequestAmino
-  ): QueryGetNftCollectionRequest {
+  fromAmino(object: QueryGetNftCollectionRequestAmino): QueryGetNftCollectionRequest {
     const message = createBaseQueryGetNftCollectionRequest();
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
@@ -2937,66 +2840,46 @@ export const QueryGetNftCollectionRequest = {
     }
     return message;
   },
-  toAmino(
-    message: QueryGetNftCollectionRequest
-  ): QueryGetNftCollectionRequestAmino {
+  toAmino(message: QueryGetNftCollectionRequest): QueryGetNftCollectionRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetNftCollectionRequestAminoMsg
-  ): QueryGetNftCollectionRequest {
+  fromAminoMsg(object: QueryGetNftCollectionRequestAminoMsg): QueryGetNftCollectionRequest {
     return QueryGetNftCollectionRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNftCollectionRequestProtoMsg
-  ): QueryGetNftCollectionRequest {
+  fromProtoMsg(message: QueryGetNftCollectionRequestProtoMsg): QueryGetNftCollectionRequest {
     return QueryGetNftCollectionRequest.decode(message.value);
   },
   toProto(message: QueryGetNftCollectionRequest): Uint8Array {
     return QueryGetNftCollectionRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetNftCollectionRequest
-  ): QueryGetNftCollectionRequestProtoMsg {
+  toProtoMsg(message: QueryGetNftCollectionRequest): QueryGetNftCollectionRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNftCollectionRequest",
-      value: QueryGetNftCollectionRequest.encode(message).finish(),
+      value: QueryGetNftCollectionRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNftCollectionResponse(): QueryGetNftCollectionResponse {
   return {
     nftCollection: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryGetNftCollectionResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNftCollectionResponse",
-  encode(
-    message: QueryGetNftCollectionResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetNftCollectionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.nftCollection) {
       NftData.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNftCollectionResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNftCollectionResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNftCollectionResponse();
@@ -3016,87 +2899,60 @@ export const QueryGetNftCollectionResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetNftCollectionResponse>
-  ): QueryGetNftCollectionResponse {
+  fromPartial(object: Partial<QueryGetNftCollectionResponse>): QueryGetNftCollectionResponse {
     const message = createBaseQueryGetNftCollectionResponse();
-    message.nftCollection =
-      object.nftCollection?.map((e) => NftData.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.nftCollection = object.nftCollection?.map(e => NftData.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetNftCollectionResponseAmino
-  ): QueryGetNftCollectionResponse {
+  fromAmino(object: QueryGetNftCollectionResponseAmino): QueryGetNftCollectionResponse {
     const message = createBaseQueryGetNftCollectionResponse();
-    message.nftCollection =
-      object.nftCollection?.map((e) => NftData.fromAmino(e)) || [];
+    message.nftCollection = object.nftCollection?.map(e => NftData.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetNftCollectionResponse
-  ): QueryGetNftCollectionResponseAmino {
+  toAmino(message: QueryGetNftCollectionResponse): QueryGetNftCollectionResponseAmino {
     const obj: any = {};
     if (message.nftCollection) {
-      obj.nftCollection = message.nftCollection.map((e) =>
-        e ? NftData.toAmino(e) : undefined
-      );
+      obj.nftCollection = message.nftCollection.map(e => e ? NftData.toAmino(e) : undefined);
     } else {
       obj.nftCollection = message.nftCollection;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetNftCollectionResponseAminoMsg
-  ): QueryGetNftCollectionResponse {
+  fromAminoMsg(object: QueryGetNftCollectionResponseAminoMsg): QueryGetNftCollectionResponse {
     return QueryGetNftCollectionResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNftCollectionResponseProtoMsg
-  ): QueryGetNftCollectionResponse {
+  fromProtoMsg(message: QueryGetNftCollectionResponseProtoMsg): QueryGetNftCollectionResponse {
     return QueryGetNftCollectionResponse.decode(message.value);
   },
   toProto(message: QueryGetNftCollectionResponse): Uint8Array {
     return QueryGetNftCollectionResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetNftCollectionResponse
-  ): QueryGetNftCollectionResponseProtoMsg {
+  toProtoMsg(message: QueryGetNftCollectionResponse): QueryGetNftCollectionResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNftCollectionResponse",
-      value: QueryGetNftCollectionResponse.encode(message).finish(),
+      value: QueryGetNftCollectionResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNFTSchemaByContractRequest(): QueryGetNFTSchemaByContractRequest {
   return {
-    originContractAddress: "",
+    originContractAddress: ""
   };
 }
 export const QueryGetNFTSchemaByContractRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaByContractRequest",
-  encode(
-    message: QueryGetNFTSchemaByContractRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetNFTSchemaByContractRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.originContractAddress !== "") {
       writer.uint32(10).string(message.originContractAddress);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNFTSchemaByContractRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNFTSchemaByContractRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNFTSchemaByContractRequest();
@@ -3113,80 +2969,53 @@ export const QueryGetNFTSchemaByContractRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetNFTSchemaByContractRequest>
-  ): QueryGetNFTSchemaByContractRequest {
+  fromPartial(object: Partial<QueryGetNFTSchemaByContractRequest>): QueryGetNFTSchemaByContractRequest {
     const message = createBaseQueryGetNFTSchemaByContractRequest();
     message.originContractAddress = object.originContractAddress ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetNFTSchemaByContractRequestAmino
-  ): QueryGetNFTSchemaByContractRequest {
+  fromAmino(object: QueryGetNFTSchemaByContractRequestAmino): QueryGetNFTSchemaByContractRequest {
     const message = createBaseQueryGetNFTSchemaByContractRequest();
-    if (
-      object.originContractAddress !== undefined &&
-      object.originContractAddress !== null
-    ) {
+    if (object.originContractAddress !== undefined && object.originContractAddress !== null) {
       message.originContractAddress = object.originContractAddress;
     }
     return message;
   },
-  toAmino(
-    message: QueryGetNFTSchemaByContractRequest
-  ): QueryGetNFTSchemaByContractRequestAmino {
+  toAmino(message: QueryGetNFTSchemaByContractRequest): QueryGetNFTSchemaByContractRequestAmino {
     const obj: any = {};
-    obj.originContractAddress =
-      message.originContractAddress === ""
-        ? undefined
-        : message.originContractAddress;
+    obj.originContractAddress = message.originContractAddress === "" ? undefined : message.originContractAddress;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetNFTSchemaByContractRequestAminoMsg
-  ): QueryGetNFTSchemaByContractRequest {
+  fromAminoMsg(object: QueryGetNFTSchemaByContractRequestAminoMsg): QueryGetNFTSchemaByContractRequest {
     return QueryGetNFTSchemaByContractRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNFTSchemaByContractRequestProtoMsg
-  ): QueryGetNFTSchemaByContractRequest {
+  fromProtoMsg(message: QueryGetNFTSchemaByContractRequestProtoMsg): QueryGetNFTSchemaByContractRequest {
     return QueryGetNFTSchemaByContractRequest.decode(message.value);
   },
   toProto(message: QueryGetNFTSchemaByContractRequest): Uint8Array {
     return QueryGetNFTSchemaByContractRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetNFTSchemaByContractRequest
-  ): QueryGetNFTSchemaByContractRequestProtoMsg {
+  toProtoMsg(message: QueryGetNFTSchemaByContractRequest): QueryGetNFTSchemaByContractRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaByContractRequest",
-      value: QueryGetNFTSchemaByContractRequest.encode(message).finish(),
+      value: QueryGetNFTSchemaByContractRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNFTSchemaByContractResponse(): QueryGetNFTSchemaByContractResponse {
   return {
-    nFTSchemaByContract: NFTSchemaByContract.fromPartial({}),
+    nFTSchemaByContract: NFTSchemaByContract.fromPartial({})
   };
 }
 export const QueryGetNFTSchemaByContractResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaByContractResponse",
-  encode(
-    message: QueryGetNFTSchemaByContractResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetNFTSchemaByContractResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nFTSchemaByContract !== undefined) {
-      NFTSchemaByContract.encode(
-        message.nFTSchemaByContract,
-        writer.uint32(10).fork()
-      ).ldelim();
+      NFTSchemaByContract.encode(message.nFTSchemaByContract, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNFTSchemaByContractResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNFTSchemaByContractResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNFTSchemaByContractResponse();
@@ -3194,10 +3023,7 @@ export const QueryGetNFTSchemaByContractResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.nFTSchemaByContract = NFTSchemaByContract.decode(
-            reader,
-            reader.uint32()
-          );
+          message.nFTSchemaByContract = NFTSchemaByContract.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -3206,82 +3032,53 @@ export const QueryGetNFTSchemaByContractResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetNFTSchemaByContractResponse>
-  ): QueryGetNFTSchemaByContractResponse {
+  fromPartial(object: Partial<QueryGetNFTSchemaByContractResponse>): QueryGetNFTSchemaByContractResponse {
     const message = createBaseQueryGetNFTSchemaByContractResponse();
-    message.nFTSchemaByContract =
-      object.nFTSchemaByContract !== undefined &&
-      object.nFTSchemaByContract !== null
-        ? NFTSchemaByContract.fromPartial(object.nFTSchemaByContract)
-        : undefined;
+    message.nFTSchemaByContract = object.nFTSchemaByContract !== undefined && object.nFTSchemaByContract !== null ? NFTSchemaByContract.fromPartial(object.nFTSchemaByContract) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetNFTSchemaByContractResponseAmino
-  ): QueryGetNFTSchemaByContractResponse {
+  fromAmino(object: QueryGetNFTSchemaByContractResponseAmino): QueryGetNFTSchemaByContractResponse {
     const message = createBaseQueryGetNFTSchemaByContractResponse();
-    if (
-      object.nFTSchemaByContract !== undefined &&
-      object.nFTSchemaByContract !== null
-    ) {
-      message.nFTSchemaByContract = NFTSchemaByContract.fromAmino(
-        object.nFTSchemaByContract
-      );
+    if (object.nFTSchemaByContract !== undefined && object.nFTSchemaByContract !== null) {
+      message.nFTSchemaByContract = NFTSchemaByContract.fromAmino(object.nFTSchemaByContract);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetNFTSchemaByContractResponse
-  ): QueryGetNFTSchemaByContractResponseAmino {
+  toAmino(message: QueryGetNFTSchemaByContractResponse): QueryGetNFTSchemaByContractResponseAmino {
     const obj: any = {};
-    obj.nFTSchemaByContract = message.nFTSchemaByContract
-      ? NFTSchemaByContract.toAmino(message.nFTSchemaByContract)
-      : undefined;
+    obj.nFTSchemaByContract = message.nFTSchemaByContract ? NFTSchemaByContract.toAmino(message.nFTSchemaByContract) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetNFTSchemaByContractResponseAminoMsg
-  ): QueryGetNFTSchemaByContractResponse {
+  fromAminoMsg(object: QueryGetNFTSchemaByContractResponseAminoMsg): QueryGetNFTSchemaByContractResponse {
     return QueryGetNFTSchemaByContractResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNFTSchemaByContractResponseProtoMsg
-  ): QueryGetNFTSchemaByContractResponse {
+  fromProtoMsg(message: QueryGetNFTSchemaByContractResponseProtoMsg): QueryGetNFTSchemaByContractResponse {
     return QueryGetNFTSchemaByContractResponse.decode(message.value);
   },
   toProto(message: QueryGetNFTSchemaByContractResponse): Uint8Array {
     return QueryGetNFTSchemaByContractResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetNFTSchemaByContractResponse
-  ): QueryGetNFTSchemaByContractResponseProtoMsg {
+  toProtoMsg(message: QueryGetNFTSchemaByContractResponse): QueryGetNFTSchemaByContractResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNFTSchemaByContractResponse",
-      value: QueryGetNFTSchemaByContractResponse.encode(message).finish(),
+      value: QueryGetNFTSchemaByContractResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllNFTSchemaByContractRequest(): QueryAllNFTSchemaByContractRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllNFTSchemaByContractRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaByContractRequest",
-  encode(
-    message: QueryAllNFTSchemaByContractRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllNFTSchemaByContractRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllNFTSchemaByContractRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllNFTSchemaByContractRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllNFTSchemaByContractRequest();
@@ -3298,83 +3095,57 @@ export const QueryAllNFTSchemaByContractRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllNFTSchemaByContractRequest>
-  ): QueryAllNFTSchemaByContractRequest {
+  fromPartial(object: Partial<QueryAllNFTSchemaByContractRequest>): QueryAllNFTSchemaByContractRequest {
     const message = createBaseQueryAllNFTSchemaByContractRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllNFTSchemaByContractRequestAmino
-  ): QueryAllNFTSchemaByContractRequest {
+  fromAmino(object: QueryAllNFTSchemaByContractRequestAmino): QueryAllNFTSchemaByContractRequest {
     const message = createBaseQueryAllNFTSchemaByContractRequest();
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllNFTSchemaByContractRequest
-  ): QueryAllNFTSchemaByContractRequestAmino {
+  toAmino(message: QueryAllNFTSchemaByContractRequest): QueryAllNFTSchemaByContractRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllNFTSchemaByContractRequestAminoMsg
-  ): QueryAllNFTSchemaByContractRequest {
+  fromAminoMsg(object: QueryAllNFTSchemaByContractRequestAminoMsg): QueryAllNFTSchemaByContractRequest {
     return QueryAllNFTSchemaByContractRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllNFTSchemaByContractRequestProtoMsg
-  ): QueryAllNFTSchemaByContractRequest {
+  fromProtoMsg(message: QueryAllNFTSchemaByContractRequestProtoMsg): QueryAllNFTSchemaByContractRequest {
     return QueryAllNFTSchemaByContractRequest.decode(message.value);
   },
   toProto(message: QueryAllNFTSchemaByContractRequest): Uint8Array {
     return QueryAllNFTSchemaByContractRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllNFTSchemaByContractRequest
-  ): QueryAllNFTSchemaByContractRequestProtoMsg {
+  toProtoMsg(message: QueryAllNFTSchemaByContractRequest): QueryAllNFTSchemaByContractRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaByContractRequest",
-      value: QueryAllNFTSchemaByContractRequest.encode(message).finish(),
+      value: QueryAllNFTSchemaByContractRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllNFTSchemaByContractResponse(): QueryAllNFTSchemaByContractResponse {
   return {
     nFTSchemaByContract: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllNFTSchemaByContractResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaByContractResponse",
-  encode(
-    message: QueryAllNFTSchemaByContractResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllNFTSchemaByContractResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.nFTSchemaByContract) {
       NFTSchemaByContract.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllNFTSchemaByContractResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllNFTSchemaByContractResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllNFTSchemaByContractResponse();
@@ -3382,9 +3153,7 @@ export const QueryAllNFTSchemaByContractResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.nFTSchemaByContract.push(
-            NFTSchemaByContract.decode(reader, reader.uint32())
-          );
+          message.nFTSchemaByContract.push(NFTSchemaByContract.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -3396,86 +3165,55 @@ export const QueryAllNFTSchemaByContractResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllNFTSchemaByContractResponse>
-  ): QueryAllNFTSchemaByContractResponse {
+  fromPartial(object: Partial<QueryAllNFTSchemaByContractResponse>): QueryAllNFTSchemaByContractResponse {
     const message = createBaseQueryAllNFTSchemaByContractResponse();
-    message.nFTSchemaByContract =
-      object.nFTSchemaByContract?.map((e) =>
-        NFTSchemaByContract.fromPartial(e)
-      ) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.nFTSchemaByContract = object.nFTSchemaByContract?.map(e => NFTSchemaByContract.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllNFTSchemaByContractResponseAmino
-  ): QueryAllNFTSchemaByContractResponse {
+  fromAmino(object: QueryAllNFTSchemaByContractResponseAmino): QueryAllNFTSchemaByContractResponse {
     const message = createBaseQueryAllNFTSchemaByContractResponse();
-    message.nFTSchemaByContract =
-      object.nFTSchemaByContract?.map((e) =>
-        NFTSchemaByContract.fromAmino(e)
-      ) || [];
+    message.nFTSchemaByContract = object.nFTSchemaByContract?.map(e => NFTSchemaByContract.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllNFTSchemaByContractResponse
-  ): QueryAllNFTSchemaByContractResponseAmino {
+  toAmino(message: QueryAllNFTSchemaByContractResponse): QueryAllNFTSchemaByContractResponseAmino {
     const obj: any = {};
     if (message.nFTSchemaByContract) {
-      obj.nFTSchemaByContract = message.nFTSchemaByContract.map((e) =>
-        e ? NFTSchemaByContract.toAmino(e) : undefined
-      );
+      obj.nFTSchemaByContract = message.nFTSchemaByContract.map(e => e ? NFTSchemaByContract.toAmino(e) : undefined);
     } else {
       obj.nFTSchemaByContract = message.nFTSchemaByContract;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllNFTSchemaByContractResponseAminoMsg
-  ): QueryAllNFTSchemaByContractResponse {
+  fromAminoMsg(object: QueryAllNFTSchemaByContractResponseAminoMsg): QueryAllNFTSchemaByContractResponse {
     return QueryAllNFTSchemaByContractResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllNFTSchemaByContractResponseProtoMsg
-  ): QueryAllNFTSchemaByContractResponse {
+  fromProtoMsg(message: QueryAllNFTSchemaByContractResponseProtoMsg): QueryAllNFTSchemaByContractResponse {
     return QueryAllNFTSchemaByContractResponse.decode(message.value);
   },
   toProto(message: QueryAllNFTSchemaByContractResponse): Uint8Array {
     return QueryAllNFTSchemaByContractResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllNFTSchemaByContractResponse
-  ): QueryAllNFTSchemaByContractResponseProtoMsg {
+  toProtoMsg(message: QueryAllNFTSchemaByContractResponse): QueryAllNFTSchemaByContractResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllNFTSchemaByContractResponse",
-      value: QueryAllNFTSchemaByContractResponse.encode(message).finish(),
+      value: QueryAllNFTSchemaByContractResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNFTFeeConfigRequest(): QueryGetNFTFeeConfigRequest {
   return {};
 }
 export const QueryGetNFTFeeConfigRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeConfigRequest",
-  encode(
-    _: QueryGetNFTFeeConfigRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: QueryGetNFTFeeConfigRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNFTFeeConfigRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNFTFeeConfigRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNFTFeeConfigRequest();
@@ -3489,9 +3227,7 @@ export const QueryGetNFTFeeConfigRequest = {
     }
     return message;
   },
-  fromPartial(
-    _: Partial<QueryGetNFTFeeConfigRequest>
-  ): QueryGetNFTFeeConfigRequest {
+  fromPartial(_: Partial<QueryGetNFTFeeConfigRequest>): QueryGetNFTFeeConfigRequest {
     const message = createBaseQueryGetNFTFeeConfigRequest();
     return message;
   },
@@ -3503,51 +3239,36 @@ export const QueryGetNFTFeeConfigRequest = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetNFTFeeConfigRequestAminoMsg
-  ): QueryGetNFTFeeConfigRequest {
+  fromAminoMsg(object: QueryGetNFTFeeConfigRequestAminoMsg): QueryGetNFTFeeConfigRequest {
     return QueryGetNFTFeeConfigRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNFTFeeConfigRequestProtoMsg
-  ): QueryGetNFTFeeConfigRequest {
+  fromProtoMsg(message: QueryGetNFTFeeConfigRequestProtoMsg): QueryGetNFTFeeConfigRequest {
     return QueryGetNFTFeeConfigRequest.decode(message.value);
   },
   toProto(message: QueryGetNFTFeeConfigRequest): Uint8Array {
     return QueryGetNFTFeeConfigRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetNFTFeeConfigRequest
-  ): QueryGetNFTFeeConfigRequestProtoMsg {
+  toProtoMsg(message: QueryGetNFTFeeConfigRequest): QueryGetNFTFeeConfigRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeConfigRequest",
-      value: QueryGetNFTFeeConfigRequest.encode(message).finish(),
+      value: QueryGetNFTFeeConfigRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNFTFeeConfigResponse(): QueryGetNFTFeeConfigResponse {
   return {
-    nFTFeeConfig: NFTFeeConfig.fromPartial({}),
+    nFTFeeConfig: NFTFeeConfig.fromPartial({})
   };
 }
 export const QueryGetNFTFeeConfigResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeConfigResponse",
-  encode(
-    message: QueryGetNFTFeeConfigResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetNFTFeeConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nFTFeeConfig !== undefined) {
-      NFTFeeConfig.encode(
-        message.nFTFeeConfig,
-        writer.uint32(10).fork()
-      ).ldelim();
+      NFTFeeConfig.encode(message.nFTFeeConfig, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNFTFeeConfigResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNFTFeeConfigResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNFTFeeConfigResponse();
@@ -3564,71 +3285,48 @@ export const QueryGetNFTFeeConfigResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetNFTFeeConfigResponse>
-  ): QueryGetNFTFeeConfigResponse {
+  fromPartial(object: Partial<QueryGetNFTFeeConfigResponse>): QueryGetNFTFeeConfigResponse {
     const message = createBaseQueryGetNFTFeeConfigResponse();
-    message.nFTFeeConfig =
-      object.nFTFeeConfig !== undefined && object.nFTFeeConfig !== null
-        ? NFTFeeConfig.fromPartial(object.nFTFeeConfig)
-        : undefined;
+    message.nFTFeeConfig = object.nFTFeeConfig !== undefined && object.nFTFeeConfig !== null ? NFTFeeConfig.fromPartial(object.nFTFeeConfig) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetNFTFeeConfigResponseAmino
-  ): QueryGetNFTFeeConfigResponse {
+  fromAmino(object: QueryGetNFTFeeConfigResponseAmino): QueryGetNFTFeeConfigResponse {
     const message = createBaseQueryGetNFTFeeConfigResponse();
     if (object.NFTFeeConfig !== undefined && object.NFTFeeConfig !== null) {
       message.nFTFeeConfig = NFTFeeConfig.fromAmino(object.NFTFeeConfig);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetNFTFeeConfigResponse
-  ): QueryGetNFTFeeConfigResponseAmino {
+  toAmino(message: QueryGetNFTFeeConfigResponse): QueryGetNFTFeeConfigResponseAmino {
     const obj: any = {};
-    obj.NFTFeeConfig = message.nFTFeeConfig
-      ? NFTFeeConfig.toAmino(message.nFTFeeConfig)
-      : undefined;
+    obj.NFTFeeConfig = message.nFTFeeConfig ? NFTFeeConfig.toAmino(message.nFTFeeConfig) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetNFTFeeConfigResponseAminoMsg
-  ): QueryGetNFTFeeConfigResponse {
+  fromAminoMsg(object: QueryGetNFTFeeConfigResponseAminoMsg): QueryGetNFTFeeConfigResponse {
     return QueryGetNFTFeeConfigResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNFTFeeConfigResponseProtoMsg
-  ): QueryGetNFTFeeConfigResponse {
+  fromProtoMsg(message: QueryGetNFTFeeConfigResponseProtoMsg): QueryGetNFTFeeConfigResponse {
     return QueryGetNFTFeeConfigResponse.decode(message.value);
   },
   toProto(message: QueryGetNFTFeeConfigResponse): Uint8Array {
     return QueryGetNFTFeeConfigResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetNFTFeeConfigResponse
-  ): QueryGetNFTFeeConfigResponseProtoMsg {
+  toProtoMsg(message: QueryGetNFTFeeConfigResponse): QueryGetNFTFeeConfigResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeConfigResponse",
-      value: QueryGetNFTFeeConfigResponse.encode(message).finish(),
+      value: QueryGetNFTFeeConfigResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNFTFeeBalanceRequest(): QueryGetNFTFeeBalanceRequest {
   return {};
 }
 export const QueryGetNFTFeeBalanceRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeBalanceRequest",
-  encode(
-    _: QueryGetNFTFeeBalanceRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: QueryGetNFTFeeBalanceRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNFTFeeBalanceRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNFTFeeBalanceRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNFTFeeBalanceRequest();
@@ -3642,15 +3340,11 @@ export const QueryGetNFTFeeBalanceRequest = {
     }
     return message;
   },
-  fromPartial(
-    _: Partial<QueryGetNFTFeeBalanceRequest>
-  ): QueryGetNFTFeeBalanceRequest {
+  fromPartial(_: Partial<QueryGetNFTFeeBalanceRequest>): QueryGetNFTFeeBalanceRequest {
     const message = createBaseQueryGetNFTFeeBalanceRequest();
     return message;
   },
-  fromAmino(
-    _: QueryGetNFTFeeBalanceRequestAmino
-  ): QueryGetNFTFeeBalanceRequest {
+  fromAmino(_: QueryGetNFTFeeBalanceRequestAmino): QueryGetNFTFeeBalanceRequest {
     const message = createBaseQueryGetNFTFeeBalanceRequest();
     return message;
   },
@@ -3658,51 +3352,36 @@ export const QueryGetNFTFeeBalanceRequest = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetNFTFeeBalanceRequestAminoMsg
-  ): QueryGetNFTFeeBalanceRequest {
+  fromAminoMsg(object: QueryGetNFTFeeBalanceRequestAminoMsg): QueryGetNFTFeeBalanceRequest {
     return QueryGetNFTFeeBalanceRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNFTFeeBalanceRequestProtoMsg
-  ): QueryGetNFTFeeBalanceRequest {
+  fromProtoMsg(message: QueryGetNFTFeeBalanceRequestProtoMsg): QueryGetNFTFeeBalanceRequest {
     return QueryGetNFTFeeBalanceRequest.decode(message.value);
   },
   toProto(message: QueryGetNFTFeeBalanceRequest): Uint8Array {
     return QueryGetNFTFeeBalanceRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetNFTFeeBalanceRequest
-  ): QueryGetNFTFeeBalanceRequestProtoMsg {
+  toProtoMsg(message: QueryGetNFTFeeBalanceRequest): QueryGetNFTFeeBalanceRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeBalanceRequest",
-      value: QueryGetNFTFeeBalanceRequest.encode(message).finish(),
+      value: QueryGetNFTFeeBalanceRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetNFTFeeBalanceResponse(): QueryGetNFTFeeBalanceResponse {
   return {
-    nFTFeeBalance: NFTFeeBalance.fromPartial({}),
+    nFTFeeBalance: NFTFeeBalance.fromPartial({})
   };
 }
 export const QueryGetNFTFeeBalanceResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeBalanceResponse",
-  encode(
-    message: QueryGetNFTFeeBalanceResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetNFTFeeBalanceResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nFTFeeBalance !== undefined) {
-      NFTFeeBalance.encode(
-        message.nFTFeeBalance,
-        writer.uint32(10).fork()
-      ).ldelim();
+      NFTFeeBalance.encode(message.nFTFeeBalance, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetNFTFeeBalanceResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetNFTFeeBalanceResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetNFTFeeBalanceResponse();
@@ -3719,76 +3398,53 @@ export const QueryGetNFTFeeBalanceResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetNFTFeeBalanceResponse>
-  ): QueryGetNFTFeeBalanceResponse {
+  fromPartial(object: Partial<QueryGetNFTFeeBalanceResponse>): QueryGetNFTFeeBalanceResponse {
     const message = createBaseQueryGetNFTFeeBalanceResponse();
-    message.nFTFeeBalance =
-      object.nFTFeeBalance !== undefined && object.nFTFeeBalance !== null
-        ? NFTFeeBalance.fromPartial(object.nFTFeeBalance)
-        : undefined;
+    message.nFTFeeBalance = object.nFTFeeBalance !== undefined && object.nFTFeeBalance !== null ? NFTFeeBalance.fromPartial(object.nFTFeeBalance) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetNFTFeeBalanceResponseAmino
-  ): QueryGetNFTFeeBalanceResponse {
+  fromAmino(object: QueryGetNFTFeeBalanceResponseAmino): QueryGetNFTFeeBalanceResponse {
     const message = createBaseQueryGetNFTFeeBalanceResponse();
     if (object.NFTFeeBalance !== undefined && object.NFTFeeBalance !== null) {
       message.nFTFeeBalance = NFTFeeBalance.fromAmino(object.NFTFeeBalance);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetNFTFeeBalanceResponse
-  ): QueryGetNFTFeeBalanceResponseAmino {
+  toAmino(message: QueryGetNFTFeeBalanceResponse): QueryGetNFTFeeBalanceResponseAmino {
     const obj: any = {};
-    obj.NFTFeeBalance = message.nFTFeeBalance
-      ? NFTFeeBalance.toAmino(message.nFTFeeBalance)
-      : undefined;
+    obj.NFTFeeBalance = message.nFTFeeBalance ? NFTFeeBalance.toAmino(message.nFTFeeBalance) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetNFTFeeBalanceResponseAminoMsg
-  ): QueryGetNFTFeeBalanceResponse {
+  fromAminoMsg(object: QueryGetNFTFeeBalanceResponseAminoMsg): QueryGetNFTFeeBalanceResponse {
     return QueryGetNFTFeeBalanceResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetNFTFeeBalanceResponseProtoMsg
-  ): QueryGetNFTFeeBalanceResponse {
+  fromProtoMsg(message: QueryGetNFTFeeBalanceResponseProtoMsg): QueryGetNFTFeeBalanceResponse {
     return QueryGetNFTFeeBalanceResponse.decode(message.value);
   },
   toProto(message: QueryGetNFTFeeBalanceResponse): Uint8Array {
     return QueryGetNFTFeeBalanceResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetNFTFeeBalanceResponse
-  ): QueryGetNFTFeeBalanceResponseProtoMsg {
+  toProtoMsg(message: QueryGetNFTFeeBalanceResponse): QueryGetNFTFeeBalanceResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetNFTFeeBalanceResponse",
-      value: QueryGetNFTFeeBalanceResponse.encode(message).finish(),
+      value: QueryGetNFTFeeBalanceResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetMetadataCreatorRequest(): QueryGetMetadataCreatorRequest {
   return {
-    nftSchemaCode: "",
+    nftSchemaCode: ""
   };
 }
 export const QueryGetMetadataCreatorRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetMetadataCreatorRequest",
-  encode(
-    message: QueryGetMetadataCreatorRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetMetadataCreatorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetMetadataCreatorRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetMetadataCreatorRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetMetadataCreatorRequest();
@@ -3805,75 +3461,53 @@ export const QueryGetMetadataCreatorRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetMetadataCreatorRequest>
-  ): QueryGetMetadataCreatorRequest {
+  fromPartial(object: Partial<QueryGetMetadataCreatorRequest>): QueryGetMetadataCreatorRequest {
     const message = createBaseQueryGetMetadataCreatorRequest();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetMetadataCreatorRequestAmino
-  ): QueryGetMetadataCreatorRequest {
+  fromAmino(object: QueryGetMetadataCreatorRequestAmino): QueryGetMetadataCreatorRequest {
     const message = createBaseQueryGetMetadataCreatorRequest();
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
     }
     return message;
   },
-  toAmino(
-    message: QueryGetMetadataCreatorRequest
-  ): QueryGetMetadataCreatorRequestAmino {
+  toAmino(message: QueryGetMetadataCreatorRequest): QueryGetMetadataCreatorRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetMetadataCreatorRequestAminoMsg
-  ): QueryGetMetadataCreatorRequest {
+  fromAminoMsg(object: QueryGetMetadataCreatorRequestAminoMsg): QueryGetMetadataCreatorRequest {
     return QueryGetMetadataCreatorRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetMetadataCreatorRequestProtoMsg
-  ): QueryGetMetadataCreatorRequest {
+  fromProtoMsg(message: QueryGetMetadataCreatorRequestProtoMsg): QueryGetMetadataCreatorRequest {
     return QueryGetMetadataCreatorRequest.decode(message.value);
   },
   toProto(message: QueryGetMetadataCreatorRequest): Uint8Array {
     return QueryGetMetadataCreatorRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetMetadataCreatorRequest
-  ): QueryGetMetadataCreatorRequestProtoMsg {
+  toProtoMsg(message: QueryGetMetadataCreatorRequest): QueryGetMetadataCreatorRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetMetadataCreatorRequest",
-      value: QueryGetMetadataCreatorRequest.encode(message).finish(),
+      value: QueryGetMetadataCreatorRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetMetadataCreatorResponse(): QueryGetMetadataCreatorResponse {
   return {
-    metadataCreator: MetadataCreator.fromPartial({}),
+    metadataCreator: MetadataCreator.fromPartial({})
   };
 }
 export const QueryGetMetadataCreatorResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetMetadataCreatorResponse",
-  encode(
-    message: QueryGetMetadataCreatorResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetMetadataCreatorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.metadataCreator !== undefined) {
-      MetadataCreator.encode(
-        message.metadataCreator,
-        writer.uint32(10).fork()
-      ).ldelim();
+      MetadataCreator.encode(message.metadataCreator, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetMetadataCreatorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetMetadataCreatorResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetMetadataCreatorResponse();
@@ -3881,10 +3515,7 @@ export const QueryGetMetadataCreatorResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.metadataCreator = MetadataCreator.decode(
-            reader,
-            reader.uint32()
-          );
+          message.metadataCreator = MetadataCreator.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -3893,81 +3524,53 @@ export const QueryGetMetadataCreatorResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetMetadataCreatorResponse>
-  ): QueryGetMetadataCreatorResponse {
+  fromPartial(object: Partial<QueryGetMetadataCreatorResponse>): QueryGetMetadataCreatorResponse {
     const message = createBaseQueryGetMetadataCreatorResponse();
-    message.metadataCreator =
-      object.metadataCreator !== undefined && object.metadataCreator !== null
-        ? MetadataCreator.fromPartial(object.metadataCreator)
-        : undefined;
+    message.metadataCreator = object.metadataCreator !== undefined && object.metadataCreator !== null ? MetadataCreator.fromPartial(object.metadataCreator) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetMetadataCreatorResponseAmino
-  ): QueryGetMetadataCreatorResponse {
+  fromAmino(object: QueryGetMetadataCreatorResponseAmino): QueryGetMetadataCreatorResponse {
     const message = createBaseQueryGetMetadataCreatorResponse();
-    if (
-      object.metadataCreator !== undefined &&
-      object.metadataCreator !== null
-    ) {
-      message.metadataCreator = MetadataCreator.fromAmino(
-        object.metadataCreator
-      );
+    if (object.metadataCreator !== undefined && object.metadataCreator !== null) {
+      message.metadataCreator = MetadataCreator.fromAmino(object.metadataCreator);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetMetadataCreatorResponse
-  ): QueryGetMetadataCreatorResponseAmino {
+  toAmino(message: QueryGetMetadataCreatorResponse): QueryGetMetadataCreatorResponseAmino {
     const obj: any = {};
-    obj.metadataCreator = message.metadataCreator
-      ? MetadataCreator.toAmino(message.metadataCreator)
-      : undefined;
+    obj.metadataCreator = message.metadataCreator ? MetadataCreator.toAmino(message.metadataCreator) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetMetadataCreatorResponseAminoMsg
-  ): QueryGetMetadataCreatorResponse {
+  fromAminoMsg(object: QueryGetMetadataCreatorResponseAminoMsg): QueryGetMetadataCreatorResponse {
     return QueryGetMetadataCreatorResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetMetadataCreatorResponseProtoMsg
-  ): QueryGetMetadataCreatorResponse {
+  fromProtoMsg(message: QueryGetMetadataCreatorResponseProtoMsg): QueryGetMetadataCreatorResponse {
     return QueryGetMetadataCreatorResponse.decode(message.value);
   },
   toProto(message: QueryGetMetadataCreatorResponse): Uint8Array {
     return QueryGetMetadataCreatorResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetMetadataCreatorResponse
-  ): QueryGetMetadataCreatorResponseProtoMsg {
+  toProtoMsg(message: QueryGetMetadataCreatorResponse): QueryGetMetadataCreatorResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetMetadataCreatorResponse",
-      value: QueryGetMetadataCreatorResponse.encode(message).finish(),
+      value: QueryGetMetadataCreatorResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllMetadataCreatorRequest(): QueryAllMetadataCreatorRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllMetadataCreatorRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllMetadataCreatorRequest",
-  encode(
-    message: QueryAllMetadataCreatorRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllMetadataCreatorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllMetadataCreatorRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllMetadataCreatorRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllMetadataCreatorRequest();
@@ -3984,83 +3587,57 @@ export const QueryAllMetadataCreatorRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllMetadataCreatorRequest>
-  ): QueryAllMetadataCreatorRequest {
+  fromPartial(object: Partial<QueryAllMetadataCreatorRequest>): QueryAllMetadataCreatorRequest {
     const message = createBaseQueryAllMetadataCreatorRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllMetadataCreatorRequestAmino
-  ): QueryAllMetadataCreatorRequest {
+  fromAmino(object: QueryAllMetadataCreatorRequestAmino): QueryAllMetadataCreatorRequest {
     const message = createBaseQueryAllMetadataCreatorRequest();
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllMetadataCreatorRequest
-  ): QueryAllMetadataCreatorRequestAmino {
+  toAmino(message: QueryAllMetadataCreatorRequest): QueryAllMetadataCreatorRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllMetadataCreatorRequestAminoMsg
-  ): QueryAllMetadataCreatorRequest {
+  fromAminoMsg(object: QueryAllMetadataCreatorRequestAminoMsg): QueryAllMetadataCreatorRequest {
     return QueryAllMetadataCreatorRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllMetadataCreatorRequestProtoMsg
-  ): QueryAllMetadataCreatorRequest {
+  fromProtoMsg(message: QueryAllMetadataCreatorRequestProtoMsg): QueryAllMetadataCreatorRequest {
     return QueryAllMetadataCreatorRequest.decode(message.value);
   },
   toProto(message: QueryAllMetadataCreatorRequest): Uint8Array {
     return QueryAllMetadataCreatorRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllMetadataCreatorRequest
-  ): QueryAllMetadataCreatorRequestProtoMsg {
+  toProtoMsg(message: QueryAllMetadataCreatorRequest): QueryAllMetadataCreatorRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllMetadataCreatorRequest",
-      value: QueryAllMetadataCreatorRequest.encode(message).finish(),
+      value: QueryAllMetadataCreatorRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllMetadataCreatorResponse(): QueryAllMetadataCreatorResponse {
   return {
     metadataCreator: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllMetadataCreatorResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllMetadataCreatorResponse",
-  encode(
-    message: QueryAllMetadataCreatorResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllMetadataCreatorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.metadataCreator) {
       MetadataCreator.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllMetadataCreatorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllMetadataCreatorResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllMetadataCreatorResponse();
@@ -4068,9 +3645,7 @@ export const QueryAllMetadataCreatorResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.metadataCreator.push(
-            MetadataCreator.decode(reader, reader.uint32())
-          );
+          message.metadataCreator.push(MetadataCreator.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -4082,79 +3657,55 @@ export const QueryAllMetadataCreatorResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllMetadataCreatorResponse>
-  ): QueryAllMetadataCreatorResponse {
+  fromPartial(object: Partial<QueryAllMetadataCreatorResponse>): QueryAllMetadataCreatorResponse {
     const message = createBaseQueryAllMetadataCreatorResponse();
-    message.metadataCreator =
-      object.metadataCreator?.map((e) => MetadataCreator.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.metadataCreator = object.metadataCreator?.map(e => MetadataCreator.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllMetadataCreatorResponseAmino
-  ): QueryAllMetadataCreatorResponse {
+  fromAmino(object: QueryAllMetadataCreatorResponseAmino): QueryAllMetadataCreatorResponse {
     const message = createBaseQueryAllMetadataCreatorResponse();
-    message.metadataCreator =
-      object.metadataCreator?.map((e) => MetadataCreator.fromAmino(e)) || [];
+    message.metadataCreator = object.metadataCreator?.map(e => MetadataCreator.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllMetadataCreatorResponse
-  ): QueryAllMetadataCreatorResponseAmino {
+  toAmino(message: QueryAllMetadataCreatorResponse): QueryAllMetadataCreatorResponseAmino {
     const obj: any = {};
     if (message.metadataCreator) {
-      obj.metadataCreator = message.metadataCreator.map((e) =>
-        e ? MetadataCreator.toAmino(e) : undefined
-      );
+      obj.metadataCreator = message.metadataCreator.map(e => e ? MetadataCreator.toAmino(e) : undefined);
     } else {
       obj.metadataCreator = message.metadataCreator;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllMetadataCreatorResponseAminoMsg
-  ): QueryAllMetadataCreatorResponse {
+  fromAminoMsg(object: QueryAllMetadataCreatorResponseAminoMsg): QueryAllMetadataCreatorResponse {
     return QueryAllMetadataCreatorResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllMetadataCreatorResponseProtoMsg
-  ): QueryAllMetadataCreatorResponse {
+  fromProtoMsg(message: QueryAllMetadataCreatorResponseProtoMsg): QueryAllMetadataCreatorResponse {
     return QueryAllMetadataCreatorResponse.decode(message.value);
   },
   toProto(message: QueryAllMetadataCreatorResponse): Uint8Array {
     return QueryAllMetadataCreatorResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllMetadataCreatorResponse
-  ): QueryAllMetadataCreatorResponseProtoMsg {
+  toProtoMsg(message: QueryAllMetadataCreatorResponse): QueryAllMetadataCreatorResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllMetadataCreatorResponse",
-      value: QueryAllMetadataCreatorResponse.encode(message).finish(),
+      value: QueryAllMetadataCreatorResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetActionExecutorRequest(): QueryGetActionExecutorRequest {
   return {
     nftSchemaCode: "",
-    executorAddress: "",
+    executorAddress: ""
   };
 }
 export const QueryGetActionExecutorRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionExecutorRequest",
-  encode(
-    message: QueryGetActionExecutorRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetActionExecutorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -4163,10 +3714,7 @@ export const QueryGetActionExecutorRequest = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetActionExecutorRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetActionExecutorRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetActionExecutorRequest();
@@ -4186,84 +3734,58 @@ export const QueryGetActionExecutorRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetActionExecutorRequest>
-  ): QueryGetActionExecutorRequest {
+  fromPartial(object: Partial<QueryGetActionExecutorRequest>): QueryGetActionExecutorRequest {
     const message = createBaseQueryGetActionExecutorRequest();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.executorAddress = object.executorAddress ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetActionExecutorRequestAmino
-  ): QueryGetActionExecutorRequest {
+  fromAmino(object: QueryGetActionExecutorRequestAmino): QueryGetActionExecutorRequest {
     const message = createBaseQueryGetActionExecutorRequest();
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
     }
-    if (
-      object.executorAddress !== undefined &&
-      object.executorAddress !== null
-    ) {
+    if (object.executorAddress !== undefined && object.executorAddress !== null) {
       message.executorAddress = object.executorAddress;
     }
     return message;
   },
-  toAmino(
-    message: QueryGetActionExecutorRequest
-  ): QueryGetActionExecutorRequestAmino {
+  toAmino(message: QueryGetActionExecutorRequest): QueryGetActionExecutorRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
-    obj.executorAddress =
-      message.executorAddress === "" ? undefined : message.executorAddress;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.executorAddress = message.executorAddress === "" ? undefined : message.executorAddress;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetActionExecutorRequestAminoMsg
-  ): QueryGetActionExecutorRequest {
+  fromAminoMsg(object: QueryGetActionExecutorRequestAminoMsg): QueryGetActionExecutorRequest {
     return QueryGetActionExecutorRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetActionExecutorRequestProtoMsg
-  ): QueryGetActionExecutorRequest {
+  fromProtoMsg(message: QueryGetActionExecutorRequestProtoMsg): QueryGetActionExecutorRequest {
     return QueryGetActionExecutorRequest.decode(message.value);
   },
   toProto(message: QueryGetActionExecutorRequest): Uint8Array {
     return QueryGetActionExecutorRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetActionExecutorRequest
-  ): QueryGetActionExecutorRequestProtoMsg {
+  toProtoMsg(message: QueryGetActionExecutorRequest): QueryGetActionExecutorRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetActionExecutorRequest",
-      value: QueryGetActionExecutorRequest.encode(message).finish(),
+      value: QueryGetActionExecutorRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetActionExecutorResponse(): QueryGetActionExecutorResponse {
   return {
-    actionExecutor: ActionExecutor.fromPartial({}),
+    actionExecutor: ActionExecutor.fromPartial({})
   };
 }
 export const QueryGetActionExecutorResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionExecutorResponse",
-  encode(
-    message: QueryGetActionExecutorResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetActionExecutorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.actionExecutor !== undefined) {
-      ActionExecutor.encode(
-        message.actionExecutor,
-        writer.uint32(10).fork()
-      ).ldelim();
+      ActionExecutor.encode(message.actionExecutor, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetActionExecutorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetActionExecutorResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetActionExecutorResponse();
@@ -4271,10 +3793,7 @@ export const QueryGetActionExecutorResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.actionExecutor = ActionExecutor.decode(
-            reader,
-            reader.uint32()
-          );
+          message.actionExecutor = ActionExecutor.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -4283,76 +3802,53 @@ export const QueryGetActionExecutorResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetActionExecutorResponse>
-  ): QueryGetActionExecutorResponse {
+  fromPartial(object: Partial<QueryGetActionExecutorResponse>): QueryGetActionExecutorResponse {
     const message = createBaseQueryGetActionExecutorResponse();
-    message.actionExecutor =
-      object.actionExecutor !== undefined && object.actionExecutor !== null
-        ? ActionExecutor.fromPartial(object.actionExecutor)
-        : undefined;
+    message.actionExecutor = object.actionExecutor !== undefined && object.actionExecutor !== null ? ActionExecutor.fromPartial(object.actionExecutor) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetActionExecutorResponseAmino
-  ): QueryGetActionExecutorResponse {
+  fromAmino(object: QueryGetActionExecutorResponseAmino): QueryGetActionExecutorResponse {
     const message = createBaseQueryGetActionExecutorResponse();
     if (object.actionExecutor !== undefined && object.actionExecutor !== null) {
       message.actionExecutor = ActionExecutor.fromAmino(object.actionExecutor);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetActionExecutorResponse
-  ): QueryGetActionExecutorResponseAmino {
+  toAmino(message: QueryGetActionExecutorResponse): QueryGetActionExecutorResponseAmino {
     const obj: any = {};
-    obj.actionExecutor = message.actionExecutor
-      ? ActionExecutor.toAmino(message.actionExecutor)
-      : undefined;
+    obj.actionExecutor = message.actionExecutor ? ActionExecutor.toAmino(message.actionExecutor) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetActionExecutorResponseAminoMsg
-  ): QueryGetActionExecutorResponse {
+  fromAminoMsg(object: QueryGetActionExecutorResponseAminoMsg): QueryGetActionExecutorResponse {
     return QueryGetActionExecutorResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetActionExecutorResponseProtoMsg
-  ): QueryGetActionExecutorResponse {
+  fromProtoMsg(message: QueryGetActionExecutorResponseProtoMsg): QueryGetActionExecutorResponse {
     return QueryGetActionExecutorResponse.decode(message.value);
   },
   toProto(message: QueryGetActionExecutorResponse): Uint8Array {
     return QueryGetActionExecutorResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetActionExecutorResponse
-  ): QueryGetActionExecutorResponseProtoMsg {
+  toProtoMsg(message: QueryGetActionExecutorResponse): QueryGetActionExecutorResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetActionExecutorResponse",
-      value: QueryGetActionExecutorResponse.encode(message).finish(),
+      value: QueryGetActionExecutorResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllActionExecutorRequest(): QueryAllActionExecutorRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllActionExecutorRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionExecutorRequest",
-  encode(
-    message: QueryAllActionExecutorRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllActionExecutorRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllActionExecutorRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllActionExecutorRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllActionExecutorRequest();
@@ -4369,83 +3865,57 @@ export const QueryAllActionExecutorRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllActionExecutorRequest>
-  ): QueryAllActionExecutorRequest {
+  fromPartial(object: Partial<QueryAllActionExecutorRequest>): QueryAllActionExecutorRequest {
     const message = createBaseQueryAllActionExecutorRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllActionExecutorRequestAmino
-  ): QueryAllActionExecutorRequest {
+  fromAmino(object: QueryAllActionExecutorRequestAmino): QueryAllActionExecutorRequest {
     const message = createBaseQueryAllActionExecutorRequest();
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllActionExecutorRequest
-  ): QueryAllActionExecutorRequestAmino {
+  toAmino(message: QueryAllActionExecutorRequest): QueryAllActionExecutorRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllActionExecutorRequestAminoMsg
-  ): QueryAllActionExecutorRequest {
+  fromAminoMsg(object: QueryAllActionExecutorRequestAminoMsg): QueryAllActionExecutorRequest {
     return QueryAllActionExecutorRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllActionExecutorRequestProtoMsg
-  ): QueryAllActionExecutorRequest {
+  fromProtoMsg(message: QueryAllActionExecutorRequestProtoMsg): QueryAllActionExecutorRequest {
     return QueryAllActionExecutorRequest.decode(message.value);
   },
   toProto(message: QueryAllActionExecutorRequest): Uint8Array {
     return QueryAllActionExecutorRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllActionExecutorRequest
-  ): QueryAllActionExecutorRequestProtoMsg {
+  toProtoMsg(message: QueryAllActionExecutorRequest): QueryAllActionExecutorRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllActionExecutorRequest",
-      value: QueryAllActionExecutorRequest.encode(message).finish(),
+      value: QueryAllActionExecutorRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllActionExecutorResponse(): QueryAllActionExecutorResponse {
   return {
     actionExecutor: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllActionExecutorResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionExecutorResponse",
-  encode(
-    message: QueryAllActionExecutorResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllActionExecutorResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.actionExecutor) {
       ActionExecutor.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllActionExecutorResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllActionExecutorResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllActionExecutorResponse();
@@ -4453,9 +3923,7 @@ export const QueryAllActionExecutorResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.actionExecutor.push(
-            ActionExecutor.decode(reader, reader.uint32())
-          );
+          message.actionExecutor.push(ActionExecutor.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -4467,79 +3935,55 @@ export const QueryAllActionExecutorResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllActionExecutorResponse>
-  ): QueryAllActionExecutorResponse {
+  fromPartial(object: Partial<QueryAllActionExecutorResponse>): QueryAllActionExecutorResponse {
     const message = createBaseQueryAllActionExecutorResponse();
-    message.actionExecutor =
-      object.actionExecutor?.map((e) => ActionExecutor.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.actionExecutor = object.actionExecutor?.map(e => ActionExecutor.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllActionExecutorResponseAmino
-  ): QueryAllActionExecutorResponse {
+  fromAmino(object: QueryAllActionExecutorResponseAmino): QueryAllActionExecutorResponse {
     const message = createBaseQueryAllActionExecutorResponse();
-    message.actionExecutor =
-      object.actionExecutor?.map((e) => ActionExecutor.fromAmino(e)) || [];
+    message.actionExecutor = object.actionExecutor?.map(e => ActionExecutor.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllActionExecutorResponse
-  ): QueryAllActionExecutorResponseAmino {
+  toAmino(message: QueryAllActionExecutorResponse): QueryAllActionExecutorResponseAmino {
     const obj: any = {};
     if (message.actionExecutor) {
-      obj.actionExecutor = message.actionExecutor.map((e) =>
-        e ? ActionExecutor.toAmino(e) : undefined
-      );
+      obj.actionExecutor = message.actionExecutor.map(e => e ? ActionExecutor.toAmino(e) : undefined);
     } else {
       obj.actionExecutor = message.actionExecutor;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllActionExecutorResponseAminoMsg
-  ): QueryAllActionExecutorResponse {
+  fromAminoMsg(object: QueryAllActionExecutorResponseAminoMsg): QueryAllActionExecutorResponse {
     return QueryAllActionExecutorResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllActionExecutorResponseProtoMsg
-  ): QueryAllActionExecutorResponse {
+  fromProtoMsg(message: QueryAllActionExecutorResponseProtoMsg): QueryAllActionExecutorResponse {
     return QueryAllActionExecutorResponse.decode(message.value);
   },
   toProto(message: QueryAllActionExecutorResponse): Uint8Array {
     return QueryAllActionExecutorResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllActionExecutorResponse
-  ): QueryAllActionExecutorResponseProtoMsg {
+  toProtoMsg(message: QueryAllActionExecutorResponse): QueryAllActionExecutorResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllActionExecutorResponse",
-      value: QueryAllActionExecutorResponse.encode(message).finish(),
+      value: QueryAllActionExecutorResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetSchemaAttributeRequest(): QueryGetSchemaAttributeRequest {
   return {
     nftSchemaCode: "",
-    name: "",
+    name: ""
   };
 }
 export const QueryGetSchemaAttributeRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetSchemaAttributeRequest",
-  encode(
-    message: QueryGetSchemaAttributeRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetSchemaAttributeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -4548,10 +3992,7 @@ export const QueryGetSchemaAttributeRequest = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetSchemaAttributeRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetSchemaAttributeRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetSchemaAttributeRequest();
@@ -4571,17 +4012,13 @@ export const QueryGetSchemaAttributeRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetSchemaAttributeRequest>
-  ): QueryGetSchemaAttributeRequest {
+  fromPartial(object: Partial<QueryGetSchemaAttributeRequest>): QueryGetSchemaAttributeRequest {
     const message = createBaseQueryGetSchemaAttributeRequest();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.name = object.name ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetSchemaAttributeRequestAmino
-  ): QueryGetSchemaAttributeRequest {
+  fromAmino(object: QueryGetSchemaAttributeRequestAmino): QueryGetSchemaAttributeRequest {
     const message = createBaseQueryGetSchemaAttributeRequest();
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
@@ -4591,60 +4028,42 @@ export const QueryGetSchemaAttributeRequest = {
     }
     return message;
   },
-  toAmino(
-    message: QueryGetSchemaAttributeRequest
-  ): QueryGetSchemaAttributeRequestAmino {
+  toAmino(message: QueryGetSchemaAttributeRequest): QueryGetSchemaAttributeRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.name = message.name === "" ? undefined : message.name;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetSchemaAttributeRequestAminoMsg
-  ): QueryGetSchemaAttributeRequest {
+  fromAminoMsg(object: QueryGetSchemaAttributeRequestAminoMsg): QueryGetSchemaAttributeRequest {
     return QueryGetSchemaAttributeRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetSchemaAttributeRequestProtoMsg
-  ): QueryGetSchemaAttributeRequest {
+  fromProtoMsg(message: QueryGetSchemaAttributeRequestProtoMsg): QueryGetSchemaAttributeRequest {
     return QueryGetSchemaAttributeRequest.decode(message.value);
   },
   toProto(message: QueryGetSchemaAttributeRequest): Uint8Array {
     return QueryGetSchemaAttributeRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetSchemaAttributeRequest
-  ): QueryGetSchemaAttributeRequestProtoMsg {
+  toProtoMsg(message: QueryGetSchemaAttributeRequest): QueryGetSchemaAttributeRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetSchemaAttributeRequest",
-      value: QueryGetSchemaAttributeRequest.encode(message).finish(),
+      value: QueryGetSchemaAttributeRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetSchemaAttributeResponse(): QueryGetSchemaAttributeResponse {
   return {
-    schemaAttribute: SchemaAttribute.fromPartial({}),
+    schemaAttribute: SchemaAttribute.fromPartial({})
   };
 }
 export const QueryGetSchemaAttributeResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetSchemaAttributeResponse",
-  encode(
-    message: QueryGetSchemaAttributeResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetSchemaAttributeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.schemaAttribute !== undefined) {
-      SchemaAttribute.encode(
-        message.schemaAttribute,
-        writer.uint32(10).fork()
-      ).ldelim();
+      SchemaAttribute.encode(message.schemaAttribute, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetSchemaAttributeResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetSchemaAttributeResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetSchemaAttributeResponse();
@@ -4652,10 +4071,7 @@ export const QueryGetSchemaAttributeResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.schemaAttribute = SchemaAttribute.decode(
-            reader,
-            reader.uint32()
-          );
+          message.schemaAttribute = SchemaAttribute.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -4664,73 +4080,48 @@ export const QueryGetSchemaAttributeResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetSchemaAttributeResponse>
-  ): QueryGetSchemaAttributeResponse {
+  fromPartial(object: Partial<QueryGetSchemaAttributeResponse>): QueryGetSchemaAttributeResponse {
     const message = createBaseQueryGetSchemaAttributeResponse();
-    message.schemaAttribute =
-      object.schemaAttribute !== undefined && object.schemaAttribute !== null
-        ? SchemaAttribute.fromPartial(object.schemaAttribute)
-        : undefined;
+    message.schemaAttribute = object.schemaAttribute !== undefined && object.schemaAttribute !== null ? SchemaAttribute.fromPartial(object.schemaAttribute) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetSchemaAttributeResponseAmino
-  ): QueryGetSchemaAttributeResponse {
+  fromAmino(object: QueryGetSchemaAttributeResponseAmino): QueryGetSchemaAttributeResponse {
     const message = createBaseQueryGetSchemaAttributeResponse();
-    if (
-      object.schemaAttribute !== undefined &&
-      object.schemaAttribute !== null
-    ) {
-      message.schemaAttribute = SchemaAttribute.fromAmino(
-        object.schemaAttribute
-      );
+    if (object.schemaAttribute !== undefined && object.schemaAttribute !== null) {
+      message.schemaAttribute = SchemaAttribute.fromAmino(object.schemaAttribute);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetSchemaAttributeResponse
-  ): QueryGetSchemaAttributeResponseAmino {
+  toAmino(message: QueryGetSchemaAttributeResponse): QueryGetSchemaAttributeResponseAmino {
     const obj: any = {};
-    obj.schemaAttribute = message.schemaAttribute
-      ? SchemaAttribute.toAmino(message.schemaAttribute)
-      : undefined;
+    obj.schemaAttribute = message.schemaAttribute ? SchemaAttribute.toAmino(message.schemaAttribute) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetSchemaAttributeResponseAminoMsg
-  ): QueryGetSchemaAttributeResponse {
+  fromAminoMsg(object: QueryGetSchemaAttributeResponseAminoMsg): QueryGetSchemaAttributeResponse {
     return QueryGetSchemaAttributeResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetSchemaAttributeResponseProtoMsg
-  ): QueryGetSchemaAttributeResponse {
+  fromProtoMsg(message: QueryGetSchemaAttributeResponseProtoMsg): QueryGetSchemaAttributeResponse {
     return QueryGetSchemaAttributeResponse.decode(message.value);
   },
   toProto(message: QueryGetSchemaAttributeResponse): Uint8Array {
     return QueryGetSchemaAttributeResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetSchemaAttributeResponse
-  ): QueryGetSchemaAttributeResponseProtoMsg {
+  toProtoMsg(message: QueryGetSchemaAttributeResponse): QueryGetSchemaAttributeResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetSchemaAttributeResponse",
-      value: QueryGetSchemaAttributeResponse.encode(message).finish(),
+      value: QueryGetSchemaAttributeResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllSchemaAttributeRequest(): QueryAllSchemaAttributeRequest {
   return {
     nftSchemaCode: "",
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllSchemaAttributeRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllSchemaAttributeRequest",
-  encode(
-    message: QueryAllSchemaAttributeRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllSchemaAttributeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -4739,10 +4130,7 @@ export const QueryAllSchemaAttributeRequest = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllSchemaAttributeRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllSchemaAttributeRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllSchemaAttributeRequest();
@@ -4762,20 +4150,13 @@ export const QueryAllSchemaAttributeRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllSchemaAttributeRequest>
-  ): QueryAllSchemaAttributeRequest {
+  fromPartial(object: Partial<QueryAllSchemaAttributeRequest>): QueryAllSchemaAttributeRequest {
     const message = createBaseQueryAllSchemaAttributeRequest();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllSchemaAttributeRequestAmino
-  ): QueryAllSchemaAttributeRequest {
+  fromAmino(object: QueryAllSchemaAttributeRequestAmino): QueryAllSchemaAttributeRequest {
     const message = createBaseQueryAllSchemaAttributeRequest();
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
@@ -4785,66 +4166,46 @@ export const QueryAllSchemaAttributeRequest = {
     }
     return message;
   },
-  toAmino(
-    message: QueryAllSchemaAttributeRequest
-  ): QueryAllSchemaAttributeRequestAmino {
+  toAmino(message: QueryAllSchemaAttributeRequest): QueryAllSchemaAttributeRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllSchemaAttributeRequestAminoMsg
-  ): QueryAllSchemaAttributeRequest {
+  fromAminoMsg(object: QueryAllSchemaAttributeRequestAminoMsg): QueryAllSchemaAttributeRequest {
     return QueryAllSchemaAttributeRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllSchemaAttributeRequestProtoMsg
-  ): QueryAllSchemaAttributeRequest {
+  fromProtoMsg(message: QueryAllSchemaAttributeRequestProtoMsg): QueryAllSchemaAttributeRequest {
     return QueryAllSchemaAttributeRequest.decode(message.value);
   },
   toProto(message: QueryAllSchemaAttributeRequest): Uint8Array {
     return QueryAllSchemaAttributeRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllSchemaAttributeRequest
-  ): QueryAllSchemaAttributeRequestProtoMsg {
+  toProtoMsg(message: QueryAllSchemaAttributeRequest): QueryAllSchemaAttributeRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllSchemaAttributeRequest",
-      value: QueryAllSchemaAttributeRequest.encode(message).finish(),
+      value: QueryAllSchemaAttributeRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllSchemaAttributeResponse(): QueryAllSchemaAttributeResponse {
   return {
     schemaAttribute: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllSchemaAttributeResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllSchemaAttributeResponse",
-  encode(
-    message: QueryAllSchemaAttributeResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllSchemaAttributeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.schemaAttribute) {
       SchemaAttribute.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllSchemaAttributeResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllSchemaAttributeResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllSchemaAttributeResponse();
@@ -4852,9 +4213,7 @@ export const QueryAllSchemaAttributeResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.schemaAttribute.push(
-            SchemaAttribute.decode(reader, reader.uint32())
-          );
+          message.schemaAttribute.push(SchemaAttribute.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -4866,87 +4225,60 @@ export const QueryAllSchemaAttributeResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllSchemaAttributeResponse>
-  ): QueryAllSchemaAttributeResponse {
+  fromPartial(object: Partial<QueryAllSchemaAttributeResponse>): QueryAllSchemaAttributeResponse {
     const message = createBaseQueryAllSchemaAttributeResponse();
-    message.schemaAttribute =
-      object.schemaAttribute?.map((e) => SchemaAttribute.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.schemaAttribute = object.schemaAttribute?.map(e => SchemaAttribute.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllSchemaAttributeResponseAmino
-  ): QueryAllSchemaAttributeResponse {
+  fromAmino(object: QueryAllSchemaAttributeResponseAmino): QueryAllSchemaAttributeResponse {
     const message = createBaseQueryAllSchemaAttributeResponse();
-    message.schemaAttribute =
-      object.schemaAttribute?.map((e) => SchemaAttribute.fromAmino(e)) || [];
+    message.schemaAttribute = object.schemaAttribute?.map(e => SchemaAttribute.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllSchemaAttributeResponse
-  ): QueryAllSchemaAttributeResponseAmino {
+  toAmino(message: QueryAllSchemaAttributeResponse): QueryAllSchemaAttributeResponseAmino {
     const obj: any = {};
     if (message.schemaAttribute) {
-      obj.schemaAttribute = message.schemaAttribute.map((e) =>
-        e ? SchemaAttribute.toAmino(e) : undefined
-      );
+      obj.schemaAttribute = message.schemaAttribute.map(e => e ? SchemaAttribute.toAmino(e) : undefined);
     } else {
       obj.schemaAttribute = message.schemaAttribute;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllSchemaAttributeResponseAminoMsg
-  ): QueryAllSchemaAttributeResponse {
+  fromAminoMsg(object: QueryAllSchemaAttributeResponseAminoMsg): QueryAllSchemaAttributeResponse {
     return QueryAllSchemaAttributeResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllSchemaAttributeResponseProtoMsg
-  ): QueryAllSchemaAttributeResponse {
+  fromProtoMsg(message: QueryAllSchemaAttributeResponseProtoMsg): QueryAllSchemaAttributeResponse {
     return QueryAllSchemaAttributeResponse.decode(message.value);
   },
   toProto(message: QueryAllSchemaAttributeResponse): Uint8Array {
     return QueryAllSchemaAttributeResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllSchemaAttributeResponse
-  ): QueryAllSchemaAttributeResponseProtoMsg {
+  toProtoMsg(message: QueryAllSchemaAttributeResponse): QueryAllSchemaAttributeResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllSchemaAttributeResponse",
-      value: QueryAllSchemaAttributeResponse.encode(message).finish(),
+      value: QueryAllSchemaAttributeResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryListAttributeBySchemaRequest(): QueryListAttributeBySchemaRequest {
   return {
-    nftSchemaCode: "",
+    nftSchemaCode: ""
   };
 }
 export const QueryListAttributeBySchemaRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryListAttributeBySchemaRequest",
-  encode(
-    message: QueryListAttributeBySchemaRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryListAttributeBySchemaRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryListAttributeBySchemaRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryListAttributeBySchemaRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryListAttributeBySchemaRequest();
@@ -4963,72 +4295,53 @@ export const QueryListAttributeBySchemaRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryListAttributeBySchemaRequest>
-  ): QueryListAttributeBySchemaRequest {
+  fromPartial(object: Partial<QueryListAttributeBySchemaRequest>): QueryListAttributeBySchemaRequest {
     const message = createBaseQueryListAttributeBySchemaRequest();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryListAttributeBySchemaRequestAmino
-  ): QueryListAttributeBySchemaRequest {
+  fromAmino(object: QueryListAttributeBySchemaRequestAmino): QueryListAttributeBySchemaRequest {
     const message = createBaseQueryListAttributeBySchemaRequest();
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
     }
     return message;
   },
-  toAmino(
-    message: QueryListAttributeBySchemaRequest
-  ): QueryListAttributeBySchemaRequestAmino {
+  toAmino(message: QueryListAttributeBySchemaRequest): QueryListAttributeBySchemaRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryListAttributeBySchemaRequestAminoMsg
-  ): QueryListAttributeBySchemaRequest {
+  fromAminoMsg(object: QueryListAttributeBySchemaRequestAminoMsg): QueryListAttributeBySchemaRequest {
     return QueryListAttributeBySchemaRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryListAttributeBySchemaRequestProtoMsg
-  ): QueryListAttributeBySchemaRequest {
+  fromProtoMsg(message: QueryListAttributeBySchemaRequestProtoMsg): QueryListAttributeBySchemaRequest {
     return QueryListAttributeBySchemaRequest.decode(message.value);
   },
   toProto(message: QueryListAttributeBySchemaRequest): Uint8Array {
     return QueryListAttributeBySchemaRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryListAttributeBySchemaRequest
-  ): QueryListAttributeBySchemaRequestProtoMsg {
+  toProtoMsg(message: QueryListAttributeBySchemaRequest): QueryListAttributeBySchemaRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryListAttributeBySchemaRequest",
-      value: QueryListAttributeBySchemaRequest.encode(message).finish(),
+      value: QueryListAttributeBySchemaRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryListAttributeBySchemaResponse(): QueryListAttributeBySchemaResponse {
   return {
-    schemaAttribute: [],
+    schemaAttribute: []
   };
 }
 export const QueryListAttributeBySchemaResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryListAttributeBySchemaResponse",
-  encode(
-    message: QueryListAttributeBySchemaResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryListAttributeBySchemaResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.schemaAttribute) {
       SchemaAttribute.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryListAttributeBySchemaResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryListAttributeBySchemaResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryListAttributeBySchemaResponse();
@@ -5036,9 +4349,7 @@ export const QueryListAttributeBySchemaResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.schemaAttribute.push(
-            SchemaAttribute.decode(reader, reader.uint32())
-          );
+          message.schemaAttribute.push(SchemaAttribute.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -5047,69 +4358,50 @@ export const QueryListAttributeBySchemaResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryListAttributeBySchemaResponse>
-  ): QueryListAttributeBySchemaResponse {
+  fromPartial(object: Partial<QueryListAttributeBySchemaResponse>): QueryListAttributeBySchemaResponse {
     const message = createBaseQueryListAttributeBySchemaResponse();
-    message.schemaAttribute =
-      object.schemaAttribute?.map((e) => SchemaAttribute.fromPartial(e)) || [];
+    message.schemaAttribute = object.schemaAttribute?.map(e => SchemaAttribute.fromPartial(e)) || [];
     return message;
   },
-  fromAmino(
-    object: QueryListAttributeBySchemaResponseAmino
-  ): QueryListAttributeBySchemaResponse {
+  fromAmino(object: QueryListAttributeBySchemaResponseAmino): QueryListAttributeBySchemaResponse {
     const message = createBaseQueryListAttributeBySchemaResponse();
-    message.schemaAttribute =
-      object.schemaAttribute?.map((e) => SchemaAttribute.fromAmino(e)) || [];
+    message.schemaAttribute = object.schemaAttribute?.map(e => SchemaAttribute.fromAmino(e)) || [];
     return message;
   },
-  toAmino(
-    message: QueryListAttributeBySchemaResponse
-  ): QueryListAttributeBySchemaResponseAmino {
+  toAmino(message: QueryListAttributeBySchemaResponse): QueryListAttributeBySchemaResponseAmino {
     const obj: any = {};
     if (message.schemaAttribute) {
-      obj.schemaAttribute = message.schemaAttribute.map((e) =>
-        e ? SchemaAttribute.toAmino(e) : undefined
-      );
+      obj.schemaAttribute = message.schemaAttribute.map(e => e ? SchemaAttribute.toAmino(e) : undefined);
     } else {
       obj.schemaAttribute = message.schemaAttribute;
     }
     return obj;
   },
-  fromAminoMsg(
-    object: QueryListAttributeBySchemaResponseAminoMsg
-  ): QueryListAttributeBySchemaResponse {
+  fromAminoMsg(object: QueryListAttributeBySchemaResponseAminoMsg): QueryListAttributeBySchemaResponse {
     return QueryListAttributeBySchemaResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryListAttributeBySchemaResponseProtoMsg
-  ): QueryListAttributeBySchemaResponse {
+  fromProtoMsg(message: QueryListAttributeBySchemaResponseProtoMsg): QueryListAttributeBySchemaResponse {
     return QueryListAttributeBySchemaResponse.decode(message.value);
   },
   toProto(message: QueryListAttributeBySchemaResponse): Uint8Array {
     return QueryListAttributeBySchemaResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryListAttributeBySchemaResponse
-  ): QueryListAttributeBySchemaResponseProtoMsg {
+  toProtoMsg(message: QueryListAttributeBySchemaResponse): QueryListAttributeBySchemaResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryListAttributeBySchemaResponse",
-      value: QueryListAttributeBySchemaResponse.encode(message).finish(),
+      value: QueryListAttributeBySchemaResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetActionOfSchemaRequest(): QueryGetActionOfSchemaRequest {
   return {
     nftSchemaCode: "",
-    name: "",
+    name: ""
   };
 }
 export const QueryGetActionOfSchemaRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionOfSchemaRequest",
-  encode(
-    message: QueryGetActionOfSchemaRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetActionOfSchemaRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -5118,10 +4410,7 @@ export const QueryGetActionOfSchemaRequest = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetActionOfSchemaRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetActionOfSchemaRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetActionOfSchemaRequest();
@@ -5141,17 +4430,13 @@ export const QueryGetActionOfSchemaRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetActionOfSchemaRequest>
-  ): QueryGetActionOfSchemaRequest {
+  fromPartial(object: Partial<QueryGetActionOfSchemaRequest>): QueryGetActionOfSchemaRequest {
     const message = createBaseQueryGetActionOfSchemaRequest();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.name = object.name ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetActionOfSchemaRequestAmino
-  ): QueryGetActionOfSchemaRequest {
+  fromAmino(object: QueryGetActionOfSchemaRequestAmino): QueryGetActionOfSchemaRequest {
     const message = createBaseQueryGetActionOfSchemaRequest();
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
@@ -5161,60 +4446,42 @@ export const QueryGetActionOfSchemaRequest = {
     }
     return message;
   },
-  toAmino(
-    message: QueryGetActionOfSchemaRequest
-  ): QueryGetActionOfSchemaRequestAmino {
+  toAmino(message: QueryGetActionOfSchemaRequest): QueryGetActionOfSchemaRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.name = message.name === "" ? undefined : message.name;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetActionOfSchemaRequestAminoMsg
-  ): QueryGetActionOfSchemaRequest {
+  fromAminoMsg(object: QueryGetActionOfSchemaRequestAminoMsg): QueryGetActionOfSchemaRequest {
     return QueryGetActionOfSchemaRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetActionOfSchemaRequestProtoMsg
-  ): QueryGetActionOfSchemaRequest {
+  fromProtoMsg(message: QueryGetActionOfSchemaRequestProtoMsg): QueryGetActionOfSchemaRequest {
     return QueryGetActionOfSchemaRequest.decode(message.value);
   },
   toProto(message: QueryGetActionOfSchemaRequest): Uint8Array {
     return QueryGetActionOfSchemaRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetActionOfSchemaRequest
-  ): QueryGetActionOfSchemaRequestProtoMsg {
+  toProtoMsg(message: QueryGetActionOfSchemaRequest): QueryGetActionOfSchemaRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetActionOfSchemaRequest",
-      value: QueryGetActionOfSchemaRequest.encode(message).finish(),
+      value: QueryGetActionOfSchemaRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetActionOfSchemaResponse(): QueryGetActionOfSchemaResponse {
   return {
-    actionOfSchema: ActionOfSchema.fromPartial({}),
+    actionOfSchema: ActionOfSchema.fromPartial({})
   };
 }
 export const QueryGetActionOfSchemaResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetActionOfSchemaResponse",
-  encode(
-    message: QueryGetActionOfSchemaResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetActionOfSchemaResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.actionOfSchema !== undefined) {
-      ActionOfSchema.encode(
-        message.actionOfSchema,
-        writer.uint32(10).fork()
-      ).ldelim();
+      ActionOfSchema.encode(message.actionOfSchema, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetActionOfSchemaResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetActionOfSchemaResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetActionOfSchemaResponse();
@@ -5222,10 +4489,7 @@ export const QueryGetActionOfSchemaResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.actionOfSchema = ActionOfSchema.decode(
-            reader,
-            reader.uint32()
-          );
+          message.actionOfSchema = ActionOfSchema.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -5234,76 +4498,53 @@ export const QueryGetActionOfSchemaResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetActionOfSchemaResponse>
-  ): QueryGetActionOfSchemaResponse {
+  fromPartial(object: Partial<QueryGetActionOfSchemaResponse>): QueryGetActionOfSchemaResponse {
     const message = createBaseQueryGetActionOfSchemaResponse();
-    message.actionOfSchema =
-      object.actionOfSchema !== undefined && object.actionOfSchema !== null
-        ? ActionOfSchema.fromPartial(object.actionOfSchema)
-        : undefined;
+    message.actionOfSchema = object.actionOfSchema !== undefined && object.actionOfSchema !== null ? ActionOfSchema.fromPartial(object.actionOfSchema) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetActionOfSchemaResponseAmino
-  ): QueryGetActionOfSchemaResponse {
+  fromAmino(object: QueryGetActionOfSchemaResponseAmino): QueryGetActionOfSchemaResponse {
     const message = createBaseQueryGetActionOfSchemaResponse();
     if (object.actionOfSchema !== undefined && object.actionOfSchema !== null) {
       message.actionOfSchema = ActionOfSchema.fromAmino(object.actionOfSchema);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetActionOfSchemaResponse
-  ): QueryGetActionOfSchemaResponseAmino {
+  toAmino(message: QueryGetActionOfSchemaResponse): QueryGetActionOfSchemaResponseAmino {
     const obj: any = {};
-    obj.actionOfSchema = message.actionOfSchema
-      ? ActionOfSchema.toAmino(message.actionOfSchema)
-      : undefined;
+    obj.actionOfSchema = message.actionOfSchema ? ActionOfSchema.toAmino(message.actionOfSchema) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetActionOfSchemaResponseAminoMsg
-  ): QueryGetActionOfSchemaResponse {
+  fromAminoMsg(object: QueryGetActionOfSchemaResponseAminoMsg): QueryGetActionOfSchemaResponse {
     return QueryGetActionOfSchemaResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetActionOfSchemaResponseProtoMsg
-  ): QueryGetActionOfSchemaResponse {
+  fromProtoMsg(message: QueryGetActionOfSchemaResponseProtoMsg): QueryGetActionOfSchemaResponse {
     return QueryGetActionOfSchemaResponse.decode(message.value);
   },
   toProto(message: QueryGetActionOfSchemaResponse): Uint8Array {
     return QueryGetActionOfSchemaResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetActionOfSchemaResponse
-  ): QueryGetActionOfSchemaResponseProtoMsg {
+  toProtoMsg(message: QueryGetActionOfSchemaResponse): QueryGetActionOfSchemaResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetActionOfSchemaResponse",
-      value: QueryGetActionOfSchemaResponse.encode(message).finish(),
+      value: QueryGetActionOfSchemaResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllActionOfSchemaRequest(): QueryAllActionOfSchemaRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllActionOfSchemaRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionOfSchemaRequest",
-  encode(
-    message: QueryAllActionOfSchemaRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllActionOfSchemaRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllActionOfSchemaRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllActionOfSchemaRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllActionOfSchemaRequest();
@@ -5320,83 +4561,57 @@ export const QueryAllActionOfSchemaRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllActionOfSchemaRequest>
-  ): QueryAllActionOfSchemaRequest {
+  fromPartial(object: Partial<QueryAllActionOfSchemaRequest>): QueryAllActionOfSchemaRequest {
     const message = createBaseQueryAllActionOfSchemaRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllActionOfSchemaRequestAmino
-  ): QueryAllActionOfSchemaRequest {
+  fromAmino(object: QueryAllActionOfSchemaRequestAmino): QueryAllActionOfSchemaRequest {
     const message = createBaseQueryAllActionOfSchemaRequest();
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllActionOfSchemaRequest
-  ): QueryAllActionOfSchemaRequestAmino {
+  toAmino(message: QueryAllActionOfSchemaRequest): QueryAllActionOfSchemaRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllActionOfSchemaRequestAminoMsg
-  ): QueryAllActionOfSchemaRequest {
+  fromAminoMsg(object: QueryAllActionOfSchemaRequestAminoMsg): QueryAllActionOfSchemaRequest {
     return QueryAllActionOfSchemaRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllActionOfSchemaRequestProtoMsg
-  ): QueryAllActionOfSchemaRequest {
+  fromProtoMsg(message: QueryAllActionOfSchemaRequestProtoMsg): QueryAllActionOfSchemaRequest {
     return QueryAllActionOfSchemaRequest.decode(message.value);
   },
   toProto(message: QueryAllActionOfSchemaRequest): Uint8Array {
     return QueryAllActionOfSchemaRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllActionOfSchemaRequest
-  ): QueryAllActionOfSchemaRequestProtoMsg {
+  toProtoMsg(message: QueryAllActionOfSchemaRequest): QueryAllActionOfSchemaRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllActionOfSchemaRequest",
-      value: QueryAllActionOfSchemaRequest.encode(message).finish(),
+      value: QueryAllActionOfSchemaRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllActionOfSchemaResponse(): QueryAllActionOfSchemaResponse {
   return {
     actionOfSchema: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllActionOfSchemaResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllActionOfSchemaResponse",
-  encode(
-    message: QueryAllActionOfSchemaResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllActionOfSchemaResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.actionOfSchema) {
       ActionOfSchema.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllActionOfSchemaResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllActionOfSchemaResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllActionOfSchemaResponse();
@@ -5404,9 +4619,7 @@ export const QueryAllActionOfSchemaResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.actionOfSchema.push(
-            ActionOfSchema.decode(reader, reader.uint32())
-          );
+          message.actionOfSchema.push(ActionOfSchema.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -5418,87 +4631,60 @@ export const QueryAllActionOfSchemaResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllActionOfSchemaResponse>
-  ): QueryAllActionOfSchemaResponse {
+  fromPartial(object: Partial<QueryAllActionOfSchemaResponse>): QueryAllActionOfSchemaResponse {
     const message = createBaseQueryAllActionOfSchemaResponse();
-    message.actionOfSchema =
-      object.actionOfSchema?.map((e) => ActionOfSchema.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.actionOfSchema = object.actionOfSchema?.map(e => ActionOfSchema.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllActionOfSchemaResponseAmino
-  ): QueryAllActionOfSchemaResponse {
+  fromAmino(object: QueryAllActionOfSchemaResponseAmino): QueryAllActionOfSchemaResponse {
     const message = createBaseQueryAllActionOfSchemaResponse();
-    message.actionOfSchema =
-      object.actionOfSchema?.map((e) => ActionOfSchema.fromAmino(e)) || [];
+    message.actionOfSchema = object.actionOfSchema?.map(e => ActionOfSchema.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllActionOfSchemaResponse
-  ): QueryAllActionOfSchemaResponseAmino {
+  toAmino(message: QueryAllActionOfSchemaResponse): QueryAllActionOfSchemaResponseAmino {
     const obj: any = {};
     if (message.actionOfSchema) {
-      obj.actionOfSchema = message.actionOfSchema.map((e) =>
-        e ? ActionOfSchema.toAmino(e) : undefined
-      );
+      obj.actionOfSchema = message.actionOfSchema.map(e => e ? ActionOfSchema.toAmino(e) : undefined);
     } else {
       obj.actionOfSchema = message.actionOfSchema;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllActionOfSchemaResponseAminoMsg
-  ): QueryAllActionOfSchemaResponse {
+  fromAminoMsg(object: QueryAllActionOfSchemaResponseAminoMsg): QueryAllActionOfSchemaResponse {
     return QueryAllActionOfSchemaResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllActionOfSchemaResponseProtoMsg
-  ): QueryAllActionOfSchemaResponse {
+  fromProtoMsg(message: QueryAllActionOfSchemaResponseProtoMsg): QueryAllActionOfSchemaResponse {
     return QueryAllActionOfSchemaResponse.decode(message.value);
   },
   toProto(message: QueryAllActionOfSchemaResponse): Uint8Array {
     return QueryAllActionOfSchemaResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllActionOfSchemaResponse
-  ): QueryAllActionOfSchemaResponseProtoMsg {
+  toProtoMsg(message: QueryAllActionOfSchemaResponse): QueryAllActionOfSchemaResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllActionOfSchemaResponse",
-      value: QueryAllActionOfSchemaResponse.encode(message).finish(),
+      value: QueryAllActionOfSchemaResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetExecutorOfSchemaRequest(): QueryGetExecutorOfSchemaRequest {
   return {
-    nftSchemaCode: "",
+    nftSchemaCode: ""
   };
 }
 export const QueryGetExecutorOfSchemaRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetExecutorOfSchemaRequest",
-  encode(
-    message: QueryGetExecutorOfSchemaRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetExecutorOfSchemaRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetExecutorOfSchemaRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetExecutorOfSchemaRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetExecutorOfSchemaRequest();
@@ -5515,75 +4701,53 @@ export const QueryGetExecutorOfSchemaRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetExecutorOfSchemaRequest>
-  ): QueryGetExecutorOfSchemaRequest {
+  fromPartial(object: Partial<QueryGetExecutorOfSchemaRequest>): QueryGetExecutorOfSchemaRequest {
     const message = createBaseQueryGetExecutorOfSchemaRequest();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetExecutorOfSchemaRequestAmino
-  ): QueryGetExecutorOfSchemaRequest {
+  fromAmino(object: QueryGetExecutorOfSchemaRequestAmino): QueryGetExecutorOfSchemaRequest {
     const message = createBaseQueryGetExecutorOfSchemaRequest();
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
     }
     return message;
   },
-  toAmino(
-    message: QueryGetExecutorOfSchemaRequest
-  ): QueryGetExecutorOfSchemaRequestAmino {
+  toAmino(message: QueryGetExecutorOfSchemaRequest): QueryGetExecutorOfSchemaRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetExecutorOfSchemaRequestAminoMsg
-  ): QueryGetExecutorOfSchemaRequest {
+  fromAminoMsg(object: QueryGetExecutorOfSchemaRequestAminoMsg): QueryGetExecutorOfSchemaRequest {
     return QueryGetExecutorOfSchemaRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetExecutorOfSchemaRequestProtoMsg
-  ): QueryGetExecutorOfSchemaRequest {
+  fromProtoMsg(message: QueryGetExecutorOfSchemaRequestProtoMsg): QueryGetExecutorOfSchemaRequest {
     return QueryGetExecutorOfSchemaRequest.decode(message.value);
   },
   toProto(message: QueryGetExecutorOfSchemaRequest): Uint8Array {
     return QueryGetExecutorOfSchemaRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetExecutorOfSchemaRequest
-  ): QueryGetExecutorOfSchemaRequestProtoMsg {
+  toProtoMsg(message: QueryGetExecutorOfSchemaRequest): QueryGetExecutorOfSchemaRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetExecutorOfSchemaRequest",
-      value: QueryGetExecutorOfSchemaRequest.encode(message).finish(),
+      value: QueryGetExecutorOfSchemaRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetExecutorOfSchemaResponse(): QueryGetExecutorOfSchemaResponse {
   return {
-    executorOfSchema: ExecutorOfSchema.fromPartial({}),
+    executorOfSchema: ExecutorOfSchema.fromPartial({})
   };
 }
 export const QueryGetExecutorOfSchemaResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetExecutorOfSchemaResponse",
-  encode(
-    message: QueryGetExecutorOfSchemaResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetExecutorOfSchemaResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.executorOfSchema !== undefined) {
-      ExecutorOfSchema.encode(
-        message.executorOfSchema,
-        writer.uint32(10).fork()
-      ).ldelim();
+      ExecutorOfSchema.encode(message.executorOfSchema, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetExecutorOfSchemaResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetExecutorOfSchemaResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetExecutorOfSchemaResponse();
@@ -5591,10 +4755,7 @@ export const QueryGetExecutorOfSchemaResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.executorOfSchema = ExecutorOfSchema.decode(
-            reader,
-            reader.uint32()
-          );
+          message.executorOfSchema = ExecutorOfSchema.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -5603,81 +4764,53 @@ export const QueryGetExecutorOfSchemaResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetExecutorOfSchemaResponse>
-  ): QueryGetExecutorOfSchemaResponse {
+  fromPartial(object: Partial<QueryGetExecutorOfSchemaResponse>): QueryGetExecutorOfSchemaResponse {
     const message = createBaseQueryGetExecutorOfSchemaResponse();
-    message.executorOfSchema =
-      object.executorOfSchema !== undefined && object.executorOfSchema !== null
-        ? ExecutorOfSchema.fromPartial(object.executorOfSchema)
-        : undefined;
+    message.executorOfSchema = object.executorOfSchema !== undefined && object.executorOfSchema !== null ? ExecutorOfSchema.fromPartial(object.executorOfSchema) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetExecutorOfSchemaResponseAmino
-  ): QueryGetExecutorOfSchemaResponse {
+  fromAmino(object: QueryGetExecutorOfSchemaResponseAmino): QueryGetExecutorOfSchemaResponse {
     const message = createBaseQueryGetExecutorOfSchemaResponse();
-    if (
-      object.executorOfSchema !== undefined &&
-      object.executorOfSchema !== null
-    ) {
-      message.executorOfSchema = ExecutorOfSchema.fromAmino(
-        object.executorOfSchema
-      );
+    if (object.executorOfSchema !== undefined && object.executorOfSchema !== null) {
+      message.executorOfSchema = ExecutorOfSchema.fromAmino(object.executorOfSchema);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetExecutorOfSchemaResponse
-  ): QueryGetExecutorOfSchemaResponseAmino {
+  toAmino(message: QueryGetExecutorOfSchemaResponse): QueryGetExecutorOfSchemaResponseAmino {
     const obj: any = {};
-    obj.executorOfSchema = message.executorOfSchema
-      ? ExecutorOfSchema.toAmino(message.executorOfSchema)
-      : undefined;
+    obj.executorOfSchema = message.executorOfSchema ? ExecutorOfSchema.toAmino(message.executorOfSchema) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetExecutorOfSchemaResponseAminoMsg
-  ): QueryGetExecutorOfSchemaResponse {
+  fromAminoMsg(object: QueryGetExecutorOfSchemaResponseAminoMsg): QueryGetExecutorOfSchemaResponse {
     return QueryGetExecutorOfSchemaResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetExecutorOfSchemaResponseProtoMsg
-  ): QueryGetExecutorOfSchemaResponse {
+  fromProtoMsg(message: QueryGetExecutorOfSchemaResponseProtoMsg): QueryGetExecutorOfSchemaResponse {
     return QueryGetExecutorOfSchemaResponse.decode(message.value);
   },
   toProto(message: QueryGetExecutorOfSchemaResponse): Uint8Array {
     return QueryGetExecutorOfSchemaResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetExecutorOfSchemaResponse
-  ): QueryGetExecutorOfSchemaResponseProtoMsg {
+  toProtoMsg(message: QueryGetExecutorOfSchemaResponse): QueryGetExecutorOfSchemaResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetExecutorOfSchemaResponse",
-      value: QueryGetExecutorOfSchemaResponse.encode(message).finish(),
+      value: QueryGetExecutorOfSchemaResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllExecutorOfSchemaRequest(): QueryAllExecutorOfSchemaRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllExecutorOfSchemaRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllExecutorOfSchemaRequest",
-  encode(
-    message: QueryAllExecutorOfSchemaRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllExecutorOfSchemaRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllExecutorOfSchemaRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllExecutorOfSchemaRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllExecutorOfSchemaRequest();
@@ -5694,83 +4827,57 @@ export const QueryAllExecutorOfSchemaRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllExecutorOfSchemaRequest>
-  ): QueryAllExecutorOfSchemaRequest {
+  fromPartial(object: Partial<QueryAllExecutorOfSchemaRequest>): QueryAllExecutorOfSchemaRequest {
     const message = createBaseQueryAllExecutorOfSchemaRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllExecutorOfSchemaRequestAmino
-  ): QueryAllExecutorOfSchemaRequest {
+  fromAmino(object: QueryAllExecutorOfSchemaRequestAmino): QueryAllExecutorOfSchemaRequest {
     const message = createBaseQueryAllExecutorOfSchemaRequest();
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllExecutorOfSchemaRequest
-  ): QueryAllExecutorOfSchemaRequestAmino {
+  toAmino(message: QueryAllExecutorOfSchemaRequest): QueryAllExecutorOfSchemaRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllExecutorOfSchemaRequestAminoMsg
-  ): QueryAllExecutorOfSchemaRequest {
+  fromAminoMsg(object: QueryAllExecutorOfSchemaRequestAminoMsg): QueryAllExecutorOfSchemaRequest {
     return QueryAllExecutorOfSchemaRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllExecutorOfSchemaRequestProtoMsg
-  ): QueryAllExecutorOfSchemaRequest {
+  fromProtoMsg(message: QueryAllExecutorOfSchemaRequestProtoMsg): QueryAllExecutorOfSchemaRequest {
     return QueryAllExecutorOfSchemaRequest.decode(message.value);
   },
   toProto(message: QueryAllExecutorOfSchemaRequest): Uint8Array {
     return QueryAllExecutorOfSchemaRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllExecutorOfSchemaRequest
-  ): QueryAllExecutorOfSchemaRequestProtoMsg {
+  toProtoMsg(message: QueryAllExecutorOfSchemaRequest): QueryAllExecutorOfSchemaRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllExecutorOfSchemaRequest",
-      value: QueryAllExecutorOfSchemaRequest.encode(message).finish(),
+      value: QueryAllExecutorOfSchemaRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllExecutorOfSchemaResponse(): QueryAllExecutorOfSchemaResponse {
   return {
     executorOfSchema: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllExecutorOfSchemaResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllExecutorOfSchemaResponse",
-  encode(
-    message: QueryAllExecutorOfSchemaResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllExecutorOfSchemaResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.executorOfSchema) {
       ExecutorOfSchema.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllExecutorOfSchemaResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllExecutorOfSchemaResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllExecutorOfSchemaResponse();
@@ -5778,9 +4885,7 @@ export const QueryAllExecutorOfSchemaResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.executorOfSchema.push(
-            ExecutorOfSchema.decode(reader, reader.uint32())
-          );
+          message.executorOfSchema.push(ExecutorOfSchema.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -5792,80 +4897,55 @@ export const QueryAllExecutorOfSchemaResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllExecutorOfSchemaResponse>
-  ): QueryAllExecutorOfSchemaResponse {
+  fromPartial(object: Partial<QueryAllExecutorOfSchemaResponse>): QueryAllExecutorOfSchemaResponse {
     const message = createBaseQueryAllExecutorOfSchemaResponse();
-    message.executorOfSchema =
-      object.executorOfSchema?.map((e) => ExecutorOfSchema.fromPartial(e)) ||
-      [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.executorOfSchema = object.executorOfSchema?.map(e => ExecutorOfSchema.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllExecutorOfSchemaResponseAmino
-  ): QueryAllExecutorOfSchemaResponse {
+  fromAmino(object: QueryAllExecutorOfSchemaResponseAmino): QueryAllExecutorOfSchemaResponse {
     const message = createBaseQueryAllExecutorOfSchemaResponse();
-    message.executorOfSchema =
-      object.executorOfSchema?.map((e) => ExecutorOfSchema.fromAmino(e)) || [];
+    message.executorOfSchema = object.executorOfSchema?.map(e => ExecutorOfSchema.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllExecutorOfSchemaResponse
-  ): QueryAllExecutorOfSchemaResponseAmino {
+  toAmino(message: QueryAllExecutorOfSchemaResponse): QueryAllExecutorOfSchemaResponseAmino {
     const obj: any = {};
     if (message.executorOfSchema) {
-      obj.executorOfSchema = message.executorOfSchema.map((e) =>
-        e ? ExecutorOfSchema.toAmino(e) : undefined
-      );
+      obj.executorOfSchema = message.executorOfSchema.map(e => e ? ExecutorOfSchema.toAmino(e) : undefined);
     } else {
       obj.executorOfSchema = message.executorOfSchema;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllExecutorOfSchemaResponseAminoMsg
-  ): QueryAllExecutorOfSchemaResponse {
+  fromAminoMsg(object: QueryAllExecutorOfSchemaResponseAminoMsg): QueryAllExecutorOfSchemaResponse {
     return QueryAllExecutorOfSchemaResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllExecutorOfSchemaResponseProtoMsg
-  ): QueryAllExecutorOfSchemaResponse {
+  fromProtoMsg(message: QueryAllExecutorOfSchemaResponseProtoMsg): QueryAllExecutorOfSchemaResponse {
     return QueryAllExecutorOfSchemaResponse.decode(message.value);
   },
   toProto(message: QueryAllExecutorOfSchemaResponse): Uint8Array {
     return QueryAllExecutorOfSchemaResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllExecutorOfSchemaResponse
-  ): QueryAllExecutorOfSchemaResponseProtoMsg {
+  toProtoMsg(message: QueryAllExecutorOfSchemaResponse): QueryAllExecutorOfSchemaResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllExecutorOfSchemaResponse",
-      value: QueryAllExecutorOfSchemaResponse.encode(message).finish(),
+      value: QueryAllExecutorOfSchemaResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetVirtualActionRequest(): QueryGetVirtualActionRequest {
   return {
     nftSchemaCode: "",
-    name: "",
+    name: ""
   };
 }
 export const QueryGetVirtualActionRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualActionRequest",
-  encode(
-    message: QueryGetVirtualActionRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetVirtualActionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -5874,10 +4954,7 @@ export const QueryGetVirtualActionRequest = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetVirtualActionRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetVirtualActionRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetVirtualActionRequest();
@@ -5897,17 +4974,13 @@ export const QueryGetVirtualActionRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetVirtualActionRequest>
-  ): QueryGetVirtualActionRequest {
+  fromPartial(object: Partial<QueryGetVirtualActionRequest>): QueryGetVirtualActionRequest {
     const message = createBaseQueryGetVirtualActionRequest();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.name = object.name ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetVirtualActionRequestAmino
-  ): QueryGetVirtualActionRequest {
+  fromAmino(object: QueryGetVirtualActionRequestAmino): QueryGetVirtualActionRequest {
     const message = createBaseQueryGetVirtualActionRequest();
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
@@ -5917,60 +4990,42 @@ export const QueryGetVirtualActionRequest = {
     }
     return message;
   },
-  toAmino(
-    message: QueryGetVirtualActionRequest
-  ): QueryGetVirtualActionRequestAmino {
+  toAmino(message: QueryGetVirtualActionRequest): QueryGetVirtualActionRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.name = message.name === "" ? undefined : message.name;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetVirtualActionRequestAminoMsg
-  ): QueryGetVirtualActionRequest {
+  fromAminoMsg(object: QueryGetVirtualActionRequestAminoMsg): QueryGetVirtualActionRequest {
     return QueryGetVirtualActionRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetVirtualActionRequestProtoMsg
-  ): QueryGetVirtualActionRequest {
+  fromProtoMsg(message: QueryGetVirtualActionRequestProtoMsg): QueryGetVirtualActionRequest {
     return QueryGetVirtualActionRequest.decode(message.value);
   },
   toProto(message: QueryGetVirtualActionRequest): Uint8Array {
     return QueryGetVirtualActionRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetVirtualActionRequest
-  ): QueryGetVirtualActionRequestProtoMsg {
+  toProtoMsg(message: QueryGetVirtualActionRequest): QueryGetVirtualActionRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualActionRequest",
-      value: QueryGetVirtualActionRequest.encode(message).finish(),
+      value: QueryGetVirtualActionRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetVirtualActionResponse(): QueryGetVirtualActionResponse {
   return {
-    virtualAction: VirtualAction.fromPartial({}),
+    virtualAction: VirtualAction.fromPartial({})
   };
 }
 export const QueryGetVirtualActionResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualActionResponse",
-  encode(
-    message: QueryGetVirtualActionResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetVirtualActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.virtualAction !== undefined) {
-      VirtualAction.encode(
-        message.virtualAction,
-        writer.uint32(10).fork()
-      ).ldelim();
+      VirtualAction.encode(message.virtualAction, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetVirtualActionResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetVirtualActionResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetVirtualActionResponse();
@@ -5987,68 +5042,48 @@ export const QueryGetVirtualActionResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetVirtualActionResponse>
-  ): QueryGetVirtualActionResponse {
+  fromPartial(object: Partial<QueryGetVirtualActionResponse>): QueryGetVirtualActionResponse {
     const message = createBaseQueryGetVirtualActionResponse();
-    message.virtualAction =
-      object.virtualAction !== undefined && object.virtualAction !== null
-        ? VirtualAction.fromPartial(object.virtualAction)
-        : undefined;
+    message.virtualAction = object.virtualAction !== undefined && object.virtualAction !== null ? VirtualAction.fromPartial(object.virtualAction) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetVirtualActionResponseAmino
-  ): QueryGetVirtualActionResponse {
+  fromAmino(object: QueryGetVirtualActionResponseAmino): QueryGetVirtualActionResponse {
     const message = createBaseQueryGetVirtualActionResponse();
     if (object.virtualAction !== undefined && object.virtualAction !== null) {
       message.virtualAction = VirtualAction.fromAmino(object.virtualAction);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetVirtualActionResponse
-  ): QueryGetVirtualActionResponseAmino {
+  toAmino(message: QueryGetVirtualActionResponse): QueryGetVirtualActionResponseAmino {
     const obj: any = {};
-    obj.virtualAction = message.virtualAction
-      ? VirtualAction.toAmino(message.virtualAction)
-      : undefined;
+    obj.virtualAction = message.virtualAction ? VirtualAction.toAmino(message.virtualAction) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetVirtualActionResponseAminoMsg
-  ): QueryGetVirtualActionResponse {
+  fromAminoMsg(object: QueryGetVirtualActionResponseAminoMsg): QueryGetVirtualActionResponse {
     return QueryGetVirtualActionResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetVirtualActionResponseProtoMsg
-  ): QueryGetVirtualActionResponse {
+  fromProtoMsg(message: QueryGetVirtualActionResponseProtoMsg): QueryGetVirtualActionResponse {
     return QueryGetVirtualActionResponse.decode(message.value);
   },
   toProto(message: QueryGetVirtualActionResponse): Uint8Array {
     return QueryGetVirtualActionResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetVirtualActionResponse
-  ): QueryGetVirtualActionResponseProtoMsg {
+  toProtoMsg(message: QueryGetVirtualActionResponse): QueryGetVirtualActionResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualActionResponse",
-      value: QueryGetVirtualActionResponse.encode(message).finish(),
+      value: QueryGetVirtualActionResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllVirtualActionRequest(): QueryAllVirtualActionRequest {
   return {
     nftSchemaCode: "",
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllVirtualActionRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualActionRequest",
-  encode(
-    message: QueryAllVirtualActionRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllVirtualActionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -6057,10 +5092,7 @@ export const QueryAllVirtualActionRequest = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllVirtualActionRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllVirtualActionRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllVirtualActionRequest();
@@ -6080,20 +5112,13 @@ export const QueryAllVirtualActionRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllVirtualActionRequest>
-  ): QueryAllVirtualActionRequest {
+  fromPartial(object: Partial<QueryAllVirtualActionRequest>): QueryAllVirtualActionRequest {
     const message = createBaseQueryAllVirtualActionRequest();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllVirtualActionRequestAmino
-  ): QueryAllVirtualActionRequest {
+  fromAmino(object: QueryAllVirtualActionRequestAmino): QueryAllVirtualActionRequest {
     const message = createBaseQueryAllVirtualActionRequest();
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
@@ -6103,66 +5128,46 @@ export const QueryAllVirtualActionRequest = {
     }
     return message;
   },
-  toAmino(
-    message: QueryAllVirtualActionRequest
-  ): QueryAllVirtualActionRequestAmino {
+  toAmino(message: QueryAllVirtualActionRequest): QueryAllVirtualActionRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllVirtualActionRequestAminoMsg
-  ): QueryAllVirtualActionRequest {
+  fromAminoMsg(object: QueryAllVirtualActionRequestAminoMsg): QueryAllVirtualActionRequest {
     return QueryAllVirtualActionRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllVirtualActionRequestProtoMsg
-  ): QueryAllVirtualActionRequest {
+  fromProtoMsg(message: QueryAllVirtualActionRequestProtoMsg): QueryAllVirtualActionRequest {
     return QueryAllVirtualActionRequest.decode(message.value);
   },
   toProto(message: QueryAllVirtualActionRequest): Uint8Array {
     return QueryAllVirtualActionRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllVirtualActionRequest
-  ): QueryAllVirtualActionRequestProtoMsg {
+  toProtoMsg(message: QueryAllVirtualActionRequest): QueryAllVirtualActionRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualActionRequest",
-      value: QueryAllVirtualActionRequest.encode(message).finish(),
+      value: QueryAllVirtualActionRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllVirtualActionResponse(): QueryAllVirtualActionResponse {
   return {
     virtualAction: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllVirtualActionResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualActionResponse",
-  encode(
-    message: QueryAllVirtualActionResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllVirtualActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.virtualAction) {
       VirtualAction.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllVirtualActionResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllVirtualActionResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllVirtualActionResponse();
@@ -6170,9 +5175,7 @@ export const QueryAllVirtualActionResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.virtualAction.push(
-            VirtualAction.decode(reader, reader.uint32())
-          );
+          message.virtualAction.push(VirtualAction.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -6184,87 +5187,60 @@ export const QueryAllVirtualActionResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllVirtualActionResponse>
-  ): QueryAllVirtualActionResponse {
+  fromPartial(object: Partial<QueryAllVirtualActionResponse>): QueryAllVirtualActionResponse {
     const message = createBaseQueryAllVirtualActionResponse();
-    message.virtualAction =
-      object.virtualAction?.map((e) => VirtualAction.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.virtualAction = object.virtualAction?.map(e => VirtualAction.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllVirtualActionResponseAmino
-  ): QueryAllVirtualActionResponse {
+  fromAmino(object: QueryAllVirtualActionResponseAmino): QueryAllVirtualActionResponse {
     const message = createBaseQueryAllVirtualActionResponse();
-    message.virtualAction =
-      object.virtualAction?.map((e) => VirtualAction.fromAmino(e)) || [];
+    message.virtualAction = object.virtualAction?.map(e => VirtualAction.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllVirtualActionResponse
-  ): QueryAllVirtualActionResponseAmino {
+  toAmino(message: QueryAllVirtualActionResponse): QueryAllVirtualActionResponseAmino {
     const obj: any = {};
     if (message.virtualAction) {
-      obj.virtualAction = message.virtualAction.map((e) =>
-        e ? VirtualAction.toAmino(e) : undefined
-      );
+      obj.virtualAction = message.virtualAction.map(e => e ? VirtualAction.toAmino(e) : undefined);
     } else {
       obj.virtualAction = message.virtualAction;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllVirtualActionResponseAminoMsg
-  ): QueryAllVirtualActionResponse {
+  fromAminoMsg(object: QueryAllVirtualActionResponseAminoMsg): QueryAllVirtualActionResponse {
     return QueryAllVirtualActionResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllVirtualActionResponseProtoMsg
-  ): QueryAllVirtualActionResponse {
+  fromProtoMsg(message: QueryAllVirtualActionResponseProtoMsg): QueryAllVirtualActionResponse {
     return QueryAllVirtualActionResponse.decode(message.value);
   },
   toProto(message: QueryAllVirtualActionResponse): Uint8Array {
     return QueryAllVirtualActionResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllVirtualActionResponse
-  ): QueryAllVirtualActionResponseProtoMsg {
+  toProtoMsg(message: QueryAllVirtualActionResponse): QueryAllVirtualActionResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualActionResponse",
-      value: QueryAllVirtualActionResponse.encode(message).finish(),
+      value: QueryAllVirtualActionResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetVirtualSchemaRequest(): QueryGetVirtualSchemaRequest {
   return {
-    nftSchemaCode: "",
+    nftSchemaCode: ""
   };
 }
 export const QueryGetVirtualSchemaRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaRequest",
-  encode(
-    message: QueryGetVirtualSchemaRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetVirtualSchemaRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetVirtualSchemaRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetVirtualSchemaRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetVirtualSchemaRequest();
@@ -6281,75 +5257,53 @@ export const QueryGetVirtualSchemaRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetVirtualSchemaRequest>
-  ): QueryGetVirtualSchemaRequest {
+  fromPartial(object: Partial<QueryGetVirtualSchemaRequest>): QueryGetVirtualSchemaRequest {
     const message = createBaseQueryGetVirtualSchemaRequest();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetVirtualSchemaRequestAmino
-  ): QueryGetVirtualSchemaRequest {
+  fromAmino(object: QueryGetVirtualSchemaRequestAmino): QueryGetVirtualSchemaRequest {
     const message = createBaseQueryGetVirtualSchemaRequest();
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
     }
     return message;
   },
-  toAmino(
-    message: QueryGetVirtualSchemaRequest
-  ): QueryGetVirtualSchemaRequestAmino {
+  toAmino(message: QueryGetVirtualSchemaRequest): QueryGetVirtualSchemaRequestAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetVirtualSchemaRequestAminoMsg
-  ): QueryGetVirtualSchemaRequest {
+  fromAminoMsg(object: QueryGetVirtualSchemaRequestAminoMsg): QueryGetVirtualSchemaRequest {
     return QueryGetVirtualSchemaRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetVirtualSchemaRequestProtoMsg
-  ): QueryGetVirtualSchemaRequest {
+  fromProtoMsg(message: QueryGetVirtualSchemaRequestProtoMsg): QueryGetVirtualSchemaRequest {
     return QueryGetVirtualSchemaRequest.decode(message.value);
   },
   toProto(message: QueryGetVirtualSchemaRequest): Uint8Array {
     return QueryGetVirtualSchemaRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetVirtualSchemaRequest
-  ): QueryGetVirtualSchemaRequestProtoMsg {
+  toProtoMsg(message: QueryGetVirtualSchemaRequest): QueryGetVirtualSchemaRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaRequest",
-      value: QueryGetVirtualSchemaRequest.encode(message).finish(),
+      value: QueryGetVirtualSchemaRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetVirtualSchemaResponse(): QueryGetVirtualSchemaResponse {
   return {
-    virtualSchema: VirtualSchema.fromPartial({}),
+    virtualSchema: VirtualSchema.fromPartial({})
   };
 }
 export const QueryGetVirtualSchemaResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaResponse",
-  encode(
-    message: QueryGetVirtualSchemaResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetVirtualSchemaResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.virtualSchema !== undefined) {
-      VirtualSchema.encode(
-        message.virtualSchema,
-        writer.uint32(10).fork()
-      ).ldelim();
+      VirtualSchema.encode(message.virtualSchema, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetVirtualSchemaResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetVirtualSchemaResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetVirtualSchemaResponse();
@@ -6366,76 +5320,53 @@ export const QueryGetVirtualSchemaResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetVirtualSchemaResponse>
-  ): QueryGetVirtualSchemaResponse {
+  fromPartial(object: Partial<QueryGetVirtualSchemaResponse>): QueryGetVirtualSchemaResponse {
     const message = createBaseQueryGetVirtualSchemaResponse();
-    message.virtualSchema =
-      object.virtualSchema !== undefined && object.virtualSchema !== null
-        ? VirtualSchema.fromPartial(object.virtualSchema)
-        : undefined;
+    message.virtualSchema = object.virtualSchema !== undefined && object.virtualSchema !== null ? VirtualSchema.fromPartial(object.virtualSchema) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetVirtualSchemaResponseAmino
-  ): QueryGetVirtualSchemaResponse {
+  fromAmino(object: QueryGetVirtualSchemaResponseAmino): QueryGetVirtualSchemaResponse {
     const message = createBaseQueryGetVirtualSchemaResponse();
     if (object.virtualSchema !== undefined && object.virtualSchema !== null) {
       message.virtualSchema = VirtualSchema.fromAmino(object.virtualSchema);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetVirtualSchemaResponse
-  ): QueryGetVirtualSchemaResponseAmino {
+  toAmino(message: QueryGetVirtualSchemaResponse): QueryGetVirtualSchemaResponseAmino {
     const obj: any = {};
-    obj.virtualSchema = message.virtualSchema
-      ? VirtualSchema.toAmino(message.virtualSchema)
-      : undefined;
+    obj.virtualSchema = message.virtualSchema ? VirtualSchema.toAmino(message.virtualSchema) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetVirtualSchemaResponseAminoMsg
-  ): QueryGetVirtualSchemaResponse {
+  fromAminoMsg(object: QueryGetVirtualSchemaResponseAminoMsg): QueryGetVirtualSchemaResponse {
     return QueryGetVirtualSchemaResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetVirtualSchemaResponseProtoMsg
-  ): QueryGetVirtualSchemaResponse {
+  fromProtoMsg(message: QueryGetVirtualSchemaResponseProtoMsg): QueryGetVirtualSchemaResponse {
     return QueryGetVirtualSchemaResponse.decode(message.value);
   },
   toProto(message: QueryGetVirtualSchemaResponse): Uint8Array {
     return QueryGetVirtualSchemaResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetVirtualSchemaResponse
-  ): QueryGetVirtualSchemaResponseProtoMsg {
+  toProtoMsg(message: QueryGetVirtualSchemaResponse): QueryGetVirtualSchemaResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaResponse",
-      value: QueryGetVirtualSchemaResponse.encode(message).finish(),
+      value: QueryGetVirtualSchemaResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllVirtualSchemaRequest(): QueryAllVirtualSchemaRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllVirtualSchemaRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaRequest",
-  encode(
-    message: QueryAllVirtualSchemaRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllVirtualSchemaRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllVirtualSchemaRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllVirtualSchemaRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllVirtualSchemaRequest();
@@ -6452,83 +5383,57 @@ export const QueryAllVirtualSchemaRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllVirtualSchemaRequest>
-  ): QueryAllVirtualSchemaRequest {
+  fromPartial(object: Partial<QueryAllVirtualSchemaRequest>): QueryAllVirtualSchemaRequest {
     const message = createBaseQueryAllVirtualSchemaRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllVirtualSchemaRequestAmino
-  ): QueryAllVirtualSchemaRequest {
+  fromAmino(object: QueryAllVirtualSchemaRequestAmino): QueryAllVirtualSchemaRequest {
     const message = createBaseQueryAllVirtualSchemaRequest();
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllVirtualSchemaRequest
-  ): QueryAllVirtualSchemaRequestAmino {
+  toAmino(message: QueryAllVirtualSchemaRequest): QueryAllVirtualSchemaRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllVirtualSchemaRequestAminoMsg
-  ): QueryAllVirtualSchemaRequest {
+  fromAminoMsg(object: QueryAllVirtualSchemaRequestAminoMsg): QueryAllVirtualSchemaRequest {
     return QueryAllVirtualSchemaRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllVirtualSchemaRequestProtoMsg
-  ): QueryAllVirtualSchemaRequest {
+  fromProtoMsg(message: QueryAllVirtualSchemaRequestProtoMsg): QueryAllVirtualSchemaRequest {
     return QueryAllVirtualSchemaRequest.decode(message.value);
   },
   toProto(message: QueryAllVirtualSchemaRequest): Uint8Array {
     return QueryAllVirtualSchemaRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllVirtualSchemaRequest
-  ): QueryAllVirtualSchemaRequestProtoMsg {
+  toProtoMsg(message: QueryAllVirtualSchemaRequest): QueryAllVirtualSchemaRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaRequest",
-      value: QueryAllVirtualSchemaRequest.encode(message).finish(),
+      value: QueryAllVirtualSchemaRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllVirtualSchemaResponse(): QueryAllVirtualSchemaResponse {
   return {
     virtualSchema: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllVirtualSchemaResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaResponse",
-  encode(
-    message: QueryAllVirtualSchemaResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllVirtualSchemaResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.virtualSchema) {
       VirtualSchema.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllVirtualSchemaResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllVirtualSchemaResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllVirtualSchemaResponse();
@@ -6536,9 +5441,7 @@ export const QueryAllVirtualSchemaResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.virtualSchema.push(
-            VirtualSchema.decode(reader, reader.uint32())
-          );
+          message.virtualSchema.push(VirtualSchema.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -6550,87 +5453,60 @@ export const QueryAllVirtualSchemaResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllVirtualSchemaResponse>
-  ): QueryAllVirtualSchemaResponse {
+  fromPartial(object: Partial<QueryAllVirtualSchemaResponse>): QueryAllVirtualSchemaResponse {
     const message = createBaseQueryAllVirtualSchemaResponse();
-    message.virtualSchema =
-      object.virtualSchema?.map((e) => VirtualSchema.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.virtualSchema = object.virtualSchema?.map(e => VirtualSchema.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllVirtualSchemaResponseAmino
-  ): QueryAllVirtualSchemaResponse {
+  fromAmino(object: QueryAllVirtualSchemaResponseAmino): QueryAllVirtualSchemaResponse {
     const message = createBaseQueryAllVirtualSchemaResponse();
-    message.virtualSchema =
-      object.virtualSchema?.map((e) => VirtualSchema.fromAmino(e)) || [];
+    message.virtualSchema = object.virtualSchema?.map(e => VirtualSchema.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllVirtualSchemaResponse
-  ): QueryAllVirtualSchemaResponseAmino {
+  toAmino(message: QueryAllVirtualSchemaResponse): QueryAllVirtualSchemaResponseAmino {
     const obj: any = {};
     if (message.virtualSchema) {
-      obj.virtualSchema = message.virtualSchema.map((e) =>
-        e ? VirtualSchema.toAmino(e) : undefined
-      );
+      obj.virtualSchema = message.virtualSchema.map(e => e ? VirtualSchema.toAmino(e) : undefined);
     } else {
       obj.virtualSchema = message.virtualSchema;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllVirtualSchemaResponseAminoMsg
-  ): QueryAllVirtualSchemaResponse {
+  fromAminoMsg(object: QueryAllVirtualSchemaResponseAminoMsg): QueryAllVirtualSchemaResponse {
     return QueryAllVirtualSchemaResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllVirtualSchemaResponseProtoMsg
-  ): QueryAllVirtualSchemaResponse {
+  fromProtoMsg(message: QueryAllVirtualSchemaResponseProtoMsg): QueryAllVirtualSchemaResponse {
     return QueryAllVirtualSchemaResponse.decode(message.value);
   },
   toProto(message: QueryAllVirtualSchemaResponse): Uint8Array {
     return QueryAllVirtualSchemaResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllVirtualSchemaResponse
-  ): QueryAllVirtualSchemaResponseProtoMsg {
+  toProtoMsg(message: QueryAllVirtualSchemaResponse): QueryAllVirtualSchemaResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaResponse",
-      value: QueryAllVirtualSchemaResponse.encode(message).finish(),
+      value: QueryAllVirtualSchemaResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetVirtualSchemaProposalRequest(): QueryGetVirtualSchemaProposalRequest {
   return {
-    index: "",
+    index: ""
   };
 }
 export const QueryGetVirtualSchemaProposalRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaProposalRequest",
-  encode(
-    message: QueryGetVirtualSchemaProposalRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetVirtualSchemaProposalRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.index !== "") {
       writer.uint32(10).string(message.index);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetVirtualSchemaProposalRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetVirtualSchemaProposalRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetVirtualSchemaProposalRequest();
@@ -6647,74 +5523,53 @@ export const QueryGetVirtualSchemaProposalRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetVirtualSchemaProposalRequest>
-  ): QueryGetVirtualSchemaProposalRequest {
+  fromPartial(object: Partial<QueryGetVirtualSchemaProposalRequest>): QueryGetVirtualSchemaProposalRequest {
     const message = createBaseQueryGetVirtualSchemaProposalRequest();
     message.index = object.index ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetVirtualSchemaProposalRequestAmino
-  ): QueryGetVirtualSchemaProposalRequest {
+  fromAmino(object: QueryGetVirtualSchemaProposalRequestAmino): QueryGetVirtualSchemaProposalRequest {
     const message = createBaseQueryGetVirtualSchemaProposalRequest();
     if (object.index !== undefined && object.index !== null) {
       message.index = object.index;
     }
     return message;
   },
-  toAmino(
-    message: QueryGetVirtualSchemaProposalRequest
-  ): QueryGetVirtualSchemaProposalRequestAmino {
+  toAmino(message: QueryGetVirtualSchemaProposalRequest): QueryGetVirtualSchemaProposalRequestAmino {
     const obj: any = {};
     obj.index = message.index === "" ? undefined : message.index;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetVirtualSchemaProposalRequestAminoMsg
-  ): QueryGetVirtualSchemaProposalRequest {
+  fromAminoMsg(object: QueryGetVirtualSchemaProposalRequestAminoMsg): QueryGetVirtualSchemaProposalRequest {
     return QueryGetVirtualSchemaProposalRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetVirtualSchemaProposalRequestProtoMsg
-  ): QueryGetVirtualSchemaProposalRequest {
+  fromProtoMsg(message: QueryGetVirtualSchemaProposalRequestProtoMsg): QueryGetVirtualSchemaProposalRequest {
     return QueryGetVirtualSchemaProposalRequest.decode(message.value);
   },
   toProto(message: QueryGetVirtualSchemaProposalRequest): Uint8Array {
     return QueryGetVirtualSchemaProposalRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetVirtualSchemaProposalRequest
-  ): QueryGetVirtualSchemaProposalRequestProtoMsg {
+  toProtoMsg(message: QueryGetVirtualSchemaProposalRequest): QueryGetVirtualSchemaProposalRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaProposalRequest",
-      value: QueryGetVirtualSchemaProposalRequest.encode(message).finish(),
+      value: QueryGetVirtualSchemaProposalRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetVirtualSchemaProposalResponse(): QueryGetVirtualSchemaProposalResponse {
   return {
-    virtualSchemaProposal: VirtualSchemaProposal.fromPartial({}),
+    virtualSchemaProposal: VirtualSchemaProposal.fromPartial({})
   };
 }
 export const QueryGetVirtualSchemaProposalResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaProposalResponse",
-  encode(
-    message: QueryGetVirtualSchemaProposalResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetVirtualSchemaProposalResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.virtualSchemaProposal !== undefined) {
-      VirtualSchemaProposal.encode(
-        message.virtualSchemaProposal,
-        writer.uint32(10).fork()
-      ).ldelim();
+      VirtualSchemaProposal.encode(message.virtualSchemaProposal, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetVirtualSchemaProposalResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetVirtualSchemaProposalResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetVirtualSchemaProposalResponse();
@@ -6722,10 +5577,7 @@ export const QueryGetVirtualSchemaProposalResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.virtualSchemaProposal = VirtualSchemaProposal.decode(
-            reader,
-            reader.uint32()
-          );
+          message.virtualSchemaProposal = VirtualSchemaProposal.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -6734,82 +5586,53 @@ export const QueryGetVirtualSchemaProposalResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetVirtualSchemaProposalResponse>
-  ): QueryGetVirtualSchemaProposalResponse {
+  fromPartial(object: Partial<QueryGetVirtualSchemaProposalResponse>): QueryGetVirtualSchemaProposalResponse {
     const message = createBaseQueryGetVirtualSchemaProposalResponse();
-    message.virtualSchemaProposal =
-      object.virtualSchemaProposal !== undefined &&
-      object.virtualSchemaProposal !== null
-        ? VirtualSchemaProposal.fromPartial(object.virtualSchemaProposal)
-        : undefined;
+    message.virtualSchemaProposal = object.virtualSchemaProposal !== undefined && object.virtualSchemaProposal !== null ? VirtualSchemaProposal.fromPartial(object.virtualSchemaProposal) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetVirtualSchemaProposalResponseAmino
-  ): QueryGetVirtualSchemaProposalResponse {
+  fromAmino(object: QueryGetVirtualSchemaProposalResponseAmino): QueryGetVirtualSchemaProposalResponse {
     const message = createBaseQueryGetVirtualSchemaProposalResponse();
-    if (
-      object.virtualSchemaProposal !== undefined &&
-      object.virtualSchemaProposal !== null
-    ) {
-      message.virtualSchemaProposal = VirtualSchemaProposal.fromAmino(
-        object.virtualSchemaProposal
-      );
+    if (object.virtualSchemaProposal !== undefined && object.virtualSchemaProposal !== null) {
+      message.virtualSchemaProposal = VirtualSchemaProposal.fromAmino(object.virtualSchemaProposal);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetVirtualSchemaProposalResponse
-  ): QueryGetVirtualSchemaProposalResponseAmino {
+  toAmino(message: QueryGetVirtualSchemaProposalResponse): QueryGetVirtualSchemaProposalResponseAmino {
     const obj: any = {};
-    obj.virtualSchemaProposal = message.virtualSchemaProposal
-      ? VirtualSchemaProposal.toAmino(message.virtualSchemaProposal)
-      : undefined;
+    obj.virtualSchemaProposal = message.virtualSchemaProposal ? VirtualSchemaProposal.toAmino(message.virtualSchemaProposal) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetVirtualSchemaProposalResponseAminoMsg
-  ): QueryGetVirtualSchemaProposalResponse {
+  fromAminoMsg(object: QueryGetVirtualSchemaProposalResponseAminoMsg): QueryGetVirtualSchemaProposalResponse {
     return QueryGetVirtualSchemaProposalResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetVirtualSchemaProposalResponseProtoMsg
-  ): QueryGetVirtualSchemaProposalResponse {
+  fromProtoMsg(message: QueryGetVirtualSchemaProposalResponseProtoMsg): QueryGetVirtualSchemaProposalResponse {
     return QueryGetVirtualSchemaProposalResponse.decode(message.value);
   },
   toProto(message: QueryGetVirtualSchemaProposalResponse): Uint8Array {
     return QueryGetVirtualSchemaProposalResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetVirtualSchemaProposalResponse
-  ): QueryGetVirtualSchemaProposalResponseProtoMsg {
+  toProtoMsg(message: QueryGetVirtualSchemaProposalResponse): QueryGetVirtualSchemaProposalResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetVirtualSchemaProposalResponse",
-      value: QueryGetVirtualSchemaProposalResponse.encode(message).finish(),
+      value: QueryGetVirtualSchemaProposalResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllVirtualSchemaProposalRequest(): QueryAllVirtualSchemaProposalRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllVirtualSchemaProposalRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaProposalRequest",
-  encode(
-    message: QueryAllVirtualSchemaProposalRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllVirtualSchemaProposalRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllVirtualSchemaProposalRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllVirtualSchemaProposalRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllVirtualSchemaProposalRequest();
@@ -6826,83 +5649,57 @@ export const QueryAllVirtualSchemaProposalRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllVirtualSchemaProposalRequest>
-  ): QueryAllVirtualSchemaProposalRequest {
+  fromPartial(object: Partial<QueryAllVirtualSchemaProposalRequest>): QueryAllVirtualSchemaProposalRequest {
     const message = createBaseQueryAllVirtualSchemaProposalRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllVirtualSchemaProposalRequestAmino
-  ): QueryAllVirtualSchemaProposalRequest {
+  fromAmino(object: QueryAllVirtualSchemaProposalRequestAmino): QueryAllVirtualSchemaProposalRequest {
     const message = createBaseQueryAllVirtualSchemaProposalRequest();
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllVirtualSchemaProposalRequest
-  ): QueryAllVirtualSchemaProposalRequestAmino {
+  toAmino(message: QueryAllVirtualSchemaProposalRequest): QueryAllVirtualSchemaProposalRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllVirtualSchemaProposalRequestAminoMsg
-  ): QueryAllVirtualSchemaProposalRequest {
+  fromAminoMsg(object: QueryAllVirtualSchemaProposalRequestAminoMsg): QueryAllVirtualSchemaProposalRequest {
     return QueryAllVirtualSchemaProposalRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllVirtualSchemaProposalRequestProtoMsg
-  ): QueryAllVirtualSchemaProposalRequest {
+  fromProtoMsg(message: QueryAllVirtualSchemaProposalRequestProtoMsg): QueryAllVirtualSchemaProposalRequest {
     return QueryAllVirtualSchemaProposalRequest.decode(message.value);
   },
   toProto(message: QueryAllVirtualSchemaProposalRequest): Uint8Array {
     return QueryAllVirtualSchemaProposalRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllVirtualSchemaProposalRequest
-  ): QueryAllVirtualSchemaProposalRequestProtoMsg {
+  toProtoMsg(message: QueryAllVirtualSchemaProposalRequest): QueryAllVirtualSchemaProposalRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaProposalRequest",
-      value: QueryAllVirtualSchemaProposalRequest.encode(message).finish(),
+      value: QueryAllVirtualSchemaProposalRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllVirtualSchemaProposalResponse(): QueryAllVirtualSchemaProposalResponse {
   return {
     virtualSchemaProposal: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllVirtualSchemaProposalResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaProposalResponse",
-  encode(
-    message: QueryAllVirtualSchemaProposalResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllVirtualSchemaProposalResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.virtualSchemaProposal) {
       VirtualSchemaProposal.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllVirtualSchemaProposalResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllVirtualSchemaProposalResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllVirtualSchemaProposalResponse();
@@ -6910,9 +5707,7 @@ export const QueryAllVirtualSchemaProposalResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.virtualSchemaProposal.push(
-            VirtualSchemaProposal.decode(reader, reader.uint32())
-          );
+          message.virtualSchemaProposal.push(VirtualSchemaProposal.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -6924,86 +5719,55 @@ export const QueryAllVirtualSchemaProposalResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllVirtualSchemaProposalResponse>
-  ): QueryAllVirtualSchemaProposalResponse {
+  fromPartial(object: Partial<QueryAllVirtualSchemaProposalResponse>): QueryAllVirtualSchemaProposalResponse {
     const message = createBaseQueryAllVirtualSchemaProposalResponse();
-    message.virtualSchemaProposal =
-      object.virtualSchemaProposal?.map((e) =>
-        VirtualSchemaProposal.fromPartial(e)
-      ) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.virtualSchemaProposal = object.virtualSchemaProposal?.map(e => VirtualSchemaProposal.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllVirtualSchemaProposalResponseAmino
-  ): QueryAllVirtualSchemaProposalResponse {
+  fromAmino(object: QueryAllVirtualSchemaProposalResponseAmino): QueryAllVirtualSchemaProposalResponse {
     const message = createBaseQueryAllVirtualSchemaProposalResponse();
-    message.virtualSchemaProposal =
-      object.virtualSchemaProposal?.map((e) =>
-        VirtualSchemaProposal.fromAmino(e)
-      ) || [];
+    message.virtualSchemaProposal = object.virtualSchemaProposal?.map(e => VirtualSchemaProposal.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllVirtualSchemaProposalResponse
-  ): QueryAllVirtualSchemaProposalResponseAmino {
+  toAmino(message: QueryAllVirtualSchemaProposalResponse): QueryAllVirtualSchemaProposalResponseAmino {
     const obj: any = {};
     if (message.virtualSchemaProposal) {
-      obj.virtualSchemaProposal = message.virtualSchemaProposal.map((e) =>
-        e ? VirtualSchemaProposal.toAmino(e) : undefined
-      );
+      obj.virtualSchemaProposal = message.virtualSchemaProposal.map(e => e ? VirtualSchemaProposal.toAmino(e) : undefined);
     } else {
       obj.virtualSchemaProposal = message.virtualSchemaProposal;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllVirtualSchemaProposalResponseAminoMsg
-  ): QueryAllVirtualSchemaProposalResponse {
+  fromAminoMsg(object: QueryAllVirtualSchemaProposalResponseAminoMsg): QueryAllVirtualSchemaProposalResponse {
     return QueryAllVirtualSchemaProposalResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllVirtualSchemaProposalResponseProtoMsg
-  ): QueryAllVirtualSchemaProposalResponse {
+  fromProtoMsg(message: QueryAllVirtualSchemaProposalResponseProtoMsg): QueryAllVirtualSchemaProposalResponse {
     return QueryAllVirtualSchemaProposalResponse.decode(message.value);
   },
   toProto(message: QueryAllVirtualSchemaProposalResponse): Uint8Array {
     return QueryAllVirtualSchemaProposalResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllVirtualSchemaProposalResponse
-  ): QueryAllVirtualSchemaProposalResponseProtoMsg {
+  toProtoMsg(message: QueryAllVirtualSchemaProposalResponse): QueryAllVirtualSchemaProposalResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllVirtualSchemaProposalResponse",
-      value: QueryAllVirtualSchemaProposalResponse.encode(message).finish(),
+      value: QueryAllVirtualSchemaProposalResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryListActiveProposalRequest(): QueryListActiveProposalRequest {
   return {};
 }
 export const QueryListActiveProposalRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryListActiveProposalRequest",
-  encode(
-    _: QueryListActiveProposalRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: QueryListActiveProposalRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryListActiveProposalRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryListActiveProposalRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryListActiveProposalRequest();
@@ -7017,66 +5781,48 @@ export const QueryListActiveProposalRequest = {
     }
     return message;
   },
-  fromPartial(
-    _: Partial<QueryListActiveProposalRequest>
-  ): QueryListActiveProposalRequest {
+  fromPartial(_: Partial<QueryListActiveProposalRequest>): QueryListActiveProposalRequest {
     const message = createBaseQueryListActiveProposalRequest();
     return message;
   },
-  fromAmino(
-    _: QueryListActiveProposalRequestAmino
-  ): QueryListActiveProposalRequest {
+  fromAmino(_: QueryListActiveProposalRequestAmino): QueryListActiveProposalRequest {
     const message = createBaseQueryListActiveProposalRequest();
     return message;
   },
-  toAmino(
-    _: QueryListActiveProposalRequest
-  ): QueryListActiveProposalRequestAmino {
+  toAmino(_: QueryListActiveProposalRequest): QueryListActiveProposalRequestAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(
-    object: QueryListActiveProposalRequestAminoMsg
-  ): QueryListActiveProposalRequest {
+  fromAminoMsg(object: QueryListActiveProposalRequestAminoMsg): QueryListActiveProposalRequest {
     return QueryListActiveProposalRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryListActiveProposalRequestProtoMsg
-  ): QueryListActiveProposalRequest {
+  fromProtoMsg(message: QueryListActiveProposalRequestProtoMsg): QueryListActiveProposalRequest {
     return QueryListActiveProposalRequest.decode(message.value);
   },
   toProto(message: QueryListActiveProposalRequest): Uint8Array {
     return QueryListActiveProposalRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryListActiveProposalRequest
-  ): QueryListActiveProposalRequestProtoMsg {
+  toProtoMsg(message: QueryListActiveProposalRequest): QueryListActiveProposalRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryListActiveProposalRequest",
-      value: QueryListActiveProposalRequest.encode(message).finish(),
+      value: QueryListActiveProposalRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryListActiveProposalResponse(): QueryListActiveProposalResponse {
   return {
-    virtualSchemaProposal: [],
+    virtualSchemaProposal: []
   };
 }
 export const QueryListActiveProposalResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryListActiveProposalResponse",
-  encode(
-    message: QueryListActiveProposalResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryListActiveProposalResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.virtualSchemaProposal) {
       VirtualSchemaProposal.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryListActiveProposalResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryListActiveProposalResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryListActiveProposalResponse();
@@ -7084,9 +5830,7 @@ export const QueryListActiveProposalResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.virtualSchemaProposal.push(
-            VirtualSchemaProposal.decode(reader, reader.uint32())
-          );
+          message.virtualSchemaProposal.push(VirtualSchemaProposal.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -7095,81 +5839,55 @@ export const QueryListActiveProposalResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryListActiveProposalResponse>
-  ): QueryListActiveProposalResponse {
+  fromPartial(object: Partial<QueryListActiveProposalResponse>): QueryListActiveProposalResponse {
     const message = createBaseQueryListActiveProposalResponse();
-    message.virtualSchemaProposal =
-      object.virtualSchemaProposal?.map((e) =>
-        VirtualSchemaProposal.fromPartial(e)
-      ) || [];
+    message.virtualSchemaProposal = object.virtualSchemaProposal?.map(e => VirtualSchemaProposal.fromPartial(e)) || [];
     return message;
   },
-  fromAmino(
-    object: QueryListActiveProposalResponseAmino
-  ): QueryListActiveProposalResponse {
+  fromAmino(object: QueryListActiveProposalResponseAmino): QueryListActiveProposalResponse {
     const message = createBaseQueryListActiveProposalResponse();
-    message.virtualSchemaProposal =
-      object.virtualSchemaProposal?.map((e) =>
-        VirtualSchemaProposal.fromAmino(e)
-      ) || [];
+    message.virtualSchemaProposal = object.virtualSchemaProposal?.map(e => VirtualSchemaProposal.fromAmino(e)) || [];
     return message;
   },
-  toAmino(
-    message: QueryListActiveProposalResponse
-  ): QueryListActiveProposalResponseAmino {
+  toAmino(message: QueryListActiveProposalResponse): QueryListActiveProposalResponseAmino {
     const obj: any = {};
     if (message.virtualSchemaProposal) {
-      obj.virtualSchemaProposal = message.virtualSchemaProposal.map((e) =>
-        e ? VirtualSchemaProposal.toAmino(e) : undefined
-      );
+      obj.virtualSchemaProposal = message.virtualSchemaProposal.map(e => e ? VirtualSchemaProposal.toAmino(e) : undefined);
     } else {
       obj.virtualSchemaProposal = message.virtualSchemaProposal;
     }
     return obj;
   },
-  fromAminoMsg(
-    object: QueryListActiveProposalResponseAminoMsg
-  ): QueryListActiveProposalResponse {
+  fromAminoMsg(object: QueryListActiveProposalResponseAminoMsg): QueryListActiveProposalResponse {
     return QueryListActiveProposalResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryListActiveProposalResponseProtoMsg
-  ): QueryListActiveProposalResponse {
+  fromProtoMsg(message: QueryListActiveProposalResponseProtoMsg): QueryListActiveProposalResponse {
     return QueryListActiveProposalResponse.decode(message.value);
   },
   toProto(message: QueryListActiveProposalResponse): Uint8Array {
     return QueryListActiveProposalResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryListActiveProposalResponse
-  ): QueryListActiveProposalResponseProtoMsg {
+  toProtoMsg(message: QueryListActiveProposalResponse): QueryListActiveProposalResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryListActiveProposalResponse",
-      value: QueryListActiveProposalResponse.encode(message).finish(),
+      value: QueryListActiveProposalResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetLockSchemaFeeRequest(): QueryGetLockSchemaFeeRequest {
   return {
-    index: "",
+    index: ""
   };
 }
 export const QueryGetLockSchemaFeeRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetLockSchemaFeeRequest",
-  encode(
-    message: QueryGetLockSchemaFeeRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetLockSchemaFeeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.index !== "") {
       writer.uint32(10).string(message.index);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetLockSchemaFeeRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetLockSchemaFeeRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetLockSchemaFeeRequest();
@@ -7186,74 +5904,53 @@ export const QueryGetLockSchemaFeeRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetLockSchemaFeeRequest>
-  ): QueryGetLockSchemaFeeRequest {
+  fromPartial(object: Partial<QueryGetLockSchemaFeeRequest>): QueryGetLockSchemaFeeRequest {
     const message = createBaseQueryGetLockSchemaFeeRequest();
     message.index = object.index ?? "";
     return message;
   },
-  fromAmino(
-    object: QueryGetLockSchemaFeeRequestAmino
-  ): QueryGetLockSchemaFeeRequest {
+  fromAmino(object: QueryGetLockSchemaFeeRequestAmino): QueryGetLockSchemaFeeRequest {
     const message = createBaseQueryGetLockSchemaFeeRequest();
     if (object.index !== undefined && object.index !== null) {
       message.index = object.index;
     }
     return message;
   },
-  toAmino(
-    message: QueryGetLockSchemaFeeRequest
-  ): QueryGetLockSchemaFeeRequestAmino {
+  toAmino(message: QueryGetLockSchemaFeeRequest): QueryGetLockSchemaFeeRequestAmino {
     const obj: any = {};
     obj.index = message.index === "" ? undefined : message.index;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetLockSchemaFeeRequestAminoMsg
-  ): QueryGetLockSchemaFeeRequest {
+  fromAminoMsg(object: QueryGetLockSchemaFeeRequestAminoMsg): QueryGetLockSchemaFeeRequest {
     return QueryGetLockSchemaFeeRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetLockSchemaFeeRequestProtoMsg
-  ): QueryGetLockSchemaFeeRequest {
+  fromProtoMsg(message: QueryGetLockSchemaFeeRequestProtoMsg): QueryGetLockSchemaFeeRequest {
     return QueryGetLockSchemaFeeRequest.decode(message.value);
   },
   toProto(message: QueryGetLockSchemaFeeRequest): Uint8Array {
     return QueryGetLockSchemaFeeRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetLockSchemaFeeRequest
-  ): QueryGetLockSchemaFeeRequestProtoMsg {
+  toProtoMsg(message: QueryGetLockSchemaFeeRequest): QueryGetLockSchemaFeeRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetLockSchemaFeeRequest",
-      value: QueryGetLockSchemaFeeRequest.encode(message).finish(),
+      value: QueryGetLockSchemaFeeRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetLockSchemaFeeResponse(): QueryGetLockSchemaFeeResponse {
   return {
-    lockSchemaFee: LockSchemaFee.fromPartial({}),
+    lockSchemaFee: LockSchemaFee.fromPartial({})
   };
 }
 export const QueryGetLockSchemaFeeResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryGetLockSchemaFeeResponse",
-  encode(
-    message: QueryGetLockSchemaFeeResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetLockSchemaFeeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.lockSchemaFee !== undefined) {
-      LockSchemaFee.encode(
-        message.lockSchemaFee,
-        writer.uint32(10).fork()
-      ).ldelim();
+      LockSchemaFee.encode(message.lockSchemaFee, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetLockSchemaFeeResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetLockSchemaFeeResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetLockSchemaFeeResponse();
@@ -7270,76 +5967,53 @@ export const QueryGetLockSchemaFeeResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryGetLockSchemaFeeResponse>
-  ): QueryGetLockSchemaFeeResponse {
+  fromPartial(object: Partial<QueryGetLockSchemaFeeResponse>): QueryGetLockSchemaFeeResponse {
     const message = createBaseQueryGetLockSchemaFeeResponse();
-    message.lockSchemaFee =
-      object.lockSchemaFee !== undefined && object.lockSchemaFee !== null
-        ? LockSchemaFee.fromPartial(object.lockSchemaFee)
-        : undefined;
+    message.lockSchemaFee = object.lockSchemaFee !== undefined && object.lockSchemaFee !== null ? LockSchemaFee.fromPartial(object.lockSchemaFee) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryGetLockSchemaFeeResponseAmino
-  ): QueryGetLockSchemaFeeResponse {
+  fromAmino(object: QueryGetLockSchemaFeeResponseAmino): QueryGetLockSchemaFeeResponse {
     const message = createBaseQueryGetLockSchemaFeeResponse();
     if (object.lockSchemaFee !== undefined && object.lockSchemaFee !== null) {
       message.lockSchemaFee = LockSchemaFee.fromAmino(object.lockSchemaFee);
     }
     return message;
   },
-  toAmino(
-    message: QueryGetLockSchemaFeeResponse
-  ): QueryGetLockSchemaFeeResponseAmino {
+  toAmino(message: QueryGetLockSchemaFeeResponse): QueryGetLockSchemaFeeResponseAmino {
     const obj: any = {};
-    obj.lockSchemaFee = message.lockSchemaFee
-      ? LockSchemaFee.toAmino(message.lockSchemaFee)
-      : undefined;
+    obj.lockSchemaFee = message.lockSchemaFee ? LockSchemaFee.toAmino(message.lockSchemaFee) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryGetLockSchemaFeeResponseAminoMsg
-  ): QueryGetLockSchemaFeeResponse {
+  fromAminoMsg(object: QueryGetLockSchemaFeeResponseAminoMsg): QueryGetLockSchemaFeeResponse {
     return QueryGetLockSchemaFeeResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryGetLockSchemaFeeResponseProtoMsg
-  ): QueryGetLockSchemaFeeResponse {
+  fromProtoMsg(message: QueryGetLockSchemaFeeResponseProtoMsg): QueryGetLockSchemaFeeResponse {
     return QueryGetLockSchemaFeeResponse.decode(message.value);
   },
   toProto(message: QueryGetLockSchemaFeeResponse): Uint8Array {
     return QueryGetLockSchemaFeeResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryGetLockSchemaFeeResponse
-  ): QueryGetLockSchemaFeeResponseProtoMsg {
+  toProtoMsg(message: QueryGetLockSchemaFeeResponse): QueryGetLockSchemaFeeResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryGetLockSchemaFeeResponse",
-      value: QueryGetLockSchemaFeeResponse.encode(message).finish(),
+      value: QueryGetLockSchemaFeeResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllLockSchemaFeeRequest(): QueryAllLockSchemaFeeRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllLockSchemaFeeRequest = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllLockSchemaFeeRequest",
-  encode(
-    message: QueryAllLockSchemaFeeRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllLockSchemaFeeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllLockSchemaFeeRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllLockSchemaFeeRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllLockSchemaFeeRequest();
@@ -7356,83 +6030,57 @@ export const QueryAllLockSchemaFeeRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllLockSchemaFeeRequest>
-  ): QueryAllLockSchemaFeeRequest {
+  fromPartial(object: Partial<QueryAllLockSchemaFeeRequest>): QueryAllLockSchemaFeeRequest {
     const message = createBaseQueryAllLockSchemaFeeRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllLockSchemaFeeRequestAmino
-  ): QueryAllLockSchemaFeeRequest {
+  fromAmino(object: QueryAllLockSchemaFeeRequestAmino): QueryAllLockSchemaFeeRequest {
     const message = createBaseQueryAllLockSchemaFeeRequest();
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllLockSchemaFeeRequest
-  ): QueryAllLockSchemaFeeRequestAmino {
+  toAmino(message: QueryAllLockSchemaFeeRequest): QueryAllLockSchemaFeeRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllLockSchemaFeeRequestAminoMsg
-  ): QueryAllLockSchemaFeeRequest {
+  fromAminoMsg(object: QueryAllLockSchemaFeeRequestAminoMsg): QueryAllLockSchemaFeeRequest {
     return QueryAllLockSchemaFeeRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllLockSchemaFeeRequestProtoMsg
-  ): QueryAllLockSchemaFeeRequest {
+  fromProtoMsg(message: QueryAllLockSchemaFeeRequestProtoMsg): QueryAllLockSchemaFeeRequest {
     return QueryAllLockSchemaFeeRequest.decode(message.value);
   },
   toProto(message: QueryAllLockSchemaFeeRequest): Uint8Array {
     return QueryAllLockSchemaFeeRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllLockSchemaFeeRequest
-  ): QueryAllLockSchemaFeeRequestProtoMsg {
+  toProtoMsg(message: QueryAllLockSchemaFeeRequest): QueryAllLockSchemaFeeRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllLockSchemaFeeRequest",
-      value: QueryAllLockSchemaFeeRequest.encode(message).finish(),
+      value: QueryAllLockSchemaFeeRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllLockSchemaFeeResponse(): QueryAllLockSchemaFeeResponse {
   return {
     lockSchemaFee: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllLockSchemaFeeResponse = {
   typeUrl: "/sixprotocol.nftmngr.QueryAllLockSchemaFeeResponse",
-  encode(
-    message: QueryAllLockSchemaFeeResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllLockSchemaFeeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.lockSchemaFee) {
       LockSchemaFee.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllLockSchemaFeeResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllLockSchemaFeeResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllLockSchemaFeeResponse();
@@ -7440,9 +6088,7 @@ export const QueryAllLockSchemaFeeResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.lockSchemaFee.push(
-            LockSchemaFee.decode(reader, reader.uint32())
-          );
+          message.lockSchemaFee.push(LockSchemaFee.decode(reader, reader.uint32()));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -7454,64 +6100,43 @@ export const QueryAllLockSchemaFeeResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryAllLockSchemaFeeResponse>
-  ): QueryAllLockSchemaFeeResponse {
+  fromPartial(object: Partial<QueryAllLockSchemaFeeResponse>): QueryAllLockSchemaFeeResponse {
     const message = createBaseQueryAllLockSchemaFeeResponse();
-    message.lockSchemaFee =
-      object.lockSchemaFee?.map((e) => LockSchemaFee.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.lockSchemaFee = object.lockSchemaFee?.map(e => LockSchemaFee.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryAllLockSchemaFeeResponseAmino
-  ): QueryAllLockSchemaFeeResponse {
+  fromAmino(object: QueryAllLockSchemaFeeResponseAmino): QueryAllLockSchemaFeeResponse {
     const message = createBaseQueryAllLockSchemaFeeResponse();
-    message.lockSchemaFee =
-      object.lockSchemaFee?.map((e) => LockSchemaFee.fromAmino(e)) || [];
+    message.lockSchemaFee = object.lockSchemaFee?.map(e => LockSchemaFee.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryAllLockSchemaFeeResponse
-  ): QueryAllLockSchemaFeeResponseAmino {
+  toAmino(message: QueryAllLockSchemaFeeResponse): QueryAllLockSchemaFeeResponseAmino {
     const obj: any = {};
     if (message.lockSchemaFee) {
-      obj.lockSchemaFee = message.lockSchemaFee.map((e) =>
-        e ? LockSchemaFee.toAmino(e) : undefined
-      );
+      obj.lockSchemaFee = message.lockSchemaFee.map(e => e ? LockSchemaFee.toAmino(e) : undefined);
     } else {
       obj.lockSchemaFee = message.lockSchemaFee;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryAllLockSchemaFeeResponseAminoMsg
-  ): QueryAllLockSchemaFeeResponse {
+  fromAminoMsg(object: QueryAllLockSchemaFeeResponseAminoMsg): QueryAllLockSchemaFeeResponse {
     return QueryAllLockSchemaFeeResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryAllLockSchemaFeeResponseProtoMsg
-  ): QueryAllLockSchemaFeeResponse {
+  fromProtoMsg(message: QueryAllLockSchemaFeeResponseProtoMsg): QueryAllLockSchemaFeeResponse {
     return QueryAllLockSchemaFeeResponse.decode(message.value);
   },
   toProto(message: QueryAllLockSchemaFeeResponse): Uint8Array {
     return QueryAllLockSchemaFeeResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryAllLockSchemaFeeResponse
-  ): QueryAllLockSchemaFeeResponseProtoMsg {
+  toProtoMsg(message: QueryAllLockSchemaFeeResponse): QueryAllLockSchemaFeeResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.QueryAllLockSchemaFeeResponse",
-      value: QueryAllLockSchemaFeeResponse.encode(message).finish(),
+      value: QueryAllLockSchemaFeeResponse.encode(message).finish()
     };
-  },
+  }
 };

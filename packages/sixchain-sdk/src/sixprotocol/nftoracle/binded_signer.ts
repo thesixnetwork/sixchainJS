@@ -10,6 +10,11 @@ export interface BindedSignerParamsProtoMsg {
   typeUrl: "/sixprotocol.nftoracle.BindedSignerParams";
   value: Uint8Array;
 }
+/**
+ * @name BindedSignerParamsAmino
+ * @package sixprotocol.nftoracle
+ * @see proto type: sixprotocol.nftoracle.BindedSignerParams
+ */
 export interface BindedSignerParamsAmino {
   actor_address?: string;
   expired_at?: string;
@@ -31,6 +36,11 @@ export interface BindedSignerProtoMsg {
   typeUrl: "/sixprotocol.nftoracle.BindedSigner";
   value: Uint8Array;
 }
+/**
+ * @name BindedSignerAmino
+ * @package sixprotocol.nftoracle
+ * @see proto type: sixprotocol.nftoracle.BindedSigner
+ */
 export interface BindedSignerAmino {
   ownerAddress?: string;
   signers?: BindedSignerParamsAmino[];
@@ -48,23 +58,17 @@ export interface BindedSignerSDKType {
 function createBaseBindedSignerParams(): BindedSignerParams {
   return {
     actorAddress: "",
-    expiredAt: new Date(),
+    expiredAt: new Date()
   };
 }
 export const BindedSignerParams = {
   typeUrl: "/sixprotocol.nftoracle.BindedSignerParams",
-  encode(
-    message: BindedSignerParams,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: BindedSignerParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.actorAddress !== "") {
       writer.uint32(10).string(message.actorAddress);
     }
     if (message.expiredAt !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.expiredAt),
-        writer.uint32(18).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.expiredAt), writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
@@ -79,9 +83,7 @@ export const BindedSignerParams = {
           message.actorAddress = reader.string();
           break;
         case 2:
-          message.expiredAt = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.expiredAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -108,11 +110,8 @@ export const BindedSignerParams = {
   },
   toAmino(message: BindedSignerParams): BindedSignerParamsAmino {
     const obj: any = {};
-    obj.actor_address =
-      message.actorAddress === "" ? undefined : message.actorAddress;
-    obj.expired_at = message.expiredAt
-      ? Timestamp.toAmino(toTimestamp(message.expiredAt))
-      : undefined;
+    obj.actor_address = message.actorAddress === "" ? undefined : message.actorAddress;
+    obj.expired_at = message.expiredAt ? Timestamp.toAmino(toTimestamp(message.expiredAt)) : undefined;
     return obj;
   },
   fromAminoMsg(object: BindedSignerParamsAminoMsg): BindedSignerParams {
@@ -127,23 +126,20 @@ export const BindedSignerParams = {
   toProtoMsg(message: BindedSignerParams): BindedSignerParamsProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.BindedSignerParams",
-      value: BindedSignerParams.encode(message).finish(),
+      value: BindedSignerParams.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseBindedSigner(): BindedSigner {
   return {
     ownerAddress: "",
     signers: [],
-    actorCount: Long.UZERO,
+    actorCount: Long.UZERO
   };
 }
 export const BindedSigner = {
   typeUrl: "/sixprotocol.nftoracle.BindedSigner",
-  encode(
-    message: BindedSigner,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: BindedSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.ownerAddress !== "") {
       writer.uint32(10).string(message.ownerAddress);
     }
@@ -166,9 +162,7 @@ export const BindedSigner = {
           message.ownerAddress = reader.string();
           break;
         case 2:
-          message.signers.push(
-            BindedSignerParams.decode(reader, reader.uint32())
-          );
+          message.signers.push(BindedSignerParams.decode(reader, reader.uint32()));
           break;
         case 3:
           message.actorCount = reader.uint64() as Long;
@@ -183,12 +177,8 @@ export const BindedSigner = {
   fromPartial(object: Partial<BindedSigner>): BindedSigner {
     const message = createBaseBindedSigner();
     message.ownerAddress = object.ownerAddress ?? "";
-    message.signers =
-      object.signers?.map((e) => BindedSignerParams.fromPartial(e)) || [];
-    message.actorCount =
-      object.actorCount !== undefined && object.actorCount !== null
-        ? Long.fromValue(object.actorCount)
-        : Long.UZERO;
+    message.signers = object.signers?.map(e => BindedSignerParams.fromPartial(e)) || [];
+    message.actorCount = object.actorCount !== undefined && object.actorCount !== null ? Long.fromValue(object.actorCount) : Long.UZERO;
     return message;
   },
   fromAmino(object: BindedSignerAmino): BindedSigner {
@@ -196,8 +186,7 @@ export const BindedSigner = {
     if (object.ownerAddress !== undefined && object.ownerAddress !== null) {
       message.ownerAddress = object.ownerAddress;
     }
-    message.signers =
-      object.signers?.map((e) => BindedSignerParams.fromAmino(e)) || [];
+    message.signers = object.signers?.map(e => BindedSignerParams.fromAmino(e)) || [];
     if (object.actorCount !== undefined && object.actorCount !== null) {
       message.actorCount = Long.fromString(object.actorCount);
     }
@@ -205,18 +194,13 @@ export const BindedSigner = {
   },
   toAmino(message: BindedSigner): BindedSignerAmino {
     const obj: any = {};
-    obj.ownerAddress =
-      message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.ownerAddress = message.ownerAddress === "" ? undefined : message.ownerAddress;
     if (message.signers) {
-      obj.signers = message.signers.map((e) =>
-        e ? BindedSignerParams.toAmino(e) : undefined
-      );
+      obj.signers = message.signers.map(e => e ? BindedSignerParams.toAmino(e) : undefined);
     } else {
       obj.signers = message.signers;
     }
-    obj.actorCount = !message.actorCount.isZero()
-      ? message.actorCount?.toString()
-      : undefined;
+    obj.actorCount = !message.actorCount.isZero() ? message.actorCount?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: BindedSignerAminoMsg): BindedSigner {
@@ -231,7 +215,7 @@ export const BindedSigner = {
   toProtoMsg(message: BindedSigner): BindedSignerProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.BindedSigner",
-      value: BindedSigner.encode(message).finish(),
+      value: BindedSigner.encode(message).finish()
     };
-  },
+  }
 };

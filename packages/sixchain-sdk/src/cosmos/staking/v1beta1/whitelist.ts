@@ -9,7 +9,12 @@ export interface WhitelistDelegatorProtoMsg {
   typeUrl: "/cosmos.staking.v1beta1.WhitelistDelegator";
   value: Uint8Array;
 }
-/** list of special delegator */
+/**
+ * list of special delegator
+ * @name WhitelistDelegatorAmino
+ * @package cosmos.staking.v1beta1
+ * @see proto type: cosmos.staking.v1beta1.WhitelistDelegator
+ */
 export interface WhitelistDelegatorAmino {
   validator_address?: string;
   delegator_address?: string[];
@@ -26,15 +31,12 @@ export interface WhitelistDelegatorSDKType {
 function createBaseWhitelistDelegator(): WhitelistDelegator {
   return {
     validatorAddress: "",
-    delegatorAddress: [],
+    delegatorAddress: []
   };
 }
 export const WhitelistDelegator = {
   typeUrl: "/cosmos.staking.v1beta1.WhitelistDelegator",
-  encode(
-    message: WhitelistDelegator,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: WhitelistDelegator, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.validatorAddress !== "") {
       writer.uint32(10).string(message.validatorAddress);
     }
@@ -66,26 +68,22 @@ export const WhitelistDelegator = {
   fromPartial(object: Partial<WhitelistDelegator>): WhitelistDelegator {
     const message = createBaseWhitelistDelegator();
     message.validatorAddress = object.validatorAddress ?? "";
-    message.delegatorAddress = object.delegatorAddress?.map((e) => e) || [];
+    message.delegatorAddress = object.delegatorAddress?.map(e => e) || [];
     return message;
   },
   fromAmino(object: WhitelistDelegatorAmino): WhitelistDelegator {
     const message = createBaseWhitelistDelegator();
-    if (
-      object.validator_address !== undefined &&
-      object.validator_address !== null
-    ) {
+    if (object.validator_address !== undefined && object.validator_address !== null) {
       message.validatorAddress = object.validator_address;
     }
-    message.delegatorAddress = object.delegator_address?.map((e) => e) || [];
+    message.delegatorAddress = object.delegator_address?.map(e => e) || [];
     return message;
   },
   toAmino(message: WhitelistDelegator): WhitelistDelegatorAmino {
     const obj: any = {};
-    obj.validator_address =
-      message.validatorAddress === "" ? undefined : message.validatorAddress;
+    obj.validator_address = message.validatorAddress === "" ? undefined : message.validatorAddress;
     if (message.delegatorAddress) {
-      obj.delegator_address = message.delegatorAddress.map((e) => e);
+      obj.delegator_address = message.delegatorAddress.map(e => e);
     } else {
       obj.delegator_address = message.delegatorAddress;
     }
@@ -97,7 +95,7 @@ export const WhitelistDelegator = {
   toAminoMsg(message: WhitelistDelegator): WhitelistDelegatorAminoMsg {
     return {
       type: "cosmos-sdk/WhitelistDelegator",
-      value: WhitelistDelegator.toAmino(message),
+      value: WhitelistDelegator.toAmino(message)
     };
   },
   fromProtoMsg(message: WhitelistDelegatorProtoMsg): WhitelistDelegator {
@@ -109,7 +107,7 @@ export const WhitelistDelegator = {
   toProtoMsg(message: WhitelistDelegator): WhitelistDelegatorProtoMsg {
     return {
       typeUrl: "/cosmos.staking.v1beta1.WhitelistDelegator",
-      value: WhitelistDelegator.encode(message).finish(),
+      value: WhitelistDelegator.encode(message).finish()
     };
-  },
+  }
 };

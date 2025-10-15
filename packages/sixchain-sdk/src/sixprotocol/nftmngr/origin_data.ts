@@ -1,9 +1,5 @@
 //@ts-nocheck
-import {
-  AttributeDefinition,
-  AttributeDefinitionAmino,
-  AttributeDefinitionSDKType,
-} from "./attribute_definition";
+import { AttributeDefinition, AttributeDefinitionAmino, AttributeDefinitionSDKType } from "./attribute_definition";
 import * as _m0 from "protobufjs/minimal";
 export enum AttributeOverriding {
   ORIGIN = 0,
@@ -82,6 +78,11 @@ export interface OriginDataProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.OriginData";
   value: Uint8Array;
 }
+/**
+ * @name OriginDataAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.OriginData
+ */
 export interface OriginDataAmino {
   origin_chain?: string;
   origin_contract_address?: string;
@@ -112,15 +113,12 @@ function createBaseOriginData(): OriginData {
     attributeOverriding: 0,
     metadataFormat: "",
     originAttributes: [],
-    uriRetrievalMethod: 0,
+    uriRetrievalMethod: 0
   };
 }
 export const OriginData = {
   typeUrl: "/sixprotocol.nftmngr.OriginData",
-  encode(
-    message: OriginData,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: OriginData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.originChain !== "") {
       writer.uint32(10).string(message.originChain);
     }
@@ -167,9 +165,7 @@ export const OriginData = {
           message.metadataFormat = reader.string();
           break;
         case 6:
-          message.originAttributes.push(
-            AttributeDefinition.decode(reader, reader.uint32())
-          );
+          message.originAttributes.push(AttributeDefinition.decode(reader, reader.uint32()));
           break;
         case 7:
           message.uriRetrievalMethod = reader.int32() as any;
@@ -188,9 +184,7 @@ export const OriginData = {
     message.originBaseUri = object.originBaseUri ?? "";
     message.attributeOverriding = object.attributeOverriding ?? 0;
     message.metadataFormat = object.metadataFormat ?? "";
-    message.originAttributes =
-      object.originAttributes?.map((e) => AttributeDefinition.fromPartial(e)) ||
-      [];
+    message.originAttributes = object.originAttributes?.map(e => AttributeDefinition.fromPartial(e)) || [];
     message.uriRetrievalMethod = object.uriRetrievalMethod ?? 0;
     return message;
   },
@@ -199,66 +193,37 @@ export const OriginData = {
     if (object.origin_chain !== undefined && object.origin_chain !== null) {
       message.originChain = object.origin_chain;
     }
-    if (
-      object.origin_contract_address !== undefined &&
-      object.origin_contract_address !== null
-    ) {
+    if (object.origin_contract_address !== undefined && object.origin_contract_address !== null) {
       message.originContractAddress = object.origin_contract_address;
     }
-    if (
-      object.origin_base_uri !== undefined &&
-      object.origin_base_uri !== null
-    ) {
+    if (object.origin_base_uri !== undefined && object.origin_base_uri !== null) {
       message.originBaseUri = object.origin_base_uri;
     }
-    if (
-      object.attribute_overriding !== undefined &&
-      object.attribute_overriding !== null
-    ) {
+    if (object.attribute_overriding !== undefined && object.attribute_overriding !== null) {
       message.attributeOverriding = object.attribute_overriding;
     }
-    if (
-      object.metadata_format !== undefined &&
-      object.metadata_format !== null
-    ) {
+    if (object.metadata_format !== undefined && object.metadata_format !== null) {
       message.metadataFormat = object.metadata_format;
     }
-    message.originAttributes =
-      object.origin_attributes?.map((e) => AttributeDefinition.fromAmino(e)) ||
-      [];
-    if (
-      object.uri_retrieval_method !== undefined &&
-      object.uri_retrieval_method !== null
-    ) {
+    message.originAttributes = object.origin_attributes?.map(e => AttributeDefinition.fromAmino(e)) || [];
+    if (object.uri_retrieval_method !== undefined && object.uri_retrieval_method !== null) {
       message.uriRetrievalMethod = object.uri_retrieval_method;
     }
     return message;
   },
   toAmino(message: OriginData): OriginDataAmino {
     const obj: any = {};
-    obj.origin_chain =
-      message.originChain === "" ? undefined : message.originChain;
-    obj.origin_contract_address =
-      message.originContractAddress === ""
-        ? undefined
-        : message.originContractAddress;
-    obj.origin_base_uri =
-      message.originBaseUri === "" ? undefined : message.originBaseUri;
-    obj.attribute_overriding =
-      message.attributeOverriding === 0
-        ? undefined
-        : message.attributeOverriding;
-    obj.metadata_format =
-      message.metadataFormat === "" ? undefined : message.metadataFormat;
+    obj.origin_chain = message.originChain === "" ? undefined : message.originChain;
+    obj.origin_contract_address = message.originContractAddress === "" ? undefined : message.originContractAddress;
+    obj.origin_base_uri = message.originBaseUri === "" ? undefined : message.originBaseUri;
+    obj.attribute_overriding = message.attributeOverriding === 0 ? undefined : message.attributeOverriding;
+    obj.metadata_format = message.metadataFormat === "" ? undefined : message.metadataFormat;
     if (message.originAttributes) {
-      obj.origin_attributes = message.originAttributes.map((e) =>
-        e ? AttributeDefinition.toAmino(e) : undefined
-      );
+      obj.origin_attributes = message.originAttributes.map(e => e ? AttributeDefinition.toAmino(e) : undefined);
     } else {
       obj.origin_attributes = message.originAttributes;
     }
-    obj.uri_retrieval_method =
-      message.uriRetrievalMethod === 0 ? undefined : message.uriRetrievalMethod;
+    obj.uri_retrieval_method = message.uriRetrievalMethod === 0 ? undefined : message.uriRetrievalMethod;
     return obj;
   },
   fromAminoMsg(object: OriginDataAminoMsg): OriginData {
@@ -273,7 +238,7 @@ export const OriginData = {
   toProtoMsg(message: OriginData): OriginDataProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.OriginData",
-      value: OriginData.encode(message).finish(),
+      value: OriginData.encode(message).finish()
     };
-  },
+  }
 };

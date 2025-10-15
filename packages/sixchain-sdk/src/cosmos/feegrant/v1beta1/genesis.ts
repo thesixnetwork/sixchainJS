@@ -9,7 +9,12 @@ export interface GenesisStateProtoMsg {
   typeUrl: "/cosmos.feegrant.v1beta1.GenesisState";
   value: Uint8Array;
 }
-/** GenesisState contains a set of fee allowances, persisted from the store */
+/**
+ * GenesisState contains a set of fee allowances, persisted from the store
+ * @name GenesisStateAmino
+ * @package cosmos.feegrant.v1beta1
+ * @see proto type: cosmos.feegrant.v1beta1.GenesisState
+ */
 export interface GenesisStateAmino {
   allowances: GrantAmino[];
 }
@@ -23,15 +28,12 @@ export interface GenesisStateSDKType {
 }
 function createBaseGenesisState(): GenesisState {
   return {
-    allowances: [],
+    allowances: []
   };
 }
 export const GenesisState = {
   typeUrl: "/cosmos.feegrant.v1beta1.GenesisState",
-  encode(
-    message: GenesisState,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.allowances) {
       Grant.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -56,22 +58,18 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.allowances =
-      object.allowances?.map((e) => Grant.fromPartial(e)) || [];
+    message.allowances = object.allowances?.map(e => Grant.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
     const message = createBaseGenesisState();
-    message.allowances =
-      object.allowances?.map((e) => Grant.fromAmino(e)) || [];
+    message.allowances = object.allowances?.map(e => Grant.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
     if (message.allowances) {
-      obj.allowances = message.allowances.map((e) =>
-        e ? Grant.toAmino(e) : undefined
-      );
+      obj.allowances = message.allowances.map(e => e ? Grant.toAmino(e) : undefined);
     } else {
       obj.allowances = message.allowances;
     }
@@ -83,7 +81,7 @@ export const GenesisState = {
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
       type: "cosmos-sdk/GenesisState",
-      value: GenesisState.toAmino(message),
+      value: GenesisState.toAmino(message)
     };
   },
   fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
@@ -95,7 +93,7 @@ export const GenesisState = {
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
       typeUrl: "/cosmos.feegrant.v1beta1.GenesisState",
-      value: GenesisState.encode(message).finish(),
+      value: GenesisState.encode(message).finish()
     };
-  },
+  }
 };

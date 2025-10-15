@@ -22,6 +22,9 @@ export interface BaseAccountProtoMsg {
  * BaseAccount defines a base account type. It contains all the necessary fields
  * for basic account functionality. Any custom account type should extend this
  * type for additional functionality (e.g. vesting).
+ * @name BaseAccountAmino
+ * @package cosmos.auth.v1beta1
+ * @see proto type: cosmos.auth.v1beta1.BaseAccount
  */
 export interface BaseAccountAmino {
   address?: string;
@@ -56,7 +59,12 @@ export interface ModuleAccountProtoMsg {
   typeUrl: "/cosmos.auth.v1beta1.ModuleAccount";
   value: Uint8Array;
 }
-/** ModuleAccount defines an account for modules that holds coins on a pool. */
+/**
+ * ModuleAccount defines an account for modules that holds coins on a pool.
+ * @name ModuleAccountAmino
+ * @package cosmos.auth.v1beta1
+ * @see proto type: cosmos.auth.v1beta1.ModuleAccount
+ */
 export interface ModuleAccountAmino {
   base_account?: BaseAccountAmino;
   name?: string;
@@ -75,7 +83,7 @@ export interface ModuleAccountSDKType {
 }
 /**
  * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
- *
+ * 
  * Since: cosmos-sdk 0.47
  */
 export interface ModuleCredential {
@@ -93,11 +101,16 @@ export interface ModuleCredentialProtoMsg {
 }
 /**
  * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
- *
+ * 
  * Since: cosmos-sdk 0.47
+ * @name ModuleCredentialAmino
+ * @package cosmos.auth.v1beta1
+ * @see proto type: cosmos.auth.v1beta1.ModuleCredential
  */
 export interface ModuleCredentialAmino {
-  /** module_name is the name of the module used for address derivation (passed into address.Module). */
+  /**
+   * module_name is the name of the module used for address derivation (passed into address.Module).
+   */
   module_name?: string;
   /**
    * derivation_keys is for deriving a module account address (passed into address.Module)
@@ -111,7 +124,7 @@ export interface ModuleCredentialAminoMsg {
 }
 /**
  * ModuleCredential represents a unclaimable pubkey for base accounts controlled by modules.
- *
+ * 
  * Since: cosmos-sdk 0.47
  */
 export interface ModuleCredentialSDKType {
@@ -130,7 +143,12 @@ export interface ParamsProtoMsg {
   typeUrl: "/cosmos.auth.v1beta1.Params";
   value: Uint8Array;
 }
-/** Params defines the parameters for the auth module. */
+/**
+ * Params defines the parameters for the auth module.
+ * @name ParamsAmino
+ * @package cosmos.auth.v1beta1
+ * @see proto type: cosmos.auth.v1beta1.Params
+ */
 export interface ParamsAmino {
   max_memo_characters?: string;
   tx_sig_limit?: string;
@@ -156,15 +174,12 @@ function createBaseBaseAccount(): BaseAccount {
     address: "",
     pubKey: undefined,
     accountNumber: Long.UZERO,
-    sequence: Long.UZERO,
+    sequence: Long.UZERO
   };
 }
 export const BaseAccount = {
   typeUrl: "/cosmos.auth.v1beta1.BaseAccount",
-  encode(
-    message: BaseAccount,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: BaseAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
@@ -208,18 +223,9 @@ export const BaseAccount = {
   fromPartial(object: Partial<BaseAccount>): BaseAccount {
     const message = createBaseBaseAccount();
     message.address = object.address ?? "";
-    message.pubKey =
-      object.pubKey !== undefined && object.pubKey !== null
-        ? Any.fromPartial(object.pubKey)
-        : undefined;
-    message.accountNumber =
-      object.accountNumber !== undefined && object.accountNumber !== null
-        ? Long.fromValue(object.accountNumber)
-        : Long.UZERO;
-    message.sequence =
-      object.sequence !== undefined && object.sequence !== null
-        ? Long.fromValue(object.sequence)
-        : Long.UZERO;
+    message.pubKey = object.pubKey !== undefined && object.pubKey !== null ? Any.fromPartial(object.pubKey) : undefined;
+    message.accountNumber = object.accountNumber !== undefined && object.accountNumber !== null ? Long.fromValue(object.accountNumber) : Long.UZERO;
+    message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
     return message;
   },
   fromAmino(object: BaseAccountAmino): BaseAccount {
@@ -242,12 +248,8 @@ export const BaseAccount = {
     const obj: any = {};
     obj.address = message.address === "" ? undefined : message.address;
     obj.pub_key = message.pubKey ? Any.toAmino(message.pubKey) : undefined;
-    obj.account_number = !message.accountNumber.isZero()
-      ? message.accountNumber?.toString()
-      : undefined;
-    obj.sequence = !message.sequence.isZero()
-      ? message.sequence?.toString()
-      : undefined;
+    obj.account_number = !message.accountNumber.isZero() ? message.accountNumber?.toString() : undefined;
+    obj.sequence = !message.sequence.isZero() ? message.sequence?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: BaseAccountAminoMsg): BaseAccount {
@@ -256,7 +258,7 @@ export const BaseAccount = {
   toAminoMsg(message: BaseAccount): BaseAccountAminoMsg {
     return {
       type: "cosmos-sdk/BaseAccount",
-      value: BaseAccount.toAmino(message),
+      value: BaseAccount.toAmino(message)
     };
   },
   fromProtoMsg(message: BaseAccountProtoMsg): BaseAccount {
@@ -268,29 +270,23 @@ export const BaseAccount = {
   toProtoMsg(message: BaseAccount): BaseAccountProtoMsg {
     return {
       typeUrl: "/cosmos.auth.v1beta1.BaseAccount",
-      value: BaseAccount.encode(message).finish(),
+      value: BaseAccount.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseModuleAccount(): ModuleAccount {
   return {
     $typeUrl: "/cosmos.auth.v1beta1.ModuleAccount",
     baseAccount: undefined,
     name: "",
-    permissions: [],
+    permissions: []
   };
 }
 export const ModuleAccount = {
   typeUrl: "/cosmos.auth.v1beta1.ModuleAccount",
-  encode(
-    message: ModuleAccount,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ModuleAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.baseAccount !== undefined) {
-      BaseAccount.encode(
-        message.baseAccount,
-        writer.uint32(10).fork()
-      ).ldelim();
+      BaseAccount.encode(message.baseAccount, writer.uint32(10).fork()).ldelim();
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
@@ -325,12 +321,9 @@ export const ModuleAccount = {
   },
   fromPartial(object: Partial<ModuleAccount>): ModuleAccount {
     const message = createBaseModuleAccount();
-    message.baseAccount =
-      object.baseAccount !== undefined && object.baseAccount !== null
-        ? BaseAccount.fromPartial(object.baseAccount)
-        : undefined;
+    message.baseAccount = object.baseAccount !== undefined && object.baseAccount !== null ? BaseAccount.fromPartial(object.baseAccount) : undefined;
     message.name = object.name ?? "";
-    message.permissions = object.permissions?.map((e) => e) || [];
+    message.permissions = object.permissions?.map(e => e) || [];
     return message;
   },
   fromAmino(object: ModuleAccountAmino): ModuleAccount {
@@ -341,17 +334,15 @@ export const ModuleAccount = {
     if (object.name !== undefined && object.name !== null) {
       message.name = object.name;
     }
-    message.permissions = object.permissions?.map((e) => e) || [];
+    message.permissions = object.permissions?.map(e => e) || [];
     return message;
   },
   toAmino(message: ModuleAccount): ModuleAccountAmino {
     const obj: any = {};
-    obj.base_account = message.baseAccount
-      ? BaseAccount.toAmino(message.baseAccount)
-      : undefined;
+    obj.base_account = message.baseAccount ? BaseAccount.toAmino(message.baseAccount) : undefined;
     obj.name = message.name === "" ? undefined : message.name;
     if (message.permissions) {
-      obj.permissions = message.permissions.map((e) => e);
+      obj.permissions = message.permissions.map(e => e);
     } else {
       obj.permissions = message.permissions;
     }
@@ -363,7 +354,7 @@ export const ModuleAccount = {
   toAminoMsg(message: ModuleAccount): ModuleAccountAminoMsg {
     return {
       type: "cosmos-sdk/ModuleAccount",
-      value: ModuleAccount.toAmino(message),
+      value: ModuleAccount.toAmino(message)
     };
   },
   fromProtoMsg(message: ModuleAccountProtoMsg): ModuleAccount {
@@ -375,22 +366,19 @@ export const ModuleAccount = {
   toProtoMsg(message: ModuleAccount): ModuleAccountProtoMsg {
     return {
       typeUrl: "/cosmos.auth.v1beta1.ModuleAccount",
-      value: ModuleAccount.encode(message).finish(),
+      value: ModuleAccount.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseModuleCredential(): ModuleCredential {
   return {
     moduleName: "",
-    derivationKeys: [],
+    derivationKeys: []
   };
 }
 export const ModuleCredential = {
   typeUrl: "/cosmos.auth.v1beta1.ModuleCredential",
-  encode(
-    message: ModuleCredential,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ModuleCredential, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.moduleName !== "") {
       writer.uint32(10).string(message.moduleName);
     }
@@ -422,7 +410,7 @@ export const ModuleCredential = {
   fromPartial(object: Partial<ModuleCredential>): ModuleCredential {
     const message = createBaseModuleCredential();
     message.moduleName = object.moduleName ?? "";
-    message.derivationKeys = object.derivationKeys?.map((e) => e) || [];
+    message.derivationKeys = object.derivationKeys?.map(e => e) || [];
     return message;
   },
   fromAmino(object: ModuleCredentialAmino): ModuleCredential {
@@ -430,18 +418,14 @@ export const ModuleCredential = {
     if (object.module_name !== undefined && object.module_name !== null) {
       message.moduleName = object.module_name;
     }
-    message.derivationKeys =
-      object.derivation_keys?.map((e) => bytesFromBase64(e)) || [];
+    message.derivationKeys = object.derivation_keys?.map(e => bytesFromBase64(e)) || [];
     return message;
   },
   toAmino(message: ModuleCredential): ModuleCredentialAmino {
     const obj: any = {};
-    obj.module_name =
-      message.moduleName === "" ? undefined : message.moduleName;
+    obj.module_name = message.moduleName === "" ? undefined : message.moduleName;
     if (message.derivationKeys) {
-      obj.derivation_keys = message.derivationKeys.map((e) =>
-        base64FromBytes(e)
-      );
+      obj.derivation_keys = message.derivationKeys.map(e => base64FromBytes(e));
     } else {
       obj.derivation_keys = message.derivationKeys;
     }
@@ -453,7 +437,7 @@ export const ModuleCredential = {
   toAminoMsg(message: ModuleCredential): ModuleCredentialAminoMsg {
     return {
       type: "cosmos-sdk/GroupAccountCredential",
-      value: ModuleCredential.toAmino(message),
+      value: ModuleCredential.toAmino(message)
     };
   },
   fromProtoMsg(message: ModuleCredentialProtoMsg): ModuleCredential {
@@ -465,9 +449,9 @@ export const ModuleCredential = {
   toProtoMsg(message: ModuleCredential): ModuleCredentialProtoMsg {
     return {
       typeUrl: "/cosmos.auth.v1beta1.ModuleCredential",
-      value: ModuleCredential.encode(message).finish(),
+      value: ModuleCredential.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseParams(): Params {
   return {
@@ -475,15 +459,12 @@ function createBaseParams(): Params {
     txSigLimit: Long.UZERO,
     txSizeCostPerByte: Long.UZERO,
     sigVerifyCostEd25519: Long.UZERO,
-    sigVerifyCostSecp256k1: Long.UZERO,
+    sigVerifyCostSecp256k1: Long.UZERO
   };
 }
 export const Params = {
   typeUrl: "/cosmos.auth.v1beta1.Params",
-  encode(
-    message: Params,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.maxMemoCharacters.isZero()) {
       writer.uint32(8).uint64(message.maxMemoCharacters);
     }
@@ -532,84 +513,39 @@ export const Params = {
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
-    message.maxMemoCharacters =
-      object.maxMemoCharacters !== undefined &&
-      object.maxMemoCharacters !== null
-        ? Long.fromValue(object.maxMemoCharacters)
-        : Long.UZERO;
-    message.txSigLimit =
-      object.txSigLimit !== undefined && object.txSigLimit !== null
-        ? Long.fromValue(object.txSigLimit)
-        : Long.UZERO;
-    message.txSizeCostPerByte =
-      object.txSizeCostPerByte !== undefined &&
-      object.txSizeCostPerByte !== null
-        ? Long.fromValue(object.txSizeCostPerByte)
-        : Long.UZERO;
-    message.sigVerifyCostEd25519 =
-      object.sigVerifyCostEd25519 !== undefined &&
-      object.sigVerifyCostEd25519 !== null
-        ? Long.fromValue(object.sigVerifyCostEd25519)
-        : Long.UZERO;
-    message.sigVerifyCostSecp256k1 =
-      object.sigVerifyCostSecp256k1 !== undefined &&
-      object.sigVerifyCostSecp256k1 !== null
-        ? Long.fromValue(object.sigVerifyCostSecp256k1)
-        : Long.UZERO;
+    message.maxMemoCharacters = object.maxMemoCharacters !== undefined && object.maxMemoCharacters !== null ? Long.fromValue(object.maxMemoCharacters) : Long.UZERO;
+    message.txSigLimit = object.txSigLimit !== undefined && object.txSigLimit !== null ? Long.fromValue(object.txSigLimit) : Long.UZERO;
+    message.txSizeCostPerByte = object.txSizeCostPerByte !== undefined && object.txSizeCostPerByte !== null ? Long.fromValue(object.txSizeCostPerByte) : Long.UZERO;
+    message.sigVerifyCostEd25519 = object.sigVerifyCostEd25519 !== undefined && object.sigVerifyCostEd25519 !== null ? Long.fromValue(object.sigVerifyCostEd25519) : Long.UZERO;
+    message.sigVerifyCostSecp256k1 = object.sigVerifyCostSecp256k1 !== undefined && object.sigVerifyCostSecp256k1 !== null ? Long.fromValue(object.sigVerifyCostSecp256k1) : Long.UZERO;
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
     const message = createBaseParams();
-    if (
-      object.max_memo_characters !== undefined &&
-      object.max_memo_characters !== null
-    ) {
+    if (object.max_memo_characters !== undefined && object.max_memo_characters !== null) {
       message.maxMemoCharacters = Long.fromString(object.max_memo_characters);
     }
     if (object.tx_sig_limit !== undefined && object.tx_sig_limit !== null) {
       message.txSigLimit = Long.fromString(object.tx_sig_limit);
     }
-    if (
-      object.tx_size_cost_per_byte !== undefined &&
-      object.tx_size_cost_per_byte !== null
-    ) {
+    if (object.tx_size_cost_per_byte !== undefined && object.tx_size_cost_per_byte !== null) {
       message.txSizeCostPerByte = Long.fromString(object.tx_size_cost_per_byte);
     }
-    if (
-      object.sig_verify_cost_ed25519 !== undefined &&
-      object.sig_verify_cost_ed25519 !== null
-    ) {
-      message.sigVerifyCostEd25519 = Long.fromString(
-        object.sig_verify_cost_ed25519
-      );
+    if (object.sig_verify_cost_ed25519 !== undefined && object.sig_verify_cost_ed25519 !== null) {
+      message.sigVerifyCostEd25519 = Long.fromString(object.sig_verify_cost_ed25519);
     }
-    if (
-      object.sig_verify_cost_secp256k1 !== undefined &&
-      object.sig_verify_cost_secp256k1 !== null
-    ) {
-      message.sigVerifyCostSecp256k1 = Long.fromString(
-        object.sig_verify_cost_secp256k1
-      );
+    if (object.sig_verify_cost_secp256k1 !== undefined && object.sig_verify_cost_secp256k1 !== null) {
+      message.sigVerifyCostSecp256k1 = Long.fromString(object.sig_verify_cost_secp256k1);
     }
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.max_memo_characters = !message.maxMemoCharacters.isZero()
-      ? message.maxMemoCharacters?.toString()
-      : undefined;
-    obj.tx_sig_limit = !message.txSigLimit.isZero()
-      ? message.txSigLimit?.toString()
-      : undefined;
-    obj.tx_size_cost_per_byte = !message.txSizeCostPerByte.isZero()
-      ? message.txSizeCostPerByte?.toString()
-      : undefined;
-    obj.sig_verify_cost_ed25519 = !message.sigVerifyCostEd25519.isZero()
-      ? message.sigVerifyCostEd25519?.toString()
-      : undefined;
-    obj.sig_verify_cost_secp256k1 = !message.sigVerifyCostSecp256k1.isZero()
-      ? message.sigVerifyCostSecp256k1?.toString()
-      : undefined;
+    obj.max_memo_characters = !message.maxMemoCharacters.isZero() ? message.maxMemoCharacters?.toString() : undefined;
+    obj.tx_sig_limit = !message.txSigLimit.isZero() ? message.txSigLimit?.toString() : undefined;
+    obj.tx_size_cost_per_byte = !message.txSizeCostPerByte.isZero() ? message.txSizeCostPerByte?.toString() : undefined;
+    obj.sig_verify_cost_ed25519 = !message.sigVerifyCostEd25519.isZero() ? message.sigVerifyCostEd25519?.toString() : undefined;
+    obj.sig_verify_cost_secp256k1 = !message.sigVerifyCostSecp256k1.isZero() ? message.sigVerifyCostSecp256k1?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {
@@ -618,7 +554,7 @@ export const Params = {
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
       type: "cosmos-sdk/x/auth/Params",
-      value: Params.toAmino(message),
+      value: Params.toAmino(message)
     };
   },
   fromProtoMsg(message: ParamsProtoMsg): Params {
@@ -630,7 +566,7 @@ export const Params = {
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
       typeUrl: "/cosmos.auth.v1beta1.Params",
-      value: Params.encode(message).finish(),
+      value: Params.encode(message).finish()
     };
-  },
+  }
 };

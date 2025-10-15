@@ -7,6 +7,11 @@ export interface AddressListProtoMsg {
   typeUrl: "/sixprotocol.nftadmin.AddressList";
   value: Uint8Array;
 }
+/**
+ * @name AddressListAmino
+ * @package sixprotocol.nftadmin
+ * @see proto type: sixprotocol.nftadmin.AddressList
+ */
 export interface AddressListAmino {
   addresses?: string[];
 }
@@ -25,6 +30,11 @@ export interface PermissionProtoMsg {
   typeUrl: "/sixprotocol.nftadmin.Permission";
   value: Uint8Array;
 }
+/**
+ * @name PermissionAmino
+ * @package sixprotocol.nftadmin
+ * @see proto type: sixprotocol.nftadmin.Permission
+ */
 export interface PermissionAmino {
   name?: string;
   addresses?: AddressListAmino;
@@ -44,6 +54,11 @@ export interface PermissionsProtoMsg {
   typeUrl: "/sixprotocol.nftadmin.Permissions";
   value: Uint8Array;
 }
+/**
+ * @name PermissionsAmino
+ * @package sixprotocol.nftadmin
+ * @see proto type: sixprotocol.nftadmin.Permissions
+ */
 export interface PermissionsAmino {
   permissions?: PermissionAmino[];
 }
@@ -56,15 +71,12 @@ export interface PermissionsSDKType {
 }
 function createBaseAddressList(): AddressList {
   return {
-    addresses: [],
+    addresses: []
   };
 }
 export const AddressList = {
   typeUrl: "/sixprotocol.nftadmin.AddressList",
-  encode(
-    message: AddressList,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: AddressList, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.addresses) {
       writer.uint32(10).string(v!);
     }
@@ -89,18 +101,18 @@ export const AddressList = {
   },
   fromPartial(object: Partial<AddressList>): AddressList {
     const message = createBaseAddressList();
-    message.addresses = object.addresses?.map((e) => e) || [];
+    message.addresses = object.addresses?.map(e => e) || [];
     return message;
   },
   fromAmino(object: AddressListAmino): AddressList {
     const message = createBaseAddressList();
-    message.addresses = object.addresses?.map((e) => e) || [];
+    message.addresses = object.addresses?.map(e => e) || [];
     return message;
   },
   toAmino(message: AddressList): AddressListAmino {
     const obj: any = {};
     if (message.addresses) {
-      obj.addresses = message.addresses.map((e) => e);
+      obj.addresses = message.addresses.map(e => e);
     } else {
       obj.addresses = message.addresses;
     }
@@ -118,22 +130,19 @@ export const AddressList = {
   toProtoMsg(message: AddressList): AddressListProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.AddressList",
-      value: AddressList.encode(message).finish(),
+      value: AddressList.encode(message).finish()
     };
-  },
+  }
 };
 function createBasePermission(): Permission {
   return {
     name: "",
-    addresses: undefined,
+    addresses: undefined
   };
 }
 export const Permission = {
   typeUrl: "/sixprotocol.nftadmin.Permission",
-  encode(
-    message: Permission,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Permission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
@@ -165,10 +174,7 @@ export const Permission = {
   fromPartial(object: Partial<Permission>): Permission {
     const message = createBasePermission();
     message.name = object.name ?? "";
-    message.addresses =
-      object.addresses !== undefined && object.addresses !== null
-        ? AddressList.fromPartial(object.addresses)
-        : undefined;
+    message.addresses = object.addresses !== undefined && object.addresses !== null ? AddressList.fromPartial(object.addresses) : undefined;
     return message;
   },
   fromAmino(object: PermissionAmino): Permission {
@@ -184,9 +190,7 @@ export const Permission = {
   toAmino(message: Permission): PermissionAmino {
     const obj: any = {};
     obj.name = message.name === "" ? undefined : message.name;
-    obj.addresses = message.addresses
-      ? AddressList.toAmino(message.addresses)
-      : undefined;
+    obj.addresses = message.addresses ? AddressList.toAmino(message.addresses) : undefined;
     return obj;
   },
   fromAminoMsg(object: PermissionAminoMsg): Permission {
@@ -201,21 +205,18 @@ export const Permission = {
   toProtoMsg(message: Permission): PermissionProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.Permission",
-      value: Permission.encode(message).finish(),
+      value: Permission.encode(message).finish()
     };
-  },
+  }
 };
 function createBasePermissions(): Permissions {
   return {
-    permissions: [],
+    permissions: []
   };
 }
 export const Permissions = {
   typeUrl: "/sixprotocol.nftadmin.Permissions",
-  encode(
-    message: Permissions,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Permissions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.permissions) {
       Permission.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -240,22 +241,18 @@ export const Permissions = {
   },
   fromPartial(object: Partial<Permissions>): Permissions {
     const message = createBasePermissions();
-    message.permissions =
-      object.permissions?.map((e) => Permission.fromPartial(e)) || [];
+    message.permissions = object.permissions?.map(e => Permission.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: PermissionsAmino): Permissions {
     const message = createBasePermissions();
-    message.permissions =
-      object.permissions?.map((e) => Permission.fromAmino(e)) || [];
+    message.permissions = object.permissions?.map(e => Permission.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: Permissions): PermissionsAmino {
     const obj: any = {};
     if (message.permissions) {
-      obj.permissions = message.permissions.map((e) =>
-        e ? Permission.toAmino(e) : undefined
-      );
+      obj.permissions = message.permissions.map(e => e ? Permission.toAmino(e) : undefined);
     } else {
       obj.permissions = message.permissions;
     }
@@ -273,7 +270,7 @@ export const Permissions = {
   toProtoMsg(message: Permissions): PermissionsProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.Permissions",
-      value: Permissions.encode(message).finish(),
+      value: Permissions.encode(message).finish()
     };
-  },
+  }
 };

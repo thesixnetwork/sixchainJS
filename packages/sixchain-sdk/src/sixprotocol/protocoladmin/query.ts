@@ -1,12 +1,5 @@
 //@ts-nocheck
-import {
-  PageRequest,
-  PageRequestAmino,
-  PageRequestSDKType,
-  PageResponse,
-  PageResponseAmino,
-  PageResponseSDKType,
-} from "../../cosmos/base/query/v1beta1/pagination";
+import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../cosmos/base/query/v1beta1/pagination";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Admin, AdminAmino, AdminSDKType } from "./admin";
 import { Group, GroupAmino, GroupSDKType } from "./group";
@@ -17,7 +10,12 @@ export interface QueryParamsRequestProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryParamsRequest";
   value: Uint8Array;
 }
-/** QueryParamsRequest is request type for the Query/Params RPC method. */
+/**
+ * QueryParamsRequest is request type for the Query/Params RPC method.
+ * @name QueryParamsRequestAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryParamsRequest
+ */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
   type: "/sixprotocol.protocoladmin.QueryParamsRequest";
@@ -34,9 +32,16 @@ export interface QueryParamsResponseProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryParamsResponse";
   value: Uint8Array;
 }
-/** QueryParamsResponse is response type for the Query/Params RPC method. */
+/**
+ * QueryParamsResponse is response type for the Query/Params RPC method.
+ * @name QueryParamsResponseAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryParamsResponse
+ */
 export interface QueryParamsResponseAmino {
-  /** params holds all the parameters of this module. */
+  /**
+   * params holds all the parameters of this module.
+   */
   params: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
@@ -55,6 +60,11 @@ export interface QueryGetAdminRequestProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryGetAdminRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetAdminRequestAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryGetAdminRequest
+ */
 export interface QueryGetAdminRequestAmino {
   group?: string;
   admin?: string;
@@ -74,6 +84,11 @@ export interface QueryGetAdminResponseProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryGetAdminResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetAdminResponseAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryGetAdminResponse
+ */
 export interface QueryGetAdminResponseAmino {
   admin?: AdminAmino;
 }
@@ -91,6 +106,11 @@ export interface QueryAllAdminRequestProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryAllAdminRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllAdminRequestAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryAllAdminRequest
+ */
 export interface QueryAllAdminRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -109,6 +129,11 @@ export interface QueryAllAdminResponseProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryAllAdminResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllAdminResponseAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryAllAdminResponse
+ */
 export interface QueryAllAdminResponseAmino {
   admin?: AdminAmino[];
   pagination?: PageResponseAmino;
@@ -128,6 +153,11 @@ export interface QueryGetGroupRequestProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryGetGroupRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetGroupRequestAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryGetGroupRequest
+ */
 export interface QueryGetGroupRequestAmino {
   name?: string;
 }
@@ -145,6 +175,11 @@ export interface QueryGetGroupResponseProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryGetGroupResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryGetGroupResponseAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryGetGroupResponse
+ */
 export interface QueryGetGroupResponseAmino {
   group?: GroupAmino;
 }
@@ -162,6 +197,11 @@ export interface QueryAllGroupRequestProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryAllGroupRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllGroupRequestAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryAllGroupRequest
+ */
 export interface QueryAllGroupRequestAmino {
   pagination?: PageRequestAmino;
 }
@@ -180,6 +220,11 @@ export interface QueryAllGroupResponseProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryAllGroupResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryAllGroupResponseAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryAllGroupResponse
+ */
 export interface QueryAllGroupResponseAmino {
   group?: GroupAmino[];
   pagination?: PageResponseAmino;
@@ -200,6 +245,11 @@ export interface QueryListAdminOfGroupRequestProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryListAdminOfGroupRequest";
   value: Uint8Array;
 }
+/**
+ * @name QueryListAdminOfGroupRequestAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryListAdminOfGroupRequest
+ */
 export interface QueryListAdminOfGroupRequestAmino {
   group?: string;
   pagination?: PageRequestAmino;
@@ -220,6 +270,11 @@ export interface QueryListAdminOfGroupResponseProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.QueryListAdminOfGroupResponse";
   value: Uint8Array;
 }
+/**
+ * @name QueryListAdminOfGroupResponseAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.QueryListAdminOfGroupResponse
+ */
 export interface QueryListAdminOfGroupResponseAmino {
   admin?: string[];
   pagination?: PageResponseAmino;
@@ -237,10 +292,7 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 export const QueryParamsRequest = {
   typeUrl: "/sixprotocol.protocoladmin.QueryParamsRequest",
-  encode(
-    _: QueryParamsRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest {
@@ -281,21 +333,18 @@ export const QueryParamsRequest = {
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryParamsRequest",
-      value: QueryParamsRequest.encode(message).finish(),
+      value: QueryParamsRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
-    params: Params.fromPartial({}),
+    params: Params.fromPartial({})
   };
 }
 export const QueryParamsResponse = {
   typeUrl: "/sixprotocol.protocoladmin.QueryParamsResponse",
-  encode(
-    message: QueryParamsResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -320,10 +369,7 @@ export const QueryParamsResponse = {
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
-    message.params =
-      object.params !== undefined && object.params !== null
-        ? Params.fromPartial(object.params)
-        : undefined;
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
@@ -335,9 +381,7 @@ export const QueryParamsResponse = {
   },
   toAmino(message: QueryParamsResponse): QueryParamsResponseAmino {
     const obj: any = {};
-    obj.params = message.params
-      ? Params.toAmino(message.params)
-      : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse {
@@ -352,22 +396,19 @@ export const QueryParamsResponse = {
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryParamsResponse",
-      value: QueryParamsResponse.encode(message).finish(),
+      value: QueryParamsResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetAdminRequest(): QueryGetAdminRequest {
   return {
     group: "",
-    admin: "",
+    admin: ""
   };
 }
 export const QueryGetAdminRequest = {
   typeUrl: "/sixprotocol.protocoladmin.QueryGetAdminRequest",
-  encode(
-    message: QueryGetAdminRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetAdminRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.group !== "") {
       writer.uint32(10).string(message.group);
     }
@@ -376,10 +417,7 @@ export const QueryGetAdminRequest = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetAdminRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetAdminRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetAdminRequest();
@@ -433,30 +471,24 @@ export const QueryGetAdminRequest = {
   toProtoMsg(message: QueryGetAdminRequest): QueryGetAdminRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryGetAdminRequest",
-      value: QueryGetAdminRequest.encode(message).finish(),
+      value: QueryGetAdminRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetAdminResponse(): QueryGetAdminResponse {
   return {
-    admin: Admin.fromPartial({}),
+    admin: Admin.fromPartial({})
   };
 }
 export const QueryGetAdminResponse = {
   typeUrl: "/sixprotocol.protocoladmin.QueryGetAdminResponse",
-  encode(
-    message: QueryGetAdminResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetAdminResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.admin !== undefined) {
       Admin.encode(message.admin, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetAdminResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetAdminResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetAdminResponse();
@@ -475,10 +507,7 @@ export const QueryGetAdminResponse = {
   },
   fromPartial(object: Partial<QueryGetAdminResponse>): QueryGetAdminResponse {
     const message = createBaseQueryGetAdminResponse();
-    message.admin =
-      object.admin !== undefined && object.admin !== null
-        ? Admin.fromPartial(object.admin)
-        : undefined;
+    message.admin = object.admin !== undefined && object.admin !== null ? Admin.fromPartial(object.admin) : undefined;
     return message;
   },
   fromAmino(object: QueryGetAdminResponseAmino): QueryGetAdminResponse {
@@ -505,30 +534,24 @@ export const QueryGetAdminResponse = {
   toProtoMsg(message: QueryGetAdminResponse): QueryGetAdminResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryGetAdminResponse",
-      value: QueryGetAdminResponse.encode(message).finish(),
+      value: QueryGetAdminResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllAdminRequest(): QueryAllAdminRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllAdminRequest = {
   typeUrl: "/sixprotocol.protocoladmin.QueryAllAdminRequest",
-  encode(
-    message: QueryAllAdminRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllAdminRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllAdminRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllAdminRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllAdminRequest();
@@ -547,10 +570,7 @@ export const QueryAllAdminRequest = {
   },
   fromPartial(object: Partial<QueryAllAdminRequest>): QueryAllAdminRequest {
     const message = createBaseQueryAllAdminRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryAllAdminRequestAmino): QueryAllAdminRequest {
@@ -562,9 +582,7 @@ export const QueryAllAdminRequest = {
   },
   toAmino(message: QueryAllAdminRequest): QueryAllAdminRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryAllAdminRequestAminoMsg): QueryAllAdminRequest {
@@ -579,37 +597,28 @@ export const QueryAllAdminRequest = {
   toProtoMsg(message: QueryAllAdminRequest): QueryAllAdminRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryAllAdminRequest",
-      value: QueryAllAdminRequest.encode(message).finish(),
+      value: QueryAllAdminRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllAdminResponse(): QueryAllAdminResponse {
   return {
     admin: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllAdminResponse = {
   typeUrl: "/sixprotocol.protocoladmin.QueryAllAdminResponse",
-  encode(
-    message: QueryAllAdminResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllAdminResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.admin) {
       Admin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllAdminResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllAdminResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllAdminResponse();
@@ -631,16 +640,13 @@ export const QueryAllAdminResponse = {
   },
   fromPartial(object: Partial<QueryAllAdminResponse>): QueryAllAdminResponse {
     const message = createBaseQueryAllAdminResponse();
-    message.admin = object.admin?.map((e) => Admin.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.admin = object.admin?.map(e => Admin.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryAllAdminResponseAmino): QueryAllAdminResponse {
     const message = createBaseQueryAllAdminResponse();
-    message.admin = object.admin?.map((e) => Admin.fromAmino(e)) || [];
+    message.admin = object.admin?.map(e => Admin.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -649,13 +655,11 @@ export const QueryAllAdminResponse = {
   toAmino(message: QueryAllAdminResponse): QueryAllAdminResponseAmino {
     const obj: any = {};
     if (message.admin) {
-      obj.admin = message.admin.map((e) => (e ? Admin.toAmino(e) : undefined));
+      obj.admin = message.admin.map(e => e ? Admin.toAmino(e) : undefined);
     } else {
       obj.admin = message.admin;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryAllAdminResponseAminoMsg): QueryAllAdminResponse {
@@ -670,30 +674,24 @@ export const QueryAllAdminResponse = {
   toProtoMsg(message: QueryAllAdminResponse): QueryAllAdminResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryAllAdminResponse",
-      value: QueryAllAdminResponse.encode(message).finish(),
+      value: QueryAllAdminResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetGroupRequest(): QueryGetGroupRequest {
   return {
-    name: "",
+    name: ""
   };
 }
 export const QueryGetGroupRequest = {
   typeUrl: "/sixprotocol.protocoladmin.QueryGetGroupRequest",
-  encode(
-    message: QueryGetGroupRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetGroupRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetGroupRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetGroupRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetGroupRequest();
@@ -739,30 +737,24 @@ export const QueryGetGroupRequest = {
   toProtoMsg(message: QueryGetGroupRequest): QueryGetGroupRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryGetGroupRequest",
-      value: QueryGetGroupRequest.encode(message).finish(),
+      value: QueryGetGroupRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryGetGroupResponse(): QueryGetGroupResponse {
   return {
-    group: Group.fromPartial({}),
+    group: Group.fromPartial({})
   };
 }
 export const QueryGetGroupResponse = {
   typeUrl: "/sixprotocol.protocoladmin.QueryGetGroupResponse",
-  encode(
-    message: QueryGetGroupResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryGetGroupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.group !== undefined) {
       Group.encode(message.group, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryGetGroupResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetGroupResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetGroupResponse();
@@ -781,10 +773,7 @@ export const QueryGetGroupResponse = {
   },
   fromPartial(object: Partial<QueryGetGroupResponse>): QueryGetGroupResponse {
     const message = createBaseQueryGetGroupResponse();
-    message.group =
-      object.group !== undefined && object.group !== null
-        ? Group.fromPartial(object.group)
-        : undefined;
+    message.group = object.group !== undefined && object.group !== null ? Group.fromPartial(object.group) : undefined;
     return message;
   },
   fromAmino(object: QueryGetGroupResponseAmino): QueryGetGroupResponse {
@@ -811,30 +800,24 @@ export const QueryGetGroupResponse = {
   toProtoMsg(message: QueryGetGroupResponse): QueryGetGroupResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryGetGroupResponse",
-      value: QueryGetGroupResponse.encode(message).finish(),
+      value: QueryGetGroupResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllGroupRequest(): QueryAllGroupRequest {
   return {
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllGroupRequest = {
   typeUrl: "/sixprotocol.protocoladmin.QueryAllGroupRequest",
-  encode(
-    message: QueryAllGroupRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllGroupRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllGroupRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllGroupRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllGroupRequest();
@@ -853,10 +836,7 @@ export const QueryAllGroupRequest = {
   },
   fromPartial(object: Partial<QueryAllGroupRequest>): QueryAllGroupRequest {
     const message = createBaseQueryAllGroupRequest();
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryAllGroupRequestAmino): QueryAllGroupRequest {
@@ -868,9 +848,7 @@ export const QueryAllGroupRequest = {
   },
   toAmino(message: QueryAllGroupRequest): QueryAllGroupRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryAllGroupRequestAminoMsg): QueryAllGroupRequest {
@@ -885,37 +863,28 @@ export const QueryAllGroupRequest = {
   toProtoMsg(message: QueryAllGroupRequest): QueryAllGroupRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryAllGroupRequest",
-      value: QueryAllGroupRequest.encode(message).finish(),
+      value: QueryAllGroupRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryAllGroupResponse(): QueryAllGroupResponse {
   return {
     group: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryAllGroupResponse = {
   typeUrl: "/sixprotocol.protocoladmin.QueryAllGroupResponse",
-  encode(
-    message: QueryAllGroupResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryAllGroupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.group) {
       Group.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryAllGroupResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllGroupResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllGroupResponse();
@@ -937,16 +906,13 @@ export const QueryAllGroupResponse = {
   },
   fromPartial(object: Partial<QueryAllGroupResponse>): QueryAllGroupResponse {
     const message = createBaseQueryAllGroupResponse();
-    message.group = object.group?.map((e) => Group.fromPartial(e)) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.group = object.group?.map(e => Group.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
   fromAmino(object: QueryAllGroupResponseAmino): QueryAllGroupResponse {
     const message = createBaseQueryAllGroupResponse();
-    message.group = object.group?.map((e) => Group.fromAmino(e)) || [];
+    message.group = object.group?.map(e => Group.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -955,13 +921,11 @@ export const QueryAllGroupResponse = {
   toAmino(message: QueryAllGroupResponse): QueryAllGroupResponseAmino {
     const obj: any = {};
     if (message.group) {
-      obj.group = message.group.map((e) => (e ? Group.toAmino(e) : undefined));
+      obj.group = message.group.map(e => e ? Group.toAmino(e) : undefined);
     } else {
       obj.group = message.group;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryAllGroupResponseAminoMsg): QueryAllGroupResponse {
@@ -976,22 +940,19 @@ export const QueryAllGroupResponse = {
   toProtoMsg(message: QueryAllGroupResponse): QueryAllGroupResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryAllGroupResponse",
-      value: QueryAllGroupResponse.encode(message).finish(),
+      value: QueryAllGroupResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryListAdminOfGroupRequest(): QueryListAdminOfGroupRequest {
   return {
     group: "",
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryListAdminOfGroupRequest = {
   typeUrl: "/sixprotocol.protocoladmin.QueryListAdminOfGroupRequest",
-  encode(
-    message: QueryListAdminOfGroupRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryListAdminOfGroupRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.group !== "") {
       writer.uint32(10).string(message.group);
     }
@@ -1000,10 +961,7 @@ export const QueryListAdminOfGroupRequest = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryListAdminOfGroupRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryListAdminOfGroupRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryListAdminOfGroupRequest();
@@ -1023,20 +981,13 @@ export const QueryListAdminOfGroupRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryListAdminOfGroupRequest>
-  ): QueryListAdminOfGroupRequest {
+  fromPartial(object: Partial<QueryListAdminOfGroupRequest>): QueryListAdminOfGroupRequest {
     const message = createBaseQueryListAdminOfGroupRequest();
     message.group = object.group ?? "";
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageRequest.fromPartial(object.pagination)
-        : undefined;
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryListAdminOfGroupRequestAmino
-  ): QueryListAdminOfGroupRequest {
+  fromAmino(object: QueryListAdminOfGroupRequestAmino): QueryListAdminOfGroupRequest {
     const message = createBaseQueryListAdminOfGroupRequest();
     if (object.group !== undefined && object.group !== null) {
       message.group = object.group;
@@ -1046,65 +997,46 @@ export const QueryListAdminOfGroupRequest = {
     }
     return message;
   },
-  toAmino(
-    message: QueryListAdminOfGroupRequest
-  ): QueryListAdminOfGroupRequestAmino {
+  toAmino(message: QueryListAdminOfGroupRequest): QueryListAdminOfGroupRequestAmino {
     const obj: any = {};
     obj.group = message.group === "" ? undefined : message.group;
-    obj.pagination = message.pagination
-      ? PageRequest.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryListAdminOfGroupRequestAminoMsg
-  ): QueryListAdminOfGroupRequest {
+  fromAminoMsg(object: QueryListAdminOfGroupRequestAminoMsg): QueryListAdminOfGroupRequest {
     return QueryListAdminOfGroupRequest.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryListAdminOfGroupRequestProtoMsg
-  ): QueryListAdminOfGroupRequest {
+  fromProtoMsg(message: QueryListAdminOfGroupRequestProtoMsg): QueryListAdminOfGroupRequest {
     return QueryListAdminOfGroupRequest.decode(message.value);
   },
   toProto(message: QueryListAdminOfGroupRequest): Uint8Array {
     return QueryListAdminOfGroupRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryListAdminOfGroupRequest
-  ): QueryListAdminOfGroupRequestProtoMsg {
+  toProtoMsg(message: QueryListAdminOfGroupRequest): QueryListAdminOfGroupRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryListAdminOfGroupRequest",
-      value: QueryListAdminOfGroupRequest.encode(message).finish(),
+      value: QueryListAdminOfGroupRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseQueryListAdminOfGroupResponse(): QueryListAdminOfGroupResponse {
   return {
     admin: [],
-    pagination: undefined,
+    pagination: undefined
   };
 }
 export const QueryListAdminOfGroupResponse = {
   typeUrl: "/sixprotocol.protocoladmin.QueryListAdminOfGroupResponse",
-  encode(
-    message: QueryListAdminOfGroupResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: QueryListAdminOfGroupResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.admin) {
       writer.uint32(10).string(v!);
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(
-        message.pagination,
-        writer.uint32(18).fork()
-      ).ldelim();
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): QueryListAdminOfGroupResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryListAdminOfGroupResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryListAdminOfGroupResponse();
@@ -1124,60 +1056,43 @@ export const QueryListAdminOfGroupResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<QueryListAdminOfGroupResponse>
-  ): QueryListAdminOfGroupResponse {
+  fromPartial(object: Partial<QueryListAdminOfGroupResponse>): QueryListAdminOfGroupResponse {
     const message = createBaseQueryListAdminOfGroupResponse();
-    message.admin = object.admin?.map((e) => e) || [];
-    message.pagination =
-      object.pagination !== undefined && object.pagination !== null
-        ? PageResponse.fromPartial(object.pagination)
-        : undefined;
+    message.admin = object.admin?.map(e => e) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   },
-  fromAmino(
-    object: QueryListAdminOfGroupResponseAmino
-  ): QueryListAdminOfGroupResponse {
+  fromAmino(object: QueryListAdminOfGroupResponseAmino): QueryListAdminOfGroupResponse {
     const message = createBaseQueryListAdminOfGroupResponse();
-    message.admin = object.admin?.map((e) => e) || [];
+    message.admin = object.admin?.map(e => e) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(
-    message: QueryListAdminOfGroupResponse
-  ): QueryListAdminOfGroupResponseAmino {
+  toAmino(message: QueryListAdminOfGroupResponse): QueryListAdminOfGroupResponseAmino {
     const obj: any = {};
     if (message.admin) {
-      obj.admin = message.admin.map((e) => e);
+      obj.admin = message.admin.map(e => e);
     } else {
       obj.admin = message.admin;
     }
-    obj.pagination = message.pagination
-      ? PageResponse.toAmino(message.pagination)
-      : undefined;
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: QueryListAdminOfGroupResponseAminoMsg
-  ): QueryListAdminOfGroupResponse {
+  fromAminoMsg(object: QueryListAdminOfGroupResponseAminoMsg): QueryListAdminOfGroupResponse {
     return QueryListAdminOfGroupResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: QueryListAdminOfGroupResponseProtoMsg
-  ): QueryListAdminOfGroupResponse {
+  fromProtoMsg(message: QueryListAdminOfGroupResponseProtoMsg): QueryListAdminOfGroupResponse {
     return QueryListAdminOfGroupResponse.decode(message.value);
   },
   toProto(message: QueryListAdminOfGroupResponse): Uint8Array {
     return QueryListAdminOfGroupResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: QueryListAdminOfGroupResponse
-  ): QueryListAdminOfGroupResponseProtoMsg {
+  toProtoMsg(message: QueryListAdminOfGroupResponse): QueryListAdminOfGroupResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.QueryListAdminOfGroupResponse",
-      value: QueryListAdminOfGroupResponse.encode(message).finish(),
+      value: QueryListAdminOfGroupResponse.encode(message).finish()
     };
-  },
+  }
 };

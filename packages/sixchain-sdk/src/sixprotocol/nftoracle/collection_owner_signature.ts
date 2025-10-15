@@ -8,6 +8,11 @@ export interface CollectionOwnerSignatureProtoMsg {
   typeUrl: "/sixprotocol.nftoracle.CollectionOwnerSignature";
   value: Uint8Array;
 }
+/**
+ * @name CollectionOwnerSignatureAmino
+ * @package sixprotocol.nftoracle
+ * @see proto type: sixprotocol.nftoracle.CollectionOwnerSignature
+ */
 export interface CollectionOwnerSignatureAmino {
   signature?: string;
   message?: string;
@@ -23,15 +28,12 @@ export interface CollectionOwnerSignatureSDKType {
 function createBaseCollectionOwnerSignature(): CollectionOwnerSignature {
   return {
     signature: "",
-    message: "",
+    message: ""
   };
 }
 export const CollectionOwnerSignature = {
   typeUrl: "/sixprotocol.nftoracle.CollectionOwnerSignature",
-  encode(
-    message: CollectionOwnerSignature,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: CollectionOwnerSignature, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.signature !== "") {
       writer.uint32(10).string(message.signature);
     }
@@ -40,10 +42,7 @@ export const CollectionOwnerSignature = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): CollectionOwnerSignature {
+  decode(input: _m0.Reader | Uint8Array, length?: number): CollectionOwnerSignature {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCollectionOwnerSignature();
@@ -63,9 +62,7 @@ export const CollectionOwnerSignature = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<CollectionOwnerSignature>
-  ): CollectionOwnerSignature {
+  fromPartial(object: Partial<CollectionOwnerSignature>): CollectionOwnerSignature {
     const message = createBaseCollectionOwnerSignature();
     message.signature = object.signature ?? "";
     message.message = object.message ?? "";
@@ -87,25 +84,19 @@ export const CollectionOwnerSignature = {
     obj.message = message.message === "" ? undefined : message.message;
     return obj;
   },
-  fromAminoMsg(
-    object: CollectionOwnerSignatureAminoMsg
-  ): CollectionOwnerSignature {
+  fromAminoMsg(object: CollectionOwnerSignatureAminoMsg): CollectionOwnerSignature {
     return CollectionOwnerSignature.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: CollectionOwnerSignatureProtoMsg
-  ): CollectionOwnerSignature {
+  fromProtoMsg(message: CollectionOwnerSignatureProtoMsg): CollectionOwnerSignature {
     return CollectionOwnerSignature.decode(message.value);
   },
   toProto(message: CollectionOwnerSignature): Uint8Array {
     return CollectionOwnerSignature.encode(message).finish();
   },
-  toProtoMsg(
-    message: CollectionOwnerSignature
-  ): CollectionOwnerSignatureProtoMsg {
+  toProtoMsg(message: CollectionOwnerSignature): CollectionOwnerSignatureProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.CollectionOwnerSignature",
-      value: CollectionOwnerSignature.encode(message).finish(),
+      value: CollectionOwnerSignature.encode(message).finish()
     };
-  },
+  }
 };

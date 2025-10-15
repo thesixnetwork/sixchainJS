@@ -7,6 +7,11 @@ export interface OptionsProtoMsg {
   typeUrl: "/sixprotocol.tokenmngr.Options";
   value: Uint8Array;
 }
+/**
+ * @name OptionsAmino
+ * @package sixprotocol.tokenmngr
+ * @see proto type: sixprotocol.tokenmngr.Options
+ */
 export interface OptionsAmino {
   defaultMintee?: string;
 }
@@ -19,15 +24,12 @@ export interface OptionsSDKType {
 }
 function createBaseOptions(): Options {
   return {
-    defaultMintee: "",
+    defaultMintee: ""
   };
 }
 export const Options = {
   typeUrl: "/sixprotocol.tokenmngr.Options",
-  encode(
-    message: Options,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Options, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.defaultMintee !== "") {
       writer.uint32(10).string(message.defaultMintee);
     }
@@ -64,8 +66,7 @@ export const Options = {
   },
   toAmino(message: Options): OptionsAmino {
     const obj: any = {};
-    obj.defaultMintee =
-      message.defaultMintee === "" ? undefined : message.defaultMintee;
+    obj.defaultMintee = message.defaultMintee === "" ? undefined : message.defaultMintee;
     return obj;
   },
   fromAminoMsg(object: OptionsAminoMsg): Options {
@@ -80,7 +81,7 @@ export const Options = {
   toProtoMsg(message: Options): OptionsProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.Options",
-      value: Options.encode(message).finish(),
+      value: Options.encode(message).finish()
     };
-  },
+  }
 };

@@ -8,6 +8,11 @@ export interface ActionSignatureProtoMsg {
   typeUrl: "/sixprotocol.nftoracle.ActionSignature";
   value: Uint8Array;
 }
+/**
+ * @name ActionSignatureAmino
+ * @package sixprotocol.nftoracle
+ * @see proto type: sixprotocol.nftoracle.ActionSignature
+ */
 export interface ActionSignatureAmino {
   signature?: string;
   message?: string;
@@ -23,15 +28,12 @@ export interface ActionSignatureSDKType {
 function createBaseActionSignature(): ActionSignature {
   return {
     signature: "",
-    message: "",
+    message: ""
   };
 }
 export const ActionSignature = {
   typeUrl: "/sixprotocol.nftoracle.ActionSignature",
-  encode(
-    message: ActionSignature,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ActionSignature, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.signature !== "") {
       writer.uint32(10).string(message.signature);
     }
@@ -94,7 +96,7 @@ export const ActionSignature = {
   toProtoMsg(message: ActionSignature): ActionSignatureProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.ActionSignature",
-      value: ActionSignature.encode(message).finish(),
+      value: ActionSignature.encode(message).finish()
     };
-  },
+  }
 };

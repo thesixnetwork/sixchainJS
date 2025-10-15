@@ -1,23 +1,6 @@
 //@ts-nocheck
-import {
-  NumberAttributeValue,
-  NumberAttributeValueAmino,
-  NumberAttributeValueSDKType,
-  StringAttributeValue,
-  StringAttributeValueAmino,
-  StringAttributeValueSDKType,
-  BooleanAttributeValue,
-  BooleanAttributeValueAmino,
-  BooleanAttributeValueSDKType,
-  FloatAttributeValue,
-  FloatAttributeValueAmino,
-  FloatAttributeValueSDKType,
-} from "./nft_attribute_value";
-import {
-  DisplayOption,
-  DisplayOptionAmino,
-  DisplayOptionSDKType,
-} from "./display_option";
+import { NumberAttributeValue, NumberAttributeValueAmino, NumberAttributeValueSDKType, StringAttributeValue, StringAttributeValueAmino, StringAttributeValueSDKType, BooleanAttributeValue, BooleanAttributeValueAmino, BooleanAttributeValueSDKType, FloatAttributeValue, FloatAttributeValueAmino, FloatAttributeValueSDKType } from "./nft_attribute_value";
+import { DisplayOption, DisplayOptionAmino, DisplayOptionSDKType } from "./display_option";
 import { Long } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface DefaultMintValue {
@@ -30,6 +13,11 @@ export interface DefaultMintValueProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.DefaultMintValue";
   value: Uint8Array;
 }
+/**
+ * @name DefaultMintValueAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.DefaultMintValue
+ */
 export interface DefaultMintValueAmino {
   number_attribute_value?: NumberAttributeValueAmino;
   string_attribute_value?: StringAttributeValueAmino;
@@ -62,6 +50,11 @@ export interface AttributeDefinitionProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.AttributeDefinition";
   value: Uint8Array;
 }
+/**
+ * @name AttributeDefinitionAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.AttributeDefinition
+ */
 export interface AttributeDefinitionAmino {
   name?: string;
   data_type?: string;
@@ -69,7 +62,9 @@ export interface AttributeDefinitionAmino {
   display_value_field?: string;
   display_option?: DisplayOptionAmino;
   default_mint_value?: DefaultMintValueAmino;
-  /** flag that allows action to override hidden */
+  /**
+   * flag that allows action to override hidden
+   */
   hidden_overide?: boolean;
   hidden_to_marketplace?: boolean;
   index?: string;
@@ -94,38 +89,23 @@ function createBaseDefaultMintValue(): DefaultMintValue {
     numberAttributeValue: undefined,
     stringAttributeValue: undefined,
     booleanAttributeValue: undefined,
-    floatAttributeValue: undefined,
+    floatAttributeValue: undefined
   };
 }
 export const DefaultMintValue = {
   typeUrl: "/sixprotocol.nftmngr.DefaultMintValue",
-  encode(
-    message: DefaultMintValue,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: DefaultMintValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.numberAttributeValue !== undefined) {
-      NumberAttributeValue.encode(
-        message.numberAttributeValue,
-        writer.uint32(10).fork()
-      ).ldelim();
+      NumberAttributeValue.encode(message.numberAttributeValue, writer.uint32(10).fork()).ldelim();
     }
     if (message.stringAttributeValue !== undefined) {
-      StringAttributeValue.encode(
-        message.stringAttributeValue,
-        writer.uint32(18).fork()
-      ).ldelim();
+      StringAttributeValue.encode(message.stringAttributeValue, writer.uint32(18).fork()).ldelim();
     }
     if (message.booleanAttributeValue !== undefined) {
-      BooleanAttributeValue.encode(
-        message.booleanAttributeValue,
-        writer.uint32(26).fork()
-      ).ldelim();
+      BooleanAttributeValue.encode(message.booleanAttributeValue, writer.uint32(26).fork()).ldelim();
     }
     if (message.floatAttributeValue !== undefined) {
-      FloatAttributeValue.encode(
-        message.floatAttributeValue,
-        writer.uint32(34).fork()
-      ).ldelim();
+      FloatAttributeValue.encode(message.floatAttributeValue, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -137,28 +117,16 @@ export const DefaultMintValue = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.numberAttributeValue = NumberAttributeValue.decode(
-            reader,
-            reader.uint32()
-          );
+          message.numberAttributeValue = NumberAttributeValue.decode(reader, reader.uint32());
           break;
         case 2:
-          message.stringAttributeValue = StringAttributeValue.decode(
-            reader,
-            reader.uint32()
-          );
+          message.stringAttributeValue = StringAttributeValue.decode(reader, reader.uint32());
           break;
         case 3:
-          message.booleanAttributeValue = BooleanAttributeValue.decode(
-            reader,
-            reader.uint32()
-          );
+          message.booleanAttributeValue = BooleanAttributeValue.decode(reader, reader.uint32());
           break;
         case 4:
-          message.floatAttributeValue = FloatAttributeValue.decode(
-            reader,
-            reader.uint32()
-          );
+          message.floatAttributeValue = FloatAttributeValue.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -169,78 +137,34 @@ export const DefaultMintValue = {
   },
   fromPartial(object: Partial<DefaultMintValue>): DefaultMintValue {
     const message = createBaseDefaultMintValue();
-    message.numberAttributeValue =
-      object.numberAttributeValue !== undefined &&
-      object.numberAttributeValue !== null
-        ? NumberAttributeValue.fromPartial(object.numberAttributeValue)
-        : undefined;
-    message.stringAttributeValue =
-      object.stringAttributeValue !== undefined &&
-      object.stringAttributeValue !== null
-        ? StringAttributeValue.fromPartial(object.stringAttributeValue)
-        : undefined;
-    message.booleanAttributeValue =
-      object.booleanAttributeValue !== undefined &&
-      object.booleanAttributeValue !== null
-        ? BooleanAttributeValue.fromPartial(object.booleanAttributeValue)
-        : undefined;
-    message.floatAttributeValue =
-      object.floatAttributeValue !== undefined &&
-      object.floatAttributeValue !== null
-        ? FloatAttributeValue.fromPartial(object.floatAttributeValue)
-        : undefined;
+    message.numberAttributeValue = object.numberAttributeValue !== undefined && object.numberAttributeValue !== null ? NumberAttributeValue.fromPartial(object.numberAttributeValue) : undefined;
+    message.stringAttributeValue = object.stringAttributeValue !== undefined && object.stringAttributeValue !== null ? StringAttributeValue.fromPartial(object.stringAttributeValue) : undefined;
+    message.booleanAttributeValue = object.booleanAttributeValue !== undefined && object.booleanAttributeValue !== null ? BooleanAttributeValue.fromPartial(object.booleanAttributeValue) : undefined;
+    message.floatAttributeValue = object.floatAttributeValue !== undefined && object.floatAttributeValue !== null ? FloatAttributeValue.fromPartial(object.floatAttributeValue) : undefined;
     return message;
   },
   fromAmino(object: DefaultMintValueAmino): DefaultMintValue {
     const message = createBaseDefaultMintValue();
-    if (
-      object.number_attribute_value !== undefined &&
-      object.number_attribute_value !== null
-    ) {
-      message.numberAttributeValue = NumberAttributeValue.fromAmino(
-        object.number_attribute_value
-      );
+    if (object.number_attribute_value !== undefined && object.number_attribute_value !== null) {
+      message.numberAttributeValue = NumberAttributeValue.fromAmino(object.number_attribute_value);
     }
-    if (
-      object.string_attribute_value !== undefined &&
-      object.string_attribute_value !== null
-    ) {
-      message.stringAttributeValue = StringAttributeValue.fromAmino(
-        object.string_attribute_value
-      );
+    if (object.string_attribute_value !== undefined && object.string_attribute_value !== null) {
+      message.stringAttributeValue = StringAttributeValue.fromAmino(object.string_attribute_value);
     }
-    if (
-      object.boolean_attribute_value !== undefined &&
-      object.boolean_attribute_value !== null
-    ) {
-      message.booleanAttributeValue = BooleanAttributeValue.fromAmino(
-        object.boolean_attribute_value
-      );
+    if (object.boolean_attribute_value !== undefined && object.boolean_attribute_value !== null) {
+      message.booleanAttributeValue = BooleanAttributeValue.fromAmino(object.boolean_attribute_value);
     }
-    if (
-      object.float_attribute_value !== undefined &&
-      object.float_attribute_value !== null
-    ) {
-      message.floatAttributeValue = FloatAttributeValue.fromAmino(
-        object.float_attribute_value
-      );
+    if (object.float_attribute_value !== undefined && object.float_attribute_value !== null) {
+      message.floatAttributeValue = FloatAttributeValue.fromAmino(object.float_attribute_value);
     }
     return message;
   },
   toAmino(message: DefaultMintValue): DefaultMintValueAmino {
     const obj: any = {};
-    obj.number_attribute_value = message.numberAttributeValue
-      ? NumberAttributeValue.toAmino(message.numberAttributeValue)
-      : undefined;
-    obj.string_attribute_value = message.stringAttributeValue
-      ? StringAttributeValue.toAmino(message.stringAttributeValue)
-      : undefined;
-    obj.boolean_attribute_value = message.booleanAttributeValue
-      ? BooleanAttributeValue.toAmino(message.booleanAttributeValue)
-      : undefined;
-    obj.float_attribute_value = message.floatAttributeValue
-      ? FloatAttributeValue.toAmino(message.floatAttributeValue)
-      : undefined;
+    obj.number_attribute_value = message.numberAttributeValue ? NumberAttributeValue.toAmino(message.numberAttributeValue) : undefined;
+    obj.string_attribute_value = message.stringAttributeValue ? StringAttributeValue.toAmino(message.stringAttributeValue) : undefined;
+    obj.boolean_attribute_value = message.booleanAttributeValue ? BooleanAttributeValue.toAmino(message.booleanAttributeValue) : undefined;
+    obj.float_attribute_value = message.floatAttributeValue ? FloatAttributeValue.toAmino(message.floatAttributeValue) : undefined;
     return obj;
   },
   fromAminoMsg(object: DefaultMintValueAminoMsg): DefaultMintValue {
@@ -255,9 +179,9 @@ export const DefaultMintValue = {
   toProtoMsg(message: DefaultMintValue): DefaultMintValueProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.DefaultMintValue",
-      value: DefaultMintValue.encode(message).finish(),
+      value: DefaultMintValue.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseAttributeDefinition(): AttributeDefinition {
   return {
@@ -269,15 +193,12 @@ function createBaseAttributeDefinition(): AttributeDefinition {
     defaultMintValue: undefined,
     hiddenOveride: false,
     hiddenToMarketplace: false,
-    index: Long.UZERO,
+    index: Long.UZERO
   };
 }
 export const AttributeDefinition = {
   typeUrl: "/sixprotocol.nftmngr.AttributeDefinition",
-  encode(
-    message: AttributeDefinition,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: AttributeDefinition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
@@ -291,16 +212,10 @@ export const AttributeDefinition = {
       writer.uint32(34).string(message.displayValueField);
     }
     if (message.displayOption !== undefined) {
-      DisplayOption.encode(
-        message.displayOption,
-        writer.uint32(42).fork()
-      ).ldelim();
+      DisplayOption.encode(message.displayOption, writer.uint32(42).fork()).ldelim();
     }
     if (message.defaultMintValue !== undefined) {
-      DefaultMintValue.encode(
-        message.defaultMintValue,
-        writer.uint32(50).fork()
-      ).ldelim();
+      DefaultMintValue.encode(message.defaultMintValue, writer.uint32(50).fork()).ldelim();
     }
     if (message.hiddenOveride === true) {
       writer.uint32(56).bool(message.hiddenOveride);
@@ -336,10 +251,7 @@ export const AttributeDefinition = {
           message.displayOption = DisplayOption.decode(reader, reader.uint32());
           break;
         case 6:
-          message.defaultMintValue = DefaultMintValue.decode(
-            reader,
-            reader.uint32()
-          );
+          message.defaultMintValue = DefaultMintValue.decode(reader, reader.uint32());
           break;
         case 7:
           message.hiddenOveride = reader.bool();
@@ -363,20 +275,11 @@ export const AttributeDefinition = {
     message.dataType = object.dataType ?? "";
     message.required = object.required ?? false;
     message.displayValueField = object.displayValueField ?? "";
-    message.displayOption =
-      object.displayOption !== undefined && object.displayOption !== null
-        ? DisplayOption.fromPartial(object.displayOption)
-        : undefined;
-    message.defaultMintValue =
-      object.defaultMintValue !== undefined && object.defaultMintValue !== null
-        ? DefaultMintValue.fromPartial(object.defaultMintValue)
-        : undefined;
+    message.displayOption = object.displayOption !== undefined && object.displayOption !== null ? DisplayOption.fromPartial(object.displayOption) : undefined;
+    message.defaultMintValue = object.defaultMintValue !== undefined && object.defaultMintValue !== null ? DefaultMintValue.fromPartial(object.defaultMintValue) : undefined;
     message.hiddenOveride = object.hiddenOveride ?? false;
     message.hiddenToMarketplace = object.hiddenToMarketplace ?? false;
-    message.index =
-      object.index !== undefined && object.index !== null
-        ? Long.fromValue(object.index)
-        : Long.UZERO;
+    message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.UZERO;
     return message;
   },
   fromAmino(object: AttributeDefinitionAmino): AttributeDefinition {
@@ -390,30 +293,19 @@ export const AttributeDefinition = {
     if (object.required !== undefined && object.required !== null) {
       message.required = object.required;
     }
-    if (
-      object.display_value_field !== undefined &&
-      object.display_value_field !== null
-    ) {
+    if (object.display_value_field !== undefined && object.display_value_field !== null) {
       message.displayValueField = object.display_value_field;
     }
     if (object.display_option !== undefined && object.display_option !== null) {
       message.displayOption = DisplayOption.fromAmino(object.display_option);
     }
-    if (
-      object.default_mint_value !== undefined &&
-      object.default_mint_value !== null
-    ) {
-      message.defaultMintValue = DefaultMintValue.fromAmino(
-        object.default_mint_value
-      );
+    if (object.default_mint_value !== undefined && object.default_mint_value !== null) {
+      message.defaultMintValue = DefaultMintValue.fromAmino(object.default_mint_value);
     }
     if (object.hidden_overide !== undefined && object.hidden_overide !== null) {
       message.hiddenOveride = object.hidden_overide;
     }
-    if (
-      object.hidden_to_marketplace !== undefined &&
-      object.hidden_to_marketplace !== null
-    ) {
+    if (object.hidden_to_marketplace !== undefined && object.hidden_to_marketplace !== null) {
       message.hiddenToMarketplace = object.hidden_to_marketplace;
     }
     if (object.index !== undefined && object.index !== null) {
@@ -426,20 +318,11 @@ export const AttributeDefinition = {
     obj.name = message.name === "" ? undefined : message.name;
     obj.data_type = message.dataType === "" ? undefined : message.dataType;
     obj.required = message.required === false ? undefined : message.required;
-    obj.display_value_field =
-      message.displayValueField === "" ? undefined : message.displayValueField;
-    obj.display_option = message.displayOption
-      ? DisplayOption.toAmino(message.displayOption)
-      : undefined;
-    obj.default_mint_value = message.defaultMintValue
-      ? DefaultMintValue.toAmino(message.defaultMintValue)
-      : undefined;
-    obj.hidden_overide =
-      message.hiddenOveride === false ? undefined : message.hiddenOveride;
-    obj.hidden_to_marketplace =
-      message.hiddenToMarketplace === false
-        ? undefined
-        : message.hiddenToMarketplace;
+    obj.display_value_field = message.displayValueField === "" ? undefined : message.displayValueField;
+    obj.display_option = message.displayOption ? DisplayOption.toAmino(message.displayOption) : undefined;
+    obj.default_mint_value = message.defaultMintValue ? DefaultMintValue.toAmino(message.defaultMintValue) : undefined;
+    obj.hidden_overide = message.hiddenOveride === false ? undefined : message.hiddenOveride;
+    obj.hidden_to_marketplace = message.hiddenToMarketplace === false ? undefined : message.hiddenToMarketplace;
     obj.index = !message.index.isZero() ? message.index?.toString() : undefined;
     return obj;
   },
@@ -455,7 +338,7 @@ export const AttributeDefinition = {
   toProtoMsg(message: AttributeDefinition): AttributeDefinitionProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.AttributeDefinition",
-      value: AttributeDefinition.encode(message).finish(),
+      value: AttributeDefinition.encode(message).finish()
     };
-  },
+  }
 };

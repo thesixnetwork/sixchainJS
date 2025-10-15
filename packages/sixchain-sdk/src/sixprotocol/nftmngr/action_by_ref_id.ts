@@ -11,6 +11,11 @@ export interface ActionByRefIdProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.ActionByRefId";
   value: Uint8Array;
 }
+/**
+ * @name ActionByRefIdAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.ActionByRefId
+ */
 export interface ActionByRefIdAmino {
   refId?: string;
   creator?: string;
@@ -35,15 +40,12 @@ function createBaseActionByRefId(): ActionByRefId {
     creator: "",
     nftSchemaCode: "",
     tokenId: "",
-    action: "",
+    action: ""
   };
 }
 export const ActionByRefId = {
   typeUrl: "/sixprotocol.nftmngr.ActionByRefId",
-  encode(
-    message: ActionByRefId,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ActionByRefId, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.refId !== "") {
       writer.uint32(10).string(message.refId);
     }
@@ -122,8 +124,7 @@ export const ActionByRefId = {
     const obj: any = {};
     obj.refId = message.refId === "" ? undefined : message.refId;
     obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.tokenId = message.tokenId === "" ? undefined : message.tokenId;
     obj.action = message.action === "" ? undefined : message.action;
     return obj;
@@ -140,7 +141,7 @@ export const ActionByRefId = {
   toProtoMsg(message: ActionByRefId): ActionByRefIdProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.ActionByRefId",
-      value: ActionByRefId.encode(message).finish(),
+      value: ActionByRefId.encode(message).finish()
     };
-  },
+  }
 };

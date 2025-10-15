@@ -11,6 +11,11 @@ export interface NftCollectionProtoMsg {
   typeUrl: "/sixprotocol.nftmngr.NftCollection";
   value: Uint8Array;
 }
+/**
+ * @name NftCollectionAmino
+ * @package sixprotocol.nftmngr
+ * @see proto type: sixprotocol.nftmngr.NftCollection
+ */
 export interface NftCollectionAmino {
   nftSchemaCode?: string;
   total?: string;
@@ -29,15 +34,12 @@ function createBaseNftCollection(): NftCollection {
   return {
     nftSchemaCode: "",
     total: Long.UZERO,
-    nftDatas: [],
+    nftDatas: []
   };
 }
 export const NftCollection = {
   typeUrl: "/sixprotocol.nftmngr.NftCollection",
-  encode(
-    message: NftCollection,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: NftCollection, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -75,12 +77,8 @@ export const NftCollection = {
   fromPartial(object: Partial<NftCollection>): NftCollection {
     const message = createBaseNftCollection();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
-    message.total =
-      object.total !== undefined && object.total !== null
-        ? Long.fromValue(object.total)
-        : Long.UZERO;
-    message.nftDatas =
-      object.nftDatas?.map((e) => NftData.fromPartial(e)) || [];
+    message.total = object.total !== undefined && object.total !== null ? Long.fromValue(object.total) : Long.UZERO;
+    message.nftDatas = object.nftDatas?.map(e => NftData.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: NftCollectionAmino): NftCollection {
@@ -91,18 +89,15 @@ export const NftCollection = {
     if (object.total !== undefined && object.total !== null) {
       message.total = Long.fromString(object.total);
     }
-    message.nftDatas = object.nftDatas?.map((e) => NftData.fromAmino(e)) || [];
+    message.nftDatas = object.nftDatas?.map(e => NftData.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: NftCollection): NftCollectionAmino {
     const obj: any = {};
-    obj.nftSchemaCode =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.total = !message.total.isZero() ? message.total?.toString() : undefined;
     if (message.nftDatas) {
-      obj.nftDatas = message.nftDatas.map((e) =>
-        e ? NftData.toAmino(e) : undefined
-      );
+      obj.nftDatas = message.nftDatas.map(e => e ? NftData.toAmino(e) : undefined);
     } else {
       obj.nftDatas = message.nftDatas;
     }
@@ -120,7 +115,7 @@ export const NftCollection = {
   toProtoMsg(message: NftCollection): NftCollectionProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.NftCollection",
-      value: NftCollection.encode(message).finish(),
+      value: NftCollection.encode(message).finish()
     };
-  },
+  }
 };

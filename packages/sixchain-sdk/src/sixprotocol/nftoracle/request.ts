@@ -67,6 +67,11 @@ export interface NftOriginDataProtoMsg {
   typeUrl: "/sixprotocol.nftoracle.NftOriginData";
   value: Uint8Array;
 }
+/**
+ * @name NftOriginDataAmino
+ * @package sixprotocol.nftoracle
+ * @see proto type: sixprotocol.nftoracle.NftOriginData
+ */
 export interface NftOriginDataAmino {
   image?: string;
   holder_address?: string;
@@ -90,6 +95,11 @@ export interface DataHashProtoMsg {
   typeUrl: "/sixprotocol.nftoracle.DataHash";
   value: Uint8Array;
 }
+/**
+ * @name DataHashAmino
+ * @package sixprotocol.nftoracle
+ * @see proto type: sixprotocol.nftoracle.DataHash
+ */
 export interface DataHashAmino {
   origin_data?: NftOriginDataAmino;
   hash?: string;
@@ -108,15 +118,12 @@ function createBaseNftOriginData(): NftOriginData {
   return {
     image: "",
     holderAddress: "",
-    traits: [],
+    traits: []
   };
 }
 export const NftOriginData = {
   typeUrl: "/sixprotocol.nftoracle.NftOriginData",
-  encode(
-    message: NftOriginData,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: NftOriginData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.image !== "") {
       writer.uint32(10).string(message.image);
     }
@@ -155,7 +162,7 @@ export const NftOriginData = {
     const message = createBaseNftOriginData();
     message.image = object.image ?? "";
     message.holderAddress = object.holderAddress ?? "";
-    message.traits = object.traits?.map((e) => Trait.fromPartial(e)) || [];
+    message.traits = object.traits?.map(e => Trait.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: NftOriginDataAmino): NftOriginData {
@@ -166,18 +173,15 @@ export const NftOriginData = {
     if (object.holder_address !== undefined && object.holder_address !== null) {
       message.holderAddress = object.holder_address;
     }
-    message.traits = object.traits?.map((e) => Trait.fromAmino(e)) || [];
+    message.traits = object.traits?.map(e => Trait.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: NftOriginData): NftOriginDataAmino {
     const obj: any = {};
     obj.image = message.image === "" ? undefined : message.image;
-    obj.holder_address =
-      message.holderAddress === "" ? undefined : message.holderAddress;
+    obj.holder_address = message.holderAddress === "" ? undefined : message.holderAddress;
     if (message.traits) {
-      obj.traits = message.traits.map((e) =>
-        e ? Trait.toAmino(e) : undefined
-      );
+      obj.traits = message.traits.map(e => e ? Trait.toAmino(e) : undefined);
     } else {
       obj.traits = message.traits;
     }
@@ -195,28 +199,22 @@ export const NftOriginData = {
   toProtoMsg(message: NftOriginData): NftOriginDataProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.NftOriginData",
-      value: NftOriginData.encode(message).finish(),
+      value: NftOriginData.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseDataHash(): DataHash {
   return {
     originData: undefined,
     hash: new Uint8Array(),
-    confirmers: [],
+    confirmers: []
   };
 }
 export const DataHash = {
   typeUrl: "/sixprotocol.nftoracle.DataHash",
-  encode(
-    message: DataHash,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: DataHash, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.originData !== undefined) {
-      NftOriginData.encode(
-        message.originData,
-        writer.uint32(10).fork()
-      ).ldelim();
+      NftOriginData.encode(message.originData, writer.uint32(10).fork()).ldelim();
     }
     if (message.hash.length !== 0) {
       writer.uint32(18).bytes(message.hash);
@@ -251,12 +249,9 @@ export const DataHash = {
   },
   fromPartial(object: Partial<DataHash>): DataHash {
     const message = createBaseDataHash();
-    message.originData =
-      object.originData !== undefined && object.originData !== null
-        ? NftOriginData.fromPartial(object.originData)
-        : undefined;
+    message.originData = object.originData !== undefined && object.originData !== null ? NftOriginData.fromPartial(object.originData) : undefined;
     message.hash = object.hash ?? new Uint8Array();
-    message.confirmers = object.confirmers?.map((e) => e) || [];
+    message.confirmers = object.confirmers?.map(e => e) || [];
     return message;
   },
   fromAmino(object: DataHashAmino): DataHash {
@@ -267,17 +262,15 @@ export const DataHash = {
     if (object.hash !== undefined && object.hash !== null) {
       message.hash = bytesFromBase64(object.hash);
     }
-    message.confirmers = object.confirmers?.map((e) => e) || [];
+    message.confirmers = object.confirmers?.map(e => e) || [];
     return message;
   },
   toAmino(message: DataHash): DataHashAmino {
     const obj: any = {};
-    obj.origin_data = message.originData
-      ? NftOriginData.toAmino(message.originData)
-      : undefined;
+    obj.origin_data = message.originData ? NftOriginData.toAmino(message.originData) : undefined;
     obj.hash = message.hash ? base64FromBytes(message.hash) : undefined;
     if (message.confirmers) {
-      obj.confirmers = message.confirmers.map((e) => e);
+      obj.confirmers = message.confirmers.map(e => e);
     } else {
       obj.confirmers = message.confirmers;
     }
@@ -295,7 +288,7 @@ export const DataHash = {
   toProtoMsg(message: DataHash): DataHashProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.DataHash",
-      value: DataHash.encode(message).finish(),
+      value: DataHash.encode(message).finish()
     };
-  },
+  }
 };

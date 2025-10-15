@@ -8,6 +8,11 @@ export interface AdminProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.Admin";
   value: Uint8Array;
 }
+/**
+ * @name AdminAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.Admin
+ */
 export interface AdminAmino {
   group?: string;
   admin?: string;
@@ -23,7 +28,7 @@ export interface AdminSDKType {
 function createBaseAdmin(): Admin {
   return {
     group: "",
-    admin: "",
+    admin: ""
   };
 }
 export const Admin = {
@@ -91,7 +96,7 @@ export const Admin = {
   toProtoMsg(message: Admin): AdminProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.Admin",
-      value: Admin.encode(message).finish(),
+      value: Admin.encode(message).finish()
     };
-  },
+  }
 };

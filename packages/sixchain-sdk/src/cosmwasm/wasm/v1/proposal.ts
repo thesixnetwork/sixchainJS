@@ -1,10 +1,6 @@
 //@ts-nocheck
 import { AccessConfig, AccessConfigAmino, AccessConfigSDKType } from "./types";
-import {
-  Coin,
-  CoinAmino,
-  CoinSDKType,
-} from "../../../cosmos/base/v1beta1/coin";
+import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { fromBase64, toBase64, toUtf8, fromUtf8 } from "@cosmjs/encoding";
@@ -25,17 +21,32 @@ export interface StoreCodeProposalProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.StoreCodeProposal";
   value: Uint8Array;
 }
-/** StoreCodeProposal gov proposal content type to submit WASM code to the system */
+/**
+ * StoreCodeProposal gov proposal content type to submit WASM code to the system
+ * @name StoreCodeProposalAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.StoreCodeProposal
+ */
 export interface StoreCodeProposalAmino {
-  /** Title is a short summary */
+  /**
+   * Title is a short summary
+   */
   title?: string;
-  /** Description is a human readable text */
+  /**
+   * Description is a human readable text
+   */
   description?: string;
-  /** RunAs is the address that is passed to the contract's environment as sender */
+  /**
+   * RunAs is the address that is passed to the contract's environment as sender
+   */
   run_as?: string;
-  /** WASMByteCode can be raw or gzip compressed */
+  /**
+   * WASMByteCode can be raw or gzip compressed
+   */
   wasm_byte_code?: string;
-  /** InstantiatePermission to apply on contract creation, optional */
+  /**
+   * InstantiatePermission to apply on contract creation, optional
+   */
   instantiate_permission?: AccessConfigAmino;
 }
 export interface StoreCodeProposalAminoMsg {
@@ -79,23 +90,42 @@ export interface InstantiateContractProposalProtoMsg {
 /**
  * InstantiateContractProposal gov proposal content type to instantiate a
  * contract.
+ * @name InstantiateContractProposalAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.InstantiateContractProposal
  */
 export interface InstantiateContractProposalAmino {
-  /** Title is a short summary */
+  /**
+   * Title is a short summary
+   */
   title?: string;
-  /** Description is a human readable text */
+  /**
+   * Description is a human readable text
+   */
   description?: string;
-  /** RunAs is the address that is passed to the contract's environment as sender */
+  /**
+   * RunAs is the address that is passed to the contract's environment as sender
+   */
   run_as?: string;
-  /** Admin is an optional address that can execute migrations */
+  /**
+   * Admin is an optional address that can execute migrations
+   */
   admin?: string;
-  /** CodeID is the reference to the stored WASM code */
+  /**
+   * CodeID is the reference to the stored WASM code
+   */
   code_id?: string;
-  /** Label is optional metadata to be stored with a constract instance. */
+  /**
+   * Label is optional metadata to be stored with a constract instance.
+   */
   label?: string;
-  /** Msg json encoded message to be passed to the contract on instantiation */
+  /**
+   * Msg json encoded message to be passed to the contract on instantiation
+   */
   msg?: any;
-  /** Funds coins that are transferred to the contract on instantiation */
+  /**
+   * Funds coins that are transferred to the contract on instantiation
+   */
   funds?: CoinAmino[];
 }
 export interface InstantiateContractProposalAminoMsg {
@@ -133,17 +163,32 @@ export interface MigrateContractProposalProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.MigrateContractProposal";
   value: Uint8Array;
 }
-/** MigrateContractProposal gov proposal content type to migrate a contract. */
+/**
+ * MigrateContractProposal gov proposal content type to migrate a contract.
+ * @name MigrateContractProposalAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.MigrateContractProposal
+ */
 export interface MigrateContractProposalAmino {
-  /** Title is a short summary */
+  /**
+   * Title is a short summary
+   */
   title?: string;
-  /** Description is a human readable text */
+  /**
+   * Description is a human readable text
+   */
   description?: string;
-  /** Contract is the address of the smart contract */
+  /**
+   * Contract is the address of the smart contract
+   */
   contract?: string;
-  /** CodeID references the new WASM codesudo */
+  /**
+   * CodeID references the new WASM codesudo
+   */
   code_id?: string;
-  /** Msg json encoded message to be passed to the contract on migration */
+  /**
+   * Msg json encoded message to be passed to the contract on migration
+   */
   msg?: any;
 }
 export interface MigrateContractProposalAminoMsg {
@@ -173,15 +218,28 @@ export interface SudoContractProposalProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.SudoContractProposal";
   value: Uint8Array;
 }
-/** SudoContractProposal gov proposal content type to call sudo on a contract. */
+/**
+ * SudoContractProposal gov proposal content type to call sudo on a contract.
+ * @name SudoContractProposalAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.SudoContractProposal
+ */
 export interface SudoContractProposalAmino {
-  /** Title is a short summary */
+  /**
+   * Title is a short summary
+   */
   title?: string;
-  /** Description is a human readable text */
+  /**
+   * Description is a human readable text
+   */
   description?: string;
-  /** Contract is the address of the smart contract */
+  /**
+   * Contract is the address of the smart contract
+   */
   contract?: string;
-  /** Msg json encoded message to be passed to the contract as sudo */
+  /**
+   * Msg json encoded message to be passed to the contract as sudo
+   */
   msg?: any;
 }
 export interface SudoContractProposalAminoMsg {
@@ -220,19 +278,34 @@ export interface ExecuteContractProposalProtoMsg {
 /**
  * ExecuteContractProposal gov proposal content type to call execute on a
  * contract.
+ * @name ExecuteContractProposalAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.ExecuteContractProposal
  */
 export interface ExecuteContractProposalAmino {
-  /** Title is a short summary */
+  /**
+   * Title is a short summary
+   */
   title?: string;
-  /** Description is a human readable text */
+  /**
+   * Description is a human readable text
+   */
   description?: string;
-  /** RunAs is the address that is passed to the contract's environment as sender */
+  /**
+   * RunAs is the address that is passed to the contract's environment as sender
+   */
   run_as?: string;
-  /** Contract is the address of the smart contract */
+  /**
+   * Contract is the address of the smart contract
+   */
   contract?: string;
-  /** Msg json encoded message to be passed to the contract as execute */
+  /**
+   * Msg json encoded message to be passed to the contract as execute
+   */
   msg?: any;
-  /** Funds coins that are transferred to the contract on instantiation */
+  /**
+   * Funds coins that are transferred to the contract on instantiation
+   */
   funds?: CoinAmino[];
 }
 export interface ExecuteContractProposalAminoMsg {
@@ -266,15 +339,28 @@ export interface UpdateAdminProposalProtoMsg {
   typeUrl: "/cosmwasm.wasm.v1.UpdateAdminProposal";
   value: Uint8Array;
 }
-/** UpdateAdminProposal gov proposal content type to set an admin for a contract. */
+/**
+ * UpdateAdminProposal gov proposal content type to set an admin for a contract.
+ * @name UpdateAdminProposalAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.UpdateAdminProposal
+ */
 export interface UpdateAdminProposalAmino {
-  /** Title is a short summary */
+  /**
+   * Title is a short summary
+   */
   title?: string;
-  /** Description is a human readable text */
+  /**
+   * Description is a human readable text
+   */
   description?: string;
-  /** NewAdmin address to be set */
+  /**
+   * NewAdmin address to be set
+   */
   new_admin?: string;
-  /** Contract is the address of the smart contract */
+  /**
+   * Contract is the address of the smart contract
+   */
   contract?: string;
 }
 export interface UpdateAdminProposalAminoMsg {
@@ -307,13 +393,22 @@ export interface ClearAdminProposalProtoMsg {
 /**
  * ClearAdminProposal gov proposal content type to clear the admin of a
  * contract.
+ * @name ClearAdminProposalAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.ClearAdminProposal
  */
 export interface ClearAdminProposalAmino {
-  /** Title is a short summary */
+  /**
+   * Title is a short summary
+   */
   title?: string;
-  /** Description is a human readable text */
+  /**
+   * Description is a human readable text
+   */
   description?: string;
-  /** Contract is the address of the smart contract */
+  /**
+   * Contract is the address of the smart contract
+   */
   contract?: string;
 }
 export interface ClearAdminProposalAminoMsg {
@@ -348,13 +443,22 @@ export interface PinCodesProposalProtoMsg {
 /**
  * PinCodesProposal gov proposal content type to pin a set of code ids in the
  * wasmvm cache.
+ * @name PinCodesProposalAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.PinCodesProposal
  */
 export interface PinCodesProposalAmino {
-  /** Title is a short summary */
+  /**
+   * Title is a short summary
+   */
   title?: string;
-  /** Description is a human readable text */
+  /**
+   * Description is a human readable text
+   */
   description?: string;
-  /** CodeIDs references the new WASM codes */
+  /**
+   * CodeIDs references the new WASM codes
+   */
   code_ids?: string[];
 }
 export interface PinCodesProposalAminoMsg {
@@ -389,13 +493,22 @@ export interface UnpinCodesProposalProtoMsg {
 /**
  * UnpinCodesProposal gov proposal content type to unpin a set of code ids in
  * the wasmvm cache.
+ * @name UnpinCodesProposalAmino
+ * @package cosmwasm.wasm.v1
+ * @see proto type: cosmwasm.wasm.v1.UnpinCodesProposal
  */
 export interface UnpinCodesProposalAmino {
-  /** Title is a short summary */
+  /**
+   * Title is a short summary
+   */
   title?: string;
-  /** Description is a human readable text */
+  /**
+   * Description is a human readable text
+   */
   description?: string;
-  /** CodeIDs references the WASM codes */
+  /**
+   * CodeIDs references the WASM codes
+   */
   code_ids?: string[];
 }
 export interface UnpinCodesProposalAminoMsg {
@@ -417,15 +530,12 @@ function createBaseStoreCodeProposal(): StoreCodeProposal {
     description: "",
     runAs: "",
     wasmByteCode: new Uint8Array(),
-    instantiatePermission: undefined,
+    instantiatePermission: undefined
   };
 }
 export const StoreCodeProposal = {
   typeUrl: "/cosmwasm.wasm.v1.StoreCodeProposal",
-  encode(
-    message: StoreCodeProposal,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: StoreCodeProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -439,10 +549,7 @@ export const StoreCodeProposal = {
       writer.uint32(34).bytes(message.wasmByteCode);
     }
     if (message.instantiatePermission !== undefined) {
-      AccessConfig.encode(
-        message.instantiatePermission,
-        writer.uint32(58).fork()
-      ).ldelim();
+      AccessConfig.encode(message.instantiatePermission, writer.uint32(58).fork()).ldelim();
     }
     return writer;
   },
@@ -466,10 +573,7 @@ export const StoreCodeProposal = {
           message.wasmByteCode = reader.bytes();
           break;
         case 7:
-          message.instantiatePermission = AccessConfig.decode(
-            reader,
-            reader.uint32()
-          );
+          message.instantiatePermission = AccessConfig.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -484,11 +588,7 @@ export const StoreCodeProposal = {
     message.description = object.description ?? "";
     message.runAs = object.runAs ?? "";
     message.wasmByteCode = object.wasmByteCode ?? new Uint8Array();
-    message.instantiatePermission =
-      object.instantiatePermission !== undefined &&
-      object.instantiatePermission !== null
-        ? AccessConfig.fromPartial(object.instantiatePermission)
-        : undefined;
+    message.instantiatePermission = object.instantiatePermission !== undefined && object.instantiatePermission !== null ? AccessConfig.fromPartial(object.instantiatePermission) : undefined;
     return message;
   },
   fromAmino(object: StoreCodeProposalAmino): StoreCodeProposal {
@@ -505,28 +605,18 @@ export const StoreCodeProposal = {
     if (object.wasm_byte_code !== undefined && object.wasm_byte_code !== null) {
       message.wasmByteCode = fromBase64(object.wasm_byte_code);
     }
-    if (
-      object.instantiate_permission !== undefined &&
-      object.instantiate_permission !== null
-    ) {
-      message.instantiatePermission = AccessConfig.fromAmino(
-        object.instantiate_permission
-      );
+    if (object.instantiate_permission !== undefined && object.instantiate_permission !== null) {
+      message.instantiatePermission = AccessConfig.fromAmino(object.instantiate_permission);
     }
     return message;
   },
   toAmino(message: StoreCodeProposal): StoreCodeProposalAmino {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
-    obj.description =
-      message.description === "" ? undefined : message.description;
+    obj.description = message.description === "" ? undefined : message.description;
     obj.run_as = message.runAs === "" ? undefined : message.runAs;
-    obj.wasm_byte_code = message.wasmByteCode
-      ? toBase64(message.wasmByteCode)
-      : undefined;
-    obj.instantiate_permission = message.instantiatePermission
-      ? AccessConfig.toAmino(message.instantiatePermission)
-      : undefined;
+    obj.wasm_byte_code = message.wasmByteCode ? toBase64(message.wasmByteCode) : undefined;
+    obj.instantiate_permission = message.instantiatePermission ? AccessConfig.toAmino(message.instantiatePermission) : undefined;
     return obj;
   },
   fromAminoMsg(object: StoreCodeProposalAminoMsg): StoreCodeProposal {
@@ -535,7 +625,7 @@ export const StoreCodeProposal = {
   toAminoMsg(message: StoreCodeProposal): StoreCodeProposalAminoMsg {
     return {
       type: "wasm/StoreCodeProposal",
-      value: StoreCodeProposal.toAmino(message),
+      value: StoreCodeProposal.toAmino(message)
     };
   },
   fromProtoMsg(message: StoreCodeProposalProtoMsg): StoreCodeProposal {
@@ -547,9 +637,9 @@ export const StoreCodeProposal = {
   toProtoMsg(message: StoreCodeProposal): StoreCodeProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.StoreCodeProposal",
-      value: StoreCodeProposal.encode(message).finish(),
+      value: StoreCodeProposal.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseInstantiateContractProposal(): InstantiateContractProposal {
   return {
@@ -560,15 +650,12 @@ function createBaseInstantiateContractProposal(): InstantiateContractProposal {
     codeId: Long.UZERO,
     label: "",
     msg: new Uint8Array(),
-    funds: [],
+    funds: []
   };
 }
 export const InstantiateContractProposal = {
   typeUrl: "/cosmwasm.wasm.v1.InstantiateContractProposal",
-  encode(
-    message: InstantiateContractProposal,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: InstantiateContractProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -595,10 +682,7 @@ export const InstantiateContractProposal = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): InstantiateContractProposal {
+  decode(input: _m0.Reader | Uint8Array, length?: number): InstantiateContractProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseInstantiateContractProposal();
@@ -636,26 +720,19 @@ export const InstantiateContractProposal = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<InstantiateContractProposal>
-  ): InstantiateContractProposal {
+  fromPartial(object: Partial<InstantiateContractProposal>): InstantiateContractProposal {
     const message = createBaseInstantiateContractProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.runAs = object.runAs ?? "";
     message.admin = object.admin ?? "";
-    message.codeId =
-      object.codeId !== undefined && object.codeId !== null
-        ? Long.fromValue(object.codeId)
-        : Long.UZERO;
+    message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.label = object.label ?? "";
     message.msg = object.msg ?? new Uint8Array();
-    message.funds = object.funds?.map((e) => Coin.fromPartial(e)) || [];
+    message.funds = object.funds?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
-  fromAmino(
-    object: InstantiateContractProposalAmino
-  ): InstantiateContractProposal {
+  fromAmino(object: InstantiateContractProposalAmino): InstantiateContractProposal {
     const message = createBaseInstantiateContractProposal();
     if (object.title !== undefined && object.title !== null) {
       message.title = object.title;
@@ -678,59 +755,46 @@ export const InstantiateContractProposal = {
     if (object.msg !== undefined && object.msg !== null) {
       message.msg = toUtf8(JSON.stringify(object.msg));
     }
-    message.funds = object.funds?.map((e) => Coin.fromAmino(e)) || [];
+    message.funds = object.funds?.map(e => Coin.fromAmino(e)) || [];
     return message;
   },
-  toAmino(
-    message: InstantiateContractProposal
-  ): InstantiateContractProposalAmino {
+  toAmino(message: InstantiateContractProposal): InstantiateContractProposalAmino {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
-    obj.description =
-      message.description === "" ? undefined : message.description;
+    obj.description = message.description === "" ? undefined : message.description;
     obj.run_as = message.runAs === "" ? undefined : message.runAs;
     obj.admin = message.admin === "" ? undefined : message.admin;
-    obj.code_id = !message.codeId.isZero()
-      ? message.codeId?.toString()
-      : undefined;
+    obj.code_id = !message.codeId.isZero() ? message.codeId?.toString() : undefined;
     obj.label = message.label === "" ? undefined : message.label;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
     if (message.funds) {
-      obj.funds = message.funds.map((e) => (e ? Coin.toAmino(e) : undefined));
+      obj.funds = message.funds.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
       obj.funds = message.funds;
     }
     return obj;
   },
-  fromAminoMsg(
-    object: InstantiateContractProposalAminoMsg
-  ): InstantiateContractProposal {
+  fromAminoMsg(object: InstantiateContractProposalAminoMsg): InstantiateContractProposal {
     return InstantiateContractProposal.fromAmino(object.value);
   },
-  toAminoMsg(
-    message: InstantiateContractProposal
-  ): InstantiateContractProposalAminoMsg {
+  toAminoMsg(message: InstantiateContractProposal): InstantiateContractProposalAminoMsg {
     return {
       type: "wasm/InstantiateContractProposal",
-      value: InstantiateContractProposal.toAmino(message),
+      value: InstantiateContractProposal.toAmino(message)
     };
   },
-  fromProtoMsg(
-    message: InstantiateContractProposalProtoMsg
-  ): InstantiateContractProposal {
+  fromProtoMsg(message: InstantiateContractProposalProtoMsg): InstantiateContractProposal {
     return InstantiateContractProposal.decode(message.value);
   },
   toProto(message: InstantiateContractProposal): Uint8Array {
     return InstantiateContractProposal.encode(message).finish();
   },
-  toProtoMsg(
-    message: InstantiateContractProposal
-  ): InstantiateContractProposalProtoMsg {
+  toProtoMsg(message: InstantiateContractProposal): InstantiateContractProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.InstantiateContractProposal",
-      value: InstantiateContractProposal.encode(message).finish(),
+      value: InstantiateContractProposal.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseMigrateContractProposal(): MigrateContractProposal {
   return {
@@ -738,15 +802,12 @@ function createBaseMigrateContractProposal(): MigrateContractProposal {
     description: "",
     contract: "",
     codeId: Long.UZERO,
-    msg: new Uint8Array(),
+    msg: new Uint8Array()
   };
 }
 export const MigrateContractProposal = {
   typeUrl: "/cosmwasm.wasm.v1.MigrateContractProposal",
-  encode(
-    message: MigrateContractProposal,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: MigrateContractProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -764,10 +825,7 @@ export const MigrateContractProposal = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): MigrateContractProposal {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MigrateContractProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMigrateContractProposal();
@@ -796,17 +854,12 @@ export const MigrateContractProposal = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<MigrateContractProposal>
-  ): MigrateContractProposal {
+  fromPartial(object: Partial<MigrateContractProposal>): MigrateContractProposal {
     const message = createBaseMigrateContractProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.contract = object.contract ?? "";
-    message.codeId =
-      object.codeId !== undefined && object.codeId !== null
-        ? Long.fromValue(object.codeId)
-        : Long.UZERO;
+    message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.msg = object.msg ?? new Uint8Array();
     return message;
   },
@@ -832,59 +885,45 @@ export const MigrateContractProposal = {
   toAmino(message: MigrateContractProposal): MigrateContractProposalAmino {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
-    obj.description =
-      message.description === "" ? undefined : message.description;
+    obj.description = message.description === "" ? undefined : message.description;
     obj.contract = message.contract === "" ? undefined : message.contract;
-    obj.code_id = !message.codeId.isZero()
-      ? message.codeId?.toString()
-      : undefined;
+    obj.code_id = !message.codeId.isZero() ? message.codeId?.toString() : undefined;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: MigrateContractProposalAminoMsg
-  ): MigrateContractProposal {
+  fromAminoMsg(object: MigrateContractProposalAminoMsg): MigrateContractProposal {
     return MigrateContractProposal.fromAmino(object.value);
   },
-  toAminoMsg(
-    message: MigrateContractProposal
-  ): MigrateContractProposalAminoMsg {
+  toAminoMsg(message: MigrateContractProposal): MigrateContractProposalAminoMsg {
     return {
       type: "wasm/MigrateContractProposal",
-      value: MigrateContractProposal.toAmino(message),
+      value: MigrateContractProposal.toAmino(message)
     };
   },
-  fromProtoMsg(
-    message: MigrateContractProposalProtoMsg
-  ): MigrateContractProposal {
+  fromProtoMsg(message: MigrateContractProposalProtoMsg): MigrateContractProposal {
     return MigrateContractProposal.decode(message.value);
   },
   toProto(message: MigrateContractProposal): Uint8Array {
     return MigrateContractProposal.encode(message).finish();
   },
-  toProtoMsg(
-    message: MigrateContractProposal
-  ): MigrateContractProposalProtoMsg {
+  toProtoMsg(message: MigrateContractProposal): MigrateContractProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MigrateContractProposal",
-      value: MigrateContractProposal.encode(message).finish(),
+      value: MigrateContractProposal.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseSudoContractProposal(): SudoContractProposal {
   return {
     title: "",
     description: "",
     contract: "",
-    msg: new Uint8Array(),
+    msg: new Uint8Array()
   };
 }
 export const SudoContractProposal = {
   typeUrl: "/cosmwasm.wasm.v1.SudoContractProposal",
-  encode(
-    message: SudoContractProposal,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: SudoContractProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -899,10 +938,7 @@ export const SudoContractProposal = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): SudoContractProposal {
+  decode(input: _m0.Reader | Uint8Array, length?: number): SudoContractProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSudoContractProposal();
@@ -955,8 +991,7 @@ export const SudoContractProposal = {
   toAmino(message: SudoContractProposal): SudoContractProposalAmino {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
-    obj.description =
-      message.description === "" ? undefined : message.description;
+    obj.description = message.description === "" ? undefined : message.description;
     obj.contract = message.contract === "" ? undefined : message.contract;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
     return obj;
@@ -967,7 +1002,7 @@ export const SudoContractProposal = {
   toAminoMsg(message: SudoContractProposal): SudoContractProposalAminoMsg {
     return {
       type: "wasm/SudoContractProposal",
-      value: SudoContractProposal.toAmino(message),
+      value: SudoContractProposal.toAmino(message)
     };
   },
   fromProtoMsg(message: SudoContractProposalProtoMsg): SudoContractProposal {
@@ -979,9 +1014,9 @@ export const SudoContractProposal = {
   toProtoMsg(message: SudoContractProposal): SudoContractProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.SudoContractProposal",
-      value: SudoContractProposal.encode(message).finish(),
+      value: SudoContractProposal.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseExecuteContractProposal(): ExecuteContractProposal {
   return {
@@ -990,15 +1025,12 @@ function createBaseExecuteContractProposal(): ExecuteContractProposal {
     runAs: "",
     contract: "",
     msg: new Uint8Array(),
-    funds: [],
+    funds: []
   };
 }
 export const ExecuteContractProposal = {
   typeUrl: "/cosmwasm.wasm.v1.ExecuteContractProposal",
-  encode(
-    message: ExecuteContractProposal,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ExecuteContractProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -1019,10 +1051,7 @@ export const ExecuteContractProposal = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): ExecuteContractProposal {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ExecuteContractProposal {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseExecuteContractProposal();
@@ -1054,16 +1083,14 @@ export const ExecuteContractProposal = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<ExecuteContractProposal>
-  ): ExecuteContractProposal {
+  fromPartial(object: Partial<ExecuteContractProposal>): ExecuteContractProposal {
     const message = createBaseExecuteContractProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.runAs = object.runAs ?? "";
     message.contract = object.contract ?? "";
     message.msg = object.msg ?? new Uint8Array();
-    message.funds = object.funds?.map((e) => Coin.fromPartial(e)) || [];
+    message.funds = object.funds?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: ExecuteContractProposalAmino): ExecuteContractProposal {
@@ -1083,68 +1110,56 @@ export const ExecuteContractProposal = {
     if (object.msg !== undefined && object.msg !== null) {
       message.msg = toUtf8(JSON.stringify(object.msg));
     }
-    message.funds = object.funds?.map((e) => Coin.fromAmino(e)) || [];
+    message.funds = object.funds?.map(e => Coin.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: ExecuteContractProposal): ExecuteContractProposalAmino {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
-    obj.description =
-      message.description === "" ? undefined : message.description;
+    obj.description = message.description === "" ? undefined : message.description;
     obj.run_as = message.runAs === "" ? undefined : message.runAs;
     obj.contract = message.contract === "" ? undefined : message.contract;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
     if (message.funds) {
-      obj.funds = message.funds.map((e) => (e ? Coin.toAmino(e) : undefined));
+      obj.funds = message.funds.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
       obj.funds = message.funds;
     }
     return obj;
   },
-  fromAminoMsg(
-    object: ExecuteContractProposalAminoMsg
-  ): ExecuteContractProposal {
+  fromAminoMsg(object: ExecuteContractProposalAminoMsg): ExecuteContractProposal {
     return ExecuteContractProposal.fromAmino(object.value);
   },
-  toAminoMsg(
-    message: ExecuteContractProposal
-  ): ExecuteContractProposalAminoMsg {
+  toAminoMsg(message: ExecuteContractProposal): ExecuteContractProposalAminoMsg {
     return {
       type: "wasm/ExecuteContractProposal",
-      value: ExecuteContractProposal.toAmino(message),
+      value: ExecuteContractProposal.toAmino(message)
     };
   },
-  fromProtoMsg(
-    message: ExecuteContractProposalProtoMsg
-  ): ExecuteContractProposal {
+  fromProtoMsg(message: ExecuteContractProposalProtoMsg): ExecuteContractProposal {
     return ExecuteContractProposal.decode(message.value);
   },
   toProto(message: ExecuteContractProposal): Uint8Array {
     return ExecuteContractProposal.encode(message).finish();
   },
-  toProtoMsg(
-    message: ExecuteContractProposal
-  ): ExecuteContractProposalProtoMsg {
+  toProtoMsg(message: ExecuteContractProposal): ExecuteContractProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.ExecuteContractProposal",
-      value: ExecuteContractProposal.encode(message).finish(),
+      value: ExecuteContractProposal.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseUpdateAdminProposal(): UpdateAdminProposal {
   return {
     title: "",
     description: "",
     newAdmin: "",
-    contract: "",
+    contract: ""
   };
 }
 export const UpdateAdminProposal = {
   typeUrl: "/cosmwasm.wasm.v1.UpdateAdminProposal",
-  encode(
-    message: UpdateAdminProposal,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: UpdateAdminProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -1212,8 +1227,7 @@ export const UpdateAdminProposal = {
   toAmino(message: UpdateAdminProposal): UpdateAdminProposalAmino {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
-    obj.description =
-      message.description === "" ? undefined : message.description;
+    obj.description = message.description === "" ? undefined : message.description;
     obj.new_admin = message.newAdmin === "" ? undefined : message.newAdmin;
     obj.contract = message.contract === "" ? undefined : message.contract;
     return obj;
@@ -1224,7 +1238,7 @@ export const UpdateAdminProposal = {
   toAminoMsg(message: UpdateAdminProposal): UpdateAdminProposalAminoMsg {
     return {
       type: "wasm/UpdateAdminProposal",
-      value: UpdateAdminProposal.toAmino(message),
+      value: UpdateAdminProposal.toAmino(message)
     };
   },
   fromProtoMsg(message: UpdateAdminProposalProtoMsg): UpdateAdminProposal {
@@ -1236,23 +1250,20 @@ export const UpdateAdminProposal = {
   toProtoMsg(message: UpdateAdminProposal): UpdateAdminProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.UpdateAdminProposal",
-      value: UpdateAdminProposal.encode(message).finish(),
+      value: UpdateAdminProposal.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseClearAdminProposal(): ClearAdminProposal {
   return {
     title: "",
     description: "",
-    contract: "",
+    contract: ""
   };
 }
 export const ClearAdminProposal = {
   typeUrl: "/cosmwasm.wasm.v1.ClearAdminProposal",
-  encode(
-    message: ClearAdminProposal,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ClearAdminProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -1310,8 +1321,7 @@ export const ClearAdminProposal = {
   toAmino(message: ClearAdminProposal): ClearAdminProposalAmino {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
-    obj.description =
-      message.description === "" ? undefined : message.description;
+    obj.description = message.description === "" ? undefined : message.description;
     obj.contract = message.contract === "" ? undefined : message.contract;
     return obj;
   },
@@ -1321,7 +1331,7 @@ export const ClearAdminProposal = {
   toAminoMsg(message: ClearAdminProposal): ClearAdminProposalAminoMsg {
     return {
       type: "wasm/ClearAdminProposal",
-      value: ClearAdminProposal.toAmino(message),
+      value: ClearAdminProposal.toAmino(message)
     };
   },
   fromProtoMsg(message: ClearAdminProposalProtoMsg): ClearAdminProposal {
@@ -1333,23 +1343,20 @@ export const ClearAdminProposal = {
   toProtoMsg(message: ClearAdminProposal): ClearAdminProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.ClearAdminProposal",
-      value: ClearAdminProposal.encode(message).finish(),
+      value: ClearAdminProposal.encode(message).finish()
     };
-  },
+  }
 };
 function createBasePinCodesProposal(): PinCodesProposal {
   return {
     title: "",
     description: "",
-    codeIds: [],
+    codeIds: []
   };
 }
 export const PinCodesProposal = {
   typeUrl: "/cosmwasm.wasm.v1.PinCodesProposal",
-  encode(
-    message: PinCodesProposal,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: PinCodesProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -1397,7 +1404,7 @@ export const PinCodesProposal = {
     const message = createBasePinCodesProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.codeIds = object.codeIds?.map((e) => Long.fromValue(e)) || [];
+    message.codeIds = object.codeIds?.map(e => Long.fromValue(e)) || [];
     return message;
   },
   fromAmino(object: PinCodesProposalAmino): PinCodesProposal {
@@ -1408,16 +1415,15 @@ export const PinCodesProposal = {
     if (object.description !== undefined && object.description !== null) {
       message.description = object.description;
     }
-    message.codeIds = object.code_ids?.map((e) => Long.fromString(e)) || [];
+    message.codeIds = object.code_ids?.map(e => Long.fromString(e)) || [];
     return message;
   },
   toAmino(message: PinCodesProposal): PinCodesProposalAmino {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
-    obj.description =
-      message.description === "" ? undefined : message.description;
+    obj.description = message.description === "" ? undefined : message.description;
     if (message.codeIds) {
-      obj.code_ids = message.codeIds.map((e) => e);
+      obj.code_ids = message.codeIds.map(e => e);
     } else {
       obj.code_ids = message.codeIds;
     }
@@ -1429,7 +1435,7 @@ export const PinCodesProposal = {
   toAminoMsg(message: PinCodesProposal): PinCodesProposalAminoMsg {
     return {
       type: "wasm/PinCodesProposal",
-      value: PinCodesProposal.toAmino(message),
+      value: PinCodesProposal.toAmino(message)
     };
   },
   fromProtoMsg(message: PinCodesProposalProtoMsg): PinCodesProposal {
@@ -1441,23 +1447,20 @@ export const PinCodesProposal = {
   toProtoMsg(message: PinCodesProposal): PinCodesProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.PinCodesProposal",
-      value: PinCodesProposal.encode(message).finish(),
+      value: PinCodesProposal.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseUnpinCodesProposal(): UnpinCodesProposal {
   return {
     title: "",
     description: "",
-    codeIds: [],
+    codeIds: []
   };
 }
 export const UnpinCodesProposal = {
   typeUrl: "/cosmwasm.wasm.v1.UnpinCodesProposal",
-  encode(
-    message: UnpinCodesProposal,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: UnpinCodesProposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -1505,7 +1508,7 @@ export const UnpinCodesProposal = {
     const message = createBaseUnpinCodesProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.codeIds = object.codeIds?.map((e) => Long.fromValue(e)) || [];
+    message.codeIds = object.codeIds?.map(e => Long.fromValue(e)) || [];
     return message;
   },
   fromAmino(object: UnpinCodesProposalAmino): UnpinCodesProposal {
@@ -1516,16 +1519,15 @@ export const UnpinCodesProposal = {
     if (object.description !== undefined && object.description !== null) {
       message.description = object.description;
     }
-    message.codeIds = object.code_ids?.map((e) => Long.fromString(e)) || [];
+    message.codeIds = object.code_ids?.map(e => Long.fromString(e)) || [];
     return message;
   },
   toAmino(message: UnpinCodesProposal): UnpinCodesProposalAmino {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
-    obj.description =
-      message.description === "" ? undefined : message.description;
+    obj.description = message.description === "" ? undefined : message.description;
     if (message.codeIds) {
-      obj.code_ids = message.codeIds.map((e) => e);
+      obj.code_ids = message.codeIds.map(e => e);
     } else {
       obj.code_ids = message.codeIds;
     }
@@ -1537,7 +1539,7 @@ export const UnpinCodesProposal = {
   toAminoMsg(message: UnpinCodesProposal): UnpinCodesProposalAminoMsg {
     return {
       type: "wasm/UnpinCodesProposal",
-      value: UnpinCodesProposal.toAmino(message),
+      value: UnpinCodesProposal.toAmino(message)
     };
   },
   fromProtoMsg(message: UnpinCodesProposalProtoMsg): UnpinCodesProposal {
@@ -1549,7 +1551,7 @@ export const UnpinCodesProposal = {
   toProtoMsg(message: UnpinCodesProposal): UnpinCodesProposalProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.UnpinCodesProposal",
-      value: UnpinCodesProposal.encode(message).finish(),
+      value: UnpinCodesProposal.encode(message).finish()
     };
-  },
+  }
 };

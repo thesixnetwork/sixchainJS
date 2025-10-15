@@ -18,9 +18,16 @@ export interface GenesisStateProtoMsg {
   typeUrl: "/sixprotocol.tokenmngr.GenesisState";
   value: Uint8Array;
 }
-/** GenesisState defines the tokenmngr module's genesis state. */
+/**
+ * GenesisState defines the tokenmngr module's genesis state.
+ * @name GenesisStateAmino
+ * @package sixprotocol.tokenmngr
+ * @see proto type: sixprotocol.tokenmngr.GenesisState
+ */
 export interface GenesisStateAmino {
-  /** params defines all the parameters of the module. */
+  /**
+   * params defines all the parameters of the module.
+   */
   params: ParamsAmino;
   tokenList?: TokenAmino[];
   mintpermList?: MintpermAmino[];
@@ -45,15 +52,12 @@ function createBaseGenesisState(): GenesisState {
     tokenList: [],
     mintpermList: [],
     tokenBurnList: [],
-    options: undefined,
+    options: undefined
   };
 }
 export const GenesisState = {
   typeUrl: "/sixprotocol.tokenmngr.GenesisState",
-  encode(
-    message: GenesisState,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -102,20 +106,11 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.params =
-      object.params !== undefined && object.params !== null
-        ? Params.fromPartial(object.params)
-        : undefined;
-    message.tokenList =
-      object.tokenList?.map((e) => Token.fromPartial(e)) || [];
-    message.mintpermList =
-      object.mintpermList?.map((e) => Mintperm.fromPartial(e)) || [];
-    message.tokenBurnList =
-      object.tokenBurnList?.map((e) => TokenBurn.fromPartial(e)) || [];
-    message.options =
-      object.options !== undefined && object.options !== null
-        ? Options.fromPartial(object.options)
-        : undefined;
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.tokenList = object.tokenList?.map(e => Token.fromPartial(e)) || [];
+    message.mintpermList = object.mintpermList?.map(e => Mintperm.fromPartial(e)) || [];
+    message.tokenBurnList = object.tokenBurnList?.map(e => TokenBurn.fromPartial(e)) || [];
+    message.options = object.options !== undefined && object.options !== null ? Options.fromPartial(object.options) : undefined;
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -123,11 +118,9 @@ export const GenesisState = {
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromAmino(object.params);
     }
-    message.tokenList = object.tokenList?.map((e) => Token.fromAmino(e)) || [];
-    message.mintpermList =
-      object.mintpermList?.map((e) => Mintperm.fromAmino(e)) || [];
-    message.tokenBurnList =
-      object.tokenBurnList?.map((e) => TokenBurn.fromAmino(e)) || [];
+    message.tokenList = object.tokenList?.map(e => Token.fromAmino(e)) || [];
+    message.mintpermList = object.mintpermList?.map(e => Mintperm.fromAmino(e)) || [];
+    message.tokenBurnList = object.tokenBurnList?.map(e => TokenBurn.fromAmino(e)) || [];
     if (object.options !== undefined && object.options !== null) {
       message.options = Options.fromAmino(object.options);
     }
@@ -135,33 +128,23 @@ export const GenesisState = {
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params
-      ? Params.toAmino(message.params)
-      : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
     if (message.tokenList) {
-      obj.tokenList = message.tokenList.map((e) =>
-        e ? Token.toAmino(e) : undefined
-      );
+      obj.tokenList = message.tokenList.map(e => e ? Token.toAmino(e) : undefined);
     } else {
       obj.tokenList = message.tokenList;
     }
     if (message.mintpermList) {
-      obj.mintpermList = message.mintpermList.map((e) =>
-        e ? Mintperm.toAmino(e) : undefined
-      );
+      obj.mintpermList = message.mintpermList.map(e => e ? Mintperm.toAmino(e) : undefined);
     } else {
       obj.mintpermList = message.mintpermList;
     }
     if (message.tokenBurnList) {
-      obj.tokenBurnList = message.tokenBurnList.map((e) =>
-        e ? TokenBurn.toAmino(e) : undefined
-      );
+      obj.tokenBurnList = message.tokenBurnList.map(e => e ? TokenBurn.toAmino(e) : undefined);
     } else {
       obj.tokenBurnList = message.tokenBurnList;
     }
-    obj.options = message.options
-      ? Options.toAmino(message.options)
-      : undefined;
+    obj.options = message.options ? Options.toAmino(message.options) : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -176,7 +159,7 @@ export const GenesisState = {
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.GenesisState",
-      value: GenesisState.encode(message).finish(),
+      value: GenesisState.encode(message).finish()
     };
-  },
+  }
 };

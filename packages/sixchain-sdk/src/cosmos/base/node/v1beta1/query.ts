@@ -1,12 +1,6 @@
 //@ts-nocheck
 import { Timestamp } from "../../../../google/protobuf/timestamp";
-import {
-  Long,
-  toTimestamp,
-  fromTimestamp,
-  bytesFromBase64,
-  base64FromBytes,
-} from "../../../../helpers";
+import { Long, toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** ConfigRequest defines the request structure for the Config gRPC query. */
 export interface ConfigRequest {}
@@ -14,7 +8,12 @@ export interface ConfigRequestProtoMsg {
   typeUrl: "/cosmos.base.node.v1beta1.ConfigRequest";
   value: Uint8Array;
 }
-/** ConfigRequest defines the request structure for the Config gRPC query. */
+/**
+ * ConfigRequest defines the request structure for the Config gRPC query.
+ * @name ConfigRequestAmino
+ * @package cosmos.base.node.v1beta1
+ * @see proto type: cosmos.base.node.v1beta1.ConfigRequest
+ */
 export interface ConfigRequestAmino {}
 export interface ConfigRequestAminoMsg {
   type: "cosmos-sdk/ConfigRequest";
@@ -33,7 +32,12 @@ export interface ConfigResponseProtoMsg {
   typeUrl: "/cosmos.base.node.v1beta1.ConfigResponse";
   value: Uint8Array;
 }
-/** ConfigResponse defines the response structure for the Config gRPC query. */
+/**
+ * ConfigResponse defines the response structure for the Config gRPC query.
+ * @name ConfigResponseAmino
+ * @package cosmos.base.node.v1beta1
+ * @see proto type: cosmos.base.node.v1beta1.ConfigResponse
+ */
 export interface ConfigResponseAmino {
   minimum_gas_price?: string;
   pruning_keep_recent?: string;
@@ -57,7 +61,12 @@ export interface StatusRequestProtoMsg {
   typeUrl: "/cosmos.base.node.v1beta1.StatusRequest";
   value: Uint8Array;
 }
-/** StateRequest defines the request structure for the status of a node. */
+/**
+ * StateRequest defines the request structure for the status of a node.
+ * @name StatusRequestAmino
+ * @package cosmos.base.node.v1beta1
+ * @see proto type: cosmos.base.node.v1beta1.StatusRequest
+ */
 export interface StatusRequestAmino {}
 export interface StatusRequestAminoMsg {
   type: "cosmos-sdk/StatusRequest";
@@ -82,17 +91,32 @@ export interface StatusResponseProtoMsg {
   typeUrl: "/cosmos.base.node.v1beta1.StatusResponse";
   value: Uint8Array;
 }
-/** StateResponse defines the response structure for the status of a node. */
+/**
+ * StateResponse defines the response structure for the status of a node.
+ * @name StatusResponseAmino
+ * @package cosmos.base.node.v1beta1
+ * @see proto type: cosmos.base.node.v1beta1.StatusResponse
+ */
 export interface StatusResponseAmino {
-  /** earliest block height available in the store */
+  /**
+   * earliest block height available in the store
+   */
   earliest_store_height?: string;
-  /** current block height */
+  /**
+   * current block height
+   */
   height?: string;
-  /** block height timestamp */
+  /**
+   * block height timestamp
+   */
   timestamp?: string;
-  /** app hash of the current block */
+  /**
+   * app hash of the current block
+   */
   app_hash?: string;
-  /** validator hash provided by the consensus header */
+  /**
+   * validator hash provided by the consensus header
+   */
   validator_hash?: string;
 }
 export interface StatusResponseAminoMsg {
@@ -112,10 +136,7 @@ function createBaseConfigRequest(): ConfigRequest {
 }
 export const ConfigRequest = {
   typeUrl: "/cosmos.base.node.v1beta1.ConfigRequest",
-  encode(
-    _: ConfigRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: ConfigRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): ConfigRequest {
@@ -150,7 +171,7 @@ export const ConfigRequest = {
   toAminoMsg(message: ConfigRequest): ConfigRequestAminoMsg {
     return {
       type: "cosmos-sdk/ConfigRequest",
-      value: ConfigRequest.toAmino(message),
+      value: ConfigRequest.toAmino(message)
     };
   },
   fromProtoMsg(message: ConfigRequestProtoMsg): ConfigRequest {
@@ -162,24 +183,21 @@ export const ConfigRequest = {
   toProtoMsg(message: ConfigRequest): ConfigRequestProtoMsg {
     return {
       typeUrl: "/cosmos.base.node.v1beta1.ConfigRequest",
-      value: ConfigRequest.encode(message).finish(),
+      value: ConfigRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseConfigResponse(): ConfigResponse {
   return {
     minimumGasPrice: "",
     pruningKeepRecent: "",
     pruningInterval: "",
-    haltHeight: Long.UZERO,
+    haltHeight: Long.UZERO
   };
 }
 export const ConfigResponse = {
   typeUrl: "/cosmos.base.node.v1beta1.ConfigResponse",
-  encode(
-    message: ConfigResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ConfigResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.minimumGasPrice !== "") {
       writer.uint32(10).string(message.minimumGasPrice);
     }
@@ -225,30 +243,18 @@ export const ConfigResponse = {
     message.minimumGasPrice = object.minimumGasPrice ?? "";
     message.pruningKeepRecent = object.pruningKeepRecent ?? "";
     message.pruningInterval = object.pruningInterval ?? "";
-    message.haltHeight =
-      object.haltHeight !== undefined && object.haltHeight !== null
-        ? Long.fromValue(object.haltHeight)
-        : Long.UZERO;
+    message.haltHeight = object.haltHeight !== undefined && object.haltHeight !== null ? Long.fromValue(object.haltHeight) : Long.UZERO;
     return message;
   },
   fromAmino(object: ConfigResponseAmino): ConfigResponse {
     const message = createBaseConfigResponse();
-    if (
-      object.minimum_gas_price !== undefined &&
-      object.minimum_gas_price !== null
-    ) {
+    if (object.minimum_gas_price !== undefined && object.minimum_gas_price !== null) {
       message.minimumGasPrice = object.minimum_gas_price;
     }
-    if (
-      object.pruning_keep_recent !== undefined &&
-      object.pruning_keep_recent !== null
-    ) {
+    if (object.pruning_keep_recent !== undefined && object.pruning_keep_recent !== null) {
       message.pruningKeepRecent = object.pruning_keep_recent;
     }
-    if (
-      object.pruning_interval !== undefined &&
-      object.pruning_interval !== null
-    ) {
+    if (object.pruning_interval !== undefined && object.pruning_interval !== null) {
       message.pruningInterval = object.pruning_interval;
     }
     if (object.halt_height !== undefined && object.halt_height !== null) {
@@ -258,15 +264,10 @@ export const ConfigResponse = {
   },
   toAmino(message: ConfigResponse): ConfigResponseAmino {
     const obj: any = {};
-    obj.minimum_gas_price =
-      message.minimumGasPrice === "" ? undefined : message.minimumGasPrice;
-    obj.pruning_keep_recent =
-      message.pruningKeepRecent === "" ? undefined : message.pruningKeepRecent;
-    obj.pruning_interval =
-      message.pruningInterval === "" ? undefined : message.pruningInterval;
-    obj.halt_height = !message.haltHeight.isZero()
-      ? message.haltHeight?.toString()
-      : undefined;
+    obj.minimum_gas_price = message.minimumGasPrice === "" ? undefined : message.minimumGasPrice;
+    obj.pruning_keep_recent = message.pruningKeepRecent === "" ? undefined : message.pruningKeepRecent;
+    obj.pruning_interval = message.pruningInterval === "" ? undefined : message.pruningInterval;
+    obj.halt_height = !message.haltHeight.isZero() ? message.haltHeight?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ConfigResponseAminoMsg): ConfigResponse {
@@ -275,7 +276,7 @@ export const ConfigResponse = {
   toAminoMsg(message: ConfigResponse): ConfigResponseAminoMsg {
     return {
       type: "cosmos-sdk/ConfigResponse",
-      value: ConfigResponse.toAmino(message),
+      value: ConfigResponse.toAmino(message)
     };
   },
   fromProtoMsg(message: ConfigResponseProtoMsg): ConfigResponse {
@@ -287,19 +288,16 @@ export const ConfigResponse = {
   toProtoMsg(message: ConfigResponse): ConfigResponseProtoMsg {
     return {
       typeUrl: "/cosmos.base.node.v1beta1.ConfigResponse",
-      value: ConfigResponse.encode(message).finish(),
+      value: ConfigResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseStatusRequest(): StatusRequest {
   return {};
 }
 export const StatusRequest = {
   typeUrl: "/cosmos.base.node.v1beta1.StatusRequest",
-  encode(
-    _: StatusRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: StatusRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): StatusRequest {
@@ -334,7 +332,7 @@ export const StatusRequest = {
   toAminoMsg(message: StatusRequest): StatusRequestAminoMsg {
     return {
       type: "cosmos-sdk/StatusRequest",
-      value: StatusRequest.toAmino(message),
+      value: StatusRequest.toAmino(message)
     };
   },
   fromProtoMsg(message: StatusRequestProtoMsg): StatusRequest {
@@ -346,9 +344,9 @@ export const StatusRequest = {
   toProtoMsg(message: StatusRequest): StatusRequestProtoMsg {
     return {
       typeUrl: "/cosmos.base.node.v1beta1.StatusRequest",
-      value: StatusRequest.encode(message).finish(),
+      value: StatusRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseStatusResponse(): StatusResponse {
   return {
@@ -356,15 +354,12 @@ function createBaseStatusResponse(): StatusResponse {
     height: Long.UZERO,
     timestamp: undefined,
     appHash: new Uint8Array(),
-    validatorHash: new Uint8Array(),
+    validatorHash: new Uint8Array()
   };
 }
 export const StatusResponse = {
   typeUrl: "/cosmos.base.node.v1beta1.StatusResponse",
-  encode(
-    message: StatusResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: StatusResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.earliestStoreHeight.isZero()) {
       writer.uint32(8).uint64(message.earliestStoreHeight);
     }
@@ -372,10 +367,7 @@ export const StatusResponse = {
       writer.uint32(16).uint64(message.height);
     }
     if (message.timestamp !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.timestamp),
-        writer.uint32(26).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(26).fork()).ldelim();
     }
     if (message.appHash.length !== 0) {
       writer.uint32(34).bytes(message.appHash);
@@ -399,9 +391,7 @@ export const StatusResponse = {
           message.height = reader.uint64() as Long;
           break;
         case 3:
-          message.timestamp = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.timestamp = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         case 4:
           message.appHash = reader.bytes();
@@ -418,15 +408,8 @@ export const StatusResponse = {
   },
   fromPartial(object: Partial<StatusResponse>): StatusResponse {
     const message = createBaseStatusResponse();
-    message.earliestStoreHeight =
-      object.earliestStoreHeight !== undefined &&
-      object.earliestStoreHeight !== null
-        ? Long.fromValue(object.earliestStoreHeight)
-        : Long.UZERO;
-    message.height =
-      object.height !== undefined && object.height !== null
-        ? Long.fromValue(object.height)
-        : Long.UZERO;
+    message.earliestStoreHeight = object.earliestStoreHeight !== undefined && object.earliestStoreHeight !== null ? Long.fromValue(object.earliestStoreHeight) : Long.UZERO;
+    message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.UZERO;
     message.timestamp = object.timestamp ?? undefined;
     message.appHash = object.appHash ?? new Uint8Array();
     message.validatorHash = object.validatorHash ?? new Uint8Array();
@@ -434,13 +417,8 @@ export const StatusResponse = {
   },
   fromAmino(object: StatusResponseAmino): StatusResponse {
     const message = createBaseStatusResponse();
-    if (
-      object.earliest_store_height !== undefined &&
-      object.earliest_store_height !== null
-    ) {
-      message.earliestStoreHeight = Long.fromString(
-        object.earliest_store_height
-      );
+    if (object.earliest_store_height !== undefined && object.earliest_store_height !== null) {
+      message.earliestStoreHeight = Long.fromString(object.earliest_store_height);
     }
     if (object.height !== undefined && object.height !== null) {
       message.height = Long.fromString(object.height);
@@ -458,21 +436,11 @@ export const StatusResponse = {
   },
   toAmino(message: StatusResponse): StatusResponseAmino {
     const obj: any = {};
-    obj.earliest_store_height = !message.earliestStoreHeight.isZero()
-      ? message.earliestStoreHeight?.toString()
-      : undefined;
-    obj.height = !message.height.isZero()
-      ? message.height?.toString()
-      : undefined;
-    obj.timestamp = message.timestamp
-      ? Timestamp.toAmino(toTimestamp(message.timestamp))
-      : undefined;
-    obj.app_hash = message.appHash
-      ? base64FromBytes(message.appHash)
-      : undefined;
-    obj.validator_hash = message.validatorHash
-      ? base64FromBytes(message.validatorHash)
-      : undefined;
+    obj.earliest_store_height = !message.earliestStoreHeight.isZero() ? message.earliestStoreHeight?.toString() : undefined;
+    obj.height = !message.height.isZero() ? message.height?.toString() : undefined;
+    obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
+    obj.app_hash = message.appHash ? base64FromBytes(message.appHash) : undefined;
+    obj.validator_hash = message.validatorHash ? base64FromBytes(message.validatorHash) : undefined;
     return obj;
   },
   fromAminoMsg(object: StatusResponseAminoMsg): StatusResponse {
@@ -481,7 +449,7 @@ export const StatusResponse = {
   toAminoMsg(message: StatusResponse): StatusResponseAminoMsg {
     return {
       type: "cosmos-sdk/StatusResponse",
-      value: StatusResponse.toAmino(message),
+      value: StatusResponse.toAmino(message)
     };
   },
   fromProtoMsg(message: StatusResponseProtoMsg): StatusResponse {
@@ -493,7 +461,7 @@ export const StatusResponse = {
   toProtoMsg(message: StatusResponse): StatusResponseProtoMsg {
     return {
       typeUrl: "/cosmos.base.node.v1beta1.StatusResponse",
-      value: StatusResponse.encode(message).finish(),
+      value: StatusResponse.encode(message).finish()
     };
-  },
+  }
 };

@@ -1,20 +1,6 @@
 //@ts-nocheck
-import {
-  RequestFinalizeBlock,
-  RequestFinalizeBlockAmino,
-  RequestFinalizeBlockSDKType,
-  ResponseFinalizeBlock,
-  ResponseFinalizeBlockAmino,
-  ResponseFinalizeBlockSDKType,
-  ResponseCommit,
-  ResponseCommitAmino,
-  ResponseCommitSDKType,
-} from "../../../../tendermint/abci/types";
-import {
-  StoreKVPair,
-  StoreKVPairAmino,
-  StoreKVPairSDKType,
-} from "../../v1beta1/listening";
+import { RequestFinalizeBlock, RequestFinalizeBlockAmino, RequestFinalizeBlockSDKType, ResponseFinalizeBlock, ResponseFinalizeBlockAmino, ResponseFinalizeBlockSDKType, ResponseCommit, ResponseCommitAmino, ResponseCommitSDKType } from "../../../../tendermint/abci/types";
+import { StoreKVPair, StoreKVPairAmino, StoreKVPairSDKType } from "../../v1beta1/listening";
 import { Long } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** ListenEndBlockRequest is the request type for the ListenEndBlock RPC method */
@@ -26,7 +12,12 @@ export interface ListenFinalizeBlockRequestProtoMsg {
   typeUrl: "/cosmos.store.streaming.abci.ListenFinalizeBlockRequest";
   value: Uint8Array;
 }
-/** ListenEndBlockRequest is the request type for the ListenEndBlock RPC method */
+/**
+ * ListenEndBlockRequest is the request type for the ListenEndBlock RPC method
+ * @name ListenFinalizeBlockRequestAmino
+ * @package cosmos.store.streaming.abci
+ * @see proto type: cosmos.store.streaming.abci.ListenFinalizeBlockRequest
+ */
 export interface ListenFinalizeBlockRequestAmino {
   req?: RequestFinalizeBlockAmino;
   res?: ResponseFinalizeBlockAmino;
@@ -46,7 +37,12 @@ export interface ListenFinalizeBlockResponseProtoMsg {
   typeUrl: "/cosmos.store.streaming.abci.ListenFinalizeBlockResponse";
   value: Uint8Array;
 }
-/** ListenEndBlockResponse is the response type for the ListenEndBlock RPC method */
+/**
+ * ListenEndBlockResponse is the response type for the ListenEndBlock RPC method
+ * @name ListenFinalizeBlockResponseAmino
+ * @package cosmos.store.streaming.abci
+ * @see proto type: cosmos.store.streaming.abci.ListenFinalizeBlockResponse
+ */
 export interface ListenFinalizeBlockResponseAmino {}
 export interface ListenFinalizeBlockResponseAminoMsg {
   type: "cosmos-sdk/ListenFinalizeBlockResponse";
@@ -65,9 +61,16 @@ export interface ListenCommitRequestProtoMsg {
   typeUrl: "/cosmos.store.streaming.abci.ListenCommitRequest";
   value: Uint8Array;
 }
-/** ListenCommitRequest is the request type for the ListenCommit RPC method */
+/**
+ * ListenCommitRequest is the request type for the ListenCommit RPC method
+ * @name ListenCommitRequestAmino
+ * @package cosmos.store.streaming.abci
+ * @see proto type: cosmos.store.streaming.abci.ListenCommitRequest
+ */
 export interface ListenCommitRequestAmino {
-  /** explicitly pass in block height as ResponseCommit does not contain this info */
+  /**
+   * explicitly pass in block height as ResponseCommit does not contain this info
+   */
   block_height?: string;
   res?: ResponseCommitAmino;
   change_set?: StoreKVPairAmino[];
@@ -88,7 +91,12 @@ export interface ListenCommitResponseProtoMsg {
   typeUrl: "/cosmos.store.streaming.abci.ListenCommitResponse";
   value: Uint8Array;
 }
-/** ListenCommitResponse is the response type for the ListenCommit RPC method */
+/**
+ * ListenCommitResponse is the response type for the ListenCommit RPC method
+ * @name ListenCommitResponseAmino
+ * @package cosmos.store.streaming.abci
+ * @see proto type: cosmos.store.streaming.abci.ListenCommitResponse
+ */
 export interface ListenCommitResponseAmino {}
 export interface ListenCommitResponseAminoMsg {
   type: "cosmos-sdk/ListenCommitResponse";
@@ -99,33 +107,21 @@ export interface ListenCommitResponseSDKType {}
 function createBaseListenFinalizeBlockRequest(): ListenFinalizeBlockRequest {
   return {
     req: undefined,
-    res: undefined,
+    res: undefined
   };
 }
 export const ListenFinalizeBlockRequest = {
   typeUrl: "/cosmos.store.streaming.abci.ListenFinalizeBlockRequest",
-  encode(
-    message: ListenFinalizeBlockRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ListenFinalizeBlockRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.req !== undefined) {
-      RequestFinalizeBlock.encode(
-        message.req,
-        writer.uint32(10).fork()
-      ).ldelim();
+      RequestFinalizeBlock.encode(message.req, writer.uint32(10).fork()).ldelim();
     }
     if (message.res !== undefined) {
-      ResponseFinalizeBlock.encode(
-        message.res,
-        writer.uint32(18).fork()
-      ).ldelim();
+      ResponseFinalizeBlock.encode(message.res, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): ListenFinalizeBlockRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListenFinalizeBlockRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListenFinalizeBlockRequest();
@@ -145,23 +141,13 @@ export const ListenFinalizeBlockRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<ListenFinalizeBlockRequest>
-  ): ListenFinalizeBlockRequest {
+  fromPartial(object: Partial<ListenFinalizeBlockRequest>): ListenFinalizeBlockRequest {
     const message = createBaseListenFinalizeBlockRequest();
-    message.req =
-      object.req !== undefined && object.req !== null
-        ? RequestFinalizeBlock.fromPartial(object.req)
-        : undefined;
-    message.res =
-      object.res !== undefined && object.res !== null
-        ? ResponseFinalizeBlock.fromPartial(object.res)
-        : undefined;
+    message.req = object.req !== undefined && object.req !== null ? RequestFinalizeBlock.fromPartial(object.req) : undefined;
+    message.res = object.res !== undefined && object.res !== null ? ResponseFinalizeBlock.fromPartial(object.res) : undefined;
     return message;
   },
-  fromAmino(
-    object: ListenFinalizeBlockRequestAmino
-  ): ListenFinalizeBlockRequest {
+  fromAmino(object: ListenFinalizeBlockRequestAmino): ListenFinalizeBlockRequest {
     const message = createBaseListenFinalizeBlockRequest();
     if (object.req !== undefined && object.req !== null) {
       message.req = RequestFinalizeBlock.fromAmino(object.req);
@@ -171,63 +157,43 @@ export const ListenFinalizeBlockRequest = {
     }
     return message;
   },
-  toAmino(
-    message: ListenFinalizeBlockRequest
-  ): ListenFinalizeBlockRequestAmino {
+  toAmino(message: ListenFinalizeBlockRequest): ListenFinalizeBlockRequestAmino {
     const obj: any = {};
-    obj.req = message.req
-      ? RequestFinalizeBlock.toAmino(message.req)
-      : undefined;
-    obj.res = message.res
-      ? ResponseFinalizeBlock.toAmino(message.res)
-      : undefined;
+    obj.req = message.req ? RequestFinalizeBlock.toAmino(message.req) : undefined;
+    obj.res = message.res ? ResponseFinalizeBlock.toAmino(message.res) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: ListenFinalizeBlockRequestAminoMsg
-  ): ListenFinalizeBlockRequest {
+  fromAminoMsg(object: ListenFinalizeBlockRequestAminoMsg): ListenFinalizeBlockRequest {
     return ListenFinalizeBlockRequest.fromAmino(object.value);
   },
-  toAminoMsg(
-    message: ListenFinalizeBlockRequest
-  ): ListenFinalizeBlockRequestAminoMsg {
+  toAminoMsg(message: ListenFinalizeBlockRequest): ListenFinalizeBlockRequestAminoMsg {
     return {
       type: "cosmos-sdk/ListenFinalizeBlockRequest",
-      value: ListenFinalizeBlockRequest.toAmino(message),
+      value: ListenFinalizeBlockRequest.toAmino(message)
     };
   },
-  fromProtoMsg(
-    message: ListenFinalizeBlockRequestProtoMsg
-  ): ListenFinalizeBlockRequest {
+  fromProtoMsg(message: ListenFinalizeBlockRequestProtoMsg): ListenFinalizeBlockRequest {
     return ListenFinalizeBlockRequest.decode(message.value);
   },
   toProto(message: ListenFinalizeBlockRequest): Uint8Array {
     return ListenFinalizeBlockRequest.encode(message).finish();
   },
-  toProtoMsg(
-    message: ListenFinalizeBlockRequest
-  ): ListenFinalizeBlockRequestProtoMsg {
+  toProtoMsg(message: ListenFinalizeBlockRequest): ListenFinalizeBlockRequestProtoMsg {
     return {
       typeUrl: "/cosmos.store.streaming.abci.ListenFinalizeBlockRequest",
-      value: ListenFinalizeBlockRequest.encode(message).finish(),
+      value: ListenFinalizeBlockRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseListenFinalizeBlockResponse(): ListenFinalizeBlockResponse {
   return {};
 }
 export const ListenFinalizeBlockResponse = {
   typeUrl: "/cosmos.store.streaming.abci.ListenFinalizeBlockResponse",
-  encode(
-    _: ListenFinalizeBlockResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: ListenFinalizeBlockResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): ListenFinalizeBlockResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListenFinalizeBlockResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListenFinalizeBlockResponse();
@@ -241,9 +207,7 @@ export const ListenFinalizeBlockResponse = {
     }
     return message;
   },
-  fromPartial(
-    _: Partial<ListenFinalizeBlockResponse>
-  ): ListenFinalizeBlockResponse {
+  fromPartial(_: Partial<ListenFinalizeBlockResponse>): ListenFinalizeBlockResponse {
     const message = createBaseListenFinalizeBlockResponse();
     return message;
   },
@@ -255,49 +219,38 @@ export const ListenFinalizeBlockResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(
-    object: ListenFinalizeBlockResponseAminoMsg
-  ): ListenFinalizeBlockResponse {
+  fromAminoMsg(object: ListenFinalizeBlockResponseAminoMsg): ListenFinalizeBlockResponse {
     return ListenFinalizeBlockResponse.fromAmino(object.value);
   },
-  toAminoMsg(
-    message: ListenFinalizeBlockResponse
-  ): ListenFinalizeBlockResponseAminoMsg {
+  toAminoMsg(message: ListenFinalizeBlockResponse): ListenFinalizeBlockResponseAminoMsg {
     return {
       type: "cosmos-sdk/ListenFinalizeBlockResponse",
-      value: ListenFinalizeBlockResponse.toAmino(message),
+      value: ListenFinalizeBlockResponse.toAmino(message)
     };
   },
-  fromProtoMsg(
-    message: ListenFinalizeBlockResponseProtoMsg
-  ): ListenFinalizeBlockResponse {
+  fromProtoMsg(message: ListenFinalizeBlockResponseProtoMsg): ListenFinalizeBlockResponse {
     return ListenFinalizeBlockResponse.decode(message.value);
   },
   toProto(message: ListenFinalizeBlockResponse): Uint8Array {
     return ListenFinalizeBlockResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: ListenFinalizeBlockResponse
-  ): ListenFinalizeBlockResponseProtoMsg {
+  toProtoMsg(message: ListenFinalizeBlockResponse): ListenFinalizeBlockResponseProtoMsg {
     return {
       typeUrl: "/cosmos.store.streaming.abci.ListenFinalizeBlockResponse",
-      value: ListenFinalizeBlockResponse.encode(message).finish(),
+      value: ListenFinalizeBlockResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseListenCommitRequest(): ListenCommitRequest {
   return {
     blockHeight: Long.ZERO,
     res: undefined,
-    changeSet: [],
+    changeSet: []
   };
 }
 export const ListenCommitRequest = {
   typeUrl: "/cosmos.store.streaming.abci.ListenCommitRequest",
-  encode(
-    message: ListenCommitRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ListenCommitRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.blockHeight.isZero()) {
       writer.uint32(8).int64(message.blockHeight);
     }
@@ -334,16 +287,9 @@ export const ListenCommitRequest = {
   },
   fromPartial(object: Partial<ListenCommitRequest>): ListenCommitRequest {
     const message = createBaseListenCommitRequest();
-    message.blockHeight =
-      object.blockHeight !== undefined && object.blockHeight !== null
-        ? Long.fromValue(object.blockHeight)
-        : Long.ZERO;
-    message.res =
-      object.res !== undefined && object.res !== null
-        ? ResponseCommit.fromPartial(object.res)
-        : undefined;
-    message.changeSet =
-      object.changeSet?.map((e) => StoreKVPair.fromPartial(e)) || [];
+    message.blockHeight = object.blockHeight !== undefined && object.blockHeight !== null ? Long.fromValue(object.blockHeight) : Long.ZERO;
+    message.res = object.res !== undefined && object.res !== null ? ResponseCommit.fromPartial(object.res) : undefined;
+    message.changeSet = object.changeSet?.map(e => StoreKVPair.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: ListenCommitRequestAmino): ListenCommitRequest {
@@ -354,20 +300,15 @@ export const ListenCommitRequest = {
     if (object.res !== undefined && object.res !== null) {
       message.res = ResponseCommit.fromAmino(object.res);
     }
-    message.changeSet =
-      object.change_set?.map((e) => StoreKVPair.fromAmino(e)) || [];
+    message.changeSet = object.change_set?.map(e => StoreKVPair.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: ListenCommitRequest): ListenCommitRequestAmino {
     const obj: any = {};
-    obj.block_height = !message.blockHeight.isZero()
-      ? message.blockHeight?.toString()
-      : undefined;
+    obj.block_height = !message.blockHeight.isZero() ? message.blockHeight?.toString() : undefined;
     obj.res = message.res ? ResponseCommit.toAmino(message.res) : undefined;
     if (message.changeSet) {
-      obj.change_set = message.changeSet.map((e) =>
-        e ? StoreKVPair.toAmino(e) : undefined
-      );
+      obj.change_set = message.changeSet.map(e => e ? StoreKVPair.toAmino(e) : undefined);
     } else {
       obj.change_set = message.changeSet;
     }
@@ -379,7 +320,7 @@ export const ListenCommitRequest = {
   toAminoMsg(message: ListenCommitRequest): ListenCommitRequestAminoMsg {
     return {
       type: "cosmos-sdk/ListenCommitRequest",
-      value: ListenCommitRequest.toAmino(message),
+      value: ListenCommitRequest.toAmino(message)
     };
   },
   fromProtoMsg(message: ListenCommitRequestProtoMsg): ListenCommitRequest {
@@ -391,25 +332,19 @@ export const ListenCommitRequest = {
   toProtoMsg(message: ListenCommitRequest): ListenCommitRequestProtoMsg {
     return {
       typeUrl: "/cosmos.store.streaming.abci.ListenCommitRequest",
-      value: ListenCommitRequest.encode(message).finish(),
+      value: ListenCommitRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseListenCommitResponse(): ListenCommitResponse {
   return {};
 }
 export const ListenCommitResponse = {
   typeUrl: "/cosmos.store.streaming.abci.ListenCommitResponse",
-  encode(
-    _: ListenCommitResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: ListenCommitResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): ListenCommitResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListenCommitResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseListenCommitResponse();
@@ -441,7 +376,7 @@ export const ListenCommitResponse = {
   toAminoMsg(message: ListenCommitResponse): ListenCommitResponseAminoMsg {
     return {
       type: "cosmos-sdk/ListenCommitResponse",
-      value: ListenCommitResponse.toAmino(message),
+      value: ListenCommitResponse.toAmino(message)
     };
   },
   fromProtoMsg(message: ListenCommitResponseProtoMsg): ListenCommitResponse {
@@ -453,7 +388,7 @@ export const ListenCommitResponse = {
   toProtoMsg(message: ListenCommitResponse): ListenCommitResponseProtoMsg {
     return {
       typeUrl: "/cosmos.store.streaming.abci.ListenCommitResponse",
-      value: ListenCommitResponse.encode(message).finish(),
+      value: ListenCommitResponse.encode(message).finish()
     };
-  },
+  }
 };

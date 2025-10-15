@@ -6,7 +6,12 @@ export interface ParamsProtoMsg {
   typeUrl: "/sixprotocol.protocoladmin.Params";
   value: Uint8Array;
 }
-/** Params defines the parameters for the module. */
+/**
+ * Params defines the parameters for the module.
+ * @name ParamsAmino
+ * @package sixprotocol.protocoladmin
+ * @see proto type: sixprotocol.protocoladmin.Params
+ */
 export interface ParamsAmino {}
 export interface ParamsAminoMsg {
   type: "sixprotocol/x/protocoladmin/Params";
@@ -54,7 +59,7 @@ export const Params = {
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
       type: "sixprotocol/x/protocoladmin/Params",
-      value: Params.toAmino(message),
+      value: Params.toAmino(message)
     };
   },
   fromProtoMsg(message: ParamsProtoMsg): Params {
@@ -66,7 +71,7 @@ export const Params = {
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.Params",
-      value: Params.encode(message).finish(),
+      value: Params.encode(message).finish()
     };
-  },
+  }
 };

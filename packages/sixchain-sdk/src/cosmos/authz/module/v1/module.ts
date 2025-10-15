@@ -6,7 +6,12 @@ export interface ModuleProtoMsg {
   typeUrl: "/cosmos.authz.module.v1.Module";
   value: Uint8Array;
 }
-/** Module is the config object of the authz module. */
+/**
+ * Module is the config object of the authz module.
+ * @name ModuleAmino
+ * @package cosmos.authz.module.v1
+ * @see proto type: cosmos.authz.module.v1.Module
+ */
 export interface ModuleAmino {}
 export interface ModuleAminoMsg {
   type: "cosmos-sdk/Module";
@@ -54,7 +59,7 @@ export const Module = {
   toAminoMsg(message: Module): ModuleAminoMsg {
     return {
       type: "cosmos-sdk/Module",
-      value: Module.toAmino(message),
+      value: Module.toAmino(message)
     };
   },
   fromProtoMsg(message: ModuleProtoMsg): Module {
@@ -66,7 +71,7 @@ export const Module = {
   toProtoMsg(message: Module): ModuleProtoMsg {
     return {
       typeUrl: "/cosmos.authz.module.v1.Module",
-      value: Module.encode(message).finish(),
+      value: Module.encode(message).finish()
     };
-  },
+  }
 };

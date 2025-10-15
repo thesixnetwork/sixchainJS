@@ -1,10 +1,6 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import {
-  Authorization,
-  AuthorizationAmino,
-  AuthorizationSDKType,
-} from "./authorization";
+import { Authorization, AuthorizationAmino, AuthorizationSDKType } from "./authorization";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the nftadmin module's genesis state. */
 export interface GenesisState {
@@ -16,9 +12,16 @@ export interface GenesisStateProtoMsg {
   typeUrl: "/sixprotocol.nftadmin.GenesisState";
   value: Uint8Array;
 }
-/** GenesisState defines the nftadmin module's genesis state. */
+/**
+ * GenesisState defines the nftadmin module's genesis state.
+ * @name GenesisStateAmino
+ * @package sixprotocol.nftadmin
+ * @see proto type: sixprotocol.nftadmin.GenesisState
+ */
 export interface GenesisStateAmino {
-  /** params defines all the parameters of the module. */
+  /**
+   * params defines all the parameters of the module.
+   */
   params: ParamsAmino;
   authorization?: AuthorizationAmino;
 }
@@ -34,23 +37,17 @@ export interface GenesisStateSDKType {
 function createBaseGenesisState(): GenesisState {
   return {
     params: Params.fromPartial({}),
-    authorization: undefined,
+    authorization: undefined
   };
 }
 export const GenesisState = {
   typeUrl: "/sixprotocol.nftadmin.GenesisState",
-  encode(
-    message: GenesisState,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
     if (message.authorization !== undefined) {
-      Authorization.encode(
-        message.authorization,
-        writer.uint32(18).fork()
-      ).ldelim();
+      Authorization.encode(message.authorization, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
@@ -76,14 +73,8 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.params =
-      object.params !== undefined && object.params !== null
-        ? Params.fromPartial(object.params)
-        : undefined;
-    message.authorization =
-      object.authorization !== undefined && object.authorization !== null
-        ? Authorization.fromPartial(object.authorization)
-        : undefined;
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.authorization = object.authorization !== undefined && object.authorization !== null ? Authorization.fromPartial(object.authorization) : undefined;
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -98,12 +89,8 @@ export const GenesisState = {
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params
-      ? Params.toAmino(message.params)
-      : Params.toAmino(Params.fromPartial({}));
-    obj.authorization = message.authorization
-      ? Authorization.toAmino(message.authorization)
-      : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.authorization = message.authorization ? Authorization.toAmino(message.authorization) : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -118,7 +105,7 @@ export const GenesisState = {
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.GenesisState",
-      value: GenesisState.encode(message).finish(),
+      value: GenesisState.encode(message).finish()
     };
-  },
+  }
 };

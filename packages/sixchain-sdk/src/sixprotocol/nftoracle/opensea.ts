@@ -10,6 +10,11 @@ export interface TraitProtoMsg {
   typeUrl: "/sixprotocol.nftoracle.Trait";
   value: Uint8Array;
 }
+/**
+ * @name TraitAmino
+ * @package sixprotocol.nftoracle
+ * @see proto type: sixprotocol.nftoracle.Trait
+ */
 export interface TraitAmino {
   trait_type?: string;
   value?: string;
@@ -31,7 +36,7 @@ function createBaseTrait(): Trait {
     traitType: "",
     value: "",
     displayType: "",
-    maxValue: "",
+    maxValue: ""
   };
 }
 export const Trait = {
@@ -105,8 +110,7 @@ export const Trait = {
     const obj: any = {};
     obj.trait_type = message.traitType === "" ? undefined : message.traitType;
     obj.value = message.value === "" ? undefined : message.value;
-    obj.display_type =
-      message.displayType === "" ? undefined : message.displayType;
+    obj.display_type = message.displayType === "" ? undefined : message.displayType;
     obj.max_value = message.maxValue === "" ? undefined : message.maxValue;
     return obj;
   },
@@ -122,7 +126,7 @@ export const Trait = {
   toProtoMsg(message: Trait): TraitProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.Trait",
-      value: Trait.encode(message).finish(),
+      value: Trait.encode(message).finish()
     };
-  },
+  }
 };

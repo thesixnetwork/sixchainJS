@@ -12,7 +12,12 @@ export interface ModuleProtoMsg {
   typeUrl: "/sixprotocol.nftoracle.module.Module";
   value: Uint8Array;
 }
-/** Module is the config object for the module. */
+/**
+ * Module is the config object for the module.
+ * @name ModuleAmino
+ * @package sixprotocol.nftoracle.module
+ * @see proto type: sixprotocol.nftoracle.module.Module
+ */
 export interface ModuleAmino {
   /**
    * authority defines the custom module authority. If not set, defaults to the
@@ -30,15 +35,12 @@ export interface ModuleSDKType {
 }
 function createBaseModule(): Module {
   return {
-    authority: "",
+    authority: ""
   };
 }
 export const Module = {
   typeUrl: "/sixprotocol.nftoracle.module.Module",
-  encode(
-    message: Module,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Module, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
     }
@@ -90,7 +92,7 @@ export const Module = {
   toProtoMsg(message: Module): ModuleProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.module.Module",
-      value: Module.encode(message).finish(),
+      value: Module.encode(message).finish()
     };
-  },
+  }
 };
