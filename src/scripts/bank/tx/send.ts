@@ -7,19 +7,23 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const NETOWRK = process.argv[2]!;
-const amount = process.argv[3]; // input six amount
-const using_amount = parseInt(amount) * 1_000_000; // convert to usix
-const gasPrice = GasPrice.fromString("1.25usix");
-
 const main = async () => {
-  if (!NETOWRK) {
+  const NETWORK = process.argv[2];
+  
+  // Hardcoded values as requested
+  const toAddress = "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp";
+  const amount = "10000000"; // 10 SIX in usix
+  const denom = "usix";
+
+  if (!NETWORK) {
     throw new Error(
-      "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet"
+      "INPUT NETWORK BY RUNNING: bun run ./scripts/bank/tx/send.ts fivenet"
     );
   }
 
-  const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+  const gasPrice = GasPrice.fromString("1.25usix");
+
   // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
     prefix: "6x",
@@ -38,38 +42,56 @@ const main = async () => {
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
-  let msgArray: Array<EncodeObject> = [];
+  // Using hardcoded amount (already in usix)
+  const using_amount = amount;
+
+  console.log(`Sending ${using_amount} ${denom} (${parseInt(using_amount) / 1_000_000} SIX) from ${address} to ${toAddress}`);
 
   const send = cosmos.bank.v1beta1.MessageComposer.withTypeUrl.send({
     fromAddress: address,
-    toAddress: "6x1t3p2vzd7w036ahxf4kefsc9sn24pvlqphcuauv",
+    toAddress: toAddress,
     amount: [
       {
-        denom: "usix",
-        amount: using_amount.toString(),
+        denom: denom,
+        amount: using_amount,
       },
     ],
   });
 
-  msgArray.push(send);
+  const msgArray = [send];
+
+  // Simulate transaction to get gas estimate
+  const gasEstimate = await client.simulate(address, msgArray, "send");
+  console.log(`Gas estimate: ${gasEstimate}`);
+  
+  // Apply gas adjustment (1.5x like CLI)
+  const gasLimit = Math.ceil(gasEstimate * 1.5);
+  console.log(`Gas limit with adjustment: ${gasLimit}`);
 
   const txResponse = await client.signAndBroadcast(
     address,
     msgArray,
-    "auto",
-    "send"
+    gasLimit,
+    "send tokens"
   );
+
   if (txResponse.code !== 0) {
-    console.error(`Error minting NFT: ${txResponse.rawLog}`);
+    console.error(`Error sending tokens: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `FIXED successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Send successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }
 };
 
-main().then(() => {
-  console.log;
-});
+main()
+  .then(() => {
+    console.log("Done");
+    process.exit(0);
+  })
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
