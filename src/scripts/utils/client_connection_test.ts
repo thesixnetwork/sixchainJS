@@ -1,4 +1,5 @@
-import { SixDataChainConnector } from "@sixnetwork/sixchain-client";
+import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "../client";
 import dotenv from "dotenv";
@@ -17,20 +18,27 @@ async function main() {
 
   console.time("RPC");
   const { rpcUrl, apiUrl, mnemonic } = await getConnectorConfig(NETOWRK);
-  const sixConnector = new SixDataChainConnector();
-  sixConnector.rpcUrl = rpcUrl;
-  sixConnector.apiUrl = apiUrl;
-  const accountSigner =
-    await sixConnector.accounts.mnemonicKeyToAccount(mnemonic);
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
+  const client = await getSigningCosmosClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
+  });
+
+  const accounts = await wallet.getAccounts();
+  const address = accounts[0].address;
 
   for (let i = 0; i < 10; i++) {
     // Get signing client
     try {
-      const rpcClient = await sixConnector.connectRPCClient(accountSigner, {
-        gasPrice: gasPrice,
-      });
+      const rpcClient = await client.getBlock()
       if (rpcClient) {
-        console.log("Connection success", i);
+        console.log("Connection success", i, "Block", rpcClient.header.height);
       }
     } catch (error) {
       console.log(error);

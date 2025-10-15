@@ -1,10 +1,9 @@
 import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { GasPrice } from "@cosmjs/stargate";
+import { GasPrice, calculateFee } from "@cosmjs/stargate";
 import { getConnectorConfig } from "../../client";
 import dotenv from "dotenv";
-import { fee } from "@sixnetwork/sixchain-client";
 
 dotenv.config();
 
@@ -53,7 +52,7 @@ const main = async () => {
   const txResponse = await client.signAndBroadcast(
     address,
     msgArray,
-    fee.calculateFee(80000, gasPrice),
+    calculateFee(80000, gasPrice),
     "authz revoke"
   );
 
