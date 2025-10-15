@@ -6,7 +6,7 @@ import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import dotenv from "dotenv";
 import allAddress from "../../utils/all_address";
-import { getConnectorConfig } from "../../client";
+import { getConnectorConfig } from "@client-util";
 dotenv.config();
 import divine_elite from "../../../resources/schemas/divineelite-nft-schema.json";
 import preventive from "../../../resources/schemas/preventive-nft-schema.json";

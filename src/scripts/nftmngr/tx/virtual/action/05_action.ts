@@ -4,7 +4,7 @@ import {
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { getConnectorConfig } from "../../client";
+import { getConnectorConfig } from "@client-util";
 import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";

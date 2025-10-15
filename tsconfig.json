@@ -12,8 +12,11 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "rootDir": "src/",
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@client-util": ["./src/scripts/client.ts"]
+    }
   },
   "exclude": ["dist", "node_modules"],
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
 }

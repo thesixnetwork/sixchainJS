@@ -8,7 +8,7 @@ import NFTSchema from "../../../resources/schemas/divineelite-nft-schema.json";
 import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
-import { getConnectorConfig } from "../../client";
+import { getConnectorConfig } from "@client-util";
 import moment from "moment";
 dotenv.config();
 

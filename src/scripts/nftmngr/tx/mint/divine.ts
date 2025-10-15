@@ -7,7 +7,7 @@ import ZERO_YEAR from "../../resources/metadatas/divine_elite/nft-data_0_years.j
 import THREE_YEAR from "../../resources/metadatas/divine_elite/nft-data_3_years.json";
 import FIVE_YEAR from "../../resources/metadatas/divine_elite/nft-data_5_years.json";
 import TEN_YEAR from "../../resources/metadatas/divine_elite/nft-data_10_years.json";
-import { getConnectorConfig } from "../client";
+import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 import moment from "moment";
 

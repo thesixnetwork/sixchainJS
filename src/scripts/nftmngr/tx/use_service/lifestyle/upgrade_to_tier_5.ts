@@ -7,7 +7,7 @@ import { EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/lifestyle-nft-schema.json";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
-import { getConnectorConfig } from "../../client";
+import { getConnectorConfig } from "@client-util";
 dotenv.config();
 
 const TOKEN_ID = process.argv[3]!;

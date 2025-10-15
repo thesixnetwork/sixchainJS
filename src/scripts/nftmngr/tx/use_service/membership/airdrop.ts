@@ -5,10 +5,9 @@ import {
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/membership-nft-schema.json";
-import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
-import { getConnectorConfig } from "../../client";
+import { getConnectorConfig } from "@client-util";
 dotenv.config();
 
 const main = async () => {

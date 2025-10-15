@@ -1,5 +1,5 @@
 import { cosmos } from "@sixnetwork/sixchain-sdk";
-import { getConnectorConfig } from "../../client";
+import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 import Long from "long";
 

@@ -4,24 +4,24 @@ import {
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { getConnectorConfig } from "../client";
+import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 
 // Schema
-import divine from "../../resources/schemas/divineelite-nft-schema.json";
-import lifestyle from "../../resources/schemas/lifestyle-nft-schema.json";
-import membership from "../../resources/schemas/membership-nft-schema.json";
-import preventive from "../../resources/schemas/preventive-nft-schema.json";
+import divine from "../resources/schemas/divineelite-nft-schema.json";
+import lifestyle from "../resources/schemas/lifestyle-nft-schema.json";
+import membership from "../resources/schemas/membership-nft-schema.json";
+import preventive from "../resources/schemas/preventive-nft-schema.json";
 
 // update aciton
-import devive_update from "../../resources/utils/updateAction/divine/extend_action.json";
-import lifestyle_update from "../../resources/utils/updateAction/lifestyle/extend_action.json";
-import preventive_update from "../../resources/utils/updateAction/preventive/extend_action.json";
-import member_update from "../../resources/utils/updateAction/membership/extend_action.json";
+import devive_update from "../resources/utils/updateAction/divine/extend_action.json";
+import lifestyle_update from "../resources/utils/updateAction/lifestyle/extend_action.json";
+import preventive_update from "../resources/utils/updateAction/preventive/extend_action.json";
+import member_update from "../resources/utils/updateAction/membership/extend_action.json";
 
-import set_privilege from "../../resources/utils/updateAction/set_service.json";
+import set_privilege from "../resources/utils/updateAction/set_service.json";
 
-import update_tier_name from "../../resources/utils/updateAction/update_tier_name.json";
+import update_tier_name from "../resources/utils/updateAction/update_tier_name.json";
 
 const SCHEMA_LIST = [divine, lifestyle, membership, preventive];
 

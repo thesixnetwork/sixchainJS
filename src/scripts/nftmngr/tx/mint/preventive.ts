@@ -7,7 +7,7 @@ import ZERO_YEAR from "../../resources/metadatas/preventive/nft-data_0_years.jso
 import THREE_YEAR from "../../resources/metadatas/preventive/nft-data_3_years.json";
 import FIVE_YEAR from "../../resources/metadatas/preventive/nft-data_5_years.json";
 import TEN_YEAR from "../../resources/metadatas/preventive/nft-data_10_years.json";
-import { getConnectorConfig } from "../client";
+import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 import moment from "moment";
 

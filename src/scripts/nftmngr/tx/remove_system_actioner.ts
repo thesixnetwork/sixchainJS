@@ -4,7 +4,7 @@ import {
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { getConnectorConfig } from "../../client";
+import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 // import list_recipient  from "./list_address"
 // import list_recipient_71_250 from "./list_address_71-250";

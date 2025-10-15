@@ -28,6 +28,7 @@
     "@cosmjs/stargate": "^0.33.1",
     "@types/jest": "^29.5.11",
     "@types/node": "^20.12.7",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^7.10.0",
     "@typescript-eslint/parser": "^7.10.0",
     "copyfiles": "^2.4.1",
@@ -46,6 +47,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "glob": "^7.2.3"
+    "glob": "^7.2.3",
+    "moment": "^2.30.1"
   }
 }

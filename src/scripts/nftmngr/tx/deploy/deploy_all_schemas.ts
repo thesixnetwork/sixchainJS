@@ -9,7 +9,7 @@ import divine_elite from "../../resources/schemas/divineelite-nft-schema.json";
 import preventive from "../../resources/schemas/preventive-nft-schema.json";
 import membership from "../../resources/schemas/membership-nft-schema.json";
 import lifestyle from "../../resources/schemas/lifestyle-nft-schema.json";
-import { getConnectorConfig } from "../client";
+import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 dotenv.config();
 const NETOWRK = process.argv[2]!;

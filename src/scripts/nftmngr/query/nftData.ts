@@ -1,5 +1,5 @@
 import { SixDataChainConnector, fee } from "@thesixnetwork/sixchain-client";
-import { getConnectorConfig } from "../../client";
+import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 
 dotenv.config();

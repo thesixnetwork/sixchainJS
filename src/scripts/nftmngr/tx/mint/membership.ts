@@ -13,7 +13,7 @@ import J_THREE_YEAR from "../../resources/metadatas/membership/junior/nft-data_3
 import J_FIVE_YEAR from "../../resources/metadatas/membership/junior/nft-data_5_years.json";
 import J_TEN_YEAR from "../../resources/metadatas/membership/junior/nft-data_10_years.json";
 
-import { getConnectorConfig } from "../client";
+import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 import moment from "moment";
 

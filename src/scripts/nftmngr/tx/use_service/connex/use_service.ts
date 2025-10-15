@@ -3,7 +3,7 @@ import {
   sixprotocol,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { getConnectorConfig } from "../../client";
+import { getConnectorConfig } from "@client-util";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/divineelite-nft-schema.json";
 import { GasPrice } from "@cosmjs/stargate";
