@@ -3,9 +3,16 @@ import { getConnectorConfig } from "../client";
 import dotenv from "dotenv";
 
 dotenv.config();
-const default_schemaCode:string = "sixprotocol.sleeptest"
+const default_schemaCode: string = "sixprotocol.divine_elite";
+
+const split_schema = default_schemaCode.split(".");
+const _name = split_schema[1];
+const org_name = process.env.ORG_NAME;
+let schemaCode: string;
+schemaCode = `${org_name}.${_name}`;
 
 const NETWORK = process.argv[2]!;
+const TOKENID = process.argv[3]!;
 
 const query = async (TOKEN_ID: number) => {
   // console.time("Minting time");
@@ -26,19 +33,21 @@ const query = async (TOKEN_ID: number) => {
   let token;
   let isMinted = false;
   try {
-    token = await apiClient.nftmngrModule.queryNftData(default_schemaCode, TOKEN_ID.toString());
+    token = await apiClient.nftmngrModule.queryNftData(
+      schemaCode,
+      TOKEN_ID.toString()
+    );
     if (token.data) {
       isMinted = true;
     }
-
-  } catch (e:any) {
+  } catch (e: any) {
     console.log("token not found", e.error);
     token = null;
     isMinted = false;
   }
 
   console.log(token);
-
 };
 
-query(2531);
+query(Number(TOKENID));
+
