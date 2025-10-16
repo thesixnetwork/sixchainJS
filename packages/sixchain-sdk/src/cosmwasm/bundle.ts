@@ -23,11 +23,11 @@ export namespace cosmwasm {
       ..._265,
       ..._266,
       ..._267,
-      ..._268
+      ..._268,
     };
   }
   export const ClientFactory = {
     ..._299,
-    ..._300
+    ..._300,
   };
 }

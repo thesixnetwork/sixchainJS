@@ -28,7 +28,7 @@ export interface AdminSDKType {
 function createBaseAdmin(): Admin {
   return {
     group: "",
-    admin: ""
+    admin: "",
   };
 }
 export const Admin = {
@@ -96,7 +96,7 @@ export const Admin = {
   toProtoMsg(message: Admin): AdminProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.Admin",
-      value: Admin.encode(message).finish()
+      value: Admin.encode(message).finish(),
     };
-  }
+  },
 };

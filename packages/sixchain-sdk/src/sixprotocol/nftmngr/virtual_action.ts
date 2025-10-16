@@ -1,5 +1,10 @@
 //@ts-nocheck
-import { AllowedActioner, ActionParams, ActionParamsAmino, ActionParamsSDKType } from "./action";
+import {
+  AllowedActioner,
+  ActionParams,
+  ActionParamsAmino,
+  ActionParamsSDKType,
+} from "./action";
 import * as _m0 from "protobufjs/minimal";
 export interface VirtualAction {
   virtualNftSchemaCode: string;
@@ -57,12 +62,15 @@ function createBaseVirtualAction(): VirtualAction {
     when: "",
     then: [],
     allowedActioner: undefined,
-    params: []
+    params: [],
   };
 }
 export const VirtualAction = {
   typeUrl: "/sixprotocol.nftmngr.VirtualAction",
-  encode(message: VirtualAction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: VirtualAction,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.virtualNftSchemaCode !== "") {
       writer.uint32(10).string(message.virtualNftSchemaCode);
     }
@@ -134,14 +142,18 @@ export const VirtualAction = {
     message.desc = object.desc ?? "";
     message.disable = object.disable ?? false;
     message.when = object.when ?? "";
-    message.then = object.then?.map(e => e) || [];
+    message.then = object.then?.map((e) => e) || [];
     message.allowedActioner = object.allowedActioner ?? undefined;
-    message.params = object.params?.map(e => ActionParams.fromPartial(e)) || [];
+    message.params =
+      object.params?.map((e) => ActionParams.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: VirtualActionAmino): VirtualAction {
     const message = createBaseVirtualAction();
-    if (object.virtualNftSchemaCode !== undefined && object.virtualNftSchemaCode !== null) {
+    if (
+      object.virtualNftSchemaCode !== undefined &&
+      object.virtualNftSchemaCode !== null
+    ) {
       message.virtualNftSchemaCode = object.virtualNftSchemaCode;
     }
     if (object.name !== undefined && object.name !== null) {
@@ -156,28 +168,37 @@ export const VirtualAction = {
     if (object.when !== undefined && object.when !== null) {
       message.when = object.when;
     }
-    message.then = object.then?.map(e => e) || [];
-    if (object.allowed_actioner !== undefined && object.allowed_actioner !== null) {
+    message.then = object.then?.map((e) => e) || [];
+    if (
+      object.allowed_actioner !== undefined &&
+      object.allowed_actioner !== null
+    ) {
       message.allowedActioner = object.allowed_actioner;
     }
-    message.params = object.params?.map(e => ActionParams.fromAmino(e)) || [];
+    message.params = object.params?.map((e) => ActionParams.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: VirtualAction): VirtualActionAmino {
     const obj: any = {};
-    obj.virtualNftSchemaCode = message.virtualNftSchemaCode === "" ? undefined : message.virtualNftSchemaCode;
+    obj.virtualNftSchemaCode =
+      message.virtualNftSchemaCode === ""
+        ? undefined
+        : message.virtualNftSchemaCode;
     obj.name = message.name === "" ? undefined : message.name;
     obj.desc = message.desc === "" ? undefined : message.desc;
     obj.disable = message.disable === false ? undefined : message.disable;
     obj.when = message.when === "" ? undefined : message.when;
     if (message.then) {
-      obj.then = message.then.map(e => e);
+      obj.then = message.then.map((e) => e);
     } else {
       obj.then = message.then;
     }
-    obj.allowed_actioner = message.allowedActioner === null ? undefined : message.allowedActioner;
+    obj.allowed_actioner =
+      message.allowedActioner === null ? undefined : message.allowedActioner;
     if (message.params) {
-      obj.params = message.params.map(e => e ? ActionParams.toAmino(e) : undefined);
+      obj.params = message.params.map((e) =>
+        e ? ActionParams.toAmino(e) : undefined
+      );
     } else {
       obj.params = message.params;
     }
@@ -195,7 +216,7 @@ export const VirtualAction = {
   toProtoMsg(message: VirtualAction): VirtualActionProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.VirtualAction",
-      value: VirtualAction.encode(message).finish()
+      value: VirtualAction.encode(message).finish(),
     };
-  }
+  },
 };

@@ -1,84 +1,101 @@
 //@ts-nocheck
-import { MsgUpdateParams, MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn, MsgWrapToken, MsgUnwrapToken, MsgSendWrapToken, MsgMigrateDelegation } from "./tx";
+import {
+  MsgUpdateParams,
+  MsgCreateToken,
+  MsgUpdateToken,
+  MsgDeleteToken,
+  MsgCreateMintperm,
+  MsgUpdateMintperm,
+  MsgDeleteMintperm,
+  MsgMint,
+  MsgCreateOptions,
+  MsgUpdateOptions,
+  MsgDeleteOptions,
+  MsgBurn,
+  MsgWrapToken,
+  MsgUnwrapToken,
+  MsgSendWrapToken,
+  MsgMigrateDelegation,
+} from "./tx";
 export const AminoConverter = {
   "/sixprotocol.tokenmngr.MsgUpdateParams": {
     aminoType: "sixprotocol/x/tokenmngr/MsgUpdateParams",
     toAmino: MsgUpdateParams.toAmino,
-    fromAmino: MsgUpdateParams.fromAmino
+    fromAmino: MsgUpdateParams.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgCreateToken": {
     aminoType: "/sixprotocol.tokenmngr.MsgCreateToken",
     toAmino: MsgCreateToken.toAmino,
-    fromAmino: MsgCreateToken.fromAmino
+    fromAmino: MsgCreateToken.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgUpdateToken": {
     aminoType: "/sixprotocol.tokenmngr.MsgUpdateToken",
     toAmino: MsgUpdateToken.toAmino,
-    fromAmino: MsgUpdateToken.fromAmino
+    fromAmino: MsgUpdateToken.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgDeleteToken": {
     aminoType: "/sixprotocol.tokenmngr.MsgDeleteToken",
     toAmino: MsgDeleteToken.toAmino,
-    fromAmino: MsgDeleteToken.fromAmino
+    fromAmino: MsgDeleteToken.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgCreateMintperm": {
     aminoType: "/sixprotocol.tokenmngr.MsgCreateMintperm",
     toAmino: MsgCreateMintperm.toAmino,
-    fromAmino: MsgCreateMintperm.fromAmino
+    fromAmino: MsgCreateMintperm.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgUpdateMintperm": {
     aminoType: "/sixprotocol.tokenmngr.MsgUpdateMintperm",
     toAmino: MsgUpdateMintperm.toAmino,
-    fromAmino: MsgUpdateMintperm.fromAmino
+    fromAmino: MsgUpdateMintperm.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgDeleteMintperm": {
     aminoType: "/sixprotocol.tokenmngr.MsgDeleteMintperm",
     toAmino: MsgDeleteMintperm.toAmino,
-    fromAmino: MsgDeleteMintperm.fromAmino
+    fromAmino: MsgDeleteMintperm.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgMint": {
     aminoType: "/sixprotocol.tokenmngr.MsgMint",
     toAmino: MsgMint.toAmino,
-    fromAmino: MsgMint.fromAmino
+    fromAmino: MsgMint.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgCreateOptions": {
     aminoType: "/sixprotocol.tokenmngr.MsgCreateOptions",
     toAmino: MsgCreateOptions.toAmino,
-    fromAmino: MsgCreateOptions.fromAmino
+    fromAmino: MsgCreateOptions.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgUpdateOptions": {
     aminoType: "/sixprotocol.tokenmngr.MsgUpdateOptions",
     toAmino: MsgUpdateOptions.toAmino,
-    fromAmino: MsgUpdateOptions.fromAmino
+    fromAmino: MsgUpdateOptions.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgDeleteOptions": {
     aminoType: "/sixprotocol.tokenmngr.MsgDeleteOptions",
     toAmino: MsgDeleteOptions.toAmino,
-    fromAmino: MsgDeleteOptions.fromAmino
+    fromAmino: MsgDeleteOptions.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgBurn": {
     aminoType: "/sixprotocol.tokenmngr.MsgBurn",
     toAmino: MsgBurn.toAmino,
-    fromAmino: MsgBurn.fromAmino
+    fromAmino: MsgBurn.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgWrapToken": {
     aminoType: "/sixprotocol.tokenmngr.MsgWrapToken",
     toAmino: MsgWrapToken.toAmino,
-    fromAmino: MsgWrapToken.fromAmino
+    fromAmino: MsgWrapToken.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgUnwrapToken": {
     aminoType: "/sixprotocol.tokenmngr.MsgUnwrapToken",
     toAmino: MsgUnwrapToken.toAmino,
-    fromAmino: MsgUnwrapToken.fromAmino
+    fromAmino: MsgUnwrapToken.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgSendWrapToken": {
     aminoType: "/sixprotocol.tokenmngr.MsgSendWrapToken",
     toAmino: MsgSendWrapToken.toAmino,
-    fromAmino: MsgSendWrapToken.fromAmino
+    fromAmino: MsgSendWrapToken.fromAmino,
   },
   "/sixprotocol.tokenmngr.MsgMigrateDelegation": {
     aminoType: "/sixprotocol.tokenmngr.MsgMigrateDelegation",
     toAmino: MsgMigrateDelegation.toAmino,
-    fromAmino: MsgMigrateDelegation.fromAmino
-  }
+    fromAmino: MsgMigrateDelegation.fromAmino,
+  },
 };

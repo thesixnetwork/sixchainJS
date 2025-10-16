@@ -23,15 +23,22 @@ export const sixprotocolAminoConverters = {
   ...sixprotocolNftmngrTxAmino.AminoConverter,
   ...sixprotocolNftoracleTxAmino.AminoConverter,
   ...sixprotocolProtocoladminTxAmino.AminoConverter,
-  ...sixprotocolTokenmngrTxAmino.AminoConverter
+  ...sixprotocolTokenmngrTxAmino.AminoConverter,
 };
-export const sixprotocolProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...sixprotocolNftadminTxRegistry.registry, ...sixprotocolNftmngrTxRegistry.registry, ...sixprotocolNftoracleTxRegistry.registry, ...sixprotocolProtocoladminTxRegistry.registry, ...sixprotocolTokenmngrTxRegistry.registry];
+export const sixprotocolProtoRegistry: ReadonlyArray<[string, GeneratedType]> =
+  [
+    ...sixprotocolNftadminTxRegistry.registry,
+    ...sixprotocolNftmngrTxRegistry.registry,
+    ...sixprotocolNftoracleTxRegistry.registry,
+    ...sixprotocolProtocoladminTxRegistry.registry,
+    ...sixprotocolTokenmngrTxRegistry.registry,
+  ];
 export const getSigningSixprotocolClientOptions = ({
   defaultTypes = defaultRegistryTypes,
-  options
+  options,
 }: {
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
-  options?: SigningStargateClientOptions
+  options?: SigningStargateClientOptions;
 } = {}): {
   registry: Registry;
   aminoTypes: AminoTypes;
@@ -39,30 +46,37 @@ export const getSigningSixprotocolClientOptions = ({
 } => {
   const registry = new Registry([...defaultTypes, ...sixprotocolProtoRegistry]);
   const aminoTypes = new AminoTypes({
-    ...sixprotocolAminoConverters
+    ...sixprotocolAminoConverters,
   });
   return {
     registry,
     aminoTypes,
-    options
+    options,
   };
 };
 export const getSigningSixprotocolClient = async ({
   rpcEndpoint,
   signer,
   options,
-  defaultTypes = defaultRegistryTypes
+  defaultTypes = defaultRegistryTypes,
 }: {
   rpcEndpoint: string | HttpEndpoint;
   signer: OfflineSigner;
-  options?: SigningStargateClientOptions
+  options?: SigningStargateClientOptions;
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => {
-  const { registry, aminoTypes } = getSigningSixprotocolClientOptions({ defaultTypes, options });
-  const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
-    registry: registry as any,
-    aminoTypes,
-    ...options
+  const { registry, aminoTypes } = getSigningSixprotocolClientOptions({
+    defaultTypes,
+    options,
   });
+  const client = await SigningStargateClient.connectWithSigner(
+    rpcEndpoint,
+    signer,
+    {
+      registry: registry as any,
+      aminoTypes,
+      ...options,
+    }
+  );
   return client;
 };

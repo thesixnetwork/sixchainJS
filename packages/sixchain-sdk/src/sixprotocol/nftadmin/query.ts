@@ -1,6 +1,10 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { Authorization, AuthorizationAmino, AuthorizationSDKType } from "./authorization";
+import {
+  Authorization,
+  AuthorizationAmino,
+  AuthorizationSDKType,
+} from "./authorization";
 import * as _m0 from "protobufjs/minimal";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
@@ -93,7 +97,10 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 export const QueryParamsRequest = {
   typeUrl: "/sixprotocol.nftadmin.QueryParamsRequest",
-  encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: QueryParamsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest {
@@ -134,18 +141,21 @@ export const QueryParamsRequest = {
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.QueryParamsRequest",
-      value: QueryParamsRequest.encode(message).finish()
+      value: QueryParamsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
-    params: Params.fromPartial({})
+    params: Params.fromPartial({}),
   };
 }
 export const QueryParamsResponse = {
   typeUrl: "/sixprotocol.nftadmin.QueryParamsResponse",
-  encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryParamsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -170,7 +180,10 @@ export const QueryParamsResponse = {
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
@@ -182,7 +195,9 @@ export const QueryParamsResponse = {
   },
   toAmino(message: QueryParamsResponse): QueryParamsResponseAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params
+      ? Params.toAmino(message.params)
+      : Params.toAmino(Params.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse {
@@ -197,19 +212,25 @@ export const QueryParamsResponse = {
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.QueryParamsResponse",
-      value: QueryParamsResponse.encode(message).finish()
+      value: QueryParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryGetAuthorizationRequest(): QueryGetAuthorizationRequest {
   return {};
 }
 export const QueryGetAuthorizationRequest = {
   typeUrl: "/sixprotocol.nftadmin.QueryGetAuthorizationRequest",
-  encode(_: QueryGetAuthorizationRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: QueryGetAuthorizationRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetAuthorizationRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryGetAuthorizationRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetAuthorizationRequest();
@@ -223,11 +244,15 @@ export const QueryGetAuthorizationRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryGetAuthorizationRequest>): QueryGetAuthorizationRequest {
+  fromPartial(
+    _: Partial<QueryGetAuthorizationRequest>
+  ): QueryGetAuthorizationRequest {
     const message = createBaseQueryGetAuthorizationRequest();
     return message;
   },
-  fromAmino(_: QueryGetAuthorizationRequestAmino): QueryGetAuthorizationRequest {
+  fromAmino(
+    _: QueryGetAuthorizationRequestAmino
+  ): QueryGetAuthorizationRequest {
     const message = createBaseQueryGetAuthorizationRequest();
     return message;
   },
@@ -235,36 +260,51 @@ export const QueryGetAuthorizationRequest = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: QueryGetAuthorizationRequestAminoMsg): QueryGetAuthorizationRequest {
+  fromAminoMsg(
+    object: QueryGetAuthorizationRequestAminoMsg
+  ): QueryGetAuthorizationRequest {
     return QueryGetAuthorizationRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryGetAuthorizationRequestProtoMsg): QueryGetAuthorizationRequest {
+  fromProtoMsg(
+    message: QueryGetAuthorizationRequestProtoMsg
+  ): QueryGetAuthorizationRequest {
     return QueryGetAuthorizationRequest.decode(message.value);
   },
   toProto(message: QueryGetAuthorizationRequest): Uint8Array {
     return QueryGetAuthorizationRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryGetAuthorizationRequest): QueryGetAuthorizationRequestProtoMsg {
+  toProtoMsg(
+    message: QueryGetAuthorizationRequest
+  ): QueryGetAuthorizationRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.QueryGetAuthorizationRequest",
-      value: QueryGetAuthorizationRequest.encode(message).finish()
+      value: QueryGetAuthorizationRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryGetAuthorizationResponse(): QueryGetAuthorizationResponse {
   return {
-    authorization: Authorization.fromPartial({})
+    authorization: Authorization.fromPartial({}),
   };
 }
 export const QueryGetAuthorizationResponse = {
   typeUrl: "/sixprotocol.nftadmin.QueryGetAuthorizationResponse",
-  encode(message: QueryGetAuthorizationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryGetAuthorizationResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.authorization !== undefined) {
-      Authorization.encode(message.authorization, writer.uint32(10).fork()).ldelim();
+      Authorization.encode(
+        message.authorization,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetAuthorizationResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryGetAuthorizationResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryGetAuthorizationResponse();
@@ -281,36 +321,53 @@ export const QueryGetAuthorizationResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryGetAuthorizationResponse>): QueryGetAuthorizationResponse {
+  fromPartial(
+    object: Partial<QueryGetAuthorizationResponse>
+  ): QueryGetAuthorizationResponse {
     const message = createBaseQueryGetAuthorizationResponse();
-    message.authorization = object.authorization !== undefined && object.authorization !== null ? Authorization.fromPartial(object.authorization) : undefined;
+    message.authorization =
+      object.authorization !== undefined && object.authorization !== null
+        ? Authorization.fromPartial(object.authorization)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryGetAuthorizationResponseAmino): QueryGetAuthorizationResponse {
+  fromAmino(
+    object: QueryGetAuthorizationResponseAmino
+  ): QueryGetAuthorizationResponse {
     const message = createBaseQueryGetAuthorizationResponse();
     if (object.Authorization !== undefined && object.Authorization !== null) {
       message.authorization = Authorization.fromAmino(object.Authorization);
     }
     return message;
   },
-  toAmino(message: QueryGetAuthorizationResponse): QueryGetAuthorizationResponseAmino {
+  toAmino(
+    message: QueryGetAuthorizationResponse
+  ): QueryGetAuthorizationResponseAmino {
     const obj: any = {};
-    obj.Authorization = message.authorization ? Authorization.toAmino(message.authorization) : undefined;
+    obj.Authorization = message.authorization
+      ? Authorization.toAmino(message.authorization)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryGetAuthorizationResponseAminoMsg): QueryGetAuthorizationResponse {
+  fromAminoMsg(
+    object: QueryGetAuthorizationResponseAminoMsg
+  ): QueryGetAuthorizationResponse {
     return QueryGetAuthorizationResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryGetAuthorizationResponseProtoMsg): QueryGetAuthorizationResponse {
+  fromProtoMsg(
+    message: QueryGetAuthorizationResponseProtoMsg
+  ): QueryGetAuthorizationResponse {
     return QueryGetAuthorizationResponse.decode(message.value);
   },
   toProto(message: QueryGetAuthorizationResponse): Uint8Array {
     return QueryGetAuthorizationResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryGetAuthorizationResponse): QueryGetAuthorizationResponseProtoMsg {
+  toProtoMsg(
+    message: QueryGetAuthorizationResponse
+  ): QueryGetAuthorizationResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.QueryGetAuthorizationResponse",
-      value: QueryGetAuthorizationResponse.encode(message).finish()
+      value: QueryGetAuthorizationResponse.encode(message).finish(),
     };
-  }
+  },
 };

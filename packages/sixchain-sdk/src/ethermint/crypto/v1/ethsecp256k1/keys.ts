@@ -78,12 +78,15 @@ export interface PrivKeySDKType {
 }
 function createBasePubKey(): PubKey {
   return {
-    key: new Uint8Array()
+    key: new Uint8Array(),
   };
 }
 export const PubKey = {
   typeUrl: "/ethermint.crypto.v1.ethsecp256k1.PubKey",
-  encode(message: PubKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: PubKey,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
     }
@@ -135,18 +138,21 @@ export const PubKey = {
   toProtoMsg(message: PubKey): PubKeyProtoMsg {
     return {
       typeUrl: "/ethermint.crypto.v1.ethsecp256k1.PubKey",
-      value: PubKey.encode(message).finish()
+      value: PubKey.encode(message).finish(),
     };
-  }
+  },
 };
 function createBasePrivKey(): PrivKey {
   return {
-    key: new Uint8Array()
+    key: new Uint8Array(),
   };
 }
 export const PrivKey = {
   typeUrl: "/ethermint.crypto.v1.ethsecp256k1.PrivKey",
-  encode(message: PrivKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: PrivKey,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
     }
@@ -198,7 +204,7 @@ export const PrivKey = {
   toProtoMsg(message: PrivKey): PrivKeyProtoMsg {
     return {
       typeUrl: "/ethermint.crypto.v1.ethsecp256k1.PrivKey",
-      value: PrivKey.encode(message).finish()
+      value: PrivKey.encode(message).finish(),
     };
-  }
+  },
 };

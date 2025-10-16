@@ -50,9 +50,24 @@ export const cosmosAminoConverters = {
   ...cosmosMintV1beta1TxAmino.AminoConverter,
   ...cosmosStakingV1beta1TxAmino.AminoConverter,
   ...cosmosUpgradeV1beta1TxAmino.AminoConverter,
-  ...cosmosVestingV1beta1TxAmino.AminoConverter
+  ...cosmosVestingV1beta1TxAmino.AminoConverter,
 };
-export const cosmosProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...cosmosAuthV1beta1TxRegistry.registry, ...cosmosAuthzV1beta1TxRegistry.registry, ...cosmosBankV1beta1TxRegistry.registry, ...cosmosCircuitV1TxRegistry.registry, ...cosmosConsensusV1TxRegistry.registry, ...cosmosDistributionV1beta1TxRegistry.registry, ...cosmosFeegrantV1beta1TxRegistry.registry, ...cosmosGovV1TxRegistry.registry, ...cosmosGovV1beta1TxRegistry.registry, ...cosmosGroupV1TxRegistry.registry, ...cosmosMintV1beta1TxRegistry.registry, ...cosmosStakingV1beta1TxRegistry.registry, ...cosmosUpgradeV1beta1TxRegistry.registry, ...cosmosVestingV1beta1TxRegistry.registry];
+export const cosmosProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [
+  ...cosmosAuthV1beta1TxRegistry.registry,
+  ...cosmosAuthzV1beta1TxRegistry.registry,
+  ...cosmosBankV1beta1TxRegistry.registry,
+  ...cosmosCircuitV1TxRegistry.registry,
+  ...cosmosConsensusV1TxRegistry.registry,
+  ...cosmosDistributionV1beta1TxRegistry.registry,
+  ...cosmosFeegrantV1beta1TxRegistry.registry,
+  ...cosmosGovV1TxRegistry.registry,
+  ...cosmosGovV1beta1TxRegistry.registry,
+  ...cosmosGroupV1TxRegistry.registry,
+  ...cosmosMintV1beta1TxRegistry.registry,
+  ...cosmosStakingV1beta1TxRegistry.registry,
+  ...cosmosUpgradeV1beta1TxRegistry.registry,
+  ...cosmosVestingV1beta1TxRegistry.registry,
+];
 export const getSigningCosmosClientOptions = ({
   options,
 }: {

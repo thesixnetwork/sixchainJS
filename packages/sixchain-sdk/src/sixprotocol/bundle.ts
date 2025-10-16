@@ -97,7 +97,7 @@ export namespace sixprotocol {
     ..._277,
     ..._282,
     ..._287,
-    ..._292
+    ..._292,
   };
   export const nftmngr = {
     ..._136,
@@ -131,7 +131,7 @@ export namespace sixprotocol {
     ..._278,
     ..._283,
     ..._288,
-    ..._293
+    ..._293,
   };
   export const nftoracle = {
     ..._164,
@@ -153,7 +153,7 @@ export namespace sixprotocol {
     ..._279,
     ..._284,
     ..._289,
-    ..._294
+    ..._294,
   };
   export const protocoladmin = {
     ..._180,
@@ -165,7 +165,7 @@ export namespace sixprotocol {
     ..._280,
     ..._285,
     ..._290,
-    ..._295
+    ..._295,
   };
   export const tokenmngr = {
     ..._186,
@@ -180,10 +180,10 @@ export namespace sixprotocol {
     ..._281,
     ..._286,
     ..._291,
-    ..._296
+    ..._296,
   };
   export const ClientFactory = {
     ..._303,
-    ..._304
+    ..._304,
   };
 }

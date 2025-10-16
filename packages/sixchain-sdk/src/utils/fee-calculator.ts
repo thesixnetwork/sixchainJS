@@ -199,7 +199,7 @@ export const COMMON_GAS_LIMITS = {
     REVOKE: 70000,
     EXEC: 80000,
   },
-  BANK:{
+  BANK: {
     SEND: 80000,
     MULTI_SEND: 100000,
   },
@@ -207,7 +207,7 @@ export const COMMON_GAS_LIMITS = {
     RESET: 80000,
     AUTHORIZE: 80000,
   },
-  GOV:{
+  GOV: {
     DEPOST: 150000,
     SUBMIT_PROPOSAL: 300000,
     VOTE: 70000,

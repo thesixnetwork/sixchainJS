@@ -28,7 +28,7 @@ export namespace ethermint {
   export namespace crypto {
     export namespace v1 {
       export const ethsecp256k1 = {
-        ..._110
+        ..._110,
       };
     }
   }
@@ -42,7 +42,7 @@ export namespace ethermint {
       ..._269,
       ..._271,
       ..._273,
-      ..._275
+      ..._275,
     };
   }
   export namespace feemarket {
@@ -55,7 +55,7 @@ export namespace ethermint {
       ..._270,
       ..._272,
       ..._274,
-      ..._276
+      ..._276,
     };
   }
   export namespace types {
@@ -63,11 +63,11 @@ export namespace ethermint {
       ..._121,
       ..._122,
       ..._123,
-      ..._124
+      ..._124,
     };
   }
   export const ClientFactory = {
     ..._301,
-    ..._302
+    ..._302,
   };
 }

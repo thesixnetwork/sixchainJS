@@ -28,12 +28,15 @@ export interface ExecutorOfSchemaSDKType {
 function createBaseExecutorOfSchema(): ExecutorOfSchema {
   return {
     nftSchemaCode: "",
-    executorAddress: []
+    executorAddress: [],
   };
 }
 export const ExecutorOfSchema = {
   typeUrl: "/sixprotocol.nftmngr.ExecutorOfSchema",
-  encode(message: ExecutorOfSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ExecutorOfSchema,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -65,7 +68,7 @@ export const ExecutorOfSchema = {
   fromPartial(object: Partial<ExecutorOfSchema>): ExecutorOfSchema {
     const message = createBaseExecutorOfSchema();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
-    message.executorAddress = object.executorAddress?.map(e => e) || [];
+    message.executorAddress = object.executorAddress?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: ExecutorOfSchemaAmino): ExecutorOfSchema {
@@ -73,14 +76,15 @@ export const ExecutorOfSchema = {
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
     }
-    message.executorAddress = object.executorAddress?.map(e => e) || [];
+    message.executorAddress = object.executorAddress?.map((e) => e) || [];
     return message;
   },
   toAmino(message: ExecutorOfSchema): ExecutorOfSchemaAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode =
+      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     if (message.executorAddress) {
-      obj.executorAddress = message.executorAddress.map(e => e);
+      obj.executorAddress = message.executorAddress.map((e) => e);
     } else {
       obj.executorAddress = message.executorAddress;
     }
@@ -98,7 +102,7 @@ export const ExecutorOfSchema = {
   toProtoMsg(message: ExecutorOfSchema): ExecutorOfSchemaProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.ExecutorOfSchema",
-      value: ExecutorOfSchema.encode(message).finish()
+      value: ExecutorOfSchema.encode(message).finish(),
     };
-  }
+  },
 };

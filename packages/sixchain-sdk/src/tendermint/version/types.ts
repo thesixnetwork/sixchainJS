@@ -80,7 +80,7 @@ export interface ConsensusSDKType {
 function createBaseApp(): App {
   return {
     protocol: Long.UZERO,
-    software: ""
+    software: "",
   };
 }
 export const App = {
@@ -116,7 +116,10 @@ export const App = {
   },
   fromPartial(object: Partial<App>): App {
     const message = createBaseApp();
-    message.protocol = object.protocol !== undefined && object.protocol !== null ? Long.fromValue(object.protocol) : Long.UZERO;
+    message.protocol =
+      object.protocol !== undefined && object.protocol !== null
+        ? Long.fromValue(object.protocol)
+        : Long.UZERO;
     message.software = object.software ?? "";
     return message;
   },
@@ -132,7 +135,9 @@ export const App = {
   },
   toAmino(message: App): AppAmino {
     const obj: any = {};
-    obj.protocol = !message.protocol.isZero() ? message.protocol?.toString() : undefined;
+    obj.protocol = !message.protocol.isZero()
+      ? message.protocol?.toString()
+      : undefined;
     obj.software = message.software === "" ? undefined : message.software;
     return obj;
   },
@@ -148,19 +153,22 @@ export const App = {
   toProtoMsg(message: App): AppProtoMsg {
     return {
       typeUrl: "/tendermint.version.App",
-      value: App.encode(message).finish()
+      value: App.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseConsensus(): Consensus {
   return {
     block: Long.UZERO,
-    app: Long.UZERO
+    app: Long.UZERO,
   };
 }
 export const Consensus = {
   typeUrl: "/tendermint.version.Consensus",
-  encode(message: Consensus, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Consensus,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.block.isZero()) {
       writer.uint32(8).uint64(message.block);
     }
@@ -191,8 +199,14 @@ export const Consensus = {
   },
   fromPartial(object: Partial<Consensus>): Consensus {
     const message = createBaseConsensus();
-    message.block = object.block !== undefined && object.block !== null ? Long.fromValue(object.block) : Long.UZERO;
-    message.app = object.app !== undefined && object.app !== null ? Long.fromValue(object.app) : Long.UZERO;
+    message.block =
+      object.block !== undefined && object.block !== null
+        ? Long.fromValue(object.block)
+        : Long.UZERO;
+    message.app =
+      object.app !== undefined && object.app !== null
+        ? Long.fromValue(object.app)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: ConsensusAmino): Consensus {
@@ -223,7 +237,7 @@ export const Consensus = {
   toProtoMsg(message: Consensus): ConsensusProtoMsg {
     return {
       typeUrl: "/tendermint.version.Consensus",
-      value: Consensus.encode(message).finish()
+      value: Consensus.encode(message).finish(),
     };
-  }
+  },
 };
