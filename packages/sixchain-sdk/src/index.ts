@@ -16,3 +16,4 @@ export * from "./google/bundle";
 export * from "./sixprotocol/bundle";
 export * from "./sixprotocol/client";
 export * from "./tendermint/bundle";
+export * from "./utils";
