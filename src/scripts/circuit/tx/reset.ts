@@ -1,7 +1,6 @@
 import {
   getSigningCosmosClient,
   cosmos,
-  calculateFeeFromSimulation,
   COMMON_GAS_LIMITS,
   signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
@@ -52,14 +51,14 @@ const main = async () => {
 
   msgArray.push(reset);
 
-  // Use the new SDK utility for auto gas + fallback pattern
-  const txResponse = await signAndBroadcastWithRetry(
+  const memo = "circuit reset";
+  let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
     msgArray,
-    "circuit reset",
+    memo,
     {
-      gasMultiplier: 1.5, // 50% buffer
+      gasMultiplier: 1.5,
       gasPrice: 1.25,
       fallbackGas: COMMON_GAS_LIMITS.CIRCUIT_RESET,
       denom: "usix",

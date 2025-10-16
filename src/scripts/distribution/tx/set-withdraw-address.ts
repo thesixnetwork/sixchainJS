@@ -1,8 +1,8 @@
 import {
   getSigningCosmosClient,
   cosmos,
-  calculateFeeFromSimulation,
   COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
@@ -56,42 +56,21 @@ const main = async () => {
 
   // First attempt with auto gas
   console.log("Attempting set withdraw address with auto gas...");
-  let txResponse = await client.signAndBroadcast(
+  const memo = "set withdraw address";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
     address,
     msgArray,
-    "auto",
-    "set withdraw address"
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.SAMPLE,
+      denom: "usix",
+    }
   );
 
   // If out of gas error (code 11), retry with calculated fee
-  if (txResponse.code === 11) {
-    console.log("Out of gas error detected. Retrying with calculated fee...");
-    console.log(
-      `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
-    );
-    // Calculate fee using utility function with higher multiplier
-    const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
-      client,
-      address,
-      msgArray,
-      "set withdraw address",
-      {
-        gasMultiplier: 1.5, // 50% buffer
-        gasPrice: 1.25,
-        fallbackGas: COMMON_GAS_LIMITS.STAKING,
-        denom: "usix",
-      }
-    );
-    console.log(`Calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
-    // Retry with calculated fee
-    txResponse = await client.signAndBroadcast(
-      address,
-      msgArray,
-      fee,
-      "set withdraw address"
-    );
-  }
-
   if (txResponse.code !== 0) {
     console.error(`Error setting withdraw address: ${txResponse.rawLog}`);
     return false;

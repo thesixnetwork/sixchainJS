@@ -1,12 +1,12 @@
 import {
   getSigningCosmosClient,
   cosmos,
-  calculateFeeFromSimulation,
   COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { GasPrice, calculateFee } from "@cosmjs/stargate";
+import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 
@@ -55,42 +55,20 @@ const main = async () => {
     });
 
   msgArray.push(authorize);
+  const memo = "circuit authorize";
 
-  let txResponse = await client.signAndBroadcast(
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
     address,
     msgArray,
-    "auto",
-    "circuit authorize"
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.SAMPLE,
+      denom: "usix",
+    }
   );
-
-  // If out of gas error (code 11), retry with calculated fee
-  if (txResponse.code === 11) {
-    console.log("Out of gas error detected. Retrying with calculated fee...");
-    console.log(
-      `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
-    );
-    // Calculate fee using utility function with higher multiplier
-    const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
-      client,
-      address,
-      msgArray,
-      "authz exec",
-      {
-        gasMultiplier: 1.5, // 50% buffer
-        gasPrice: 1.25,
-        fallbackGas: COMMON_GAS_LIMITS.CIRCUIT_RESET,
-        denom: "usix",
-      }
-    );
-    console.log(`Calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
-    // Retry with calculated fee
-    txResponse = await client.signAndBroadcast(
-      address,
-      msgArray,
-      fee,
-      "authz exec"
-    );
-  }
 
   if (txResponse.code !== 0) {
     console.error(`Error in circuit authorize: ${txResponse.rawLog}`);

@@ -1,7 +1,12 @@
-import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningCosmosClient,
+  cosmos,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { GasPrice, calculateFee } from "@cosmjs/stargate";
+import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 
@@ -19,12 +24,10 @@ const main = async () => {
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
   const gasPrice = GasPrice.fromString("1.25usix");
 
-  // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
     prefix: "6x",
   });
 
-  // Get signing client
   const client = await getSigningCosmosClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
@@ -33,7 +36,6 @@ const main = async () => {
     },
   });
 
-  // Get account address
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
@@ -48,11 +50,19 @@ const main = async () => {
 
   msgArray.push(trip);
 
-  const txResponse = await client.signAndBroadcast(
+  const memo = "circuit trip";
+
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
     address,
     msgArray,
-    calculateFee(80000, gasPrice),
-    "circuit trip"
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.SAMPLE,
+      denom: "usix",
+    }
   );
 
   if (txResponse.code !== 0) {
