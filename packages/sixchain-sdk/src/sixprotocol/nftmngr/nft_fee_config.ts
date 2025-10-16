@@ -8,9 +8,7 @@ export enum FeeDistributionMethod {
 }
 export const FeeDistributionMethodSDKType = FeeDistributionMethod;
 export const FeeDistributionMethodAmino = FeeDistributionMethod;
-export function feeDistributionMethodFromJSON(
-  object: any
-): FeeDistributionMethod {
+export function feeDistributionMethodFromJSON(object: any): FeeDistributionMethod {
   switch (object) {
     case 0:
     case "BURN":
@@ -27,9 +25,7 @@ export function feeDistributionMethodFromJSON(
       return FeeDistributionMethod.UNRECOGNIZED;
   }
 }
-export function feeDistributionMethodToJSON(
-  object: FeeDistributionMethod
-): string {
+export function feeDistributionMethodToJSON(object: FeeDistributionMethod): string {
   switch (object) {
     case FeeDistributionMethod.BURN:
       return "BURN";
@@ -143,15 +139,12 @@ export interface NFTFeeConfigSDKType {
 function createBaseFeeDistribution(): FeeDistribution {
   return {
     method: 0,
-    portion: 0,
+    portion: 0
   };
 }
 export const FeeDistribution = {
   typeUrl: "/sixprotocol.nftmngr.FeeDistribution",
-  encode(
-    message: FeeDistribution,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: FeeDistribution, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.method !== 0) {
       writer.uint32(8).int32(message.method);
     }
@@ -214,22 +207,19 @@ export const FeeDistribution = {
   toProtoMsg(message: FeeDistribution): FeeDistributionProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.FeeDistribution",
-      value: FeeDistribution.encode(message).finish(),
+      value: FeeDistribution.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseFeeConfig(): FeeConfig {
   return {
     feeAmount: "",
-    feeDistributions: [],
+    feeDistributions: []
   };
 }
 export const FeeConfig = {
   typeUrl: "/sixprotocol.nftmngr.FeeConfig",
-  encode(
-    message: FeeConfig,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: FeeConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.feeAmount !== "") {
       writer.uint32(10).string(message.feeAmount);
     }
@@ -249,9 +239,7 @@ export const FeeConfig = {
           message.feeAmount = reader.string();
           break;
         case 2:
-          message.feeDistributions.push(
-            FeeDistribution.decode(reader, reader.uint32())
-          );
+          message.feeDistributions.push(FeeDistribution.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -263,8 +251,7 @@ export const FeeConfig = {
   fromPartial(object: Partial<FeeConfig>): FeeConfig {
     const message = createBaseFeeConfig();
     message.feeAmount = object.feeAmount ?? "";
-    message.feeDistributions =
-      object.feeDistributions?.map((e) => FeeDistribution.fromPartial(e)) || [];
+    message.feeDistributions = object.feeDistributions?.map(e => FeeDistribution.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: FeeConfigAmino): FeeConfig {
@@ -272,17 +259,14 @@ export const FeeConfig = {
     if (object.fee_amount !== undefined && object.fee_amount !== null) {
       message.feeAmount = object.fee_amount;
     }
-    message.feeDistributions =
-      object.fee_distributions?.map((e) => FeeDistribution.fromAmino(e)) || [];
+    message.feeDistributions = object.fee_distributions?.map(e => FeeDistribution.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: FeeConfig): FeeConfigAmino {
     const obj: any = {};
     obj.fee_amount = message.feeAmount === "" ? undefined : message.feeAmount;
     if (message.feeDistributions) {
-      obj.fee_distributions = message.feeDistributions.map((e) =>
-        e ? FeeDistribution.toAmino(e) : undefined
-      );
+      obj.fee_distributions = message.feeDistributions.map(e => e ? FeeDistribution.toAmino(e) : undefined);
     } else {
       obj.fee_distributions = message.feeDistributions;
     }
@@ -300,21 +284,18 @@ export const FeeConfig = {
   toProtoMsg(message: FeeConfig): FeeConfigProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.FeeConfig",
-      value: FeeConfig.encode(message).finish(),
+      value: FeeConfig.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseNFTFeeConfig(): NFTFeeConfig {
   return {
-    schemaFee: undefined,
+    schemaFee: undefined
   };
 }
 export const NFTFeeConfig = {
   typeUrl: "/sixprotocol.nftmngr.NFTFeeConfig",
-  encode(
-    message: NFTFeeConfig,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: NFTFeeConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.schemaFee !== undefined) {
       FeeConfig.encode(message.schemaFee, writer.uint32(10).fork()).ldelim();
     }
@@ -339,10 +320,7 @@ export const NFTFeeConfig = {
   },
   fromPartial(object: Partial<NFTFeeConfig>): NFTFeeConfig {
     const message = createBaseNFTFeeConfig();
-    message.schemaFee =
-      object.schemaFee !== undefined && object.schemaFee !== null
-        ? FeeConfig.fromPartial(object.schemaFee)
-        : undefined;
+    message.schemaFee = object.schemaFee !== undefined && object.schemaFee !== null ? FeeConfig.fromPartial(object.schemaFee) : undefined;
     return message;
   },
   fromAmino(object: NFTFeeConfigAmino): NFTFeeConfig {
@@ -354,9 +332,7 @@ export const NFTFeeConfig = {
   },
   toAmino(message: NFTFeeConfig): NFTFeeConfigAmino {
     const obj: any = {};
-    obj.schema_fee = message.schemaFee
-      ? FeeConfig.toAmino(message.schemaFee)
-      : undefined;
+    obj.schema_fee = message.schemaFee ? FeeConfig.toAmino(message.schemaFee) : undefined;
     return obj;
   },
   fromAminoMsg(object: NFTFeeConfigAminoMsg): NFTFeeConfig {
@@ -371,7 +347,7 @@ export const NFTFeeConfig = {
   toProtoMsg(message: NFTFeeConfig): NFTFeeConfigProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.NFTFeeConfig",
-      value: NFTFeeConfig.encode(message).finish(),
+      value: NFTFeeConfig.encode(message).finish()
     };
-  },
+  }
 };

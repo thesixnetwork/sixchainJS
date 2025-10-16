@@ -1,16 +1,7 @@
 //@ts-nocheck
 import { Timestamp } from "../../../google/protobuf/timestamp";
-import {
-  Duration,
-  DurationAmino,
-  DurationSDKType,
-} from "../../../google/protobuf/duration";
-import {
-  Any,
-  AnyProtoMsg,
-  AnyAmino,
-  AnySDKType,
-} from "../../../google/protobuf/any";
+import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
+import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Long, toTimestamp, fromTimestamp } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** VoteOption enumerates the valid vote options for a given proposal. */
@@ -161,9 +152,7 @@ export enum ProposalExecutorResult {
 }
 export const ProposalExecutorResultSDKType = ProposalExecutorResult;
 export const ProposalExecutorResultAmino = ProposalExecutorResult;
-export function proposalExecutorResultFromJSON(
-  object: any
-): ProposalExecutorResult {
+export function proposalExecutorResultFromJSON(object: any): ProposalExecutorResult {
   switch (object) {
     case 0:
     case "PROPOSAL_EXECUTOR_RESULT_UNSPECIFIED":
@@ -183,9 +172,7 @@ export function proposalExecutorResultFromJSON(
       return ProposalExecutorResult.UNRECOGNIZED;
   }
 }
-export function proposalExecutorResultToJSON(
-  object: ProposalExecutorResult
-): string {
+export function proposalExecutorResultToJSON(object: ProposalExecutorResult): string {
   switch (object) {
     case ProposalExecutorResult.PROPOSAL_EXECUTOR_RESULT_UNSPECIFIED:
       return "PROPOSAL_EXECUTOR_RESULT_UNSPECIFIED";
@@ -446,7 +433,7 @@ export interface DecisionPolicyWindows {
    * `[ submission + min_execution_period ; submission + voting_period + max_execution_period]`
    * where max_execution_period is a app-specific config, defined in the keeper.
    * If not set, min_execution_period will default to 0.
-   *
+   * 
    * Please make sure to set a `min_execution_period` that is smaller than
    * `voting_period + max_execution_period`, or else the above execution window
    * is empty, meaning that all proposals created with this decision policy
@@ -477,7 +464,7 @@ export interface DecisionPolicyWindowsAmino {
    * `[ submission + min_execution_period ; submission + voting_period + max_execution_period]`
    * where max_execution_period is a app-specific config, defined in the keeper.
    * If not set, min_execution_period will default to 0.
-   *
+   * 
    * Please make sure to set a `min_execution_period` that is smaller than
    * `voting_period + max_execution_period`, or else the above execution window
    * is empty, meaning that all proposals created with this decision policy
@@ -626,11 +613,7 @@ export interface GroupPolicyInfo {
    */
   version: Long;
   /** decision_policy specifies the group policy's decision policy. */
-  decisionPolicy?:
-    | ThresholdDecisionPolicy
-    | PercentageDecisionPolicy
-    | Any
-    | undefined;
+  decisionPolicy?: ThresholdDecisionPolicy | PercentageDecisionPolicy | Any | undefined;
   /** created_at is a timestamp specifying when a group policy was created. */
   createdAt: Date;
 }
@@ -639,11 +622,7 @@ export interface GroupPolicyInfoProtoMsg {
   value: Uint8Array;
 }
 export type GroupPolicyInfoEncoded = Omit<GroupPolicyInfo, "decisionPolicy"> & {
-  /** decision_policy specifies the group policy's decision policy. */ decisionPolicy?:
-    | ThresholdDecisionPolicyProtoMsg
-    | PercentageDecisionPolicyProtoMsg
-    | AnyProtoMsg
-    | undefined;
+  /** decision_policy specifies the group policy's decision policy. */decisionPolicy?: ThresholdDecisionPolicyProtoMsg | PercentageDecisionPolicyProtoMsg | AnyProtoMsg | undefined;
 };
 /**
  * GroupPolicyInfo represents the high-level on-chain information for a group policy.
@@ -695,11 +674,7 @@ export interface GroupPolicyInfoSDKType {
   admin: string;
   metadata: string;
   version: Long;
-  decision_policy?:
-    | ThresholdDecisionPolicySDKType
-    | PercentageDecisionPolicySDKType
-    | AnySDKType
-    | undefined;
+  decision_policy?: ThresholdDecisionPolicySDKType | PercentageDecisionPolicySDKType | AnySDKType | undefined;
   created_at: Date;
 }
 /**
@@ -758,13 +733,13 @@ export interface Proposal {
   messages: Any[];
   /**
    * title is the title of the proposal
-   *
+   * 
    * Since: cosmos-sdk 0.47
    */
   title: string;
   /**
    * summary is a short summary of the proposal
-   *
+   * 
    * Since: cosmos-sdk 0.47
    */
   summary: string;
@@ -846,13 +821,13 @@ export interface ProposalAmino {
   messages?: AnyAmino[];
   /**
    * title is the title of the proposal
-   *
+   * 
    * Since: cosmos-sdk 0.47
    */
   title?: string;
   /**
    * summary is a short summary of the proposal
-   *
+   * 
    * Since: cosmos-sdk 0.47
    */
   summary?: string;
@@ -999,15 +974,12 @@ function createBaseMember(): Member {
     address: "",
     weight: "",
     metadata: "",
-    addedAt: new Date(),
+    addedAt: new Date()
   };
 }
 export const Member = {
   typeUrl: "/cosmos.group.v1.Member",
-  encode(
-    message: Member,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Member, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
@@ -1018,10 +990,7 @@ export const Member = {
       writer.uint32(26).string(message.metadata);
     }
     if (message.addedAt !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.addedAt),
-        writer.uint32(34).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.addedAt), writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -1042,9 +1011,7 @@ export const Member = {
           message.metadata = reader.string();
           break;
         case 4:
-          message.addedAt = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.addedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -1082,9 +1049,7 @@ export const Member = {
     obj.address = message.address === "" ? undefined : message.address;
     obj.weight = message.weight === "" ? undefined : message.weight;
     obj.metadata = message.metadata === "" ? undefined : message.metadata;
-    obj.added_at = message.addedAt
-      ? Timestamp.toAmino(toTimestamp(message.addedAt))
-      : new Date();
+    obj.added_at = message.addedAt ? Timestamp.toAmino(toTimestamp(message.addedAt)) : new Date();
     return obj;
   },
   fromAminoMsg(object: MemberAminoMsg): Member {
@@ -1093,7 +1058,7 @@ export const Member = {
   toAminoMsg(message: Member): MemberAminoMsg {
     return {
       type: "cosmos-sdk/Member",
-      value: Member.toAmino(message),
+      value: Member.toAmino(message)
     };
   },
   fromProtoMsg(message: MemberProtoMsg): Member {
@@ -1105,23 +1070,20 @@ export const Member = {
   toProtoMsg(message: Member): MemberProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.Member",
-      value: Member.encode(message).finish(),
+      value: Member.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseMemberRequest(): MemberRequest {
   return {
     address: "",
     weight: "",
-    metadata: "",
+    metadata: ""
   };
 }
 export const MemberRequest = {
   typeUrl: "/cosmos.group.v1.MemberRequest",
-  encode(
-    message: MemberRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: MemberRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
@@ -1189,7 +1151,7 @@ export const MemberRequest = {
   toAminoMsg(message: MemberRequest): MemberRequestAminoMsg {
     return {
       type: "cosmos-sdk/MemberRequest",
-      value: MemberRequest.toAmino(message),
+      value: MemberRequest.toAmino(message)
     };
   },
   fromProtoMsg(message: MemberRequestProtoMsg): MemberRequest {
@@ -1201,38 +1163,29 @@ export const MemberRequest = {
   toProtoMsg(message: MemberRequest): MemberRequestProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.MemberRequest",
-      value: MemberRequest.encode(message).finish(),
+      value: MemberRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseThresholdDecisionPolicy(): ThresholdDecisionPolicy {
   return {
     $typeUrl: "/cosmos.group.v1.ThresholdDecisionPolicy",
     threshold: "",
-    windows: undefined,
+    windows: undefined
   };
 }
 export const ThresholdDecisionPolicy = {
   typeUrl: "/cosmos.group.v1.ThresholdDecisionPolicy",
-  encode(
-    message: ThresholdDecisionPolicy,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ThresholdDecisionPolicy, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.threshold !== "") {
       writer.uint32(10).string(message.threshold);
     }
     if (message.windows !== undefined) {
-      DecisionPolicyWindows.encode(
-        message.windows,
-        writer.uint32(18).fork()
-      ).ldelim();
+      DecisionPolicyWindows.encode(message.windows, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): ThresholdDecisionPolicy {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ThresholdDecisionPolicy {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseThresholdDecisionPolicy();
@@ -1243,10 +1196,7 @@ export const ThresholdDecisionPolicy = {
           message.threshold = reader.string();
           break;
         case 2:
-          message.windows = DecisionPolicyWindows.decode(
-            reader,
-            reader.uint32()
-          );
+          message.windows = DecisionPolicyWindows.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1255,15 +1205,10 @@ export const ThresholdDecisionPolicy = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<ThresholdDecisionPolicy>
-  ): ThresholdDecisionPolicy {
+  fromPartial(object: Partial<ThresholdDecisionPolicy>): ThresholdDecisionPolicy {
     const message = createBaseThresholdDecisionPolicy();
     message.threshold = object.threshold ?? "";
-    message.windows =
-      object.windows !== undefined && object.windows !== null
-        ? DecisionPolicyWindows.fromPartial(object.windows)
-        : undefined;
+    message.windows = object.windows !== undefined && object.windows !== null ? DecisionPolicyWindows.fromPartial(object.windows) : undefined;
     return message;
   },
   fromAmino(object: ThresholdDecisionPolicyAmino): ThresholdDecisionPolicy {
@@ -1279,69 +1224,50 @@ export const ThresholdDecisionPolicy = {
   toAmino(message: ThresholdDecisionPolicy): ThresholdDecisionPolicyAmino {
     const obj: any = {};
     obj.threshold = message.threshold === "" ? undefined : message.threshold;
-    obj.windows = message.windows
-      ? DecisionPolicyWindows.toAmino(message.windows)
-      : undefined;
+    obj.windows = message.windows ? DecisionPolicyWindows.toAmino(message.windows) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: ThresholdDecisionPolicyAminoMsg
-  ): ThresholdDecisionPolicy {
+  fromAminoMsg(object: ThresholdDecisionPolicyAminoMsg): ThresholdDecisionPolicy {
     return ThresholdDecisionPolicy.fromAmino(object.value);
   },
-  toAminoMsg(
-    message: ThresholdDecisionPolicy
-  ): ThresholdDecisionPolicyAminoMsg {
+  toAminoMsg(message: ThresholdDecisionPolicy): ThresholdDecisionPolicyAminoMsg {
     return {
       type: "cosmos-sdk/ThresholdDecisionPolicy",
-      value: ThresholdDecisionPolicy.toAmino(message),
+      value: ThresholdDecisionPolicy.toAmino(message)
     };
   },
-  fromProtoMsg(
-    message: ThresholdDecisionPolicyProtoMsg
-  ): ThresholdDecisionPolicy {
+  fromProtoMsg(message: ThresholdDecisionPolicyProtoMsg): ThresholdDecisionPolicy {
     return ThresholdDecisionPolicy.decode(message.value);
   },
   toProto(message: ThresholdDecisionPolicy): Uint8Array {
     return ThresholdDecisionPolicy.encode(message).finish();
   },
-  toProtoMsg(
-    message: ThresholdDecisionPolicy
-  ): ThresholdDecisionPolicyProtoMsg {
+  toProtoMsg(message: ThresholdDecisionPolicy): ThresholdDecisionPolicyProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.ThresholdDecisionPolicy",
-      value: ThresholdDecisionPolicy.encode(message).finish(),
+      value: ThresholdDecisionPolicy.encode(message).finish()
     };
-  },
+  }
 };
 function createBasePercentageDecisionPolicy(): PercentageDecisionPolicy {
   return {
     $typeUrl: "/cosmos.group.v1.PercentageDecisionPolicy",
     percentage: "",
-    windows: undefined,
+    windows: undefined
   };
 }
 export const PercentageDecisionPolicy = {
   typeUrl: "/cosmos.group.v1.PercentageDecisionPolicy",
-  encode(
-    message: PercentageDecisionPolicy,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: PercentageDecisionPolicy, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.percentage !== "") {
       writer.uint32(10).string(message.percentage);
     }
     if (message.windows !== undefined) {
-      DecisionPolicyWindows.encode(
-        message.windows,
-        writer.uint32(18).fork()
-      ).ldelim();
+      DecisionPolicyWindows.encode(message.windows, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): PercentageDecisionPolicy {
+  decode(input: _m0.Reader | Uint8Array, length?: number): PercentageDecisionPolicy {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePercentageDecisionPolicy();
@@ -1352,10 +1278,7 @@ export const PercentageDecisionPolicy = {
           message.percentage = reader.string();
           break;
         case 2:
-          message.windows = DecisionPolicyWindows.decode(
-            reader,
-            reader.uint32()
-          );
+          message.windows = DecisionPolicyWindows.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1364,15 +1287,10 @@ export const PercentageDecisionPolicy = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<PercentageDecisionPolicy>
-  ): PercentageDecisionPolicy {
+  fromPartial(object: Partial<PercentageDecisionPolicy>): PercentageDecisionPolicy {
     const message = createBasePercentageDecisionPolicy();
     message.percentage = object.percentage ?? "";
-    message.windows =
-      object.windows !== undefined && object.windows !== null
-        ? DecisionPolicyWindows.fromPartial(object.windows)
-        : undefined;
+    message.windows = object.windows !== undefined && object.windows !== null ? DecisionPolicyWindows.fromPartial(object.windows) : undefined;
     return message;
   },
   fromAmino(object: PercentageDecisionPolicyAmino): PercentageDecisionPolicy {
@@ -1388,68 +1306,49 @@ export const PercentageDecisionPolicy = {
   toAmino(message: PercentageDecisionPolicy): PercentageDecisionPolicyAmino {
     const obj: any = {};
     obj.percentage = message.percentage === "" ? undefined : message.percentage;
-    obj.windows = message.windows
-      ? DecisionPolicyWindows.toAmino(message.windows)
-      : undefined;
+    obj.windows = message.windows ? DecisionPolicyWindows.toAmino(message.windows) : undefined;
     return obj;
   },
-  fromAminoMsg(
-    object: PercentageDecisionPolicyAminoMsg
-  ): PercentageDecisionPolicy {
+  fromAminoMsg(object: PercentageDecisionPolicyAminoMsg): PercentageDecisionPolicy {
     return PercentageDecisionPolicy.fromAmino(object.value);
   },
-  toAminoMsg(
-    message: PercentageDecisionPolicy
-  ): PercentageDecisionPolicyAminoMsg {
+  toAminoMsg(message: PercentageDecisionPolicy): PercentageDecisionPolicyAminoMsg {
     return {
       type: "cosmos-sdk/PercentageDecisionPolicy",
-      value: PercentageDecisionPolicy.toAmino(message),
+      value: PercentageDecisionPolicy.toAmino(message)
     };
   },
-  fromProtoMsg(
-    message: PercentageDecisionPolicyProtoMsg
-  ): PercentageDecisionPolicy {
+  fromProtoMsg(message: PercentageDecisionPolicyProtoMsg): PercentageDecisionPolicy {
     return PercentageDecisionPolicy.decode(message.value);
   },
   toProto(message: PercentageDecisionPolicy): Uint8Array {
     return PercentageDecisionPolicy.encode(message).finish();
   },
-  toProtoMsg(
-    message: PercentageDecisionPolicy
-  ): PercentageDecisionPolicyProtoMsg {
+  toProtoMsg(message: PercentageDecisionPolicy): PercentageDecisionPolicyProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.PercentageDecisionPolicy",
-      value: PercentageDecisionPolicy.encode(message).finish(),
+      value: PercentageDecisionPolicy.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseDecisionPolicyWindows(): DecisionPolicyWindows {
   return {
     votingPeriod: Duration.fromPartial({}),
-    minExecutionPeriod: Duration.fromPartial({}),
+    minExecutionPeriod: Duration.fromPartial({})
   };
 }
 export const DecisionPolicyWindows = {
   typeUrl: "/cosmos.group.v1.DecisionPolicyWindows",
-  encode(
-    message: DecisionPolicyWindows,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: DecisionPolicyWindows, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.votingPeriod !== undefined) {
       Duration.encode(message.votingPeriod, writer.uint32(10).fork()).ldelim();
     }
     if (message.minExecutionPeriod !== undefined) {
-      Duration.encode(
-        message.minExecutionPeriod,
-        writer.uint32(18).fork()
-      ).ldelim();
+      Duration.encode(message.minExecutionPeriod, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): DecisionPolicyWindows {
+  decode(input: _m0.Reader | Uint8Array, length?: number): DecisionPolicyWindows {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDecisionPolicyWindows();
@@ -1471,15 +1370,8 @@ export const DecisionPolicyWindows = {
   },
   fromPartial(object: Partial<DecisionPolicyWindows>): DecisionPolicyWindows {
     const message = createBaseDecisionPolicyWindows();
-    message.votingPeriod =
-      object.votingPeriod !== undefined && object.votingPeriod !== null
-        ? Duration.fromPartial(object.votingPeriod)
-        : undefined;
-    message.minExecutionPeriod =
-      object.minExecutionPeriod !== undefined &&
-      object.minExecutionPeriod !== null
-        ? Duration.fromPartial(object.minExecutionPeriod)
-        : undefined;
+    message.votingPeriod = object.votingPeriod !== undefined && object.votingPeriod !== null ? Duration.fromPartial(object.votingPeriod) : undefined;
+    message.minExecutionPeriod = object.minExecutionPeriod !== undefined && object.minExecutionPeriod !== null ? Duration.fromPartial(object.minExecutionPeriod) : undefined;
     return message;
   },
   fromAmino(object: DecisionPolicyWindowsAmino): DecisionPolicyWindows {
@@ -1487,24 +1379,15 @@ export const DecisionPolicyWindows = {
     if (object.voting_period !== undefined && object.voting_period !== null) {
       message.votingPeriod = Duration.fromAmino(object.voting_period);
     }
-    if (
-      object.min_execution_period !== undefined &&
-      object.min_execution_period !== null
-    ) {
-      message.minExecutionPeriod = Duration.fromAmino(
-        object.min_execution_period
-      );
+    if (object.min_execution_period !== undefined && object.min_execution_period !== null) {
+      message.minExecutionPeriod = Duration.fromAmino(object.min_execution_period);
     }
     return message;
   },
   toAmino(message: DecisionPolicyWindows): DecisionPolicyWindowsAmino {
     const obj: any = {};
-    obj.voting_period = message.votingPeriod
-      ? Duration.toAmino(message.votingPeriod)
-      : Duration.toAmino(Duration.fromPartial({}));
-    obj.min_execution_period = message.minExecutionPeriod
-      ? Duration.toAmino(message.minExecutionPeriod)
-      : Duration.toAmino(Duration.fromPartial({}));
+    obj.voting_period = message.votingPeriod ? Duration.toAmino(message.votingPeriod) : Duration.toAmino(Duration.fromPartial({}));
+    obj.min_execution_period = message.minExecutionPeriod ? Duration.toAmino(message.minExecutionPeriod) : Duration.toAmino(Duration.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: DecisionPolicyWindowsAminoMsg): DecisionPolicyWindows {
@@ -1513,7 +1396,7 @@ export const DecisionPolicyWindows = {
   toAminoMsg(message: DecisionPolicyWindows): DecisionPolicyWindowsAminoMsg {
     return {
       type: "cosmos-sdk/DecisionPolicyWindows",
-      value: DecisionPolicyWindows.toAmino(message),
+      value: DecisionPolicyWindows.toAmino(message)
     };
   },
   fromProtoMsg(message: DecisionPolicyWindowsProtoMsg): DecisionPolicyWindows {
@@ -1525,9 +1408,9 @@ export const DecisionPolicyWindows = {
   toProtoMsg(message: DecisionPolicyWindows): DecisionPolicyWindowsProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.DecisionPolicyWindows",
-      value: DecisionPolicyWindows.encode(message).finish(),
+      value: DecisionPolicyWindows.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseGroupInfo(): GroupInfo {
   return {
@@ -1536,15 +1419,12 @@ function createBaseGroupInfo(): GroupInfo {
     metadata: "",
     version: Long.UZERO,
     totalWeight: "",
-    createdAt: new Date(),
+    createdAt: new Date()
   };
 }
 export const GroupInfo = {
   typeUrl: "/cosmos.group.v1.GroupInfo",
-  encode(
-    message: GroupInfo,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GroupInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
     }
@@ -1561,10 +1441,7 @@ export const GroupInfo = {
       writer.uint32(42).string(message.totalWeight);
     }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.createdAt),
-        writer.uint32(50).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(50).fork()).ldelim();
     }
     return writer;
   },
@@ -1591,9 +1468,7 @@ export const GroupInfo = {
           message.totalWeight = reader.string();
           break;
         case 6:
-          message.createdAt = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -1604,16 +1479,10 @@ export const GroupInfo = {
   },
   fromPartial(object: Partial<GroupInfo>): GroupInfo {
     const message = createBaseGroupInfo();
-    message.id =
-      object.id !== undefined && object.id !== null
-        ? Long.fromValue(object.id)
-        : Long.UZERO;
+    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
     message.admin = object.admin ?? "";
     message.metadata = object.metadata ?? "";
-    message.version =
-      object.version !== undefined && object.version !== null
-        ? Long.fromValue(object.version)
-        : Long.UZERO;
+    message.version = object.version !== undefined && object.version !== null ? Long.fromValue(object.version) : Long.UZERO;
     message.totalWeight = object.totalWeight ?? "";
     message.createdAt = object.createdAt ?? undefined;
     return message;
@@ -1645,14 +1514,9 @@ export const GroupInfo = {
     obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     obj.admin = message.admin === "" ? undefined : message.admin;
     obj.metadata = message.metadata === "" ? undefined : message.metadata;
-    obj.version = !message.version.isZero()
-      ? message.version?.toString()
-      : undefined;
-    obj.total_weight =
-      message.totalWeight === "" ? undefined : message.totalWeight;
-    obj.created_at = message.createdAt
-      ? Timestamp.toAmino(toTimestamp(message.createdAt))
-      : new Date();
+    obj.version = !message.version.isZero() ? message.version?.toString() : undefined;
+    obj.total_weight = message.totalWeight === "" ? undefined : message.totalWeight;
+    obj.created_at = message.createdAt ? Timestamp.toAmino(toTimestamp(message.createdAt)) : new Date();
     return obj;
   },
   fromAminoMsg(object: GroupInfoAminoMsg): GroupInfo {
@@ -1661,7 +1525,7 @@ export const GroupInfo = {
   toAminoMsg(message: GroupInfo): GroupInfoAminoMsg {
     return {
       type: "cosmos-sdk/GroupInfo",
-      value: GroupInfo.toAmino(message),
+      value: GroupInfo.toAmino(message)
     };
   },
   fromProtoMsg(message: GroupInfoProtoMsg): GroupInfo {
@@ -1673,22 +1537,19 @@ export const GroupInfo = {
   toProtoMsg(message: GroupInfo): GroupInfoProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.GroupInfo",
-      value: GroupInfo.encode(message).finish(),
+      value: GroupInfo.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseGroupMember(): GroupMember {
   return {
     groupId: Long.UZERO,
-    member: undefined,
+    member: undefined
   };
 }
 export const GroupMember = {
   typeUrl: "/cosmos.group.v1.GroupMember",
-  encode(
-    message: GroupMember,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GroupMember, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.groupId.isZero()) {
       writer.uint32(8).uint64(message.groupId);
     }
@@ -1719,14 +1580,8 @@ export const GroupMember = {
   },
   fromPartial(object: Partial<GroupMember>): GroupMember {
     const message = createBaseGroupMember();
-    message.groupId =
-      object.groupId !== undefined && object.groupId !== null
-        ? Long.fromValue(object.groupId)
-        : Long.UZERO;
-    message.member =
-      object.member !== undefined && object.member !== null
-        ? Member.fromPartial(object.member)
-        : undefined;
+    message.groupId = object.groupId !== undefined && object.groupId !== null ? Long.fromValue(object.groupId) : Long.UZERO;
+    message.member = object.member !== undefined && object.member !== null ? Member.fromPartial(object.member) : undefined;
     return message;
   },
   fromAmino(object: GroupMemberAmino): GroupMember {
@@ -1741,9 +1596,7 @@ export const GroupMember = {
   },
   toAmino(message: GroupMember): GroupMemberAmino {
     const obj: any = {};
-    obj.group_id = !message.groupId.isZero()
-      ? message.groupId?.toString()
-      : undefined;
+    obj.group_id = !message.groupId.isZero() ? message.groupId?.toString() : undefined;
     obj.member = message.member ? Member.toAmino(message.member) : undefined;
     return obj;
   },
@@ -1753,7 +1606,7 @@ export const GroupMember = {
   toAminoMsg(message: GroupMember): GroupMemberAminoMsg {
     return {
       type: "cosmos-sdk/GroupMember",
-      value: GroupMember.toAmino(message),
+      value: GroupMember.toAmino(message)
     };
   },
   fromProtoMsg(message: GroupMemberProtoMsg): GroupMember {
@@ -1765,9 +1618,9 @@ export const GroupMember = {
   toProtoMsg(message: GroupMember): GroupMemberProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.GroupMember",
-      value: GroupMember.encode(message).finish(),
+      value: GroupMember.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseGroupPolicyInfo(): GroupPolicyInfo {
   return {
@@ -1777,15 +1630,12 @@ function createBaseGroupPolicyInfo(): GroupPolicyInfo {
     metadata: "",
     version: Long.UZERO,
     decisionPolicy: undefined,
-    createdAt: new Date(),
+    createdAt: new Date()
   };
 }
 export const GroupPolicyInfo = {
   typeUrl: "/cosmos.group.v1.GroupPolicyInfo",
-  encode(
-    message: GroupPolicyInfo,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GroupPolicyInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
@@ -1802,16 +1652,10 @@ export const GroupPolicyInfo = {
       writer.uint32(40).uint64(message.version);
     }
     if (message.decisionPolicy !== undefined) {
-      Any.encode(
-        message.decisionPolicy as Any,
-        writer.uint32(50).fork()
-      ).ldelim();
+      Any.encode(message.decisionPolicy as Any, writer.uint32(50).fork()).ldelim();
     }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.createdAt),
-        writer.uint32(58).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
     }
     return writer;
   },
@@ -1838,13 +1682,10 @@ export const GroupPolicyInfo = {
           message.version = reader.uint64() as Long;
           break;
         case 6:
-          message.decisionPolicy =
-            Cosmos_groupv1DecisionPolicy_InterfaceDecoder(reader) as Any;
+          message.decisionPolicy = Cosmos_groupv1DecisionPolicy_InterfaceDecoder(reader) as Any;
           break;
         case 7:
-          message.createdAt = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -1856,20 +1697,11 @@ export const GroupPolicyInfo = {
   fromPartial(object: Partial<GroupPolicyInfo>): GroupPolicyInfo {
     const message = createBaseGroupPolicyInfo();
     message.address = object.address ?? "";
-    message.groupId =
-      object.groupId !== undefined && object.groupId !== null
-        ? Long.fromValue(object.groupId)
-        : Long.UZERO;
+    message.groupId = object.groupId !== undefined && object.groupId !== null ? Long.fromValue(object.groupId) : Long.UZERO;
     message.admin = object.admin ?? "";
     message.metadata = object.metadata ?? "";
-    message.version =
-      object.version !== undefined && object.version !== null
-        ? Long.fromValue(object.version)
-        : Long.UZERO;
-    message.decisionPolicy =
-      object.decisionPolicy !== undefined && object.decisionPolicy !== null
-        ? Any.fromPartial(object.decisionPolicy)
-        : undefined;
+    message.version = object.version !== undefined && object.version !== null ? Long.fromValue(object.version) : Long.UZERO;
+    message.decisionPolicy = object.decisionPolicy !== undefined && object.decisionPolicy !== null ? Any.fromPartial(object.decisionPolicy) : undefined;
     message.createdAt = object.createdAt ?? undefined;
     return message;
   },
@@ -1890,13 +1722,8 @@ export const GroupPolicyInfo = {
     if (object.version !== undefined && object.version !== null) {
       message.version = Long.fromString(object.version);
     }
-    if (
-      object.decision_policy !== undefined &&
-      object.decision_policy !== null
-    ) {
-      message.decisionPolicy = Cosmos_groupv1DecisionPolicy_FromAmino(
-        object.decision_policy
-      );
+    if (object.decision_policy !== undefined && object.decision_policy !== null) {
+      message.decisionPolicy = Cosmos_groupv1DecisionPolicy_FromAmino(object.decision_policy);
     }
     if (object.created_at !== undefined && object.created_at !== null) {
       message.createdAt = fromTimestamp(Timestamp.fromAmino(object.created_at));
@@ -1906,20 +1733,12 @@ export const GroupPolicyInfo = {
   toAmino(message: GroupPolicyInfo): GroupPolicyInfoAmino {
     const obj: any = {};
     obj.address = message.address === "" ? undefined : message.address;
-    obj.group_id = !message.groupId.isZero()
-      ? message.groupId?.toString()
-      : undefined;
+    obj.group_id = !message.groupId.isZero() ? message.groupId?.toString() : undefined;
     obj.admin = message.admin === "" ? undefined : message.admin;
     obj.metadata = message.metadata === "" ? undefined : message.metadata;
-    obj.version = !message.version.isZero()
-      ? message.version?.toString()
-      : undefined;
-    obj.decision_policy = message.decisionPolicy
-      ? Cosmos_groupv1DecisionPolicy_ToAmino(message.decisionPolicy as Any)
-      : undefined;
-    obj.created_at = message.createdAt
-      ? Timestamp.toAmino(toTimestamp(message.createdAt))
-      : new Date();
+    obj.version = !message.version.isZero() ? message.version?.toString() : undefined;
+    obj.decision_policy = message.decisionPolicy ? Cosmos_groupv1DecisionPolicy_ToAmino(message.decisionPolicy as Any) : undefined;
+    obj.created_at = message.createdAt ? Timestamp.toAmino(toTimestamp(message.createdAt)) : new Date();
     return obj;
   },
   fromAminoMsg(object: GroupPolicyInfoAminoMsg): GroupPolicyInfo {
@@ -1928,7 +1747,7 @@ export const GroupPolicyInfo = {
   toAminoMsg(message: GroupPolicyInfo): GroupPolicyInfoAminoMsg {
     return {
       type: "cosmos-sdk/GroupPolicyInfo",
-      value: GroupPolicyInfo.toAmino(message),
+      value: GroupPolicyInfo.toAmino(message)
     };
   },
   fromProtoMsg(message: GroupPolicyInfoProtoMsg): GroupPolicyInfo {
@@ -1940,9 +1759,9 @@ export const GroupPolicyInfo = {
   toProtoMsg(message: GroupPolicyInfo): GroupPolicyInfoProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.GroupPolicyInfo",
-      value: GroupPolicyInfo.encode(message).finish(),
+      value: GroupPolicyInfo.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseProposal(): Proposal {
   return {
@@ -1959,15 +1778,12 @@ function createBaseProposal(): Proposal {
     executorResult: 0,
     messages: [],
     title: "",
-    summary: "",
+    summary: ""
   };
 }
 export const Proposal = {
   typeUrl: "/cosmos.group.v1.Proposal",
-  encode(
-    message: Proposal,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Proposal, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
     }
@@ -1981,10 +1797,7 @@ export const Proposal = {
       writer.uint32(34).string(v!);
     }
     if (message.submitTime !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.submitTime),
-        writer.uint32(42).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.submitTime), writer.uint32(42).fork()).ldelim();
     }
     if (!message.groupVersion.isZero()) {
       writer.uint32(48).uint64(message.groupVersion);
@@ -1996,16 +1809,10 @@ export const Proposal = {
       writer.uint32(64).int32(message.status);
     }
     if (message.finalTallyResult !== undefined) {
-      TallyResult.encode(
-        message.finalTallyResult,
-        writer.uint32(74).fork()
-      ).ldelim();
+      TallyResult.encode(message.finalTallyResult, writer.uint32(74).fork()).ldelim();
     }
     if (message.votingPeriodEnd !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.votingPeriodEnd),
-        writer.uint32(82).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.votingPeriodEnd), writer.uint32(82).fork()).ldelim();
     }
     if (message.executorResult !== 0) {
       writer.uint32(88).int32(message.executorResult);
@@ -2041,9 +1848,7 @@ export const Proposal = {
           message.proposers.push(reader.string());
           break;
         case 5:
-          message.submitTime = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.submitTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         case 6:
           message.groupVersion = reader.uint64() as Long;
@@ -2055,15 +1860,10 @@ export const Proposal = {
           message.status = reader.int32() as any;
           break;
         case 9:
-          message.finalTallyResult = TallyResult.decode(
-            reader,
-            reader.uint32()
-          );
+          message.finalTallyResult = TallyResult.decode(reader, reader.uint32());
           break;
         case 10:
-          message.votingPeriodEnd = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.votingPeriodEnd = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         case 11:
           message.executorResult = reader.int32() as any;
@@ -2086,31 +1886,18 @@ export const Proposal = {
   },
   fromPartial(object: Partial<Proposal>): Proposal {
     const message = createBaseProposal();
-    message.id =
-      object.id !== undefined && object.id !== null
-        ? Long.fromValue(object.id)
-        : Long.UZERO;
+    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
     message.groupPolicyAddress = object.groupPolicyAddress ?? "";
     message.metadata = object.metadata ?? "";
-    message.proposers = object.proposers?.map((e) => e) || [];
+    message.proposers = object.proposers?.map(e => e) || [];
     message.submitTime = object.submitTime ?? undefined;
-    message.groupVersion =
-      object.groupVersion !== undefined && object.groupVersion !== null
-        ? Long.fromValue(object.groupVersion)
-        : Long.UZERO;
-    message.groupPolicyVersion =
-      object.groupPolicyVersion !== undefined &&
-      object.groupPolicyVersion !== null
-        ? Long.fromValue(object.groupPolicyVersion)
-        : Long.UZERO;
+    message.groupVersion = object.groupVersion !== undefined && object.groupVersion !== null ? Long.fromValue(object.groupVersion) : Long.UZERO;
+    message.groupPolicyVersion = object.groupPolicyVersion !== undefined && object.groupPolicyVersion !== null ? Long.fromValue(object.groupPolicyVersion) : Long.UZERO;
     message.status = object.status ?? 0;
-    message.finalTallyResult =
-      object.finalTallyResult !== undefined && object.finalTallyResult !== null
-        ? TallyResult.fromPartial(object.finalTallyResult)
-        : undefined;
+    message.finalTallyResult = object.finalTallyResult !== undefined && object.finalTallyResult !== null ? TallyResult.fromPartial(object.finalTallyResult) : undefined;
     message.votingPeriodEnd = object.votingPeriodEnd ?? undefined;
     message.executorResult = object.executorResult ?? 0;
-    message.messages = object.messages?.map((e) => Any.fromPartial(e)) || [];
+    message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
     message.title = object.title ?? "";
     message.summary = object.summary ?? "";
     return message;
@@ -2120,56 +1907,35 @@ export const Proposal = {
     if (object.id !== undefined && object.id !== null) {
       message.id = Long.fromString(object.id);
     }
-    if (
-      object.group_policy_address !== undefined &&
-      object.group_policy_address !== null
-    ) {
+    if (object.group_policy_address !== undefined && object.group_policy_address !== null) {
       message.groupPolicyAddress = object.group_policy_address;
     }
     if (object.metadata !== undefined && object.metadata !== null) {
       message.metadata = object.metadata;
     }
-    message.proposers = object.proposers?.map((e) => e) || [];
+    message.proposers = object.proposers?.map(e => e) || [];
     if (object.submit_time !== undefined && object.submit_time !== null) {
-      message.submitTime = fromTimestamp(
-        Timestamp.fromAmino(object.submit_time)
-      );
+      message.submitTime = fromTimestamp(Timestamp.fromAmino(object.submit_time));
     }
     if (object.group_version !== undefined && object.group_version !== null) {
       message.groupVersion = Long.fromString(object.group_version);
     }
-    if (
-      object.group_policy_version !== undefined &&
-      object.group_policy_version !== null
-    ) {
+    if (object.group_policy_version !== undefined && object.group_policy_version !== null) {
       message.groupPolicyVersion = Long.fromString(object.group_policy_version);
     }
     if (object.status !== undefined && object.status !== null) {
       message.status = object.status;
     }
-    if (
-      object.final_tally_result !== undefined &&
-      object.final_tally_result !== null
-    ) {
-      message.finalTallyResult = TallyResult.fromAmino(
-        object.final_tally_result
-      );
+    if (object.final_tally_result !== undefined && object.final_tally_result !== null) {
+      message.finalTallyResult = TallyResult.fromAmino(object.final_tally_result);
     }
-    if (
-      object.voting_period_end !== undefined &&
-      object.voting_period_end !== null
-    ) {
-      message.votingPeriodEnd = fromTimestamp(
-        Timestamp.fromAmino(object.voting_period_end)
-      );
+    if (object.voting_period_end !== undefined && object.voting_period_end !== null) {
+      message.votingPeriodEnd = fromTimestamp(Timestamp.fromAmino(object.voting_period_end));
     }
-    if (
-      object.executor_result !== undefined &&
-      object.executor_result !== null
-    ) {
+    if (object.executor_result !== undefined && object.executor_result !== null) {
       message.executorResult = object.executor_result;
     }
-    message.messages = object.messages?.map((e) => Any.fromAmino(e)) || [];
+    message.messages = object.messages?.map(e => Any.fromAmino(e)) || [];
     if (object.title !== undefined && object.title !== null) {
       message.title = object.title;
     }
@@ -2181,38 +1947,22 @@ export const Proposal = {
   toAmino(message: Proposal): ProposalAmino {
     const obj: any = {};
     obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
-    obj.group_policy_address =
-      message.groupPolicyAddress === ""
-        ? undefined
-        : message.groupPolicyAddress;
+    obj.group_policy_address = message.groupPolicyAddress === "" ? undefined : message.groupPolicyAddress;
     obj.metadata = message.metadata === "" ? undefined : message.metadata;
     if (message.proposers) {
-      obj.proposers = message.proposers.map((e) => e);
+      obj.proposers = message.proposers.map(e => e);
     } else {
       obj.proposers = message.proposers;
     }
-    obj.submit_time = message.submitTime
-      ? Timestamp.toAmino(toTimestamp(message.submitTime))
-      : new Date();
-    obj.group_version = !message.groupVersion.isZero()
-      ? message.groupVersion?.toString()
-      : undefined;
-    obj.group_policy_version = !message.groupPolicyVersion.isZero()
-      ? message.groupPolicyVersion?.toString()
-      : undefined;
+    obj.submit_time = message.submitTime ? Timestamp.toAmino(toTimestamp(message.submitTime)) : new Date();
+    obj.group_version = !message.groupVersion.isZero() ? message.groupVersion?.toString() : undefined;
+    obj.group_policy_version = !message.groupPolicyVersion.isZero() ? message.groupPolicyVersion?.toString() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
-    obj.final_tally_result = message.finalTallyResult
-      ? TallyResult.toAmino(message.finalTallyResult)
-      : TallyResult.toAmino(TallyResult.fromPartial({}));
-    obj.voting_period_end = message.votingPeriodEnd
-      ? Timestamp.toAmino(toTimestamp(message.votingPeriodEnd))
-      : new Date();
-    obj.executor_result =
-      message.executorResult === 0 ? undefined : message.executorResult;
+    obj.final_tally_result = message.finalTallyResult ? TallyResult.toAmino(message.finalTallyResult) : TallyResult.toAmino(TallyResult.fromPartial({}));
+    obj.voting_period_end = message.votingPeriodEnd ? Timestamp.toAmino(toTimestamp(message.votingPeriodEnd)) : new Date();
+    obj.executor_result = message.executorResult === 0 ? undefined : message.executorResult;
     if (message.messages) {
-      obj.messages = message.messages.map((e) =>
-        e ? Any.toAmino(e) : undefined
-      );
+      obj.messages = message.messages.map(e => e ? Any.toAmino(e) : undefined);
     } else {
       obj.messages = message.messages;
     }
@@ -2226,7 +1976,7 @@ export const Proposal = {
   toAminoMsg(message: Proposal): ProposalAminoMsg {
     return {
       type: "cosmos-sdk/Proposal",
-      value: Proposal.toAmino(message),
+      value: Proposal.toAmino(message)
     };
   },
   fromProtoMsg(message: ProposalProtoMsg): Proposal {
@@ -2238,24 +1988,21 @@ export const Proposal = {
   toProtoMsg(message: Proposal): ProposalProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.Proposal",
-      value: Proposal.encode(message).finish(),
+      value: Proposal.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseTallyResult(): TallyResult {
   return {
     yesCount: "",
     abstainCount: "",
     noCount: "",
-    noWithVetoCount: "",
+    noWithVetoCount: ""
   };
 }
 export const TallyResult = {
   typeUrl: "/cosmos.group.v1.TallyResult",
-  encode(
-    message: TallyResult,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: TallyResult, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.yesCount !== "") {
       writer.uint32(10).string(message.yesCount);
     }
@@ -2315,10 +2062,7 @@ export const TallyResult = {
     if (object.no_count !== undefined && object.no_count !== null) {
       message.noCount = object.no_count;
     }
-    if (
-      object.no_with_veto_count !== undefined &&
-      object.no_with_veto_count !== null
-    ) {
+    if (object.no_with_veto_count !== undefined && object.no_with_veto_count !== null) {
       message.noWithVetoCount = object.no_with_veto_count;
     }
     return message;
@@ -2326,11 +2070,9 @@ export const TallyResult = {
   toAmino(message: TallyResult): TallyResultAmino {
     const obj: any = {};
     obj.yes_count = message.yesCount === "" ? undefined : message.yesCount;
-    obj.abstain_count =
-      message.abstainCount === "" ? undefined : message.abstainCount;
+    obj.abstain_count = message.abstainCount === "" ? undefined : message.abstainCount;
     obj.no_count = message.noCount === "" ? undefined : message.noCount;
-    obj.no_with_veto_count =
-      message.noWithVetoCount === "" ? undefined : message.noWithVetoCount;
+    obj.no_with_veto_count = message.noWithVetoCount === "" ? undefined : message.noWithVetoCount;
     return obj;
   },
   fromAminoMsg(object: TallyResultAminoMsg): TallyResult {
@@ -2339,7 +2081,7 @@ export const TallyResult = {
   toAminoMsg(message: TallyResult): TallyResultAminoMsg {
     return {
       type: "cosmos-sdk/TallyResult",
-      value: TallyResult.toAmino(message),
+      value: TallyResult.toAmino(message)
     };
   },
   fromProtoMsg(message: TallyResultProtoMsg): TallyResult {
@@ -2351,9 +2093,9 @@ export const TallyResult = {
   toProtoMsg(message: TallyResult): TallyResultProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.TallyResult",
-      value: TallyResult.encode(message).finish(),
+      value: TallyResult.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseVote(): Vote {
   return {
@@ -2361,7 +2103,7 @@ function createBaseVote(): Vote {
     voter: "",
     option: 0,
     metadata: "",
-    submitTime: new Date(),
+    submitTime: new Date()
   };
 }
 export const Vote = {
@@ -2380,10 +2122,7 @@ export const Vote = {
       writer.uint32(34).string(message.metadata);
     }
     if (message.submitTime !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.submitTime),
-        writer.uint32(42).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.submitTime), writer.uint32(42).fork()).ldelim();
     }
     return writer;
   },
@@ -2407,9 +2146,7 @@ export const Vote = {
           message.metadata = reader.string();
           break;
         case 5:
-          message.submitTime = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.submitTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -2420,10 +2157,7 @@ export const Vote = {
   },
   fromPartial(object: Partial<Vote>): Vote {
     const message = createBaseVote();
-    message.proposalId =
-      object.proposalId !== undefined && object.proposalId !== null
-        ? Long.fromValue(object.proposalId)
-        : Long.UZERO;
+    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.voter = object.voter ?? "";
     message.option = object.option ?? 0;
     message.metadata = object.metadata ?? "";
@@ -2445,23 +2179,17 @@ export const Vote = {
       message.metadata = object.metadata;
     }
     if (object.submit_time !== undefined && object.submit_time !== null) {
-      message.submitTime = fromTimestamp(
-        Timestamp.fromAmino(object.submit_time)
-      );
+      message.submitTime = fromTimestamp(Timestamp.fromAmino(object.submit_time));
     }
     return message;
   },
   toAmino(message: Vote): VoteAmino {
     const obj: any = {};
-    obj.proposal_id = !message.proposalId.isZero()
-      ? message.proposalId?.toString()
-      : undefined;
+    obj.proposal_id = !message.proposalId.isZero() ? message.proposalId?.toString() : undefined;
     obj.voter = message.voter === "" ? undefined : message.voter;
     obj.option = message.option === 0 ? undefined : message.option;
     obj.metadata = message.metadata === "" ? undefined : message.metadata;
-    obj.submit_time = message.submitTime
-      ? Timestamp.toAmino(toTimestamp(message.submitTime))
-      : new Date();
+    obj.submit_time = message.submitTime ? Timestamp.toAmino(toTimestamp(message.submitTime)) : new Date();
     return obj;
   },
   fromAminoMsg(object: VoteAminoMsg): Vote {
@@ -2470,7 +2198,7 @@ export const Vote = {
   toAminoMsg(message: Vote): VoteAminoMsg {
     return {
       type: "cosmos-sdk/Vote",
-      value: Vote.toAmino(message),
+      value: Vote.toAmino(message)
     };
   },
   fromProtoMsg(message: VoteProtoMsg): Vote {
@@ -2482,13 +2210,11 @@ export const Vote = {
   toProtoMsg(message: Vote): VoteProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.Vote",
-      value: Vote.encode(message).finish(),
+      value: Vote.encode(message).finish()
     };
-  },
+  }
 };
-export const Cosmos_groupv1DecisionPolicy_InterfaceDecoder = (
-  input: _m0.Reader | Uint8Array
-): ThresholdDecisionPolicy | PercentageDecisionPolicy | Any => {
+export const Cosmos_groupv1DecisionPolicy_InterfaceDecoder = (input: _m0.Reader | Uint8Array): ThresholdDecisionPolicy | PercentageDecisionPolicy | Any => {
   const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
@@ -2500,27 +2226,17 @@ export const Cosmos_groupv1DecisionPolicy_InterfaceDecoder = (
       return data;
   }
 };
-export const Cosmos_groupv1DecisionPolicy_FromAmino = (
-  content: AnyAmino
-): Any => {
+export const Cosmos_groupv1DecisionPolicy_FromAmino = (content: AnyAmino): Any => {
   switch (content.type) {
     case "cosmos-sdk/ThresholdDecisionPolicy":
       return Any.fromPartial({
         typeUrl: "/cosmos.group.v1.ThresholdDecisionPolicy",
-        value: ThresholdDecisionPolicy.encode(
-          ThresholdDecisionPolicy.fromPartial(
-            ThresholdDecisionPolicy.fromAmino(content.value)
-          )
-        ).finish(),
+        value: ThresholdDecisionPolicy.encode(ThresholdDecisionPolicy.fromPartial(ThresholdDecisionPolicy.fromAmino(content.value))).finish()
       });
     case "cosmos-sdk/PercentageDecisionPolicy":
       return Any.fromPartial({
         typeUrl: "/cosmos.group.v1.PercentageDecisionPolicy",
-        value: PercentageDecisionPolicy.encode(
-          PercentageDecisionPolicy.fromPartial(
-            PercentageDecisionPolicy.fromAmino(content.value)
-          )
-        ).finish(),
+        value: PercentageDecisionPolicy.encode(PercentageDecisionPolicy.fromPartial(PercentageDecisionPolicy.fromAmino(content.value))).finish()
       });
     default:
       return Any.fromAmino(content);
@@ -2531,16 +2247,12 @@ export const Cosmos_groupv1DecisionPolicy_ToAmino = (content: Any) => {
     case "/cosmos.group.v1.ThresholdDecisionPolicy":
       return {
         type: "cosmos-sdk/ThresholdDecisionPolicy",
-        value: ThresholdDecisionPolicy.toAmino(
-          ThresholdDecisionPolicy.decode(content.value, undefined)
-        ),
+        value: ThresholdDecisionPolicy.toAmino(ThresholdDecisionPolicy.decode(content.value, undefined))
       };
     case "/cosmos.group.v1.PercentageDecisionPolicy":
       return {
         type: "cosmos-sdk/PercentageDecisionPolicy",
-        value: PercentageDecisionPolicy.toAmino(
-          PercentageDecisionPolicy.decode(content.value, undefined)
-        ),
+        value: PercentageDecisionPolicy.toAmino(PercentageDecisionPolicy.decode(content.value, undefined))
       };
     default:
       return Any.toAmino(content);

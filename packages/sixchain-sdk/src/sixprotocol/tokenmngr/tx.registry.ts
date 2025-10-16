@@ -1,41 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import {
-  MsgUpdateParams,
-  MsgCreateToken,
-  MsgUpdateToken,
-  MsgDeleteToken,
-  MsgCreateMintperm,
-  MsgUpdateMintperm,
-  MsgDeleteMintperm,
-  MsgMint,
-  MsgCreateOptions,
-  MsgUpdateOptions,
-  MsgDeleteOptions,
-  MsgBurn,
-  MsgWrapToken,
-  MsgUnwrapToken,
-  MsgSendWrapToken,
-  MsgMigrateDelegation,
-} from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [
-  ["/sixprotocol.tokenmngr.MsgUpdateParams", MsgUpdateParams],
-  ["/sixprotocol.tokenmngr.MsgCreateToken", MsgCreateToken],
-  ["/sixprotocol.tokenmngr.MsgUpdateToken", MsgUpdateToken],
-  ["/sixprotocol.tokenmngr.MsgDeleteToken", MsgDeleteToken],
-  ["/sixprotocol.tokenmngr.MsgCreateMintperm", MsgCreateMintperm],
-  ["/sixprotocol.tokenmngr.MsgUpdateMintperm", MsgUpdateMintperm],
-  ["/sixprotocol.tokenmngr.MsgDeleteMintperm", MsgDeleteMintperm],
-  ["/sixprotocol.tokenmngr.MsgMint", MsgMint],
-  ["/sixprotocol.tokenmngr.MsgCreateOptions", MsgCreateOptions],
-  ["/sixprotocol.tokenmngr.MsgUpdateOptions", MsgUpdateOptions],
-  ["/sixprotocol.tokenmngr.MsgDeleteOptions", MsgDeleteOptions],
-  ["/sixprotocol.tokenmngr.MsgBurn", MsgBurn],
-  ["/sixprotocol.tokenmngr.MsgWrapToken", MsgWrapToken],
-  ["/sixprotocol.tokenmngr.MsgUnwrapToken", MsgUnwrapToken],
-  ["/sixprotocol.tokenmngr.MsgSendWrapToken", MsgSendWrapToken],
-  ["/sixprotocol.tokenmngr.MsgMigrateDelegation", MsgMigrateDelegation],
-];
+import { MsgUpdateParams, MsgCreateToken, MsgUpdateToken, MsgDeleteToken, MsgCreateMintperm, MsgUpdateMintperm, MsgDeleteMintperm, MsgMint, MsgCreateOptions, MsgUpdateOptions, MsgDeleteOptions, MsgBurn, MsgWrapToken, MsgUnwrapToken, MsgSendWrapToken, MsgMigrateDelegation } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/sixprotocol.tokenmngr.MsgUpdateParams", MsgUpdateParams], ["/sixprotocol.tokenmngr.MsgCreateToken", MsgCreateToken], ["/sixprotocol.tokenmngr.MsgUpdateToken", MsgUpdateToken], ["/sixprotocol.tokenmngr.MsgDeleteToken", MsgDeleteToken], ["/sixprotocol.tokenmngr.MsgCreateMintperm", MsgCreateMintperm], ["/sixprotocol.tokenmngr.MsgUpdateMintperm", MsgUpdateMintperm], ["/sixprotocol.tokenmngr.MsgDeleteMintperm", MsgDeleteMintperm], ["/sixprotocol.tokenmngr.MsgMint", MsgMint], ["/sixprotocol.tokenmngr.MsgCreateOptions", MsgCreateOptions], ["/sixprotocol.tokenmngr.MsgUpdateOptions", MsgUpdateOptions], ["/sixprotocol.tokenmngr.MsgDeleteOptions", MsgDeleteOptions], ["/sixprotocol.tokenmngr.MsgBurn", MsgBurn], ["/sixprotocol.tokenmngr.MsgWrapToken", MsgWrapToken], ["/sixprotocol.tokenmngr.MsgUnwrapToken", MsgUnwrapToken], ["/sixprotocol.tokenmngr.MsgSendWrapToken", MsgSendWrapToken], ["/sixprotocol.tokenmngr.MsgMigrateDelegation", MsgMigrateDelegation]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -46,294 +12,294 @@ export const MessageComposer = {
     updateParams(value: MsgUpdateParams) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateParams",
-        value: MsgUpdateParams.encode(value).finish(),
+        value: MsgUpdateParams.encode(value).finish()
       };
     },
     createToken(value: MsgCreateToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgCreateToken",
-        value: MsgCreateToken.encode(value).finish(),
+        value: MsgCreateToken.encode(value).finish()
       };
     },
     updateToken(value: MsgUpdateToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateToken",
-        value: MsgUpdateToken.encode(value).finish(),
+        value: MsgUpdateToken.encode(value).finish()
       };
     },
     deleteToken(value: MsgDeleteToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgDeleteToken",
-        value: MsgDeleteToken.encode(value).finish(),
+        value: MsgDeleteToken.encode(value).finish()
       };
     },
     createMintperm(value: MsgCreateMintperm) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgCreateMintperm",
-        value: MsgCreateMintperm.encode(value).finish(),
+        value: MsgCreateMintperm.encode(value).finish()
       };
     },
     updateMintperm(value: MsgUpdateMintperm) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateMintperm",
-        value: MsgUpdateMintperm.encode(value).finish(),
+        value: MsgUpdateMintperm.encode(value).finish()
       };
     },
     deleteMintperm(value: MsgDeleteMintperm) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgDeleteMintperm",
-        value: MsgDeleteMintperm.encode(value).finish(),
+        value: MsgDeleteMintperm.encode(value).finish()
       };
     },
     mint(value: MsgMint) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgMint",
-        value: MsgMint.encode(value).finish(),
+        value: MsgMint.encode(value).finish()
       };
     },
     createOptions(value: MsgCreateOptions) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgCreateOptions",
-        value: MsgCreateOptions.encode(value).finish(),
+        value: MsgCreateOptions.encode(value).finish()
       };
     },
     updateOptions(value: MsgUpdateOptions) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateOptions",
-        value: MsgUpdateOptions.encode(value).finish(),
+        value: MsgUpdateOptions.encode(value).finish()
       };
     },
     deleteOptions(value: MsgDeleteOptions) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgDeleteOptions",
-        value: MsgDeleteOptions.encode(value).finish(),
+        value: MsgDeleteOptions.encode(value).finish()
       };
     },
     burn(value: MsgBurn) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgBurn",
-        value: MsgBurn.encode(value).finish(),
+        value: MsgBurn.encode(value).finish()
       };
     },
     wrapToken(value: MsgWrapToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgWrapToken",
-        value: MsgWrapToken.encode(value).finish(),
+        value: MsgWrapToken.encode(value).finish()
       };
     },
     unwrapToken(value: MsgUnwrapToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUnwrapToken",
-        value: MsgUnwrapToken.encode(value).finish(),
+        value: MsgUnwrapToken.encode(value).finish()
       };
     },
     sendWrapToken(value: MsgSendWrapToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgSendWrapToken",
-        value: MsgSendWrapToken.encode(value).finish(),
+        value: MsgSendWrapToken.encode(value).finish()
       };
     },
     migrateDelegation(value: MsgMigrateDelegation) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgMigrateDelegation",
-        value: MsgMigrateDelegation.encode(value).finish(),
+        value: MsgMigrateDelegation.encode(value).finish()
       };
-    },
+    }
   },
   withTypeUrl: {
     updateParams(value: MsgUpdateParams) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateParams",
-        value,
+        value
       };
     },
     createToken(value: MsgCreateToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgCreateToken",
-        value,
+        value
       };
     },
     updateToken(value: MsgUpdateToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateToken",
-        value,
+        value
       };
     },
     deleteToken(value: MsgDeleteToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgDeleteToken",
-        value,
+        value
       };
     },
     createMintperm(value: MsgCreateMintperm) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgCreateMintperm",
-        value,
+        value
       };
     },
     updateMintperm(value: MsgUpdateMintperm) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateMintperm",
-        value,
+        value
       };
     },
     deleteMintperm(value: MsgDeleteMintperm) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgDeleteMintperm",
-        value,
+        value
       };
     },
     mint(value: MsgMint) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgMint",
-        value,
+        value
       };
     },
     createOptions(value: MsgCreateOptions) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgCreateOptions",
-        value,
+        value
       };
     },
     updateOptions(value: MsgUpdateOptions) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateOptions",
-        value,
+        value
       };
     },
     deleteOptions(value: MsgDeleteOptions) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgDeleteOptions",
-        value,
+        value
       };
     },
     burn(value: MsgBurn) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgBurn",
-        value,
+        value
       };
     },
     wrapToken(value: MsgWrapToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgWrapToken",
-        value,
+        value
       };
     },
     unwrapToken(value: MsgUnwrapToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUnwrapToken",
-        value,
+        value
       };
     },
     sendWrapToken(value: MsgSendWrapToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgSendWrapToken",
-        value,
+        value
       };
     },
     migrateDelegation(value: MsgMigrateDelegation) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgMigrateDelegation",
-        value,
+        value
       };
-    },
+    }
   },
   fromPartial: {
     updateParams(value: MsgUpdateParams) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateParams",
-        value: MsgUpdateParams.fromPartial(value),
+        value: MsgUpdateParams.fromPartial(value)
       };
     },
     createToken(value: MsgCreateToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgCreateToken",
-        value: MsgCreateToken.fromPartial(value),
+        value: MsgCreateToken.fromPartial(value)
       };
     },
     updateToken(value: MsgUpdateToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateToken",
-        value: MsgUpdateToken.fromPartial(value),
+        value: MsgUpdateToken.fromPartial(value)
       };
     },
     deleteToken(value: MsgDeleteToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgDeleteToken",
-        value: MsgDeleteToken.fromPartial(value),
+        value: MsgDeleteToken.fromPartial(value)
       };
     },
     createMintperm(value: MsgCreateMintperm) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgCreateMintperm",
-        value: MsgCreateMintperm.fromPartial(value),
+        value: MsgCreateMintperm.fromPartial(value)
       };
     },
     updateMintperm(value: MsgUpdateMintperm) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateMintperm",
-        value: MsgUpdateMintperm.fromPartial(value),
+        value: MsgUpdateMintperm.fromPartial(value)
       };
     },
     deleteMintperm(value: MsgDeleteMintperm) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgDeleteMintperm",
-        value: MsgDeleteMintperm.fromPartial(value),
+        value: MsgDeleteMintperm.fromPartial(value)
       };
     },
     mint(value: MsgMint) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgMint",
-        value: MsgMint.fromPartial(value),
+        value: MsgMint.fromPartial(value)
       };
     },
     createOptions(value: MsgCreateOptions) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgCreateOptions",
-        value: MsgCreateOptions.fromPartial(value),
+        value: MsgCreateOptions.fromPartial(value)
       };
     },
     updateOptions(value: MsgUpdateOptions) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUpdateOptions",
-        value: MsgUpdateOptions.fromPartial(value),
+        value: MsgUpdateOptions.fromPartial(value)
       };
     },
     deleteOptions(value: MsgDeleteOptions) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgDeleteOptions",
-        value: MsgDeleteOptions.fromPartial(value),
+        value: MsgDeleteOptions.fromPartial(value)
       };
     },
     burn(value: MsgBurn) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgBurn",
-        value: MsgBurn.fromPartial(value),
+        value: MsgBurn.fromPartial(value)
       };
     },
     wrapToken(value: MsgWrapToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgWrapToken",
-        value: MsgWrapToken.fromPartial(value),
+        value: MsgWrapToken.fromPartial(value)
       };
     },
     unwrapToken(value: MsgUnwrapToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgUnwrapToken",
-        value: MsgUnwrapToken.fromPartial(value),
+        value: MsgUnwrapToken.fromPartial(value)
       };
     },
     sendWrapToken(value: MsgSendWrapToken) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgSendWrapToken",
-        value: MsgSendWrapToken.fromPartial(value),
+        value: MsgSendWrapToken.fromPartial(value)
       };
     },
     migrateDelegation(value: MsgMigrateDelegation) {
       return {
         typeUrl: "/sixprotocol.tokenmngr.MsgMigrateDelegation",
-        value: MsgMigrateDelegation.fromPartial(value),
+        value: MsgMigrateDelegation.fromPartial(value)
       };
-    },
-  },
+    }
+  }
 };

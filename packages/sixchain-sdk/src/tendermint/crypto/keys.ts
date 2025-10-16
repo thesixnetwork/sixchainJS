@@ -32,15 +32,12 @@ export interface PublicKeySDKType {
 function createBasePublicKey(): PublicKey {
   return {
     ed25519: undefined,
-    secp256k1: undefined,
+    secp256k1: undefined
   };
 }
 export const PublicKey = {
   typeUrl: "/tendermint.crypto.PublicKey",
-  encode(
-    message: PublicKey,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: PublicKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.ed25519 !== undefined) {
       writer.uint32(10).bytes(message.ed25519);
     }
@@ -87,12 +84,8 @@ export const PublicKey = {
   },
   toAmino(message: PublicKey): PublicKeyAmino {
     const obj: any = {};
-    obj.ed25519 = message.ed25519
-      ? base64FromBytes(message.ed25519)
-      : undefined;
-    obj.secp256k1 = message.secp256k1
-      ? base64FromBytes(message.secp256k1)
-      : undefined;
+    obj.ed25519 = message.ed25519 ? base64FromBytes(message.ed25519) : undefined;
+    obj.secp256k1 = message.secp256k1 ? base64FromBytes(message.secp256k1) : undefined;
     return obj;
   },
   fromAminoMsg(object: PublicKeyAminoMsg): PublicKey {
@@ -107,7 +100,7 @@ export const PublicKey = {
   toProtoMsg(message: PublicKey): PublicKeyProtoMsg {
     return {
       typeUrl: "/tendermint.crypto.PublicKey",
-      value: PublicKey.encode(message).finish(),
+      value: PublicKey.encode(message).finish()
     };
-  },
+  }
 };

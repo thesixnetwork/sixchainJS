@@ -82,30 +82,30 @@ export interface PackageReference {
    * The revision of a package can be thought of as the minor version of a
    * package which has additional backwards compatible definitions that weren't
    * present in a previous version.
-   *
+   * 
    * A package should indicate its revision with a source code comment
    * above the package declaration in one of its files containing the
    * text "Revision N" where N is an integer revision. All packages start
    * at revision 0 the first time they are released in a module.
-   *
+   * 
    * When a new version of a module is released and items are added to existing
    * .proto files, these definitions should contain comments of the form
    * "Since: Revision N" where N is an integer revision.
-   *
+   * 
    * When the module runtime starts up, it will check the pinned proto
    * image and panic if there are runtime protobuf definitions that are not
    * in the pinned descriptor which do not have
    * a "Since Revision N" comment or have a "Since Revision N" comment where
    * N is <= to the revision specified here. This indicates that the protobuf
    * files have been updated, but the pinned file descriptor hasn't.
-   *
+   * 
    * If there are items in the pinned file descriptor with a revision
    * greater than the value indicated here, this will also cause a panic
    * as it may mean that the pinned descriptor for a legacy module has been
    * improperly updated or that there is some other versioning discrepancy.
    * Runtime protobuf definitions will also be checked for compatibility
    * with pinned file descriptors to make sure there are no incompatible changes.
-   *
+   * 
    * This behavior ensures that:
    * * pinned proto images are up-to-date
    * * protobuf files are carefully annotated with revision comments which
@@ -136,30 +136,30 @@ export interface PackageReferenceAmino {
    * The revision of a package can be thought of as the minor version of a
    * package which has additional backwards compatible definitions that weren't
    * present in a previous version.
-   *
+   * 
    * A package should indicate its revision with a source code comment
    * above the package declaration in one of its files containing the
    * text "Revision N" where N is an integer revision. All packages start
    * at revision 0 the first time they are released in a module.
-   *
+   * 
    * When a new version of a module is released and items are added to existing
    * .proto files, these definitions should contain comments of the form
    * "Since: Revision N" where N is an integer revision.
-   *
+   * 
    * When the module runtime starts up, it will check the pinned proto
    * image and panic if there are runtime protobuf definitions that are not
    * in the pinned descriptor which do not have
    * a "Since Revision N" comment or have a "Since Revision N" comment where
    * N is <= to the revision specified here. This indicates that the protobuf
    * files have been updated, but the pinned file descriptor hasn't.
-   *
+   * 
    * If there are items in the pinned file descriptor with a revision
    * greater than the value indicated here, this will also cause a panic
    * as it may mean that the pinned descriptor for a legacy module has been
    * improperly updated or that there is some other versioning discrepancy.
    * Runtime protobuf definitions will also be checked for compatibility
    * with pinned file descriptors to make sure there are no incompatible changes.
-   *
+   * 
    * This behavior ensures that:
    * * pinned proto images are up-to-date
    * * protobuf files are carefully annotated with revision comments which
@@ -221,15 +221,12 @@ function createBaseModuleDescriptor(): ModuleDescriptor {
   return {
     goImport: "",
     usePackage: [],
-    canMigrateFrom: [],
+    canMigrateFrom: []
   };
 }
 export const ModuleDescriptor = {
   typeUrl: "/cosmos.app.v1alpha1.ModuleDescriptor",
-  encode(
-    message: ModuleDescriptor,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ModuleDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.goImport !== "") {
       writer.uint32(10).string(message.goImport);
     }
@@ -252,14 +249,10 @@ export const ModuleDescriptor = {
           message.goImport = reader.string();
           break;
         case 2:
-          message.usePackage.push(
-            PackageReference.decode(reader, reader.uint32())
-          );
+          message.usePackage.push(PackageReference.decode(reader, reader.uint32()));
           break;
         case 3:
-          message.canMigrateFrom.push(
-            MigrateFromInfo.decode(reader, reader.uint32())
-          );
+          message.canMigrateFrom.push(MigrateFromInfo.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -271,10 +264,8 @@ export const ModuleDescriptor = {
   fromPartial(object: Partial<ModuleDescriptor>): ModuleDescriptor {
     const message = createBaseModuleDescriptor();
     message.goImport = object.goImport ?? "";
-    message.usePackage =
-      object.usePackage?.map((e) => PackageReference.fromPartial(e)) || [];
-    message.canMigrateFrom =
-      object.canMigrateFrom?.map((e) => MigrateFromInfo.fromPartial(e)) || [];
+    message.usePackage = object.usePackage?.map(e => PackageReference.fromPartial(e)) || [];
+    message.canMigrateFrom = object.canMigrateFrom?.map(e => MigrateFromInfo.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: ModuleDescriptorAmino): ModuleDescriptor {
@@ -282,26 +273,20 @@ export const ModuleDescriptor = {
     if (object.go_import !== undefined && object.go_import !== null) {
       message.goImport = object.go_import;
     }
-    message.usePackage =
-      object.use_package?.map((e) => PackageReference.fromAmino(e)) || [];
-    message.canMigrateFrom =
-      object.can_migrate_from?.map((e) => MigrateFromInfo.fromAmino(e)) || [];
+    message.usePackage = object.use_package?.map(e => PackageReference.fromAmino(e)) || [];
+    message.canMigrateFrom = object.can_migrate_from?.map(e => MigrateFromInfo.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: ModuleDescriptor): ModuleDescriptorAmino {
     const obj: any = {};
     obj.go_import = message.goImport === "" ? undefined : message.goImport;
     if (message.usePackage) {
-      obj.use_package = message.usePackage.map((e) =>
-        e ? PackageReference.toAmino(e) : undefined
-      );
+      obj.use_package = message.usePackage.map(e => e ? PackageReference.toAmino(e) : undefined);
     } else {
       obj.use_package = message.usePackage;
     }
     if (message.canMigrateFrom) {
-      obj.can_migrate_from = message.canMigrateFrom.map((e) =>
-        e ? MigrateFromInfo.toAmino(e) : undefined
-      );
+      obj.can_migrate_from = message.canMigrateFrom.map(e => e ? MigrateFromInfo.toAmino(e) : undefined);
     } else {
       obj.can_migrate_from = message.canMigrateFrom;
     }
@@ -313,7 +298,7 @@ export const ModuleDescriptor = {
   toAminoMsg(message: ModuleDescriptor): ModuleDescriptorAminoMsg {
     return {
       type: "cosmos-sdk/ModuleDescriptor",
-      value: ModuleDescriptor.toAmino(message),
+      value: ModuleDescriptor.toAmino(message)
     };
   },
   fromProtoMsg(message: ModuleDescriptorProtoMsg): ModuleDescriptor {
@@ -325,22 +310,19 @@ export const ModuleDescriptor = {
   toProtoMsg(message: ModuleDescriptor): ModuleDescriptorProtoMsg {
     return {
       typeUrl: "/cosmos.app.v1alpha1.ModuleDescriptor",
-      value: ModuleDescriptor.encode(message).finish(),
+      value: ModuleDescriptor.encode(message).finish()
     };
-  },
+  }
 };
 function createBasePackageReference(): PackageReference {
   return {
     name: "",
-    revision: 0,
+    revision: 0
   };
 }
 export const PackageReference = {
   typeUrl: "/cosmos.app.v1alpha1.PackageReference",
-  encode(
-    message: PackageReference,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: PackageReference, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
@@ -397,7 +379,7 @@ export const PackageReference = {
   toAminoMsg(message: PackageReference): PackageReferenceAminoMsg {
     return {
       type: "cosmos-sdk/PackageReference",
-      value: PackageReference.toAmino(message),
+      value: PackageReference.toAmino(message)
     };
   },
   fromProtoMsg(message: PackageReferenceProtoMsg): PackageReference {
@@ -409,21 +391,18 @@ export const PackageReference = {
   toProtoMsg(message: PackageReference): PackageReferenceProtoMsg {
     return {
       typeUrl: "/cosmos.app.v1alpha1.PackageReference",
-      value: PackageReference.encode(message).finish(),
+      value: PackageReference.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseMigrateFromInfo(): MigrateFromInfo {
   return {
-    module: "",
+    module: ""
   };
 }
 export const MigrateFromInfo = {
   typeUrl: "/cosmos.app.v1alpha1.MigrateFromInfo",
-  encode(
-    message: MigrateFromInfo,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: MigrateFromInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.module !== "") {
       writer.uint32(10).string(message.module);
     }
@@ -469,7 +448,7 @@ export const MigrateFromInfo = {
   toAminoMsg(message: MigrateFromInfo): MigrateFromInfoAminoMsg {
     return {
       type: "cosmos-sdk/MigrateFromInfo",
-      value: MigrateFromInfo.toAmino(message),
+      value: MigrateFromInfo.toAmino(message)
     };
   },
   fromProtoMsg(message: MigrateFromInfoProtoMsg): MigrateFromInfo {
@@ -481,7 +460,7 @@ export const MigrateFromInfo = {
   toProtoMsg(message: MigrateFromInfo): MigrateFromInfoProtoMsg {
     return {
       typeUrl: "/cosmos.app.v1alpha1.MigrateFromInfo",
-      value: MigrateFromInfo.encode(message).finish(),
+      value: MigrateFromInfo.encode(message).finish()
     };
-  },
+  }
 };

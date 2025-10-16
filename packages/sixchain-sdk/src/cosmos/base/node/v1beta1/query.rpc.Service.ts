@@ -2,12 +2,7 @@
 import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import {
-  ConfigRequest,
-  ConfigResponse,
-  StatusRequest,
-  StatusResponse,
-} from "./query";
+import { ConfigRequest, ConfigResponse, StatusRequest, StatusResponse } from "./query";
 /** Service defines the gRPC querier service for node related queries. */
 export interface Service {
   /** Config queries for the operator configuration. */
@@ -24,21 +19,13 @@ export class ServiceClientImpl implements Service {
   }
   config(request: ConfigRequest = {}): Promise<ConfigResponse> {
     const data = ConfigRequest.encode(request).finish();
-    const promise = this.rpc.request(
-      "cosmos.base.node.v1beta1.Service",
-      "Config",
-      data
-    );
-    return promise.then((data) => ConfigResponse.decode(new _m0.Reader(data)));
+    const promise = this.rpc.request("cosmos.base.node.v1beta1.Service", "Config", data);
+    return promise.then(data => ConfigResponse.decode(new _m0.Reader(data)));
   }
   status(request: StatusRequest = {}): Promise<StatusResponse> {
     const data = StatusRequest.encode(request).finish();
-    const promise = this.rpc.request(
-      "cosmos.base.node.v1beta1.Service",
-      "Status",
-      data
-    );
-    return promise.then((data) => StatusResponse.decode(new _m0.Reader(data)));
+    const promise = this.rpc.request("cosmos.base.node.v1beta1.Service", "Status", data);
+    return promise.then(data => StatusResponse.decode(new _m0.Reader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
@@ -50,6 +37,6 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     status(request?: StatusRequest): Promise<StatusResponse> {
       return queryService.status(request);
-    },
+    }
   };
 };

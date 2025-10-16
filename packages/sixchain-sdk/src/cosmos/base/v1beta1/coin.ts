@@ -3,7 +3,7 @@ import * as _m0 from "protobufjs/minimal";
 import { Decimal } from "@cosmjs/math";
 /**
  * Coin defines a token with a denomination and an amount.
- *
+ * 
  * NOTE: The amount field is an Int which implements the custom method
  * signatures required by gogoproto.
  */
@@ -17,7 +17,7 @@ export interface CoinProtoMsg {
 }
 /**
  * Coin defines a token with a denomination and an amount.
- *
+ * 
  * NOTE: The amount field is an Int which implements the custom method
  * signatures required by gogoproto.
  * @name CoinAmino
@@ -34,7 +34,7 @@ export interface CoinAminoMsg {
 }
 /**
  * Coin defines a token with a denomination and an amount.
- *
+ * 
  * NOTE: The amount field is an Int which implements the custom method
  * signatures required by gogoproto.
  */
@@ -44,7 +44,7 @@ export interface CoinSDKType {
 }
 /**
  * DecCoin defines a token with a denomination and a decimal amount.
- *
+ * 
  * NOTE: The amount field is an Dec which implements the custom method
  * signatures required by gogoproto.
  */
@@ -58,7 +58,7 @@ export interface DecCoinProtoMsg {
 }
 /**
  * DecCoin defines a token with a denomination and a decimal amount.
- *
+ * 
  * NOTE: The amount field is an Dec which implements the custom method
  * signatures required by gogoproto.
  * @name DecCoinAmino
@@ -75,7 +75,7 @@ export interface DecCoinAminoMsg {
 }
 /**
  * DecCoin defines a token with a denomination and a decimal amount.
- *
+ * 
  * NOTE: The amount field is an Dec which implements the custom method
  * signatures required by gogoproto.
  */
@@ -150,7 +150,7 @@ export interface DecProtoSDKType {
 function createBaseCoin(): Coin {
   return {
     denom: "",
-    amount: "",
+    amount: ""
   };
 }
 export const Coin = {
@@ -212,7 +212,7 @@ export const Coin = {
   toAminoMsg(message: Coin): CoinAminoMsg {
     return {
       type: "cosmos-sdk/Coin",
-      value: Coin.toAmino(message),
+      value: Coin.toAmino(message)
     };
   },
   fromProtoMsg(message: CoinProtoMsg): Coin {
@@ -224,29 +224,24 @@ export const Coin = {
   toProtoMsg(message: Coin): CoinProtoMsg {
     return {
       typeUrl: "/cosmos.base.v1beta1.Coin",
-      value: Coin.encode(message).finish(),
+      value: Coin.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseDecCoin(): DecCoin {
   return {
     denom: "",
-    amount: "",
+    amount: ""
   };
 }
 export const DecCoin = {
   typeUrl: "/cosmos.base.v1beta1.DecCoin",
-  encode(
-    message: DecCoin,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: DecCoin, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
     }
     if (message.amount !== "") {
-      writer
-        .uint32(18)
-        .string(Decimal.fromUserInput(message.amount, 18).atomics);
+      writer.uint32(18).string(Decimal.fromUserInput(message.amount, 18).atomics);
     }
     return writer;
   },
@@ -298,7 +293,7 @@ export const DecCoin = {
   toAminoMsg(message: DecCoin): DecCoinAminoMsg {
     return {
       type: "cosmos-sdk/DecCoin",
-      value: DecCoin.toAmino(message),
+      value: DecCoin.toAmino(message)
     };
   },
   fromProtoMsg(message: DecCoinProtoMsg): DecCoin {
@@ -310,21 +305,18 @@ export const DecCoin = {
   toProtoMsg(message: DecCoin): DecCoinProtoMsg {
     return {
       typeUrl: "/cosmos.base.v1beta1.DecCoin",
-      value: DecCoin.encode(message).finish(),
+      value: DecCoin.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseIntProto(): IntProto {
   return {
-    int: "",
+    int: ""
   };
 }
 export const IntProto = {
   typeUrl: "/cosmos.base.v1beta1.IntProto",
-  encode(
-    message: IntProto,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: IntProto, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.int !== "") {
       writer.uint32(10).string(message.int);
     }
@@ -370,7 +362,7 @@ export const IntProto = {
   toAminoMsg(message: IntProto): IntProtoAminoMsg {
     return {
       type: "cosmos-sdk/IntProto",
-      value: IntProto.toAmino(message),
+      value: IntProto.toAmino(message)
     };
   },
   fromProtoMsg(message: IntProtoProtoMsg): IntProto {
@@ -382,21 +374,18 @@ export const IntProto = {
   toProtoMsg(message: IntProto): IntProtoProtoMsg {
     return {
       typeUrl: "/cosmos.base.v1beta1.IntProto",
-      value: IntProto.encode(message).finish(),
+      value: IntProto.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseDecProto(): DecProto {
   return {
-    dec: "",
+    dec: ""
   };
 }
 export const DecProto = {
   typeUrl: "/cosmos.base.v1beta1.DecProto",
-  encode(
-    message: DecProto,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: DecProto, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.dec !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.dec, 18).atomics);
     }
@@ -442,7 +431,7 @@ export const DecProto = {
   toAminoMsg(message: DecProto): DecProtoAminoMsg {
     return {
       type: "cosmos-sdk/DecProto",
-      value: DecProto.toAmino(message),
+      value: DecProto.toAmino(message)
     };
   },
   fromProtoMsg(message: DecProtoProtoMsg): DecProto {
@@ -454,7 +443,7 @@ export const DecProto = {
   toProtoMsg(message: DecProto): DecProtoProtoMsg {
     return {
       typeUrl: "/cosmos.base.v1beta1.DecProto",
-      value: DecProto.encode(message).finish(),
+      value: DecProto.encode(message).finish()
     };
-  },
+  }
 };

@@ -133,41 +133,26 @@ function createBaseNftAttributeValue(): NftAttributeValue {
     stringAttributeValue: undefined,
     booleanAttributeValue: undefined,
     floatAttributeValue: undefined,
-    hiddenToMarketplace: false,
+    hiddenToMarketplace: false
   };
 }
 export const NftAttributeValue = {
   typeUrl: "/sixprotocol.nftmngr.NftAttributeValue",
-  encode(
-    message: NftAttributeValue,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: NftAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
     if (message.numberAttributeValue !== undefined) {
-      NumberAttributeValue.encode(
-        message.numberAttributeValue,
-        writer.uint32(18).fork()
-      ).ldelim();
+      NumberAttributeValue.encode(message.numberAttributeValue, writer.uint32(18).fork()).ldelim();
     }
     if (message.stringAttributeValue !== undefined) {
-      StringAttributeValue.encode(
-        message.stringAttributeValue,
-        writer.uint32(26).fork()
-      ).ldelim();
+      StringAttributeValue.encode(message.stringAttributeValue, writer.uint32(26).fork()).ldelim();
     }
     if (message.booleanAttributeValue !== undefined) {
-      BooleanAttributeValue.encode(
-        message.booleanAttributeValue,
-        writer.uint32(34).fork()
-      ).ldelim();
+      BooleanAttributeValue.encode(message.booleanAttributeValue, writer.uint32(34).fork()).ldelim();
     }
     if (message.floatAttributeValue !== undefined) {
-      FloatAttributeValue.encode(
-        message.floatAttributeValue,
-        writer.uint32(42).fork()
-      ).ldelim();
+      FloatAttributeValue.encode(message.floatAttributeValue, writer.uint32(42).fork()).ldelim();
     }
     if (message.hiddenToMarketplace === true) {
       writer.uint32(48).bool(message.hiddenToMarketplace);
@@ -185,28 +170,16 @@ export const NftAttributeValue = {
           message.name = reader.string();
           break;
         case 2:
-          message.numberAttributeValue = NumberAttributeValue.decode(
-            reader,
-            reader.uint32()
-          );
+          message.numberAttributeValue = NumberAttributeValue.decode(reader, reader.uint32());
           break;
         case 3:
-          message.stringAttributeValue = StringAttributeValue.decode(
-            reader,
-            reader.uint32()
-          );
+          message.stringAttributeValue = StringAttributeValue.decode(reader, reader.uint32());
           break;
         case 4:
-          message.booleanAttributeValue = BooleanAttributeValue.decode(
-            reader,
-            reader.uint32()
-          );
+          message.booleanAttributeValue = BooleanAttributeValue.decode(reader, reader.uint32());
           break;
         case 5:
-          message.floatAttributeValue = FloatAttributeValue.decode(
-            reader,
-            reader.uint32()
-          );
+          message.floatAttributeValue = FloatAttributeValue.decode(reader, reader.uint32());
           break;
         case 6:
           message.hiddenToMarketplace = reader.bool();
@@ -221,26 +194,10 @@ export const NftAttributeValue = {
   fromPartial(object: Partial<NftAttributeValue>): NftAttributeValue {
     const message = createBaseNftAttributeValue();
     message.name = object.name ?? "";
-    message.numberAttributeValue =
-      object.numberAttributeValue !== undefined &&
-      object.numberAttributeValue !== null
-        ? NumberAttributeValue.fromPartial(object.numberAttributeValue)
-        : undefined;
-    message.stringAttributeValue =
-      object.stringAttributeValue !== undefined &&
-      object.stringAttributeValue !== null
-        ? StringAttributeValue.fromPartial(object.stringAttributeValue)
-        : undefined;
-    message.booleanAttributeValue =
-      object.booleanAttributeValue !== undefined &&
-      object.booleanAttributeValue !== null
-        ? BooleanAttributeValue.fromPartial(object.booleanAttributeValue)
-        : undefined;
-    message.floatAttributeValue =
-      object.floatAttributeValue !== undefined &&
-      object.floatAttributeValue !== null
-        ? FloatAttributeValue.fromPartial(object.floatAttributeValue)
-        : undefined;
+    message.numberAttributeValue = object.numberAttributeValue !== undefined && object.numberAttributeValue !== null ? NumberAttributeValue.fromPartial(object.numberAttributeValue) : undefined;
+    message.stringAttributeValue = object.stringAttributeValue !== undefined && object.stringAttributeValue !== null ? StringAttributeValue.fromPartial(object.stringAttributeValue) : undefined;
+    message.booleanAttributeValue = object.booleanAttributeValue !== undefined && object.booleanAttributeValue !== null ? BooleanAttributeValue.fromPartial(object.booleanAttributeValue) : undefined;
+    message.floatAttributeValue = object.floatAttributeValue !== undefined && object.floatAttributeValue !== null ? FloatAttributeValue.fromPartial(object.floatAttributeValue) : undefined;
     message.hiddenToMarketplace = object.hiddenToMarketplace ?? false;
     return message;
   },
@@ -249,42 +206,19 @@ export const NftAttributeValue = {
     if (object.name !== undefined && object.name !== null) {
       message.name = object.name;
     }
-    if (
-      object.number_attribute_value !== undefined &&
-      object.number_attribute_value !== null
-    ) {
-      message.numberAttributeValue = NumberAttributeValue.fromAmino(
-        object.number_attribute_value
-      );
+    if (object.number_attribute_value !== undefined && object.number_attribute_value !== null) {
+      message.numberAttributeValue = NumberAttributeValue.fromAmino(object.number_attribute_value);
     }
-    if (
-      object.string_attribute_value !== undefined &&
-      object.string_attribute_value !== null
-    ) {
-      message.stringAttributeValue = StringAttributeValue.fromAmino(
-        object.string_attribute_value
-      );
+    if (object.string_attribute_value !== undefined && object.string_attribute_value !== null) {
+      message.stringAttributeValue = StringAttributeValue.fromAmino(object.string_attribute_value);
     }
-    if (
-      object.boolean_attribute_value !== undefined &&
-      object.boolean_attribute_value !== null
-    ) {
-      message.booleanAttributeValue = BooleanAttributeValue.fromAmino(
-        object.boolean_attribute_value
-      );
+    if (object.boolean_attribute_value !== undefined && object.boolean_attribute_value !== null) {
+      message.booleanAttributeValue = BooleanAttributeValue.fromAmino(object.boolean_attribute_value);
     }
-    if (
-      object.float_attribute_value !== undefined &&
-      object.float_attribute_value !== null
-    ) {
-      message.floatAttributeValue = FloatAttributeValue.fromAmino(
-        object.float_attribute_value
-      );
+    if (object.float_attribute_value !== undefined && object.float_attribute_value !== null) {
+      message.floatAttributeValue = FloatAttributeValue.fromAmino(object.float_attribute_value);
     }
-    if (
-      object.hidden_to_marketplace !== undefined &&
-      object.hidden_to_marketplace !== null
-    ) {
+    if (object.hidden_to_marketplace !== undefined && object.hidden_to_marketplace !== null) {
       message.hiddenToMarketplace = object.hidden_to_marketplace;
     }
     return message;
@@ -292,22 +226,11 @@ export const NftAttributeValue = {
   toAmino(message: NftAttributeValue): NftAttributeValueAmino {
     const obj: any = {};
     obj.name = message.name === "" ? undefined : message.name;
-    obj.number_attribute_value = message.numberAttributeValue
-      ? NumberAttributeValue.toAmino(message.numberAttributeValue)
-      : undefined;
-    obj.string_attribute_value = message.stringAttributeValue
-      ? StringAttributeValue.toAmino(message.stringAttributeValue)
-      : undefined;
-    obj.boolean_attribute_value = message.booleanAttributeValue
-      ? BooleanAttributeValue.toAmino(message.booleanAttributeValue)
-      : undefined;
-    obj.float_attribute_value = message.floatAttributeValue
-      ? FloatAttributeValue.toAmino(message.floatAttributeValue)
-      : undefined;
-    obj.hidden_to_marketplace =
-      message.hiddenToMarketplace === false
-        ? undefined
-        : message.hiddenToMarketplace;
+    obj.number_attribute_value = message.numberAttributeValue ? NumberAttributeValue.toAmino(message.numberAttributeValue) : undefined;
+    obj.string_attribute_value = message.stringAttributeValue ? StringAttributeValue.toAmino(message.stringAttributeValue) : undefined;
+    obj.boolean_attribute_value = message.booleanAttributeValue ? BooleanAttributeValue.toAmino(message.booleanAttributeValue) : undefined;
+    obj.float_attribute_value = message.floatAttributeValue ? FloatAttributeValue.toAmino(message.floatAttributeValue) : undefined;
+    obj.hidden_to_marketplace = message.hiddenToMarketplace === false ? undefined : message.hiddenToMarketplace;
     return obj;
   },
   fromAminoMsg(object: NftAttributeValueAminoMsg): NftAttributeValue {
@@ -322,30 +245,24 @@ export const NftAttributeValue = {
   toProtoMsg(message: NftAttributeValue): NftAttributeValueProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.NftAttributeValue",
-      value: NftAttributeValue.encode(message).finish(),
+      value: NftAttributeValue.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseNumberAttributeValue(): NumberAttributeValue {
   return {
-    value: Long.UZERO,
+    value: Long.UZERO
   };
 }
 export const NumberAttributeValue = {
   typeUrl: "/sixprotocol.nftmngr.NumberAttributeValue",
-  encode(
-    message: NumberAttributeValue,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: NumberAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.value.isZero()) {
       writer.uint32(8).uint64(message.value);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): NumberAttributeValue {
+  decode(input: _m0.Reader | Uint8Array, length?: number): NumberAttributeValue {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseNumberAttributeValue();
@@ -364,10 +281,7 @@ export const NumberAttributeValue = {
   },
   fromPartial(object: Partial<NumberAttributeValue>): NumberAttributeValue {
     const message = createBaseNumberAttributeValue();
-    message.value =
-      object.value !== undefined && object.value !== null
-        ? Long.fromValue(object.value)
-        : Long.UZERO;
+    message.value = object.value !== undefined && object.value !== null ? Long.fromValue(object.value) : Long.UZERO;
     return message;
   },
   fromAmino(object: NumberAttributeValueAmino): NumberAttributeValue {
@@ -394,30 +308,24 @@ export const NumberAttributeValue = {
   toProtoMsg(message: NumberAttributeValue): NumberAttributeValueProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.NumberAttributeValue",
-      value: NumberAttributeValue.encode(message).finish(),
+      value: NumberAttributeValue.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseStringAttributeValue(): StringAttributeValue {
   return {
-    value: "",
+    value: ""
   };
 }
 export const StringAttributeValue = {
   typeUrl: "/sixprotocol.nftmngr.StringAttributeValue",
-  encode(
-    message: StringAttributeValue,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: StringAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.value !== "") {
       writer.uint32(10).string(message.value);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): StringAttributeValue {
+  decode(input: _m0.Reader | Uint8Array, length?: number): StringAttributeValue {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseStringAttributeValue();
@@ -463,30 +371,24 @@ export const StringAttributeValue = {
   toProtoMsg(message: StringAttributeValue): StringAttributeValueProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.StringAttributeValue",
-      value: StringAttributeValue.encode(message).finish(),
+      value: StringAttributeValue.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseBooleanAttributeValue(): BooleanAttributeValue {
   return {
-    value: false,
+    value: false
   };
 }
 export const BooleanAttributeValue = {
   typeUrl: "/sixprotocol.nftmngr.BooleanAttributeValue",
-  encode(
-    message: BooleanAttributeValue,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: BooleanAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.value === true) {
       writer.uint32(8).bool(message.value);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): BooleanAttributeValue {
+  decode(input: _m0.Reader | Uint8Array, length?: number): BooleanAttributeValue {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBooleanAttributeValue();
@@ -532,21 +434,18 @@ export const BooleanAttributeValue = {
   toProtoMsg(message: BooleanAttributeValue): BooleanAttributeValueProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.BooleanAttributeValue",
-      value: BooleanAttributeValue.encode(message).finish(),
+      value: BooleanAttributeValue.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseFloatAttributeValue(): FloatAttributeValue {
   return {
-    value: 0,
+    value: 0
   };
 }
 export const FloatAttributeValue = {
   typeUrl: "/sixprotocol.nftmngr.FloatAttributeValue",
-  encode(
-    message: FloatAttributeValue,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: FloatAttributeValue, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.value !== 0) {
       writer.uint32(9).double(message.value);
     }
@@ -598,7 +497,7 @@ export const FloatAttributeValue = {
   toProtoMsg(message: FloatAttributeValue): FloatAttributeValueProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.FloatAttributeValue",
-      value: FloatAttributeValue.encode(message).finish(),
+      value: FloatAttributeValue.encode(message).finish()
     };
-  },
+  }
 };

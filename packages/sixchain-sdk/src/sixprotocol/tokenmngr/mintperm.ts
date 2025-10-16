@@ -32,15 +32,12 @@ function createBaseMintperm(): Mintperm {
   return {
     token: "",
     address: "",
-    creator: "",
+    creator: ""
   };
 }
 export const Mintperm = {
   typeUrl: "/sixprotocol.tokenmngr.Mintperm",
-  encode(
-    message: Mintperm,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Mintperm, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.token !== "") {
       writer.uint32(10).string(message.token);
     }
@@ -114,7 +111,7 @@ export const Mintperm = {
   toProtoMsg(message: Mintperm): MintpermProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.Mintperm",
-      value: Mintperm.encode(message).finish(),
+      value: Mintperm.encode(message).finish()
     };
-  },
+  }
 };

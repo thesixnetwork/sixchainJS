@@ -10,7 +10,7 @@ export interface MsgUpdateParams {
   authority: string;
   /**
    * params defines the module parameters to update.
-   *
+   * 
    * NOTE: All parameters must be supplied.
    */
   params: Params;
@@ -33,7 +33,7 @@ export interface MsgUpdateParamsAmino {
   authority?: string;
   /**
    * params defines the module parameters to update.
-   *
+   * 
    * NOTE: All parameters must be supplied.
    */
   params: ParamsAmino;
@@ -176,15 +176,12 @@ export interface MsgRevokePermissionResponseSDKType {
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
-    params: Params.fromPartial({}),
+    params: Params.fromPartial({})
   };
 }
 export const MsgUpdateParams = {
   typeUrl: "/sixprotocol.nftadmin.MsgUpdateParams",
-  encode(
-    message: MsgUpdateParams,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: MsgUpdateParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
     }
@@ -216,10 +213,7 @@ export const MsgUpdateParams = {
   fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams {
     const message = createBaseMsgUpdateParams();
     message.authority = object.authority ?? "";
-    message.params =
-      object.params !== undefined && object.params !== null
-        ? Params.fromPartial(object.params)
-        : undefined;
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
@@ -235,9 +229,7 @@ export const MsgUpdateParams = {
   toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino {
     const obj: any = {};
     obj.authority = message.authority === "" ? undefined : message.authority;
-    obj.params = message.params
-      ? Params.toAmino(message.params)
-      : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams {
@@ -246,7 +238,7 @@ export const MsgUpdateParams = {
   toAminoMsg(message: MsgUpdateParams): MsgUpdateParamsAminoMsg {
     return {
       type: "sixprotocol/x/nftadmin/MsgUpdateParams",
-      value: MsgUpdateParams.toAmino(message),
+      value: MsgUpdateParams.toAmino(message)
     };
   },
   fromProtoMsg(message: MsgUpdateParamsProtoMsg): MsgUpdateParams {
@@ -258,25 +250,19 @@ export const MsgUpdateParams = {
   toProtoMsg(message: MsgUpdateParams): MsgUpdateParamsProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.MsgUpdateParams",
-      value: MsgUpdateParams.encode(message).finish(),
+      value: MsgUpdateParams.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
   return {};
 }
 export const MsgUpdateParamsResponse = {
   typeUrl: "/sixprotocol.nftadmin.MsgUpdateParamsResponse",
-  encode(
-    _: MsgUpdateParamsResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: MsgUpdateParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): MsgUpdateParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateParamsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateParamsResponse();
@@ -302,41 +288,32 @@ export const MsgUpdateParamsResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(
-    object: MsgUpdateParamsResponseAminoMsg
-  ): MsgUpdateParamsResponse {
+  fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: MsgUpdateParamsResponseProtoMsg
-  ): MsgUpdateParamsResponse {
+  fromProtoMsg(message: MsgUpdateParamsResponseProtoMsg): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.decode(message.value);
   },
   toProto(message: MsgUpdateParamsResponse): Uint8Array {
     return MsgUpdateParamsResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: MsgUpdateParamsResponse
-  ): MsgUpdateParamsResponseProtoMsg {
+  toProtoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.MsgUpdateParamsResponse",
-      value: MsgUpdateParamsResponse.encode(message).finish(),
+      value: MsgUpdateParamsResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseMsgGrantPermission(): MsgGrantPermission {
   return {
     creator: "",
     name: "",
-    grantee: "",
+    grantee: ""
   };
 }
 export const MsgGrantPermission = {
   typeUrl: "/sixprotocol.nftadmin.MsgGrantPermission",
-  encode(
-    message: MsgGrantPermission,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: MsgGrantPermission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -410,30 +387,24 @@ export const MsgGrantPermission = {
   toProtoMsg(message: MsgGrantPermission): MsgGrantPermissionProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.MsgGrantPermission",
-      value: MsgGrantPermission.encode(message).finish(),
+      value: MsgGrantPermission.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseMsgGrantPermissionResponse(): MsgGrantPermissionResponse {
   return {
-    grantee: "",
+    grantee: ""
   };
 }
 export const MsgGrantPermissionResponse = {
   typeUrl: "/sixprotocol.nftadmin.MsgGrantPermissionResponse",
-  encode(
-    message: MsgGrantPermissionResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: MsgGrantPermissionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.grantee !== "") {
       writer.uint32(10).string(message.grantee);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): MsgGrantPermissionResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrantPermissionResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgGrantPermissionResponse();
@@ -450,64 +421,49 @@ export const MsgGrantPermissionResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<MsgGrantPermissionResponse>
-  ): MsgGrantPermissionResponse {
+  fromPartial(object: Partial<MsgGrantPermissionResponse>): MsgGrantPermissionResponse {
     const message = createBaseMsgGrantPermissionResponse();
     message.grantee = object.grantee ?? "";
     return message;
   },
-  fromAmino(
-    object: MsgGrantPermissionResponseAmino
-  ): MsgGrantPermissionResponse {
+  fromAmino(object: MsgGrantPermissionResponseAmino): MsgGrantPermissionResponse {
     const message = createBaseMsgGrantPermissionResponse();
     if (object.grantee !== undefined && object.grantee !== null) {
       message.grantee = object.grantee;
     }
     return message;
   },
-  toAmino(
-    message: MsgGrantPermissionResponse
-  ): MsgGrantPermissionResponseAmino {
+  toAmino(message: MsgGrantPermissionResponse): MsgGrantPermissionResponseAmino {
     const obj: any = {};
     obj.grantee = message.grantee === "" ? undefined : message.grantee;
     return obj;
   },
-  fromAminoMsg(
-    object: MsgGrantPermissionResponseAminoMsg
-  ): MsgGrantPermissionResponse {
+  fromAminoMsg(object: MsgGrantPermissionResponseAminoMsg): MsgGrantPermissionResponse {
     return MsgGrantPermissionResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: MsgGrantPermissionResponseProtoMsg
-  ): MsgGrantPermissionResponse {
+  fromProtoMsg(message: MsgGrantPermissionResponseProtoMsg): MsgGrantPermissionResponse {
     return MsgGrantPermissionResponse.decode(message.value);
   },
   toProto(message: MsgGrantPermissionResponse): Uint8Array {
     return MsgGrantPermissionResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: MsgGrantPermissionResponse
-  ): MsgGrantPermissionResponseProtoMsg {
+  toProtoMsg(message: MsgGrantPermissionResponse): MsgGrantPermissionResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.MsgGrantPermissionResponse",
-      value: MsgGrantPermissionResponse.encode(message).finish(),
+      value: MsgGrantPermissionResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseMsgRevokePermission(): MsgRevokePermission {
   return {
     creator: "",
     name: "",
-    revokee: "",
+    revokee: ""
   };
 }
 export const MsgRevokePermission = {
   typeUrl: "/sixprotocol.nftadmin.MsgRevokePermission",
-  encode(
-    message: MsgRevokePermission,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: MsgRevokePermission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -581,30 +537,24 @@ export const MsgRevokePermission = {
   toProtoMsg(message: MsgRevokePermission): MsgRevokePermissionProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.MsgRevokePermission",
-      value: MsgRevokePermission.encode(message).finish(),
+      value: MsgRevokePermission.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseMsgRevokePermissionResponse(): MsgRevokePermissionResponse {
   return {
-    revokee: "",
+    revokee: ""
   };
 }
 export const MsgRevokePermissionResponse = {
   typeUrl: "/sixprotocol.nftadmin.MsgRevokePermissionResponse",
-  encode(
-    message: MsgRevokePermissionResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: MsgRevokePermissionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.revokee !== "") {
       writer.uint32(10).string(message.revokee);
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): MsgRevokePermissionResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevokePermissionResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRevokePermissionResponse();
@@ -621,48 +571,36 @@ export const MsgRevokePermissionResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<MsgRevokePermissionResponse>
-  ): MsgRevokePermissionResponse {
+  fromPartial(object: Partial<MsgRevokePermissionResponse>): MsgRevokePermissionResponse {
     const message = createBaseMsgRevokePermissionResponse();
     message.revokee = object.revokee ?? "";
     return message;
   },
-  fromAmino(
-    object: MsgRevokePermissionResponseAmino
-  ): MsgRevokePermissionResponse {
+  fromAmino(object: MsgRevokePermissionResponseAmino): MsgRevokePermissionResponse {
     const message = createBaseMsgRevokePermissionResponse();
     if (object.revokee !== undefined && object.revokee !== null) {
       message.revokee = object.revokee;
     }
     return message;
   },
-  toAmino(
-    message: MsgRevokePermissionResponse
-  ): MsgRevokePermissionResponseAmino {
+  toAmino(message: MsgRevokePermissionResponse): MsgRevokePermissionResponseAmino {
     const obj: any = {};
     obj.revokee = message.revokee === "" ? undefined : message.revokee;
     return obj;
   },
-  fromAminoMsg(
-    object: MsgRevokePermissionResponseAminoMsg
-  ): MsgRevokePermissionResponse {
+  fromAminoMsg(object: MsgRevokePermissionResponseAminoMsg): MsgRevokePermissionResponse {
     return MsgRevokePermissionResponse.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: MsgRevokePermissionResponseProtoMsg
-  ): MsgRevokePermissionResponse {
+  fromProtoMsg(message: MsgRevokePermissionResponseProtoMsg): MsgRevokePermissionResponse {
     return MsgRevokePermissionResponse.decode(message.value);
   },
   toProto(message: MsgRevokePermissionResponse): Uint8Array {
     return MsgRevokePermissionResponse.encode(message).finish();
   },
-  toProtoMsg(
-    message: MsgRevokePermissionResponse
-  ): MsgRevokePermissionResponseProtoMsg {
+  toProtoMsg(message: MsgRevokePermissionResponse): MsgRevokePermissionResponseProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftadmin.MsgRevokePermissionResponse",
-      value: MsgRevokePermissionResponse.encode(message).finish(),
+      value: MsgRevokePermissionResponse.encode(message).finish()
     };
-  },
+  }
 };
