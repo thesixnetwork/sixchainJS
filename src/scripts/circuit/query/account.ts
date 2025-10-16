@@ -27,17 +27,17 @@ const main = async () => {
       address: accountAddress,
     });
 
-    console.log("Account permissions:", account);
+    console.log("Account permissions:", account.permission);
 
     // Query all accounts with circuit breaker permissions
     const accounts = await queryClient.cosmos.circuit.v1.accounts({});
 
-    console.log("All accounts with permissions:", accounts);
+    console.log("All accounts with permissions:", accounts.accounts);
 
     // Query disabled list
     const disabledList = await queryClient.cosmos.circuit.v1.disabledList({});
 
-    console.log("Disabled message types:", disabledList);
+    console.log("Disabled message types:", disabledList.disabledList);
   } catch (error) {
     console.error("Error querying circuit:", error);
   }

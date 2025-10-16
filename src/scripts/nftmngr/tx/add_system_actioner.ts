@@ -4,14 +4,15 @@ import {
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
+import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import dotenv from "dotenv";
-import allAddress from "../../utils/all_address";
+import allAddress from "./all_address";
 import { getConnectorConfig } from "@client-util";
 dotenv.config();
-import divine_elite from "../../../resources/schemas/divineelite-nft-schema.json";
-import preventive from "../../../resources/schemas/preventive-nft-schema.json";
-import membership from "../../../resources/schemas/membership-nft-schema.json";
-import lifestyle from "../../../resources/schemas/lifestyle-nft-schema.json";
+import divine_elite from "../resources/schemas/divineelite-nft-schema.json";
+import preventive from "../resources/schemas/preventive-nft-schema.json";
+import membership from "../resources/schemas/membership-nft-schema.json";
+import lifestyle from "../resources/schemas/lifestyle-nft-schema.json";
 
 const schemaList = [divine_elite, preventive, membership, lifestyle];
 
@@ -61,10 +62,41 @@ const addSystemActioner = async (start: number, end: number) => {
       msgArray.push(addSystemAction);
     }
 
-    const txResponse = await client.signAndBroadcast(address, msgArray, "auto");
+    // First attempt with auto gas
+    console.log("Attempting add system actioner with auto gas...");
+    let txResponse = await client.signAndBroadcast(address, msgArray, "auto");
 
-    if (txResponse.code) {
-      console.log(txResponse.rawLog);
+    // If out of gas error (code 11), retry with calculated fee
+    if (txResponse.code === 11) {
+      console.log("Out of gas error detected. Retrying with calculated fee...");
+      console.log(`Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`);
+      
+      // Calculate fee using utility function with higher multiplier
+      const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
+        client,
+        address,
+        msgArray,
+        "add system actioner",
+        {
+          gasMultiplier: 1.5, // 50% buffer
+          gasPrice: 1.25,
+          fallbackGas: COMMON_GAS_LIMITS.NFT_MINT,
+          denom: "usix"
+        }
+      );
+
+      console.log(`Calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
+
+      // Retry with calculated fee
+      txResponse = await client.signAndBroadcast(address, msgArray, fee);
+    }
+
+    if (txResponse.code !== 0) {
+      console.error(`Error in add system actioner: ${txResponse.rawLog}`);
+    } else {
+      console.log(
+        `Add system actioner successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      );
     }
     console.log(
       `gasUsed: ${txResponse.gasUsed}\ngasWanted:${txResponse.gasWanted}\n${txResponse.transactionHash}`

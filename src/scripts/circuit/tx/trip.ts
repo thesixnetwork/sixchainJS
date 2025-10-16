@@ -1,7 +1,7 @@
 import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { GasPrice } from "@cosmjs/stargate";
+import { GasPrice, calculateFee } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 
@@ -51,7 +51,7 @@ const main = async () => {
   const txResponse = await client.signAndBroadcast(
     address,
     msgArray,
-    "auto",
+    calculateFee(80000, gasPrice),
     "circuit trip"
   );
 

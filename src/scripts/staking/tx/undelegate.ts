@@ -1,6 +1,7 @@
 import { getSigningSixprotocolClient, cosmos } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { Coin } from "@cosmjs/amino";
+import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -38,12 +39,52 @@ const undelegate = async () => {
       validatorAddress: validator_address,
     });
 
-  const txResponse = await client.signAndBroadcast(
+  // First attempt with auto gas
+  console.log("Attempting undelegation with auto gas...");
+  let txResponse = await client.signAndBroadcast(
     address,
     [msgUndelegate],
     "auto",
-    "memo"
+    "undelegate"
   );
+
+  // If out of gas error (code 11), retry with calculated fee
+  if (txResponse.code === 11) {
+    console.log("Out of gas error detected. Retrying with calculated fee...");
+    console.log(`Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`);
+    
+    // Calculate fee using utility function with higher multiplier
+    const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
+      client,
+      address,
+      [msgUndelegate],
+      "undelegate",
+      {
+        gasMultiplier: 1.5, // 50% buffer
+        gasPrice: 1.25,
+        fallbackGas: COMMON_GAS_LIMITS.STAKING,
+        denom: "usix"
+      }
+    );
+
+    console.log(`Calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
+
+    // Retry with calculated fee
+    txResponse = await client.signAndBroadcast(
+      address,
+      [msgUndelegate],
+      fee,
+      "undelegate"
+    );
+  }
+
+  if (txResponse.code !== 0) {
+    console.error(`Error in undelegation: ${txResponse.rawLog}`);
+  } else {
+    console.log(
+      `Undelegation successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+    );
+  }
   console.log(txResponse);
 };
 

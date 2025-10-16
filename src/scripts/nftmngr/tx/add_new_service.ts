@@ -3,10 +3,15 @@ import {
   sixprotocol,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
+import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import { EncodeObject } from "@cosmjs/proto-signing";
+import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import newAttribute from "../../../resources/utils/new-attribute.json";
+import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import divine_elite from "../../../resources/schemas/divineelite-nft-schema.json";
+import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import { getConnectorConfig } from "@client-util";
+import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 
 const main = async () => {
   const NETWORK = process.argv[2];

@@ -1,8 +1,10 @@
 import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
+const { MsgAuthorizeCircuitBreaker } = cosmos.circuit.v1;
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
+import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -39,36 +41,76 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual proposal details
+  
+  // Create circuit breaker authorization message
+  const authorizeCircuitBreakerMsg = {
+    typeUrl: "/cosmos.circuit.v1.MsgAuthorizeCircuitBreaker",
+      value: MsgAuthorizeCircuitBreaker.encode({
+        granter: "6x10d07y265gmmuvt4z0w9aw880jnsr700j4vyszp",
+        grantee: address,
+        permissions: {
+          level: 3, // LEVEL_SUPER_ADMIN
+          limitTypeUrls: [], // Empty for super admin (can access all message types)
+        },
+      }).finish(),
+  };
+
   const submitProposal =
     cosmos.gov.v1.MessageComposer.withTypeUrl.submitProposal({
-      messages: [
-        {
-          typeUrl: "/cosmos.upgrade.v1beta1.msgsoftwareupgrade",
-          value: undefined,
-        },
-      ], // TODO: Add actual proposal messages
+      messages: [authorizeCircuitBreakerMsg],
       initialDeposit: [
         {
           denom: "usix",
-          amount: "10000000", // 10 SIX, TODO: Adjust based on governance params
+          amount: "500000000",
         },
       ],
       proposer: address,
-      metadata: "TODO: Add proposal metadata",
-      title: "TODO: Add proposal title",
-      summary: "TODO: Add proposal summary",
-      expedited: false, // TODO: Set to true for expedited proposals
+      metadata: `{"title": "Circuit Breaker Auth", "summary": "Authorize circuit breaker", "details": "Grant circuit breaker permissions"}`,
+      title: "Circuit Breaker Auth",
+      summary: "Authorize circuit breaker",
+      expedited: false,
     });
 
   msgArray.push(submitProposal);
 
-  const txResponse = await client.signAndBroadcast(
+  // First attempt with auto gas
+  console.log("Attempting proposal submission with auto gas...");
+  let txResponse = await client.signAndBroadcast(
     address,
     msgArray,
     "auto",
     "submit proposal"
   );
+
+  // If out of gas error (code 11), retry with calculated fee
+  if (txResponse.code === 11) {
+    console.log("Out of gas error detected. Retrying with calculated fee...");
+    console.log(`Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`);
+    
+    // Calculate fee using utility function with higher multiplier
+    const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
+      client,
+      address,
+      msgArray,
+      "submit proposal",
+      {
+        gasMultiplier: 1.5, // 50% buffer
+        gasPrice: 1.25,
+        fallbackGas: COMMON_GAS_LIMITS.GOVERNANCE_PROPOSAL,
+        denom: "usix"
+      }
+    );
+
+    console.log(`Calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
+
+    // Retry with calculated fee
+    txResponse = await client.signAndBroadcast(
+      address,
+      msgArray,
+      fee,
+      "submit proposal"
+    );
+  }
 
   if (txResponse.code !== 0) {
     console.error(`Error submitting proposal: ${txResponse.rawLog}`);
