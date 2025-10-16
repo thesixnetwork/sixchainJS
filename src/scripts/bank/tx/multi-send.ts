@@ -1,8 +1,8 @@
 import {
   getSigningCosmosClient,
   cosmos,
-  calculateFeeFromSimulation,
   COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
@@ -93,35 +93,18 @@ const main = async () => {
   console.log(`Gas limit with adjustment: ${gasLimit}`);
 
   const memo = "multi send";
-  let txResponse = await client.signAndBroadcast(
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
     address,
     msgArray,
-    gasLimit,
-    memo
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.BANK.MULTI_SEND,
+      denom: "usix",
+    }
   );
-
-  if (txResponse.code === 11) {
-    console.log("Out of gas error detected. Retrying with calculated fee...");
-    console.log(
-      `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
-    );
-
-    const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
-      client,
-      address,
-      msgArray,
-      memo,
-      {
-        gasMultiplier: 1.5,
-        gasPrice: 1.25,
-        fallbackGas: COMMON_GAS_LIMITS.SAMPLE,
-        denom: "usix",
-      }
-    );
-    console.log(`Calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
-    // Retry with calculated fee
-    txResponse = await client.signAndBroadcast(address, msgArray, fee, memo);
-  }
 
   if (txResponse.code !== 0) {
     console.error(`Error in multi send: ${txResponse.rawLog}`);

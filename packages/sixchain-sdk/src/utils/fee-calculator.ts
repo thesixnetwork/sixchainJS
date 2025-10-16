@@ -194,6 +194,15 @@ export async function signAndBroadcastWithRetry(
  */
 export const COMMON_GAS_LIMITS = {
   SAMPLE: 1000,
+  AUTHZ: {
+    GRANT: 80000,
+    REVOKE: 70000,
+    EXEC: 80000,
+  },
+  BANK:{
+    SEND: 80000,
+    MULTI_SEND: 100000,
+  },
   SIMPLE_SEND: 60000,
   CONTRACT_DEPLOY: 200000,
   CONTRACT_EXECUTE: 150000,
@@ -202,11 +211,6 @@ export const COMMON_GAS_LIMITS = {
   STAKING: 120000,
   NFT_MINT: 90000,
   NFT_CREATE_SCHEMA: 100000,
-  AUTHZ: {
-    GRANT: 80000,
-    REVOKE: 70000,
-    EXEC: 80000,
-  },
   DISTRIBUTION_WITHDRAW: 70000,
 } as const;
 
