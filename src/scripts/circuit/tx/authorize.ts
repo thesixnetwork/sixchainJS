@@ -56,7 +56,6 @@ const main = async () => {
 
   msgArray.push(authorize);
   const memo = "circuit authorize";
-
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
