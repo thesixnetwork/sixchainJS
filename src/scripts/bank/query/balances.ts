@@ -37,7 +37,7 @@ const main = async () => {
       balances.balances.forEach((balance, index) => {
         const amount = balance.amount || "0";
         const denom = balance.denom || "";
-        
+
         // Convert usix to SIX for display
         if (denom === "usix") {
           const sixAmount = (parseInt(amount) / 1_000_000).toString();
@@ -46,7 +46,7 @@ const main = async () => {
           console.log(`  ${index + 1}. ${amount} ${denom}`);
         }
       });
-      
+
       console.log(`\nTotal different denoms: ${balances.balances.length}`);
     } else {
       console.log("No balances found for this address");
@@ -58,7 +58,6 @@ const main = async () => {
       console.log(`  Next Key: ${balances.pagination.nextKey || "N/A"}`);
       console.log(`  Total: ${balances.pagination.total?.toString() || "N/A"}`);
     }
-
   } catch (error) {
     console.error("Error querying balances:", error);
   }

@@ -1,16 +1,20 @@
-import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningCosmosClient,
+  cosmos,
+  calculateFeeFromSimulation,
+  COMMON_GAS_LIMITS,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const main = async () => {
   const NETWORK = process.argv[2];
-  
+
   // Hardcoded values as requested
   const toAddress = "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp";
   const amount = "10000000"; // 10 SIX in usix
@@ -46,7 +50,9 @@ const main = async () => {
   // Using hardcoded amount (already in usix)
   const using_amount = amount;
 
-  console.log(`Sending ${using_amount} ${denom} (${parseInt(using_amount) / 1_000_000} SIX) from ${address} to ${toAddress}`);
+  console.log(
+    `Sending ${using_amount} ${denom} (${parseInt(using_amount) / 1_000_000} SIX) from ${address} to ${toAddress}`
+  );
 
   const send = cosmos.bank.v1beta1.MessageComposer.withTypeUrl.send({
     fromAddress: address,
@@ -73,8 +79,10 @@ const main = async () => {
   // If out of gas error (code 11), retry with calculated fee
   if (txResponse.code === 11) {
     console.log("Out of gas error detected. Retrying with calculated fee...");
-    console.log(`Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`);
-    
+    console.log(
+      `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
+    );
+
     // Calculate fee using utility function with higher multiplier
     const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
       client,
@@ -85,7 +93,7 @@ const main = async () => {
         gasMultiplier: 1.5, // 50% buffer
         gasPrice: 1.25,
         fallbackGas: COMMON_GAS_LIMITS.SIMPLE_SEND,
-        denom: "usix"
+        denom: "usix",
       }
     );
 

@@ -37,7 +37,7 @@ const main = async () => {
     if (balance.balance) {
       const amount = balance.balance.amount || "0";
       console.log(`\nBalance: ${amount} ${denom}`);
-      
+
       // Convert usix to SIX for display
       if (denom === "usix") {
         const sixAmount = (parseInt(amount) / 1_000_000).toFixed(6);

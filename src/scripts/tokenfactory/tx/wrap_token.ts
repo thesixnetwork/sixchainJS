@@ -1,13 +1,12 @@
 import {
   getSigningSixprotocolClient,
   sixprotocol,
+  calculateFeeFromSimulation,
+  COMMON_GAS_LIMITS,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import { Coin } from "@cosmjs/amino";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import dotenv from "dotenv";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 
 dotenv.config();
 
@@ -42,12 +41,43 @@ const wrapToken = async () => {
       receiver: "0xB62ef83643A2F8c95dF78F694C6Bf480f5b786f2", // REMARK IF NULL VALUE Coin will convert to itself
     });
 
-  const txResponse = await client.signAndBroadcast(
+  // First attempt with auto gas
+  console.log("Attempting wrap token with auto gas...");
+  let txResponse = await client.signAndBroadcast(
     address,
     [msgWrapToken],
     "auto",
-    "memo"
+    "wrap token"
   );
+
+  // If out of gas error (code 11), retry with calculated fee
+  if (txResponse.code === 11) {
+    console.log("Out of gas error detected. Retrying with calculated fee...");
+    console.log(
+      `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
+    );
+    // Calculate fee using utility function with higher multiplier
+    const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
+      client,
+      address,
+      [msgWrapToken],
+      "wrap token",
+      {
+        gasMultiplier: 1.5, // 50% buffer
+        gasPrice: 1.25,
+        fallbackGas: COMMON_GAS_LIMITS.GOVERNANCE_PROPOSAL,
+        denom: "usix",
+      }
+    );
+    console.log(`Calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
+    // Retry with calculated fee
+    txResponse = await client.signAndBroadcast(
+      address,
+      [msgWrapToken],
+      fee,
+      "wrap token"
+    );
+  }
   console.log(txResponse);
 };
 

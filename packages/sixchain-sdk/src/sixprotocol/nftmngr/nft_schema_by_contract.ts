@@ -28,12 +28,15 @@ export interface NFTSchemaByContractSDKType {
 function createBaseNFTSchemaByContract(): NFTSchemaByContract {
   return {
     originContractAddress: "",
-    schemaCodes: []
+    schemaCodes: [],
   };
 }
 export const NFTSchemaByContract = {
   typeUrl: "/sixprotocol.nftmngr.NFTSchemaByContract",
-  encode(message: NFTSchemaByContract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: NFTSchemaByContract,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.originContractAddress !== "") {
       writer.uint32(10).string(message.originContractAddress);
     }
@@ -65,22 +68,28 @@ export const NFTSchemaByContract = {
   fromPartial(object: Partial<NFTSchemaByContract>): NFTSchemaByContract {
     const message = createBaseNFTSchemaByContract();
     message.originContractAddress = object.originContractAddress ?? "";
-    message.schemaCodes = object.schemaCodes?.map(e => e) || [];
+    message.schemaCodes = object.schemaCodes?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: NFTSchemaByContractAmino): NFTSchemaByContract {
     const message = createBaseNFTSchemaByContract();
-    if (object.originContractAddress !== undefined && object.originContractAddress !== null) {
+    if (
+      object.originContractAddress !== undefined &&
+      object.originContractAddress !== null
+    ) {
       message.originContractAddress = object.originContractAddress;
     }
-    message.schemaCodes = object.schemaCodes?.map(e => e) || [];
+    message.schemaCodes = object.schemaCodes?.map((e) => e) || [];
     return message;
   },
   toAmino(message: NFTSchemaByContract): NFTSchemaByContractAmino {
     const obj: any = {};
-    obj.originContractAddress = message.originContractAddress === "" ? undefined : message.originContractAddress;
+    obj.originContractAddress =
+      message.originContractAddress === ""
+        ? undefined
+        : message.originContractAddress;
     if (message.schemaCodes) {
-      obj.schemaCodes = message.schemaCodes.map(e => e);
+      obj.schemaCodes = message.schemaCodes.map((e) => e);
     } else {
       obj.schemaCodes = message.schemaCodes;
     }
@@ -98,7 +107,7 @@ export const NFTSchemaByContract = {
   toProtoMsg(message: NFTSchemaByContract): NFTSchemaByContractProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.NFTSchemaByContract",
-      value: NFTSchemaByContract.encode(message).finish()
+      value: NFTSchemaByContract.encode(message).finish(),
     };
-  }
+  },
 };

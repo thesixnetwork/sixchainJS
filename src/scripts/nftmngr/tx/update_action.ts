@@ -3,39 +3,23 @@ import {
   sixprotocol,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import { getConnectorConfig } from "@client-util";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import dotenv from "dotenv";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 
 // Schema
 import divine from "../resources/schemas/divineelite-nft-schema.json";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import lifestyle from "../resources/schemas/lifestyle-nft-schema.json";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import membership from "../resources/schemas/membership-nft-schema.json";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import preventive from "../resources/schemas/preventive-nft-schema.json";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 
 // update aciton
 import devive_update from "../resources/utils/updateAction/divine/extend_action.json";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import lifestyle_update from "../resources/utils/updateAction/lifestyle/extend_action.json";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import preventive_update from "../resources/utils/updateAction/preventive/extend_action.json";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import member_update from "../resources/utils/updateAction/membership/extend_action.json";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
-
 import set_privilege from "../resources/utils/updateAction/set_service.json";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
-
 import update_tier_name from "../resources/utils/updateAction/update_tier_name.json";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 
 const SCHEMA_LIST = [divine, lifestyle, membership, preventive];
 

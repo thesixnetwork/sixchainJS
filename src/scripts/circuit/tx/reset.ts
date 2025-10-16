@@ -1,9 +1,9 @@
-import { 
-  getSigningCosmosClient, 
+import {
+  getSigningCosmosClient,
   cosmos,
   calculateFeeFromSimulation,
   COMMON_GAS_LIMITS,
-  signAndBroadcastWithRetry
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
@@ -62,7 +62,7 @@ const main = async () => {
       gasMultiplier: 1.5, // 50% buffer
       gasPrice: 1.25,
       fallbackGas: COMMON_GAS_LIMITS.CIRCUIT_RESET,
-      denom: "usix"
+      denom: "usix",
     }
   );
 

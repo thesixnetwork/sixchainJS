@@ -1,4 +1,9 @@
-import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningCosmosClient,
+  cosmos,
+  calculateFeeFromSimulation,
+  COMMON_GAS_LIMITS,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -62,12 +67,43 @@ const main = async () => {
 
   msgArray.push(exec);
 
-  const txResponse = await client.signAndBroadcast(
+  // First attempt with auto gas
+  console.log("Attempting authz exec with auto gas...")
+  let txResponse = await client.signAndBroadcast(
     address,
     msgArray,
     "auto",
     "authz exec"
   );
+
+  // If out of gas error (code 11), retry with calculated fee
+  if (txResponse.code === 11) {
+    console.log("Out of gas error detected. Retrying with calculated fee...");
+    console.log(
+      `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
+    );
+    // Calculate fee using utility function with higher multiplier
+    const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
+      client,
+      address,
+      msgArray,
+      "authz exec",
+      {
+        gasMultiplier: 1.5, // 50% buffer
+        gasPrice: 1.25,
+        fallbackGas: COMMON_GAS_LIMITS.GOVERNANCE_PROPOSAL,
+        denom: "usix",
+      }
+    );
+    console.log(`Calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
+    // Retry with calculated fee
+    txResponse = await client.signAndBroadcast(
+      address,
+      msgArray,
+      fee,
+      "authz exec"
+    );
+  }
 
   if (txResponse.code !== 0) {
     console.error(`Error in authz exec: ${txResponse.rawLog}`);

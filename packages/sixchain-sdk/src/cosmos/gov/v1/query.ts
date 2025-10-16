@@ -1,6 +1,39 @@
 //@ts-nocheck
-import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmino, VoteSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Params, ParamsAmino, ParamsSDKType, Deposit, DepositAmino, DepositSDKType, TallyResult, TallyResultAmino, TallyResultSDKType } from "./gov";
-import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
+import {
+  ProposalStatus,
+  Proposal,
+  ProposalAmino,
+  ProposalSDKType,
+  Vote,
+  VoteAmino,
+  VoteSDKType,
+  VotingParams,
+  VotingParamsAmino,
+  VotingParamsSDKType,
+  DepositParams,
+  DepositParamsAmino,
+  DepositParamsSDKType,
+  TallyParams,
+  TallyParamsAmino,
+  TallyParamsSDKType,
+  Params,
+  ParamsAmino,
+  ParamsSDKType,
+  Deposit,
+  DepositAmino,
+  DepositSDKType,
+  TallyResult,
+  TallyResultAmino,
+  TallyResultSDKType,
+} from "./gov";
+import {
+  PageRequest,
+  PageRequestAmino,
+  PageRequestSDKType,
+  PageResponse,
+  PageResponseAmino,
+  PageResponseSDKType,
+} from "../../base/query/v1beta1/pagination";
 import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** QueryConstitutionRequest is the request type for the Query/Constitution RPC method */
@@ -390,7 +423,7 @@ export interface QueryParamsResponse {
   tallyParams?: TallyParams;
   /**
    * params defines all the paramaters of x/gov module.
-   * 
+   *
    * Since: cosmos-sdk 0.47
    */
   params?: Params;
@@ -426,7 +459,7 @@ export interface QueryParamsResponseAmino {
   tally_params?: TallyParamsAmino;
   /**
    * params defines all the paramaters of x/gov module.
-   * 
+   *
    * Since: cosmos-sdk 0.47
    */
   params?: ParamsAmino;
@@ -645,10 +678,16 @@ function createBaseQueryConstitutionRequest(): QueryConstitutionRequest {
 }
 export const QueryConstitutionRequest = {
   typeUrl: "/cosmos.gov.v1.QueryConstitutionRequest",
-  encode(_: QueryConstitutionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: QueryConstitutionRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConstitutionRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryConstitutionRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConstitutionRequest();
@@ -674,42 +713,56 @@ export const QueryConstitutionRequest = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: QueryConstitutionRequestAminoMsg): QueryConstitutionRequest {
+  fromAminoMsg(
+    object: QueryConstitutionRequestAminoMsg
+  ): QueryConstitutionRequest {
     return QueryConstitutionRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryConstitutionRequest): QueryConstitutionRequestAminoMsg {
+  toAminoMsg(
+    message: QueryConstitutionRequest
+  ): QueryConstitutionRequestAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryConstitutionRequest",
-      value: QueryConstitutionRequest.toAmino(message)
+      value: QueryConstitutionRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConstitutionRequestProtoMsg): QueryConstitutionRequest {
+  fromProtoMsg(
+    message: QueryConstitutionRequestProtoMsg
+  ): QueryConstitutionRequest {
     return QueryConstitutionRequest.decode(message.value);
   },
   toProto(message: QueryConstitutionRequest): Uint8Array {
     return QueryConstitutionRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryConstitutionRequest): QueryConstitutionRequestProtoMsg {
+  toProtoMsg(
+    message: QueryConstitutionRequest
+  ): QueryConstitutionRequestProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryConstitutionRequest",
-      value: QueryConstitutionRequest.encode(message).finish()
+      value: QueryConstitutionRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryConstitutionResponse(): QueryConstitutionResponse {
   return {
-    constitution: ""
+    constitution: "",
   };
 }
 export const QueryConstitutionResponse = {
   typeUrl: "/cosmos.gov.v1.QueryConstitutionResponse",
-  encode(message: QueryConstitutionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryConstitutionResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.constitution !== "") {
       writer.uint32(10).string(message.constitution);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConstitutionResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryConstitutionResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConstitutionResponse();
@@ -726,7 +779,9 @@ export const QueryConstitutionResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryConstitutionResponse>): QueryConstitutionResponse {
+  fromPartial(
+    object: Partial<QueryConstitutionResponse>
+  ): QueryConstitutionResponse {
     const message = createBaseQueryConstitutionResponse();
     message.constitution = object.constitution ?? "";
     return message;
@@ -740,45 +795,60 @@ export const QueryConstitutionResponse = {
   },
   toAmino(message: QueryConstitutionResponse): QueryConstitutionResponseAmino {
     const obj: any = {};
-    obj.constitution = message.constitution === "" ? undefined : message.constitution;
+    obj.constitution =
+      message.constitution === "" ? undefined : message.constitution;
     return obj;
   },
-  fromAminoMsg(object: QueryConstitutionResponseAminoMsg): QueryConstitutionResponse {
+  fromAminoMsg(
+    object: QueryConstitutionResponseAminoMsg
+  ): QueryConstitutionResponse {
     return QueryConstitutionResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryConstitutionResponse): QueryConstitutionResponseAminoMsg {
+  toAminoMsg(
+    message: QueryConstitutionResponse
+  ): QueryConstitutionResponseAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryConstitutionResponse",
-      value: QueryConstitutionResponse.toAmino(message)
+      value: QueryConstitutionResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConstitutionResponseProtoMsg): QueryConstitutionResponse {
+  fromProtoMsg(
+    message: QueryConstitutionResponseProtoMsg
+  ): QueryConstitutionResponse {
     return QueryConstitutionResponse.decode(message.value);
   },
   toProto(message: QueryConstitutionResponse): Uint8Array {
     return QueryConstitutionResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryConstitutionResponse): QueryConstitutionResponseProtoMsg {
+  toProtoMsg(
+    message: QueryConstitutionResponse
+  ): QueryConstitutionResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryConstitutionResponse",
-      value: QueryConstitutionResponse.encode(message).finish()
+      value: QueryConstitutionResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryProposalRequest(): QueryProposalRequest {
   return {
-    proposalId: Long.UZERO
+    proposalId: Long.UZERO,
   };
 }
 export const QueryProposalRequest = {
   typeUrl: "/cosmos.gov.v1.QueryProposalRequest",
-  encode(message: QueryProposalRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryProposalRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.proposalId.isZero()) {
       writer.uint32(8).uint64(message.proposalId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryProposalRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryProposalRequest();
@@ -797,7 +867,10 @@ export const QueryProposalRequest = {
   },
   fromPartial(object: Partial<QueryProposalRequest>): QueryProposalRequest {
     const message = createBaseQueryProposalRequest();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? Long.fromValue(object.proposalId)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: QueryProposalRequestAmino): QueryProposalRequest {
@@ -809,7 +882,9 @@ export const QueryProposalRequest = {
   },
   toAmino(message: QueryProposalRequest): QueryProposalRequestAmino {
     const obj: any = {};
-    obj.proposal_id = !message.proposalId.isZero() ? message.proposalId?.toString() : undefined;
+    obj.proposal_id = !message.proposalId.isZero()
+      ? message.proposalId?.toString()
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryProposalRequestAminoMsg): QueryProposalRequest {
@@ -818,7 +893,7 @@ export const QueryProposalRequest = {
   toAminoMsg(message: QueryProposalRequest): QueryProposalRequestAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryProposalRequest",
-      value: QueryProposalRequest.toAmino(message)
+      value: QueryProposalRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryProposalRequestProtoMsg): QueryProposalRequest {
@@ -830,24 +905,30 @@ export const QueryProposalRequest = {
   toProtoMsg(message: QueryProposalRequest): QueryProposalRequestProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryProposalRequest",
-      value: QueryProposalRequest.encode(message).finish()
+      value: QueryProposalRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryProposalResponse(): QueryProposalResponse {
   return {
-    proposal: undefined
+    proposal: undefined,
   };
 }
 export const QueryProposalResponse = {
   typeUrl: "/cosmos.gov.v1.QueryProposalResponse",
-  encode(message: QueryProposalResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryProposalResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.proposal !== undefined) {
       Proposal.encode(message.proposal, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryProposalResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryProposalResponse();
@@ -866,7 +947,10 @@ export const QueryProposalResponse = {
   },
   fromPartial(object: Partial<QueryProposalResponse>): QueryProposalResponse {
     const message = createBaseQueryProposalResponse();
-    message.proposal = object.proposal !== undefined && object.proposal !== null ? Proposal.fromPartial(object.proposal) : undefined;
+    message.proposal =
+      object.proposal !== undefined && object.proposal !== null
+        ? Proposal.fromPartial(object.proposal)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryProposalResponseAmino): QueryProposalResponse {
@@ -878,7 +962,9 @@ export const QueryProposalResponse = {
   },
   toAmino(message: QueryProposalResponse): QueryProposalResponseAmino {
     const obj: any = {};
-    obj.proposal = message.proposal ? Proposal.toAmino(message.proposal) : undefined;
+    obj.proposal = message.proposal
+      ? Proposal.toAmino(message.proposal)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryProposalResponseAminoMsg): QueryProposalResponse {
@@ -887,7 +973,7 @@ export const QueryProposalResponse = {
   toAminoMsg(message: QueryProposalResponse): QueryProposalResponseAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryProposalResponse",
-      value: QueryProposalResponse.toAmino(message)
+      value: QueryProposalResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryProposalResponseProtoMsg): QueryProposalResponse {
@@ -899,21 +985,24 @@ export const QueryProposalResponse = {
   toProtoMsg(message: QueryProposalResponse): QueryProposalResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryProposalResponse",
-      value: QueryProposalResponse.encode(message).finish()
+      value: QueryProposalResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryProposalsRequest(): QueryProposalsRequest {
   return {
     proposalStatus: 0,
     voter: "",
     depositor: "",
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryProposalsRequest = {
   typeUrl: "/cosmos.gov.v1.QueryProposalsRequest",
-  encode(message: QueryProposalsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryProposalsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.proposalStatus !== 0) {
       writer.uint32(8).int32(message.proposalStatus);
     }
@@ -928,7 +1017,10 @@ export const QueryProposalsRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryProposalsRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryProposalsRequest();
@@ -959,12 +1051,18 @@ export const QueryProposalsRequest = {
     message.proposalStatus = object.proposalStatus ?? 0;
     message.voter = object.voter ?? "";
     message.depositor = object.depositor ?? "";
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryProposalsRequestAmino): QueryProposalsRequest {
     const message = createBaseQueryProposalsRequest();
-    if (object.proposal_status !== undefined && object.proposal_status !== null) {
+    if (
+      object.proposal_status !== undefined &&
+      object.proposal_status !== null
+    ) {
       message.proposalStatus = object.proposal_status;
     }
     if (object.voter !== undefined && object.voter !== null) {
@@ -980,10 +1078,13 @@ export const QueryProposalsRequest = {
   },
   toAmino(message: QueryProposalsRequest): QueryProposalsRequestAmino {
     const obj: any = {};
-    obj.proposal_status = message.proposalStatus === 0 ? undefined : message.proposalStatus;
+    obj.proposal_status =
+      message.proposalStatus === 0 ? undefined : message.proposalStatus;
     obj.voter = message.voter === "" ? undefined : message.voter;
     obj.depositor = message.depositor === "" ? undefined : message.depositor;
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryProposalsRequestAminoMsg): QueryProposalsRequest {
@@ -992,7 +1093,7 @@ export const QueryProposalsRequest = {
   toAminoMsg(message: QueryProposalsRequest): QueryProposalsRequestAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryProposalsRequest",
-      value: QueryProposalsRequest.toAmino(message)
+      value: QueryProposalsRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryProposalsRequestProtoMsg): QueryProposalsRequest {
@@ -1004,28 +1105,37 @@ export const QueryProposalsRequest = {
   toProtoMsg(message: QueryProposalsRequest): QueryProposalsRequestProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryProposalsRequest",
-      value: QueryProposalsRequest.encode(message).finish()
+      value: QueryProposalsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryProposalsResponse(): QueryProposalsResponse {
   return {
     proposals: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryProposalsResponse = {
   typeUrl: "/cosmos.gov.v1.QueryProposalsResponse",
-  encode(message: QueryProposalsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryProposalsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.proposals) {
       Proposal.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryProposalsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryProposalsResponse();
@@ -1047,13 +1157,18 @@ export const QueryProposalsResponse = {
   },
   fromPartial(object: Partial<QueryProposalsResponse>): QueryProposalsResponse {
     const message = createBaseQueryProposalsResponse();
-    message.proposals = object.proposals?.map(e => Proposal.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.proposals =
+      object.proposals?.map((e) => Proposal.fromPartial(e)) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryProposalsResponseAmino): QueryProposalsResponse {
     const message = createBaseQueryProposalsResponse();
-    message.proposals = object.proposals?.map(e => Proposal.fromAmino(e)) || [];
+    message.proposals =
+      object.proposals?.map((e) => Proposal.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -1062,11 +1177,15 @@ export const QueryProposalsResponse = {
   toAmino(message: QueryProposalsResponse): QueryProposalsResponseAmino {
     const obj: any = {};
     if (message.proposals) {
-      obj.proposals = message.proposals.map(e => e ? Proposal.toAmino(e) : undefined);
+      obj.proposals = message.proposals.map((e) =>
+        e ? Proposal.toAmino(e) : undefined
+      );
     } else {
       obj.proposals = message.proposals;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryProposalsResponseAminoMsg): QueryProposalsResponse {
@@ -1075,10 +1194,12 @@ export const QueryProposalsResponse = {
   toAminoMsg(message: QueryProposalsResponse): QueryProposalsResponseAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryProposalsResponse",
-      value: QueryProposalsResponse.toAmino(message)
+      value: QueryProposalsResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryProposalsResponseProtoMsg): QueryProposalsResponse {
+  fromProtoMsg(
+    message: QueryProposalsResponseProtoMsg
+  ): QueryProposalsResponse {
     return QueryProposalsResponse.decode(message.value);
   },
   toProto(message: QueryProposalsResponse): Uint8Array {
@@ -1087,19 +1208,22 @@ export const QueryProposalsResponse = {
   toProtoMsg(message: QueryProposalsResponse): QueryProposalsResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryProposalsResponse",
-      value: QueryProposalsResponse.encode(message).finish()
+      value: QueryProposalsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryVoteRequest(): QueryVoteRequest {
   return {
     proposalId: Long.UZERO,
-    voter: ""
+    voter: "",
   };
 }
 export const QueryVoteRequest = {
   typeUrl: "/cosmos.gov.v1.QueryVoteRequest",
-  encode(message: QueryVoteRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryVoteRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.proposalId.isZero()) {
       writer.uint32(8).uint64(message.proposalId);
     }
@@ -1130,7 +1254,10 @@ export const QueryVoteRequest = {
   },
   fromPartial(object: Partial<QueryVoteRequest>): QueryVoteRequest {
     const message = createBaseQueryVoteRequest();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? Long.fromValue(object.proposalId)
+        : Long.UZERO;
     message.voter = object.voter ?? "";
     return message;
   },
@@ -1146,7 +1273,9 @@ export const QueryVoteRequest = {
   },
   toAmino(message: QueryVoteRequest): QueryVoteRequestAmino {
     const obj: any = {};
-    obj.proposal_id = !message.proposalId.isZero() ? message.proposalId?.toString() : undefined;
+    obj.proposal_id = !message.proposalId.isZero()
+      ? message.proposalId?.toString()
+      : undefined;
     obj.voter = message.voter === "" ? undefined : message.voter;
     return obj;
   },
@@ -1156,7 +1285,7 @@ export const QueryVoteRequest = {
   toAminoMsg(message: QueryVoteRequest): QueryVoteRequestAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryVoteRequest",
-      value: QueryVoteRequest.toAmino(message)
+      value: QueryVoteRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryVoteRequestProtoMsg): QueryVoteRequest {
@@ -1168,18 +1297,21 @@ export const QueryVoteRequest = {
   toProtoMsg(message: QueryVoteRequest): QueryVoteRequestProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryVoteRequest",
-      value: QueryVoteRequest.encode(message).finish()
+      value: QueryVoteRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryVoteResponse(): QueryVoteResponse {
   return {
-    vote: undefined
+    vote: undefined,
   };
 }
 export const QueryVoteResponse = {
   typeUrl: "/cosmos.gov.v1.QueryVoteResponse",
-  encode(message: QueryVoteResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryVoteResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.vote !== undefined) {
       Vote.encode(message.vote, writer.uint32(10).fork()).ldelim();
     }
@@ -1204,7 +1336,10 @@ export const QueryVoteResponse = {
   },
   fromPartial(object: Partial<QueryVoteResponse>): QueryVoteResponse {
     const message = createBaseQueryVoteResponse();
-    message.vote = object.vote !== undefined && object.vote !== null ? Vote.fromPartial(object.vote) : undefined;
+    message.vote =
+      object.vote !== undefined && object.vote !== null
+        ? Vote.fromPartial(object.vote)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryVoteResponseAmino): QueryVoteResponse {
@@ -1225,7 +1360,7 @@ export const QueryVoteResponse = {
   toAminoMsg(message: QueryVoteResponse): QueryVoteResponseAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryVoteResponse",
-      value: QueryVoteResponse.toAmino(message)
+      value: QueryVoteResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryVoteResponseProtoMsg): QueryVoteResponse {
@@ -1237,19 +1372,22 @@ export const QueryVoteResponse = {
   toProtoMsg(message: QueryVoteResponse): QueryVoteResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryVoteResponse",
-      value: QueryVoteResponse.encode(message).finish()
+      value: QueryVoteResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryVotesRequest(): QueryVotesRequest {
   return {
     proposalId: Long.UZERO,
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryVotesRequest = {
   typeUrl: "/cosmos.gov.v1.QueryVotesRequest",
-  encode(message: QueryVotesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryVotesRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.proposalId.isZero()) {
       writer.uint32(8).uint64(message.proposalId);
     }
@@ -1280,8 +1418,14 @@ export const QueryVotesRequest = {
   },
   fromPartial(object: Partial<QueryVotesRequest>): QueryVotesRequest {
     const message = createBaseQueryVotesRequest();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? Long.fromValue(object.proposalId)
+        : Long.UZERO;
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryVotesRequestAmino): QueryVotesRequest {
@@ -1296,8 +1440,12 @@ export const QueryVotesRequest = {
   },
   toAmino(message: QueryVotesRequest): QueryVotesRequestAmino {
     const obj: any = {};
-    obj.proposal_id = !message.proposalId.isZero() ? message.proposalId?.toString() : undefined;
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.proposal_id = !message.proposalId.isZero()
+      ? message.proposalId?.toString()
+      : undefined;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryVotesRequestAminoMsg): QueryVotesRequest {
@@ -1306,7 +1454,7 @@ export const QueryVotesRequest = {
   toAminoMsg(message: QueryVotesRequest): QueryVotesRequestAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryVotesRequest",
-      value: QueryVotesRequest.toAmino(message)
+      value: QueryVotesRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryVotesRequestProtoMsg): QueryVotesRequest {
@@ -1318,24 +1466,30 @@ export const QueryVotesRequest = {
   toProtoMsg(message: QueryVotesRequest): QueryVotesRequestProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryVotesRequest",
-      value: QueryVotesRequest.encode(message).finish()
+      value: QueryVotesRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryVotesResponse(): QueryVotesResponse {
   return {
     votes: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryVotesResponse = {
   typeUrl: "/cosmos.gov.v1.QueryVotesResponse",
-  encode(message: QueryVotesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryVotesResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.votes) {
       Vote.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -1361,13 +1515,16 @@ export const QueryVotesResponse = {
   },
   fromPartial(object: Partial<QueryVotesResponse>): QueryVotesResponse {
     const message = createBaseQueryVotesResponse();
-    message.votes = object.votes?.map(e => Vote.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.votes = object.votes?.map((e) => Vote.fromPartial(e)) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryVotesResponseAmino): QueryVotesResponse {
     const message = createBaseQueryVotesResponse();
-    message.votes = object.votes?.map(e => Vote.fromAmino(e)) || [];
+    message.votes = object.votes?.map((e) => Vote.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -1376,11 +1533,13 @@ export const QueryVotesResponse = {
   toAmino(message: QueryVotesResponse): QueryVotesResponseAmino {
     const obj: any = {};
     if (message.votes) {
-      obj.votes = message.votes.map(e => e ? Vote.toAmino(e) : undefined);
+      obj.votes = message.votes.map((e) => (e ? Vote.toAmino(e) : undefined));
     } else {
       obj.votes = message.votes;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryVotesResponseAminoMsg): QueryVotesResponse {
@@ -1389,7 +1548,7 @@ export const QueryVotesResponse = {
   toAminoMsg(message: QueryVotesResponse): QueryVotesResponseAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryVotesResponse",
-      value: QueryVotesResponse.toAmino(message)
+      value: QueryVotesResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryVotesResponseProtoMsg): QueryVotesResponse {
@@ -1401,18 +1560,21 @@ export const QueryVotesResponse = {
   toProtoMsg(message: QueryVotesResponse): QueryVotesResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryVotesResponse",
-      value: QueryVotesResponse.encode(message).finish()
+      value: QueryVotesResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {
-    paramsType: ""
+    paramsType: "",
   };
 }
 export const QueryParamsRequest = {
   typeUrl: "/cosmos.gov.v1.QueryParamsRequest",
-  encode(message: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryParamsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.paramsType !== "") {
       writer.uint32(10).string(message.paramsType);
     }
@@ -1449,7 +1611,8 @@ export const QueryParamsRequest = {
   },
   toAmino(message: QueryParamsRequest): QueryParamsRequestAmino {
     const obj: any = {};
-    obj.params_type = message.paramsType === "" ? undefined : message.paramsType;
+    obj.params_type =
+      message.paramsType === "" ? undefined : message.paramsType;
     return obj;
   },
   fromAminoMsg(object: QueryParamsRequestAminoMsg): QueryParamsRequest {
@@ -1458,7 +1621,7 @@ export const QueryParamsRequest = {
   toAminoMsg(message: QueryParamsRequest): QueryParamsRequestAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryParamsRequest",
-      value: QueryParamsRequest.toAmino(message)
+      value: QueryParamsRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryParamsRequestProtoMsg): QueryParamsRequest {
@@ -1470,29 +1633,41 @@ export const QueryParamsRequest = {
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryParamsRequest",
-      value: QueryParamsRequest.encode(message).finish()
+      value: QueryParamsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     votingParams: undefined,
     depositParams: undefined,
     tallyParams: undefined,
-    params: undefined
+    params: undefined,
   };
 }
 export const QueryParamsResponse = {
   typeUrl: "/cosmos.gov.v1.QueryParamsResponse",
-  encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryParamsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.votingParams !== undefined) {
-      VotingParams.encode(message.votingParams, writer.uint32(10).fork()).ldelim();
+      VotingParams.encode(
+        message.votingParams,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (message.depositParams !== undefined) {
-      DepositParams.encode(message.depositParams, writer.uint32(18).fork()).ldelim();
+      DepositParams.encode(
+        message.depositParams,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     if (message.tallyParams !== undefined) {
-      TallyParams.encode(message.tallyParams, writer.uint32(26).fork()).ldelim();
+      TallyParams.encode(
+        message.tallyParams,
+        writer.uint32(26).fork()
+      ).ldelim();
     }
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(34).fork()).ldelim();
@@ -1527,10 +1702,22 @@ export const QueryParamsResponse = {
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
-    message.votingParams = object.votingParams !== undefined && object.votingParams !== null ? VotingParams.fromPartial(object.votingParams) : undefined;
-    message.depositParams = object.depositParams !== undefined && object.depositParams !== null ? DepositParams.fromPartial(object.depositParams) : undefined;
-    message.tallyParams = object.tallyParams !== undefined && object.tallyParams !== null ? TallyParams.fromPartial(object.tallyParams) : undefined;
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.votingParams =
+      object.votingParams !== undefined && object.votingParams !== null
+        ? VotingParams.fromPartial(object.votingParams)
+        : undefined;
+    message.depositParams =
+      object.depositParams !== undefined && object.depositParams !== null
+        ? DepositParams.fromPartial(object.depositParams)
+        : undefined;
+    message.tallyParams =
+      object.tallyParams !== undefined && object.tallyParams !== null
+        ? TallyParams.fromPartial(object.tallyParams)
+        : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
@@ -1551,9 +1738,15 @@ export const QueryParamsResponse = {
   },
   toAmino(message: QueryParamsResponse): QueryParamsResponseAmino {
     const obj: any = {};
-    obj.voting_params = message.votingParams ? VotingParams.toAmino(message.votingParams) : undefined;
-    obj.deposit_params = message.depositParams ? DepositParams.toAmino(message.depositParams) : undefined;
-    obj.tally_params = message.tallyParams ? TallyParams.toAmino(message.tallyParams) : undefined;
+    obj.voting_params = message.votingParams
+      ? VotingParams.toAmino(message.votingParams)
+      : undefined;
+    obj.deposit_params = message.depositParams
+      ? DepositParams.toAmino(message.depositParams)
+      : undefined;
+    obj.tally_params = message.tallyParams
+      ? TallyParams.toAmino(message.tallyParams)
+      : undefined;
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
     return obj;
   },
@@ -1563,7 +1756,7 @@ export const QueryParamsResponse = {
   toAminoMsg(message: QueryParamsResponse): QueryParamsResponseAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryParamsResponse",
-      value: QueryParamsResponse.toAmino(message)
+      value: QueryParamsResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryParamsResponseProtoMsg): QueryParamsResponse {
@@ -1575,19 +1768,22 @@ export const QueryParamsResponse = {
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryParamsResponse",
-      value: QueryParamsResponse.encode(message).finish()
+      value: QueryParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryDepositRequest(): QueryDepositRequest {
   return {
     proposalId: Long.UZERO,
-    depositor: ""
+    depositor: "",
   };
 }
 export const QueryDepositRequest = {
   typeUrl: "/cosmos.gov.v1.QueryDepositRequest",
-  encode(message: QueryDepositRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryDepositRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.proposalId.isZero()) {
       writer.uint32(8).uint64(message.proposalId);
     }
@@ -1618,7 +1814,10 @@ export const QueryDepositRequest = {
   },
   fromPartial(object: Partial<QueryDepositRequest>): QueryDepositRequest {
     const message = createBaseQueryDepositRequest();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? Long.fromValue(object.proposalId)
+        : Long.UZERO;
     message.depositor = object.depositor ?? "";
     return message;
   },
@@ -1634,7 +1833,9 @@ export const QueryDepositRequest = {
   },
   toAmino(message: QueryDepositRequest): QueryDepositRequestAmino {
     const obj: any = {};
-    obj.proposal_id = !message.proposalId.isZero() ? message.proposalId?.toString() : undefined;
+    obj.proposal_id = !message.proposalId.isZero()
+      ? message.proposalId?.toString()
+      : undefined;
     obj.depositor = message.depositor === "" ? undefined : message.depositor;
     return obj;
   },
@@ -1644,7 +1845,7 @@ export const QueryDepositRequest = {
   toAminoMsg(message: QueryDepositRequest): QueryDepositRequestAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryDepositRequest",
-      value: QueryDepositRequest.toAmino(message)
+      value: QueryDepositRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryDepositRequestProtoMsg): QueryDepositRequest {
@@ -1656,24 +1857,30 @@ export const QueryDepositRequest = {
   toProtoMsg(message: QueryDepositRequest): QueryDepositRequestProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryDepositRequest",
-      value: QueryDepositRequest.encode(message).finish()
+      value: QueryDepositRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryDepositResponse(): QueryDepositResponse {
   return {
-    deposit: undefined
+    deposit: undefined,
   };
 }
 export const QueryDepositResponse = {
   typeUrl: "/cosmos.gov.v1.QueryDepositResponse",
-  encode(message: QueryDepositResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryDepositResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.deposit !== undefined) {
       Deposit.encode(message.deposit, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryDepositResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDepositResponse();
@@ -1692,7 +1899,10 @@ export const QueryDepositResponse = {
   },
   fromPartial(object: Partial<QueryDepositResponse>): QueryDepositResponse {
     const message = createBaseQueryDepositResponse();
-    message.deposit = object.deposit !== undefined && object.deposit !== null ? Deposit.fromPartial(object.deposit) : undefined;
+    message.deposit =
+      object.deposit !== undefined && object.deposit !== null
+        ? Deposit.fromPartial(object.deposit)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryDepositResponseAmino): QueryDepositResponse {
@@ -1704,7 +1914,9 @@ export const QueryDepositResponse = {
   },
   toAmino(message: QueryDepositResponse): QueryDepositResponseAmino {
     const obj: any = {};
-    obj.deposit = message.deposit ? Deposit.toAmino(message.deposit) : undefined;
+    obj.deposit = message.deposit
+      ? Deposit.toAmino(message.deposit)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryDepositResponseAminoMsg): QueryDepositResponse {
@@ -1713,7 +1925,7 @@ export const QueryDepositResponse = {
   toAminoMsg(message: QueryDepositResponse): QueryDepositResponseAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryDepositResponse",
-      value: QueryDepositResponse.toAmino(message)
+      value: QueryDepositResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryDepositResponseProtoMsg): QueryDepositResponse {
@@ -1725,19 +1937,22 @@ export const QueryDepositResponse = {
   toProtoMsg(message: QueryDepositResponse): QueryDepositResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryDepositResponse",
-      value: QueryDepositResponse.encode(message).finish()
+      value: QueryDepositResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryDepositsRequest(): QueryDepositsRequest {
   return {
     proposalId: Long.UZERO,
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryDepositsRequest = {
   typeUrl: "/cosmos.gov.v1.QueryDepositsRequest",
-  encode(message: QueryDepositsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryDepositsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.proposalId.isZero()) {
       writer.uint32(8).uint64(message.proposalId);
     }
@@ -1746,7 +1961,10 @@ export const QueryDepositsRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositsRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryDepositsRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDepositsRequest();
@@ -1768,8 +1986,14 @@ export const QueryDepositsRequest = {
   },
   fromPartial(object: Partial<QueryDepositsRequest>): QueryDepositsRequest {
     const message = createBaseQueryDepositsRequest();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? Long.fromValue(object.proposalId)
+        : Long.UZERO;
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryDepositsRequestAmino): QueryDepositsRequest {
@@ -1784,8 +2008,12 @@ export const QueryDepositsRequest = {
   },
   toAmino(message: QueryDepositsRequest): QueryDepositsRequestAmino {
     const obj: any = {};
-    obj.proposal_id = !message.proposalId.isZero() ? message.proposalId?.toString() : undefined;
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.proposal_id = !message.proposalId.isZero()
+      ? message.proposalId?.toString()
+      : undefined;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryDepositsRequestAminoMsg): QueryDepositsRequest {
@@ -1794,7 +2022,7 @@ export const QueryDepositsRequest = {
   toAminoMsg(message: QueryDepositsRequest): QueryDepositsRequestAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryDepositsRequest",
-      value: QueryDepositsRequest.toAmino(message)
+      value: QueryDepositsRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryDepositsRequestProtoMsg): QueryDepositsRequest {
@@ -1806,28 +2034,37 @@ export const QueryDepositsRequest = {
   toProtoMsg(message: QueryDepositsRequest): QueryDepositsRequestProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryDepositsRequest",
-      value: QueryDepositsRequest.encode(message).finish()
+      value: QueryDepositsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryDepositsResponse(): QueryDepositsResponse {
   return {
     deposits: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryDepositsResponse = {
   typeUrl: "/cosmos.gov.v1.QueryDepositsResponse",
-  encode(message: QueryDepositsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryDepositsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.deposits) {
       Deposit.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositsResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryDepositsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDepositsResponse();
@@ -1849,13 +2086,17 @@ export const QueryDepositsResponse = {
   },
   fromPartial(object: Partial<QueryDepositsResponse>): QueryDepositsResponse {
     const message = createBaseQueryDepositsResponse();
-    message.deposits = object.deposits?.map(e => Deposit.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.deposits =
+      object.deposits?.map((e) => Deposit.fromPartial(e)) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryDepositsResponseAmino): QueryDepositsResponse {
     const message = createBaseQueryDepositsResponse();
-    message.deposits = object.deposits?.map(e => Deposit.fromAmino(e)) || [];
+    message.deposits = object.deposits?.map((e) => Deposit.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -1864,11 +2105,15 @@ export const QueryDepositsResponse = {
   toAmino(message: QueryDepositsResponse): QueryDepositsResponseAmino {
     const obj: any = {};
     if (message.deposits) {
-      obj.deposits = message.deposits.map(e => e ? Deposit.toAmino(e) : undefined);
+      obj.deposits = message.deposits.map((e) =>
+        e ? Deposit.toAmino(e) : undefined
+      );
     } else {
       obj.deposits = message.deposits;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryDepositsResponseAminoMsg): QueryDepositsResponse {
@@ -1877,7 +2122,7 @@ export const QueryDepositsResponse = {
   toAminoMsg(message: QueryDepositsResponse): QueryDepositsResponseAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryDepositsResponse",
-      value: QueryDepositsResponse.toAmino(message)
+      value: QueryDepositsResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryDepositsResponseProtoMsg): QueryDepositsResponse {
@@ -1889,24 +2134,30 @@ export const QueryDepositsResponse = {
   toProtoMsg(message: QueryDepositsResponse): QueryDepositsResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryDepositsResponse",
-      value: QueryDepositsResponse.encode(message).finish()
+      value: QueryDepositsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryTallyResultRequest(): QueryTallyResultRequest {
   return {
-    proposalId: Long.UZERO
+    proposalId: Long.UZERO,
   };
 }
 export const QueryTallyResultRequest = {
   typeUrl: "/cosmos.gov.v1.QueryTallyResultRequest",
-  encode(message: QueryTallyResultRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryTallyResultRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.proposalId.isZero()) {
       writer.uint32(8).uint64(message.proposalId);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryTallyResultRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryTallyResultRequest();
@@ -1923,9 +2174,14 @@ export const QueryTallyResultRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryTallyResultRequest>): QueryTallyResultRequest {
+  fromPartial(
+    object: Partial<QueryTallyResultRequest>
+  ): QueryTallyResultRequest {
     const message = createBaseQueryTallyResultRequest();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? Long.fromValue(object.proposalId)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: QueryTallyResultRequestAmino): QueryTallyResultRequest {
@@ -1937,45 +2193,61 @@ export const QueryTallyResultRequest = {
   },
   toAmino(message: QueryTallyResultRequest): QueryTallyResultRequestAmino {
     const obj: any = {};
-    obj.proposal_id = !message.proposalId.isZero() ? message.proposalId?.toString() : undefined;
+    obj.proposal_id = !message.proposalId.isZero()
+      ? message.proposalId?.toString()
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryTallyResultRequestAminoMsg): QueryTallyResultRequest {
+  fromAminoMsg(
+    object: QueryTallyResultRequestAminoMsg
+  ): QueryTallyResultRequest {
     return QueryTallyResultRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryTallyResultRequest): QueryTallyResultRequestAminoMsg {
+  toAminoMsg(
+    message: QueryTallyResultRequest
+  ): QueryTallyResultRequestAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryTallyResultRequest",
-      value: QueryTallyResultRequest.toAmino(message)
+      value: QueryTallyResultRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryTallyResultRequestProtoMsg): QueryTallyResultRequest {
+  fromProtoMsg(
+    message: QueryTallyResultRequestProtoMsg
+  ): QueryTallyResultRequest {
     return QueryTallyResultRequest.decode(message.value);
   },
   toProto(message: QueryTallyResultRequest): Uint8Array {
     return QueryTallyResultRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryTallyResultRequest): QueryTallyResultRequestProtoMsg {
+  toProtoMsg(
+    message: QueryTallyResultRequest
+  ): QueryTallyResultRequestProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryTallyResultRequest",
-      value: QueryTallyResultRequest.encode(message).finish()
+      value: QueryTallyResultRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryTallyResultResponse(): QueryTallyResultResponse {
   return {
-    tally: undefined
+    tally: undefined,
   };
 }
 export const QueryTallyResultResponse = {
   typeUrl: "/cosmos.gov.v1.QueryTallyResultResponse",
-  encode(message: QueryTallyResultResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryTallyResultResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.tally !== undefined) {
       TallyResult.encode(message.tally, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryTallyResultResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryTallyResultResponse();
@@ -1992,9 +2264,14 @@ export const QueryTallyResultResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryTallyResultResponse>): QueryTallyResultResponse {
+  fromPartial(
+    object: Partial<QueryTallyResultResponse>
+  ): QueryTallyResultResponse {
     const message = createBaseQueryTallyResultResponse();
-    message.tally = object.tally !== undefined && object.tally !== null ? TallyResult.fromPartial(object.tally) : undefined;
+    message.tally =
+      object.tally !== undefined && object.tally !== null
+        ? TallyResult.fromPartial(object.tally)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryTallyResultResponseAmino): QueryTallyResultResponse {
@@ -2009,25 +2286,33 @@ export const QueryTallyResultResponse = {
     obj.tally = message.tally ? TallyResult.toAmino(message.tally) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryTallyResultResponseAminoMsg): QueryTallyResultResponse {
+  fromAminoMsg(
+    object: QueryTallyResultResponseAminoMsg
+  ): QueryTallyResultResponse {
     return QueryTallyResultResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryTallyResultResponse): QueryTallyResultResponseAminoMsg {
+  toAminoMsg(
+    message: QueryTallyResultResponse
+  ): QueryTallyResultResponseAminoMsg {
     return {
       type: "cosmos-sdk/v1/QueryTallyResultResponse",
-      value: QueryTallyResultResponse.toAmino(message)
+      value: QueryTallyResultResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryTallyResultResponseProtoMsg): QueryTallyResultResponse {
+  fromProtoMsg(
+    message: QueryTallyResultResponseProtoMsg
+  ): QueryTallyResultResponse {
     return QueryTallyResultResponse.decode(message.value);
   },
   toProto(message: QueryTallyResultResponse): Uint8Array {
     return QueryTallyResultResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryTallyResultResponse): QueryTallyResultResponseProtoMsg {
+  toProtoMsg(
+    message: QueryTallyResultResponse
+  ): QueryTallyResultResponseProtoMsg {
     return {
       typeUrl: "/cosmos.gov.v1.QueryTallyResultResponse",
-      value: QueryTallyResultResponse.encode(message).finish()
+      value: QueryTallyResultResponse.encode(message).finish(),
     };
-  }
+  },
 };

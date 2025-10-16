@@ -3,13 +3,10 @@ import {
   sixprotocol,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import { getConnectorConfig } from "@client-util";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import dotenv from "dotenv";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
+
 // import list_recipient  from "./list_address"
 // import list_recipient_71_250 from "./list_address_71-250";
 const list_recipient_71_250: Array<string> = [];

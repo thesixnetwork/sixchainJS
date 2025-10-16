@@ -93,12 +93,15 @@ function createBaseMsgIBCSend(): MsgIBCSend {
     channel: "",
     timeoutHeight: Long.UZERO,
     timeoutTimestamp: Long.UZERO,
-    data: new Uint8Array()
+    data: new Uint8Array(),
   };
 }
 export const MsgIBCSend = {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCSend",
-  encode(message: MsgIBCSend, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgIBCSend,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.channel !== "") {
       writer.uint32(18).string(message.channel);
     }
@@ -142,8 +145,14 @@ export const MsgIBCSend = {
   fromPartial(object: Partial<MsgIBCSend>): MsgIBCSend {
     const message = createBaseMsgIBCSend();
     message.channel = object.channel ?? "";
-    message.timeoutHeight = object.timeoutHeight !== undefined && object.timeoutHeight !== null ? Long.fromValue(object.timeoutHeight) : Long.UZERO;
-    message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? Long.fromValue(object.timeoutTimestamp) : Long.UZERO;
+    message.timeoutHeight =
+      object.timeoutHeight !== undefined && object.timeoutHeight !== null
+        ? Long.fromValue(object.timeoutHeight)
+        : Long.UZERO;
+    message.timeoutTimestamp =
+      object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null
+        ? Long.fromValue(object.timeoutTimestamp)
+        : Long.UZERO;
     message.data = object.data ?? new Uint8Array();
     return message;
   },
@@ -155,7 +164,10 @@ export const MsgIBCSend = {
     if (object.timeout_height !== undefined && object.timeout_height !== null) {
       message.timeoutHeight = Long.fromString(object.timeout_height);
     }
-    if (object.timeout_timestamp !== undefined && object.timeout_timestamp !== null) {
+    if (
+      object.timeout_timestamp !== undefined &&
+      object.timeout_timestamp !== null
+    ) {
       message.timeoutTimestamp = Long.fromString(object.timeout_timestamp);
     }
     if (object.data !== undefined && object.data !== null) {
@@ -166,8 +178,12 @@ export const MsgIBCSend = {
   toAmino(message: MsgIBCSend): MsgIBCSendAmino {
     const obj: any = {};
     obj.channel = message.channel === "" ? undefined : message.channel;
-    obj.timeout_height = !message.timeoutHeight.isZero() ? message.timeoutHeight?.toString() : undefined;
-    obj.timeout_timestamp = !message.timeoutTimestamp.isZero() ? message.timeoutTimestamp?.toString() : undefined;
+    obj.timeout_height = !message.timeoutHeight.isZero()
+      ? message.timeoutHeight?.toString()
+      : undefined;
+    obj.timeout_timestamp = !message.timeoutTimestamp.isZero()
+      ? message.timeoutTimestamp?.toString()
+      : undefined;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     return obj;
   },
@@ -177,7 +193,7 @@ export const MsgIBCSend = {
   toAminoMsg(message: MsgIBCSend): MsgIBCSendAminoMsg {
     return {
       type: "wasm/MsgIBCSend",
-      value: MsgIBCSend.toAmino(message)
+      value: MsgIBCSend.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgIBCSendProtoMsg): MsgIBCSend {
@@ -189,18 +205,21 @@ export const MsgIBCSend = {
   toProtoMsg(message: MsgIBCSend): MsgIBCSendProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgIBCSend",
-      value: MsgIBCSend.encode(message).finish()
+      value: MsgIBCSend.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgIBCCloseChannel(): MsgIBCCloseChannel {
   return {
-    channel: ""
+    channel: "",
   };
 }
 export const MsgIBCCloseChannel = {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCCloseChannel",
-  encode(message: MsgIBCCloseChannel, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgIBCCloseChannel,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.channel !== "") {
       writer.uint32(18).string(message.channel);
     }
@@ -246,7 +265,7 @@ export const MsgIBCCloseChannel = {
   toAminoMsg(message: MsgIBCCloseChannel): MsgIBCCloseChannelAminoMsg {
     return {
       type: "wasm/MsgIBCCloseChannel",
-      value: MsgIBCCloseChannel.toAmino(message)
+      value: MsgIBCCloseChannel.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgIBCCloseChannelProtoMsg): MsgIBCCloseChannel {
@@ -258,7 +277,7 @@ export const MsgIBCCloseChannel = {
   toProtoMsg(message: MsgIBCCloseChannel): MsgIBCCloseChannelProtoMsg {
     return {
       typeUrl: "/cosmwasm.wasm.v1.MsgIBCCloseChannel",
-      value: MsgIBCCloseChannel.encode(message).finish()
+      value: MsgIBCCloseChannel.encode(message).finish(),
     };
-  }
+  },
 };

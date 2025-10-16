@@ -24,7 +24,7 @@ const main = async () => {
     if (denom) {
       // Query supply for specific denom
       console.log(`=== Total Supply for ${denom} ===`);
-      
+
       const supply = await queryClient.cosmos.bank.v1beta1.supplyOf({
         denom: denom,
       });
@@ -32,7 +32,7 @@ const main = async () => {
       if (supply.amount) {
         const amount = supply.amount.amount || "0";
         console.log(`\nSupply: ${amount} ${denom}`);
-        
+
         // Convert usix to SIX for display
         if (denom === "usix") {
           const sixAmount = (parseInt(amount) / 1_000_000).toLocaleString();
@@ -41,11 +41,10 @@ const main = async () => {
       } else {
         console.log(`No supply found for denom: ${denom}`);
       }
-
     } else {
       // Query total supply of all denoms
       console.log(`=== Total Supply of All Denoms ===`);
-      
+
       const totalSupply = await queryClient.cosmos.bank.v1beta1.totalSupply({});
 
       if (totalSupply.supply && totalSupply.supply.length > 0) {
@@ -53,7 +52,7 @@ const main = async () => {
         totalSupply.supply.forEach((supply, index) => {
           const amount = supply.amount || "0";
           const denom = supply.denom || "";
-          
+
           // Convert usix to SIX for display
           if (denom === "usix") {
             const sixAmount = (parseInt(amount) / 1_000_000).toLocaleString();
@@ -62,21 +61,23 @@ const main = async () => {
             console.log(`  ${index + 1}. ${amount} ${denom}`);
           }
         });
-        
-        console.log(`\nTotal different denoms in supply: ${totalSupply.supply.length}`);
+
+        console.log(
+          `\nTotal different denoms in supply: ${totalSupply.supply.length}`
+        );
 
         // Show pagination info
         if (totalSupply.pagination) {
           console.log(`\nPagination:`);
           console.log(`  Next Key: ${totalSupply.pagination.nextKey || "N/A"}`);
-          console.log(`  Total: ${totalSupply.pagination.total?.toString() || "N/A"}`);
+          console.log(
+            `  Total: ${totalSupply.pagination.total?.toString() || "N/A"}`
+          );
         }
-
       } else {
         console.log("No supply information found");
       }
     }
-
   } catch (error) {
     console.error("Error querying supply:", error);
   }

@@ -1,7 +1,6 @@
 import { cosmos } from "@sixnetwork/sixchain-sdk";
 import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
-import Long from "long";
 
 dotenv.config();
 
@@ -29,7 +28,7 @@ const main = async () => {
     });
 
     console.log("=== Account Details ===");
-    if (account.account && '$typeUrl' in account.account) {
+    if (account.account && "$typeUrl" in account.account) {
       console.log("Type:", account.account.$typeUrl);
       // Cast to any to access properties safely
       const acc = account.account as any;
@@ -59,7 +58,10 @@ const main = async () => {
 
     console.log("\n=== Address Conversion ===");
     console.log("Original Address:", alice_address);
-    console.log("Address Bytes Length:", address_string_to_bytes.addressBytes?.length);
+    console.log(
+      "Address Bytes Length:",
+      address_string_to_bytes.addressBytes?.length
+    );
 
     // Convert address bytes back to string
     const address_byte_to_string =
@@ -76,13 +78,23 @@ const main = async () => {
 
     // Query auth module parameters
     const auth_params = await queryClient.cosmos.auth.v1beta1.params({});
-    console.log("Max Memo Characters:", auth_params.params?.maxMemoCharacters?.toString());
+    console.log(
+      "Max Memo Characters:",
+      auth_params.params?.maxMemoCharacters?.toString()
+    );
     console.log("Tx Sig Limit:", auth_params.params?.txSigLimit?.toString());
-    console.log("Tx Size Cost Per Byte:", auth_params.params?.txSizeCostPerByte?.toString());
+    console.log(
+      "Tx Size Cost Per Byte:",
+      auth_params.params?.txSizeCostPerByte?.toString()
+    );
 
     // Query auth module account by type (if available)
-    const module_accounts = await queryClient.cosmos.auth.v1beta1.moduleAccounts({});
-    console.log("Module Accounts Count:", module_accounts.accounts?.length || 0);
+    const module_accounts =
+      await queryClient.cosmos.auth.v1beta1.moduleAccounts({});
+    console.log(
+      "Module Accounts Count:",
+      module_accounts.accounts?.length || 0
+    );
   } catch (error) {
     console.error("Error querying grants:", error);
   }

@@ -82,7 +82,7 @@ const main = async () => {
   // Simulate transaction to get gas estimate
   const gasEstimate = await client.simulate(address, msgArray, "multi send");
   console.log(`Gas estimate: ${gasEstimate}`);
-  
+
   // Apply gas adjustment (1.5x like CLI)
   const gasLimit = Math.ceil(gasEstimate * 1.5);
   console.log(`Gas limit with adjustment: ${gasLimit}`);

@@ -15,10 +15,10 @@ This module provides robust gas estimation and fee calculation utilities for Six
 ### Basic Fee Calculation
 
 ```typescript
-import { 
+import {
   calculateFeeFromSimulation,
   COMMON_GAS_LIMITS,
-  signAndBroadcastWithRetry 
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 
 // Calculate fee from simulation
@@ -29,14 +29,19 @@ const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
   "transaction memo",
   {
     gasMultiplier: 1.5, // 50% buffer
-    gasPrice: 1.25,     // usix gas price
+    gasPrice: 1.25, // usix gas price
     fallbackGas: COMMON_GAS_LIMITS.SIMPLE_SEND,
-    denom: "usix"
+    denom: "usix",
   }
 );
 
 // Use the calculated fee
-const txResponse = await client.signAndBroadcast(address, messages, fee, "memo");
+const txResponse = await client.signAndBroadcast(
+  address,
+  messages,
+  fee,
+  "memo"
+);
 ```
 
 ### Auto Gas + Fallback Pattern (Recommended)
@@ -52,7 +57,7 @@ const txResponse = await signAndBroadcastWithRetry(
     gasMultiplier: 1.5,
     gasPrice: 1.25,
     fallbackGas: COMMON_GAS_LIMITS.STAKING,
-    denom: "usix"
+    denom: "usix",
   }
 );
 ```
@@ -64,7 +69,7 @@ import { createManualFee } from "@sixnetwork/sixchain-sdk";
 
 const fee = createManualFee(80000, {
   gasPrice: 1.25,
-  denom: "usix"
+  denom: "usix",
 });
 ```
 
@@ -75,9 +80,9 @@ const fee = createManualFee(80000, {
 ```typescript
 interface FeeCalculationOptions {
   gasMultiplier?: number; // Default: 1.5 (50% buffer)
-  gasPrice?: number;      // Default: 1.25 (for usix)
-  fallbackGas?: number;   // Default: 60000
-  denom?: string;         // Default: "usix"
+  gasPrice?: number; // Default: 1.25 (for usix)
+  fallbackGas?: number; // Default: 60000
+  denom?: string; // Default: "usix"
 }
 ```
 
@@ -97,7 +102,7 @@ COMMON_GAS_LIMITS = {
   NFT_CREATE_SCHEMA: 100000,
   AUTHZ_GRANT: 80000,
   DISTRIBUTION_WITHDRAW: 70000,
-}
+};
 ```
 
 ## Gas Price Constants
@@ -105,8 +110,8 @@ COMMON_GAS_LIMITS = {
 ```typescript
 GAS_PRICES = {
   USIX: 1.25,
-  SIX: 0.000001250, // 1.25usix = 0.000001250six
-}
+  SIX: 0.00000125, // 1.25usix = 0.000001250six
+};
 ```
 
 ## Error Handling
@@ -127,11 +132,11 @@ The utilities automatically handle:
 ## Example: Complete Transaction Flow
 
 ```typescript
-import { 
+import {
   getSigningCosmosClient,
   cosmos,
   signAndBroadcastWithRetry,
-  COMMON_GAS_LIMITS 
+  COMMON_GAS_LIMITS
 } from "@sixnetwork/sixchain-sdk";
 
 const main = async () => {

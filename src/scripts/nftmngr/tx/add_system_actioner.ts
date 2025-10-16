@@ -1,10 +1,11 @@
 import {
   getSigningSixprotocolClient,
   sixprotocol,
+  calculateFeeFromSimulation,
+  COMMON_GAS_LIMITS,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import dotenv from "dotenv";
 import allAddress from "./all_address";
 import { getConnectorConfig } from "@client-util";
@@ -69,8 +70,10 @@ const addSystemActioner = async (start: number, end: number) => {
     // If out of gas error (code 11), retry with calculated fee
     if (txResponse.code === 11) {
       console.log("Out of gas error detected. Retrying with calculated fee...");
-      console.log(`Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`);
-      
+      console.log(
+        `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
+      );
+
       // Calculate fee using utility function with higher multiplier
       const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
         client,
@@ -81,7 +84,7 @@ const addSystemActioner = async (start: number, end: number) => {
           gasMultiplier: 1.5, // 50% buffer
           gasPrice: 1.25,
           fallbackGas: COMMON_GAS_LIMITS.NFT_MINT,
-          denom: "usix"
+          denom: "usix",
         }
       );
 

@@ -27,16 +27,17 @@ const main = async () => {
 
   try {
     // Query spendable balances (not locked/vested)
-    const spendableBalances = await queryClient.cosmos.bank.v1beta1.spendableBalances({
-      address: queryAddress,
-    });
+    const spendableBalances =
+      await queryClient.cosmos.bank.v1beta1.spendableBalances({
+        address: queryAddress,
+      });
 
     if (spendableBalances.balances && spendableBalances.balances.length > 0) {
       console.log("Spendable Balances:");
       spendableBalances.balances.forEach((balance, index) => {
         const amount = balance.amount || "0";
         const denom = balance.denom || "";
-        
+
         // Convert usix to SIX for display
         if (denom === "usix") {
           const sixAmount = (parseInt(amount) / 1_000_000).toString();
@@ -45,18 +46,21 @@ const main = async () => {
           console.log(`  ${index + 1}. ${amount} ${denom}`);
         }
       });
-      
-      console.log(`\nTotal spendable denoms: ${spendableBalances.balances.length}`);
+
+      console.log(
+        `\nTotal spendable denoms: ${spendableBalances.balances.length}`
+      );
     } else {
       console.log("No spendable balances found for this address");
     }
 
     // Also query spendable balance for a specific denom (usix)
     console.log("\n=== Spendable Balance for usix ===");
-    const spendableBalance = await queryClient.cosmos.bank.v1beta1.spendableBalanceByDenom({
-      address: queryAddress,
-      denom: "usix",
-    });
+    const spendableBalance =
+      await queryClient.cosmos.bank.v1beta1.spendableBalanceByDenom({
+        address: queryAddress,
+        denom: "usix",
+      });
 
     if (spendableBalance.balance) {
       const amount = spendableBalance.balance.amount || "0";
@@ -66,7 +70,6 @@ const main = async () => {
     } else {
       console.log("No spendable usix balance found");
     }
-
   } catch (error) {
     console.error("Error querying spendable balances:", error);
   }

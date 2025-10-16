@@ -26,24 +26,26 @@ const main = async () => {
 
     if (params.params) {
       console.log("\nBank Module Configuration:");
-      
+
       // Send enabled parameters
       if (params.params.sendEnabled && params.params.sendEnabled.length > 0) {
         console.log("\nSend Enabled Rules:");
         params.params.sendEnabled.forEach((rule, index) => {
-          console.log(`  ${index + 1}. Denom: ${rule.denom || "N/A"}, Enabled: ${rule.enabled || false}`);
+          console.log(
+            `  ${index + 1}. Denom: ${rule.denom || "N/A"}, Enabled: ${rule.enabled || false}`
+          );
         });
       } else {
         console.log("\nSend Enabled Rules: Default (all enabled)");
       }
 
       // Default send enabled
-      console.log(`\nDefault Send Enabled: ${params.params.defaultSendEnabled !== undefined ? params.params.defaultSendEnabled : 'true (default)'}`);
-      
+      console.log(
+        `\nDefault Send Enabled: ${params.params.defaultSendEnabled !== undefined ? params.params.defaultSendEnabled : "true (default)"}`
+      );
     } else {
       console.log("No parameters found");
     }
-
   } catch (error) {
     console.error("Error querying bank parameters:", error);
   }

@@ -26,7 +26,7 @@ const main = async () => {
     if (denoms.length > 0) {
       // Query specific denoms
       console.log(`\nChecking send status for: ${denoms.join(", ")}`);
-      
+
       const sendEnabled = await queryClient.cosmos.bank.v1beta1.sendEnabled({
         denoms: denoms,
       });
@@ -38,20 +38,23 @@ const main = async () => {
           console.log(`  ${index + 1}. ${status.denom}: ${isEnabled}`);
         });
       } else {
-        console.log("\nNo specific send rules found for these denoms (using default)");
+        console.log(
+          "\nNo specific send rules found for these denoms (using default)"
+        );
       }
 
       // Also show pagination info
       if (sendEnabled.pagination) {
         console.log(`\nPagination:`);
         console.log(`  Next Key: ${sendEnabled.pagination.nextKey || "N/A"}`);
-        console.log(`  Total: ${sendEnabled.pagination.total?.toString() || "N/A"}`);
+        console.log(
+          `  Total: ${sendEnabled.pagination.total?.toString() || "N/A"}`
+        );
       }
-
     } else {
       // Query all send-enabled rules
       console.log("\nQuerying all send-enabled rules...");
-      
+
       const allSendEnabled = await queryClient.cosmos.bank.v1beta1.sendEnabled({
         denoms: [], // Empty array to get all
       });
@@ -62,10 +65,12 @@ const main = async () => {
           const isEnabled = status.enabled ? "✅ ENABLED" : "❌ DISABLED";
           console.log(`  ${index + 1}. ${status.denom}: ${isEnabled}`);
         });
-        
+
         console.log(`\nTotal rules: ${allSendEnabled.sendEnabled.length}`);
       } else {
-        console.log("\nNo specific send rules configured (all denoms use default setting)");
+        console.log(
+          "\nNo specific send rules configured (all denoms use default setting)"
+        );
       }
 
       // Check default setting from params
@@ -73,11 +78,12 @@ const main = async () => {
       const params = await queryClient.cosmos.bank.v1beta1.params({});
       if (params.params) {
         const defaultEnabled = params.params.defaultSendEnabled !== false;
-        console.log(`Default send enabled: ${defaultEnabled ? "✅ ENABLED" : "❌ DISABLED"}`);
+        console.log(
+          `Default send enabled: ${defaultEnabled ? "✅ ENABLED" : "❌ DISABLED"}`
+        );
         console.log("(This applies to all denoms without specific rules)");
       }
     }
-
   } catch (error) {
     console.error("Error querying send-enabled status:", error);
   }

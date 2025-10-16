@@ -24,7 +24,7 @@ const main = async () => {
     if (denom) {
       // Query specific denom metadata
       console.log(`=== Metadata for ${denom} ===`);
-      
+
       const metadata = await queryClient.cosmos.bank.v1beta1.denomMetadata({
         denom: denom,
       });
@@ -41,7 +41,9 @@ const main = async () => {
         if (meta.denomUnits && meta.denomUnits.length > 0) {
           console.log(`\nDenom Units:`);
           meta.denomUnits.forEach((unit, index) => {
-            console.log(`  ${index + 1}. ${unit.denom}: 10^${unit.exponent} (${unit.aliases?.join(", ") || "no aliases"})`);
+            console.log(
+              `  ${index + 1}. ${unit.denom}: 10^${unit.exponent} (${unit.aliases?.join(", ") || "no aliases"})`
+            );
           });
         }
 
@@ -52,28 +54,32 @@ const main = async () => {
         if (meta.uriHash) {
           console.log(`URI Hash: ${meta.uriHash}`);
         }
-
       } else {
         console.log(`No metadata found for denom: ${denom}`);
       }
-
     } else {
       // Query all denom metadata
       console.log(`=== All Denom Metadata ===`);
-      
-      const allMetadata = await queryClient.cosmos.bank.v1beta1.denomsMetadata({});
+
+      const allMetadata = await queryClient.cosmos.bank.v1beta1.denomsMetadata(
+        {}
+      );
 
       if (allMetadata.metadatas && allMetadata.metadatas.length > 0) {
-        console.log(`\nFound ${allMetadata.metadatas.length} registered denoms:\n`);
-        
+        console.log(
+          `\nFound ${allMetadata.metadatas.length} registered denoms:\n`
+        );
+
         allMetadata.metadatas.forEach((meta, index) => {
           console.log(`${index + 1}. ${meta.base || "Unknown"}`);
           console.log(`   Name: ${meta.name || "N/A"}`);
           console.log(`   Symbol: ${meta.symbol || "N/A"}`);
           console.log(`   Display: ${meta.display || "N/A"}`);
-          
+
           if (meta.denomUnits && meta.denomUnits.length > 0) {
-            console.log(`   Units: ${meta.denomUnits.map(u => `${u.denom}(10^${u.exponent})`).join(", ")}`);
+            console.log(
+              `   Units: ${meta.denomUnits.map((u) => `${u.denom}(10^${u.exponent})`).join(", ")}`
+            );
           }
           console.log("");
         });
@@ -82,14 +88,14 @@ const main = async () => {
         if (allMetadata.pagination) {
           console.log(`Pagination:`);
           console.log(`  Next Key: ${allMetadata.pagination.nextKey || "N/A"}`);
-          console.log(`  Total: ${allMetadata.pagination.total?.toString() || "N/A"}`);
+          console.log(
+            `  Total: ${allMetadata.pagination.total?.toString() || "N/A"}`
+          );
         }
-
       } else {
         console.log("No denom metadata found");
       }
     }
-
   } catch (error) {
     console.error("Error querying denom metadata:", error);
   }

@@ -1,15 +1,14 @@
-import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
+import {
+  getSigningCosmosClient,
+  cosmos,
+  calculateFeeFromSimulation,
+  COMMON_GAS_LIMITS,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import { GasPrice } from "@cosmjs/stargate";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import { getConnectorConfig } from "@client-util";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 import dotenv from "dotenv";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 
 dotenv.config();
 
@@ -55,12 +54,43 @@ const main = async () => {
 
   msgArray.push(setWithdrawAddress);
 
-  const txResponse = await client.signAndBroadcast(
+  // First attempt with auto gas
+  console.log("Attempting set withdraw address with auto gas...");
+  let txResponse = await client.signAndBroadcast(
     address,
     msgArray,
     "auto",
     "set withdraw address"
   );
+
+  // If out of gas error (code 11), retry with calculated fee
+  if (txResponse.code === 11) {
+    console.log("Out of gas error detected. Retrying with calculated fee...");
+    console.log(
+      `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
+    );
+    // Calculate fee using utility function with higher multiplier
+    const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
+      client,
+      address,
+      msgArray,
+      "set withdraw address",
+      {
+        gasMultiplier: 1.5, // 50% buffer
+        gasPrice: 1.25,
+        fallbackGas: COMMON_GAS_LIMITS.STAKING,
+        denom: "usix",
+      }
+    );
+    console.log(`Calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
+    // Retry with calculated fee
+    txResponse = await client.signAndBroadcast(
+      address,
+      msgArray,
+      fee,
+      "set withdraw address"
+    );
+  }
 
   if (txResponse.code !== 0) {
     console.error(`Error setting withdraw address: ${txResponse.rawLog}`);

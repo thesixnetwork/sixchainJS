@@ -57,12 +57,15 @@ function createBaseActionExecutor(): ActionExecutor {
   return {
     nftSchemaCode: "",
     executorAddress: "",
-    creator: ""
+    creator: "",
   };
 }
 export const ActionExecutor = {
   typeUrl: "/sixprotocol.nftmngr.ActionExecutor",
-  encode(message: ActionExecutor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ActionExecutor,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -109,7 +112,10 @@ export const ActionExecutor = {
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
     }
-    if (object.executorAddress !== undefined && object.executorAddress !== null) {
+    if (
+      object.executorAddress !== undefined &&
+      object.executorAddress !== null
+    ) {
       message.executorAddress = object.executorAddress;
     }
     if (object.creator !== undefined && object.creator !== null) {
@@ -119,8 +125,10 @@ export const ActionExecutor = {
   },
   toAmino(message: ActionExecutor): ActionExecutorAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
-    obj.executorAddress = message.executorAddress === "" ? undefined : message.executorAddress;
+    obj.nftSchemaCode =
+      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.executorAddress =
+      message.executorAddress === "" ? undefined : message.executorAddress;
     obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;
   },
@@ -136,19 +144,22 @@ export const ActionExecutor = {
   toProtoMsg(message: ActionExecutor): ActionExecutorProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.ActionExecutor",
-      value: ActionExecutor.encode(message).finish()
+      value: ActionExecutor.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseActionExecutorBySchema(): ActionExecutorBySchema {
   return {
     nftSchemaCode: "",
-    executorAddress: []
+    executorAddress: [],
   };
 }
 export const ActionExecutorBySchema = {
   typeUrl: "/sixprotocol.nftmngr.ActionExecutorBySchema",
-  encode(message: ActionExecutorBySchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ActionExecutorBySchema,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -157,7 +168,10 @@ export const ActionExecutorBySchema = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ActionExecutorBySchema {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): ActionExecutorBySchema {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseActionExecutorBySchema();
@@ -180,7 +194,7 @@ export const ActionExecutorBySchema = {
   fromPartial(object: Partial<ActionExecutorBySchema>): ActionExecutorBySchema {
     const message = createBaseActionExecutorBySchema();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
-    message.executorAddress = object.executorAddress?.map(e => e) || [];
+    message.executorAddress = object.executorAddress?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: ActionExecutorBySchemaAmino): ActionExecutorBySchema {
@@ -188,14 +202,15 @@ export const ActionExecutorBySchema = {
     if (object.nftSchemaCode !== undefined && object.nftSchemaCode !== null) {
       message.nftSchemaCode = object.nftSchemaCode;
     }
-    message.executorAddress = object.executorAddress?.map(e => e) || [];
+    message.executorAddress = object.executorAddress?.map((e) => e) || [];
     return message;
   },
   toAmino(message: ActionExecutorBySchema): ActionExecutorBySchemaAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode =
+      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     if (message.executorAddress) {
-      obj.executorAddress = message.executorAddress.map(e => e);
+      obj.executorAddress = message.executorAddress.map((e) => e);
     } else {
       obj.executorAddress = message.executorAddress;
     }
@@ -204,7 +219,9 @@ export const ActionExecutorBySchema = {
   fromAminoMsg(object: ActionExecutorBySchemaAminoMsg): ActionExecutorBySchema {
     return ActionExecutorBySchema.fromAmino(object.value);
   },
-  fromProtoMsg(message: ActionExecutorBySchemaProtoMsg): ActionExecutorBySchema {
+  fromProtoMsg(
+    message: ActionExecutorBySchemaProtoMsg
+  ): ActionExecutorBySchema {
     return ActionExecutorBySchema.decode(message.value);
   },
   toProto(message: ActionExecutorBySchema): Uint8Array {
@@ -213,7 +230,7 @@ export const ActionExecutorBySchema = {
   toProtoMsg(message: ActionExecutorBySchema): ActionExecutorBySchemaProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.ActionExecutorBySchema",
-      value: ActionExecutorBySchema.encode(message).finish()
+      value: ActionExecutorBySchema.encode(message).finish(),
     };
-  }
+  },
 };

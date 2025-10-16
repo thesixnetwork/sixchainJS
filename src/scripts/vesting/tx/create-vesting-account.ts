@@ -1,17 +1,16 @@
 import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
+
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
+
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
+
 import { GasPrice } from "@cosmjs/stargate";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
+
 import { getConnectorConfig } from "@client-util";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
+
 import Long from "long";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
+
 import dotenv from "dotenv";
-import { calculateFeeFromSimulation, COMMON_GAS_LIMITS } from "../../utils/fee-calculator";
 
 dotenv.config();
 

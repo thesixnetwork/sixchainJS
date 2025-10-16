@@ -36,7 +36,7 @@ async function main() {
   for (let i = 0; i < 10; i++) {
     // Get signing client
     try {
-      const rpcClient = await client.getBlock()
+      const rpcClient = await client.getBlock();
       if (rpcClient) {
         console.log("Connection success", i, "Block", rpcClient.header.height);
       }
