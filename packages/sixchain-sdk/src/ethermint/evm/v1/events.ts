@@ -180,12 +180,15 @@ function createBaseEventEthereumTx(): EventEthereumTx {
     gasUsed: "",
     hash: "",
     recipient: "",
-    ethTxFailed: ""
+    ethTxFailed: "",
   };
 }
 export const EventEthereumTx = {
   typeUrl: "/ethermint.evm.v1.EventEthereumTx",
-  encode(message: EventEthereumTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: EventEthereumTx,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.amount !== "") {
       writer.uint32(10).string(message.amount);
     }
@@ -288,7 +291,8 @@ export const EventEthereumTx = {
     obj.gas_used = message.gasUsed === "" ? undefined : message.gasUsed;
     obj.hash = message.hash === "" ? undefined : message.hash;
     obj.recipient = message.recipient === "" ? undefined : message.recipient;
-    obj.eth_tx_failed = message.ethTxFailed === "" ? undefined : message.ethTxFailed;
+    obj.eth_tx_failed =
+      message.ethTxFailed === "" ? undefined : message.ethTxFailed;
     return obj;
   },
   fromAminoMsg(object: EventEthereumTxAminoMsg): EventEthereumTx {
@@ -303,18 +307,21 @@ export const EventEthereumTx = {
   toProtoMsg(message: EventEthereumTx): EventEthereumTxProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.EventEthereumTx",
-      value: EventEthereumTx.encode(message).finish()
+      value: EventEthereumTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseEventTxLog(): EventTxLog {
   return {
-    txLogs: []
+    txLogs: [],
   };
 }
 export const EventTxLog = {
   typeUrl: "/ethermint.evm.v1.EventTxLog",
-  encode(message: EventTxLog, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: EventTxLog,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.txLogs) {
       writer.uint32(10).string(v!);
     }
@@ -339,18 +346,18 @@ export const EventTxLog = {
   },
   fromPartial(object: Partial<EventTxLog>): EventTxLog {
     const message = createBaseEventTxLog();
-    message.txLogs = object.txLogs?.map(e => e) || [];
+    message.txLogs = object.txLogs?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: EventTxLogAmino): EventTxLog {
     const message = createBaseEventTxLog();
-    message.txLogs = object.tx_logs?.map(e => e) || [];
+    message.txLogs = object.tx_logs?.map((e) => e) || [];
     return message;
   },
   toAmino(message: EventTxLog): EventTxLogAmino {
     const obj: any = {};
     if (message.txLogs) {
-      obj.tx_logs = message.txLogs.map(e => e);
+      obj.tx_logs = message.txLogs.map((e) => e);
     } else {
       obj.tx_logs = message.txLogs;
     }
@@ -368,20 +375,23 @@ export const EventTxLog = {
   toProtoMsg(message: EventTxLog): EventTxLogProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.EventTxLog",
-      value: EventTxLog.encode(message).finish()
+      value: EventTxLog.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseEventMessage(): EventMessage {
   return {
     module: "",
     sender: "",
-    txType: ""
+    txType: "",
   };
 }
 export const EventMessage = {
   typeUrl: "/ethermint.evm.v1.EventMessage",
-  encode(message: EventMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: EventMessage,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.module !== "") {
       writer.uint32(10).string(message.module);
     }
@@ -455,18 +465,21 @@ export const EventMessage = {
   toProtoMsg(message: EventMessage): EventMessageProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.EventMessage",
-      value: EventMessage.encode(message).finish()
+      value: EventMessage.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseEventBlockBloom(): EventBlockBloom {
   return {
-    bloom: ""
+    bloom: "",
   };
 }
 export const EventBlockBloom = {
   typeUrl: "/ethermint.evm.v1.EventBlockBloom",
-  encode(message: EventBlockBloom, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: EventBlockBloom,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.bloom !== "") {
       writer.uint32(10).string(message.bloom);
     }
@@ -518,7 +531,7 @@ export const EventBlockBloom = {
   toProtoMsg(message: EventBlockBloom): EventBlockBloomProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.EventBlockBloom",
-      value: EventBlockBloom.encode(message).finish()
+      value: EventBlockBloom.encode(message).finish(),
     };
-  }
+  },
 };

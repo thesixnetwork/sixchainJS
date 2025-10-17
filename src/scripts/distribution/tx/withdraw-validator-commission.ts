@@ -50,9 +50,11 @@ const main = async () => {
   let msgArray: Array<EncodeObject> = [];
 
   const withdrawValidatorCommission =
-    cosmos.distribution.v1beta1.MessageComposer.withTypeUrl.withdrawValidatorCommission({
-      validatorAddress: valAddr,
-    });
+    cosmos.distribution.v1beta1.MessageComposer.withTypeUrl.withdrawValidatorCommission(
+      {
+        validatorAddress: valAddr,
+      }
+    );
 
   msgArray.push(withdrawValidatorCommission);
 
@@ -73,7 +75,9 @@ const main = async () => {
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error withdrawing validator commission: ${txResponse.rawLog}`);
+    console.error(
+      `Error withdrawing validator commission: ${txResponse.rawLog}`
+    );
     return false;
   } else {
     console.log(

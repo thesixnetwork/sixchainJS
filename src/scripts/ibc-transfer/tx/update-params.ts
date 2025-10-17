@@ -47,14 +47,15 @@ const main = async () => {
 
   console.log(`Signer: ${address}`);
 
-  const { updateParams } = ibc.applications.transfer.v1.MessageComposer.withTypeUrl;
+  const { updateParams } =
+    ibc.applications.transfer.v1.MessageComposer.withTypeUrl;
 
   let msgArray: Array<EncodeObject> = [];
 
   const msgUpdateParams = updateParams({
     signer: AUTHORITY,
     params: {
-        allowedClients:[],
+      allowedClients: [],
     },
   });
 

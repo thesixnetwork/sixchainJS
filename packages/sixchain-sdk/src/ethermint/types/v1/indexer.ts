@@ -92,12 +92,15 @@ function createBaseTxResult(): TxResult {
     ethTxIndex: 0,
     failed: false,
     gasUsed: Long.UZERO,
-    cumulativeGasUsed: Long.UZERO
+    cumulativeGasUsed: Long.UZERO,
   };
 }
 export const TxResult = {
   typeUrl: "/ethermint.types.v1.TxResult",
-  encode(message: TxResult, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: TxResult,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.height.isZero()) {
       writer.uint32(8).int64(message.height);
     }
@@ -158,13 +161,23 @@ export const TxResult = {
   },
   fromPartial(object: Partial<TxResult>): TxResult {
     const message = createBaseTxResult();
-    message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
+    message.height =
+      object.height !== undefined && object.height !== null
+        ? Long.fromValue(object.height)
+        : Long.ZERO;
     message.txIndex = object.txIndex ?? 0;
     message.msgIndex = object.msgIndex ?? 0;
     message.ethTxIndex = object.ethTxIndex ?? 0;
     message.failed = object.failed ?? false;
-    message.gasUsed = object.gasUsed !== undefined && object.gasUsed !== null ? Long.fromValue(object.gasUsed) : Long.UZERO;
-    message.cumulativeGasUsed = object.cumulativeGasUsed !== undefined && object.cumulativeGasUsed !== null ? Long.fromValue(object.cumulativeGasUsed) : Long.UZERO;
+    message.gasUsed =
+      object.gasUsed !== undefined && object.gasUsed !== null
+        ? Long.fromValue(object.gasUsed)
+        : Long.UZERO;
+    message.cumulativeGasUsed =
+      object.cumulativeGasUsed !== undefined &&
+      object.cumulativeGasUsed !== null
+        ? Long.fromValue(object.cumulativeGasUsed)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: TxResultAmino): TxResult {
@@ -187,20 +200,30 @@ export const TxResult = {
     if (object.gas_used !== undefined && object.gas_used !== null) {
       message.gasUsed = Long.fromString(object.gas_used);
     }
-    if (object.cumulative_gas_used !== undefined && object.cumulative_gas_used !== null) {
+    if (
+      object.cumulative_gas_used !== undefined &&
+      object.cumulative_gas_used !== null
+    ) {
       message.cumulativeGasUsed = Long.fromString(object.cumulative_gas_used);
     }
     return message;
   },
   toAmino(message: TxResult): TxResultAmino {
     const obj: any = {};
-    obj.height = !message.height.isZero() ? message.height?.toString() : undefined;
+    obj.height = !message.height.isZero()
+      ? message.height?.toString()
+      : undefined;
     obj.tx_index = message.txIndex === 0 ? undefined : message.txIndex;
     obj.msg_index = message.msgIndex === 0 ? undefined : message.msgIndex;
-    obj.eth_tx_index = message.ethTxIndex === 0 ? undefined : message.ethTxIndex;
+    obj.eth_tx_index =
+      message.ethTxIndex === 0 ? undefined : message.ethTxIndex;
     obj.failed = message.failed === false ? undefined : message.failed;
-    obj.gas_used = !message.gasUsed.isZero() ? message.gasUsed?.toString() : undefined;
-    obj.cumulative_gas_used = !message.cumulativeGasUsed.isZero() ? message.cumulativeGasUsed?.toString() : undefined;
+    obj.gas_used = !message.gasUsed.isZero()
+      ? message.gasUsed?.toString()
+      : undefined;
+    obj.cumulative_gas_used = !message.cumulativeGasUsed.isZero()
+      ? message.cumulativeGasUsed?.toString()
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: TxResultAminoMsg): TxResult {
@@ -215,7 +238,7 @@ export const TxResult = {
   toProtoMsg(message: TxResult): TxResultProtoMsg {
     return {
       typeUrl: "/ethermint.types.v1.TxResult",
-      value: TxResult.encode(message).finish()
+      value: TxResult.encode(message).finish(),
     };
-  }
+  },
 };

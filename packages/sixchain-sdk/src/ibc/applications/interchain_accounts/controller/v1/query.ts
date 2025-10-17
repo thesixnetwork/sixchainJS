@@ -105,12 +105,16 @@ export interface QueryParamsResponseSDKType {
 function createBaseQueryInterchainAccountRequest(): QueryInterchainAccountRequest {
   return {
     owner: "",
-    connectionId: ""
+    connectionId: "",
   };
 }
 export const QueryInterchainAccountRequest = {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountRequest",
-  encode(message: QueryInterchainAccountRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl:
+    "/ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountRequest",
+  encode(
+    message: QueryInterchainAccountRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
     }
@@ -119,7 +123,10 @@ export const QueryInterchainAccountRequest = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryInterchainAccountRequest {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryInterchainAccountRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryInterchainAccountRequest();
@@ -139,13 +146,17 @@ export const QueryInterchainAccountRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryInterchainAccountRequest>): QueryInterchainAccountRequest {
+  fromPartial(
+    object: Partial<QueryInterchainAccountRequest>
+  ): QueryInterchainAccountRequest {
     const message = createBaseQueryInterchainAccountRequest();
     message.owner = object.owner ?? "";
     message.connectionId = object.connectionId ?? "";
     return message;
   },
-  fromAmino(object: QueryInterchainAccountRequestAmino): QueryInterchainAccountRequest {
+  fromAmino(
+    object: QueryInterchainAccountRequestAmino
+  ): QueryInterchainAccountRequest {
     const message = createBaseQueryInterchainAccountRequest();
     if (object.owner !== undefined && object.owner !== null) {
       message.owner = object.owner;
@@ -155,48 +166,67 @@ export const QueryInterchainAccountRequest = {
     }
     return message;
   },
-  toAmino(message: QueryInterchainAccountRequest): QueryInterchainAccountRequestAmino {
+  toAmino(
+    message: QueryInterchainAccountRequest
+  ): QueryInterchainAccountRequestAmino {
     const obj: any = {};
     obj.owner = message.owner === "" ? undefined : message.owner;
-    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
+    obj.connection_id =
+      message.connectionId === "" ? undefined : message.connectionId;
     return obj;
   },
-  fromAminoMsg(object: QueryInterchainAccountRequestAminoMsg): QueryInterchainAccountRequest {
+  fromAminoMsg(
+    object: QueryInterchainAccountRequestAminoMsg
+  ): QueryInterchainAccountRequest {
     return QueryInterchainAccountRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryInterchainAccountRequest): QueryInterchainAccountRequestAminoMsg {
+  toAminoMsg(
+    message: QueryInterchainAccountRequest
+  ): QueryInterchainAccountRequestAminoMsg {
     return {
       type: "cosmos-sdk/QueryInterchainAccountRequest",
-      value: QueryInterchainAccountRequest.toAmino(message)
+      value: QueryInterchainAccountRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryInterchainAccountRequestProtoMsg): QueryInterchainAccountRequest {
+  fromProtoMsg(
+    message: QueryInterchainAccountRequestProtoMsg
+  ): QueryInterchainAccountRequest {
     return QueryInterchainAccountRequest.decode(message.value);
   },
   toProto(message: QueryInterchainAccountRequest): Uint8Array {
     return QueryInterchainAccountRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryInterchainAccountRequest): QueryInterchainAccountRequestProtoMsg {
+  toProtoMsg(
+    message: QueryInterchainAccountRequest
+  ): QueryInterchainAccountRequestProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountRequest",
-      value: QueryInterchainAccountRequest.encode(message).finish()
+      typeUrl:
+        "/ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountRequest",
+      value: QueryInterchainAccountRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryInterchainAccountResponse(): QueryInterchainAccountResponse {
   return {
-    address: ""
+    address: "",
   };
 }
 export const QueryInterchainAccountResponse = {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountResponse",
-  encode(message: QueryInterchainAccountResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl:
+    "/ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountResponse",
+  encode(
+    message: QueryInterchainAccountResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryInterchainAccountResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): QueryInterchainAccountResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryInterchainAccountResponse();
@@ -213,51 +243,70 @@ export const QueryInterchainAccountResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryInterchainAccountResponse>): QueryInterchainAccountResponse {
+  fromPartial(
+    object: Partial<QueryInterchainAccountResponse>
+  ): QueryInterchainAccountResponse {
     const message = createBaseQueryInterchainAccountResponse();
     message.address = object.address ?? "";
     return message;
   },
-  fromAmino(object: QueryInterchainAccountResponseAmino): QueryInterchainAccountResponse {
+  fromAmino(
+    object: QueryInterchainAccountResponseAmino
+  ): QueryInterchainAccountResponse {
     const message = createBaseQueryInterchainAccountResponse();
     if (object.address !== undefined && object.address !== null) {
       message.address = object.address;
     }
     return message;
   },
-  toAmino(message: QueryInterchainAccountResponse): QueryInterchainAccountResponseAmino {
+  toAmino(
+    message: QueryInterchainAccountResponse
+  ): QueryInterchainAccountResponseAmino {
     const obj: any = {};
     obj.address = message.address === "" ? undefined : message.address;
     return obj;
   },
-  fromAminoMsg(object: QueryInterchainAccountResponseAminoMsg): QueryInterchainAccountResponse {
+  fromAminoMsg(
+    object: QueryInterchainAccountResponseAminoMsg
+  ): QueryInterchainAccountResponse {
     return QueryInterchainAccountResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryInterchainAccountResponse): QueryInterchainAccountResponseAminoMsg {
+  toAminoMsg(
+    message: QueryInterchainAccountResponse
+  ): QueryInterchainAccountResponseAminoMsg {
     return {
       type: "cosmos-sdk/QueryInterchainAccountResponse",
-      value: QueryInterchainAccountResponse.toAmino(message)
+      value: QueryInterchainAccountResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryInterchainAccountResponseProtoMsg): QueryInterchainAccountResponse {
+  fromProtoMsg(
+    message: QueryInterchainAccountResponseProtoMsg
+  ): QueryInterchainAccountResponse {
     return QueryInterchainAccountResponse.decode(message.value);
   },
   toProto(message: QueryInterchainAccountResponse): Uint8Array {
     return QueryInterchainAccountResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryInterchainAccountResponse): QueryInterchainAccountResponseProtoMsg {
+  toProtoMsg(
+    message: QueryInterchainAccountResponse
+  ): QueryInterchainAccountResponseProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountResponse",
-      value: QueryInterchainAccountResponse.encode(message).finish()
+      typeUrl:
+        "/ibc.applications.interchain_accounts.controller.v1.QueryInterchainAccountResponse",
+      value: QueryInterchainAccountResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryParamsRequest",
-  encode(_: QueryParamsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl:
+    "/ibc.applications.interchain_accounts.controller.v1.QueryParamsRequest",
+  encode(
+    _: QueryParamsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
   decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest {
@@ -292,7 +341,7 @@ export const QueryParamsRequest = {
   toAminoMsg(message: QueryParamsRequest): QueryParamsRequestAminoMsg {
     return {
       type: "cosmos-sdk/QueryParamsRequest",
-      value: QueryParamsRequest.toAmino(message)
+      value: QueryParamsRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryParamsRequestProtoMsg): QueryParamsRequest {
@@ -303,19 +352,24 @@ export const QueryParamsRequest = {
   },
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryParamsRequest",
-      value: QueryParamsRequest.encode(message).finish()
+      typeUrl:
+        "/ibc.applications.interchain_accounts.controller.v1.QueryParamsRequest",
+      value: QueryParamsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
-    params: undefined
+    params: undefined,
   };
 }
 export const QueryParamsResponse = {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryParamsResponse",
-  encode(message: QueryParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl:
+    "/ibc.applications.interchain_accounts.controller.v1.QueryParamsResponse",
+  encode(
+    message: QueryParamsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -340,7 +394,10 @@ export const QueryParamsResponse = {
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
@@ -361,7 +418,7 @@ export const QueryParamsResponse = {
   toAminoMsg(message: QueryParamsResponse): QueryParamsResponseAminoMsg {
     return {
       type: "cosmos-sdk/QueryParamsResponse",
-      value: QueryParamsResponse.toAmino(message)
+      value: QueryParamsResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryParamsResponseProtoMsg): QueryParamsResponse {
@@ -372,8 +429,9 @@ export const QueryParamsResponse = {
   },
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryParamsResponse",
-      value: QueryParamsResponse.encode(message).finish()
+      typeUrl:
+        "/ibc.applications.interchain_accounts.controller.v1.QueryParamsResponse",
+      value: QueryParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };

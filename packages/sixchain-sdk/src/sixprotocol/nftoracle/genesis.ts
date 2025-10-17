@@ -1,13 +1,45 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { MintRequest, MintRequestAmino, MintRequestSDKType } from "./mint_request";
-import { ActionOracleRequest, ActionOracleRequestAmino, ActionOracleRequestSDKType } from "./action_request";
-import { CollectionOwnerRequest, CollectionOwnerRequestAmino, CollectionOwnerRequestSDKType } from "./collection_owner_request";
-import { OracleConfig, OracleConfigAmino, OracleConfigSDKType } from "./oracle_config";
-import { ActionSigner, ActionSignerAmino, ActionSignerSDKType } from "./action_signer";
-import { BindedSigner, BindedSignerAmino, BindedSignerSDKType } from "./binded_signer";
-import { ActionSignerConfig, ActionSignerConfigAmino, ActionSignerConfigSDKType } from "./action_signer_config";
-import { SyncActionSigner, SyncActionSignerAmino, SyncActionSignerSDKType } from "./sync_action_signer";
+import {
+  MintRequest,
+  MintRequestAmino,
+  MintRequestSDKType,
+} from "./mint_request";
+import {
+  ActionOracleRequest,
+  ActionOracleRequestAmino,
+  ActionOracleRequestSDKType,
+} from "./action_request";
+import {
+  CollectionOwnerRequest,
+  CollectionOwnerRequestAmino,
+  CollectionOwnerRequestSDKType,
+} from "./collection_owner_request";
+import {
+  OracleConfig,
+  OracleConfigAmino,
+  OracleConfigSDKType,
+} from "./oracle_config";
+import {
+  ActionSigner,
+  ActionSignerAmino,
+  ActionSignerSDKType,
+} from "./action_signer";
+import {
+  BindedSigner,
+  BindedSignerAmino,
+  BindedSignerSDKType,
+} from "./binded_signer";
+import {
+  ActionSignerConfig,
+  ActionSignerConfigAmino,
+  ActionSignerConfigSDKType,
+} from "./action_signer_config";
+import {
+  SyncActionSigner,
+  SyncActionSignerAmino,
+  SyncActionSignerSDKType,
+} from "./sync_action_signer";
 import { Long } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the nftoracle module's genesis state. */
@@ -89,12 +121,15 @@ function createBaseGenesisState(): GenesisState {
     bindedSignerList: [],
     actionSignerConfigList: [],
     syncActionSignerList: [],
-    syncActionSignerCount: Long.UZERO
+    syncActionSignerCount: Long.UZERO,
   };
 }
 export const GenesisState = {
   typeUrl: "/sixprotocol.nftoracle.GenesisState",
-  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: GenesisState,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -117,7 +152,10 @@ export const GenesisState = {
       writer.uint32(56).uint64(message.collectionOwnerRequestCount);
     }
     if (message.oracleConfig !== undefined) {
-      OracleConfig.encode(message.oracleConfig, writer.uint32(66).fork()).ldelim();
+      OracleConfig.encode(
+        message.oracleConfig,
+        writer.uint32(66).fork()
+      ).ldelim();
     }
     for (const v of message.actionSignerList) {
       ActionSigner.encode(v!, writer.uint32(74).fork()).ldelim();
@@ -147,19 +185,25 @@ export const GenesisState = {
           message.params = Params.decode(reader, reader.uint32());
           break;
         case 2:
-          message.mintRequestList.push(MintRequest.decode(reader, reader.uint32()));
+          message.mintRequestList.push(
+            MintRequest.decode(reader, reader.uint32())
+          );
           break;
         case 3:
           message.mintRequestCount = reader.uint64() as Long;
           break;
         case 4:
-          message.actionRequestList.push(ActionOracleRequest.decode(reader, reader.uint32()));
+          message.actionRequestList.push(
+            ActionOracleRequest.decode(reader, reader.uint32())
+          );
           break;
         case 5:
           message.actionRequestCount = reader.uint64() as Long;
           break;
         case 6:
-          message.collectionOwnerRequestList.push(CollectionOwnerRequest.decode(reader, reader.uint32()));
+          message.collectionOwnerRequestList.push(
+            CollectionOwnerRequest.decode(reader, reader.uint32())
+          );
           break;
         case 7:
           message.collectionOwnerRequestCount = reader.uint64() as Long;
@@ -168,16 +212,24 @@ export const GenesisState = {
           message.oracleConfig = OracleConfig.decode(reader, reader.uint32());
           break;
         case 9:
-          message.actionSignerList.push(ActionSigner.decode(reader, reader.uint32()));
+          message.actionSignerList.push(
+            ActionSigner.decode(reader, reader.uint32())
+          );
           break;
         case 10:
-          message.bindedSignerList.push(BindedSigner.decode(reader, reader.uint32()));
+          message.bindedSignerList.push(
+            BindedSigner.decode(reader, reader.uint32())
+          );
           break;
         case 13:
-          message.actionSignerConfigList.push(ActionSignerConfig.decode(reader, reader.uint32()));
+          message.actionSignerConfigList.push(
+            ActionSignerConfig.decode(reader, reader.uint32())
+          );
           break;
         case 14:
-          message.syncActionSignerList.push(SyncActionSigner.decode(reader, reader.uint32()));
+          message.syncActionSignerList.push(
+            SyncActionSigner.decode(reader, reader.uint32())
+          );
           break;
         case 15:
           message.syncActionSignerCount = reader.uint64() as Long;
@@ -191,19 +243,55 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.mintRequestList = object.mintRequestList?.map(e => MintRequest.fromPartial(e)) || [];
-    message.mintRequestCount = object.mintRequestCount !== undefined && object.mintRequestCount !== null ? Long.fromValue(object.mintRequestCount) : Long.UZERO;
-    message.actionRequestList = object.actionRequestList?.map(e => ActionOracleRequest.fromPartial(e)) || [];
-    message.actionRequestCount = object.actionRequestCount !== undefined && object.actionRequestCount !== null ? Long.fromValue(object.actionRequestCount) : Long.UZERO;
-    message.collectionOwnerRequestList = object.collectionOwnerRequestList?.map(e => CollectionOwnerRequest.fromPartial(e)) || [];
-    message.collectionOwnerRequestCount = object.collectionOwnerRequestCount !== undefined && object.collectionOwnerRequestCount !== null ? Long.fromValue(object.collectionOwnerRequestCount) : Long.UZERO;
-    message.oracleConfig = object.oracleConfig !== undefined && object.oracleConfig !== null ? OracleConfig.fromPartial(object.oracleConfig) : undefined;
-    message.actionSignerList = object.actionSignerList?.map(e => ActionSigner.fromPartial(e)) || [];
-    message.bindedSignerList = object.bindedSignerList?.map(e => BindedSigner.fromPartial(e)) || [];
-    message.actionSignerConfigList = object.actionSignerConfigList?.map(e => ActionSignerConfig.fromPartial(e)) || [];
-    message.syncActionSignerList = object.syncActionSignerList?.map(e => SyncActionSigner.fromPartial(e)) || [];
-    message.syncActionSignerCount = object.syncActionSignerCount !== undefined && object.syncActionSignerCount !== null ? Long.fromValue(object.syncActionSignerCount) : Long.UZERO;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
+    message.mintRequestList =
+      object.mintRequestList?.map((e) => MintRequest.fromPartial(e)) || [];
+    message.mintRequestCount =
+      object.mintRequestCount !== undefined && object.mintRequestCount !== null
+        ? Long.fromValue(object.mintRequestCount)
+        : Long.UZERO;
+    message.actionRequestList =
+      object.actionRequestList?.map((e) =>
+        ActionOracleRequest.fromPartial(e)
+      ) || [];
+    message.actionRequestCount =
+      object.actionRequestCount !== undefined &&
+      object.actionRequestCount !== null
+        ? Long.fromValue(object.actionRequestCount)
+        : Long.UZERO;
+    message.collectionOwnerRequestList =
+      object.collectionOwnerRequestList?.map((e) =>
+        CollectionOwnerRequest.fromPartial(e)
+      ) || [];
+    message.collectionOwnerRequestCount =
+      object.collectionOwnerRequestCount !== undefined &&
+      object.collectionOwnerRequestCount !== null
+        ? Long.fromValue(object.collectionOwnerRequestCount)
+        : Long.UZERO;
+    message.oracleConfig =
+      object.oracleConfig !== undefined && object.oracleConfig !== null
+        ? OracleConfig.fromPartial(object.oracleConfig)
+        : undefined;
+    message.actionSignerList =
+      object.actionSignerList?.map((e) => ActionSigner.fromPartial(e)) || [];
+    message.bindedSignerList =
+      object.bindedSignerList?.map((e) => BindedSigner.fromPartial(e)) || [];
+    message.actionSignerConfigList =
+      object.actionSignerConfigList?.map((e) =>
+        ActionSignerConfig.fromPartial(e)
+      ) || [];
+    message.syncActionSignerList =
+      object.syncActionSignerList?.map((e) =>
+        SyncActionSigner.fromPartial(e)
+      ) || [];
+    message.syncActionSignerCount =
+      object.syncActionSignerCount !== undefined &&
+      object.syncActionSignerCount !== null
+        ? Long.fromValue(object.syncActionSignerCount)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -211,73 +299,129 @@ export const GenesisState = {
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromAmino(object.params);
     }
-    message.mintRequestList = object.mintRequestList?.map(e => MintRequest.fromAmino(e)) || [];
-    if (object.mintRequestCount !== undefined && object.mintRequestCount !== null) {
+    message.mintRequestList =
+      object.mintRequestList?.map((e) => MintRequest.fromAmino(e)) || [];
+    if (
+      object.mintRequestCount !== undefined &&
+      object.mintRequestCount !== null
+    ) {
       message.mintRequestCount = Long.fromString(object.mintRequestCount);
     }
-    message.actionRequestList = object.actionRequestList?.map(e => ActionOracleRequest.fromAmino(e)) || [];
-    if (object.actionRequestCount !== undefined && object.actionRequestCount !== null) {
+    message.actionRequestList =
+      object.actionRequestList?.map((e) => ActionOracleRequest.fromAmino(e)) ||
+      [];
+    if (
+      object.actionRequestCount !== undefined &&
+      object.actionRequestCount !== null
+    ) {
       message.actionRequestCount = Long.fromString(object.actionRequestCount);
     }
-    message.collectionOwnerRequestList = object.collectionOwnerRequestList?.map(e => CollectionOwnerRequest.fromAmino(e)) || [];
-    if (object.collectionOwnerRequestCount !== undefined && object.collectionOwnerRequestCount !== null) {
-      message.collectionOwnerRequestCount = Long.fromString(object.collectionOwnerRequestCount);
+    message.collectionOwnerRequestList =
+      object.collectionOwnerRequestList?.map((e) =>
+        CollectionOwnerRequest.fromAmino(e)
+      ) || [];
+    if (
+      object.collectionOwnerRequestCount !== undefined &&
+      object.collectionOwnerRequestCount !== null
+    ) {
+      message.collectionOwnerRequestCount = Long.fromString(
+        object.collectionOwnerRequestCount
+      );
     }
     if (object.oracle_config !== undefined && object.oracle_config !== null) {
       message.oracleConfig = OracleConfig.fromAmino(object.oracle_config);
     }
-    message.actionSignerList = object.actionSignerList?.map(e => ActionSigner.fromAmino(e)) || [];
-    message.bindedSignerList = object.bindedSignerList?.map(e => BindedSigner.fromAmino(e)) || [];
-    message.actionSignerConfigList = object.actionSignerConfigList?.map(e => ActionSignerConfig.fromAmino(e)) || [];
-    message.syncActionSignerList = object.syncActionSignerList?.map(e => SyncActionSigner.fromAmino(e)) || [];
-    if (object.syncActionSignerCount !== undefined && object.syncActionSignerCount !== null) {
-      message.syncActionSignerCount = Long.fromString(object.syncActionSignerCount);
+    message.actionSignerList =
+      object.actionSignerList?.map((e) => ActionSigner.fromAmino(e)) || [];
+    message.bindedSignerList =
+      object.bindedSignerList?.map((e) => BindedSigner.fromAmino(e)) || [];
+    message.actionSignerConfigList =
+      object.actionSignerConfigList?.map((e) =>
+        ActionSignerConfig.fromAmino(e)
+      ) || [];
+    message.syncActionSignerList =
+      object.syncActionSignerList?.map((e) => SyncActionSigner.fromAmino(e)) ||
+      [];
+    if (
+      object.syncActionSignerCount !== undefined &&
+      object.syncActionSignerCount !== null
+    ) {
+      message.syncActionSignerCount = Long.fromString(
+        object.syncActionSignerCount
+      );
     }
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params
+      ? Params.toAmino(message.params)
+      : Params.toAmino(Params.fromPartial({}));
     if (message.mintRequestList) {
-      obj.mintRequestList = message.mintRequestList.map(e => e ? MintRequest.toAmino(e) : undefined);
+      obj.mintRequestList = message.mintRequestList.map((e) =>
+        e ? MintRequest.toAmino(e) : undefined
+      );
     } else {
       obj.mintRequestList = message.mintRequestList;
     }
-    obj.mintRequestCount = !message.mintRequestCount.isZero() ? message.mintRequestCount?.toString() : undefined;
+    obj.mintRequestCount = !message.mintRequestCount.isZero()
+      ? message.mintRequestCount?.toString()
+      : undefined;
     if (message.actionRequestList) {
-      obj.actionRequestList = message.actionRequestList.map(e => e ? ActionOracleRequest.toAmino(e) : undefined);
+      obj.actionRequestList = message.actionRequestList.map((e) =>
+        e ? ActionOracleRequest.toAmino(e) : undefined
+      );
     } else {
       obj.actionRequestList = message.actionRequestList;
     }
-    obj.actionRequestCount = !message.actionRequestCount.isZero() ? message.actionRequestCount?.toString() : undefined;
+    obj.actionRequestCount = !message.actionRequestCount.isZero()
+      ? message.actionRequestCount?.toString()
+      : undefined;
     if (message.collectionOwnerRequestList) {
-      obj.collectionOwnerRequestList = message.collectionOwnerRequestList.map(e => e ? CollectionOwnerRequest.toAmino(e) : undefined);
+      obj.collectionOwnerRequestList = message.collectionOwnerRequestList.map(
+        (e) => (e ? CollectionOwnerRequest.toAmino(e) : undefined)
+      );
     } else {
       obj.collectionOwnerRequestList = message.collectionOwnerRequestList;
     }
-    obj.collectionOwnerRequestCount = !message.collectionOwnerRequestCount.isZero() ? message.collectionOwnerRequestCount?.toString() : undefined;
-    obj.oracle_config = message.oracleConfig ? OracleConfig.toAmino(message.oracleConfig) : undefined;
+    obj.collectionOwnerRequestCount =
+      !message.collectionOwnerRequestCount.isZero()
+        ? message.collectionOwnerRequestCount?.toString()
+        : undefined;
+    obj.oracle_config = message.oracleConfig
+      ? OracleConfig.toAmino(message.oracleConfig)
+      : undefined;
     if (message.actionSignerList) {
-      obj.actionSignerList = message.actionSignerList.map(e => e ? ActionSigner.toAmino(e) : undefined);
+      obj.actionSignerList = message.actionSignerList.map((e) =>
+        e ? ActionSigner.toAmino(e) : undefined
+      );
     } else {
       obj.actionSignerList = message.actionSignerList;
     }
     if (message.bindedSignerList) {
-      obj.bindedSignerList = message.bindedSignerList.map(e => e ? BindedSigner.toAmino(e) : undefined);
+      obj.bindedSignerList = message.bindedSignerList.map((e) =>
+        e ? BindedSigner.toAmino(e) : undefined
+      );
     } else {
       obj.bindedSignerList = message.bindedSignerList;
     }
     if (message.actionSignerConfigList) {
-      obj.actionSignerConfigList = message.actionSignerConfigList.map(e => e ? ActionSignerConfig.toAmino(e) : undefined);
+      obj.actionSignerConfigList = message.actionSignerConfigList.map((e) =>
+        e ? ActionSignerConfig.toAmino(e) : undefined
+      );
     } else {
       obj.actionSignerConfigList = message.actionSignerConfigList;
     }
     if (message.syncActionSignerList) {
-      obj.syncActionSignerList = message.syncActionSignerList.map(e => e ? SyncActionSigner.toAmino(e) : undefined);
+      obj.syncActionSignerList = message.syncActionSignerList.map((e) =>
+        e ? SyncActionSigner.toAmino(e) : undefined
+      );
     } else {
       obj.syncActionSignerList = message.syncActionSignerList;
     }
-    obj.syncActionSignerCount = !message.syncActionSignerCount.isZero() ? message.syncActionSignerCount?.toString() : undefined;
+    obj.syncActionSignerCount = !message.syncActionSignerCount.isZero()
+      ? message.syncActionSignerCount?.toString()
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -292,7 +436,7 @@ export const GenesisState = {
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.GenesisState",
-      value: GenesisState.encode(message).finish()
+      value: GenesisState.encode(message).finish(),
     };
-  }
+  },
 };

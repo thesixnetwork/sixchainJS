@@ -1,7 +1,10 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
 import { MsgEthereumTx, MsgUpdateParams } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/ethermint.evm.v1.MsgEthereumTx", MsgEthereumTx], ["/ethermint.evm.v1.MsgUpdateParams", MsgUpdateParams]];
+export const registry: ReadonlyArray<[string, GeneratedType]> = [
+  ["/ethermint.evm.v1.MsgEthereumTx", MsgEthereumTx],
+  ["/ethermint.evm.v1.MsgUpdateParams", MsgUpdateParams],
+];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -12,42 +15,42 @@ export const MessageComposer = {
     ethereumTx(value: MsgEthereumTx) {
       return {
         typeUrl: "/ethermint.evm.v1.MsgEthereumTx",
-        value: MsgEthereumTx.encode(value).finish()
+        value: MsgEthereumTx.encode(value).finish(),
       };
     },
     updateParams(value: MsgUpdateParams) {
       return {
         typeUrl: "/ethermint.evm.v1.MsgUpdateParams",
-        value: MsgUpdateParams.encode(value).finish()
+        value: MsgUpdateParams.encode(value).finish(),
       };
-    }
+    },
   },
   withTypeUrl: {
     ethereumTx(value: MsgEthereumTx) {
       return {
         typeUrl: "/ethermint.evm.v1.MsgEthereumTx",
-        value
+        value,
       };
     },
     updateParams(value: MsgUpdateParams) {
       return {
         typeUrl: "/ethermint.evm.v1.MsgUpdateParams",
-        value
+        value,
       };
-    }
+    },
   },
   fromPartial: {
     ethereumTx(value: MsgEthereumTx) {
       return {
         typeUrl: "/ethermint.evm.v1.MsgEthereumTx",
-        value: MsgEthereumTx.fromPartial(value)
+        value: MsgEthereumTx.fromPartial(value),
       };
     },
     updateParams(value: MsgUpdateParams) {
       return {
         typeUrl: "/ethermint.evm.v1.MsgUpdateParams",
-        value: MsgUpdateParams.fromPartial(value)
+        value: MsgUpdateParams.fromPartial(value),
       };
-    }
-  }
+    },
+  },
 };

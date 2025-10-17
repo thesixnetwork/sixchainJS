@@ -1,6 +1,13 @@
 //@ts-nocheck
 import { OriginData, OriginDataAmino, OriginDataSDKType } from "./origin_data";
-import { OnChainData, OnChainDataAmino, OnChainDataSDKType, OnChainDataResult, OnChainDataResultAmino, OnChainDataResultSDKType } from "./on_chain_data";
+import {
+  OnChainData,
+  OnChainDataAmino,
+  OnChainDataSDKType,
+  OnChainDataResult,
+  OnChainDataResultAmino,
+  OnChainDataResultSDKType,
+} from "./on_chain_data";
 import * as _m0 from "protobufjs/minimal";
 export interface NFTSchema {
   code: string;
@@ -143,12 +150,15 @@ function createBaseNFTSchema(): NFTSchema {
     originData: undefined,
     onchainData: undefined,
     isVerified: false,
-    mintAuthorization: ""
+    mintAuthorization: "",
   };
 }
 export const NFTSchema = {
   typeUrl: "/sixprotocol.nftmngr.NFTSchema",
-  encode(message: NFTSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: NFTSchema,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.code !== "") {
       writer.uint32(10).string(message.code);
     }
@@ -165,7 +175,10 @@ export const NFTSchema = {
       OriginData.encode(message.originData, writer.uint32(42).fork()).ldelim();
     }
     if (message.onchainData !== undefined) {
-      OnChainData.encode(message.onchainData, writer.uint32(50).fork()).ldelim();
+      OnChainData.encode(
+        message.onchainData,
+        writer.uint32(50).fork()
+      ).ldelim();
     }
     if (message.isVerified === true) {
       writer.uint32(56).bool(message.isVerified);
@@ -219,8 +232,14 @@ export const NFTSchema = {
     message.name = object.name ?? "";
     message.owner = object.owner ?? "";
     message.description = object.description ?? "";
-    message.originData = object.originData !== undefined && object.originData !== null ? OriginData.fromPartial(object.originData) : undefined;
-    message.onchainData = object.onchainData !== undefined && object.onchainData !== null ? OnChainData.fromPartial(object.onchainData) : undefined;
+    message.originData =
+      object.originData !== undefined && object.originData !== null
+        ? OriginData.fromPartial(object.originData)
+        : undefined;
+    message.onchainData =
+      object.onchainData !== undefined && object.onchainData !== null
+        ? OnChainData.fromPartial(object.onchainData)
+        : undefined;
     message.isVerified = object.isVerified ?? false;
     message.mintAuthorization = object.mintAuthorization ?? "";
     return message;
@@ -248,7 +267,10 @@ export const NFTSchema = {
     if (object.isVerified !== undefined && object.isVerified !== null) {
       message.isVerified = object.isVerified;
     }
-    if (object.mint_authorization !== undefined && object.mint_authorization !== null) {
+    if (
+      object.mint_authorization !== undefined &&
+      object.mint_authorization !== null
+    ) {
       message.mintAuthorization = object.mint_authorization;
     }
     return message;
@@ -258,11 +280,18 @@ export const NFTSchema = {
     obj.code = message.code === "" ? undefined : message.code;
     obj.name = message.name === "" ? undefined : message.name;
     obj.owner = message.owner === "" ? undefined : message.owner;
-    obj.description = message.description === "" ? undefined : message.description;
-    obj.origin_data = message.originData ? OriginData.toAmino(message.originData) : undefined;
-    obj.onchain_data = message.onchainData ? OnChainData.toAmino(message.onchainData) : undefined;
-    obj.isVerified = message.isVerified === false ? undefined : message.isVerified;
-    obj.mint_authorization = message.mintAuthorization === "" ? undefined : message.mintAuthorization;
+    obj.description =
+      message.description === "" ? undefined : message.description;
+    obj.origin_data = message.originData
+      ? OriginData.toAmino(message.originData)
+      : undefined;
+    obj.onchain_data = message.onchainData
+      ? OnChainData.toAmino(message.onchainData)
+      : undefined;
+    obj.isVerified =
+      message.isVerified === false ? undefined : message.isVerified;
+    obj.mint_authorization =
+      message.mintAuthorization === "" ? undefined : message.mintAuthorization;
     return obj;
   },
   fromAminoMsg(object: NFTSchemaAminoMsg): NFTSchema {
@@ -277,9 +306,9 @@ export const NFTSchema = {
   toProtoMsg(message: NFTSchema): NFTSchemaProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.NFTSchema",
-      value: NFTSchema.encode(message).finish()
+      value: NFTSchema.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseNFTSchemaINPUT(): NFTSchemaINPUT {
   return {
@@ -291,12 +320,15 @@ function createBaseNFTSchemaINPUT(): NFTSchemaINPUT {
     originData: undefined,
     onchainData: undefined,
     isVerified: false,
-    mintAuthorization: ""
+    mintAuthorization: "",
   };
 }
 export const NFTSchemaINPUT = {
   typeUrl: "/sixprotocol.nftmngr.NFTSchemaINPUT",
-  encode(message: NFTSchemaINPUT, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: NFTSchemaINPUT,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.code !== "") {
       writer.uint32(10).string(message.code);
     }
@@ -316,7 +348,10 @@ export const NFTSchemaINPUT = {
       OriginData.encode(message.originData, writer.uint32(50).fork()).ldelim();
     }
     if (message.onchainData !== undefined) {
-      OnChainData.encode(message.onchainData, writer.uint32(58).fork()).ldelim();
+      OnChainData.encode(
+        message.onchainData,
+        writer.uint32(58).fork()
+      ).ldelim();
     }
     if (message.isVerified === true) {
       writer.uint32(64).bool(message.isVerified);
@@ -373,9 +408,15 @@ export const NFTSchemaINPUT = {
     message.name = object.name ?? "";
     message.owner = object.owner ?? "";
     message.description = object.description ?? "";
-    message.systemActioners = object.systemActioners?.map(e => e) || [];
-    message.originData = object.originData !== undefined && object.originData !== null ? OriginData.fromPartial(object.originData) : undefined;
-    message.onchainData = object.onchainData !== undefined && object.onchainData !== null ? OnChainData.fromPartial(object.onchainData) : undefined;
+    message.systemActioners = object.systemActioners?.map((e) => e) || [];
+    message.originData =
+      object.originData !== undefined && object.originData !== null
+        ? OriginData.fromPartial(object.originData)
+        : undefined;
+    message.onchainData =
+      object.onchainData !== undefined && object.onchainData !== null
+        ? OnChainData.fromPartial(object.onchainData)
+        : undefined;
     message.isVerified = object.isVerified ?? false;
     message.mintAuthorization = object.mintAuthorization ?? "";
     return message;
@@ -394,7 +435,7 @@ export const NFTSchemaINPUT = {
     if (object.description !== undefined && object.description !== null) {
       message.description = object.description;
     }
-    message.systemActioners = object.system_actioners?.map(e => e) || [];
+    message.systemActioners = object.system_actioners?.map((e) => e) || [];
     if (object.origin_data !== undefined && object.origin_data !== null) {
       message.originData = OriginData.fromAmino(object.origin_data);
     }
@@ -404,7 +445,10 @@ export const NFTSchemaINPUT = {
     if (object.isVerified !== undefined && object.isVerified !== null) {
       message.isVerified = object.isVerified;
     }
-    if (object.mint_authorization !== undefined && object.mint_authorization !== null) {
+    if (
+      object.mint_authorization !== undefined &&
+      object.mint_authorization !== null
+    ) {
       message.mintAuthorization = object.mint_authorization;
     }
     return message;
@@ -414,16 +458,23 @@ export const NFTSchemaINPUT = {
     obj.code = message.code === "" ? undefined : message.code;
     obj.name = message.name === "" ? undefined : message.name;
     obj.owner = message.owner === "" ? undefined : message.owner;
-    obj.description = message.description === "" ? undefined : message.description;
+    obj.description =
+      message.description === "" ? undefined : message.description;
     if (message.systemActioners) {
-      obj.system_actioners = message.systemActioners.map(e => e);
+      obj.system_actioners = message.systemActioners.map((e) => e);
     } else {
       obj.system_actioners = message.systemActioners;
     }
-    obj.origin_data = message.originData ? OriginData.toAmino(message.originData) : undefined;
-    obj.onchain_data = message.onchainData ? OnChainData.toAmino(message.onchainData) : undefined;
-    obj.isVerified = message.isVerified === false ? undefined : message.isVerified;
-    obj.mint_authorization = message.mintAuthorization === "" ? undefined : message.mintAuthorization;
+    obj.origin_data = message.originData
+      ? OriginData.toAmino(message.originData)
+      : undefined;
+    obj.onchain_data = message.onchainData
+      ? OnChainData.toAmino(message.onchainData)
+      : undefined;
+    obj.isVerified =
+      message.isVerified === false ? undefined : message.isVerified;
+    obj.mint_authorization =
+      message.mintAuthorization === "" ? undefined : message.mintAuthorization;
     return obj;
   },
   fromAminoMsg(object: NFTSchemaINPUTAminoMsg): NFTSchemaINPUT {
@@ -438,9 +489,9 @@ export const NFTSchemaINPUT = {
   toProtoMsg(message: NFTSchemaINPUT): NFTSchemaINPUTProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.NFTSchemaINPUT",
-      value: NFTSchemaINPUT.encode(message).finish()
+      value: NFTSchemaINPUT.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseNFTSchemaQueryResult(): NFTSchemaQueryResult {
   return {
@@ -451,12 +502,15 @@ function createBaseNFTSchemaQueryResult(): NFTSchemaQueryResult {
     originData: undefined,
     onchainData: undefined,
     isVerified: false,
-    mintAuthorization: ""
+    mintAuthorization: "",
   };
 }
 export const NFTSchemaQueryResult = {
   typeUrl: "/sixprotocol.nftmngr.NFTSchemaQueryResult",
-  encode(message: NFTSchemaQueryResult, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: NFTSchemaQueryResult,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.code !== "") {
       writer.uint32(10).string(message.code);
     }
@@ -473,7 +527,10 @@ export const NFTSchemaQueryResult = {
       OriginData.encode(message.originData, writer.uint32(42).fork()).ldelim();
     }
     if (message.onchainData !== undefined) {
-      OnChainDataResult.encode(message.onchainData, writer.uint32(50).fork()).ldelim();
+      OnChainDataResult.encode(
+        message.onchainData,
+        writer.uint32(50).fork()
+      ).ldelim();
     }
     if (message.isVerified === true) {
       writer.uint32(56).bool(message.isVerified);
@@ -483,7 +540,10 @@ export const NFTSchemaQueryResult = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): NFTSchemaQueryResult {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): NFTSchemaQueryResult {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseNFTSchemaQueryResult();
@@ -506,7 +566,10 @@ export const NFTSchemaQueryResult = {
           message.originData = OriginData.decode(reader, reader.uint32());
           break;
         case 6:
-          message.onchainData = OnChainDataResult.decode(reader, reader.uint32());
+          message.onchainData = OnChainDataResult.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         case 7:
           message.isVerified = reader.bool();
@@ -527,8 +590,14 @@ export const NFTSchemaQueryResult = {
     message.name = object.name ?? "";
     message.owner = object.owner ?? "";
     message.description = object.description ?? "";
-    message.originData = object.originData !== undefined && object.originData !== null ? OriginData.fromPartial(object.originData) : undefined;
-    message.onchainData = object.onchainData !== undefined && object.onchainData !== null ? OnChainDataResult.fromPartial(object.onchainData) : undefined;
+    message.originData =
+      object.originData !== undefined && object.originData !== null
+        ? OriginData.fromPartial(object.originData)
+        : undefined;
+    message.onchainData =
+      object.onchainData !== undefined && object.onchainData !== null
+        ? OnChainDataResult.fromPartial(object.onchainData)
+        : undefined;
     message.isVerified = object.isVerified ?? false;
     message.mintAuthorization = object.mintAuthorization ?? "";
     return message;
@@ -556,7 +625,10 @@ export const NFTSchemaQueryResult = {
     if (object.isVerified !== undefined && object.isVerified !== null) {
       message.isVerified = object.isVerified;
     }
-    if (object.mint_authorization !== undefined && object.mint_authorization !== null) {
+    if (
+      object.mint_authorization !== undefined &&
+      object.mint_authorization !== null
+    ) {
       message.mintAuthorization = object.mint_authorization;
     }
     return message;
@@ -566,11 +638,18 @@ export const NFTSchemaQueryResult = {
     obj.code = message.code === "" ? undefined : message.code;
     obj.name = message.name === "" ? undefined : message.name;
     obj.owner = message.owner === "" ? undefined : message.owner;
-    obj.description = message.description === "" ? undefined : message.description;
-    obj.origin_data = message.originData ? OriginData.toAmino(message.originData) : undefined;
-    obj.onchain_data = message.onchainData ? OnChainDataResult.toAmino(message.onchainData) : undefined;
-    obj.isVerified = message.isVerified === false ? undefined : message.isVerified;
-    obj.mint_authorization = message.mintAuthorization === "" ? undefined : message.mintAuthorization;
+    obj.description =
+      message.description === "" ? undefined : message.description;
+    obj.origin_data = message.originData
+      ? OriginData.toAmino(message.originData)
+      : undefined;
+    obj.onchain_data = message.onchainData
+      ? OnChainDataResult.toAmino(message.onchainData)
+      : undefined;
+    obj.isVerified =
+      message.isVerified === false ? undefined : message.isVerified;
+    obj.mint_authorization =
+      message.mintAuthorization === "" ? undefined : message.mintAuthorization;
     return obj;
   },
   fromAminoMsg(object: NFTSchemaQueryResultAminoMsg): NFTSchemaQueryResult {
@@ -585,7 +664,7 @@ export const NFTSchemaQueryResult = {
   toProtoMsg(message: NFTSchemaQueryResult): NFTSchemaQueryResultProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.NFTSchemaQueryResult",
-      value: NFTSchemaQueryResult.encode(message).finish()
+      value: NFTSchemaQueryResult.encode(message).finish(),
     };
-  }
+  },
 };

@@ -38,12 +38,15 @@ export interface ParamsSDKType {
 }
 function createBaseParams(): Params {
   return {
-    controllerEnabled: false
+    controllerEnabled: false,
   };
 }
 export const Params = {
   typeUrl: "/ibc.applications.interchain_accounts.controller.v1.Params",
-  encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Params,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.controllerEnabled === true) {
       writer.uint32(8).bool(message.controllerEnabled);
     }
@@ -73,14 +76,20 @@ export const Params = {
   },
   fromAmino(object: ParamsAmino): Params {
     const message = createBaseParams();
-    if (object.controller_enabled !== undefined && object.controller_enabled !== null) {
+    if (
+      object.controller_enabled !== undefined &&
+      object.controller_enabled !== null
+    ) {
       message.controllerEnabled = object.controller_enabled;
     }
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.controller_enabled = message.controllerEnabled === false ? undefined : message.controllerEnabled;
+    obj.controller_enabled =
+      message.controllerEnabled === false
+        ? undefined
+        : message.controllerEnabled;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {
@@ -89,7 +98,7 @@ export const Params = {
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
       type: "cosmos-sdk/Params",
-      value: Params.toAmino(message)
+      value: Params.toAmino(message),
     };
   },
   fromProtoMsg(message: ParamsProtoMsg): Params {
@@ -101,7 +110,7 @@ export const Params = {
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
       typeUrl: "/ibc.applications.interchain_accounts.controller.v1.Params",
-      value: Params.encode(message).finish()
+      value: Params.encode(message).finish(),
     };
-  }
+  },
 };

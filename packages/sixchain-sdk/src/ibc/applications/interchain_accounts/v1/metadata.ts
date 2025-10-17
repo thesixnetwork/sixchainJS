@@ -82,12 +82,15 @@ function createBaseMetadata(): Metadata {
     hostConnectionId: "",
     address: "",
     encoding: "",
-    txType: ""
+    txType: "",
   };
 }
 export const Metadata = {
   typeUrl: "/ibc.applications.interchain_accounts.v1.Metadata",
-  encode(message: Metadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Metadata,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.version !== "") {
       writer.uint32(10).string(message.version);
     }
@@ -155,10 +158,16 @@ export const Metadata = {
     if (object.version !== undefined && object.version !== null) {
       message.version = object.version;
     }
-    if (object.controller_connection_id !== undefined && object.controller_connection_id !== null) {
+    if (
+      object.controller_connection_id !== undefined &&
+      object.controller_connection_id !== null
+    ) {
       message.controllerConnectionId = object.controller_connection_id;
     }
-    if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
+    if (
+      object.host_connection_id !== undefined &&
+      object.host_connection_id !== null
+    ) {
       message.hostConnectionId = object.host_connection_id;
     }
     if (object.address !== undefined && object.address !== null) {
@@ -175,8 +184,12 @@ export const Metadata = {
   toAmino(message: Metadata): MetadataAmino {
     const obj: any = {};
     obj.version = message.version === "" ? undefined : message.version;
-    obj.controller_connection_id = message.controllerConnectionId === "" ? undefined : message.controllerConnectionId;
-    obj.host_connection_id = message.hostConnectionId === "" ? undefined : message.hostConnectionId;
+    obj.controller_connection_id =
+      message.controllerConnectionId === ""
+        ? undefined
+        : message.controllerConnectionId;
+    obj.host_connection_id =
+      message.hostConnectionId === "" ? undefined : message.hostConnectionId;
     obj.address = message.address === "" ? undefined : message.address;
     obj.encoding = message.encoding === "" ? undefined : message.encoding;
     obj.tx_type = message.txType === "" ? undefined : message.txType;
@@ -188,7 +201,7 @@ export const Metadata = {
   toAminoMsg(message: Metadata): MetadataAminoMsg {
     return {
       type: "cosmos-sdk/Metadata",
-      value: Metadata.toAmino(message)
+      value: Metadata.toAmino(message),
     };
   },
   fromProtoMsg(message: MetadataProtoMsg): Metadata {
@@ -200,7 +213,7 @@ export const Metadata = {
   toProtoMsg(message: Metadata): MetadataProtoMsg {
     return {
       typeUrl: "/ibc.applications.interchain_accounts.v1.Metadata",
-      value: Metadata.encode(message).finish()
+      value: Metadata.encode(message).finish(),
     };
-  }
+  },
 };

@@ -1,5 +1,9 @@
 //@ts-nocheck
-import { NftAttributeValue, NftAttributeValueAmino, NftAttributeValueSDKType } from "./nft_attribute_value";
+import {
+  NftAttributeValue,
+  NftAttributeValueAmino,
+  NftAttributeValueSDKType,
+} from "./nft_attribute_value";
 import * as _m0 from "protobufjs/minimal";
 export enum OwnerAddressType {
   ORIGIN_ADDRESS = 0,
@@ -89,12 +93,15 @@ function createBaseNftData(): NftData {
     onchainImage: "",
     tokenUri: "",
     originAttributes: [],
-    onchainAttributes: []
+    onchainAttributes: [],
   };
 }
 export const NftData = {
   typeUrl: "/sixprotocol.nftmngr.NftData",
-  encode(message: NftData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: NftData,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -153,10 +160,14 @@ export const NftData = {
           message.tokenUri = reader.string();
           break;
         case 8:
-          message.originAttributes.push(NftAttributeValue.decode(reader, reader.uint32()));
+          message.originAttributes.push(
+            NftAttributeValue.decode(reader, reader.uint32())
+          );
           break;
         case 9:
-          message.onchainAttributes.push(NftAttributeValue.decode(reader, reader.uint32()));
+          message.onchainAttributes.push(
+            NftAttributeValue.decode(reader, reader.uint32())
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -174,13 +185,20 @@ export const NftData = {
     message.originImage = object.originImage ?? "";
     message.onchainImage = object.onchainImage ?? "";
     message.tokenUri = object.tokenUri ?? "";
-    message.originAttributes = object.originAttributes?.map(e => NftAttributeValue.fromPartial(e)) || [];
-    message.onchainAttributes = object.onchainAttributes?.map(e => NftAttributeValue.fromPartial(e)) || [];
+    message.originAttributes =
+      object.originAttributes?.map((e) => NftAttributeValue.fromPartial(e)) ||
+      [];
+    message.onchainAttributes =
+      object.onchainAttributes?.map((e) => NftAttributeValue.fromPartial(e)) ||
+      [];
     return message;
   },
   fromAmino(object: NftDataAmino): NftData {
     const message = createBaseNftData();
-    if (object.nft_schema_code !== undefined && object.nft_schema_code !== null) {
+    if (
+      object.nft_schema_code !== undefined &&
+      object.nft_schema_code !== null
+    ) {
       message.nftSchemaCode = object.nft_schema_code;
     }
     if (object.token_id !== undefined && object.token_id !== null) {
@@ -189,7 +207,10 @@ export const NftData = {
     if (object.token_owner !== undefined && object.token_owner !== null) {
       message.tokenOwner = object.token_owner;
     }
-    if (object.owner_address_type !== undefined && object.owner_address_type !== null) {
+    if (
+      object.owner_address_type !== undefined &&
+      object.owner_address_type !== null
+    ) {
       message.ownerAddressType = object.owner_address_type;
     }
     if (object.origin_image !== undefined && object.origin_image !== null) {
@@ -201,26 +222,39 @@ export const NftData = {
     if (object.token_uri !== undefined && object.token_uri !== null) {
       message.tokenUri = object.token_uri;
     }
-    message.originAttributes = object.origin_attributes?.map(e => NftAttributeValue.fromAmino(e)) || [];
-    message.onchainAttributes = object.onchain_attributes?.map(e => NftAttributeValue.fromAmino(e)) || [];
+    message.originAttributes =
+      object.origin_attributes?.map((e) => NftAttributeValue.fromAmino(e)) ||
+      [];
+    message.onchainAttributes =
+      object.onchain_attributes?.map((e) => NftAttributeValue.fromAmino(e)) ||
+      [];
     return message;
   },
   toAmino(message: NftData): NftDataAmino {
     const obj: any = {};
-    obj.nft_schema_code = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nft_schema_code =
+      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.token_id = message.tokenId === "" ? undefined : message.tokenId;
-    obj.token_owner = message.tokenOwner === "" ? undefined : message.tokenOwner;
-    obj.owner_address_type = message.ownerAddressType === 0 ? undefined : message.ownerAddressType;
-    obj.origin_image = message.originImage === "" ? undefined : message.originImage;
-    obj.onchain_image = message.onchainImage === "" ? undefined : message.onchainImage;
+    obj.token_owner =
+      message.tokenOwner === "" ? undefined : message.tokenOwner;
+    obj.owner_address_type =
+      message.ownerAddressType === 0 ? undefined : message.ownerAddressType;
+    obj.origin_image =
+      message.originImage === "" ? undefined : message.originImage;
+    obj.onchain_image =
+      message.onchainImage === "" ? undefined : message.onchainImage;
     obj.token_uri = message.tokenUri === "" ? undefined : message.tokenUri;
     if (message.originAttributes) {
-      obj.origin_attributes = message.originAttributes.map(e => e ? NftAttributeValue.toAmino(e) : undefined);
+      obj.origin_attributes = message.originAttributes.map((e) =>
+        e ? NftAttributeValue.toAmino(e) : undefined
+      );
     } else {
       obj.origin_attributes = message.originAttributes;
     }
     if (message.onchainAttributes) {
-      obj.onchain_attributes = message.onchainAttributes.map(e => e ? NftAttributeValue.toAmino(e) : undefined);
+      obj.onchain_attributes = message.onchainAttributes.map((e) =>
+        e ? NftAttributeValue.toAmino(e) : undefined
+      );
     } else {
       obj.onchain_attributes = message.onchainAttributes;
     }
@@ -238,7 +272,7 @@ export const NftData = {
   toProtoMsg(message: NftData): NftDataProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.NftData",
-      value: NftData.encode(message).finish()
+      value: NftData.encode(message).finish(),
     };
-  }
+  },
 };

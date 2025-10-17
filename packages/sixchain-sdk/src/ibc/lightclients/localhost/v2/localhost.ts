@@ -1,5 +1,9 @@
 //@ts-nocheck
-import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
+import {
+  Height,
+  HeightAmino,
+  HeightSDKType,
+} from "../../../core/client/v1/client";
 import * as _m0 from "protobufjs/minimal";
 /** ClientState defines the 09-localhost client state */
 export interface ClientState {
@@ -32,12 +36,15 @@ export interface ClientStateSDKType {
 }
 function createBaseClientState(): ClientState {
   return {
-    latestHeight: Height.fromPartial({})
+    latestHeight: Height.fromPartial({}),
   };
 }
 export const ClientState = {
   typeUrl: "/ibc.lightclients.localhost.v2.ClientState",
-  encode(message: ClientState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ClientState,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.latestHeight !== undefined) {
       Height.encode(message.latestHeight, writer.uint32(10).fork()).ldelim();
     }
@@ -62,7 +69,10 @@ export const ClientState = {
   },
   fromPartial(object: Partial<ClientState>): ClientState {
     const message = createBaseClientState();
-    message.latestHeight = object.latestHeight !== undefined && object.latestHeight !== null ? Height.fromPartial(object.latestHeight) : undefined;
+    message.latestHeight =
+      object.latestHeight !== undefined && object.latestHeight !== null
+        ? Height.fromPartial(object.latestHeight)
+        : undefined;
     return message;
   },
   fromAmino(object: ClientStateAmino): ClientState {
@@ -74,7 +84,9 @@ export const ClientState = {
   },
   toAmino(message: ClientState): ClientStateAmino {
     const obj: any = {};
-    obj.latest_height = message.latestHeight ? Height.toAmino(message.latestHeight) : {};
+    obj.latest_height = message.latestHeight
+      ? Height.toAmino(message.latestHeight)
+      : {};
     return obj;
   },
   fromAminoMsg(object: ClientStateAminoMsg): ClientState {
@@ -83,7 +95,7 @@ export const ClientState = {
   toAminoMsg(message: ClientState): ClientStateAminoMsg {
     return {
       type: "cosmos-sdk/ClientState",
-      value: ClientState.toAmino(message)
+      value: ClientState.toAmino(message),
     };
   },
   fromProtoMsg(message: ClientStateProtoMsg): ClientState {
@@ -95,7 +107,7 @@ export const ClientState = {
   toProtoMsg(message: ClientState): ClientStateProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.localhost.v2.ClientState",
-      value: ClientState.encode(message).finish()
+      value: ClientState.encode(message).finish(),
     };
-  }
+  },
 };

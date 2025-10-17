@@ -1,5 +1,9 @@
 //@ts-nocheck
-import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
+import {
+  Height,
+  HeightAmino,
+  HeightSDKType,
+} from "../../../core/client/v1/client";
 import * as _m0 from "protobufjs/minimal";
 import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
 /** Wasm light client's Client state */
@@ -101,7 +105,7 @@ export interface ClientMessageSDKType {
 }
 /**
  * Checksums defines a list of all checksums that are stored
- * 
+ *
  * Deprecated: This message is deprecated in favor of storing the checksums
  * using a Collections.KeySet.
  */
@@ -115,7 +119,7 @@ export interface ChecksumsProtoMsg {
 }
 /**
  * Checksums defines a list of all checksums that are stored
- * 
+ *
  * Deprecated: This message is deprecated in favor of storing the checksums
  * using a Collections.KeySet.
  * @name ChecksumsAmino
@@ -132,7 +136,7 @@ export interface ChecksumsAminoMsg {
 }
 /**
  * Checksums defines a list of all checksums that are stored
- * 
+ *
  * Deprecated: This message is deprecated in favor of storing the checksums
  * using a Collections.KeySet.
  */
@@ -144,12 +148,15 @@ function createBaseClientState(): ClientState {
   return {
     data: new Uint8Array(),
     checksum: new Uint8Array(),
-    latestHeight: Height.fromPartial({})
+    latestHeight: Height.fromPartial({}),
   };
 }
 export const ClientState = {
   typeUrl: "/ibc.lightclients.wasm.v1.ClientState",
-  encode(message: ClientState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ClientState,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
     }
@@ -188,7 +195,10 @@ export const ClientState = {
     const message = createBaseClientState();
     message.data = object.data ?? new Uint8Array();
     message.checksum = object.checksum ?? new Uint8Array();
-    message.latestHeight = object.latestHeight !== undefined && object.latestHeight !== null ? Height.fromPartial(object.latestHeight) : undefined;
+    message.latestHeight =
+      object.latestHeight !== undefined && object.latestHeight !== null
+        ? Height.fromPartial(object.latestHeight)
+        : undefined;
     return message;
   },
   fromAmino(object: ClientStateAmino): ClientState {
@@ -207,8 +217,12 @@ export const ClientState = {
   toAmino(message: ClientState): ClientStateAmino {
     const obj: any = {};
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
-    obj.checksum = message.checksum ? base64FromBytes(message.checksum) : undefined;
-    obj.latest_height = message.latestHeight ? Height.toAmino(message.latestHeight) : {};
+    obj.checksum = message.checksum
+      ? base64FromBytes(message.checksum)
+      : undefined;
+    obj.latest_height = message.latestHeight
+      ? Height.toAmino(message.latestHeight)
+      : {};
     return obj;
   },
   fromAminoMsg(object: ClientStateAminoMsg): ClientState {
@@ -217,7 +231,7 @@ export const ClientState = {
   toAminoMsg(message: ClientState): ClientStateAminoMsg {
     return {
       type: "cosmos-sdk/ClientState",
-      value: ClientState.toAmino(message)
+      value: ClientState.toAmino(message),
     };
   },
   fromProtoMsg(message: ClientStateProtoMsg): ClientState {
@@ -229,18 +243,21 @@ export const ClientState = {
   toProtoMsg(message: ClientState): ClientStateProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.wasm.v1.ClientState",
-      value: ClientState.encode(message).finish()
+      value: ClientState.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseConsensusState(): ConsensusState {
   return {
-    data: new Uint8Array()
+    data: new Uint8Array(),
   };
 }
 export const ConsensusState = {
   typeUrl: "/ibc.lightclients.wasm.v1.ConsensusState",
-  encode(message: ConsensusState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ConsensusState,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
     }
@@ -286,7 +303,7 @@ export const ConsensusState = {
   toAminoMsg(message: ConsensusState): ConsensusStateAminoMsg {
     return {
       type: "cosmos-sdk/ConsensusState",
-      value: ConsensusState.toAmino(message)
+      value: ConsensusState.toAmino(message),
     };
   },
   fromProtoMsg(message: ConsensusStateProtoMsg): ConsensusState {
@@ -298,18 +315,21 @@ export const ConsensusState = {
   toProtoMsg(message: ConsensusState): ConsensusStateProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.wasm.v1.ConsensusState",
-      value: ConsensusState.encode(message).finish()
+      value: ConsensusState.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseClientMessage(): ClientMessage {
   return {
-    data: new Uint8Array()
+    data: new Uint8Array(),
   };
 }
 export const ClientMessage = {
   typeUrl: "/ibc.lightclients.wasm.v1.ClientMessage",
-  encode(message: ClientMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ClientMessage,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
     }
@@ -355,7 +375,7 @@ export const ClientMessage = {
   toAminoMsg(message: ClientMessage): ClientMessageAminoMsg {
     return {
       type: "cosmos-sdk/ClientMessage",
-      value: ClientMessage.toAmino(message)
+      value: ClientMessage.toAmino(message),
     };
   },
   fromProtoMsg(message: ClientMessageProtoMsg): ClientMessage {
@@ -367,18 +387,21 @@ export const ClientMessage = {
   toProtoMsg(message: ClientMessage): ClientMessageProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.wasm.v1.ClientMessage",
-      value: ClientMessage.encode(message).finish()
+      value: ClientMessage.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseChecksums(): Checksums {
   return {
-    checksums: []
+    checksums: [],
   };
 }
 export const Checksums = {
   typeUrl: "/ibc.lightclients.wasm.v1.Checksums",
-  encode(message: Checksums, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Checksums,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.checksums) {
       writer.uint32(10).bytes(v!);
     }
@@ -403,18 +426,18 @@ export const Checksums = {
   },
   fromPartial(object: Partial<Checksums>): Checksums {
     const message = createBaseChecksums();
-    message.checksums = object.checksums?.map(e => e) || [];
+    message.checksums = object.checksums?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: ChecksumsAmino): Checksums {
     const message = createBaseChecksums();
-    message.checksums = object.checksums?.map(e => bytesFromBase64(e)) || [];
+    message.checksums = object.checksums?.map((e) => bytesFromBase64(e)) || [];
     return message;
   },
   toAmino(message: Checksums): ChecksumsAmino {
     const obj: any = {};
     if (message.checksums) {
-      obj.checksums = message.checksums.map(e => base64FromBytes(e));
+      obj.checksums = message.checksums.map((e) => base64FromBytes(e));
     } else {
       obj.checksums = message.checksums;
     }
@@ -426,7 +449,7 @@ export const Checksums = {
   toAminoMsg(message: Checksums): ChecksumsAminoMsg {
     return {
       type: "cosmos-sdk/Checksums",
-      value: Checksums.toAmino(message)
+      value: Checksums.toAmino(message),
     };
   },
   fromProtoMsg(message: ChecksumsProtoMsg): Checksums {
@@ -438,7 +461,7 @@ export const Checksums = {
   toProtoMsg(message: Checksums): ChecksumsProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.wasm.v1.Checksums",
-      value: Checksums.encode(message).finish()
+      value: Checksums.encode(message).finish(),
     };
-  }
+  },
 };

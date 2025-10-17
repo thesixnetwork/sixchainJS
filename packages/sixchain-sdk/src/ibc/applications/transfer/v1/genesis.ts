@@ -1,6 +1,17 @@
 //@ts-nocheck
-import { DenomTrace, DenomTraceAmino, DenomTraceSDKType, Params, ParamsAmino, ParamsSDKType } from "./transfer";
-import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
+import {
+  DenomTrace,
+  DenomTraceAmino,
+  DenomTraceSDKType,
+  Params,
+  ParamsAmino,
+  ParamsSDKType,
+} from "./transfer";
+import {
+  Coin,
+  CoinAmino,
+  CoinSDKType,
+} from "../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the ibc-transfer genesis state */
 export interface GenesisState {
@@ -49,12 +60,15 @@ function createBaseGenesisState(): GenesisState {
     portId: "",
     denomTraces: [],
     params: Params.fromPartial({}),
-    totalEscrowed: []
+    totalEscrowed: [],
   };
 }
 export const GenesisState = {
   typeUrl: "/ibc.applications.transfer.v1.GenesisState",
-  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: GenesisState,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
     }
@@ -98,9 +112,14 @@ export const GenesisState = {
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.portId = object.portId ?? "";
-    message.denomTraces = object.denomTraces?.map(e => DenomTrace.fromPartial(e)) || [];
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.totalEscrowed = object.totalEscrowed?.map(e => Coin.fromPartial(e)) || [];
+    message.denomTraces =
+      object.denomTraces?.map((e) => DenomTrace.fromPartial(e)) || [];
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
+    message.totalEscrowed =
+      object.totalEscrowed?.map((e) => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -108,24 +127,30 @@ export const GenesisState = {
     if (object.port_id !== undefined && object.port_id !== null) {
       message.portId = object.port_id;
     }
-    message.denomTraces = object.denom_traces?.map(e => DenomTrace.fromAmino(e)) || [];
+    message.denomTraces =
+      object.denom_traces?.map((e) => DenomTrace.fromAmino(e)) || [];
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromAmino(object.params);
     }
-    message.totalEscrowed = object.total_escrowed?.map(e => Coin.fromAmino(e)) || [];
+    message.totalEscrowed =
+      object.total_escrowed?.map((e) => Coin.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
     obj.port_id = message.portId === "" ? undefined : message.portId;
     if (message.denomTraces) {
-      obj.denom_traces = message.denomTraces.map(e => e ? DenomTrace.toAmino(e) : undefined);
+      obj.denom_traces = message.denomTraces.map((e) =>
+        e ? DenomTrace.toAmino(e) : undefined
+      );
     } else {
       obj.denom_traces = message.denomTraces;
     }
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
     if (message.totalEscrowed) {
-      obj.total_escrowed = message.totalEscrowed.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.total_escrowed = message.totalEscrowed.map((e) =>
+        e ? Coin.toAmino(e) : undefined
+      );
     } else {
       obj.total_escrowed = message.totalEscrowed;
     }
@@ -137,7 +162,7 @@ export const GenesisState = {
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
       type: "cosmos-sdk/GenesisState",
-      value: GenesisState.toAmino(message)
+      value: GenesisState.toAmino(message),
     };
   },
   fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
@@ -149,7 +174,7 @@ export const GenesisState = {
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
       typeUrl: "/ibc.applications.transfer.v1.GenesisState",
-      value: GenesisState.encode(message).finish()
+      value: GenesisState.encode(message).finish(),
     };
-  }
+  },
 };

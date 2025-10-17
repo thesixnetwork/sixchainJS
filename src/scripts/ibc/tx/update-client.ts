@@ -55,13 +55,19 @@ const main = async () => {
     if (CLIENT_MESSAGE.startsWith("0x")) {
       // Hex string
       const hex = CLIENT_MESSAGE.slice(2);
-      clientMessageBytes = new Uint8Array(hex.match(/.{1,2}/g)!.map(byte => parseInt(byte, 16)));
+      clientMessageBytes = new Uint8Array(
+        hex.match(/.{1,2}/g)!.map((byte) => parseInt(byte, 16))
+      );
     } else {
       // Assume base64
-      clientMessageBytes = new Uint8Array(Buffer.from(CLIENT_MESSAGE, "base64"));
+      clientMessageBytes = new Uint8Array(
+        Buffer.from(CLIENT_MESSAGE, "base64")
+      );
     }
   } catch (error) {
-    throw new Error("Invalid client message format. Must be hex (0x...) or base64");
+    throw new Error(
+      "Invalid client message format. Must be hex (0x...) or base64"
+    );
   }
 
   const msgUpdateClient = updateClient({

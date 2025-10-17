@@ -1,6 +1,16 @@
 //@ts-nocheck
 import { Any, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import { Params, ParamsAmino, ParamsSDKType, AccessTuple, AccessTupleAmino, AccessTupleSDKType, Log, LogAmino, LogSDKType } from "./evm";
+import {
+  Params,
+  ParamsAmino,
+  ParamsSDKType,
+  AccessTuple,
+  AccessTupleAmino,
+  AccessTupleSDKType,
+  Log,
+  LogAmino,
+  LogSDKType,
+} from "./evm";
 import { Long, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** MsgEthereumTx encapsulates an Ethereum transaction as an SDK message. */
@@ -526,12 +536,15 @@ function createBaseMsgEthereumTx(): MsgEthereumTx {
     data: undefined,
     size: 0,
     hash: "",
-    from: ""
+    from: "",
   };
 }
 export const MsgEthereumTx = {
   typeUrl: "/ethermint.evm.v1.MsgEthereumTx",
-  encode(message: MsgEthereumTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgEthereumTx,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.data !== undefined) {
       Any.encode(message.data, writer.uint32(10).fork()).ldelim();
     }
@@ -574,7 +587,10 @@ export const MsgEthereumTx = {
   },
   fromPartial(object: Partial<MsgEthereumTx>): MsgEthereumTx {
     const message = createBaseMsgEthereumTx();
-    message.data = object.data !== undefined && object.data !== null ? Any.fromPartial(object.data) : undefined;
+    message.data =
+      object.data !== undefined && object.data !== null
+        ? Any.fromPartial(object.data)
+        : undefined;
     message.size = object.size ?? 0;
     message.hash = object.hash ?? "";
     message.from = object.from ?? "";
@@ -610,7 +626,7 @@ export const MsgEthereumTx = {
   toAminoMsg(message: MsgEthereumTx): MsgEthereumTxAminoMsg {
     return {
       type: "ethermint/MsgEthereumTx",
-      value: MsgEthereumTx.toAmino(message)
+      value: MsgEthereumTx.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgEthereumTxProtoMsg): MsgEthereumTx {
@@ -622,9 +638,9 @@ export const MsgEthereumTx = {
   toProtoMsg(message: MsgEthereumTx): MsgEthereumTxProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.MsgEthereumTx",
-      value: MsgEthereumTx.encode(message).finish()
+      value: MsgEthereumTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseLegacyTx(): LegacyTx {
   return {
@@ -637,12 +653,15 @@ function createBaseLegacyTx(): LegacyTx {
     data: new Uint8Array(),
     v: new Uint8Array(),
     r: new Uint8Array(),
-    s: new Uint8Array()
+    s: new Uint8Array(),
   };
 }
 export const LegacyTx = {
   typeUrl: "/ethermint.evm.v1.LegacyTx",
-  encode(message: LegacyTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: LegacyTx,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.nonce.isZero()) {
       writer.uint32(8).uint64(message.nonce);
     }
@@ -715,9 +734,15 @@ export const LegacyTx = {
   },
   fromPartial(object: Partial<LegacyTx>): LegacyTx {
     const message = createBaseLegacyTx();
-    message.nonce = object.nonce !== undefined && object.nonce !== null ? Long.fromValue(object.nonce) : Long.UZERO;
+    message.nonce =
+      object.nonce !== undefined && object.nonce !== null
+        ? Long.fromValue(object.nonce)
+        : Long.UZERO;
     message.gasPrice = object.gasPrice ?? "";
-    message.gas = object.gas !== undefined && object.gas !== null ? Long.fromValue(object.gas) : Long.UZERO;
+    message.gas =
+      object.gas !== undefined && object.gas !== null
+        ? Long.fromValue(object.gas)
+        : Long.UZERO;
     message.to = object.to ?? "";
     message.value = object.value ?? "";
     message.data = object.data ?? new Uint8Array();
@@ -776,7 +801,7 @@ export const LegacyTx = {
   toAminoMsg(message: LegacyTx): LegacyTxAminoMsg {
     return {
       type: "ethermint/LegacyTx",
-      value: LegacyTx.toAmino(message)
+      value: LegacyTx.toAmino(message),
     };
   },
   fromProtoMsg(message: LegacyTxProtoMsg): LegacyTx {
@@ -788,9 +813,9 @@ export const LegacyTx = {
   toProtoMsg(message: LegacyTx): LegacyTxProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.LegacyTx",
-      value: LegacyTx.encode(message).finish()
+      value: LegacyTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseAccessListTx(): AccessListTx {
   return {
@@ -805,12 +830,15 @@ function createBaseAccessListTx(): AccessListTx {
     accesses: [],
     v: new Uint8Array(),
     r: new Uint8Array(),
-    s: new Uint8Array()
+    s: new Uint8Array(),
   };
 }
 export const AccessListTx = {
   typeUrl: "/ethermint.evm.v1.AccessListTx",
-  encode(message: AccessListTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: AccessListTx,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.chainId !== "") {
       writer.uint32(10).string(message.chainId);
     }
@@ -896,13 +924,20 @@ export const AccessListTx = {
   fromPartial(object: Partial<AccessListTx>): AccessListTx {
     const message = createBaseAccessListTx();
     message.chainId = object.chainId ?? "";
-    message.nonce = object.nonce !== undefined && object.nonce !== null ? Long.fromValue(object.nonce) : Long.UZERO;
+    message.nonce =
+      object.nonce !== undefined && object.nonce !== null
+        ? Long.fromValue(object.nonce)
+        : Long.UZERO;
     message.gasPrice = object.gasPrice ?? "";
-    message.gas = object.gas !== undefined && object.gas !== null ? Long.fromValue(object.gas) : Long.UZERO;
+    message.gas =
+      object.gas !== undefined && object.gas !== null
+        ? Long.fromValue(object.gas)
+        : Long.UZERO;
     message.to = object.to ?? "";
     message.value = object.value ?? "";
     message.data = object.data ?? new Uint8Array();
-    message.accesses = object.accesses?.map(e => AccessTuple.fromPartial(e)) || [];
+    message.accesses =
+      object.accesses?.map((e) => AccessTuple.fromPartial(e)) || [];
     message.v = object.v ?? new Uint8Array();
     message.r = object.r ?? new Uint8Array();
     message.s = object.s ?? new Uint8Array();
@@ -931,7 +966,8 @@ export const AccessListTx = {
     if (object.data !== undefined && object.data !== null) {
       message.data = bytesFromBase64(object.data);
     }
-    message.accesses = object.accesses?.map(e => AccessTuple.fromAmino(e)) || [];
+    message.accesses =
+      object.accesses?.map((e) => AccessTuple.fromAmino(e)) || [];
     if (object.v !== undefined && object.v !== null) {
       message.v = bytesFromBase64(object.v);
     }
@@ -953,7 +989,9 @@ export const AccessListTx = {
     obj.value = message.value === "" ? undefined : message.value;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     if (message.accesses) {
-      obj.accesses = message.accesses.map(e => e ? AccessTuple.toAmino(e) : undefined);
+      obj.accesses = message.accesses.map((e) =>
+        e ? AccessTuple.toAmino(e) : undefined
+      );
     } else {
       obj.accesses = message.accesses;
     }
@@ -968,7 +1006,7 @@ export const AccessListTx = {
   toAminoMsg(message: AccessListTx): AccessListTxAminoMsg {
     return {
       type: "ethermint/AccessListTx",
-      value: AccessListTx.toAmino(message)
+      value: AccessListTx.toAmino(message),
     };
   },
   fromProtoMsg(message: AccessListTxProtoMsg): AccessListTx {
@@ -980,9 +1018,9 @@ export const AccessListTx = {
   toProtoMsg(message: AccessListTx): AccessListTxProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.AccessListTx",
-      value: AccessListTx.encode(message).finish()
+      value: AccessListTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseDynamicFeeTx(): DynamicFeeTx {
   return {
@@ -998,12 +1036,15 @@ function createBaseDynamicFeeTx(): DynamicFeeTx {
     accesses: [],
     v: new Uint8Array(),
     r: new Uint8Array(),
-    s: new Uint8Array()
+    s: new Uint8Array(),
   };
 }
 export const DynamicFeeTx = {
   typeUrl: "/ethermint.evm.v1.DynamicFeeTx",
-  encode(message: DynamicFeeTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: DynamicFeeTx,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.chainId !== "") {
       writer.uint32(10).string(message.chainId);
     }
@@ -1095,14 +1136,21 @@ export const DynamicFeeTx = {
   fromPartial(object: Partial<DynamicFeeTx>): DynamicFeeTx {
     const message = createBaseDynamicFeeTx();
     message.chainId = object.chainId ?? "";
-    message.nonce = object.nonce !== undefined && object.nonce !== null ? Long.fromValue(object.nonce) : Long.UZERO;
+    message.nonce =
+      object.nonce !== undefined && object.nonce !== null
+        ? Long.fromValue(object.nonce)
+        : Long.UZERO;
     message.gasTipCap = object.gasTipCap ?? "";
     message.gasFeeCap = object.gasFeeCap ?? "";
-    message.gas = object.gas !== undefined && object.gas !== null ? Long.fromValue(object.gas) : Long.UZERO;
+    message.gas =
+      object.gas !== undefined && object.gas !== null
+        ? Long.fromValue(object.gas)
+        : Long.UZERO;
     message.to = object.to ?? "";
     message.value = object.value ?? "";
     message.data = object.data ?? new Uint8Array();
-    message.accesses = object.accesses?.map(e => AccessTuple.fromPartial(e)) || [];
+    message.accesses =
+      object.accesses?.map((e) => AccessTuple.fromPartial(e)) || [];
     message.v = object.v ?? new Uint8Array();
     message.r = object.r ?? new Uint8Array();
     message.s = object.s ?? new Uint8Array();
@@ -1134,7 +1182,8 @@ export const DynamicFeeTx = {
     if (object.data !== undefined && object.data !== null) {
       message.data = bytesFromBase64(object.data);
     }
-    message.accesses = object.accesses?.map(e => AccessTuple.fromAmino(e)) || [];
+    message.accesses =
+      object.accesses?.map((e) => AccessTuple.fromAmino(e)) || [];
     if (object.v !== undefined && object.v !== null) {
       message.v = bytesFromBase64(object.v);
     }
@@ -1157,7 +1206,9 @@ export const DynamicFeeTx = {
     obj.value = message.value === "" ? undefined : message.value;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     if (message.accesses) {
-      obj.accesses = message.accesses.map(e => e ? AccessTuple.toAmino(e) : undefined);
+      obj.accesses = message.accesses.map((e) =>
+        e ? AccessTuple.toAmino(e) : undefined
+      );
     } else {
       obj.accesses = message.accesses;
     }
@@ -1172,7 +1223,7 @@ export const DynamicFeeTx = {
   toAminoMsg(message: DynamicFeeTx): DynamicFeeTxAminoMsg {
     return {
       type: "ethermint/DynamicFeeTx",
-      value: DynamicFeeTx.toAmino(message)
+      value: DynamicFeeTx.toAmino(message),
     };
   },
   fromProtoMsg(message: DynamicFeeTxProtoMsg): DynamicFeeTx {
@@ -1184,19 +1235,25 @@ export const DynamicFeeTx = {
   toProtoMsg(message: DynamicFeeTx): DynamicFeeTxProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.DynamicFeeTx",
-      value: DynamicFeeTx.encode(message).finish()
+      value: DynamicFeeTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseExtensionOptionsEthereumTx(): ExtensionOptionsEthereumTx {
   return {};
 }
 export const ExtensionOptionsEthereumTx = {
   typeUrl: "/ethermint.evm.v1.ExtensionOptionsEthereumTx",
-  encode(_: ExtensionOptionsEthereumTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: ExtensionOptionsEthereumTx,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ExtensionOptionsEthereumTx {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): ExtensionOptionsEthereumTx {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseExtensionOptionsEthereumTx();
@@ -1210,7 +1267,9 @@ export const ExtensionOptionsEthereumTx = {
     }
     return message;
   },
-  fromPartial(_: Partial<ExtensionOptionsEthereumTx>): ExtensionOptionsEthereumTx {
+  fromPartial(
+    _: Partial<ExtensionOptionsEthereumTx>
+  ): ExtensionOptionsEthereumTx {
     const message = createBaseExtensionOptionsEthereumTx();
     return message;
   },
@@ -1222,21 +1281,27 @@ export const ExtensionOptionsEthereumTx = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: ExtensionOptionsEthereumTxAminoMsg): ExtensionOptionsEthereumTx {
+  fromAminoMsg(
+    object: ExtensionOptionsEthereumTxAminoMsg
+  ): ExtensionOptionsEthereumTx {
     return ExtensionOptionsEthereumTx.fromAmino(object.value);
   },
-  fromProtoMsg(message: ExtensionOptionsEthereumTxProtoMsg): ExtensionOptionsEthereumTx {
+  fromProtoMsg(
+    message: ExtensionOptionsEthereumTxProtoMsg
+  ): ExtensionOptionsEthereumTx {
     return ExtensionOptionsEthereumTx.decode(message.value);
   },
   toProto(message: ExtensionOptionsEthereumTx): Uint8Array {
     return ExtensionOptionsEthereumTx.encode(message).finish();
   },
-  toProtoMsg(message: ExtensionOptionsEthereumTx): ExtensionOptionsEthereumTxProtoMsg {
+  toProtoMsg(
+    message: ExtensionOptionsEthereumTx
+  ): ExtensionOptionsEthereumTxProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.ExtensionOptionsEthereumTx",
-      value: ExtensionOptionsEthereumTx.encode(message).finish()
+      value: ExtensionOptionsEthereumTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgEthereumTxResponse(): MsgEthereumTxResponse {
   return {
@@ -1244,12 +1309,15 @@ function createBaseMsgEthereumTxResponse(): MsgEthereumTxResponse {
     logs: [],
     ret: new Uint8Array(),
     vmError: "",
-    gasUsed: Long.UZERO
+    gasUsed: Long.UZERO,
   };
 }
 export const MsgEthereumTxResponse = {
   typeUrl: "/ethermint.evm.v1.MsgEthereumTxResponse",
-  encode(message: MsgEthereumTxResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgEthereumTxResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.hash !== "") {
       writer.uint32(10).string(message.hash);
     }
@@ -1267,7 +1335,10 @@ export const MsgEthereumTxResponse = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgEthereumTxResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgEthereumTxResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgEthereumTxResponse();
@@ -1299,10 +1370,13 @@ export const MsgEthereumTxResponse = {
   fromPartial(object: Partial<MsgEthereumTxResponse>): MsgEthereumTxResponse {
     const message = createBaseMsgEthereumTxResponse();
     message.hash = object.hash ?? "";
-    message.logs = object.logs?.map(e => Log.fromPartial(e)) || [];
+    message.logs = object.logs?.map((e) => Log.fromPartial(e)) || [];
     message.ret = object.ret ?? new Uint8Array();
     message.vmError = object.vmError ?? "";
-    message.gasUsed = object.gasUsed !== undefined && object.gasUsed !== null ? Long.fromValue(object.gasUsed) : Long.UZERO;
+    message.gasUsed =
+      object.gasUsed !== undefined && object.gasUsed !== null
+        ? Long.fromValue(object.gasUsed)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: MsgEthereumTxResponseAmino): MsgEthereumTxResponse {
@@ -1310,7 +1384,7 @@ export const MsgEthereumTxResponse = {
     if (object.hash !== undefined && object.hash !== null) {
       message.hash = object.hash;
     }
-    message.logs = object.logs?.map(e => Log.fromAmino(e)) || [];
+    message.logs = object.logs?.map((e) => Log.fromAmino(e)) || [];
     if (object.ret !== undefined && object.ret !== null) {
       message.ret = bytesFromBase64(object.ret);
     }
@@ -1326,13 +1400,15 @@ export const MsgEthereumTxResponse = {
     const obj: any = {};
     obj.hash = message.hash === "" ? undefined : message.hash;
     if (message.logs) {
-      obj.logs = message.logs.map(e => e ? Log.toAmino(e) : undefined);
+      obj.logs = message.logs.map((e) => (e ? Log.toAmino(e) : undefined));
     } else {
       obj.logs = message.logs;
     }
     obj.ret = message.ret ? base64FromBytes(message.ret) : undefined;
     obj.vm_error = message.vmError === "" ? undefined : message.vmError;
-    obj.gas_used = !message.gasUsed.isZero() ? message.gasUsed?.toString() : undefined;
+    obj.gas_used = !message.gasUsed.isZero()
+      ? message.gasUsed?.toString()
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgEthereumTxResponseAminoMsg): MsgEthereumTxResponse {
@@ -1347,19 +1423,22 @@ export const MsgEthereumTxResponse = {
   toProtoMsg(message: MsgEthereumTxResponse): MsgEthereumTxResponseProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.MsgEthereumTxResponse",
-      value: MsgEthereumTxResponse.encode(message).finish()
+      value: MsgEthereumTxResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
-    params: Params.fromPartial({})
+    params: Params.fromPartial({}),
   };
 }
 export const MsgUpdateParams = {
   typeUrl: "/ethermint.evm.v1.MsgUpdateParams",
-  encode(message: MsgUpdateParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgUpdateParams,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
     }
@@ -1391,7 +1470,10 @@ export const MsgUpdateParams = {
   fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams {
     const message = createBaseMsgUpdateParams();
     message.authority = object.authority ?? "";
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
@@ -1407,7 +1489,9 @@ export const MsgUpdateParams = {
   toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino {
     const obj: any = {};
     obj.authority = message.authority === "" ? undefined : message.authority;
-    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params
+      ? Params.toAmino(message.params)
+      : Params.toAmino(Params.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams {
@@ -1416,7 +1500,7 @@ export const MsgUpdateParams = {
   toAminoMsg(message: MsgUpdateParams): MsgUpdateParamsAminoMsg {
     return {
       type: "evmos/x/evm/MsgUpdateParams",
-      value: MsgUpdateParams.toAmino(message)
+      value: MsgUpdateParams.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgUpdateParamsProtoMsg): MsgUpdateParams {
@@ -1428,19 +1512,25 @@ export const MsgUpdateParams = {
   toProtoMsg(message: MsgUpdateParams): MsgUpdateParamsProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.MsgUpdateParams",
-      value: MsgUpdateParams.encode(message).finish()
+      value: MsgUpdateParams.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
   return {};
 }
 export const MsgUpdateParamsResponse = {
   typeUrl: "/ethermint.evm.v1.MsgUpdateParamsResponse",
-  encode(_: MsgUpdateParamsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgUpdateParamsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateParamsResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgUpdateParamsResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateParamsResponse();
@@ -1466,19 +1556,25 @@ export const MsgUpdateParamsResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse {
+  fromAminoMsg(
+    object: MsgUpdateParamsResponseAminoMsg
+  ): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgUpdateParamsResponseProtoMsg): MsgUpdateParamsResponse {
+  fromProtoMsg(
+    message: MsgUpdateParamsResponseProtoMsg
+  ): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.decode(message.value);
   },
   toProto(message: MsgUpdateParamsResponse): Uint8Array {
     return MsgUpdateParamsResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseProtoMsg {
+  toProtoMsg(
+    message: MsgUpdateParamsResponse
+  ): MsgUpdateParamsResponseProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.MsgUpdateParamsResponse",
-      value: MsgUpdateParamsResponse.encode(message).finish()
+      value: MsgUpdateParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };

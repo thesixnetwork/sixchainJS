@@ -50,7 +50,7 @@ const delegate = async () => {
 
   // First attempt with auto gas
   console.log("Attempting delegation with auto gas...");
-  const memo = "delegate"
+  const memo = "delegate";
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,

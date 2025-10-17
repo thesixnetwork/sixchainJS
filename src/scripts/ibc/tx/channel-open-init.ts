@@ -56,7 +56,7 @@ const main = async () => {
 
   let msgArray: Array<EncodeObject> = [];
 
-  const connectionHops = CONNECTION_HOPS.split(",").map(id => id.trim());
+  const connectionHops = CONNECTION_HOPS.split(",").map((id) => id.trim());
   const orderingValue = parseInt(ORDERING);
 
   const msgChannelOpenInit = channelOpenInit({

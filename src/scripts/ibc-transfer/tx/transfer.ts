@@ -58,12 +58,16 @@ const main = async () => {
   const { transfer } = ibc.applications.transfer.v1.MessageComposer.withTypeUrl;
 
   // Parse timeout values
-  const timeoutHeight = TIMEOUT_HEIGHT === "0" ? undefined : {
-    revisionNumber: Long.ZERO,
-    revisionHeight: Long.fromString(TIMEOUT_HEIGHT)
-  };
-  
-  const timeoutTimestamp = TIMEOUT_TIMESTAMP === "0" ? Long.UZERO : Long.fromString(TIMEOUT_TIMESTAMP);
+  const timeoutHeight =
+    TIMEOUT_HEIGHT === "0"
+      ? undefined
+      : {
+          revisionNumber: Long.ZERO,
+          revisionHeight: Long.fromString(TIMEOUT_HEIGHT),
+        };
+
+  const timeoutTimestamp =
+    TIMEOUT_TIMESTAMP === "0" ? Long.UZERO : Long.fromString(TIMEOUT_TIMESTAMP);
 
   let msgArray: Array<EncodeObject> = [];
 

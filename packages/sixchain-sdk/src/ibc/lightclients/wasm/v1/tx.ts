@@ -193,12 +193,15 @@ export interface MsgMigrateContractResponseSDKType {}
 function createBaseMsgStoreCode(): MsgStoreCode {
   return {
     signer: "",
-    wasmByteCode: new Uint8Array()
+    wasmByteCode: new Uint8Array(),
   };
 }
 export const MsgStoreCode = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgStoreCode",
-  encode(message: MsgStoreCode, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgStoreCode,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.signer !== "") {
       writer.uint32(10).string(message.signer);
     }
@@ -246,7 +249,9 @@ export const MsgStoreCode = {
   toAmino(message: MsgStoreCode): MsgStoreCodeAmino {
     const obj: any = {};
     obj.signer = message.signer === "" ? undefined : message.signer;
-    obj.wasm_byte_code = message.wasmByteCode ? base64FromBytes(message.wasmByteCode) : undefined;
+    obj.wasm_byte_code = message.wasmByteCode
+      ? base64FromBytes(message.wasmByteCode)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgStoreCodeAminoMsg): MsgStoreCode {
@@ -255,7 +260,7 @@ export const MsgStoreCode = {
   toAminoMsg(message: MsgStoreCode): MsgStoreCodeAminoMsg {
     return {
       type: "cosmos-sdk/MsgStoreCode",
-      value: MsgStoreCode.toAmino(message)
+      value: MsgStoreCode.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgStoreCodeProtoMsg): MsgStoreCode {
@@ -267,24 +272,30 @@ export const MsgStoreCode = {
   toProtoMsg(message: MsgStoreCode): MsgStoreCodeProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.wasm.v1.MsgStoreCode",
-      value: MsgStoreCode.encode(message).finish()
+      value: MsgStoreCode.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgStoreCodeResponse(): MsgStoreCodeResponse {
   return {
-    checksum: new Uint8Array()
+    checksum: new Uint8Array(),
   };
 }
 export const MsgStoreCodeResponse = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgStoreCodeResponse",
-  encode(message: MsgStoreCodeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgStoreCodeResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.checksum.length !== 0) {
       writer.uint32(10).bytes(message.checksum);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgStoreCodeResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgStoreCodeResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgStoreCodeResponse();
@@ -315,7 +326,9 @@ export const MsgStoreCodeResponse = {
   },
   toAmino(message: MsgStoreCodeResponse): MsgStoreCodeResponseAmino {
     const obj: any = {};
-    obj.checksum = message.checksum ? base64FromBytes(message.checksum) : undefined;
+    obj.checksum = message.checksum
+      ? base64FromBytes(message.checksum)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgStoreCodeResponseAminoMsg): MsgStoreCodeResponse {
@@ -324,7 +337,7 @@ export const MsgStoreCodeResponse = {
   toAminoMsg(message: MsgStoreCodeResponse): MsgStoreCodeResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgStoreCodeResponse",
-      value: MsgStoreCodeResponse.toAmino(message)
+      value: MsgStoreCodeResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgStoreCodeResponseProtoMsg): MsgStoreCodeResponse {
@@ -336,19 +349,22 @@ export const MsgStoreCodeResponse = {
   toProtoMsg(message: MsgStoreCodeResponse): MsgStoreCodeResponseProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.wasm.v1.MsgStoreCodeResponse",
-      value: MsgStoreCodeResponse.encode(message).finish()
+      value: MsgStoreCodeResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgRemoveChecksum(): MsgRemoveChecksum {
   return {
     signer: "",
-    checksum: new Uint8Array()
+    checksum: new Uint8Array(),
   };
 }
 export const MsgRemoveChecksum = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgRemoveChecksum",
-  encode(message: MsgRemoveChecksum, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgRemoveChecksum,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.signer !== "") {
       writer.uint32(10).string(message.signer);
     }
@@ -396,7 +412,9 @@ export const MsgRemoveChecksum = {
   toAmino(message: MsgRemoveChecksum): MsgRemoveChecksumAmino {
     const obj: any = {};
     obj.signer = message.signer === "" ? undefined : message.signer;
-    obj.checksum = message.checksum ? base64FromBytes(message.checksum) : undefined;
+    obj.checksum = message.checksum
+      ? base64FromBytes(message.checksum)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgRemoveChecksumAminoMsg): MsgRemoveChecksum {
@@ -405,7 +423,7 @@ export const MsgRemoveChecksum = {
   toAminoMsg(message: MsgRemoveChecksum): MsgRemoveChecksumAminoMsg {
     return {
       type: "cosmos-sdk/MsgRemoveChecksum",
-      value: MsgRemoveChecksum.toAmino(message)
+      value: MsgRemoveChecksum.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgRemoveChecksumProtoMsg): MsgRemoveChecksum {
@@ -417,19 +435,25 @@ export const MsgRemoveChecksum = {
   toProtoMsg(message: MsgRemoveChecksum): MsgRemoveChecksumProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.wasm.v1.MsgRemoveChecksum",
-      value: MsgRemoveChecksum.encode(message).finish()
+      value: MsgRemoveChecksum.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgRemoveChecksumResponse(): MsgRemoveChecksumResponse {
   return {};
 }
 export const MsgRemoveChecksumResponse = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgRemoveChecksumResponse",
-  encode(_: MsgRemoveChecksumResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgRemoveChecksumResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgRemoveChecksumResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgRemoveChecksumResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRemoveChecksumResponse();
@@ -443,7 +467,9 @@ export const MsgRemoveChecksumResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgRemoveChecksumResponse>): MsgRemoveChecksumResponse {
+  fromPartial(
+    _: Partial<MsgRemoveChecksumResponse>
+  ): MsgRemoveChecksumResponse {
     const message = createBaseMsgRemoveChecksumResponse();
     return message;
   },
@@ -455,39 +481,50 @@ export const MsgRemoveChecksumResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgRemoveChecksumResponseAminoMsg): MsgRemoveChecksumResponse {
+  fromAminoMsg(
+    object: MsgRemoveChecksumResponseAminoMsg
+  ): MsgRemoveChecksumResponse {
     return MsgRemoveChecksumResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgRemoveChecksumResponse): MsgRemoveChecksumResponseAminoMsg {
+  toAminoMsg(
+    message: MsgRemoveChecksumResponse
+  ): MsgRemoveChecksumResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgRemoveChecksumResponse",
-      value: MsgRemoveChecksumResponse.toAmino(message)
+      value: MsgRemoveChecksumResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgRemoveChecksumResponseProtoMsg): MsgRemoveChecksumResponse {
+  fromProtoMsg(
+    message: MsgRemoveChecksumResponseProtoMsg
+  ): MsgRemoveChecksumResponse {
     return MsgRemoveChecksumResponse.decode(message.value);
   },
   toProto(message: MsgRemoveChecksumResponse): Uint8Array {
     return MsgRemoveChecksumResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgRemoveChecksumResponse): MsgRemoveChecksumResponseProtoMsg {
+  toProtoMsg(
+    message: MsgRemoveChecksumResponse
+  ): MsgRemoveChecksumResponseProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.wasm.v1.MsgRemoveChecksumResponse",
-      value: MsgRemoveChecksumResponse.encode(message).finish()
+      value: MsgRemoveChecksumResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgMigrateContract(): MsgMigrateContract {
   return {
     signer: "",
     clientId: "",
     checksum: new Uint8Array(),
-    msg: new Uint8Array()
+    msg: new Uint8Array(),
   };
 }
 export const MsgMigrateContract = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgMigrateContract",
-  encode(message: MsgMigrateContract, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: MsgMigrateContract,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.signer !== "") {
       writer.uint32(10).string(message.signer);
     }
@@ -556,7 +593,9 @@ export const MsgMigrateContract = {
     const obj: any = {};
     obj.signer = message.signer === "" ? undefined : message.signer;
     obj.client_id = message.clientId === "" ? undefined : message.clientId;
-    obj.checksum = message.checksum ? base64FromBytes(message.checksum) : undefined;
+    obj.checksum = message.checksum
+      ? base64FromBytes(message.checksum)
+      : undefined;
     obj.msg = message.msg ? base64FromBytes(message.msg) : undefined;
     return obj;
   },
@@ -566,7 +605,7 @@ export const MsgMigrateContract = {
   toAminoMsg(message: MsgMigrateContract): MsgMigrateContractAminoMsg {
     return {
       type: "cosmos-sdk/MsgMigrateContract",
-      value: MsgMigrateContract.toAmino(message)
+      value: MsgMigrateContract.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgMigrateContractProtoMsg): MsgMigrateContract {
@@ -578,19 +617,25 @@ export const MsgMigrateContract = {
   toProtoMsg(message: MsgMigrateContract): MsgMigrateContractProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.wasm.v1.MsgMigrateContract",
-      value: MsgMigrateContract.encode(message).finish()
+      value: MsgMigrateContract.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgMigrateContractResponse(): MsgMigrateContractResponse {
   return {};
 }
 export const MsgMigrateContractResponse = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgMigrateContractResponse",
-  encode(_: MsgMigrateContractResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    _: MsgMigrateContractResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgMigrateContractResponse {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): MsgMigrateContractResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgMigrateContractResponse();
@@ -604,7 +649,9 @@ export const MsgMigrateContractResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgMigrateContractResponse>): MsgMigrateContractResponse {
+  fromPartial(
+    _: Partial<MsgMigrateContractResponse>
+  ): MsgMigrateContractResponse {
     const message = createBaseMsgMigrateContractResponse();
     return message;
   },
@@ -616,25 +663,33 @@ export const MsgMigrateContractResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgMigrateContractResponseAminoMsg): MsgMigrateContractResponse {
+  fromAminoMsg(
+    object: MsgMigrateContractResponseAminoMsg
+  ): MsgMigrateContractResponse {
     return MsgMigrateContractResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgMigrateContractResponse): MsgMigrateContractResponseAminoMsg {
+  toAminoMsg(
+    message: MsgMigrateContractResponse
+  ): MsgMigrateContractResponseAminoMsg {
     return {
       type: "cosmos-sdk/MsgMigrateContractResponse",
-      value: MsgMigrateContractResponse.toAmino(message)
+      value: MsgMigrateContractResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgMigrateContractResponseProtoMsg): MsgMigrateContractResponse {
+  fromProtoMsg(
+    message: MsgMigrateContractResponseProtoMsg
+  ): MsgMigrateContractResponse {
     return MsgMigrateContractResponse.decode(message.value);
   },
   toProto(message: MsgMigrateContractResponse): Uint8Array {
     return MsgMigrateContractResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgMigrateContractResponse): MsgMigrateContractResponseProtoMsg {
+  toProtoMsg(
+    message: MsgMigrateContractResponse
+  ): MsgMigrateContractResponseProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.wasm.v1.MsgMigrateContractResponse",
-      value: MsgMigrateContractResponse.encode(message).finish()
+      value: MsgMigrateContractResponse.encode(message).finish(),
     };
-  }
+  },
 };

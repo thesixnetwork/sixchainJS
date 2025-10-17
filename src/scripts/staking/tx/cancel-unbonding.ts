@@ -59,15 +59,17 @@ const main = async () => {
   let msgArray: Array<EncodeObject> = [];
 
   const cancelUnbonding =
-    cosmos.staking.v1beta1.MessageComposer.withTypeUrl.cancelUnbondingDelegation({
-      delegatorAddress: address,
-      validatorAddress: validator,
-      amount: {
-        amount: amount,
-        denom: denom,
-      },
-      creationHeight: Long.fromString(creationHeight),
-    });
+    cosmos.staking.v1beta1.MessageComposer.withTypeUrl.cancelUnbondingDelegation(
+      {
+        delegatorAddress: address,
+        validatorAddress: validator,
+        amount: {
+          amount: amount,
+          denom: denom,
+        },
+        creationHeight: Long.fromString(creationHeight),
+      }
+    );
 
   msgArray.push(cancelUnbonding);
 
@@ -88,7 +90,9 @@ const main = async () => {
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error cancelling unbonding delegation: ${txResponse.rawLog}`);
+    console.error(
+      `Error cancelling unbonding delegation: ${txResponse.rawLog}`
+    );
     return false;
   } else {
     console.log(

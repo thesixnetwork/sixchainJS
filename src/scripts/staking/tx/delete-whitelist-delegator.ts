@@ -23,7 +23,9 @@ const main = async () => {
   }
 
   if (!validatorAddress || !delegatorAddress) {
-    throw new Error("Both validator address and delegator address are required");
+    throw new Error(
+      "Both validator address and delegator address are required"
+    );
   }
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
@@ -55,11 +57,13 @@ const main = async () => {
   let msgArray: Array<EncodeObject> = [];
 
   const deleteWhitelistDelegator =
-    cosmos.staking.v1beta1.MessageComposer.withTypeUrl.deleteWhitelistdelegator({
-      creator: address, // Address creating the deletion
-      validatorAddress: validatorAddress, // Validator address
-      delegatorAddress: delegatorAddress, // Delegator address to be removed from whitelist
-    });
+    cosmos.staking.v1beta1.MessageComposer.withTypeUrl.deleteWhitelistdelegator(
+      {
+        creator: address, // Address creating the deletion
+        validatorAddress: validatorAddress, // Validator address
+        delegatorAddress: delegatorAddress, // Delegator address to be removed from whitelist
+      }
+    );
 
   msgArray.push(deleteWhitelistDelegator);
 

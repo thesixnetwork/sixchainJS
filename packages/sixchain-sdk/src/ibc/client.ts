@@ -29,9 +29,17 @@ export const ibcAminoConverters = {
   ...ibcCoreChannelV1TxAmino.AminoConverter,
   ...ibcCoreClientV1TxAmino.AminoConverter,
   ...ibcCoreConnectionV1TxAmino.AminoConverter,
-  ...ibcLightclientsWasmV1TxAmino.AminoConverter
+  ...ibcLightclientsWasmV1TxAmino.AminoConverter,
 };
-export const ibcProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...ibcApplicationsInterchainAccountsControllerV1TxRegistry.registry, ...ibcApplicationsInterchainAccountsHostV1TxRegistry.registry, ...ibcApplicationsTransferV1TxRegistry.registry, ...ibcCoreChannelV1TxRegistry.registry, ...ibcCoreClientV1TxRegistry.registry, ...ibcCoreConnectionV1TxRegistry.registry, ...ibcLightclientsWasmV1TxRegistry.registry];
+export const ibcProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [
+  ...ibcApplicationsInterchainAccountsControllerV1TxRegistry.registry,
+  ...ibcApplicationsInterchainAccountsHostV1TxRegistry.registry,
+  ...ibcApplicationsTransferV1TxRegistry.registry,
+  ...ibcCoreChannelV1TxRegistry.registry,
+  ...ibcCoreClientV1TxRegistry.registry,
+  ...ibcCoreConnectionV1TxRegistry.registry,
+  ...ibcLightclientsWasmV1TxRegistry.registry,
+];
 export const getSigningIbcClientOptions = ({
   defaultTypes = defaultRegistryTypes,
   options,
@@ -45,7 +53,7 @@ export const getSigningIbcClientOptions = ({
 } => {
   const registry = new Registry([...defaultTypes, ...ibcProtoRegistry]);
   const aminoTypes = new AminoTypes({
-    ...ibcAminoConverters
+    ...ibcAminoConverters,
   });
   return {
     registry,
@@ -57,23 +65,24 @@ export const getSigningIbcClient = async ({
   rpcEndpoint,
   signer,
   options,
-  defaultTypes = defaultRegistryTypes
+  defaultTypes = defaultRegistryTypes,
 }: {
   rpcEndpoint: string | HttpEndpoint;
   signer: OfflineSigner;
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => {
-  const {
-    registry,
-    aminoTypes
-  } = getSigningIbcClientOptions({
+  const { registry, aminoTypes } = getSigningIbcClientOptions({
     defaultTypes,
     options,
   });
-  const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
-    registry: registry as any,
-    aminoTypes,
-    ...options,
-  });
+  const client = await SigningStargateClient.connectWithSigner(
+    rpcEndpoint,
+    signer,
+    {
+      registry: registry as any,
+      aminoTypes,
+      ...options,
+    }
+  );
   return client;
 };

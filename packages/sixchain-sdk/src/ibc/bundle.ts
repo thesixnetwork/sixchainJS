@@ -78,12 +78,12 @@ export namespace ibc {
           ..._318,
           ..._325,
           ..._332,
-          ..._339
+          ..._339,
         };
       }
       export namespace genesis {
         export const v1 = {
-          ..._136
+          ..._136,
         };
       }
       export namespace host {
@@ -94,13 +94,13 @@ export namespace ibc {
           ..._319,
           ..._326,
           ..._333,
-          ..._340
+          ..._340,
         };
       }
       export const v1 = {
         ..._140,
         ..._141,
-        ..._142
+        ..._142,
       };
     }
     export namespace transfer {
@@ -113,10 +113,10 @@ export namespace ibc {
         ..._320,
         ..._327,
         ..._334,
-        ..._341
+        ..._341,
       };
       export const v2 = {
-        ..._148
+        ..._148,
       };
     }
   }
@@ -131,7 +131,7 @@ export namespace ibc {
         ..._321,
         ..._328,
         ..._335,
-        ..._342
+        ..._342,
       };
     }
     export namespace client {
@@ -143,12 +143,12 @@ export namespace ibc {
         ..._322,
         ..._329,
         ..._336,
-        ..._343
+        ..._343,
       };
     }
     export namespace commitment {
       export const v1 = {
-        ..._158
+        ..._158,
       };
     }
     export namespace connection {
@@ -160,27 +160,27 @@ export namespace ibc {
         ..._323,
         ..._330,
         ..._337,
-        ..._344
+        ..._344,
       };
     }
   }
   export namespace lightclients {
     export namespace localhost {
       export const v2 = {
-        ..._163
+        ..._163,
       };
     }
     export namespace solomachine {
       export const v2 = {
-        ..._164
+        ..._164,
       };
       export const v3 = {
-        ..._165
+        ..._165,
       };
     }
     export namespace tendermint {
       export const v1 = {
-        ..._166
+        ..._166,
       };
     }
     export namespace wasm {
@@ -192,12 +192,12 @@ export namespace ibc {
         ..._324,
         ..._331,
         ..._338,
-        ..._345
+        ..._345,
       };
     }
   }
   export const ClientFactory = {
     ..._372,
-    ..._373
+    ..._373,
   };
 }

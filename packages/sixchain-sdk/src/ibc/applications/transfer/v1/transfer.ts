@@ -107,12 +107,15 @@ export interface ParamsSDKType {
 function createBaseDenomTrace(): DenomTrace {
   return {
     path: "",
-    baseDenom: ""
+    baseDenom: "",
   };
 }
 export const DenomTrace = {
   typeUrl: "/ibc.applications.transfer.v1.DenomTrace",
-  encode(message: DenomTrace, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: DenomTrace,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.path !== "") {
       writer.uint32(10).string(message.path);
     }
@@ -169,7 +172,7 @@ export const DenomTrace = {
   toAminoMsg(message: DenomTrace): DenomTraceAminoMsg {
     return {
       type: "cosmos-sdk/DenomTrace",
-      value: DenomTrace.toAmino(message)
+      value: DenomTrace.toAmino(message),
     };
   },
   fromProtoMsg(message: DenomTraceProtoMsg): DenomTrace {
@@ -181,19 +184,22 @@ export const DenomTrace = {
   toProtoMsg(message: DenomTrace): DenomTraceProtoMsg {
     return {
       typeUrl: "/ibc.applications.transfer.v1.DenomTrace",
-      value: DenomTrace.encode(message).finish()
+      value: DenomTrace.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseParams(): Params {
   return {
     sendEnabled: false,
-    receiveEnabled: false
+    receiveEnabled: false,
   };
 }
 export const Params = {
   typeUrl: "/ibc.applications.transfer.v1.Params",
-  encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Params,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.sendEnabled === true) {
       writer.uint32(8).bool(message.sendEnabled);
     }
@@ -233,15 +239,20 @@ export const Params = {
     if (object.send_enabled !== undefined && object.send_enabled !== null) {
       message.sendEnabled = object.send_enabled;
     }
-    if (object.receive_enabled !== undefined && object.receive_enabled !== null) {
+    if (
+      object.receive_enabled !== undefined &&
+      object.receive_enabled !== null
+    ) {
       message.receiveEnabled = object.receive_enabled;
     }
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.send_enabled = message.sendEnabled === false ? undefined : message.sendEnabled;
-    obj.receive_enabled = message.receiveEnabled === false ? undefined : message.receiveEnabled;
+    obj.send_enabled =
+      message.sendEnabled === false ? undefined : message.sendEnabled;
+    obj.receive_enabled =
+      message.receiveEnabled === false ? undefined : message.receiveEnabled;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {
@@ -250,7 +261,7 @@ export const Params = {
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
       type: "cosmos-sdk/Params",
-      value: Params.toAmino(message)
+      value: Params.toAmino(message),
     };
   },
   fromProtoMsg(message: ParamsProtoMsg): Params {
@@ -262,7 +273,7 @@ export const Params = {
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
       typeUrl: "/ibc.applications.transfer.v1.Params",
-      value: Params.encode(message).finish()
+      value: Params.encode(message).finish(),
     };
-  }
+  },
 };

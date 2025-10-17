@@ -31,18 +31,24 @@ export interface ExtensionOptionDynamicFeeTxSDKType {
 }
 function createBaseExtensionOptionDynamicFeeTx(): ExtensionOptionDynamicFeeTx {
   return {
-    maxPriorityPrice: ""
+    maxPriorityPrice: "",
   };
 }
 export const ExtensionOptionDynamicFeeTx = {
   typeUrl: "/ethermint.types.v1.ExtensionOptionDynamicFeeTx",
-  encode(message: ExtensionOptionDynamicFeeTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ExtensionOptionDynamicFeeTx,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.maxPriorityPrice !== "") {
       writer.uint32(10).string(message.maxPriorityPrice);
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): ExtensionOptionDynamicFeeTx {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): ExtensionOptionDynamicFeeTx {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseExtensionOptionDynamicFeeTx();
@@ -59,36 +65,51 @@ export const ExtensionOptionDynamicFeeTx = {
     }
     return message;
   },
-  fromPartial(object: Partial<ExtensionOptionDynamicFeeTx>): ExtensionOptionDynamicFeeTx {
+  fromPartial(
+    object: Partial<ExtensionOptionDynamicFeeTx>
+  ): ExtensionOptionDynamicFeeTx {
     const message = createBaseExtensionOptionDynamicFeeTx();
     message.maxPriorityPrice = object.maxPriorityPrice ?? "";
     return message;
   },
-  fromAmino(object: ExtensionOptionDynamicFeeTxAmino): ExtensionOptionDynamicFeeTx {
+  fromAmino(
+    object: ExtensionOptionDynamicFeeTxAmino
+  ): ExtensionOptionDynamicFeeTx {
     const message = createBaseExtensionOptionDynamicFeeTx();
-    if (object.max_priority_price !== undefined && object.max_priority_price !== null) {
+    if (
+      object.max_priority_price !== undefined &&
+      object.max_priority_price !== null
+    ) {
       message.maxPriorityPrice = object.max_priority_price;
     }
     return message;
   },
-  toAmino(message: ExtensionOptionDynamicFeeTx): ExtensionOptionDynamicFeeTxAmino {
+  toAmino(
+    message: ExtensionOptionDynamicFeeTx
+  ): ExtensionOptionDynamicFeeTxAmino {
     const obj: any = {};
     obj.max_priority_price = message.maxPriorityPrice ?? "";
     return obj;
   },
-  fromAminoMsg(object: ExtensionOptionDynamicFeeTxAminoMsg): ExtensionOptionDynamicFeeTx {
+  fromAminoMsg(
+    object: ExtensionOptionDynamicFeeTxAminoMsg
+  ): ExtensionOptionDynamicFeeTx {
     return ExtensionOptionDynamicFeeTx.fromAmino(object.value);
   },
-  fromProtoMsg(message: ExtensionOptionDynamicFeeTxProtoMsg): ExtensionOptionDynamicFeeTx {
+  fromProtoMsg(
+    message: ExtensionOptionDynamicFeeTxProtoMsg
+  ): ExtensionOptionDynamicFeeTx {
     return ExtensionOptionDynamicFeeTx.decode(message.value);
   },
   toProto(message: ExtensionOptionDynamicFeeTx): Uint8Array {
     return ExtensionOptionDynamicFeeTx.encode(message).finish();
   },
-  toProtoMsg(message: ExtensionOptionDynamicFeeTx): ExtensionOptionDynamicFeeTxProtoMsg {
+  toProtoMsg(
+    message: ExtensionOptionDynamicFeeTx
+  ): ExtensionOptionDynamicFeeTxProtoMsg {
     return {
       typeUrl: "/ethermint.types.v1.ExtensionOptionDynamicFeeTx",
-      value: ExtensionOptionDynamicFeeTx.encode(message).finish()
+      value: ExtensionOptionDynamicFeeTx.encode(message).finish(),
     };
-  }
+  },
 };

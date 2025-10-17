@@ -100,12 +100,16 @@ function createBaseInterchainAccountPacketData(): InterchainAccountPacketData {
   return {
     type: 0,
     data: new Uint8Array(),
-    memo: ""
+    memo: "",
   };
 }
 export const InterchainAccountPacketData = {
-  typeUrl: "/ibc.applications.interchain_accounts.v1.InterchainAccountPacketData",
-  encode(message: InterchainAccountPacketData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  typeUrl:
+    "/ibc.applications.interchain_accounts.v1.InterchainAccountPacketData",
+  encode(
+    message: InterchainAccountPacketData,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.type !== 0) {
       writer.uint32(8).int32(message.type);
     }
@@ -117,7 +121,10 @@ export const InterchainAccountPacketData = {
     }
     return writer;
   },
-  decode(input: _m0.Reader | Uint8Array, length?: number): InterchainAccountPacketData {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): InterchainAccountPacketData {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseInterchainAccountPacketData();
@@ -140,14 +147,18 @@ export const InterchainAccountPacketData = {
     }
     return message;
   },
-  fromPartial(object: Partial<InterchainAccountPacketData>): InterchainAccountPacketData {
+  fromPartial(
+    object: Partial<InterchainAccountPacketData>
+  ): InterchainAccountPacketData {
     const message = createBaseInterchainAccountPacketData();
     message.type = object.type ?? 0;
     message.data = object.data ?? new Uint8Array();
     message.memo = object.memo ?? "";
     return message;
   },
-  fromAmino(object: InterchainAccountPacketDataAmino): InterchainAccountPacketData {
+  fromAmino(
+    object: InterchainAccountPacketDataAmino
+  ): InterchainAccountPacketData {
     const message = createBaseInterchainAccountPacketData();
     if (object.type !== undefined && object.type !== null) {
       message.type = object.type;
@@ -160,43 +171,57 @@ export const InterchainAccountPacketData = {
     }
     return message;
   },
-  toAmino(message: InterchainAccountPacketData): InterchainAccountPacketDataAmino {
+  toAmino(
+    message: InterchainAccountPacketData
+  ): InterchainAccountPacketDataAmino {
     const obj: any = {};
     obj.type = message.type === 0 ? undefined : message.type;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     obj.memo = message.memo === "" ? undefined : message.memo;
     return obj;
   },
-  fromAminoMsg(object: InterchainAccountPacketDataAminoMsg): InterchainAccountPacketData {
+  fromAminoMsg(
+    object: InterchainAccountPacketDataAminoMsg
+  ): InterchainAccountPacketData {
     return InterchainAccountPacketData.fromAmino(object.value);
   },
-  toAminoMsg(message: InterchainAccountPacketData): InterchainAccountPacketDataAminoMsg {
+  toAminoMsg(
+    message: InterchainAccountPacketData
+  ): InterchainAccountPacketDataAminoMsg {
     return {
       type: "cosmos-sdk/InterchainAccountPacketData",
-      value: InterchainAccountPacketData.toAmino(message)
+      value: InterchainAccountPacketData.toAmino(message),
     };
   },
-  fromProtoMsg(message: InterchainAccountPacketDataProtoMsg): InterchainAccountPacketData {
+  fromProtoMsg(
+    message: InterchainAccountPacketDataProtoMsg
+  ): InterchainAccountPacketData {
     return InterchainAccountPacketData.decode(message.value);
   },
   toProto(message: InterchainAccountPacketData): Uint8Array {
     return InterchainAccountPacketData.encode(message).finish();
   },
-  toProtoMsg(message: InterchainAccountPacketData): InterchainAccountPacketDataProtoMsg {
+  toProtoMsg(
+    message: InterchainAccountPacketData
+  ): InterchainAccountPacketDataProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.v1.InterchainAccountPacketData",
-      value: InterchainAccountPacketData.encode(message).finish()
+      typeUrl:
+        "/ibc.applications.interchain_accounts.v1.InterchainAccountPacketData",
+      value: InterchainAccountPacketData.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseCosmosTx(): CosmosTx {
   return {
-    messages: []
+    messages: [],
   };
 }
 export const CosmosTx = {
   typeUrl: "/ibc.applications.interchain_accounts.v1.CosmosTx",
-  encode(message: CosmosTx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: CosmosTx,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.messages) {
       Any.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -221,18 +246,20 @@ export const CosmosTx = {
   },
   fromPartial(object: Partial<CosmosTx>): CosmosTx {
     const message = createBaseCosmosTx();
-    message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
+    message.messages = object.messages?.map((e) => Any.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: CosmosTxAmino): CosmosTx {
     const message = createBaseCosmosTx();
-    message.messages = object.messages?.map(e => Any.fromAmino(e)) || [];
+    message.messages = object.messages?.map((e) => Any.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: CosmosTx): CosmosTxAmino {
     const obj: any = {};
     if (message.messages) {
-      obj.messages = message.messages.map(e => e ? Any.toAmino(e) : undefined);
+      obj.messages = message.messages.map((e) =>
+        e ? Any.toAmino(e) : undefined
+      );
     } else {
       obj.messages = message.messages;
     }
@@ -244,7 +271,7 @@ export const CosmosTx = {
   toAminoMsg(message: CosmosTx): CosmosTxAminoMsg {
     return {
       type: "cosmos-sdk/CosmosTx",
-      value: CosmosTx.toAmino(message)
+      value: CosmosTx.toAmino(message),
     };
   },
   fromProtoMsg(message: CosmosTxProtoMsg): CosmosTx {
@@ -256,7 +283,7 @@ export const CosmosTx = {
   toProtoMsg(message: CosmosTx): CosmosTxProtoMsg {
     return {
       typeUrl: "/ibc.applications.interchain_accounts.v1.CosmosTx",
-      value: CosmosTx.encode(message).finish()
+      value: CosmosTx.encode(message).finish(),
     };
-  }
+  },
 };

@@ -14,9 +14,12 @@ import * as ethermintEvmV1TxAmino from "./evm/v1/tx.amino";
 import * as ethermintFeemarketV1TxAmino from "./feemarket/v1/tx.amino";
 export const ethermintAminoConverters = {
   ...ethermintEvmV1TxAmino.AminoConverter,
-  ...ethermintFeemarketV1TxAmino.AminoConverter
+  ...ethermintFeemarketV1TxAmino.AminoConverter,
 };
-export const ethermintProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...ethermintEvmV1TxRegistry.registry, ...ethermintFeemarketV1TxRegistry.registry];
+export const ethermintProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [
+  ...ethermintEvmV1TxRegistry.registry,
+  ...ethermintFeemarketV1TxRegistry.registry,
+];
 export const getSigningEthermintClientOptions = ({
   defaultTypes = defaultRegistryTypes,
   options,
@@ -49,10 +52,7 @@ export const getSigningEthermintClient = async ({
   options?: SigningStargateClientOptions;
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => {
-  const {
-    registry,
-    aminoTypes
-  } = getSigningEthermintClientOptions({
+  const { registry, aminoTypes } = getSigningEthermintClientOptions({
     defaultTypes,
     options,
   });

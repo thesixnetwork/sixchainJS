@@ -1,11 +1,6 @@
 import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
-
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
-
-import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
-
 import { GasPrice } from "@cosmjs/stargate";
-
 import { getConnectorConfig } from "@client-util";
 
 import Long from "long";

@@ -33,12 +33,15 @@ function createBaseActionOfSchema(): ActionOfSchema {
   return {
     nftSchemaCode: "",
     name: "",
-    index: Long.UZERO
+    index: Long.UZERO,
   };
 }
 export const ActionOfSchema = {
   typeUrl: "/sixprotocol.nftmngr.ActionOfSchema",
-  encode(message: ActionOfSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ActionOfSchema,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.nftSchemaCode !== "") {
       writer.uint32(10).string(message.nftSchemaCode);
     }
@@ -77,7 +80,10 @@ export const ActionOfSchema = {
     const message = createBaseActionOfSchema();
     message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.name = object.name ?? "";
-    message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.UZERO;
+    message.index =
+      object.index !== undefined && object.index !== null
+        ? Long.fromValue(object.index)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: ActionOfSchemaAmino): ActionOfSchema {
@@ -95,7 +101,8 @@ export const ActionOfSchema = {
   },
   toAmino(message: ActionOfSchema): ActionOfSchemaAmino {
     const obj: any = {};
-    obj.nftSchemaCode = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nftSchemaCode =
+      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.name = message.name === "" ? undefined : message.name;
     obj.index = !message.index.isZero() ? message.index?.toString() : undefined;
     return obj;
@@ -112,7 +119,7 @@ export const ActionOfSchema = {
   toProtoMsg(message: ActionOfSchema): ActionOfSchemaProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftmngr.ActionOfSchema",
-      value: ActionOfSchema.encode(message).finish()
+      value: ActionOfSchema.encode(message).finish(),
     };
-  }
+  },
 };

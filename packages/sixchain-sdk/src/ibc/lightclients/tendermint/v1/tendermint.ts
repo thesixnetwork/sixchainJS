@@ -1,12 +1,42 @@
 //@ts-nocheck
-import { Duration, DurationAmino, DurationSDKType } from "../../../../google/protobuf/duration";
-import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
-import { ProofSpec, ProofSpecAmino, ProofSpecSDKType } from "../../../../cosmos/ics23/v1/proofs";
+import {
+  Duration,
+  DurationAmino,
+  DurationSDKType,
+} from "../../../../google/protobuf/duration";
+import {
+  Height,
+  HeightAmino,
+  HeightSDKType,
+} from "../../../core/client/v1/client";
+import {
+  ProofSpec,
+  ProofSpecAmino,
+  ProofSpecSDKType,
+} from "../../../../cosmos/ics23/v1/proofs";
 import { Timestamp } from "../../../../google/protobuf/timestamp";
-import { MerkleRoot, MerkleRootAmino, MerkleRootSDKType } from "../../../core/commitment/v1/commitment";
-import { SignedHeader, SignedHeaderAmino, SignedHeaderSDKType } from "../../../../tendermint/types/types";
-import { ValidatorSet, ValidatorSetAmino, ValidatorSetSDKType } from "../../../../tendermint/types/validator";
-import { Long, toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import {
+  MerkleRoot,
+  MerkleRootAmino,
+  MerkleRootSDKType,
+} from "../../../core/commitment/v1/commitment";
+import {
+  SignedHeader,
+  SignedHeaderAmino,
+  SignedHeaderSDKType,
+} from "../../../../tendermint/types/types";
+import {
+  ValidatorSet,
+  ValidatorSetAmino,
+  ValidatorSetSDKType,
+} from "../../../../tendermint/types/validator";
+import {
+  Long,
+  toTimestamp,
+  fromTimestamp,
+  bytesFromBase64,
+  base64FromBytes,
+} from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * ClientState from Tendermint tracks the current validator set, latest height,
@@ -336,12 +366,15 @@ function createBaseClientState(): ClientState {
     proofSpecs: [],
     upgradePath: [],
     allowUpdateAfterExpiry: false,
-    allowUpdateAfterMisbehaviour: false
+    allowUpdateAfterMisbehaviour: false,
   };
 }
 export const ClientState = {
   typeUrl: "/ibc.lightclients.tendermint.v1.ClientState",
-  encode(message: ClientState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ClientState,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.chainId !== "") {
       writer.uint32(10).string(message.chainId);
     }
@@ -349,10 +382,16 @@ export const ClientState = {
       Fraction.encode(message.trustLevel, writer.uint32(18).fork()).ldelim();
     }
     if (message.trustingPeriod !== undefined) {
-      Duration.encode(message.trustingPeriod, writer.uint32(26).fork()).ldelim();
+      Duration.encode(
+        message.trustingPeriod,
+        writer.uint32(26).fork()
+      ).ldelim();
     }
     if (message.unbondingPeriod !== undefined) {
-      Duration.encode(message.unbondingPeriod, writer.uint32(34).fork()).ldelim();
+      Duration.encode(
+        message.unbondingPeriod,
+        writer.uint32(34).fork()
+      ).ldelim();
     }
     if (message.maxClockDrift !== undefined) {
       Duration.encode(message.maxClockDrift, writer.uint32(42).fork()).ldelim();
@@ -427,16 +466,36 @@ export const ClientState = {
   fromPartial(object: Partial<ClientState>): ClientState {
     const message = createBaseClientState();
     message.chainId = object.chainId ?? "";
-    message.trustLevel = object.trustLevel !== undefined && object.trustLevel !== null ? Fraction.fromPartial(object.trustLevel) : undefined;
-    message.trustingPeriod = object.trustingPeriod !== undefined && object.trustingPeriod !== null ? Duration.fromPartial(object.trustingPeriod) : undefined;
-    message.unbondingPeriod = object.unbondingPeriod !== undefined && object.unbondingPeriod !== null ? Duration.fromPartial(object.unbondingPeriod) : undefined;
-    message.maxClockDrift = object.maxClockDrift !== undefined && object.maxClockDrift !== null ? Duration.fromPartial(object.maxClockDrift) : undefined;
-    message.frozenHeight = object.frozenHeight !== undefined && object.frozenHeight !== null ? Height.fromPartial(object.frozenHeight) : undefined;
-    message.latestHeight = object.latestHeight !== undefined && object.latestHeight !== null ? Height.fromPartial(object.latestHeight) : undefined;
-    message.proofSpecs = object.proofSpecs?.map(e => ProofSpec.fromPartial(e)) || [];
-    message.upgradePath = object.upgradePath?.map(e => e) || [];
+    message.trustLevel =
+      object.trustLevel !== undefined && object.trustLevel !== null
+        ? Fraction.fromPartial(object.trustLevel)
+        : undefined;
+    message.trustingPeriod =
+      object.trustingPeriod !== undefined && object.trustingPeriod !== null
+        ? Duration.fromPartial(object.trustingPeriod)
+        : undefined;
+    message.unbondingPeriod =
+      object.unbondingPeriod !== undefined && object.unbondingPeriod !== null
+        ? Duration.fromPartial(object.unbondingPeriod)
+        : undefined;
+    message.maxClockDrift =
+      object.maxClockDrift !== undefined && object.maxClockDrift !== null
+        ? Duration.fromPartial(object.maxClockDrift)
+        : undefined;
+    message.frozenHeight =
+      object.frozenHeight !== undefined && object.frozenHeight !== null
+        ? Height.fromPartial(object.frozenHeight)
+        : undefined;
+    message.latestHeight =
+      object.latestHeight !== undefined && object.latestHeight !== null
+        ? Height.fromPartial(object.latestHeight)
+        : undefined;
+    message.proofSpecs =
+      object.proofSpecs?.map((e) => ProofSpec.fromPartial(e)) || [];
+    message.upgradePath = object.upgradePath?.map((e) => e) || [];
     message.allowUpdateAfterExpiry = object.allowUpdateAfterExpiry ?? false;
-    message.allowUpdateAfterMisbehaviour = object.allowUpdateAfterMisbehaviour ?? false;
+    message.allowUpdateAfterMisbehaviour =
+      object.allowUpdateAfterMisbehaviour ?? false;
     return message;
   },
   fromAmino(object: ClientStateAmino): ClientState {
@@ -447,13 +506,22 @@ export const ClientState = {
     if (object.trust_level !== undefined && object.trust_level !== null) {
       message.trustLevel = Fraction.fromAmino(object.trust_level);
     }
-    if (object.trusting_period !== undefined && object.trusting_period !== null) {
+    if (
+      object.trusting_period !== undefined &&
+      object.trusting_period !== null
+    ) {
       message.trustingPeriod = Duration.fromAmino(object.trusting_period);
     }
-    if (object.unbonding_period !== undefined && object.unbonding_period !== null) {
+    if (
+      object.unbonding_period !== undefined &&
+      object.unbonding_period !== null
+    ) {
       message.unbondingPeriod = Duration.fromAmino(object.unbonding_period);
     }
-    if (object.max_clock_drift !== undefined && object.max_clock_drift !== null) {
+    if (
+      object.max_clock_drift !== undefined &&
+      object.max_clock_drift !== null
+    ) {
       message.maxClockDrift = Duration.fromAmino(object.max_clock_drift);
     }
     if (object.frozen_height !== undefined && object.frozen_height !== null) {
@@ -462,37 +530,65 @@ export const ClientState = {
     if (object.latest_height !== undefined && object.latest_height !== null) {
       message.latestHeight = Height.fromAmino(object.latest_height);
     }
-    message.proofSpecs = object.proof_specs?.map(e => ProofSpec.fromAmino(e)) || [];
-    message.upgradePath = object.upgrade_path?.map(e => e) || [];
-    if (object.allow_update_after_expiry !== undefined && object.allow_update_after_expiry !== null) {
+    message.proofSpecs =
+      object.proof_specs?.map((e) => ProofSpec.fromAmino(e)) || [];
+    message.upgradePath = object.upgrade_path?.map((e) => e) || [];
+    if (
+      object.allow_update_after_expiry !== undefined &&
+      object.allow_update_after_expiry !== null
+    ) {
       message.allowUpdateAfterExpiry = object.allow_update_after_expiry;
     }
-    if (object.allow_update_after_misbehaviour !== undefined && object.allow_update_after_misbehaviour !== null) {
-      message.allowUpdateAfterMisbehaviour = object.allow_update_after_misbehaviour;
+    if (
+      object.allow_update_after_misbehaviour !== undefined &&
+      object.allow_update_after_misbehaviour !== null
+    ) {
+      message.allowUpdateAfterMisbehaviour =
+        object.allow_update_after_misbehaviour;
     }
     return message;
   },
   toAmino(message: ClientState): ClientStateAmino {
     const obj: any = {};
     obj.chain_id = message.chainId === "" ? undefined : message.chainId;
-    obj.trust_level = message.trustLevel ? Fraction.toAmino(message.trustLevel) : undefined;
-    obj.trusting_period = message.trustingPeriod ? Duration.toAmino(message.trustingPeriod) : undefined;
-    obj.unbonding_period = message.unbondingPeriod ? Duration.toAmino(message.unbondingPeriod) : undefined;
-    obj.max_clock_drift = message.maxClockDrift ? Duration.toAmino(message.maxClockDrift) : undefined;
-    obj.frozen_height = message.frozenHeight ? Height.toAmino(message.frozenHeight) : {};
-    obj.latest_height = message.latestHeight ? Height.toAmino(message.latestHeight) : {};
+    obj.trust_level = message.trustLevel
+      ? Fraction.toAmino(message.trustLevel)
+      : undefined;
+    obj.trusting_period = message.trustingPeriod
+      ? Duration.toAmino(message.trustingPeriod)
+      : undefined;
+    obj.unbonding_period = message.unbondingPeriod
+      ? Duration.toAmino(message.unbondingPeriod)
+      : undefined;
+    obj.max_clock_drift = message.maxClockDrift
+      ? Duration.toAmino(message.maxClockDrift)
+      : undefined;
+    obj.frozen_height = message.frozenHeight
+      ? Height.toAmino(message.frozenHeight)
+      : {};
+    obj.latest_height = message.latestHeight
+      ? Height.toAmino(message.latestHeight)
+      : {};
     if (message.proofSpecs) {
-      obj.proof_specs = message.proofSpecs.map(e => e ? ProofSpec.toAmino(e) : undefined);
+      obj.proof_specs = message.proofSpecs.map((e) =>
+        e ? ProofSpec.toAmino(e) : undefined
+      );
     } else {
       obj.proof_specs = message.proofSpecs;
     }
     if (message.upgradePath) {
-      obj.upgrade_path = message.upgradePath.map(e => e);
+      obj.upgrade_path = message.upgradePath.map((e) => e);
     } else {
       obj.upgrade_path = message.upgradePath;
     }
-    obj.allow_update_after_expiry = message.allowUpdateAfterExpiry === false ? undefined : message.allowUpdateAfterExpiry;
-    obj.allow_update_after_misbehaviour = message.allowUpdateAfterMisbehaviour === false ? undefined : message.allowUpdateAfterMisbehaviour;
+    obj.allow_update_after_expiry =
+      message.allowUpdateAfterExpiry === false
+        ? undefined
+        : message.allowUpdateAfterExpiry;
+    obj.allow_update_after_misbehaviour =
+      message.allowUpdateAfterMisbehaviour === false
+        ? undefined
+        : message.allowUpdateAfterMisbehaviour;
     return obj;
   },
   fromAminoMsg(object: ClientStateAminoMsg): ClientState {
@@ -501,7 +597,7 @@ export const ClientState = {
   toAminoMsg(message: ClientState): ClientStateAminoMsg {
     return {
       type: "cosmos-sdk/ClientState",
-      value: ClientState.toAmino(message)
+      value: ClientState.toAmino(message),
     };
   },
   fromProtoMsg(message: ClientStateProtoMsg): ClientState {
@@ -513,22 +609,28 @@ export const ClientState = {
   toProtoMsg(message: ClientState): ClientStateProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.tendermint.v1.ClientState",
-      value: ClientState.encode(message).finish()
+      value: ClientState.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseConsensusState(): ConsensusState {
   return {
     timestamp: new Date(),
     root: MerkleRoot.fromPartial({}),
-    nextValidatorsHash: new Uint8Array()
+    nextValidatorsHash: new Uint8Array(),
   };
 }
 export const ConsensusState = {
   typeUrl: "/ibc.lightclients.tendermint.v1.ConsensusState",
-  encode(message: ConsensusState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ConsensusState,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.timestamp !== undefined) {
-      Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(10).fork()).ldelim();
+      Timestamp.encode(
+        toTimestamp(message.timestamp),
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (message.root !== undefined) {
       MerkleRoot.encode(message.root, writer.uint32(18).fork()).ldelim();
@@ -546,7 +648,9 @@ export const ConsensusState = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.timestamp = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.timestamp = fromTimestamp(
+            Timestamp.decode(reader, reader.uint32())
+          );
           break;
         case 2:
           message.root = MerkleRoot.decode(reader, reader.uint32());
@@ -564,7 +668,10 @@ export const ConsensusState = {
   fromPartial(object: Partial<ConsensusState>): ConsensusState {
     const message = createBaseConsensusState();
     message.timestamp = object.timestamp ?? undefined;
-    message.root = object.root !== undefined && object.root !== null ? MerkleRoot.fromPartial(object.root) : undefined;
+    message.root =
+      object.root !== undefined && object.root !== null
+        ? MerkleRoot.fromPartial(object.root)
+        : undefined;
     message.nextValidatorsHash = object.nextValidatorsHash ?? new Uint8Array();
     return message;
   },
@@ -576,16 +683,23 @@ export const ConsensusState = {
     if (object.root !== undefined && object.root !== null) {
       message.root = MerkleRoot.fromAmino(object.root);
     }
-    if (object.next_validators_hash !== undefined && object.next_validators_hash !== null) {
+    if (
+      object.next_validators_hash !== undefined &&
+      object.next_validators_hash !== null
+    ) {
       message.nextValidatorsHash = bytesFromBase64(object.next_validators_hash);
     }
     return message;
   },
   toAmino(message: ConsensusState): ConsensusStateAmino {
     const obj: any = {};
-    obj.timestamp = message.timestamp ? Timestamp.toAmino(toTimestamp(message.timestamp)) : undefined;
+    obj.timestamp = message.timestamp
+      ? Timestamp.toAmino(toTimestamp(message.timestamp))
+      : undefined;
     obj.root = message.root ? MerkleRoot.toAmino(message.root) : undefined;
-    obj.next_validators_hash = message.nextValidatorsHash ? base64FromBytes(message.nextValidatorsHash) : undefined;
+    obj.next_validators_hash = message.nextValidatorsHash
+      ? base64FromBytes(message.nextValidatorsHash)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: ConsensusStateAminoMsg): ConsensusState {
@@ -594,7 +708,7 @@ export const ConsensusState = {
   toAminoMsg(message: ConsensusState): ConsensusStateAminoMsg {
     return {
       type: "cosmos-sdk/ConsensusState",
-      value: ConsensusState.toAmino(message)
+      value: ConsensusState.toAmino(message),
     };
   },
   fromProtoMsg(message: ConsensusStateProtoMsg): ConsensusState {
@@ -606,20 +720,23 @@ export const ConsensusState = {
   toProtoMsg(message: ConsensusState): ConsensusStateProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.tendermint.v1.ConsensusState",
-      value: ConsensusState.encode(message).finish()
+      value: ConsensusState.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMisbehaviour(): Misbehaviour {
   return {
     clientId: "",
     header1: undefined,
-    header2: undefined
+    header2: undefined,
   };
 }
 export const Misbehaviour = {
   typeUrl: "/ibc.lightclients.tendermint.v1.Misbehaviour",
-  encode(message: Misbehaviour, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Misbehaviour,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.clientId !== "") {
       writer.uint32(10).string(message.clientId);
     }
@@ -657,8 +774,14 @@ export const Misbehaviour = {
   fromPartial(object: Partial<Misbehaviour>): Misbehaviour {
     const message = createBaseMisbehaviour();
     message.clientId = object.clientId ?? "";
-    message.header1 = object.header1 !== undefined && object.header1 !== null ? Header.fromPartial(object.header1) : undefined;
-    message.header2 = object.header2 !== undefined && object.header2 !== null ? Header.fromPartial(object.header2) : undefined;
+    message.header1 =
+      object.header1 !== undefined && object.header1 !== null
+        ? Header.fromPartial(object.header1)
+        : undefined;
+    message.header2 =
+      object.header2 !== undefined && object.header2 !== null
+        ? Header.fromPartial(object.header2)
+        : undefined;
     return message;
   },
   fromAmino(object: MisbehaviourAmino): Misbehaviour {
@@ -677,8 +800,12 @@ export const Misbehaviour = {
   toAmino(message: Misbehaviour): MisbehaviourAmino {
     const obj: any = {};
     obj.client_id = message.clientId === "" ? undefined : message.clientId;
-    obj.header_1 = message.header1 ? Header.toAmino(message.header1) : undefined;
-    obj.header_2 = message.header2 ? Header.toAmino(message.header2) : undefined;
+    obj.header_1 = message.header1
+      ? Header.toAmino(message.header1)
+      : undefined;
+    obj.header_2 = message.header2
+      ? Header.toAmino(message.header2)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: MisbehaviourAminoMsg): Misbehaviour {
@@ -687,7 +814,7 @@ export const Misbehaviour = {
   toAminoMsg(message: Misbehaviour): MisbehaviourAminoMsg {
     return {
       type: "cosmos-sdk/Misbehaviour",
-      value: Misbehaviour.toAmino(message)
+      value: Misbehaviour.toAmino(message),
     };
   },
   fromProtoMsg(message: MisbehaviourProtoMsg): Misbehaviour {
@@ -699,32 +826,44 @@ export const Misbehaviour = {
   toProtoMsg(message: Misbehaviour): MisbehaviourProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.tendermint.v1.Misbehaviour",
-      value: Misbehaviour.encode(message).finish()
+      value: Misbehaviour.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseHeader(): Header {
   return {
     signedHeader: undefined,
     validatorSet: undefined,
     trustedHeight: Height.fromPartial({}),
-    trustedValidators: undefined
+    trustedValidators: undefined,
   };
 }
 export const Header = {
   typeUrl: "/ibc.lightclients.tendermint.v1.Header",
-  encode(message: Header, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Header,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.signedHeader !== undefined) {
-      SignedHeader.encode(message.signedHeader, writer.uint32(10).fork()).ldelim();
+      SignedHeader.encode(
+        message.signedHeader,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (message.validatorSet !== undefined) {
-      ValidatorSet.encode(message.validatorSet, writer.uint32(18).fork()).ldelim();
+      ValidatorSet.encode(
+        message.validatorSet,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     if (message.trustedHeight !== undefined) {
       Height.encode(message.trustedHeight, writer.uint32(26).fork()).ldelim();
     }
     if (message.trustedValidators !== undefined) {
-      ValidatorSet.encode(message.trustedValidators, writer.uint32(34).fork()).ldelim();
+      ValidatorSet.encode(
+        message.trustedValidators,
+        writer.uint32(34).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -745,7 +884,10 @@ export const Header = {
           message.trustedHeight = Height.decode(reader, reader.uint32());
           break;
         case 4:
-          message.trustedValidators = ValidatorSet.decode(reader, reader.uint32());
+          message.trustedValidators = ValidatorSet.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -756,10 +898,23 @@ export const Header = {
   },
   fromPartial(object: Partial<Header>): Header {
     const message = createBaseHeader();
-    message.signedHeader = object.signedHeader !== undefined && object.signedHeader !== null ? SignedHeader.fromPartial(object.signedHeader) : undefined;
-    message.validatorSet = object.validatorSet !== undefined && object.validatorSet !== null ? ValidatorSet.fromPartial(object.validatorSet) : undefined;
-    message.trustedHeight = object.trustedHeight !== undefined && object.trustedHeight !== null ? Height.fromPartial(object.trustedHeight) : undefined;
-    message.trustedValidators = object.trustedValidators !== undefined && object.trustedValidators !== null ? ValidatorSet.fromPartial(object.trustedValidators) : undefined;
+    message.signedHeader =
+      object.signedHeader !== undefined && object.signedHeader !== null
+        ? SignedHeader.fromPartial(object.signedHeader)
+        : undefined;
+    message.validatorSet =
+      object.validatorSet !== undefined && object.validatorSet !== null
+        ? ValidatorSet.fromPartial(object.validatorSet)
+        : undefined;
+    message.trustedHeight =
+      object.trustedHeight !== undefined && object.trustedHeight !== null
+        ? Height.fromPartial(object.trustedHeight)
+        : undefined;
+    message.trustedValidators =
+      object.trustedValidators !== undefined &&
+      object.trustedValidators !== null
+        ? ValidatorSet.fromPartial(object.trustedValidators)
+        : undefined;
     return message;
   },
   fromAmino(object: HeaderAmino): Header {
@@ -773,17 +928,30 @@ export const Header = {
     if (object.trusted_height !== undefined && object.trusted_height !== null) {
       message.trustedHeight = Height.fromAmino(object.trusted_height);
     }
-    if (object.trusted_validators !== undefined && object.trusted_validators !== null) {
-      message.trustedValidators = ValidatorSet.fromAmino(object.trusted_validators);
+    if (
+      object.trusted_validators !== undefined &&
+      object.trusted_validators !== null
+    ) {
+      message.trustedValidators = ValidatorSet.fromAmino(
+        object.trusted_validators
+      );
     }
     return message;
   },
   toAmino(message: Header): HeaderAmino {
     const obj: any = {};
-    obj.signed_header = message.signedHeader ? SignedHeader.toAmino(message.signedHeader) : undefined;
-    obj.validator_set = message.validatorSet ? ValidatorSet.toAmino(message.validatorSet) : undefined;
-    obj.trusted_height = message.trustedHeight ? Height.toAmino(message.trustedHeight) : {};
-    obj.trusted_validators = message.trustedValidators ? ValidatorSet.toAmino(message.trustedValidators) : undefined;
+    obj.signed_header = message.signedHeader
+      ? SignedHeader.toAmino(message.signedHeader)
+      : undefined;
+    obj.validator_set = message.validatorSet
+      ? ValidatorSet.toAmino(message.validatorSet)
+      : undefined;
+    obj.trusted_height = message.trustedHeight
+      ? Height.toAmino(message.trustedHeight)
+      : {};
+    obj.trusted_validators = message.trustedValidators
+      ? ValidatorSet.toAmino(message.trustedValidators)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: HeaderAminoMsg): Header {
@@ -792,7 +960,7 @@ export const Header = {
   toAminoMsg(message: Header): HeaderAminoMsg {
     return {
       type: "cosmos-sdk/Header",
-      value: Header.toAmino(message)
+      value: Header.toAmino(message),
     };
   },
   fromProtoMsg(message: HeaderProtoMsg): Header {
@@ -804,19 +972,22 @@ export const Header = {
   toProtoMsg(message: Header): HeaderProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.tendermint.v1.Header",
-      value: Header.encode(message).finish()
+      value: Header.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseFraction(): Fraction {
   return {
     numerator: Long.UZERO,
-    denominator: Long.UZERO
+    denominator: Long.UZERO,
   };
 }
 export const Fraction = {
   typeUrl: "/ibc.lightclients.tendermint.v1.Fraction",
-  encode(message: Fraction, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Fraction,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.numerator.isZero()) {
       writer.uint32(8).uint64(message.numerator);
     }
@@ -847,8 +1018,14 @@ export const Fraction = {
   },
   fromPartial(object: Partial<Fraction>): Fraction {
     const message = createBaseFraction();
-    message.numerator = object.numerator !== undefined && object.numerator !== null ? Long.fromValue(object.numerator) : Long.UZERO;
-    message.denominator = object.denominator !== undefined && object.denominator !== null ? Long.fromValue(object.denominator) : Long.UZERO;
+    message.numerator =
+      object.numerator !== undefined && object.numerator !== null
+        ? Long.fromValue(object.numerator)
+        : Long.UZERO;
+    message.denominator =
+      object.denominator !== undefined && object.denominator !== null
+        ? Long.fromValue(object.denominator)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: FractionAmino): Fraction {
@@ -863,8 +1040,12 @@ export const Fraction = {
   },
   toAmino(message: Fraction): FractionAmino {
     const obj: any = {};
-    obj.numerator = !message.numerator.isZero() ? message.numerator?.toString() : undefined;
-    obj.denominator = !message.denominator.isZero() ? message.denominator?.toString() : undefined;
+    obj.numerator = !message.numerator.isZero()
+      ? message.numerator?.toString()
+      : undefined;
+    obj.denominator = !message.denominator.isZero()
+      ? message.denominator?.toString()
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: FractionAminoMsg): Fraction {
@@ -873,7 +1054,7 @@ export const Fraction = {
   toAminoMsg(message: Fraction): FractionAminoMsg {
     return {
       type: "cosmos-sdk/Fraction",
-      value: Fraction.toAmino(message)
+      value: Fraction.toAmino(message),
     };
   },
   fromProtoMsg(message: FractionProtoMsg): Fraction {
@@ -885,7 +1066,7 @@ export const Fraction = {
   toProtoMsg(message: Fraction): FractionProtoMsg {
     return {
       typeUrl: "/ibc.lightclients.tendermint.v1.Fraction",
-      value: Fraction.encode(message).finish()
+      value: Fraction.encode(message).finish(),
     };
-  }
+  },
 };

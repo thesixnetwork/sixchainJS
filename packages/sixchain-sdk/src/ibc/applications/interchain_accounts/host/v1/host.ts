@@ -98,12 +98,15 @@ export interface QueryRequestSDKType {
 function createBaseParams(): Params {
   return {
     hostEnabled: false,
-    allowMessages: []
+    allowMessages: [],
   };
 }
 export const Params = {
   typeUrl: "/ibc.applications.interchain_accounts.host.v1.Params",
-  encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Params,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.hostEnabled === true) {
       writer.uint32(8).bool(message.hostEnabled);
     }
@@ -135,7 +138,7 @@ export const Params = {
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.hostEnabled = object.hostEnabled ?? false;
-    message.allowMessages = object.allowMessages?.map(e => e) || [];
+    message.allowMessages = object.allowMessages?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
@@ -143,14 +146,15 @@ export const Params = {
     if (object.host_enabled !== undefined && object.host_enabled !== null) {
       message.hostEnabled = object.host_enabled;
     }
-    message.allowMessages = object.allow_messages?.map(e => e) || [];
+    message.allowMessages = object.allow_messages?.map((e) => e) || [];
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.host_enabled = message.hostEnabled === false ? undefined : message.hostEnabled;
+    obj.host_enabled =
+      message.hostEnabled === false ? undefined : message.hostEnabled;
     if (message.allowMessages) {
-      obj.allow_messages = message.allowMessages.map(e => e);
+      obj.allow_messages = message.allowMessages.map((e) => e);
     } else {
       obj.allow_messages = message.allowMessages;
     }
@@ -162,7 +166,7 @@ export const Params = {
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
       type: "cosmos-sdk/Params",
-      value: Params.toAmino(message)
+      value: Params.toAmino(message),
     };
   },
   fromProtoMsg(message: ParamsProtoMsg): Params {
@@ -174,19 +178,22 @@ export const Params = {
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
       typeUrl: "/ibc.applications.interchain_accounts.host.v1.Params",
-      value: Params.encode(message).finish()
+      value: Params.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryRequest(): QueryRequest {
   return {
     path: "",
-    data: new Uint8Array()
+    data: new Uint8Array(),
   };
 }
 export const QueryRequest = {
   typeUrl: "/ibc.applications.interchain_accounts.host.v1.QueryRequest",
-  encode(message: QueryRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: QueryRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.path !== "") {
       writer.uint32(10).string(message.path);
     }
@@ -243,7 +250,7 @@ export const QueryRequest = {
   toAminoMsg(message: QueryRequest): QueryRequestAminoMsg {
     return {
       type: "cosmos-sdk/QueryRequest",
-      value: QueryRequest.toAmino(message)
+      value: QueryRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryRequestProtoMsg): QueryRequest {
@@ -255,7 +262,7 @@ export const QueryRequest = {
   toProtoMsg(message: QueryRequest): QueryRequestProtoMsg {
     return {
       typeUrl: "/ibc.applications.interchain_accounts.host.v1.QueryRequest",
-      value: QueryRequest.encode(message).finish()
+      value: QueryRequest.encode(message).finish(),
     };
-  }
+  },
 };

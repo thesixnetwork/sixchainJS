@@ -102,12 +102,15 @@ export interface CapabilityOwnersSDKType {
 }
 function createBaseCapability(): Capability {
   return {
-    index: Long.UZERO
+    index: Long.UZERO,
   };
 }
 export const Capability = {
   typeUrl: "/capability.v1.Capability",
-  encode(message: Capability, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Capability,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.index.isZero()) {
       writer.uint32(8).uint64(message.index);
     }
@@ -132,7 +135,10 @@ export const Capability = {
   },
   fromPartial(object: Partial<Capability>): Capability {
     const message = createBaseCapability();
-    message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.UZERO;
+    message.index =
+      object.index !== undefined && object.index !== null
+        ? Long.fromValue(object.index)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: CapabilityAmino): Capability {
@@ -159,14 +165,14 @@ export const Capability = {
   toProtoMsg(message: Capability): CapabilityProtoMsg {
     return {
       typeUrl: "/capability.v1.Capability",
-      value: Capability.encode(message).finish()
+      value: Capability.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseOwner(): Owner {
   return {
     module: "",
-    name: ""
+    name: "",
   };
 }
 export const Owner = {
@@ -234,18 +240,21 @@ export const Owner = {
   toProtoMsg(message: Owner): OwnerProtoMsg {
     return {
       typeUrl: "/capability.v1.Owner",
-      value: Owner.encode(message).finish()
+      value: Owner.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseCapabilityOwners(): CapabilityOwners {
   return {
-    owners: []
+    owners: [],
   };
 }
 export const CapabilityOwners = {
   typeUrl: "/capability.v1.CapabilityOwners",
-  encode(message: CapabilityOwners, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: CapabilityOwners,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     for (const v of message.owners) {
       Owner.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -270,18 +279,20 @@ export const CapabilityOwners = {
   },
   fromPartial(object: Partial<CapabilityOwners>): CapabilityOwners {
     const message = createBaseCapabilityOwners();
-    message.owners = object.owners?.map(e => Owner.fromPartial(e)) || [];
+    message.owners = object.owners?.map((e) => Owner.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: CapabilityOwnersAmino): CapabilityOwners {
     const message = createBaseCapabilityOwners();
-    message.owners = object.owners?.map(e => Owner.fromAmino(e)) || [];
+    message.owners = object.owners?.map((e) => Owner.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: CapabilityOwners): CapabilityOwnersAmino {
     const obj: any = {};
     if (message.owners) {
-      obj.owners = message.owners.map(e => e ? Owner.toAmino(e) : undefined);
+      obj.owners = message.owners.map((e) =>
+        e ? Owner.toAmino(e) : undefined
+      );
     } else {
       obj.owners = message.owners;
     }
@@ -299,7 +310,7 @@ export const CapabilityOwners = {
   toProtoMsg(message: CapabilityOwners): CapabilityOwnersProtoMsg {
     return {
       typeUrl: "/capability.v1.CapabilityOwners",
-      value: CapabilityOwners.encode(message).finish()
+      value: CapabilityOwners.encode(message).finish(),
     };
-  }
+  },
 };

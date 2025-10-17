@@ -1,5 +1,21 @@
 //@ts-nocheck
-import { GroupInfo, GroupInfoAmino, GroupInfoSDKType, GroupMember, GroupMemberAmino, GroupMemberSDKType, GroupPolicyInfo, GroupPolicyInfoAmino, GroupPolicyInfoSDKType, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmino, VoteSDKType } from "./types";
+import {
+  GroupInfo,
+  GroupInfoAmino,
+  GroupInfoSDKType,
+  GroupMember,
+  GroupMemberAmino,
+  GroupMemberSDKType,
+  GroupPolicyInfo,
+  GroupPolicyInfoAmino,
+  GroupPolicyInfoSDKType,
+  Proposal,
+  ProposalAmino,
+  ProposalSDKType,
+  Vote,
+  VoteAmino,
+  VoteSDKType,
+} from "./types";
 import { Long } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the group module's genesis state. */
@@ -101,12 +117,15 @@ function createBaseGenesisState(): GenesisState {
     groupPolicies: [],
     proposalSeq: Long.UZERO,
     proposals: [],
-    votes: []
+    votes: [],
   };
 }
 export const GenesisState = {
   typeUrl: "/cosmos.group.v1.GenesisState",
-  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: GenesisState,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.groupSeq.isZero()) {
       writer.uint32(8).uint64(message.groupSeq);
     }
@@ -147,13 +166,17 @@ export const GenesisState = {
           message.groups.push(GroupInfo.decode(reader, reader.uint32()));
           break;
         case 3:
-          message.groupMembers.push(GroupMember.decode(reader, reader.uint32()));
+          message.groupMembers.push(
+            GroupMember.decode(reader, reader.uint32())
+          );
           break;
         case 4:
           message.groupPolicySeq = reader.uint64() as Long;
           break;
         case 5:
-          message.groupPolicies.push(GroupPolicyInfo.decode(reader, reader.uint32()));
+          message.groupPolicies.push(
+            GroupPolicyInfo.decode(reader, reader.uint32())
+          );
           break;
         case 6:
           message.proposalSeq = reader.uint64() as Long;
@@ -173,14 +196,26 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.groupSeq = object.groupSeq !== undefined && object.groupSeq !== null ? Long.fromValue(object.groupSeq) : Long.UZERO;
-    message.groups = object.groups?.map(e => GroupInfo.fromPartial(e)) || [];
-    message.groupMembers = object.groupMembers?.map(e => GroupMember.fromPartial(e)) || [];
-    message.groupPolicySeq = object.groupPolicySeq !== undefined && object.groupPolicySeq !== null ? Long.fromValue(object.groupPolicySeq) : Long.UZERO;
-    message.groupPolicies = object.groupPolicies?.map(e => GroupPolicyInfo.fromPartial(e)) || [];
-    message.proposalSeq = object.proposalSeq !== undefined && object.proposalSeq !== null ? Long.fromValue(object.proposalSeq) : Long.UZERO;
-    message.proposals = object.proposals?.map(e => Proposal.fromPartial(e)) || [];
-    message.votes = object.votes?.map(e => Vote.fromPartial(e)) || [];
+    message.groupSeq =
+      object.groupSeq !== undefined && object.groupSeq !== null
+        ? Long.fromValue(object.groupSeq)
+        : Long.UZERO;
+    message.groups = object.groups?.map((e) => GroupInfo.fromPartial(e)) || [];
+    message.groupMembers =
+      object.groupMembers?.map((e) => GroupMember.fromPartial(e)) || [];
+    message.groupPolicySeq =
+      object.groupPolicySeq !== undefined && object.groupPolicySeq !== null
+        ? Long.fromValue(object.groupPolicySeq)
+        : Long.UZERO;
+    message.groupPolicies =
+      object.groupPolicies?.map((e) => GroupPolicyInfo.fromPartial(e)) || [];
+    message.proposalSeq =
+      object.proposalSeq !== undefined && object.proposalSeq !== null
+        ? Long.fromValue(object.proposalSeq)
+        : Long.UZERO;
+    message.proposals =
+      object.proposals?.map((e) => Proposal.fromPartial(e)) || [];
+    message.votes = object.votes?.map((e) => Vote.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -188,46 +223,66 @@ export const GenesisState = {
     if (object.group_seq !== undefined && object.group_seq !== null) {
       message.groupSeq = Long.fromString(object.group_seq);
     }
-    message.groups = object.groups?.map(e => GroupInfo.fromAmino(e)) || [];
-    message.groupMembers = object.group_members?.map(e => GroupMember.fromAmino(e)) || [];
-    if (object.group_policy_seq !== undefined && object.group_policy_seq !== null) {
+    message.groups = object.groups?.map((e) => GroupInfo.fromAmino(e)) || [];
+    message.groupMembers =
+      object.group_members?.map((e) => GroupMember.fromAmino(e)) || [];
+    if (
+      object.group_policy_seq !== undefined &&
+      object.group_policy_seq !== null
+    ) {
       message.groupPolicySeq = Long.fromString(object.group_policy_seq);
     }
-    message.groupPolicies = object.group_policies?.map(e => GroupPolicyInfo.fromAmino(e)) || [];
+    message.groupPolicies =
+      object.group_policies?.map((e) => GroupPolicyInfo.fromAmino(e)) || [];
     if (object.proposal_seq !== undefined && object.proposal_seq !== null) {
       message.proposalSeq = Long.fromString(object.proposal_seq);
     }
-    message.proposals = object.proposals?.map(e => Proposal.fromAmino(e)) || [];
-    message.votes = object.votes?.map(e => Vote.fromAmino(e)) || [];
+    message.proposals =
+      object.proposals?.map((e) => Proposal.fromAmino(e)) || [];
+    message.votes = object.votes?.map((e) => Vote.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.group_seq = !message.groupSeq.isZero() ? message.groupSeq?.toString() : undefined;
+    obj.group_seq = !message.groupSeq.isZero()
+      ? message.groupSeq?.toString()
+      : undefined;
     if (message.groups) {
-      obj.groups = message.groups.map(e => e ? GroupInfo.toAmino(e) : undefined);
+      obj.groups = message.groups.map((e) =>
+        e ? GroupInfo.toAmino(e) : undefined
+      );
     } else {
       obj.groups = message.groups;
     }
     if (message.groupMembers) {
-      obj.group_members = message.groupMembers.map(e => e ? GroupMember.toAmino(e) : undefined);
+      obj.group_members = message.groupMembers.map((e) =>
+        e ? GroupMember.toAmino(e) : undefined
+      );
     } else {
       obj.group_members = message.groupMembers;
     }
-    obj.group_policy_seq = !message.groupPolicySeq.isZero() ? message.groupPolicySeq?.toString() : undefined;
+    obj.group_policy_seq = !message.groupPolicySeq.isZero()
+      ? message.groupPolicySeq?.toString()
+      : undefined;
     if (message.groupPolicies) {
-      obj.group_policies = message.groupPolicies.map(e => e ? GroupPolicyInfo.toAmino(e) : undefined);
+      obj.group_policies = message.groupPolicies.map((e) =>
+        e ? GroupPolicyInfo.toAmino(e) : undefined
+      );
     } else {
       obj.group_policies = message.groupPolicies;
     }
-    obj.proposal_seq = !message.proposalSeq.isZero() ? message.proposalSeq?.toString() : undefined;
+    obj.proposal_seq = !message.proposalSeq.isZero()
+      ? message.proposalSeq?.toString()
+      : undefined;
     if (message.proposals) {
-      obj.proposals = message.proposals.map(e => e ? Proposal.toAmino(e) : undefined);
+      obj.proposals = message.proposals.map((e) =>
+        e ? Proposal.toAmino(e) : undefined
+      );
     } else {
       obj.proposals = message.proposals;
     }
     if (message.votes) {
-      obj.votes = message.votes.map(e => e ? Vote.toAmino(e) : undefined);
+      obj.votes = message.votes.map((e) => (e ? Vote.toAmino(e) : undefined));
     } else {
       obj.votes = message.votes;
     }
@@ -239,7 +294,7 @@ export const GenesisState = {
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
       type: "cosmos-sdk/GenesisState",
-      value: GenesisState.toAmino(message)
+      value: GenesisState.toAmino(message),
     };
   },
   fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
@@ -251,7 +306,7 @@ export const GenesisState = {
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
       typeUrl: "/cosmos.group.v1.GenesisState",
-      value: GenesisState.encode(message).finish()
+      value: GenesisState.encode(message).finish(),
     };
-  }
+  },
 };

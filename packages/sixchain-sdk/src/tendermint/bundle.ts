@@ -12,28 +12,28 @@ import * as _245 from "./types/validator";
 import * as _246 from "./version/types";
 export namespace tendermint {
   export const abci = {
-    ..._236
+    ..._236,
   };
   export const crypto = {
     ..._237,
-    ..._238
+    ..._238,
   };
   export namespace libs {
     export const bits = {
-      ..._239
+      ..._239,
     };
   }
   export const p2p = {
-    ..._240
+    ..._240,
   };
   export const types = {
     ..._241,
     ..._242,
     ..._243,
     ..._244,
-    ..._245
+    ..._245,
   };
   export const version = {
-    ..._246
+    ..._246,
   };
 }

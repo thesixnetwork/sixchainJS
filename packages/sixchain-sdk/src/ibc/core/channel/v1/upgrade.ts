@@ -137,12 +137,15 @@ function createBaseUpgrade(): Upgrade {
   return {
     fields: UpgradeFields.fromPartial({}),
     timeout: Timeout.fromPartial({}),
-    nextSequenceSend: Long.UZERO
+    nextSequenceSend: Long.UZERO,
   };
 }
 export const Upgrade = {
   typeUrl: "/ibc.core.channel.v1.Upgrade",
-  encode(message: Upgrade, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: Upgrade,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.fields !== undefined) {
       UpgradeFields.encode(message.fields, writer.uint32(10).fork()).ldelim();
     }
@@ -179,9 +182,18 @@ export const Upgrade = {
   },
   fromPartial(object: Partial<Upgrade>): Upgrade {
     const message = createBaseUpgrade();
-    message.fields = object.fields !== undefined && object.fields !== null ? UpgradeFields.fromPartial(object.fields) : undefined;
-    message.timeout = object.timeout !== undefined && object.timeout !== null ? Timeout.fromPartial(object.timeout) : undefined;
-    message.nextSequenceSend = object.nextSequenceSend !== undefined && object.nextSequenceSend !== null ? Long.fromValue(object.nextSequenceSend) : Long.UZERO;
+    message.fields =
+      object.fields !== undefined && object.fields !== null
+        ? UpgradeFields.fromPartial(object.fields)
+        : undefined;
+    message.timeout =
+      object.timeout !== undefined && object.timeout !== null
+        ? Timeout.fromPartial(object.timeout)
+        : undefined;
+    message.nextSequenceSend =
+      object.nextSequenceSend !== undefined && object.nextSequenceSend !== null
+        ? Long.fromValue(object.nextSequenceSend)
+        : Long.UZERO;
     return message;
   },
   fromAmino(object: UpgradeAmino): Upgrade {
@@ -192,16 +204,25 @@ export const Upgrade = {
     if (object.timeout !== undefined && object.timeout !== null) {
       message.timeout = Timeout.fromAmino(object.timeout);
     }
-    if (object.next_sequence_send !== undefined && object.next_sequence_send !== null) {
+    if (
+      object.next_sequence_send !== undefined &&
+      object.next_sequence_send !== null
+    ) {
       message.nextSequenceSend = Long.fromString(object.next_sequence_send);
     }
     return message;
   },
   toAmino(message: Upgrade): UpgradeAmino {
     const obj: any = {};
-    obj.fields = message.fields ? UpgradeFields.toAmino(message.fields) : undefined;
-    obj.timeout = message.timeout ? Timeout.toAmino(message.timeout) : undefined;
-    obj.next_sequence_send = !message.nextSequenceSend.isZero() ? message.nextSequenceSend?.toString() : undefined;
+    obj.fields = message.fields
+      ? UpgradeFields.toAmino(message.fields)
+      : undefined;
+    obj.timeout = message.timeout
+      ? Timeout.toAmino(message.timeout)
+      : undefined;
+    obj.next_sequence_send = !message.nextSequenceSend.isZero()
+      ? message.nextSequenceSend?.toString()
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: UpgradeAminoMsg): Upgrade {
@@ -210,7 +231,7 @@ export const Upgrade = {
   toAminoMsg(message: Upgrade): UpgradeAminoMsg {
     return {
       type: "cosmos-sdk/Upgrade",
-      value: Upgrade.toAmino(message)
+      value: Upgrade.toAmino(message),
     };
   },
   fromProtoMsg(message: UpgradeProtoMsg): Upgrade {
@@ -222,20 +243,23 @@ export const Upgrade = {
   toProtoMsg(message: Upgrade): UpgradeProtoMsg {
     return {
       typeUrl: "/ibc.core.channel.v1.Upgrade",
-      value: Upgrade.encode(message).finish()
+      value: Upgrade.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseUpgradeFields(): UpgradeFields {
   return {
     ordering: 0,
     connectionHops: [],
-    version: ""
+    version: "",
   };
 }
 export const UpgradeFields = {
   typeUrl: "/ibc.core.channel.v1.UpgradeFields",
-  encode(message: UpgradeFields, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: UpgradeFields,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.ordering !== 0) {
       writer.uint32(8).int32(message.ordering);
     }
@@ -273,7 +297,7 @@ export const UpgradeFields = {
   fromPartial(object: Partial<UpgradeFields>): UpgradeFields {
     const message = createBaseUpgradeFields();
     message.ordering = object.ordering ?? 0;
-    message.connectionHops = object.connectionHops?.map(e => e) || [];
+    message.connectionHops = object.connectionHops?.map((e) => e) || [];
     message.version = object.version ?? "";
     return message;
   },
@@ -282,7 +306,7 @@ export const UpgradeFields = {
     if (object.ordering !== undefined && object.ordering !== null) {
       message.ordering = object.ordering;
     }
-    message.connectionHops = object.connection_hops?.map(e => e) || [];
+    message.connectionHops = object.connection_hops?.map((e) => e) || [];
     if (object.version !== undefined && object.version !== null) {
       message.version = object.version;
     }
@@ -292,7 +316,7 @@ export const UpgradeFields = {
     const obj: any = {};
     obj.ordering = message.ordering === 0 ? undefined : message.ordering;
     if (message.connectionHops) {
-      obj.connection_hops = message.connectionHops.map(e => e);
+      obj.connection_hops = message.connectionHops.map((e) => e);
     } else {
       obj.connection_hops = message.connectionHops;
     }
@@ -305,7 +329,7 @@ export const UpgradeFields = {
   toAminoMsg(message: UpgradeFields): UpgradeFieldsAminoMsg {
     return {
       type: "cosmos-sdk/UpgradeFields",
-      value: UpgradeFields.toAmino(message)
+      value: UpgradeFields.toAmino(message),
     };
   },
   fromProtoMsg(message: UpgradeFieldsProtoMsg): UpgradeFields {
@@ -317,19 +341,22 @@ export const UpgradeFields = {
   toProtoMsg(message: UpgradeFields): UpgradeFieldsProtoMsg {
     return {
       typeUrl: "/ibc.core.channel.v1.UpgradeFields",
-      value: UpgradeFields.encode(message).finish()
+      value: UpgradeFields.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseErrorReceipt(): ErrorReceipt {
   return {
     sequence: Long.UZERO,
-    message: ""
+    message: "",
   };
 }
 export const ErrorReceipt = {
   typeUrl: "/ibc.core.channel.v1.ErrorReceipt",
-  encode(message: ErrorReceipt, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: ErrorReceipt,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (!message.sequence.isZero()) {
       writer.uint32(8).uint64(message.sequence);
     }
@@ -360,7 +387,10 @@ export const ErrorReceipt = {
   },
   fromPartial(object: Partial<ErrorReceipt>): ErrorReceipt {
     const message = createBaseErrorReceipt();
-    message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
+    message.sequence =
+      object.sequence !== undefined && object.sequence !== null
+        ? Long.fromValue(object.sequence)
+        : Long.UZERO;
     message.message = object.message ?? "";
     return message;
   },
@@ -376,7 +406,9 @@ export const ErrorReceipt = {
   },
   toAmino(message: ErrorReceipt): ErrorReceiptAmino {
     const obj: any = {};
-    obj.sequence = !message.sequence.isZero() ? message.sequence?.toString() : undefined;
+    obj.sequence = !message.sequence.isZero()
+      ? message.sequence?.toString()
+      : undefined;
     obj.message = message.message === "" ? undefined : message.message;
     return obj;
   },
@@ -386,7 +418,7 @@ export const ErrorReceipt = {
   toAminoMsg(message: ErrorReceipt): ErrorReceiptAminoMsg {
     return {
       type: "cosmos-sdk/ErrorReceipt",
-      value: ErrorReceipt.toAmino(message)
+      value: ErrorReceipt.toAmino(message),
     };
   },
   fromProtoMsg(message: ErrorReceiptProtoMsg): ErrorReceipt {
@@ -398,7 +430,7 @@ export const ErrorReceipt = {
   toProtoMsg(message: ErrorReceipt): ErrorReceiptProtoMsg {
     return {
       typeUrl: "/ibc.core.channel.v1.ErrorReceipt",
-      value: ErrorReceipt.encode(message).finish()
+      value: ErrorReceipt.encode(message).finish(),
     };
-  }
+  },
 };
