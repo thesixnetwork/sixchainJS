@@ -5,6 +5,7 @@ import {
   signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
+import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
 import Long from "long";
 import dotenv from "dotenv";
@@ -34,6 +35,7 @@ const main = async () => {
   console.log(`Counterparty Port ID: ${COUNTERPARTY_PORT_ID}`);
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+  const gasPrice = GasPrice.fromString("1.25usix");
 
   // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
@@ -41,9 +43,13 @@ const main = async () => {
   });
 
   // Get signing client
+  // Get signing client
   const client = await getSigningCosmosClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address

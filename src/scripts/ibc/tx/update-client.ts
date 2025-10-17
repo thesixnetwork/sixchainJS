@@ -34,9 +34,13 @@ const main = async () => {
   });
 
   // Get signing client
+  // Get signing client
   const client = await getSigningCosmosClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address

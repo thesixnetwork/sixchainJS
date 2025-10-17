@@ -6,31 +6,36 @@ import {
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { Coin } from "@cosmjs/amino";
-
+import { GasPrice } from "@cosmjs/stargate";
+import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const delegate = async () => {
-  const rpcEndpoint = "http://localhost:26657";
+  const NETWORK = process.argv[2];
 
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+  const gasPrice = GasPrice.fromString("1.25usix");
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    process.env.ALICE_MNEMONIC!,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
 
   // Get signing client
   const client = await getSigningCosmosClient({
-    rpcEndpoint,
+    rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
-  const validator_address = "6xvaloper13dwxflzhc3qlkcy9syfnhr8tu2kdvuavhzdf9f";
+  const validator_address = "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76";
 
   const delegate_amount: Coin = {
     amount: "20000000000",
@@ -59,7 +64,7 @@ const delegate = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.STAKING,
+      fallbackGas: COMMON_GAS_LIMITS.STAKING.DELEGATE,
       denom: "usix",
     }
   );
@@ -71,7 +76,6 @@ const delegate = async () => {
       `Delegation successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
   }
-  console.log(txResponse);
 };
 
 delegate()

@@ -13,7 +13,6 @@ dotenv.config();
 
 const main = async () => {
   const NETWORK = process.argv[2];
-  const validatorAddress = process.argv[3];
 
   if (!NETWORK) {
     throw new Error(
@@ -42,17 +41,14 @@ const main = async () => {
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
-  // Use provided validator address or derive from account address
-  const valAddr = validatorAddress || `6xvaloper${address.slice(2)}`;
-
-  console.log(`Withdrawing commission for validator: ${valAddr}`);
+  const validatorAddress = "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76"
 
   let msgArray: Array<EncodeObject> = [];
 
   const withdrawValidatorCommission =
     cosmos.distribution.v1beta1.MessageComposer.withTypeUrl.withdrawValidatorCommission(
       {
-        validatorAddress: valAddr,
+        validatorAddress: validatorAddress,
       }
     );
 
@@ -69,7 +65,7 @@ const main = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.SAMPLE,
+      fallbackGas: COMMON_GAS_LIMITS.DISTRIBUTION.WITHDRAW_VALIDATOR_REWARD,
       denom: "usix",
     }
   );

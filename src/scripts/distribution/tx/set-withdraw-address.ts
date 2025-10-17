@@ -62,7 +62,7 @@ const main = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.SAMPLE,
+      fallbackGas: COMMON_GAS_LIMITS.DISTRIBUTION.SET_WITHDRAW_ADDRESS,
       denom: "usix",
     }
   );
