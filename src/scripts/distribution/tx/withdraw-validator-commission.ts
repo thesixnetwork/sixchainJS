@@ -41,7 +41,7 @@ const main = async () => {
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
-  const validatorAddress = "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76"
+  const validatorAddress = "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76";
 
   let msgArray: Array<EncodeObject> = [];
 

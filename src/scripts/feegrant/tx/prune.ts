@@ -58,7 +58,9 @@ const main = async () => {
     msgArray,
     memo,
     {
-      fallbackGas: COMMON_GAS_LIMITS.GOVERNANCE_PROPOSAL,
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.FEEGRANT.PRUNE,
       denom: "usix",
     }
   );

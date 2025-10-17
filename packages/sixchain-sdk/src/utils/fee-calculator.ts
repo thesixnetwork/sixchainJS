@@ -157,36 +157,85 @@ export async function signAndBroadcastWithRetry(
 ) {
   // First attempt with auto gas
   console.log(`Attempting ${memo || "transaction"} with auto gas...`);
-  let txResponse = await client.signAndBroadcast(
-    address,
-    messages,
-    "auto",
-    memo
-  );
-
-  // If out of gas error (code 11), retry with calculated fee
-  if (txResponse.code === 11) {
-    console.log("Out of gas error detected. Retrying with calculated fee...");
-    console.log(
-      `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
-    );
-
-    // Calculate fee using utility function
-    const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
-      client,
+  try {
+    let txResponse = await client.signAndBroadcast(
       address,
       messages,
-      memo,
-      options
+      "auto",
+      memo
     );
 
-    console.log(`Calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
+    // If out of gas error (code 11), retry with calculated fee
+    if (txResponse.code === 11) {
+      console.log("Out of gas error detected. Retrying with calculated fee...");
+      console.log(
+        `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
+      );
+      console.log(`Error log: ${txResponse.rawLog}`);
 
-    // Retry with calculated fee
-    txResponse = await client.signAndBroadcast(address, messages, fee, memo);
+      const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
+        client,
+        address,
+        messages,
+        memo,
+        options
+      );
+
+      console.log(`Retrying with calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
+
+      // Retry with calculated fee
+      txResponse = await client.signAndBroadcast(address, messages, fee, memo);
+      console.log(`Retry result: code=${txResponse.code}`);
+    }
+
+    return txResponse;
+  } catch (error: any) {
+    // Check if this is an out-of-gas exception that we can handle
+    if (error.code === 11 && error.codespace === "sdk") {
+      console.log("Out of gas exception detected. Retrying with calculated fee...");
+      console.log(`Exception log: ${error.log}`);
+
+      try {
+
+        // Calculate fee using utility function with higher multiplier for retry
+        const retryOptions = {
+          ...options,
+          gasMultiplier: options.gasMultiplier * 1.2, // increas 20 percent
+          fallbackGas: Math.max(options.fallbackGas || 80000, 100000),
+        };
+
+        const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
+          client,
+          address,
+          messages,
+          memo,
+          retryOptions
+        );
+
+        console.log(`Retrying after exception with calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
+
+        // Retry with calculated fee
+        const txResponse = await client.signAndBroadcast(address, messages, fee, memo);
+        console.log(`Exception retry result: code=${txResponse.code}`);
+
+        return txResponse;
+      } catch (retryError: any) {
+        console.error("Retry also failed:");
+        console.error(`Retry error: ${retryError.message}`);
+        throw retryError;
+      }
+    }
+
+    if (error.log) {
+      console.error(`Log: ${error.log}`);
+    }
+
+    if (error.code && error.codespace) {
+      console.error(`Code: ${error.code}, Codespace: ${error.codespace}`);
+    }
+
+    throw error;
   }
-
-  return txResponse;
 }
 
 /**
@@ -212,19 +261,24 @@ export const COMMON_GAS_LIMITS = {
     FUND_VALIDATOR_REWARD: 110000,
     SET_WITHDRAW_ADDRESS: 70000,
     WITHDRAW_REWARD: 150000,
-    WITHDRAW_VALIDATOR_REWARD: 90000
+    WITHDRAW_VALIDATOR_REWARD: 90000,
   },
   GOV: {
     DEPOST: 150000,
     SUBMIT_PROPOSAL: 300000,
     VOTE: 70000,
   },
+  FEEGRANT: {
+    GRANT: 80000,
+    PRUNE: 70000,
+    REVOKE: 70000,
+  },
   CONTRACT_DEPLOY: 200000,
   CONTRACT_EXECUTE: 150000,
   CIRCUIT_RESET: 80000,
   GOVERNANCE_PROPOSAL: 100000,
   STAKING: {
-    DELEGATE: 180000
+    DELEGATE: 180000,
   },
   NFT_MINT: 90000,
   NFT_CREATE_SCHEMA: 100000,
