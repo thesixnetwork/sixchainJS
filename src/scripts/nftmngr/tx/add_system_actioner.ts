@@ -4,8 +4,7 @@ import {
   calculateFeeFromSimulation,
   COMMON_GAS_LIMITS,
 } from "@sixnetwork/sixchain-sdk";
-import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { EncodeObject } from "@cosmjs/proto-signing";
+import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import dotenv from "dotenv";
 import allAddress from "./all_address";
 import { getConnectorConfig } from "@client-util";

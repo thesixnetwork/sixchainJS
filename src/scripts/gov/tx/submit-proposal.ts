@@ -5,8 +5,7 @@ import {
   signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 const { MsgAuthorizeCircuitBreaker } = cosmos.circuit.v1;
-import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { EncodeObject } from "@cosmjs/proto-signing";
+import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";

@@ -1,9 +1,9 @@
-import { EncodeObject } from "@cosmjs/proto-signing";
+import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import {
   getSigningSixprotocolClient,
   sixprotocol,
 } from "@sixnetwork/sixchain-sdk";
-import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
+import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "@client-util";
 import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";

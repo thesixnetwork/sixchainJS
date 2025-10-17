@@ -7,18 +7,23 @@ import {
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
-
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const main = async () => {
   const NETWORK = process.argv[2];
+  const validatorAddress = process.argv[3]; // Validator address
+  const delegatorAddress = process.argv[4]; // Delegator address to whitelist
 
   if (!NETWORK) {
     throw new Error(
-      "INPUT NETWORK BY RUNNING: bun run ./scripts/distribution/tx/withdraw-rewards.ts fivenet || yarn ts-node ./scripts/distribution/tx/withdraw-rewards.ts fivenet"
+      "INPUT NETWORK BY RUNNING: bun run ./scripts/staking/tx/create-whitelist-delegator.ts fivenet [validatorAddress] [delegatorAddress] || yarn ts-node ./scripts/staking/tx/create-whitelist-delegator.ts fivenet [validatorAddress] [delegatorAddress]"
     );
+  }
+
+  if (!validatorAddress || !delegatorAddress) {
+    throw new Error("Both validator address and delegator address are required");
   }
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
@@ -42,23 +47,25 @@ const main = async () => {
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
+  console.log(`Creating whitelist delegator:`);
+  console.log(`Creator: ${address}`);
+  console.log(`Validator: ${validatorAddress}`);
+  console.log(`Whitelist Delegator: ${delegatorAddress}`);
+
   let msgArray: Array<EncodeObject> = [];
 
-  const validatorAddress = "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76";
+  const createWhitelistDelegator =
+    cosmos.staking.v1beta1.MessageComposer.withTypeUrl.createWhitelistdelegator({
+      creator: address, // Address creating the whitelist
+      validatorAddress: validatorAddress, // Validator address
+      delegatorAddress: delegatorAddress, // Delegator address to be whitelisted
+    });
 
-  const withdrawRewards =
-    cosmos.distribution.v1beta1.MessageComposer.withTypeUrl.withdrawDelegatorReward(
-      {
-        delegatorAddress: address,
-        validatorAddress: validatorAddress,
-      }
-    );
-
-  msgArray.push(withdrawRewards);
+  msgArray.push(createWhitelistDelegator);
 
   // First attempt with auto gas
-  console.log("Attempting withdraw rewards with auto gas...");
-  const memo = "withdraw rewards";
+  console.log("Attempting create whitelist delegator with auto gas...");
+  const memo = "create whitelist delegator";
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -67,17 +74,17 @@ const main = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.SAMPLE,
+      fallbackGas: COMMON_GAS_LIMITS.STAKING,
       denom: "usix",
     }
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error withdrawing rewards: ${txResponse.rawLog}`);
+    console.error(`Error creating whitelist delegator: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Withdraw rewards successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Create whitelist delegator successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }

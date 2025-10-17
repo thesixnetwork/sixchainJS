@@ -2,8 +2,7 @@ import {
   getSigningSixprotocolClient,
   sixprotocol,
 } from "@sixnetwork/sixchain-sdk";
-import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { EncodeObject } from "@cosmjs/proto-signing";
+import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import NFTSchema from "../../../resources/schemas/preventive-nft-schema.json";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";

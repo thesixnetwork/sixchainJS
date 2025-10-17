@@ -13,11 +13,19 @@ dotenv.config();
 
 const main = async () => {
   const NETWORK = process.argv[2];
+  const srcValidator = process.argv[3];
+  const dstValidator = process.argv[4];
+  const amount = process.argv[5] || "1000000"; // Default 1 SIX
+  const denom = process.argv[6] || "usix";
 
   if (!NETWORK) {
     throw new Error(
-      "INPUT NETWORK BY RUNNING: bun run ./scripts/authz/tx/grant.ts fivenet || yarn ts-node ./scripts/authz/tx/grant.ts fivenet"
+      "INPUT NETWORK BY RUNNING: bun run ./scripts/staking/tx/redelegate.ts fivenet [srcValidator] [dstValidator] [amount] [denom] || yarn ts-node ./scripts/staking/tx/redelegate.ts fivenet [srcValidator] [dstValidator] [amount] [denom]"
     );
+  }
+
+  if (!srcValidator || !dstValidator) {
+    throw new Error("Source and destination validator addresses are required");
   }
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
@@ -41,33 +49,30 @@ const main = async () => {
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
+  console.log(`Redelegating:`);
+  console.log(`Delegator: ${address}`);
+  console.log(`From Validator: ${srcValidator}`);
+  console.log(`To Validator: ${dstValidator}`);
+  console.log(`Amount: ${amount} ${denom}`);
+
   let msgArray: Array<EncodeObject> = [];
 
-  const granteeAddress = "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp";
-
-  const grant = cosmos.authz.v1beta1.MessageComposer.withTypeUrl.grant({
-    granter: address,
-    grantee: granteeAddress,
-    grant: {
-      authorization: {
-        typeUrl: "/cosmos.bank.v1beta1.SendAuthorization",
-        value: cosmos.bank.v1beta1.SendAuthorization.encode({
-          spendLimit: [
-            {
-              denom: "usix",
-              amount: "1000000", // 1 SIX
-            },
-          ],
-          allowList: [],
-        }).finish(),
+  const redelegate =
+    cosmos.staking.v1beta1.MessageComposer.withTypeUrl.beginRedelegate({
+      delegatorAddress: address,
+      validatorSrcAddress: srcValidator,
+      validatorDstAddress: dstValidator,
+      amount: {
+        amount: amount,
+        denom: denom,
       },
-      expiration: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // 1 year from now
-    },
-  });
+    });
 
-  msgArray.push(grant);
+  msgArray.push(redelegate);
 
-  const memo = "authz grant";
+  // First attempt with auto gas
+  console.log("Attempting redelegation with auto gas...");
+  const memo = "redelegate";
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -76,17 +81,17 @@ const main = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.AUTHZ.GRANT,
+      fallbackGas: COMMON_GAS_LIMITS.STAKING,
       denom: "usix",
     }
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error in authz grant: ${txResponse.rawLog}`);
+    console.error(`Error in redelegation: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Grant successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Redelegation successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }

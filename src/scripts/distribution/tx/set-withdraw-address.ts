@@ -4,8 +4,7 @@ import {
   COMMON_GAS_LIMITS,
   signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
-import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { EncodeObject } from "@cosmjs/proto-signing";
+import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
@@ -54,8 +53,6 @@ const main = async () => {
 
   msgArray.push(setWithdrawAddress);
 
-  // First attempt with auto gas
-  console.log("Attempting set withdraw address with auto gas...");
   const memo = "set withdraw address";
   let txResponse = await signAndBroadcastWithRetry(
     client,

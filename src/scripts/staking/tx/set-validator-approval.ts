@@ -7,18 +7,18 @@ import {
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
-
-import Long from "long";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const main = async () => {
   const NETWORK = process.argv[2];
+  const newApproverAddress = process.argv[3] || ""; // New approver address
+  const enabled = process.argv[4] === "true" || true; // Enable/disable validator approval
 
   if (!NETWORK) {
     throw new Error(
-      "INPUT NETWORK BY RUNNING: bun run ./scripts/gov/tx/vote.ts fivenet || yarn ts-node ./scripts/gov/tx/vote.ts fivenet"
+      "INPUT NETWORK BY RUNNING: bun run ./scripts/staking/tx/set-validator-approval.ts fivenet [newApproverAddress] [enabled] || yarn ts-node ./scripts/staking/tx/set-validator-approval.ts fivenet [newApproverAddress] [enabled]"
     );
   }
 
@@ -43,22 +43,25 @@ const main = async () => {
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
+  console.log(`Setting validator approval:`);
+  console.log(`Authority: ${address}`);
+  console.log(`New Approver Address: ${newApproverAddress}`);
+  console.log(`Enabled: ${enabled}`);
+
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual proposal ID and vote option
-  const proposalId = Long.fromNumber(1); // TODO: Replace with actual proposal ID
-  const voteOption = cosmos.gov.v1.VoteOption.VOTE_OPTION_YES; // TODO: Change vote option as needed
+  const setValidatorApproval =
+    cosmos.staking.v1beta1.MessageComposer.withTypeUrl.setValidatorApproval({
+      approverAddress: address, // Current approver address
+      newApproverAddress: newApproverAddress, // New approver address
+      enabled: enabled, // Enable/disable validator approval
+    });
 
-  const vote = cosmos.gov.v1.MessageComposer.withTypeUrl.vote({
-    proposalId: proposalId,
-    voter: address,
-    option: voteOption,
-    metadata: "TODO: Add vote metadata if needed",
-  });
+  msgArray.push(setValidatorApproval);
 
-  msgArray.push(vote);
-
-  const memo = "vote on proposal";
+  // First attempt with auto gas
+  console.log("Attempting set validator approval with auto gas...");
+  const memo = "set validator approval";
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -67,17 +70,17 @@ const main = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.GOV.VOTE,
+      fallbackGas: COMMON_GAS_LIMITS.STAKING,
       denom: "usix",
     }
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error voting on proposal: ${txResponse.rawLog}`);
+    console.error(`Error setting validator approval: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Vote successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Set validator approval successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }

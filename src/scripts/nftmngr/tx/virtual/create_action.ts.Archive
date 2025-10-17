@@ -3,7 +3,7 @@ import {
   ITxNFTmngr,
   fee,
 } from "@sixnetwork/sixchain-client";
-import { EncodeObject } from "@cosmjs/proto-signing";
+import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "@client-util";
 import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";

@@ -2,7 +2,7 @@ import {
   getSigningSixprotocolClient,
   sixprotocol,
 } from "@sixnetwork/sixchain-sdk";
-import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
+import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import S_ZERO_YEAR from "../../resources/metadatas/membership/senior/nft-data_0_years.json";
 import S_THREE_YEAR from "../../resources/metadatas/membership/senior/nft-data_3_years.json";
 import S_FIVE_YEAR from "../../resources/metadatas/membership/senior/nft-data_5_years.json";

@@ -7,18 +7,17 @@ import {
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
-
-import Long from "long";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const main = async () => {
   const NETWORK = process.argv[2];
+  const validatorAddress = process.argv[3];
 
   if (!NETWORK) {
     throw new Error(
-      "INPUT NETWORK BY RUNNING: bun run ./scripts/gov/tx/vote.ts fivenet || yarn ts-node ./scripts/gov/tx/vote.ts fivenet"
+      "INPUT NETWORK BY RUNNING: bun run ./scripts/distribution/tx/withdraw-validator-commission.ts fivenet [validatorAddress] || yarn ts-node ./scripts/distribution/tx/withdraw-validator-commission.ts fivenet [validatorAddress]"
     );
   }
 
@@ -43,22 +42,23 @@ const main = async () => {
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
+  // Use provided validator address or derive from account address
+  const valAddr = validatorAddress || `6xvaloper${address.slice(2)}`;
+
+  console.log(`Withdrawing commission for validator: ${valAddr}`);
+
   let msgArray: Array<EncodeObject> = [];
 
-  // TODO: Replace with actual proposal ID and vote option
-  const proposalId = Long.fromNumber(1); // TODO: Replace with actual proposal ID
-  const voteOption = cosmos.gov.v1.VoteOption.VOTE_OPTION_YES; // TODO: Change vote option as needed
+  const withdrawValidatorCommission =
+    cosmos.distribution.v1beta1.MessageComposer.withTypeUrl.withdrawValidatorCommission({
+      validatorAddress: valAddr,
+    });
 
-  const vote = cosmos.gov.v1.MessageComposer.withTypeUrl.vote({
-    proposalId: proposalId,
-    voter: address,
-    option: voteOption,
-    metadata: "TODO: Add vote metadata if needed",
-  });
+  msgArray.push(withdrawValidatorCommission);
 
-  msgArray.push(vote);
-
-  const memo = "vote on proposal";
+  // First attempt with auto gas
+  console.log("Attempting withdraw validator commission with auto gas...");
+  const memo = "withdraw validator commission";
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -67,17 +67,17 @@ const main = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.GOV.VOTE,
+      fallbackGas: COMMON_GAS_LIMITS.SAMPLE,
       denom: "usix",
     }
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error voting on proposal: ${txResponse.rawLog}`);
+    console.error(`Error withdrawing validator commission: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Vote successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Withdraw validator commission successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }
