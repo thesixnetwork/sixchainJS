@@ -155,8 +155,10 @@ export async function signAndBroadcastWithRetry(
   memo: string = "",
   options: FeeCalculationOptions = {}
 ) {
-  // First attempt with auto gas
   console.log(`Attempting ${memo || "transaction"} with auto gas...`);
+  /*
+  NOTE:: For some module gas estimaion and tx reponse might not updated or not the same native cosmos sdk such as feegrant module, so we need to use trycatch to make sure that tx reponse is atually code 11
+   */
   try {
     let txResponse = await client.signAndBroadcast(
       address,
@@ -188,7 +190,6 @@ export async function signAndBroadcastWithRetry(
 
     return txResponse;
   } catch (error: any) {
-    // Check if this is an out-of-gas exception that we can handle
     if (error.code === 11 && error.codespace === "sdk") {
       console.log("Out of gas exception detected. Retrying with calculated fee...");
       console.log(`Exception log: ${error.log}`);
@@ -288,3 +289,4 @@ export const GAS_PRICES = {
   USIX: 1.25,
   SIX: 0.00000125, // 1.25usix = 0.000001250six
 } as const;
+``
