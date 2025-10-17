@@ -171,7 +171,6 @@ export async function signAndBroadcastWithRetry(
       console.log(
         `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
       );
-      console.log(`Error log: ${txResponse.rawLog}`);
 
       const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
         client,
