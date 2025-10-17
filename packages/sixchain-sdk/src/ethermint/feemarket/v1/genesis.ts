@@ -45,15 +45,12 @@ export interface GenesisStateSDKType {
 function createBaseGenesisState(): GenesisState {
   return {
     params: Params.fromPartial({}),
-    blockGas: Long.UZERO,
+    blockGas: Long.UZERO
   };
 }
 export const GenesisState = {
   typeUrl: "/ethermint.feemarket.v1.GenesisState",
-  encode(
-    message: GenesisState,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -84,14 +81,8 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.params =
-      object.params !== undefined && object.params !== null
-        ? Params.fromPartial(object.params)
-        : undefined;
-    message.blockGas =
-      object.blockGas !== undefined && object.blockGas !== null
-        ? Long.fromValue(object.blockGas)
-        : Long.UZERO;
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.blockGas = object.blockGas !== undefined && object.blockGas !== null ? Long.fromValue(object.blockGas) : Long.UZERO;
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -106,12 +97,8 @@ export const GenesisState = {
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params
-      ? Params.toAmino(message.params)
-      : Params.toAmino(Params.fromPartial({}));
-    obj.block_gas = !message.blockGas.isZero()
-      ? message.blockGas?.toString()
-      : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.block_gas = !message.blockGas.isZero() ? message.blockGas?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -126,7 +113,7 @@ export const GenesisState = {
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
       typeUrl: "/ethermint.feemarket.v1.GenesisState",
-      value: GenesisState.encode(message).finish(),
+      value: GenesisState.encode(message).finish()
     };
-  },
+  }
 };

@@ -39,15 +39,12 @@ export interface ModuleSDKType {
 function createBaseModule(): Module {
   return {
     feeCollectorName: "",
-    authority: "",
+    authority: ""
   };
 }
 export const Module = {
   typeUrl: "/cosmos.crisis.module.v1.Module",
-  encode(
-    message: Module,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Module, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.feeCollectorName !== "") {
       writer.uint32(10).string(message.feeCollectorName);
     }
@@ -84,10 +81,7 @@ export const Module = {
   },
   fromAmino(object: ModuleAmino): Module {
     const message = createBaseModule();
-    if (
-      object.fee_collector_name !== undefined &&
-      object.fee_collector_name !== null
-    ) {
+    if (object.fee_collector_name !== undefined && object.fee_collector_name !== null) {
       message.feeCollectorName = object.fee_collector_name;
     }
     if (object.authority !== undefined && object.authority !== null) {
@@ -97,8 +91,7 @@ export const Module = {
   },
   toAmino(message: Module): ModuleAmino {
     const obj: any = {};
-    obj.fee_collector_name =
-      message.feeCollectorName === "" ? undefined : message.feeCollectorName;
+    obj.fee_collector_name = message.feeCollectorName === "" ? undefined : message.feeCollectorName;
     obj.authority = message.authority === "" ? undefined : message.authority;
     return obj;
   },
@@ -108,7 +101,7 @@ export const Module = {
   toAminoMsg(message: Module): ModuleAminoMsg {
     return {
       type: "cosmos-sdk/Module",
-      value: Module.toAmino(message),
+      value: Module.toAmino(message)
     };
   },
   fromProtoMsg(message: ModuleProtoMsg): Module {
@@ -120,7 +113,7 @@ export const Module = {
   toProtoMsg(message: Module): ModuleProtoMsg {
     return {
       typeUrl: "/cosmos.crisis.module.v1.Module",
-      value: Module.encode(message).finish(),
+      value: Module.encode(message).finish()
     };
-  },
+  }
 };

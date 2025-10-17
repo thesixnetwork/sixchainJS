@@ -34,7 +34,7 @@ function createBaseBurn(): Burn {
   return {
     id: Long.UZERO,
     creator: "",
-    amount: Coin.fromPartial({}),
+    amount: Coin.fromPartial({})
   };
 }
 export const Burn = {
@@ -76,15 +76,9 @@ export const Burn = {
   },
   fromPartial(object: Partial<Burn>): Burn {
     const message = createBaseBurn();
-    message.id =
-      object.id !== undefined && object.id !== null
-        ? Long.fromValue(object.id)
-        : Long.UZERO;
+    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
     message.creator = object.creator ?? "";
-    message.amount =
-      object.amount !== undefined && object.amount !== null
-        ? Coin.fromPartial(object.amount)
-        : undefined;
+    message.amount = object.amount !== undefined && object.amount !== null ? Coin.fromPartial(object.amount) : undefined;
     return message;
   },
   fromAmino(object: BurnAmino): Burn {
@@ -119,7 +113,7 @@ export const Burn = {
   toProtoMsg(message: Burn): BurnProtoMsg {
     return {
       typeUrl: "/sixprotocol.tokenmngr.Burn",
-      value: Burn.encode(message).finish(),
+      value: Burn.encode(message).finish()
     };
-  },
+  }
 };

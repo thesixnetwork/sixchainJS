@@ -67,15 +67,12 @@ function createBaseExtensionOptionsWeb3Tx(): ExtensionOptionsWeb3Tx {
   return {
     typedDataChainId: Long.UZERO,
     feePayer: "",
-    feePayerSig: new Uint8Array(),
+    feePayerSig: new Uint8Array()
   };
 }
 export const ExtensionOptionsWeb3Tx = {
   typeUrl: "/ethermint.types.v1.ExtensionOptionsWeb3Tx",
-  encode(
-    message: ExtensionOptionsWeb3Tx,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ExtensionOptionsWeb3Tx, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.typedDataChainId.isZero()) {
       writer.uint32(8).uint64(message.typedDataChainId);
     }
@@ -87,10 +84,7 @@ export const ExtensionOptionsWeb3Tx = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): ExtensionOptionsWeb3Tx {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ExtensionOptionsWeb3Tx {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseExtensionOptionsWeb3Tx();
@@ -115,20 +109,14 @@ export const ExtensionOptionsWeb3Tx = {
   },
   fromPartial(object: Partial<ExtensionOptionsWeb3Tx>): ExtensionOptionsWeb3Tx {
     const message = createBaseExtensionOptionsWeb3Tx();
-    message.typedDataChainId =
-      object.typedDataChainId !== undefined && object.typedDataChainId !== null
-        ? Long.fromValue(object.typedDataChainId)
-        : Long.UZERO;
+    message.typedDataChainId = object.typedDataChainId !== undefined && object.typedDataChainId !== null ? Long.fromValue(object.typedDataChainId) : Long.UZERO;
     message.feePayer = object.feePayer ?? "";
     message.feePayerSig = object.feePayerSig ?? new Uint8Array();
     return message;
   },
   fromAmino(object: ExtensionOptionsWeb3TxAmino): ExtensionOptionsWeb3Tx {
     const message = createBaseExtensionOptionsWeb3Tx();
-    if (
-      object.typed_data_chain_id !== undefined &&
-      object.typed_data_chain_id !== null
-    ) {
+    if (object.typed_data_chain_id !== undefined && object.typed_data_chain_id !== null) {
       message.typedDataChainId = Long.fromString(object.typed_data_chain_id);
     }
     if (object.fee_payer !== undefined && object.fee_payer !== null) {
@@ -141,21 +129,15 @@ export const ExtensionOptionsWeb3Tx = {
   },
   toAmino(message: ExtensionOptionsWeb3Tx): ExtensionOptionsWeb3TxAmino {
     const obj: any = {};
-    obj.typed_data_chain_id = !message.typedDataChainId.isZero()
-      ? message.typedDataChainId?.toString()
-      : undefined;
+    obj.typed_data_chain_id = !message.typedDataChainId.isZero() ? message.typedDataChainId?.toString() : undefined;
     obj.fee_payer = message.feePayer === "" ? undefined : message.feePayer;
-    obj.fee_payer_sig = message.feePayerSig
-      ? base64FromBytes(message.feePayerSig)
-      : undefined;
+    obj.fee_payer_sig = message.feePayerSig ? base64FromBytes(message.feePayerSig) : undefined;
     return obj;
   },
   fromAminoMsg(object: ExtensionOptionsWeb3TxAminoMsg): ExtensionOptionsWeb3Tx {
     return ExtensionOptionsWeb3Tx.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: ExtensionOptionsWeb3TxProtoMsg
-  ): ExtensionOptionsWeb3Tx {
+  fromProtoMsg(message: ExtensionOptionsWeb3TxProtoMsg): ExtensionOptionsWeb3Tx {
     return ExtensionOptionsWeb3Tx.decode(message.value);
   },
   toProto(message: ExtensionOptionsWeb3Tx): Uint8Array {
@@ -164,7 +146,7 @@ export const ExtensionOptionsWeb3Tx = {
   toProtoMsg(message: ExtensionOptionsWeb3Tx): ExtensionOptionsWeb3TxProtoMsg {
     return {
       typeUrl: "/ethermint.types.v1.ExtensionOptionsWeb3Tx",
-      value: ExtensionOptionsWeb3Tx.encode(message).finish(),
+      value: ExtensionOptionsWeb3Tx.encode(message).finish()
     };
-  },
+  }
 };

@@ -56,7 +56,7 @@ export interface PairSDKType {
 }
 function createBasePairs(): Pairs {
   return {
-    pairs: [],
+    pairs: []
   };
 }
 export const Pairs = {
@@ -86,18 +86,18 @@ export const Pairs = {
   },
   fromPartial(object: Partial<Pairs>): Pairs {
     const message = createBasePairs();
-    message.pairs = object.pairs?.map((e) => Pair.fromPartial(e)) || [];
+    message.pairs = object.pairs?.map(e => Pair.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: PairsAmino): Pairs {
     const message = createBasePairs();
-    message.pairs = object.pairs?.map((e) => Pair.fromAmino(e)) || [];
+    message.pairs = object.pairs?.map(e => Pair.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: Pairs): PairsAmino {
     const obj: any = {};
     if (message.pairs) {
-      obj.pairs = message.pairs.map((e) => (e ? Pair.toAmino(e) : undefined));
+      obj.pairs = message.pairs.map(e => e ? Pair.toAmino(e) : undefined);
     } else {
       obj.pairs = message.pairs;
     }
@@ -109,7 +109,7 @@ export const Pairs = {
   toAminoMsg(message: Pairs): PairsAminoMsg {
     return {
       type: "cosmos-sdk/Pairs",
-      value: Pairs.toAmino(message),
+      value: Pairs.toAmino(message)
     };
   },
   fromProtoMsg(message: PairsProtoMsg): Pairs {
@@ -121,14 +121,14 @@ export const Pairs = {
   toProtoMsg(message: Pairs): PairsProtoMsg {
     return {
       typeUrl: "/cosmos.store.internal.kv.v1beta1.Pairs",
-      value: Pairs.encode(message).finish(),
+      value: Pairs.encode(message).finish()
     };
-  },
+  }
 };
 function createBasePair(): Pair {
   return {
     key: new Uint8Array(),
-    value: new Uint8Array(),
+    value: new Uint8Array()
   };
 }
 export const Pair = {
@@ -190,7 +190,7 @@ export const Pair = {
   toAminoMsg(message: Pair): PairAminoMsg {
     return {
       type: "cosmos-sdk/Pair",
-      value: Pair.toAmino(message),
+      value: Pair.toAmino(message)
     };
   },
   fromProtoMsg(message: PairProtoMsg): Pair {
@@ -202,7 +202,7 @@ export const Pair = {
   toProtoMsg(message: Pair): PairProtoMsg {
     return {
       typeUrl: "/cosmos.store.internal.kv.v1beta1.Pair",
-      value: Pair.encode(message).finish(),
+      value: Pair.encode(message).finish()
     };
-  },
+  }
 };

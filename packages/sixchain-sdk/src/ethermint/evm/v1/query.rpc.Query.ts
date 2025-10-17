@@ -3,46 +3,18 @@ import { MsgEthereumTxResponse } from "./tx";
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import {
-  QueryAccountRequest,
-  QueryAccountResponse,
-  QueryCosmosAccountRequest,
-  QueryCosmosAccountResponse,
-  QueryValidatorAccountRequest,
-  QueryValidatorAccountResponse,
-  QueryBalanceRequest,
-  QueryBalanceResponse,
-  QueryStorageRequest,
-  QueryStorageResponse,
-  QueryCodeRequest,
-  QueryCodeResponse,
-  QueryParamsRequest,
-  QueryParamsResponse,
-  EthCallRequest,
-  EthCallWithOverrideRequest,
-  EstimateGasResponse,
-  QueryTraceTxRequest,
-  QueryTraceTxResponse,
-  QueryTraceBlockRequest,
-  QueryTraceBlockResponse,
-  QueryBaseFeeRequest,
-  QueryBaseFeeResponse,
-} from "./query";
+import { QueryAccountRequest, QueryAccountResponse, QueryCosmosAccountRequest, QueryCosmosAccountResponse, QueryValidatorAccountRequest, QueryValidatorAccountResponse, QueryBalanceRequest, QueryBalanceResponse, QueryStorageRequest, QueryStorageResponse, QueryCodeRequest, QueryCodeResponse, QueryParamsRequest, QueryParamsResponse, EthCallRequest, EthCallWithOverrideRequest, EstimateGasResponse, QueryTraceTxRequest, QueryTraceTxResponse, QueryTraceBlockRequest, QueryTraceBlockResponse, QueryBaseFeeRequest, QueryBaseFeeResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Account queries an Ethereum account. */
   account(request: QueryAccountRequest): Promise<QueryAccountResponse>;
   /** CosmosAccount queries an Ethereum account's Cosmos Address. */
-  cosmosAccount(
-    request: QueryCosmosAccountRequest
-  ): Promise<QueryCosmosAccountResponse>;
+  cosmosAccount(request: QueryCosmosAccountRequest): Promise<QueryCosmosAccountResponse>;
   /**
    * ValidatorAccount queries an Ethereum account's from a validator consensus
    * Address.
    */
-  validatorAccount(
-    request: QueryValidatorAccountRequest
-  ): Promise<QueryValidatorAccountResponse>;
+  validatorAccount(request: QueryValidatorAccountRequest): Promise<QueryValidatorAccountResponse>;
   /**
    * Balance queries the balance of a the EVM denomination for a single
    * EthAccount.
@@ -57,13 +29,9 @@ export interface Query {
   /** EthCall implements the `eth_call` rpc api */
   ethCall(request: EthCallRequest): Promise<MsgEthereumTxResponse>;
   /** EthCall implements the `eth_call` rpc api */
-  ethCallWithOverride(
-    request: EthCallWithOverrideRequest
-  ): Promise<MsgEthereumTxResponse>;
+  ethCallWithOverride(request: EthCallWithOverrideRequest): Promise<MsgEthereumTxResponse>;
   /** EthCall implements the `eth_call` rpc api */
-  estimateGasWithOverride(
-    request: EthCallWithOverrideRequest
-  ): Promise<EstimateGasResponse>;
+  estimateGasWithOverride(request: EthCallWithOverrideRequest): Promise<EstimateGasResponse>;
   /** EstimateGas implements the `eth_estimateGas` rpc api */
   estimateGas(request: EthCallRequest): Promise<EstimateGasResponse>;
   /** TraceTx implements the `debug_traceTransaction` rpc api */
@@ -98,134 +66,72 @@ export class QueryClientImpl implements Query {
   account(request: QueryAccountRequest): Promise<QueryAccountResponse> {
     const data = QueryAccountRequest.encode(request).finish();
     const promise = this.rpc.request("ethermint.evm.v1.Query", "Account", data);
-    return promise.then((data) =>
-      QueryAccountResponse.decode(new _m0.Reader(data))
-    );
+    return promise.then(data => QueryAccountResponse.decode(new _m0.Reader(data)));
   }
-  cosmosAccount(
-    request: QueryCosmosAccountRequest
-  ): Promise<QueryCosmosAccountResponse> {
+  cosmosAccount(request: QueryCosmosAccountRequest): Promise<QueryCosmosAccountResponse> {
     const data = QueryCosmosAccountRequest.encode(request).finish();
-    const promise = this.rpc.request(
-      "ethermint.evm.v1.Query",
-      "CosmosAccount",
-      data
-    );
-    return promise.then((data) =>
-      QueryCosmosAccountResponse.decode(new _m0.Reader(data))
-    );
+    const promise = this.rpc.request("ethermint.evm.v1.Query", "CosmosAccount", data);
+    return promise.then(data => QueryCosmosAccountResponse.decode(new _m0.Reader(data)));
   }
-  validatorAccount(
-    request: QueryValidatorAccountRequest
-  ): Promise<QueryValidatorAccountResponse> {
+  validatorAccount(request: QueryValidatorAccountRequest): Promise<QueryValidatorAccountResponse> {
     const data = QueryValidatorAccountRequest.encode(request).finish();
-    const promise = this.rpc.request(
-      "ethermint.evm.v1.Query",
-      "ValidatorAccount",
-      data
-    );
-    return promise.then((data) =>
-      QueryValidatorAccountResponse.decode(new _m0.Reader(data))
-    );
+    const promise = this.rpc.request("ethermint.evm.v1.Query", "ValidatorAccount", data);
+    return promise.then(data => QueryValidatorAccountResponse.decode(new _m0.Reader(data)));
   }
   balance(request: QueryBalanceRequest): Promise<QueryBalanceResponse> {
     const data = QueryBalanceRequest.encode(request).finish();
     const promise = this.rpc.request("ethermint.evm.v1.Query", "Balance", data);
-    return promise.then((data) =>
-      QueryBalanceResponse.decode(new _m0.Reader(data))
-    );
+    return promise.then(data => QueryBalanceResponse.decode(new _m0.Reader(data)));
   }
   storage(request: QueryStorageRequest): Promise<QueryStorageResponse> {
     const data = QueryStorageRequest.encode(request).finish();
     const promise = this.rpc.request("ethermint.evm.v1.Query", "Storage", data);
-    return promise.then((data) =>
-      QueryStorageResponse.decode(new _m0.Reader(data))
-    );
+    return promise.then(data => QueryStorageResponse.decode(new _m0.Reader(data)));
   }
   code(request: QueryCodeRequest): Promise<QueryCodeResponse> {
     const data = QueryCodeRequest.encode(request).finish();
     const promise = this.rpc.request("ethermint.evm.v1.Query", "Code", data);
-    return promise.then((data) =>
-      QueryCodeResponse.decode(new _m0.Reader(data))
-    );
+    return promise.then(data => QueryCodeResponse.decode(new _m0.Reader(data)));
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("ethermint.evm.v1.Query", "Params", data);
-    return promise.then((data) =>
-      QueryParamsResponse.decode(new _m0.Reader(data))
-    );
+    return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
   }
   ethCall(request: EthCallRequest): Promise<MsgEthereumTxResponse> {
     const data = EthCallRequest.encode(request).finish();
     const promise = this.rpc.request("ethermint.evm.v1.Query", "EthCall", data);
-    return promise.then((data) =>
-      MsgEthereumTxResponse.decode(new _m0.Reader(data))
-    );
+    return promise.then(data => MsgEthereumTxResponse.decode(new _m0.Reader(data)));
   }
-  ethCallWithOverride(
-    request: EthCallWithOverrideRequest
-  ): Promise<MsgEthereumTxResponse> {
+  ethCallWithOverride(request: EthCallWithOverrideRequest): Promise<MsgEthereumTxResponse> {
     const data = EthCallWithOverrideRequest.encode(request).finish();
-    const promise = this.rpc.request(
-      "ethermint.evm.v1.Query",
-      "EthCallWithOverride",
-      data
-    );
-    return promise.then((data) =>
-      MsgEthereumTxResponse.decode(new _m0.Reader(data))
-    );
+    const promise = this.rpc.request("ethermint.evm.v1.Query", "EthCallWithOverride", data);
+    return promise.then(data => MsgEthereumTxResponse.decode(new _m0.Reader(data)));
   }
-  estimateGasWithOverride(
-    request: EthCallWithOverrideRequest
-  ): Promise<EstimateGasResponse> {
+  estimateGasWithOverride(request: EthCallWithOverrideRequest): Promise<EstimateGasResponse> {
     const data = EthCallWithOverrideRequest.encode(request).finish();
-    const promise = this.rpc.request(
-      "ethermint.evm.v1.Query",
-      "EstimateGasWithOverride",
-      data
-    );
-    return promise.then((data) =>
-      EstimateGasResponse.decode(new _m0.Reader(data))
-    );
+    const promise = this.rpc.request("ethermint.evm.v1.Query", "EstimateGasWithOverride", data);
+    return promise.then(data => EstimateGasResponse.decode(new _m0.Reader(data)));
   }
   estimateGas(request: EthCallRequest): Promise<EstimateGasResponse> {
     const data = EthCallRequest.encode(request).finish();
-    const promise = this.rpc.request(
-      "ethermint.evm.v1.Query",
-      "EstimateGas",
-      data
-    );
-    return promise.then((data) =>
-      EstimateGasResponse.decode(new _m0.Reader(data))
-    );
+    const promise = this.rpc.request("ethermint.evm.v1.Query", "EstimateGas", data);
+    return promise.then(data => EstimateGasResponse.decode(new _m0.Reader(data)));
   }
   traceTx(request: QueryTraceTxRequest): Promise<QueryTraceTxResponse> {
     const data = QueryTraceTxRequest.encode(request).finish();
     const promise = this.rpc.request("ethermint.evm.v1.Query", "TraceTx", data);
-    return promise.then((data) =>
-      QueryTraceTxResponse.decode(new _m0.Reader(data))
-    );
+    return promise.then(data => QueryTraceTxResponse.decode(new _m0.Reader(data)));
   }
-  traceBlock(
-    request: QueryTraceBlockRequest
-  ): Promise<QueryTraceBlockResponse> {
+  traceBlock(request: QueryTraceBlockRequest): Promise<QueryTraceBlockResponse> {
     const data = QueryTraceBlockRequest.encode(request).finish();
-    const promise = this.rpc.request(
-      "ethermint.evm.v1.Query",
-      "TraceBlock",
-      data
-    );
-    return promise.then((data) =>
-      QueryTraceBlockResponse.decode(new _m0.Reader(data))
-    );
+    const promise = this.rpc.request("ethermint.evm.v1.Query", "TraceBlock", data);
+    return promise.then(data => QueryTraceBlockResponse.decode(new _m0.Reader(data)));
   }
   baseFee(request: QueryBaseFeeRequest = {}): Promise<QueryBaseFeeResponse> {
     const data = QueryBaseFeeRequest.encode(request).finish();
     const promise = this.rpc.request("ethermint.evm.v1.Query", "BaseFee", data);
-    return promise.then((data) =>
-      QueryBaseFeeResponse.decode(new _m0.Reader(data))
-    );
+    return promise.then(data => QueryBaseFeeResponse.decode(new _m0.Reader(data)));
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
@@ -235,14 +141,10 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     account(request: QueryAccountRequest): Promise<QueryAccountResponse> {
       return queryService.account(request);
     },
-    cosmosAccount(
-      request: QueryCosmosAccountRequest
-    ): Promise<QueryCosmosAccountResponse> {
+    cosmosAccount(request: QueryCosmosAccountRequest): Promise<QueryCosmosAccountResponse> {
       return queryService.cosmosAccount(request);
     },
-    validatorAccount(
-      request: QueryValidatorAccountRequest
-    ): Promise<QueryValidatorAccountResponse> {
+    validatorAccount(request: QueryValidatorAccountRequest): Promise<QueryValidatorAccountResponse> {
       return queryService.validatorAccount(request);
     },
     balance(request: QueryBalanceRequest): Promise<QueryBalanceResponse> {
@@ -260,14 +162,10 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     ethCall(request: EthCallRequest): Promise<MsgEthereumTxResponse> {
       return queryService.ethCall(request);
     },
-    ethCallWithOverride(
-      request: EthCallWithOverrideRequest
-    ): Promise<MsgEthereumTxResponse> {
+    ethCallWithOverride(request: EthCallWithOverrideRequest): Promise<MsgEthereumTxResponse> {
       return queryService.ethCallWithOverride(request);
     },
-    estimateGasWithOverride(
-      request: EthCallWithOverrideRequest
-    ): Promise<EstimateGasResponse> {
+    estimateGasWithOverride(request: EthCallWithOverrideRequest): Promise<EstimateGasResponse> {
       return queryService.estimateGasWithOverride(request);
     },
     estimateGas(request: EthCallRequest): Promise<EstimateGasResponse> {
@@ -276,13 +174,11 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     traceTx(request: QueryTraceTxRequest): Promise<QueryTraceTxResponse> {
       return queryService.traceTx(request);
     },
-    traceBlock(
-      request: QueryTraceBlockRequest
-    ): Promise<QueryTraceBlockResponse> {
+    traceBlock(request: QueryTraceBlockRequest): Promise<QueryTraceBlockResponse> {
       return queryService.traceBlock(request);
     },
     baseFee(request?: QueryBaseFeeRequest): Promise<QueryBaseFeeResponse> {
       return queryService.baseFee(request);
-    },
+    }
   };
 };

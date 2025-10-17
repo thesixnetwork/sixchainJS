@@ -67,15 +67,12 @@ export interface EventBlockGasSDKType {
 }
 function createBaseEventFeeMarket(): EventFeeMarket {
   return {
-    baseFee: "",
+    baseFee: ""
   };
 }
 export const EventFeeMarket = {
   typeUrl: "/ethermint.feemarket.v1.EventFeeMarket",
-  encode(
-    message: EventFeeMarket,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: EventFeeMarket, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.baseFee !== "") {
       writer.uint32(10).string(message.baseFee);
     }
@@ -127,22 +124,19 @@ export const EventFeeMarket = {
   toProtoMsg(message: EventFeeMarket): EventFeeMarketProtoMsg {
     return {
       typeUrl: "/ethermint.feemarket.v1.EventFeeMarket",
-      value: EventFeeMarket.encode(message).finish(),
+      value: EventFeeMarket.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseEventBlockGas(): EventBlockGas {
   return {
     height: "",
-    amount: "",
+    amount: ""
   };
 }
 export const EventBlockGas = {
   typeUrl: "/ethermint.feemarket.v1.EventBlockGas",
-  encode(
-    message: EventBlockGas,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: EventBlockGas, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.height !== "") {
       writer.uint32(10).string(message.height);
     }
@@ -205,7 +199,7 @@ export const EventBlockGas = {
   toProtoMsg(message: EventBlockGas): EventBlockGasProtoMsg {
     return {
       typeUrl: "/ethermint.feemarket.v1.EventBlockGas",
-      value: EventBlockGas.encode(message).finish(),
+      value: EventBlockGas.encode(message).finish()
     };
-  },
+  }
 };

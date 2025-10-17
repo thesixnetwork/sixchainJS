@@ -35,15 +35,12 @@ export interface ModuleSDKType {
 }
 function createBaseModule(): Module {
   return {
-    authority: "",
+    authority: ""
   };
 }
 export const Module = {
   typeUrl: "/sixprotocol.protocoladmin.module.Module",
-  encode(
-    message: Module,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Module, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
     }
@@ -95,7 +92,7 @@ export const Module = {
   toProtoMsg(message: Module): ModuleProtoMsg {
     return {
       typeUrl: "/sixprotocol.protocoladmin.module.Module",
-      value: Module.encode(message).finish(),
+      value: Module.encode(message).finish()
     };
-  },
+  }
 };

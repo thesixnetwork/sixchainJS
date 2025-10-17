@@ -1,12 +1,5 @@
 //@ts-nocheck
-import {
-  Params,
-  ParamsAmino,
-  ParamsSDKType,
-  State,
-  StateAmino,
-  StateSDKType,
-} from "./evm";
+import { Params, ParamsAmino, ParamsSDKType, State, StateAmino, StateSDKType } from "./evm";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the evm module's genesis state. */
 export interface GenesisState {
@@ -100,15 +93,12 @@ export interface GenesisAccountSDKType {
 function createBaseGenesisState(): GenesisState {
   return {
     accounts: [],
-    params: Params.fromPartial({}),
+    params: Params.fromPartial({})
   };
 }
 export const GenesisState = {
   typeUrl: "/ethermint.evm.v1.GenesisState",
-  encode(
-    message: GenesisState,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GenesisState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.accounts) {
       GenesisAccount.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -139,18 +129,13 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.accounts =
-      object.accounts?.map((e) => GenesisAccount.fromPartial(e)) || [];
-    message.params =
-      object.params !== undefined && object.params !== null
-        ? Params.fromPartial(object.params)
-        : undefined;
+    message.accounts = object.accounts?.map(e => GenesisAccount.fromPartial(e)) || [];
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
     const message = createBaseGenesisState();
-    message.accounts =
-      object.accounts?.map((e) => GenesisAccount.fromAmino(e)) || [];
+    message.accounts = object.accounts?.map(e => GenesisAccount.fromAmino(e)) || [];
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromAmino(object.params);
     }
@@ -159,15 +144,11 @@ export const GenesisState = {
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
     if (message.accounts) {
-      obj.accounts = message.accounts.map((e) =>
-        e ? GenesisAccount.toAmino(e) : undefined
-      );
+      obj.accounts = message.accounts.map(e => e ? GenesisAccount.toAmino(e) : undefined);
     } else {
       obj.accounts = message.accounts;
     }
-    obj.params = message.params
-      ? Params.toAmino(message.params)
-      : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -182,23 +163,20 @@ export const GenesisState = {
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.GenesisState",
-      value: GenesisState.encode(message).finish(),
+      value: GenesisState.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseGenesisAccount(): GenesisAccount {
   return {
     address: "",
     code: "",
-    storage: [],
+    storage: []
   };
 }
 export const GenesisAccount = {
   typeUrl: "/ethermint.evm.v1.GenesisAccount",
-  encode(
-    message: GenesisAccount,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GenesisAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
@@ -237,7 +215,7 @@ export const GenesisAccount = {
     const message = createBaseGenesisAccount();
     message.address = object.address ?? "";
     message.code = object.code ?? "";
-    message.storage = object.storage?.map((e) => State.fromPartial(e)) || [];
+    message.storage = object.storage?.map(e => State.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisAccountAmino): GenesisAccount {
@@ -248,7 +226,7 @@ export const GenesisAccount = {
     if (object.code !== undefined && object.code !== null) {
       message.code = object.code;
     }
-    message.storage = object.storage?.map((e) => State.fromAmino(e)) || [];
+    message.storage = object.storage?.map(e => State.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisAccount): GenesisAccountAmino {
@@ -256,9 +234,7 @@ export const GenesisAccount = {
     obj.address = message.address === "" ? undefined : message.address;
     obj.code = message.code === "" ? undefined : message.code;
     if (message.storage) {
-      obj.storage = message.storage.map((e) =>
-        e ? State.toAmino(e) : undefined
-      );
+      obj.storage = message.storage.map(e => e ? State.toAmino(e) : undefined);
     } else {
       obj.storage = message.storage;
     }
@@ -276,7 +252,7 @@ export const GenesisAccount = {
   toProtoMsg(message: GenesisAccount): GenesisAccountProtoMsg {
     return {
       typeUrl: "/ethermint.evm.v1.GenesisAccount",
-      value: GenesisAccount.encode(message).finish(),
+      value: GenesisAccount.encode(message).finish()
     };
-  },
+  }
 };

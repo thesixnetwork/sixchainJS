@@ -1,13 +1,7 @@
 //@ts-nocheck
 import { RequestStatus } from "./request";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import {
-  Long,
-  toTimestamp,
-  fromTimestamp,
-  bytesFromBase64,
-  base64FromBytes,
-} from "../../helpers";
+import { Long, toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface SyncActionSigner {
   id: Long;
@@ -160,15 +154,12 @@ function createBaseSyncActionSigner(): SyncActionSigner {
     validUntil: new Date(),
     dataHashes: [],
     expiredHeight: Long.ZERO,
-    executionErrorMessage: "",
+    executionErrorMessage: ""
   };
 }
 export const SyncActionSigner = {
   typeUrl: "/sixprotocol.nftoracle.SyncActionSigner",
-  encode(
-    message: SyncActionSigner,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: SyncActionSigner, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
     }
@@ -197,16 +188,10 @@ export const SyncActionSigner = {
       writer.uint32(74).string(v!);
     }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.createdAt),
-        writer.uint32(82).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(82).fork()).ldelim();
     }
     if (message.validUntil !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.validUntil),
-        writer.uint32(90).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.validUntil), writer.uint32(90).fork()).ldelim();
     }
     for (const v of message.dataHashes) {
       ContractInfoHash.encode(v!, writer.uint32(98).fork()).ldelim();
@@ -254,19 +239,13 @@ export const SyncActionSigner = {
           message.confirmers.push(reader.string());
           break;
         case 10:
-          message.createdAt = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         case 11:
-          message.validUntil = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.validUntil = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         case 12:
-          message.dataHashes.push(
-            ContractInfoHash.decode(reader, reader.uint32())
-          );
+          message.dataHashes.push(ContractInfoHash.decode(reader, reader.uint32()));
           break;
         case 13:
           message.expiredHeight = reader.int64() as Long;
@@ -283,32 +262,19 @@ export const SyncActionSigner = {
   },
   fromPartial(object: Partial<SyncActionSigner>): SyncActionSigner {
     const message = createBaseSyncActionSigner();
-    message.id =
-      object.id !== undefined && object.id !== null
-        ? Long.fromValue(object.id)
-        : Long.UZERO;
+    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
     message.chain = object.chain ?? "";
     message.actorAddress = object.actorAddress ?? "";
     message.ownerAddress = object.ownerAddress ?? "";
     message.caller = object.caller ?? "";
-    message.requiredConfirm =
-      object.requiredConfirm !== undefined && object.requiredConfirm !== null
-        ? Long.fromValue(object.requiredConfirm)
-        : Long.UZERO;
+    message.requiredConfirm = object.requiredConfirm !== undefined && object.requiredConfirm !== null ? Long.fromValue(object.requiredConfirm) : Long.UZERO;
     message.status = object.status ?? 0;
-    message.currentConfirm =
-      object.currentConfirm !== undefined && object.currentConfirm !== null
-        ? Long.fromValue(object.currentConfirm)
-        : Long.UZERO;
-    message.confirmers = object.confirmers?.map((e) => e) || [];
+    message.currentConfirm = object.currentConfirm !== undefined && object.currentConfirm !== null ? Long.fromValue(object.currentConfirm) : Long.UZERO;
+    message.confirmers = object.confirmers?.map(e => e) || [];
     message.createdAt = object.createdAt ?? undefined;
     message.validUntil = object.validUntil ?? undefined;
-    message.dataHashes =
-      object.dataHashes?.map((e) => ContractInfoHash.fromPartial(e)) || [];
-    message.expiredHeight =
-      object.expiredHeight !== undefined && object.expiredHeight !== null
-        ? Long.fromValue(object.expiredHeight)
-        : Long.ZERO;
+    message.dataHashes = object.dataHashes?.map(e => ContractInfoHash.fromPartial(e)) || [];
+    message.expiredHeight = object.expiredHeight !== undefined && object.expiredHeight !== null ? Long.fromValue(object.expiredHeight) : Long.ZERO;
     message.executionErrorMessage = object.executionErrorMessage ?? "";
     return message;
   },
@@ -329,39 +295,27 @@ export const SyncActionSigner = {
     if (object.caller !== undefined && object.caller !== null) {
       message.caller = object.caller;
     }
-    if (
-      object.required_confirm !== undefined &&
-      object.required_confirm !== null
-    ) {
+    if (object.required_confirm !== undefined && object.required_confirm !== null) {
       message.requiredConfirm = Long.fromString(object.required_confirm);
     }
     if (object.status !== undefined && object.status !== null) {
       message.status = object.status;
     }
-    if (
-      object.current_confirm !== undefined &&
-      object.current_confirm !== null
-    ) {
+    if (object.current_confirm !== undefined && object.current_confirm !== null) {
       message.currentConfirm = Long.fromString(object.current_confirm);
     }
-    message.confirmers = object.confirmers?.map((e) => e) || [];
+    message.confirmers = object.confirmers?.map(e => e) || [];
     if (object.created_at !== undefined && object.created_at !== null) {
       message.createdAt = fromTimestamp(Timestamp.fromAmino(object.created_at));
     }
     if (object.valid_until !== undefined && object.valid_until !== null) {
-      message.validUntil = fromTimestamp(
-        Timestamp.fromAmino(object.valid_until)
-      );
+      message.validUntil = fromTimestamp(Timestamp.fromAmino(object.valid_until));
     }
-    message.dataHashes =
-      object.data_hashes?.map((e) => ContractInfoHash.fromAmino(e)) || [];
+    message.dataHashes = object.data_hashes?.map(e => ContractInfoHash.fromAmino(e)) || [];
     if (object.expired_height !== undefined && object.expired_height !== null) {
       message.expiredHeight = Long.fromString(object.expired_height);
     }
-    if (
-      object.execution_error_message !== undefined &&
-      object.execution_error_message !== null
-    ) {
+    if (object.execution_error_message !== undefined && object.execution_error_message !== null) {
       message.executionErrorMessage = object.execution_error_message;
     }
     return message;
@@ -370,43 +324,26 @@ export const SyncActionSigner = {
     const obj: any = {};
     obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
     obj.chain = message.chain === "" ? undefined : message.chain;
-    obj.actor_address =
-      message.actorAddress === "" ? undefined : message.actorAddress;
-    obj.owner_address =
-      message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.actor_address = message.actorAddress === "" ? undefined : message.actorAddress;
+    obj.owner_address = message.ownerAddress === "" ? undefined : message.ownerAddress;
     obj.caller = message.caller === "" ? undefined : message.caller;
-    obj.required_confirm = !message.requiredConfirm.isZero()
-      ? message.requiredConfirm?.toString()
-      : undefined;
+    obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
-    obj.current_confirm = !message.currentConfirm.isZero()
-      ? message.currentConfirm?.toString()
-      : undefined;
+    obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
     if (message.confirmers) {
-      obj.confirmers = message.confirmers.map((e) => e);
+      obj.confirmers = message.confirmers.map(e => e);
     } else {
       obj.confirmers = message.confirmers;
     }
-    obj.created_at = message.createdAt
-      ? Timestamp.toAmino(toTimestamp(message.createdAt))
-      : undefined;
-    obj.valid_until = message.validUntil
-      ? Timestamp.toAmino(toTimestamp(message.validUntil))
-      : undefined;
+    obj.created_at = message.createdAt ? Timestamp.toAmino(toTimestamp(message.createdAt)) : undefined;
+    obj.valid_until = message.validUntil ? Timestamp.toAmino(toTimestamp(message.validUntil)) : undefined;
     if (message.dataHashes) {
-      obj.data_hashes = message.dataHashes.map((e) =>
-        e ? ContractInfoHash.toAmino(e) : undefined
-      );
+      obj.data_hashes = message.dataHashes.map(e => e ? ContractInfoHash.toAmino(e) : undefined);
     } else {
       obj.data_hashes = message.dataHashes;
     }
-    obj.expired_height = !message.expiredHeight.isZero()
-      ? message.expiredHeight?.toString()
-      : undefined;
-    obj.execution_error_message =
-      message.executionErrorMessage === ""
-        ? undefined
-        : message.executionErrorMessage;
+    obj.expired_height = !message.expiredHeight.isZero() ? message.expiredHeight?.toString() : undefined;
+    obj.execution_error_message = message.executionErrorMessage === "" ? undefined : message.executionErrorMessage;
     return obj;
   },
   fromAminoMsg(object: SyncActionSignerAminoMsg): SyncActionSigner {
@@ -421,24 +358,21 @@ export const SyncActionSigner = {
   toProtoMsg(message: SyncActionSigner): SyncActionSignerProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.SyncActionSigner",
-      value: SyncActionSigner.encode(message).finish(),
+      value: SyncActionSigner.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseParameterSyncSignerByOracle(): ParameterSyncSignerByOracle {
   return {
     chain: "",
     ownerAddress: "",
     actorAddress: "",
-    expireEpoch: "",
+    expireEpoch: ""
   };
 }
 export const ParameterSyncSignerByOracle = {
   typeUrl: "/sixprotocol.nftoracle.ParameterSyncSignerByOracle",
-  encode(
-    message: ParameterSyncSignerByOracle,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ParameterSyncSignerByOracle, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.chain !== "") {
       writer.uint32(10).string(message.chain);
     }
@@ -453,10 +387,7 @@ export const ParameterSyncSignerByOracle = {
     }
     return writer;
   },
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): ParameterSyncSignerByOracle {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ParameterSyncSignerByOracle {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParameterSyncSignerByOracle();
@@ -482,9 +413,7 @@ export const ParameterSyncSignerByOracle = {
     }
     return message;
   },
-  fromPartial(
-    object: Partial<ParameterSyncSignerByOracle>
-  ): ParameterSyncSignerByOracle {
+  fromPartial(object: Partial<ParameterSyncSignerByOracle>): ParameterSyncSignerByOracle {
     const message = createBaseParameterSyncSignerByOracle();
     message.chain = object.chain ?? "";
     message.ownerAddress = object.ownerAddress ?? "";
@@ -492,9 +421,7 @@ export const ParameterSyncSignerByOracle = {
     message.expireEpoch = object.expireEpoch ?? "";
     return message;
   },
-  fromAmino(
-    object: ParameterSyncSignerByOracleAmino
-  ): ParameterSyncSignerByOracle {
+  fromAmino(object: ParameterSyncSignerByOracleAmino): ParameterSyncSignerByOracle {
     const message = createBaseParameterSyncSignerByOracle();
     if (object.chain !== undefined && object.chain !== null) {
       message.chain = object.chain;
@@ -510,59 +437,42 @@ export const ParameterSyncSignerByOracle = {
     }
     return message;
   },
-  toAmino(
-    message: ParameterSyncSignerByOracle
-  ): ParameterSyncSignerByOracleAmino {
+  toAmino(message: ParameterSyncSignerByOracle): ParameterSyncSignerByOracleAmino {
     const obj: any = {};
     obj.chain = message.chain === "" ? undefined : message.chain;
-    obj.owner_address =
-      message.ownerAddress === "" ? undefined : message.ownerAddress;
-    obj.actor_address =
-      message.actorAddress === "" ? undefined : message.actorAddress;
-    obj.expire_epoch =
-      message.expireEpoch === "" ? undefined : message.expireEpoch;
+    obj.owner_address = message.ownerAddress === "" ? undefined : message.ownerAddress;
+    obj.actor_address = message.actorAddress === "" ? undefined : message.actorAddress;
+    obj.expire_epoch = message.expireEpoch === "" ? undefined : message.expireEpoch;
     return obj;
   },
-  fromAminoMsg(
-    object: ParameterSyncSignerByOracleAminoMsg
-  ): ParameterSyncSignerByOracle {
+  fromAminoMsg(object: ParameterSyncSignerByOracleAminoMsg): ParameterSyncSignerByOracle {
     return ParameterSyncSignerByOracle.fromAmino(object.value);
   },
-  fromProtoMsg(
-    message: ParameterSyncSignerByOracleProtoMsg
-  ): ParameterSyncSignerByOracle {
+  fromProtoMsg(message: ParameterSyncSignerByOracleProtoMsg): ParameterSyncSignerByOracle {
     return ParameterSyncSignerByOracle.decode(message.value);
   },
   toProto(message: ParameterSyncSignerByOracle): Uint8Array {
     return ParameterSyncSignerByOracle.encode(message).finish();
   },
-  toProtoMsg(
-    message: ParameterSyncSignerByOracle
-  ): ParameterSyncSignerByOracleProtoMsg {
+  toProtoMsg(message: ParameterSyncSignerByOracle): ParameterSyncSignerByOracleProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.ParameterSyncSignerByOracle",
-      value: ParameterSyncSignerByOracle.encode(message).finish(),
+      value: ParameterSyncSignerByOracle.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseContractInfoHash(): ContractInfoHash {
   return {
     contractParam: undefined,
     hash: new Uint8Array(),
-    confirmers: [],
+    confirmers: []
   };
 }
 export const ContractInfoHash = {
   typeUrl: "/sixprotocol.nftoracle.ContractInfoHash",
-  encode(
-    message: ContractInfoHash,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ContractInfoHash, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.contractParam !== undefined) {
-      ParameterSyncSignerByOracle.encode(
-        message.contractParam,
-        writer.uint32(10).fork()
-      ).ldelim();
+      ParameterSyncSignerByOracle.encode(message.contractParam, writer.uint32(10).fork()).ldelim();
     }
     if (message.hash.length !== 0) {
       writer.uint32(18).bytes(message.hash);
@@ -580,10 +490,7 @@ export const ContractInfoHash = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.contractParam = ParameterSyncSignerByOracle.decode(
-            reader,
-            reader.uint32()
-          );
+          message.contractParam = ParameterSyncSignerByOracle.decode(reader, reader.uint32());
           break;
         case 2:
           message.hash = reader.bytes();
@@ -600,35 +507,28 @@ export const ContractInfoHash = {
   },
   fromPartial(object: Partial<ContractInfoHash>): ContractInfoHash {
     const message = createBaseContractInfoHash();
-    message.contractParam =
-      object.contractParam !== undefined && object.contractParam !== null
-        ? ParameterSyncSignerByOracle.fromPartial(object.contractParam)
-        : undefined;
+    message.contractParam = object.contractParam !== undefined && object.contractParam !== null ? ParameterSyncSignerByOracle.fromPartial(object.contractParam) : undefined;
     message.hash = object.hash ?? new Uint8Array();
-    message.confirmers = object.confirmers?.map((e) => e) || [];
+    message.confirmers = object.confirmers?.map(e => e) || [];
     return message;
   },
   fromAmino(object: ContractInfoHashAmino): ContractInfoHash {
     const message = createBaseContractInfoHash();
     if (object.contract_param !== undefined && object.contract_param !== null) {
-      message.contractParam = ParameterSyncSignerByOracle.fromAmino(
-        object.contract_param
-      );
+      message.contractParam = ParameterSyncSignerByOracle.fromAmino(object.contract_param);
     }
     if (object.hash !== undefined && object.hash !== null) {
       message.hash = bytesFromBase64(object.hash);
     }
-    message.confirmers = object.confirmers?.map((e) => e) || [];
+    message.confirmers = object.confirmers?.map(e => e) || [];
     return message;
   },
   toAmino(message: ContractInfoHash): ContractInfoHashAmino {
     const obj: any = {};
-    obj.contract_param = message.contractParam
-      ? ParameterSyncSignerByOracle.toAmino(message.contractParam)
-      : undefined;
+    obj.contract_param = message.contractParam ? ParameterSyncSignerByOracle.toAmino(message.contractParam) : undefined;
     obj.hash = message.hash ? base64FromBytes(message.hash) : undefined;
     if (message.confirmers) {
-      obj.confirmers = message.confirmers.map((e) => e);
+      obj.confirmers = message.confirmers.map(e => e);
     } else {
       obj.confirmers = message.confirmers;
     }
@@ -646,7 +546,7 @@ export const ContractInfoHash = {
   toProtoMsg(message: ContractInfoHash): ContractInfoHashProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.ContractInfoHash",
-      value: ContractInfoHash.encode(message).finish(),
+      value: ContractInfoHash.encode(message).finish()
     };
-  },
+  }
 };

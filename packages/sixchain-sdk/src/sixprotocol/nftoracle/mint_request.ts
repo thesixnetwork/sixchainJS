@@ -1,10 +1,5 @@
 //@ts-nocheck
-import {
-  RequestStatus,
-  DataHash,
-  DataHashAmino,
-  DataHashSDKType,
-} from "./request";
+import { RequestStatus, DataHash, DataHashAmino, DataHashSDKType } from "./request";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Long, toTimestamp, fromTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
@@ -76,15 +71,12 @@ function createBaseMintRequest(): MintRequest {
     createdAt: new Date(),
     validUntil: new Date(),
     dataHashes: [],
-    expiredHeight: Long.ZERO,
+    expiredHeight: Long.ZERO
   };
 }
 export const MintRequest = {
   typeUrl: "/sixprotocol.nftoracle.MintRequest",
-  encode(
-    message: MintRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: MintRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.id.isZero()) {
       writer.uint32(8).uint64(message.id);
     }
@@ -107,16 +99,10 @@ export const MintRequest = {
       writer.uint32(58).string(v!);
     }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.createdAt),
-        writer.uint32(66).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(66).fork()).ldelim();
     }
     if (message.validUntil !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.validUntil),
-        writer.uint32(74).fork()
-      ).ldelim();
+      Timestamp.encode(toTimestamp(message.validUntil), writer.uint32(74).fork()).ldelim();
     }
     for (const v of message.dataHashes) {
       DataHash.encode(v!, writer.uint32(82).fork()).ldelim();
@@ -155,14 +141,10 @@ export const MintRequest = {
           message.confirmers.push(reader.string());
           break;
         case 8:
-          message.createdAt = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         case 9:
-          message.validUntil = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          );
+          message.validUntil = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
         case 10:
           message.dataHashes.push(DataHash.decode(reader, reader.uint32()));
@@ -179,30 +161,17 @@ export const MintRequest = {
   },
   fromPartial(object: Partial<MintRequest>): MintRequest {
     const message = createBaseMintRequest();
-    message.id =
-      object.id !== undefined && object.id !== null
-        ? Long.fromValue(object.id)
-        : Long.UZERO;
+    message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
     message.nftSchemaCode = object.nftSchemaCode ?? "";
     message.tokenId = object.tokenId ?? "";
-    message.requiredConfirm =
-      object.requiredConfirm !== undefined && object.requiredConfirm !== null
-        ? Long.fromValue(object.requiredConfirm)
-        : Long.UZERO;
+    message.requiredConfirm = object.requiredConfirm !== undefined && object.requiredConfirm !== null ? Long.fromValue(object.requiredConfirm) : Long.UZERO;
     message.status = object.status ?? 0;
-    message.currentConfirm =
-      object.currentConfirm !== undefined && object.currentConfirm !== null
-        ? Long.fromValue(object.currentConfirm)
-        : Long.UZERO;
-    message.confirmers = object.confirmers?.map((e) => e) || [];
+    message.currentConfirm = object.currentConfirm !== undefined && object.currentConfirm !== null ? Long.fromValue(object.currentConfirm) : Long.UZERO;
+    message.confirmers = object.confirmers?.map(e => e) || [];
     message.createdAt = object.createdAt ?? undefined;
     message.validUntil = object.validUntil ?? undefined;
-    message.dataHashes =
-      object.dataHashes?.map((e) => DataHash.fromPartial(e)) || [];
-    message.expiredHeight =
-      object.expiredHeight !== undefined && object.expiredHeight !== null
-        ? Long.fromValue(object.expiredHeight)
-        : Long.ZERO;
+    message.dataHashes = object.dataHashes?.map(e => DataHash.fromPartial(e)) || [];
+    message.expiredHeight = object.expiredHeight !== undefined && object.expiredHeight !== null ? Long.fromValue(object.expiredHeight) : Long.ZERO;
     return message;
   },
   fromAmino(object: MintRequestAmino): MintRequest {
@@ -210,41 +179,29 @@ export const MintRequest = {
     if (object.id !== undefined && object.id !== null) {
       message.id = Long.fromString(object.id);
     }
-    if (
-      object.nft_schema_code !== undefined &&
-      object.nft_schema_code !== null
-    ) {
+    if (object.nft_schema_code !== undefined && object.nft_schema_code !== null) {
       message.nftSchemaCode = object.nft_schema_code;
     }
     if (object.token_id !== undefined && object.token_id !== null) {
       message.tokenId = object.token_id;
     }
-    if (
-      object.required_confirm !== undefined &&
-      object.required_confirm !== null
-    ) {
+    if (object.required_confirm !== undefined && object.required_confirm !== null) {
       message.requiredConfirm = Long.fromString(object.required_confirm);
     }
     if (object.status !== undefined && object.status !== null) {
       message.status = object.status;
     }
-    if (
-      object.current_confirm !== undefined &&
-      object.current_confirm !== null
-    ) {
+    if (object.current_confirm !== undefined && object.current_confirm !== null) {
       message.currentConfirm = Long.fromString(object.current_confirm);
     }
-    message.confirmers = object.confirmers?.map((e) => e) || [];
+    message.confirmers = object.confirmers?.map(e => e) || [];
     if (object.created_at !== undefined && object.created_at !== null) {
       message.createdAt = fromTimestamp(Timestamp.fromAmino(object.created_at));
     }
     if (object.valid_until !== undefined && object.valid_until !== null) {
-      message.validUntil = fromTimestamp(
-        Timestamp.fromAmino(object.valid_until)
-      );
+      message.validUntil = fromTimestamp(Timestamp.fromAmino(object.valid_until));
     }
-    message.dataHashes =
-      object.data_hashes?.map((e) => DataHash.fromAmino(e)) || [];
+    message.dataHashes = object.data_hashes?.map(e => DataHash.fromAmino(e)) || [];
     if (object.expired_height !== undefined && object.expired_height !== null) {
       message.expiredHeight = Long.fromString(object.expired_height);
     }
@@ -253,37 +210,24 @@ export const MintRequest = {
   toAmino(message: MintRequest): MintRequestAmino {
     const obj: any = {};
     obj.id = !message.id.isZero() ? message.id?.toString() : undefined;
-    obj.nft_schema_code =
-      message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
+    obj.nft_schema_code = message.nftSchemaCode === "" ? undefined : message.nftSchemaCode;
     obj.token_id = message.tokenId === "" ? undefined : message.tokenId;
-    obj.required_confirm = !message.requiredConfirm.isZero()
-      ? message.requiredConfirm?.toString()
-      : undefined;
+    obj.required_confirm = !message.requiredConfirm.isZero() ? message.requiredConfirm?.toString() : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
-    obj.current_confirm = !message.currentConfirm.isZero()
-      ? message.currentConfirm?.toString()
-      : undefined;
+    obj.current_confirm = !message.currentConfirm.isZero() ? message.currentConfirm?.toString() : undefined;
     if (message.confirmers) {
-      obj.confirmers = message.confirmers.map((e) => e);
+      obj.confirmers = message.confirmers.map(e => e);
     } else {
       obj.confirmers = message.confirmers;
     }
-    obj.created_at = message.createdAt
-      ? Timestamp.toAmino(toTimestamp(message.createdAt))
-      : undefined;
-    obj.valid_until = message.validUntil
-      ? Timestamp.toAmino(toTimestamp(message.validUntil))
-      : undefined;
+    obj.created_at = message.createdAt ? Timestamp.toAmino(toTimestamp(message.createdAt)) : undefined;
+    obj.valid_until = message.validUntil ? Timestamp.toAmino(toTimestamp(message.validUntil)) : undefined;
     if (message.dataHashes) {
-      obj.data_hashes = message.dataHashes.map((e) =>
-        e ? DataHash.toAmino(e) : undefined
-      );
+      obj.data_hashes = message.dataHashes.map(e => e ? DataHash.toAmino(e) : undefined);
     } else {
       obj.data_hashes = message.dataHashes;
     }
-    obj.expired_height = !message.expiredHeight.isZero()
-      ? message.expiredHeight?.toString()
-      : undefined;
+    obj.expired_height = !message.expiredHeight.isZero() ? message.expiredHeight?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MintRequestAminoMsg): MintRequest {
@@ -298,7 +242,7 @@ export const MintRequest = {
   toProtoMsg(message: MintRequest): MintRequestProtoMsg {
     return {
       typeUrl: "/sixprotocol.nftoracle.MintRequest",
-      value: MintRequest.encode(message).finish(),
+      value: MintRequest.encode(message).finish()
     };
-  },
+  }
 };

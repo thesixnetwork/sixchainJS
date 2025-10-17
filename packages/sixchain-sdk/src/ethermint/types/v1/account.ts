@@ -1,9 +1,5 @@
 //@ts-nocheck
-import {
-  BaseAccount,
-  BaseAccountAmino,
-  BaseAccountSDKType,
-} from "../../../cosmos/auth/v1beta1/auth";
+import { BaseAccount, BaseAccountAmino, BaseAccountSDKType } from "../../../cosmos/auth/v1beta1/auth";
 import * as _m0 from "protobufjs/minimal";
 /**
  * EthAccount implements the authtypes.AccountI interface and embeds an
@@ -54,20 +50,14 @@ function createBaseEthAccount(): EthAccount {
   return {
     $typeUrl: "/ethermint.types.v1.EthAccount",
     baseAccount: undefined,
-    codeHash: "",
+    codeHash: ""
   };
 }
 export const EthAccount = {
   typeUrl: "/ethermint.types.v1.EthAccount",
-  encode(
-    message: EthAccount,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: EthAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.baseAccount !== undefined) {
-      BaseAccount.encode(
-        message.baseAccount,
-        writer.uint32(10).fork()
-      ).ldelim();
+      BaseAccount.encode(message.baseAccount, writer.uint32(10).fork()).ldelim();
     }
     if (message.codeHash !== "") {
       writer.uint32(18).string(message.codeHash);
@@ -96,10 +86,7 @@ export const EthAccount = {
   },
   fromPartial(object: Partial<EthAccount>): EthAccount {
     const message = createBaseEthAccount();
-    message.baseAccount =
-      object.baseAccount !== undefined && object.baseAccount !== null
-        ? BaseAccount.fromPartial(object.baseAccount)
-        : undefined;
+    message.baseAccount = object.baseAccount !== undefined && object.baseAccount !== null ? BaseAccount.fromPartial(object.baseAccount) : undefined;
     message.codeHash = object.codeHash ?? "";
     return message;
   },
@@ -115,9 +102,7 @@ export const EthAccount = {
   },
   toAmino(message: EthAccount): EthAccountAmino {
     const obj: any = {};
-    obj.base_account = message.baseAccount
-      ? BaseAccount.toAmino(message.baseAccount)
-      : undefined;
+    obj.base_account = message.baseAccount ? BaseAccount.toAmino(message.baseAccount) : undefined;
     obj.code_hash = message.codeHash === "" ? undefined : message.codeHash;
     return obj;
   },
@@ -133,7 +118,7 @@ export const EthAccount = {
   toProtoMsg(message: EthAccount): EthAccountProtoMsg {
     return {
       typeUrl: "/ethermint.types.v1.EthAccount",
-      value: EthAccount.encode(message).finish(),
+      value: EthAccount.encode(message).finish()
     };
-  },
+  }
 };
