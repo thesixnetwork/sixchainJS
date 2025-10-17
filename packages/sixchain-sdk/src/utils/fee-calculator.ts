@@ -185,7 +185,6 @@ export async function signAndBroadcastWithRetry(
 
       // Retry with calculated fee
       txResponse = await client.signAndBroadcast(address, messages, fee, memo);
-      console.log(`Retry result: code=${txResponse.code}`);
     }
 
     return txResponse;
@@ -216,8 +215,6 @@ export async function signAndBroadcastWithRetry(
 
         // Retry with calculated fee
         const txResponse = await client.signAndBroadcast(address, messages, fee, memo);
-        console.log(`Exception retry result: code=${txResponse.code}`);
-
         return txResponse;
       } catch (retryError: any) {
         console.error("Retry also failed:");

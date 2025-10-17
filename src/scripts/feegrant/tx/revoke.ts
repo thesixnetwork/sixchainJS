@@ -1,4 +1,9 @@
-import { getSigningCosmosClient, cosmos } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningCosmosClient,
+  cosmos,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
@@ -48,11 +53,18 @@ const main = async () => {
 
   msgArray.push(revokeAllowance);
 
-  const txResponse = await client.signAndBroadcast(
+  const memo = "feegrant revoke";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
     address,
     msgArray,
-    "auto",
-    "feegrant revoke"
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.FEEGRANT.REVOKE,
+      denom: "usix",
+    }
   );
 
   if (txResponse.code !== 0) {
