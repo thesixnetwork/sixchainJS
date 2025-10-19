@@ -1,11 +1,14 @@
-import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import {
   getSigningSixprotocolClient,
   sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
+import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
+
 dotenv.config();
 
 import exmapleSchema from "../../../resources/schemas/divineelite-nft-schema.json";
@@ -34,6 +37,7 @@ if (!NETOWRK) {
 
 export const Deploy = async () => {
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
+  const gasPrice = GasPrice.fromString("1.25usix");
 
   // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
@@ -43,6 +47,9 @@ export const Deploy = async () => {
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   const accounts = await wallet.getAccounts();
@@ -62,11 +69,18 @@ export const Deploy = async () => {
 
   msgArray.push(msgCreateNFTSchema);
 
-  const txResponse = await client.signAndBroadcast(
+  const memo = "deploy nft achema";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
     address,
     msgArray,
-    "auto",
-    "memo"
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.CREATE_NFT_SCHEMA,
+      denom: "usix",
+    }
   );
   if (txResponse.code) {
     console.log(txResponse.rawLog);

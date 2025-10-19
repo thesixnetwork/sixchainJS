@@ -1,8 +1,16 @@
 import {
   getSigningSixprotocolClient,
   sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
+import { GasPrice } from "@cosmjs/stargate";
+import { getConnectorConfig } from "@client-util";
+import dotenv from "dotenv";
+import moment from "moment";
+
+dotenv.config();
 import S_ZERO_YEAR from "../../resources/metadatas/membership/senior/nft-data_0_years.json";
 import S_THREE_YEAR from "../../resources/metadatas/membership/senior/nft-data_3_years.json";
 import S_FIVE_YEAR from "../../resources/metadatas/membership/senior/nft-data_5_years.json";
@@ -12,12 +20,6 @@ import J_ZERO_YEAR from "../../resources/metadatas/membership/junior/nft-data_0_
 import J_THREE_YEAR from "../../resources/metadatas/membership/junior/nft-data_3_years.json";
 import J_FIVE_YEAR from "../../resources/metadatas/membership/junior/nft-data_5_years.json";
 import J_TEN_YEAR from "../../resources/metadatas/membership/junior/nft-data_10_years.json";
-
-import { getConnectorConfig } from "@client-util";
-import dotenv from "dotenv";
-import moment from "moment";
-
-dotenv.config();
 
 const JUNIOR_TIER_FILE_NAME: { [key: string]: any } = {
   "0": J_ZERO_YEAR,
@@ -103,7 +105,8 @@ async function mintNFT(tier: string, tokenId: number, senior: boolean) {
   }
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
-  // Create wallet from mnemonic
+  const gasPrice = GasPrice.fromString("1.25usix");
+
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
     prefix: "6x",
   });
@@ -112,6 +115,14 @@ async function mintNFT(tier: string, tokenId: number, senior: boolean) {
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
+  });
+
+  // Create query client for checking if token exists
+  const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({
+    rpcEndpoint: rpcUrl,
   });
 
   // Get account address
@@ -120,7 +131,7 @@ async function mintNFT(tier: string, tokenId: number, senior: boolean) {
 
   const token_id = tokenId.toString();
 
-  if (await isTokenMinted(client, schemaCode, token_id)) {
+  if (await isTokenMinted(queryClient, schemaCode, token_id)) {
     console.log(`Token ID ${token_id} is already minted.`);
     return;
   }
@@ -130,6 +141,8 @@ async function mintNFT(tier: string, tokenId: number, senior: boolean) {
     "base64"
   );
 
+  let msgArray: Array<EncodeObject> = [];
+
   const msgCreateMetadata =
     sixprotocol.nftmngr.MessageComposer.withTypeUrl.createMetadata({
       creator: address,
@@ -138,11 +151,20 @@ async function mintNFT(tier: string, tokenId: number, senior: boolean) {
       base64NFTData: encodeBase64Metadata,
     });
 
-  const txResponse = await client.signAndBroadcast(
+  msgArray.push(msgCreateMetadata);
+
+  const memo = "Mint NFT Metadata Token";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
     address,
-    [msgCreateMetadata],
-    "auto",
-    "Mint NFT Metadata Token"
+    msgArray,
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.CREATE_METADATA,
+      denom: "usix",
+    }
   );
 
   if (txResponse.code !== 0) {

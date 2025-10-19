@@ -1,17 +1,19 @@
 import {
   getSigningSixprotocolClient,
   sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
+import { GasPrice } from "@cosmjs/stargate";
+import { getConnectorConfig } from "@client-util";
+import dotenv from "dotenv";
+
+dotenv.config();
 import ZERO_YEAR from "../../resources/metadatas/divine_elite/nft-data_0_years.json";
 import THREE_YEAR from "../../resources/metadatas/divine_elite/nft-data_3_years.json";
 import FIVE_YEAR from "../../resources/metadatas/divine_elite/nft-data_5_years.json";
 import TEN_YEAR from "../../resources/metadatas/divine_elite/nft-data_10_years.json";
-import { getConnectorConfig } from "@client-util";
-import dotenv from "dotenv";
-import moment from "moment";
-
-dotenv.config();
 
 const TIER_FILE_NAME: { [key: string]: any } = {
   "0": ZERO_YEAR,
@@ -71,6 +73,7 @@ async function mintNFT(tier: string, tokenId: number) {
   }
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+  const gasPrice = GasPrice.fromString("1.25usix");
 
   // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
@@ -81,16 +84,20 @@ async function mintNFT(tier: string, tokenId: number) {
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
-
-  // Get account address
-  const accounts = await wallet.getAccounts();
-  const address = accounts[0].address;
 
   // Create query client for checking if token exists
   const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({
     rpcEndpoint: rpcUrl,
   });
+
+  // Get account address
+  const accounts = await wallet.getAccounts();
+  const address = accounts[0].address;
+  let msgArray: Array<EncodeObject> = [];
 
   const token_id = tokenId.toString();
 
@@ -112,16 +119,20 @@ async function mintNFT(tier: string, tokenId: number) {
       base64NFTData: encodeBase64Metadata,
     });
 
-  const fee = {
-    amount: [{ denom: "usix", amount: "5000" }],
-    gas: "200000",
-  };
+  msgArray.push(msgCreateMetadata);
 
-  const txResponse = await client.signAndBroadcast(
+  const memo = "Mint NFT Metadata Token";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
     address,
-    [msgCreateMetadata],
-    fee,
-    "Mint NFT Metadata Token"
+    msgArray,
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.CREATE_METADATA,
+      denom: "usix",
+    }
   );
 
   if (txResponse.code !== 0) {

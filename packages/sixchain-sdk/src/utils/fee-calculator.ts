@@ -182,7 +182,9 @@ export async function signAndBroadcastWithRetry(
         options
       );
 
-      console.log(`Retrying with calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
+      console.log(
+        `Retrying with calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`
+      );
 
       // Retry with calculated fee
       txResponse = await client.signAndBroadcast(address, messages, fee, memo);
@@ -191,11 +193,12 @@ export async function signAndBroadcastWithRetry(
     return txResponse;
   } catch (error: any) {
     if (error.code === 11 && error.codespace === "sdk") {
-      console.log("Out of gas exception detected. Retrying with calculated fee...");
+      console.log(
+        "Out of gas exception detected. Retrying with calculated fee..."
+      );
       console.log(`Exception log: ${error.log}`);
 
       try {
-
         // Calculate fee using utility function with higher multiplier for retry
         const retryOptions = {
           ...options,
@@ -211,10 +214,17 @@ export async function signAndBroadcastWithRetry(
           retryOptions
         );
 
-        console.log(`Retrying after exception with calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
+        console.log(
+          `Retrying after exception with calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`
+        );
 
         // Retry with calculated fee
-        const txResponse = await client.signAndBroadcast(address, messages, fee, memo);
+        const txResponse = await client.signAndBroadcast(
+          address,
+          messages,
+          fee,
+          memo
+        );
         return txResponse;
       } catch (retryError: any) {
         console.error("Retry also failed:");
@@ -277,6 +287,42 @@ export const COMMON_GAS_LIMITS = {
   STAKING: {
     DELEGATE: 180000,
   },
+  NFT_ADMIN: {
+    GRANT: 90000,
+    REVOKE: 70000,
+  },
+  NFT_MANAGER: {
+    ADD_ACTION: 100000,
+    ADD_ATTRIBUTE: 100000,
+    ADD_VIRTUAL_SCHEMA: 100000,
+    CHANGE_ORG_OWNER: 100000,
+    CHANGE_SCHEMA_OWNER: 100000,
+    CREATE_ACTION_EXECUTOR: 100000,
+    CREATE_METADATA: 400000,
+    CREATE_NFT_SCHEMA: 600000,
+    DELETE_ACTION_EXECUTOR: 100000,
+    DELETE_VIRTUAL_ACTION: 100000,
+    PERFORM_ACTION_BY_ADMIN: 100000,
+    PERFORM_VIRTUAL_ACTION: 100000,
+    PROPOSAL_VIRTUAL_ACTION: 100000,
+    RESYNC_ATTRIBUTE: 100000,
+    SET_ATTRIBUTE_OVERRIDING: 100000,
+    SET_BASE_URI: 100000,
+    SET_FEE_CONFIG: 100000,
+    SET_METADATA_FORMAT: 100000,
+    SET_MINTAUTH: 100000,
+    SET_ORIGIN_CHAIN: 100000,
+    SET_ORIGIN_CONTRACT: 100000,
+    SET_URI_RETRIEVAL_METHOD: 100000,
+    SHOW_ATTRIBUTES: 100000,
+    TOGGLE_ACTION: 100000,
+    UPDATE_ACTION: 100000,
+    UPDATE_SCHEMA_ATTRIBUTE: 100000,
+    UPDATE_VIRTUAL_ACTION: 100000,
+    VIRTUAL_SCHEMA_PROPOSAL: 100000,
+    VOTE_VIRTUAL_SCHEMA: 100000,
+    VOTE_VIRTUAL_SCHEMA_PROPOSAL: 100000,
+  },
   NFT_MINT: 90000,
   NFT_CREATE_SCHEMA: 100000,
   DISTRIBUTION_WITHDRAW: 70000,
@@ -289,4 +335,4 @@ export const GAS_PRICES = {
   USIX: 1.25,
   SIX: 0.00000125, // 1.25usix = 0.000001250six
 } as const;
-``
+

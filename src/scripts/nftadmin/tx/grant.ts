@@ -1,6 +1,6 @@
 import {
-  getSigningCosmosClient,
-  cosmos,
+  getSigningSixprotocolClient,
+  sixprotocol,
   COMMON_GAS_LIMITS,
   signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
@@ -27,8 +27,7 @@ const main = async () => {
     prefix: "6x",
   });
 
-  // Get signing client
-  const client = await getSigningCosmosClient({
+  const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
@@ -36,38 +35,22 @@ const main = async () => {
     },
   });
 
-  // Get account address
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
   let msgArray: Array<EncodeObject> = [];
-
   const granteeAddress = "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp";
 
-  // Basic allowance grant
-  const basicAllowance = {
-    typeUrl: "/cosmos.feegrant.v1beta1.BasicAllowance",
-    value: cosmos.feegrant.v1beta1.BasicAllowance.encode({
-      spendLimit: [
-        {
-          denom: "usix",
-          amount: "1000000", // 1 SIX
-        },
-      ],
-      expiration: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // 1 year from now
-    }).finish(),
-  };
-
-  const grantAllowance =
-    cosmos.feegrant.v1beta1.MessageComposer.withTypeUrl.grantAllowance({
-      granter: address,
+  const grantOracleAdmin =
+    sixprotocol.nftadmin.MessageComposer.withTypeUrl.grantPermission({
+      creator: address,
       grantee: granteeAddress,
-      allowance: basicAllowance,
+      name: "oracle",
     });
 
-  msgArray.push(grantAllowance);
+  msgArray.push(grantOracleAdmin);
 
-  const memo = "feegrant grant";
+  const memo = "nft admin grant";
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -76,17 +59,17 @@ const main = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.DISTRIBUTION.SET_WITHDRAW_ADDRESS,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_ADMIN.GRANT,
       denom: "usix",
     }
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error granting fee allowance: ${txResponse.rawLog}`);
+    console.error(`Error granting nft admin: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Grant allowance successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Grant nft admin successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }

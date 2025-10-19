@@ -1,7 +1,8 @@
-import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import {
   getSigningSixprotocolClient,
   sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
@@ -64,11 +65,18 @@ export const Deploy = async () => {
     msgArray.push(msgCreateNFTSchema);
   }
 
-  const txResponse = await client.signAndBroadcast(
+  const memo = "nft nftmngr deploy all schema";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
     address,
     msgArray,
-    "auto",
-    "memo"
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.CREATE_NFT_SCHEMA,
+      denom: "usix",
+    }
   );
   if (txResponse.code != 0) {
     console.log(txResponse.rawLog);
