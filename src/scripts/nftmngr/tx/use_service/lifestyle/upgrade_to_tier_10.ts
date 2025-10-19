@@ -1,8 +1,11 @@
 import {
   getSigningSixprotocolClient,
   sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
+import { GasPrice } from "@cosmjs/stargate";
 import NFTSchema from "../../../resources/schemas/lifestyle-nft-schema.json";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
@@ -10,20 +13,25 @@ import { getConnectorConfig } from "@client-util";
 import moment from "moment";
 dotenv.config();
 
-const TOKEN_ID = process.argv[3]!;
+
 const SENIOR = process.argv[4]!;
 const senior = Boolean(SENIOR);
 
 const main = async () => {
-  const network = process.argv[2];
+  const NETWORK = process.argv[2]!;
+  const TOKENID = process.argv[3];
+  const SENIOR = process.argv[4]!;
+  const senior = Boolean(SENIOR);
+  
 
-  if (!network) {
+  if (!NETWORK) {
     throw new Error(
       "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
 
-  const { rpcUrl, mnemonic } = await getConnectorConfig(network);
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+  const gasPrice = GasPrice.fromString("1.25usix");
   // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
     prefix: "6x",
@@ -33,6 +41,9 @@ const main = async () => {
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
@@ -47,7 +58,7 @@ const main = async () => {
   schemaCode = `${org_name}.${_name}`;
 
   const ref_id = uuidv4();
-  const msgArray: EncodeObject[] = [];
+  let msgArray: Array<EncodeObject> = [];
 
   let action: any;
 
@@ -58,11 +69,11 @@ const main = async () => {
     .toString();
 
   if (senior) {
-    const action40p =
+    action =
       sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
         creator: address,
         nftSchemaCode: schemaCode,
-        tokenId: TOKEN_ID,
+        tokenId: TOKENID,
         action: "extend_privilege",
         refId: ref_id,
         parameters: [
@@ -74,13 +85,13 @@ const main = async () => {
         ],
       });
 
-    action = action40p;
+    
   } else {
-    const action40l =
+    action =
       sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
         creator: address,
         nftSchemaCode: schemaCode,
-        tokenId: TOKEN_ID,
+        tokenId: TOKENID,
         action: "extend_privilege",
         refId: ref_id,
         parameters: [
@@ -91,22 +102,33 @@ const main = async () => {
           { name: "expire_date", value: expire_date },
         ],
       });
-    action = action40l;
+    
   }
 
   msgArray.push(action);
-  try {
-    const txResponse = await client.signAndBroadcast(
-      address,
-      msgArray,
-      "auto",
-      ref_id
+
+  const memo = "Upgrade to Tier 10";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
+    address,
+    msgArray,
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.PERFORM_ACTION_BY_ADMIN,
+      denom: "usix",
+    }
+  );
+
+  if (txResponse.code !== 0) {
+    console.error(`Error upgrading to tier 10: ${txResponse.rawLog}`);
+  } else {
+    console.log(
+      `Upgrade to Tier 10 successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
-    console.log(txResponse);
-  } catch (err) {
-    console.error("Transaction failed:", err);
-  }
-};
+  };
+}
 
 main().catch((err) => {
   console.error("Error in main execution:", err);

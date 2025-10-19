@@ -1,25 +1,29 @@
 import {
   getSigningSixprotocolClient,
   sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
+import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
-import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
-import NFTSchema from "../../../resources/schemas/membership-nft-schema.json";
 import dotenv from "dotenv";
+import NFTSchema from "../../../resources/schemas/membership-nft-schema.json";
 import { v4 as uuidv4 } from "uuid";
 dotenv.config();
 
 const main = async () => {
-  const NETOWRK = process.argv[2];
-  if (!NETOWRK) {
+  const NETWORK = process.argv[2]!;
+  const TOKENID = process.argv[3];
+
+  if (!NETWORK) {
     throw new Error(
       "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
-  const TOKENID = process.argv[3];
 
-  const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+  const gasPrice = GasPrice.fromString("1.25usix");
   // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
     prefix: "6x",
@@ -28,6 +32,9 @@ const main = async () => {
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   const accounts = await wallet.getAccounts();
@@ -41,7 +48,7 @@ const main = async () => {
   schemaCode = `${org_name}.${_name}`;
 
   const ref_id = uuidv4();
-  const msgArray: EncodeObject[] = [];
+  let msgArray: Array<EncodeObject> = [];
 
   const action =
     sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
@@ -55,16 +62,26 @@ const main = async () => {
 
   msgArray.push(action);
 
-  try {
-    const txResponse = await client.signAndBroadcast(
-      address,
-      msgArray,
-      "auto",
-      ref_id
+  const memo = "Use Service";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
+    address,
+    msgArray,
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.PERFORM_ACTION_BY_ADMIN,
+      denom: "usix",
+    }
+  );
+
+  if (txResponse.code !== 0) {
+    console.error(`Error using service: ${txResponse.rawLog}`);
+  } else {
+    console.log(
+      `Use Service successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
-    console.log(txResponse);
-  } catch (err) {
-    console.error("Transaction failed:", err);
   }
 };
 
