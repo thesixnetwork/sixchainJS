@@ -1,6 +1,9 @@
 import {
+
   getSigningSixprotocolClient,
   sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { getConnectorConfig } from "@client-util";
@@ -9,7 +12,6 @@ import NFTSchema from "../../../resources/schemas/divineelite-nft-schema.json";
 import { GasPrice } from "@cosmjs/stargate";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
-dotenv.config();
 
 const main = async () => {
   const NETOWRK = process.argv[2];
@@ -29,10 +31,14 @@ const main = async () => {
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
+  let msgArray: Array<EncodeObject> = [];
 
   let schema_name = NFTSchema.code;
   const split_schema = schema_name.split(".");
@@ -42,7 +48,7 @@ const main = async () => {
   schemaCode = `${org_name}.${_name}`;
 
   const ref_id = uuidv4();
-  const msgArray: EncodeObject[] = [];
+  
 
   const action =
     sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
@@ -56,19 +62,28 @@ const main = async () => {
 
   msgArray.push(action);
 
-  try {
-    const txResponse = await client.signAndBroadcast(
-      address,
-      msgArray,
-      "auto",
-      ref_id
-    );
-    console.log(txResponse);
-  } catch (err) {
-    console.error("Transaction failed:", err);
-  }
-};
+  const memo = "Use Service";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
+    address,
+    msgArray,
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.PERFORM_ACTION_BY_ADMIN,
+      denom: "usix",
+    }
+  );
 
+  if (txResponse.code !== 0) {
+    console.error(`Error using service: ${txResponse.rawLog}`);
+  } else {
+    console.log(
+      `Use Service successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+    );
+  };
+}
 main().catch((err) => {
   console.error("Error in main execution:", err);
 });

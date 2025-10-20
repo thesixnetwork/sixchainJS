@@ -1,39 +1,46 @@
 import {
+
   getSigningSixprotocolClient,
   sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
+import { GasPrice } from "@cosmjs/stargate";
 import NFTSchema from "../../../resources/schemas/membership-nft-schema.json";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
 import { getConnectorConfig } from "@client-util";
-dotenv.config();
 
 const main = async () => {
-  const network = process.argv[2];
+  const NETWORK = process.argv[2]!;
   const TOKENID = process.argv[3];
 
-  if (!network) {
+  if (!NETWORK) {
     throw new Error(
       "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
     );
   }
-  const { rpcUrl, mnemonic } = await getConnectorConfig(network);
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+  const gasPrice = GasPrice.fromString("1.25usix");
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    process.env.ALICE_MNEMONIC!,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
 
   // Get signing client
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
+  let msgArray: Array<EncodeObject> = [];
 
   let schema_name = NFTSchema.code;
   const split_schema = schema_name.split(".");
@@ -42,8 +49,8 @@ const main = async () => {
   let schemaCode: string;
   schemaCode = `${org_name}.${_name}`;
 
-  const refId = uuidv4();
-  const msgArray: EncodeObject[] = [];
+  const ref_id = uuidv4();
+  
 
   const action =
     sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
@@ -51,7 +58,7 @@ const main = async () => {
       nftSchemaCode: schemaCode,
       tokenId: TOKENID,
       action: "transfer_service",
-      refId,
+      refId: ref_id,
       parameters: [
         { name: "service_name", value: "service_2" },
         { name: "amount", value: "1" },
@@ -61,19 +68,28 @@ const main = async () => {
 
   msgArray.push(action);
 
-  try {
-    const txResponse = await client.signAndBroadcast(
-      address,
-      msgArray,
-      "auto",
-      "memo"
-    );
-    console.log(txResponse);
-  } catch (err) {
-    console.error("Transaction failed:", err);
-  }
-};
+  const memo = "Transfer Service";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
+    address,
+    msgArray,
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.PERFORM_ACTION_BY_ADMIN,
+      denom: "usix",
+    }
+  );
 
+  if (txResponse.code !== 0) {
+    console.error(`Error transferring service: ${txResponse.rawLog}`);
+  } else {
+    console.log(
+      `Transfer Service successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+    );
+  };
+}
 main().catch((err) => {
   console.error("Error in main execution:", err);
 });
