@@ -46,13 +46,13 @@ export const Deploy = async () => {
   let msgArray: Array<EncodeObject> = [];
 
   for (let i = 0; i < schemaList.length; i++) {
-    let schema_name = schemaList[i].code;
-    const split_schema = schema_name.split(".");
-    const _name = split_schema[1];
-    const org_name = process.env.ORG_NAME;
-    let schemaCode: string;
-    schemaCode = `${org_name}.${_name}`;
-    schemaList[i].code = schemaCode;
+    // let schema_name = schemaList[i].code;
+    // const split_schema = schema_name.split(".");
+    // const _name = split_schema[1];
+    // const org_name = process.env.ORG_NAME;
+    // let schemaCode: string;
+    // schemaCode = `${org_name}.${_name}`;
+    // schemaList[i].code = schemaCode;
     let encodeBase64Schema = Buffer.from(
       JSON.stringify(schemaList[i])
     ).toString("base64");
