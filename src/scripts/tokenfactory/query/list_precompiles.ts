@@ -19,18 +19,28 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
   });
 
-  console.log("Querying tokenmngr module parameters...");
+  console.log("Querying precompiles...");
 
   try {
-    const response = await client.sixprotocol.tokenmngr.params();
+    const response = await client.sixprotocol.tokenmngr.listPrecompile();
 
-    console.log("Tokenmngr Parameters:");
-    console.log("==================");
-    console.log(JSON.stringify(response.params, null, 2));
+    console.log("Precompiles List:");
+    console.log("=================");
+
+    if (response.precompiles.length === 0) {
+      console.log("No precompiles found.");
+    } else {
+      response.precompiles.forEach((precompile, index) => {
+        console.log(`${index + 1}. ${precompile}`);
+      });
+    }
+
+    console.log("\nRaw Response:");
+    console.log(JSON.stringify(response, null, 2));
 
     return true;
   } catch (error) {
-    console.error(`Error querying parameters: ${error}`);
+    console.error(`Error querying precompiles: ${error}`);
     return false;
   }
 };

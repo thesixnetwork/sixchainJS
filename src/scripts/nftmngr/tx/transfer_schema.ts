@@ -27,6 +27,9 @@ const TransferSchema = async (schemaCode: string, newOwner: string) => {
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address

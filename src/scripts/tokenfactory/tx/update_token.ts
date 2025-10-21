@@ -12,9 +12,10 @@ dotenv.config();
 
 const main = async () => {
   const NETWORK = process.argv[2];
-  const TOKEN_NAME = process.argv[3];
-  const AMOUNT = process.argv[4];
-  const RECEIVER = process.argv[5];
+  const NAME = process.argv[3];
+  const NEW_MAX_SUPPLY = process.argv[4];
+  const NEW_METADATA = process.argv[5] || "";
+  const NEW_ADMIN = process.argv[6] || "";
 
   if (!NETWORK) {
     throw new Error(
@@ -22,21 +23,15 @@ const main = async () => {
     );
   }
 
-  if (!TOKEN_NAME) {
+  if (!NAME) {
     throw new Error(
       "Token name not specified. Please provide a token name as the second argument."
     );
   }
 
-  if (!AMOUNT) {
+  if (!NEW_MAX_SUPPLY) {
     throw new Error(
-      "Amount not specified. Please provide amount to wrap as the third argument."
-    );
-  }
-
-  if (!RECEIVER) {
-    throw new Error(
-      "Receiver not specified. Please provide receiver address as the fourth argument."
+      "New max supply not specified. Please provide new max supply as the third argument."
     );
   }
 
@@ -61,24 +56,24 @@ const main = async () => {
   const address = accounts[0].address;
 
   console.log(
-    `Wrapping ${AMOUNT} of token ${TOKEN_NAME} to receiver ${RECEIVER}`
+    `Updating token: ${NAME} with new max supply: ${NEW_MAX_SUPPLY}${NEW_METADATA ? `, new metadata: ${NEW_METADATA}` : ""}${NEW_ADMIN ? `, new admin: ${NEW_ADMIN}` : ""}`
   );
 
-  // Create wrap token message
-  const wrapToken = sixprotocol.tokenmngr.MessageComposer.withTypeUrl.wrapToken(
-    {
+  // Create update token message
+  const updateToken =
+    sixprotocol.tokenmngr.MessageComposer.withTypeUrl.updateToken({
       creator: address,
-      amount: {
-        denom: TOKEN_NAME.toLowerCase(),
-        amount: AMOUNT,
+      name: NAME,
+      maxSupply: {
+        denom: NAME.toLowerCase(),
+        amount: NEW_MAX_SUPPLY,
       },
-      receiver: RECEIVER,
-    }
-  );
+      mintee: NEW_ADMIN || address,
+    });
 
-  const msgArray = [wrapToken];
+  const msgArray = [updateToken];
 
-  const memo = `Wrap ${AMOUNT} of ${TOKEN_NAME} to ${RECEIVER}`;
+  const memo = `Update token: ${NAME}`;
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -93,11 +88,11 @@ const main = async () => {
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error wrapping token: ${txResponse.rawLog}`);
+    console.error(`Error updating token: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Token wrapped successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Token updated successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }

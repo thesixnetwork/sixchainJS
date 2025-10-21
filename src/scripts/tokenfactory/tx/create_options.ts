@@ -12,9 +12,9 @@ dotenv.config();
 
 const main = async () => {
   const NETWORK = process.argv[2];
-  const TOKEN_NAME = process.argv[3];
-  const AMOUNT = process.argv[4];
-  const RECEIVER = process.argv[5];
+  const DEFAULT_MINT_FEE = process.argv[3];
+  const DEFAULT_BURN_FEE = process.argv[4];
+  const DEFAULT_TRANSFER_FEE = process.argv[5];
 
   if (!NETWORK) {
     throw new Error(
@@ -22,21 +22,21 @@ const main = async () => {
     );
   }
 
-  if (!TOKEN_NAME) {
+  if (!DEFAULT_MINT_FEE) {
     throw new Error(
-      "Token name not specified. Please provide a token name as the second argument."
+      "Default mint fee not specified. Please provide default mint fee as the second argument."
     );
   }
 
-  if (!AMOUNT) {
+  if (!DEFAULT_BURN_FEE) {
     throw new Error(
-      "Amount not specified. Please provide amount to wrap as the third argument."
+      "Default burn fee not specified. Please provide default burn fee as the third argument."
     );
   }
 
-  if (!RECEIVER) {
+  if (!DEFAULT_TRANSFER_FEE) {
     throw new Error(
-      "Receiver not specified. Please provide receiver address as the fourth argument."
+      "Default transfer fee not specified. Please provide default transfer fee as the fourth argument."
     );
   }
 
@@ -61,24 +61,19 @@ const main = async () => {
   const address = accounts[0].address;
 
   console.log(
-    `Wrapping ${AMOUNT} of token ${TOKEN_NAME} to receiver ${RECEIVER}`
+    `Creating options with mint fee: ${DEFAULT_MINT_FEE}, burn fee: ${DEFAULT_BURN_FEE}, transfer fee: ${DEFAULT_TRANSFER_FEE}`
   );
 
-  // Create wrap token message
-  const wrapToken = sixprotocol.tokenmngr.MessageComposer.withTypeUrl.wrapToken(
-    {
+  // Create options message
+  const createOptions =
+    sixprotocol.tokenmngr.MessageComposer.withTypeUrl.createOptions({
       creator: address,
-      amount: {
-        denom: TOKEN_NAME.toLowerCase(),
-        amount: AMOUNT,
-      },
-      receiver: RECEIVER,
-    }
-  );
+      defaultMintee: DEFAULT_MINT_FEE,
+    });
 
-  const msgArray = [wrapToken];
+  const msgArray = [createOptions];
 
-  const memo = `Wrap ${AMOUNT} of ${TOKEN_NAME} to ${RECEIVER}`;
+  const memo = "Create tokenmngr options";
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -93,11 +88,11 @@ const main = async () => {
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error wrapping token: ${txResponse.rawLog}`);
+    console.error(`Error creating options: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Token wrapped successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Options created successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }

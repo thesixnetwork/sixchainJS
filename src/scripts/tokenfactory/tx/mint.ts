@@ -14,7 +14,7 @@ const main = async () => {
   const NETWORK = process.argv[2];
   const TOKEN_NAME = process.argv[3];
   const AMOUNT = process.argv[4];
-  const RECEIVER = process.argv[5];
+  const TO_ADDRESS = process.argv[5];
 
   if (!NETWORK) {
     throw new Error(
@@ -30,13 +30,13 @@ const main = async () => {
 
   if (!AMOUNT) {
     throw new Error(
-      "Amount not specified. Please provide amount to wrap as the third argument."
+      "Amount not specified. Please provide amount to mint as the third argument."
     );
   }
 
-  if (!RECEIVER) {
+  if (!TO_ADDRESS) {
     throw new Error(
-      "Receiver not specified. Please provide receiver address as the fourth argument."
+      "Recipient address not specified. Please provide recipient address as the fourth argument."
     );
   }
 
@@ -61,24 +61,21 @@ const main = async () => {
   const address = accounts[0].address;
 
   console.log(
-    `Wrapping ${AMOUNT} of token ${TOKEN_NAME} to receiver ${RECEIVER}`
+    `Minting ${AMOUNT} of token ${TOKEN_NAME} to address ${TO_ADDRESS}`
   );
 
-  // Create wrap token message
-  const wrapToken = sixprotocol.tokenmngr.MessageComposer.withTypeUrl.wrapToken(
-    {
-      creator: address,
-      amount: {
-        denom: TOKEN_NAME.toLowerCase(),
-        amount: AMOUNT,
-      },
-      receiver: RECEIVER,
-    }
-  );
+  // Create mint message
+  const mint = sixprotocol.tokenmngr.MessageComposer.withTypeUrl.mint({
+    creator: address,
+    amount: {
+      denom: TOKEN_NAME.toLowerCase(),
+      amount: AMOUNT,
+    },
+  });
 
-  const msgArray = [wrapToken];
+  const msgArray = [mint];
 
-  const memo = `Wrap ${AMOUNT} of ${TOKEN_NAME} to ${RECEIVER}`;
+  const memo = `Mint ${AMOUNT} of ${TOKEN_NAME} to ${TO_ADDRESS}`;
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -93,11 +90,11 @@ const main = async () => {
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error wrapping token: ${txResponse.rawLog}`);
+    console.error(`Error minting tokens: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Token wrapped successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Tokens minted successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }

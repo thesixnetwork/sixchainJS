@@ -14,7 +14,6 @@ const main = async () => {
   const NETWORK = process.argv[2];
   const TOKEN_NAME = process.argv[3];
   const AMOUNT = process.argv[4];
-  const RECEIVER = process.argv[5];
 
   if (!NETWORK) {
     throw new Error(
@@ -30,13 +29,7 @@ const main = async () => {
 
   if (!AMOUNT) {
     throw new Error(
-      "Amount not specified. Please provide amount to wrap as the third argument."
-    );
-  }
-
-  if (!RECEIVER) {
-    throw new Error(
-      "Receiver not specified. Please provide receiver address as the fourth argument."
+      "Amount not specified. Please provide amount to burn as the third argument."
     );
   }
 
@@ -60,25 +53,20 @@ const main = async () => {
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
-  console.log(
-    `Wrapping ${AMOUNT} of token ${TOKEN_NAME} to receiver ${RECEIVER}`
-  );
+  console.log(`Burning ${AMOUNT} of token ${TOKEN_NAME}`);
 
-  // Create wrap token message
-  const wrapToken = sixprotocol.tokenmngr.MessageComposer.withTypeUrl.wrapToken(
-    {
-      creator: address,
-      amount: {
-        denom: TOKEN_NAME.toLowerCase(),
-        amount: AMOUNT,
-      },
-      receiver: RECEIVER,
-    }
-  );
+  // Create burn message
+  const burn = sixprotocol.tokenmngr.MessageComposer.withTypeUrl.burn({
+    creator: address,
+    amount: {
+      denom: TOKEN_NAME.toLowerCase(),
+      amount: AMOUNT,
+    },
+  });
 
-  const msgArray = [wrapToken];
+  const msgArray = [burn];
 
-  const memo = `Wrap ${AMOUNT} of ${TOKEN_NAME} to ${RECEIVER}`;
+  const memo = `Burn ${AMOUNT} of ${TOKEN_NAME}`;
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -93,11 +81,11 @@ const main = async () => {
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error wrapping token: ${txResponse.rawLog}`);
+    console.error(`Error burning tokens: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Token wrapped successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Tokens burned successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }

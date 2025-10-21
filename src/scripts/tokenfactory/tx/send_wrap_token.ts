@@ -15,6 +15,7 @@ const main = async () => {
   const TOKEN_NAME = process.argv[3];
   const AMOUNT = process.argv[4];
   const RECEIVER = process.argv[5];
+  const TO_CHAIN = process.argv[6];
 
   if (!NETWORK) {
     throw new Error(
@@ -30,13 +31,19 @@ const main = async () => {
 
   if (!AMOUNT) {
     throw new Error(
-      "Amount not specified. Please provide amount to wrap as the third argument."
+      "Amount not specified. Please provide amount to send and wrap as the third argument."
     );
   }
 
   if (!RECEIVER) {
     throw new Error(
       "Receiver not specified. Please provide receiver address as the fourth argument."
+    );
+  }
+
+  if (!TO_CHAIN) {
+    throw new Error(
+      "Destination chain not specified. Please provide destination chain as the fifth argument."
     );
   }
 
@@ -61,24 +68,23 @@ const main = async () => {
   const address = accounts[0].address;
 
   console.log(
-    `Wrapping ${AMOUNT} of token ${TOKEN_NAME} to receiver ${RECEIVER}`
+    `Sending and wrapping ${AMOUNT} of token ${TOKEN_NAME} to ${RECEIVER} on chain ${TO_CHAIN}`
   );
 
-  // Create wrap token message
-  const wrapToken = sixprotocol.tokenmngr.MessageComposer.withTypeUrl.wrapToken(
-    {
+  // Create send wrap token message
+  const sendWrapToken =
+    sixprotocol.tokenmngr.MessageComposer.withTypeUrl.sendWrapToken({
       creator: address,
+      ethAddress: RECEIVER,
       amount: {
         denom: TOKEN_NAME.toLowerCase(),
         amount: AMOUNT,
       },
-      receiver: RECEIVER,
-    }
-  );
+    });
 
-  const msgArray = [wrapToken];
+  const msgArray = [sendWrapToken];
 
-  const memo = `Wrap ${AMOUNT} of ${TOKEN_NAME} to ${RECEIVER}`;
+  const memo = `Send wrap ${AMOUNT} of ${TOKEN_NAME} to ${RECEIVER} on ${TO_CHAIN}`;
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -93,11 +99,11 @@ const main = async () => {
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error wrapping token: ${txResponse.rawLog}`);
+    console.error(`Error sending wrap token: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Token wrapped successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Token sent and wrapped successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }

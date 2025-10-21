@@ -1,11 +1,17 @@
 import {
   getSigningSixprotocolClient,
   sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
+import { GasPrice } from "@cosmjs/stargate";
+import { getConnectorConfig } from "@client-util";
+import dotenv from "dotenv";
+
+dotenv.config();
 import newAttribute from "../resources/utils/new-attribute.json";
 import divine_elite from "../resources/schemas/divineelite-nft-schema.json";
-import { getConnectorConfig } from "@client-util";
 
 const main = async () => {
   const NETWORK = process.argv[2];
@@ -22,10 +28,14 @@ const main = async () => {
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
     prefix: "6x",
   });
+  const gasPrice = GasPrice.fromString("1.25usix");
   // Get signing client
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   const accounts = await wallet.getAccounts();

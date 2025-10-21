@@ -19,18 +19,21 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
   });
 
-  console.log("Querying tokenmngr module parameters...");
+  console.log("Querying tokenmngr options...");
 
   try {
-    const response = await client.sixprotocol.tokenmngr.params();
+    const response = await client.sixprotocol.tokenmngr.options();
 
-    console.log("Tokenmngr Parameters:");
+    console.log("Tokenmngr Options:");
     console.log("==================");
-    console.log(JSON.stringify(response.params, null, 2));
+    console.log(`Default Mintee: ${response.options.defaultMintee || "N/A"}`);
+
+    console.log("\nRaw Response:");
+    console.log(JSON.stringify(response.options, null, 2));
 
     return true;
   } catch (error) {
-    console.error(`Error querying parameters: ${error}`);
+    console.error(`Error querying options: ${error}`);
     return false;
   }
 };

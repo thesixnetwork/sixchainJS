@@ -13,8 +13,8 @@ dotenv.config();
 const main = async () => {
   const NETWORK = process.argv[2];
   const TOKEN_NAME = process.argv[3];
-  const AMOUNT = process.argv[4];
-  const RECEIVER = process.argv[5];
+  const ADDRESS = process.argv[4];
+  const CREATOR = process.argv[5];
 
   if (!NETWORK) {
     throw new Error(
@@ -28,15 +28,15 @@ const main = async () => {
     );
   }
 
-  if (!AMOUNT) {
+  if (!ADDRESS) {
     throw new Error(
-      "Amount not specified. Please provide amount to wrap as the third argument."
+      "Address not specified. Please provide an address as the third argument."
     );
   }
 
-  if (!RECEIVER) {
+  if (!CREATOR) {
     throw new Error(
-      "Receiver not specified. Please provide receiver address as the fourth argument."
+      "Creator not specified. Please provide a creator address as the fourth argument."
     );
   }
 
@@ -58,30 +58,26 @@ const main = async () => {
   });
 
   const accounts = await wallet.getAccounts();
-  const address = accounts[0].address;
+  const signerAddress = accounts[0].address;
 
   console.log(
-    `Wrapping ${AMOUNT} of token ${TOKEN_NAME} to receiver ${RECEIVER}`
+    `Creating mint permission for token ${TOKEN_NAME}, address ${ADDRESS}, creator ${CREATOR}`
   );
 
-  // Create wrap token message
-  const wrapToken = sixprotocol.tokenmngr.MessageComposer.withTypeUrl.wrapToken(
-    {
-      creator: address,
-      amount: {
-        denom: TOKEN_NAME.toLowerCase(),
-        amount: AMOUNT,
-      },
-      receiver: RECEIVER,
-    }
-  );
+  // Create mintperm message
+  const createMintperm =
+    sixprotocol.tokenmngr.MessageComposer.withTypeUrl.createMintperm({
+      creator: signerAddress,
+      token: TOKEN_NAME,
+      address: ADDRESS,
+    });
 
-  const msgArray = [wrapToken];
+  const msgArray = [createMintperm];
 
-  const memo = `Wrap ${AMOUNT} of ${TOKEN_NAME} to ${RECEIVER}`;
+  const memo = `Create mint permission for ${TOKEN_NAME}`;
   let txResponse = await signAndBroadcastWithRetry(
     client,
-    address,
+    signerAddress,
     msgArray,
     memo,
     {
@@ -93,11 +89,11 @@ const main = async () => {
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error wrapping token: ${txResponse.rawLog}`);
+    console.error(`Error creating mint permission: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Token wrapped successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Mint permission created successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }

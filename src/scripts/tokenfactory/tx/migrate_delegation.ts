@@ -12,9 +12,8 @@ dotenv.config();
 
 const main = async () => {
   const NETWORK = process.argv[2];
-  const TOKEN_NAME = process.argv[3];
-  const AMOUNT = process.argv[4];
-  const RECEIVER = process.argv[5];
+  const OLD_DELEGATOR = process.argv[3];
+  const NEW_DELEGATOR = process.argv[4];
 
   if (!NETWORK) {
     throw new Error(
@@ -22,21 +21,15 @@ const main = async () => {
     );
   }
 
-  if (!TOKEN_NAME) {
+  if (!OLD_DELEGATOR) {
     throw new Error(
-      "Token name not specified. Please provide a token name as the second argument."
+      "Old delegator address not specified. Please provide old delegator address as the second argument."
     );
   }
 
-  if (!AMOUNT) {
+  if (!NEW_DELEGATOR) {
     throw new Error(
-      "Amount not specified. Please provide amount to wrap as the third argument."
-    );
-  }
-
-  if (!RECEIVER) {
-    throw new Error(
-      "Receiver not specified. Please provide receiver address as the fourth argument."
+      "New delegator address not specified. Please provide new delegator address as the third argument."
     );
   }
 
@@ -60,25 +53,18 @@ const main = async () => {
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
-  console.log(
-    `Wrapping ${AMOUNT} of token ${TOKEN_NAME} to receiver ${RECEIVER}`
-  );
+  console.log(`Migrating delegation from ${OLD_DELEGATOR} to ${NEW_DELEGATOR}`);
 
-  // Create wrap token message
-  const wrapToken = sixprotocol.tokenmngr.MessageComposer.withTypeUrl.wrapToken(
-    {
+  // Create migrate delegation message
+  const migrateDelegation =
+    sixprotocol.tokenmngr.MessageComposer.withTypeUrl.migrateDelegation({
       creator: address,
-      amount: {
-        denom: TOKEN_NAME.toLowerCase(),
-        amount: AMOUNT,
-      },
-      receiver: RECEIVER,
-    }
-  );
+      ethAddress: NEW_DELEGATOR,
+    });
 
-  const msgArray = [wrapToken];
+  const msgArray = [migrateDelegation];
 
-  const memo = `Wrap ${AMOUNT} of ${TOKEN_NAME} to ${RECEIVER}`;
+  const memo = `Migrate delegation from ${OLD_DELEGATOR} to ${NEW_DELEGATOR}`;
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -87,17 +73,17 @@ const main = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.BANK.SEND || 200000,
+      fallbackGas: COMMON_GAS_LIMITS.STAKING.DELEGATE || 200000,
       denom: "usix",
     }
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error wrapping token: ${txResponse.rawLog}`);
+    console.error(`Error migrating delegation: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Token wrapped successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Delegation migrated successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }

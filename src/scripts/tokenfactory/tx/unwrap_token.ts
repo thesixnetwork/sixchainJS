@@ -30,7 +30,7 @@ const main = async () => {
 
   if (!AMOUNT) {
     throw new Error(
-      "Amount not specified. Please provide amount to wrap as the third argument."
+      "Amount not specified. Please provide amount to unwrap as the third argument."
     );
   }
 
@@ -61,24 +61,23 @@ const main = async () => {
   const address = accounts[0].address;
 
   console.log(
-    `Wrapping ${AMOUNT} of token ${TOKEN_NAME} to receiver ${RECEIVER}`
+    `Unwrapping ${AMOUNT} of token ${TOKEN_NAME} to receiver ${RECEIVER}`
   );
 
-  // Create wrap token message
-  const wrapToken = sixprotocol.tokenmngr.MessageComposer.withTypeUrl.wrapToken(
-    {
+  // Create unwrap token message
+  const unwrapToken =
+    sixprotocol.tokenmngr.MessageComposer.withTypeUrl.unwrapToken({
       creator: address,
       amount: {
         denom: TOKEN_NAME.toLowerCase(),
         amount: AMOUNT,
       },
       receiver: RECEIVER,
-    }
-  );
+    });
 
-  const msgArray = [wrapToken];
+  const msgArray = [unwrapToken];
 
-  const memo = `Wrap ${AMOUNT} of ${TOKEN_NAME} to ${RECEIVER}`;
+  const memo = `Unwrap ${AMOUNT} of ${TOKEN_NAME} to ${RECEIVER}`;
   let txResponse = await signAndBroadcastWithRetry(
     client,
     address,
@@ -93,11 +92,11 @@ const main = async () => {
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error wrapping token: ${txResponse.rawLog}`);
+    console.error(`Error unwrapping token: ${txResponse.rawLog}`);
     return false;
   } else {
     console.log(
-      `Token wrapped successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Token unwrapped successfully: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
     return true;
   }
