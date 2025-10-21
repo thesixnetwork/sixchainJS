@@ -1,16 +1,18 @@
 import {
   getSigningSixprotocolClient,
   sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
-import { getConnectorConfig } from "@client-util";
 import { GasPrice } from "@cosmjs/stargate";
+import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
-dotenv.config();
 
 const main = async () => {
   const NETOWRK = process.argv[2];
+  const org_name = process.env.ORG_NAME;
 
   let msgArray: EncodeObject[] = [];
   if (!NETOWRK) {
@@ -20,6 +22,7 @@ const main = async () => {
   }
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
+  const gasPrice = GasPrice.fromString("1.25usix");
 
   // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
@@ -29,6 +32,9 @@ const main = async () => {
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   const accounts = await wallet.getAccounts();
@@ -46,28 +52,38 @@ const main = async () => {
       refId: ref_id,
       tokenIdMap: [
         {
-          nftSchemaName: "sixprotocol.divine_elite",
+          nftSchemaName: `${org_name}.divine_elite`,
           tokenId: "1",
         },
         {
-          nftSchemaName: "sixprotocol.membership",
-          tokenId: "5",
+          nftSchemaName: `${org_name}.membership`,
+          tokenId: "1",
         },
       ],
     });
 
   msgArray.push(virualAction);
 
-  try {
-    const txResponse = await client.signAndBroadcast(
-      address,
-      msgArray,
-      "auto",
-      "memo"
+  const memo = "perform action on virtual schema";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
+    address,
+    msgArray,
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.PERFORM_ACTION_BY_ADMIN,
+      denom: "usix",
+    }
+  );
+
+  if (txResponse.code !== 0) {
+    console.error(`Error minting NFT: ${txResponse.rawLog}`);
+  } else {
+    console.log(
+      `Minting successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
-    console.log(txResponse);
-  } catch (err) {
-    console.error("Transaction failed:", err);
   }
 };
 

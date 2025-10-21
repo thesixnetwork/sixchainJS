@@ -1,8 +1,11 @@
 import {
   getSigningSixprotocolClient,
   sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
 } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
+import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 dotenv.config();
@@ -26,6 +29,7 @@ const main = async () => {
   let msgArray: EncodeObject[] = [];
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
+  const gasPrice = GasPrice.fromString("1.25usix");
   // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
     prefix: "6x",
@@ -34,6 +38,9 @@ const main = async () => {
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   const accounts = await wallet.getAccounts();
@@ -48,16 +55,27 @@ const main = async () => {
     });
 
   msgArray.push(voteCreateSchema);
-  try {
-    const txResponse = await client.signAndBroadcast(
-      address,
-      msgArray,
-      "auto",
-      "memo"
+
+  const memo = "vote virtual schema proposal";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
+    address,
+    msgArray,
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.VOTE_VIRTUAL_SCHEMA_PROPOSAL,
+      denom: "usix",
+    }
+  );
+
+  if (txResponse.code !== 0) {
+    console.error(`Error minting NFT: ${txResponse.rawLog}`);
+  } else {
+    console.log(
+      `Minting successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
-    console.log(txResponse);
-  } catch (err) {
-    console.error("Transaction failed:", err);
   }
 };
 

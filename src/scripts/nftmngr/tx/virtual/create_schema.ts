@@ -11,8 +11,14 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+import divine_elite from "../../resources/schemas/divineelite-nft-schema.json";
+import preventive from "../../resources/schemas/preventive-nft-schema.json";
+import membership from "../../resources/schemas/membership-nft-schema.json";
+import lifestyle from "../../resources/schemas/lifestyle-nft-schema.json";
+
 const main = async () => {
   const NETOWRK = process.argv[2];
+  const org_name = process.env.ORG_NAME;
 
   let msgArray: EncodeObject[] = [];
   if (!NETOWRK) {
@@ -49,10 +55,10 @@ const main = async () => {
       virtualNftSchemaCode: schema_name,
       registry: [
         {
-          nftSchemaCode: "sixprotocol.divine_elite",
+          nftSchemaCode: `${org_name}.divine_elite`,
         },
         {
-          nftSchemaCode: "sixprotocol.membership",
+          nftSchemaCode: `${org_name}.membership`,
         },
       ],
       actions: [

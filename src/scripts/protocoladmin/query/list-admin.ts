@@ -9,7 +9,7 @@ const main = async () => {
 
   if (!NETWORK) {
     throw new Error(
-      "INPUT NETWORK BY RUNNING: bun run ./scripts/protocoladmin/query/list-group.ts fivenet || yarn ts-node ./scripts/protocoladmin/query/list-group.ts fivenet"
+      "INPUT NETWORK BY RUNNING: bun run ./scripts/protocoladmin/query/list-admin.ts fivenet || yarn ts-node ./scripts/protocoladmin/query/list-admin.ts fivenet"
     );
   }
 
@@ -19,17 +19,17 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
   });
 
-  console.log(`=== Protocol Admin List Groups Query ===`);
+  console.log(`=== Protocol Admin List All Admins Query ===`);
 
   try {
-    // Query all groups
-    const result = await queryClient.sixprotocol.protocoladmin.groupAll({});
+    // Query all admins
+    const result = await queryClient.sixprotocol.protocoladmin.adminAll({});
 
-    console.log(`\n=== All Groups ===`);
-    if (result.group && result.group.length > 0) {
-      console.log(`Found ${result.group.length} groups:`);
-      result.group.forEach((group, index) => {
-        console.log(`${index + 1}. Group:`, JSON.stringify(group, null, 2));
+    console.log(`\n=== All Admins ===`);
+    if (result.admin && result.admin.length > 0) {
+      console.log(`Found ${result.admin.length} admins:`);
+      result.admin.forEach((admin, index) => {
+        console.log(`${index + 1}. Admin:`, JSON.stringify(admin, null, 2));
       });
       
       if (result.pagination) {
@@ -37,10 +37,10 @@ const main = async () => {
         console.log("Pagination:", JSON.stringify(result.pagination, null, 2));
       }
     } else {
-      console.log("No groups found");
+      console.log("No admins found");
     }
   } catch (error) {
-    console.error("Error querying groups:", error);
+    console.error("Error querying admins:", error);
   }
 };
 

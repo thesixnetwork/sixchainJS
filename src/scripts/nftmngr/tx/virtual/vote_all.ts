@@ -42,7 +42,7 @@ const main = async () => {
     prefix: "6x",
   });
 
-   // Get signing client
+  // Get signing client
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
@@ -55,18 +55,18 @@ const main = async () => {
   const address = accounts[0].address;
 
   for (let i = 0; i < schemaList.length; i++) {
-    // let schema_code = schemaList[i].code;
-    // const split_schema = schema_code.split(".");
-    // const _name = split_schema[1];
-    // const org_name = process.env.ORG_NAME;
-    // let schemaCode: string;
-    // schemaCode = `${org_name}.${_name}`;
+    let schema_code = schemaList[i].code;
+    const split_schema = schema_code.split(".");
+    const _name = split_schema[1];
+    const org_name = process.env.ORG_NAME;
+    let schemaCode: string;
+    schemaCode = `${org_name}.${_name}`;
     const voteCreateSchema =
       sixprotocol.nftmngr.MessageComposer.withTypeUrl.voteVirtualSchemaProposal(
         {
           creator: address,
           id: String(propId),
-          nftSchemaCode: schemaList[i].code,
+          nftSchemaCode: schemaCode,
           option: 2,
         }
       );
@@ -88,7 +88,7 @@ const main = async () => {
     }
   );
 
-   if (txResponse.code !== 0) {
+  if (txResponse.code !== 0) {
     console.error(`Error minting NFT: ${txResponse.rawLog}`);
   } else {
     console.log(
