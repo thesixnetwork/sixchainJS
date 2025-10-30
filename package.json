@@ -12,7 +12,6 @@
     "access": "restricted"
   },
   "workspaces": [
-    "example/*",
     "packages/*"
   ],
   "scripts": {
