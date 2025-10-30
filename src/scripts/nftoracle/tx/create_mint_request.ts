@@ -8,6 +8,7 @@ import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { GasPrice } from "@cosmjs/stargate";
 import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
+import Long from "long";
 dotenv.config();
 
 const main = async () => {
@@ -64,7 +65,7 @@ const main = async () => {
       creator: address,
       nftSchemaCode: NFT_SCHEMA_CODE,
       tokenId: TOKEN_ID,
-      requiredConfirm: parseInt(REQUIRED_CONFIRM),
+      requiredConfirm: Long.fromInt(4),
     });
 
   const msgArray = [createMintRequest];

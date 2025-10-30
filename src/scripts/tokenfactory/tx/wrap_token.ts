@@ -1,5 +1,5 @@
 import {
-  getSigningCosmosClient,
+  getSigningSixprotocolClient,
   sixprotocol,
   COMMON_GAS_LIMITS,
   signAndBroadcastWithRetry,
@@ -49,7 +49,7 @@ const main = async () => {
   });
 
   // Get signing client
-  const client = await getSigningCosmosClient({
+  const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
     signer: wallet,
     options: {
