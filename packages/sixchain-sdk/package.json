@@ -1,8 +1,8 @@
 {
   "name": "@sixnetwork/sixchain-sdk",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "author": "sixnetwork <hamdee@six.network>",
-  "description": "SIX Protocol sdk",
+  "description": "Suppport SDK for Sixchain blockchain proposal version 4.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.esm.js",
