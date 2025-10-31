@@ -61,7 +61,7 @@ const main = async () => {
       action: "airdrop",
       refId: ref_id,
       parameters: [
-        { name: "service_name", value: "service_16" },
+        { name: "service_name", value: "service_2" },
         { name: "amount", value: "1" },
       ],
     });
