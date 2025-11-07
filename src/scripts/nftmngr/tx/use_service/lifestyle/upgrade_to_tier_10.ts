@@ -13,7 +13,6 @@ import { getConnectorConfig } from "@client-util";
 import moment from "moment";
 dotenv.config();
 
-
 const SENIOR = process.argv[4]!;
 const senior = Boolean(SENIOR);
 
@@ -22,7 +21,6 @@ const main = async () => {
   const TOKENID = process.argv[3];
   const SENIOR = process.argv[4]!;
   const senior = Boolean(SENIOR);
-  
 
   if (!NETWORK) {
     throw new Error(
@@ -84,8 +82,6 @@ const main = async () => {
           { name: "expire_date", value: expire_date },
         ],
       });
-
-    
   } else {
     action =
       sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
@@ -102,7 +98,6 @@ const main = async () => {
           { name: "expire_date", value: expire_date },
         ],
       });
-    
   }
 
   msgArray.push(action);
@@ -127,8 +122,8 @@ const main = async () => {
     console.log(
       `Upgrade to Tier 10 successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
-  };
-}
+  }
+};
 
 main().catch((err) => {
   console.error("Error in main execution:", err);

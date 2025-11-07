@@ -1,5 +1,4 @@
 import {
-
   getSigningSixprotocolClient,
   sixprotocol,
   COMMON_GAS_LIMITS,
@@ -51,7 +50,6 @@ const main = async () => {
   schemaCode = `${org_name}.${_name}`;
 
   const ref_id = uuidv4();
-  
 
   let action: any;
 
@@ -77,8 +75,6 @@ const main = async () => {
           { name: "expire_date", value: expire_date },
         ],
       });
-
-    
   } else {
     action =
       sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
@@ -95,7 +91,6 @@ const main = async () => {
           { name: "expire_date", value: expire_date },
         ],
       });
-    
   }
 
   msgArray.push(action);
@@ -120,8 +115,8 @@ const main = async () => {
     console.log(
       `Upgrade to Tier 10 successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
-  };
-}
+  }
+};
 main().catch((err) => {
   console.error("Error in main execution:", err);
 });

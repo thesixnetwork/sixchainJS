@@ -32,9 +32,10 @@ const main = async () => {
 
   try {
     // Query specific collection owner request
-    const collectionOwnerRequest = await queryClient.sixprotocol.nftoracle.collectionOwnerRequest({
-      id: parseInt(COLLECTION_OWNER_REQUEST_ID),
-    });
+    const collectionOwnerRequest =
+      await queryClient.sixprotocol.nftoracle.collectionOwnerRequest({
+        id: parseInt(COLLECTION_OWNER_REQUEST_ID),
+      });
 
     console.log(`\n=== Collection Owner Request Details ===`);
     if (collectionOwnerRequest.collectionOwnerRequest) {
@@ -45,7 +46,10 @@ const main = async () => {
       console.log("Required Confirm:", request.requiredConfirm?.toString());
       console.log("Current Confirm:", request.currentConfirm?.toString());
       console.log("Status:", request.status);
-      console.log("Base64 Verify Requestor Signature:", request.base64VerifyRequestorSignature);
+      console.log(
+        "Base64 Verify Requestor Signature:",
+        request.base64VerifyRequestorSignature
+      );
 
       if (request.signatures && request.signatures.length > 0) {
         console.log("\n=== Signatures ===");
@@ -53,7 +57,10 @@ const main = async () => {
           console.log(`Signature ${index + 1}:`);
           console.log("  Signer:", signature.signer);
           console.log("  Valid:", signature.valid);
-          console.log("  Base64 Origin Contract Info:", signature.base64OriginContractInfo || "N/A");
+          console.log(
+            "  Base64 Origin Contract Info:",
+            signature.base64OriginContractInfo || "N/A"
+          );
         });
       } else {
         console.log("\nNo signatures found");
@@ -62,7 +69,10 @@ const main = async () => {
       console.log("Collection owner request not found");
     }
   } catch (error: any) {
-    console.error("Error querying collection owner request:", error.message || error);
+    console.error(
+      "Error querying collection owner request:",
+      error.message || error
+    );
   }
 };
 

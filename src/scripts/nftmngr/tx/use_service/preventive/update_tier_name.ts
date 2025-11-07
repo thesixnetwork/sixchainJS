@@ -60,9 +60,7 @@ const main = async () => {
       tokenId: TOKENID,
       action: "update_tier_name",
       refId: ref_id,
-      parameters: [
-        { name: "tier", value: "10" },
-      ],
+      parameters: [{ name: "tier", value: "10" }],
     });
 
   msgArray.push(action);

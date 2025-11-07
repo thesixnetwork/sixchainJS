@@ -32,17 +32,21 @@ const main = async () => {
 
   try {
     // Query admins of specific group
-    const result = await queryClient.sixprotocol.protocoladmin.listAdminOfGroup({
-      group: GROUP_NAME,
-    });
+    const result = await queryClient.sixprotocol.protocoladmin.listAdminOfGroup(
+      {
+        group: GROUP_NAME,
+      }
+    );
 
     console.log(`\n=== Admins in Group: ${GROUP_NAME} ===`);
     if (result.admin && result.admin.length > 0) {
-      console.log(`Found ${result.admin.length} admins in group "${GROUP_NAME}":`);
+      console.log(
+        `Found ${result.admin.length} admins in group "${GROUP_NAME}":`
+      );
       result.admin.forEach((admin, index) => {
         console.log(`${index + 1}. Admin: ${admin}`);
       });
-      
+
       if (result.pagination) {
         console.log("\n=== Pagination Info ===");
         console.log("Pagination:", JSON.stringify(result.pagination, null, 2));

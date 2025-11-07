@@ -82,7 +82,8 @@ const main = async () => {
     console.log(
       `Use Service successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
-  }};
+  }
+};
 
 main().catch((err) => {
   console.error("Error in main execution:", err);

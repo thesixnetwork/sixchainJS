@@ -32,9 +32,10 @@ const main = async () => {
 
   try {
     // Query specific sync action signer
-    const syncActionSigner = await queryClient.sixprotocol.nftoracle.syncActionSigner({
-      id: parseInt(SYNC_ACTION_SIGNER_ID),
-    });
+    const syncActionSigner =
+      await queryClient.sixprotocol.nftoracle.syncActionSigner({
+        id: parseInt(SYNC_ACTION_SIGNER_ID),
+      });
 
     console.log(`\n=== Sync Action Signer Details ===`);
     if (syncActionSigner.syncActionSigner) {

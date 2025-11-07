@@ -31,7 +31,7 @@ const main = async () => {
       result.admin.forEach((admin, index) => {
         console.log(`${index + 1}. Admin:`, JSON.stringify(admin, null, 2));
       });
-      
+
       if (result.pagination) {
         console.log("\n=== Pagination Info ===");
         console.log("Pagination:", JSON.stringify(result.pagination, null, 2));

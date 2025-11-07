@@ -4,8 +4,6 @@ import {
   defaultRegistryTypes,
   AminoTypes,
   SigningStargateClient,
-  SigningStargateClientOptions,
-  GasPrice,
 } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 import * as sixprotocolNftadminTxRegistry from "./nftadmin/tx.registry";
@@ -35,14 +33,11 @@ export const sixprotocolProtoRegistry: ReadonlyArray<[string, GeneratedType]> =
   ];
 export const getSigningSixprotocolClientOptions = ({
   defaultTypes = defaultRegistryTypes,
-  options,
 }: {
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
-  options?: SigningStargateClientOptions;
 } = {}): {
   registry: Registry;
   aminoTypes: AminoTypes;
-  options?: SigningStargateClientOptions;
 } => {
   const registry = new Registry([...defaultTypes, ...sixprotocolProtoRegistry]);
   const aminoTypes = new AminoTypes({
@@ -51,23 +46,19 @@ export const getSigningSixprotocolClientOptions = ({
   return {
     registry,
     aminoTypes,
-    options,
   };
 };
 export const getSigningSixprotocolClient = async ({
   rpcEndpoint,
   signer,
-  options,
   defaultTypes = defaultRegistryTypes,
 }: {
   rpcEndpoint: string | HttpEndpoint;
   signer: OfflineSigner;
-  options?: SigningStargateClientOptions;
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => {
   const { registry, aminoTypes } = getSigningSixprotocolClientOptions({
     defaultTypes,
-    options,
   });
   const client = await SigningStargateClient.connectWithSigner(
     rpcEndpoint,
@@ -75,7 +66,6 @@ export const getSigningSixprotocolClient = async ({
     {
       registry: registry as any,
       aminoTypes,
-      ...options,
     }
   );
   return client;

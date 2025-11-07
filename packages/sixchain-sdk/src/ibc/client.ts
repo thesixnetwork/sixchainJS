@@ -4,8 +4,6 @@ import {
   defaultRegistryTypes,
   AminoTypes,
   SigningStargateClient,
-  SigningStargateClientOptions,
-  GasPrice,
 } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 import * as ibcApplicationsInterchainAccountsControllerV1TxRegistry from "./applications/interchain_accounts/controller/v1/tx.registry";
@@ -42,14 +40,11 @@ export const ibcProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [
 ];
 export const getSigningIbcClientOptions = ({
   defaultTypes = defaultRegistryTypes,
-  options,
 }: {
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
-  options?: SigningStargateClientOptions;
 } = {}): {
   registry: Registry;
   aminoTypes: AminoTypes;
-  options?: SigningStargateClientOptions;
 } => {
   const registry = new Registry([...defaultTypes, ...ibcProtoRegistry]);
   const aminoTypes = new AminoTypes({
@@ -58,13 +53,11 @@ export const getSigningIbcClientOptions = ({
   return {
     registry,
     aminoTypes,
-    options,
   };
 };
 export const getSigningIbcClient = async ({
   rpcEndpoint,
   signer,
-  options,
   defaultTypes = defaultRegistryTypes,
 }: {
   rpcEndpoint: string | HttpEndpoint;
@@ -73,7 +66,6 @@ export const getSigningIbcClient = async ({
 }) => {
   const { registry, aminoTypes } = getSigningIbcClientOptions({
     defaultTypes,
-    options,
   });
   const client = await SigningStargateClient.connectWithSigner(
     rpcEndpoint,
@@ -81,7 +73,6 @@ export const getSigningIbcClient = async ({
     {
       registry: registry as any,
       aminoTypes,
-      ...options,
     }
   );
   return client;

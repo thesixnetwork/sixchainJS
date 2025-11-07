@@ -50,8 +50,14 @@ const main = async () => {
       const signer = actionSigner.actionSigner;
       console.log("Actor Address:", signer.actorAddress);
       console.log("Owner Address:", signer.ownerAddress);
-      console.log("Required Confirmation:", signer.requiredConfirmation?.toString());
-      console.log("Creation Block Height:", signer.creationBlockHeight?.toString());
+      console.log(
+        "Required Confirmation:",
+        signer.requiredConfirmation?.toString()
+      );
+      console.log(
+        "Creation Block Height:",
+        signer.creationBlockHeight?.toString()
+      );
       console.log("Expire At:", signer.expireAt);
       console.log("Creator:", signer.creator);
 

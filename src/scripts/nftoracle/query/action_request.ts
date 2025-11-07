@@ -32,9 +32,10 @@ const main = async () => {
 
   try {
     // Query specific action request
-    const actionRequest = await queryClient.sixprotocol.nftoracle.actionOracleRequest({
-      id: parseInt(ACTION_REQUEST_ID),
-    });
+    const actionRequest =
+      await queryClient.sixprotocol.nftoracle.actionOracleRequest({
+        id: parseInt(ACTION_REQUEST_ID),
+      });
 
     console.log(`\n=== Action Request Details ===`);
     if (actionRequest.actionOracleRequest) {

@@ -42,7 +42,10 @@ const main = async () => {
       console.log("Owner Address:", signer.ownerAddress);
       console.log("Signer Address:", signer.signerAddress);
       console.log("Expire At:", signer.expireAt);
-      console.log("Creation Block Height:", signer.creationBlockHeight?.toString());
+      console.log(
+        "Creation Block Height:",
+        signer.creationBlockHeight?.toString()
+      );
       console.log("Creator:", signer.creator);
 
       // Display additional signer fields if they exist

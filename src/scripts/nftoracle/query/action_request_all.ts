@@ -26,26 +26,37 @@ const main = async () => {
 
   try {
     // Query all action requests
-    const actionRequests = await queryClient.sixprotocol.nftoracle.actionRequestAll({
-      pagination: {
-        limit: parseInt(LIMIT),
-        offset: 0,
-        key: new Uint8Array(),
-        countTotal: true,
-        reverse: false,
-      },
-    });
+    const actionRequests =
+      await queryClient.sixprotocol.nftoracle.actionRequestAll({
+        pagination: {
+          limit: parseInt(LIMIT),
+          offset: 0,
+          key: new Uint8Array(),
+          countTotal: true,
+          reverse: false,
+        },
+      });
 
     console.log(`\n=== All Action Requests ===`);
-    if (actionRequests.actionOracleRequest && actionRequests.actionOracleRequest.length > 0) {
-      console.log(`Total found: ${actionRequests.pagination?.total?.toString() || "Unknown"}`);
-      console.log(`Showing: ${actionRequests.actionOracleRequest.length} requests\n`);
+    if (
+      actionRequests.actionOracleRequest &&
+      actionRequests.actionOracleRequest.length > 0
+    ) {
+      console.log(
+        `Total found: ${actionRequests.pagination?.total?.toString() || "Unknown"}`
+      );
+      console.log(
+        `Showing: ${actionRequests.actionOracleRequest.length} requests\n`
+      );
 
       actionRequests.actionOracleRequest.forEach((request, index) => {
         console.log(`--- Action Request ${index + 1} ---`);
         console.log("ID:", request.id?.toString());
         console.log("VM:", request.vm);
-        console.log("Base64 Action Signature:", request.base64ActionSignature?.substring(0, 50) + "...");
+        console.log(
+          "Base64 Action Signature:",
+          request.base64ActionSignature?.substring(0, 50) + "..."
+        );
         console.log("Required Confirm:", request.requiredConfirm?.toString());
         console.log("Current Confirm:", request.currentConfirm?.toString());
         console.log("Status:", request.status);
@@ -65,14 +76,20 @@ const main = async () => {
         console.log("");
       });
 
-      if (actionRequests.pagination?.nextKey && actionRequests.pagination.nextKey.length > 0) {
+      if (
+        actionRequests.pagination?.nextKey &&
+        actionRequests.pagination.nextKey.length > 0
+      ) {
         console.log("More results available. Use pagination to fetch more.");
       }
     } else {
       console.log("No action requests found");
     }
   } catch (error: any) {
-    console.error("Error querying all action requests:", error.message || error);
+    console.error(
+      "Error querying all action requests:",
+      error.message || error
+    );
   }
 };
 

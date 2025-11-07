@@ -26,20 +26,28 @@ const main = async () => {
 
   try {
     // Query all action signer configs
-    const actionSignerConfigs = await queryClient.sixprotocol.nftoracle.actionSignerConfigAll({
-      pagination: {
-        limit: parseInt(LIMIT),
-        offset: 0,
-        key: new Uint8Array(),
-        countTotal: true,
-        reverse: false,
-      },
-    });
+    const actionSignerConfigs =
+      await queryClient.sixprotocol.nftoracle.actionSignerConfigAll({
+        pagination: {
+          limit: parseInt(LIMIT),
+          offset: 0,
+          key: new Uint8Array(),
+          countTotal: true,
+          reverse: false,
+        },
+      });
 
     console.log(`\n=== All Action Signer Configs ===`);
-    if (actionSignerConfigs.actionSignerConfig && actionSignerConfigs.actionSignerConfig.length > 0) {
-      console.log(`Total found: ${actionSignerConfigs.pagination?.total?.toString() || "Unknown"}`);
-      console.log(`Showing: ${actionSignerConfigs.actionSignerConfig.length} configs\n`);
+    if (
+      actionSignerConfigs.actionSignerConfig &&
+      actionSignerConfigs.actionSignerConfig.length > 0
+    ) {
+      console.log(
+        `Total found: ${actionSignerConfigs.pagination?.total?.toString() || "Unknown"}`
+      );
+      console.log(
+        `Showing: ${actionSignerConfigs.actionSignerConfig.length} configs\n`
+      );
 
       actionSignerConfigs.actionSignerConfig.forEach((config, index) => {
         console.log(`--- Action Signer Config ${index + 1} ---`);
@@ -52,14 +60,20 @@ const main = async () => {
         console.log("");
       });
 
-      if (actionSignerConfigs.pagination?.nextKey && actionSignerConfigs.pagination.nextKey.length > 0) {
+      if (
+        actionSignerConfigs.pagination?.nextKey &&
+        actionSignerConfigs.pagination.nextKey.length > 0
+      ) {
         console.log("More results available. Use pagination to fetch more.");
       }
     } else {
       console.log("No action signer configs found");
     }
   } catch (error: any) {
-    console.error("Error querying all action signer configs:", error.message || error);
+    console.error(
+      "Error querying all action signer configs:",
+      error.message || error
+    );
   }
 };
 

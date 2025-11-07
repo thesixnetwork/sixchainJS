@@ -181,7 +181,7 @@ const main = async () => {
     }
   );
 
-   if (txResponse.code !== 0) {
+  if (txResponse.code !== 0) {
     console.error(`Error minting NFT: ${txResponse.rawLog}`);
   } else {
     console.log(

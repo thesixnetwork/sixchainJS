@@ -41,12 +41,21 @@ const main = async () => {
       console.log("ID:", mintRequest.mintRequest.id?.toString());
       console.log("NFT Schema Code:", mintRequest.mintRequest.nftSchemaCode);
       console.log("Token ID:", mintRequest.mintRequest.tokenId);
-      console.log("Required Confirm:", mintRequest.mintRequest.requiredConfirm?.toString());
-      console.log("Current Confirm:", mintRequest.mintRequest.currentConfirm?.toString());
+      console.log(
+        "Required Confirm:",
+        mintRequest.mintRequest.requiredConfirm?.toString()
+      );
+      console.log(
+        "Current Confirm:",
+        mintRequest.mintRequest.currentConfirm?.toString()
+      );
       console.log("Status:", mintRequest.mintRequest.status);
       console.log("Creator:", mintRequest.mintRequest.creator);
 
-      if (mintRequest.mintRequest.responses && mintRequest.mintRequest.responses.length > 0) {
+      if (
+        mintRequest.mintRequest.responses &&
+        mintRequest.mintRequest.responses.length > 0
+      ) {
         console.log("\n=== Responses ===");
         mintRequest.mintRequest.responses.forEach((response, index) => {
           console.log(`Response ${index + 1}:`);

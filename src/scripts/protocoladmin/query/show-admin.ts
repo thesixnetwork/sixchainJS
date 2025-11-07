@@ -50,7 +50,9 @@ const main = async () => {
       console.log("Admin found:");
       console.log(JSON.stringify(result.admin, null, 2));
     } else {
-      console.log(`Admin "${ADMIN_ADDRESS}" not found in group "${GROUP_NAME}"`);
+      console.log(
+        `Admin "${ADMIN_ADDRESS}" not found in group "${GROUP_NAME}"`
+      );
     }
   } catch (error) {
     console.error("Error querying admin:", error);

@@ -72,8 +72,6 @@ const main = async () => {
           { name: "group_three", value: "0" },
         ],
       });
-
-    
   } else {
     action =
       sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
@@ -89,7 +87,6 @@ const main = async () => {
           { name: "group_three", value: "0" },
         ],
       });
-    
   }
 
   msgArray.push(action);

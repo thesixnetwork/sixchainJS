@@ -52,7 +52,6 @@ const main = async () => {
   schemaCode = `${org_name}.${_name}`;
 
   const ref_id = uuidv4();
-  
 
   const action =
     sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({

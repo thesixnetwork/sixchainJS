@@ -79,8 +79,8 @@ const queryClient = await cosmos.ClientFactory.createRPCQueryClient({
 
 // Query account balance
 const balance = await queryClient.cosmos.bank.v1beta1.balance({
-  address: "6x1myrlxmmasv6yq4axrxmdswj9kv5gc0ppx95rmq", 
-  denom: "usix"
+  address: "6x1myrlxmmasv6yq4axrxmdswj9kv5gc0ppx95rmq",
+  denom: "usix",
 });
 
 console.log(`Balance: ${balance.balance?.amount} ${balance.balance?.denom}`);
@@ -144,14 +144,17 @@ import { cosmos } from "@sixnetwork/sixchain-sdk";
 // Bank operations
 const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;
 
-// Gov operations  
-const { deposit, submitProposal, vote } = cosmos.gov.v1beta1.MessageComposer.withTypeUrl;
+// Gov operations
+const { deposit, submitProposal, vote } =
+  cosmos.gov.v1beta1.MessageComposer.withTypeUrl;
 
 // Staking operations
-const { delegate, undelegate, beginRedelegate } = cosmos.staking.v1beta1.MessageComposer.withTypeUrl;
+const { delegate, undelegate, beginRedelegate } =
+  cosmos.staking.v1beta1.MessageComposer.withTypeUrl;
 
 // Distribution operations
-const { withdrawDelegatorReward, setWithdrawAddress } = cosmos.distribution.v1beta1.MessageComposer.withTypeUrl;
+const { withdrawDelegatorReward, setWithdrawAddress } =
+  cosmos.distribution.v1beta1.MessageComposer.withTypeUrl;
 ```
 
 #### Six Protocol Messages
@@ -160,18 +163,12 @@ const { withdrawDelegatorReward, setWithdrawAddress } = cosmos.distribution.v1be
 import { sixprotocol } from "@sixnetwork/sixchain-sdk";
 
 // NFT Manager operations
-const { 
-  changeSchemaOwner, 
-  addSystemActioner,
-  removeSystemActioner 
-} = sixprotocol.nftmngr.MessageComposer.withTypeUrl;
+const { changeSchemaOwner, addSystemActioner, removeSystemActioner } =
+  sixprotocol.nftmngr.MessageComposer.withTypeUrl;
 
-// Token Factory operations  
-const {
-  createToken,
-  mint, 
-  burn
-} = sixprotocol.tokenmngr.MessageComposer.withTypeUrl;
+// Token Factory operations
+const { createToken, mint, burn } =
+  sixprotocol.tokenmngr.MessageComposer.withTypeUrl;
 ```
 
 ## Connecting with Wallets and Signing Messages
@@ -185,6 +182,7 @@ Here are the docs on [creating signers](https://docs.cosmology.zone/cosmos-kit) 
 Use the appropriate signing client based on which modules you need:
 
 #### For Cosmos modules:
+
 ```js
 import { getSigningCosmosClient } from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
@@ -204,6 +202,7 @@ const client = await getSigningCosmosClient({
 ```
 
 #### For Six Protocol modules:
+
 ```js
 import { getSigningSixprotocolClient } from "@sixnetwork/sixchain-sdk";
 
@@ -259,11 +258,11 @@ Now that you have your signing client, you can broadcast messages:
 #### Example: Send Tokens (see `src/scripts/bank/tx/send.ts`)
 
 ```js
-import { 
-  getSigningCosmosClient, 
-  cosmos, 
+import {
+  getSigningCosmosClient,
+  cosmos,
   signAndBroadcastWithRetry,
-  COMMON_GAS_LIMITS 
+  COMMON_GAS_LIMITS,
 } from "@sixnetwork/sixchain-sdk";
 
 const send = cosmos.bank.v1beta1.MessageComposer.withTypeUrl.send({
@@ -294,13 +293,17 @@ const txResponse = await signAndBroadcastWithRetry(
 #### Example: Transfer NFT Schema Ownership (see `src/scripts/nftmngr/tx/transfer_schema.ts`)
 
 ```js
-import { getSigningSixprotocolClient, sixprotocol } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+} from "@sixnetwork/sixchain-sdk";
 
-const changeOwner = sixprotocol.nftmngr.MessageComposer.withTypeUrl.changeSchemaOwner({
-  creator: address,
-  nftSchemaCode: "your-schema-code",
-  newOwner: "6x1newowneraddress...",
-});
+const changeOwner =
+  sixprotocol.nftmngr.MessageComposer.withTypeUrl.changeSchemaOwner({
+    creator: address,
+    nftSchemaCode: "your-schema-code",
+    newOwner: "6x1newowneraddress...",
+  });
 
 const txResponse = await client.signAndBroadcast(
   address,
@@ -354,7 +357,7 @@ bun run src/scripts/nftmngr/tx/transfer_schema.ts fivenet
 
 - **`auth/`** - Authentication queries and transactions
 - **`authz/`** - Authorization grants, revokes, and executions
-- **`bank/`** - Token transfers and balance queries  
+- **`bank/`** - Token transfers and balance queries
 - **`gov/`** - Governance proposals, voting, and deposits
 - **`nftmngr/`** - NFT schema management and queries
 - **`tokenfactory/`** - Token creation and management

@@ -100,7 +100,8 @@ const main = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.NFT_ORACLE.SUBMIT_SYNC_ACTION_SIGNER || 200000,
+      fallbackGas:
+        COMMON_GAS_LIMITS.NFT_ORACLE.SUBMIT_SYNC_ACTION_SIGNER || 200000,
       denom: "usix",
     }
   );

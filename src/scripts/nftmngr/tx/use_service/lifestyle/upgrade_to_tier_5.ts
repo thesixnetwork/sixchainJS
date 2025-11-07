@@ -58,33 +58,35 @@ const main = async () => {
   let action: any;
 
   if (senior) {
-    action = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
-      creator: address,
-      nftSchemaCode: schemaCode,
-      tokenId: TOKENID,
-      action: "extend_privilege",
-      refId: ref_id,
-      parameters: [
-        { name: "tier", value: "5" },
-        { name: "group_one", value: "5" },
-        { name: "group_two", value: "0" },
-        { name: "group_three", value: "0" },
-      ],
-    });
+    action =
+      sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
+        creator: address,
+        nftSchemaCode: schemaCode,
+        tokenId: TOKENID,
+        action: "extend_privilege",
+        refId: ref_id,
+        parameters: [
+          { name: "tier", value: "5" },
+          { name: "group_one", value: "5" },
+          { name: "group_two", value: "0" },
+          { name: "group_three", value: "0" },
+        ],
+      });
   } else {
-    action = sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
-      creator: address,
-      nftSchemaCode: schemaCode,
-      tokenId: TOKENID,
-      action: "extend_privilege",
-      refId: ref_id,
-      parameters: [
-        { name: "tier", value: "5" },
-        { name: "group_one", value: "0" },
-        { name: "group_two", value: "5" },
-        { name: "group_three", value: "0" },
-      ],
-    });
+    action =
+      sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
+        creator: address,
+        nftSchemaCode: schemaCode,
+        tokenId: TOKENID,
+        action: "extend_privilege",
+        refId: ref_id,
+        parameters: [
+          { name: "tier", value: "5" },
+          { name: "group_one", value: "0" },
+          { name: "group_two", value: "5" },
+          { name: "group_three", value: "0" },
+        ],
+      });
   }
 
   msgArray.push(action);

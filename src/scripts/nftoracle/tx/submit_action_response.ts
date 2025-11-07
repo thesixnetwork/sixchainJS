@@ -53,7 +53,9 @@ const main = async () => {
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
-  console.log(`Submitting action response for request ID: ${ACTION_REQUEST_ID}`);
+  console.log(
+    `Submitting action response for request ID: ${ACTION_REQUEST_ID}`
+  );
 
   // Submit action response message
   const submitActionResponse =
@@ -74,7 +76,8 @@ const main = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.NFT_ORACLE.SUBMIT_ACTION_RESPONSE || 200000,
+      fallbackGas:
+        COMMON_GAS_LIMITS.NFT_ORACLE.SUBMIT_ACTION_RESPONSE || 200000,
       denom: "usix",
     }
   );

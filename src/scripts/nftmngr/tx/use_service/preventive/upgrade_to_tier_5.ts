@@ -12,7 +12,6 @@ import { v4 as uuidv4 } from "uuid";
 import { getConnectorConfig } from "@client-util";
 dotenv.config();
 
-
 const SENIOR = process.argv[4]!;
 const senior = Boolean(SENIOR);
 
@@ -21,7 +20,6 @@ const main = async () => {
   const TOKENID = process.argv[3];
   const SENIOR = process.argv[4]!;
   const senior = Boolean(SENIOR);
-  
 
   if (!NETWORK) {
     throw new Error(
@@ -76,8 +74,6 @@ const main = async () => {
           { name: "group_three", value: "0" },
         ],
       });
-
-    
   } else {
     action =
       sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
@@ -93,7 +89,6 @@ const main = async () => {
           { name: "group_three", value: "0" },
         ],
       });
-    
   }
 
   msgArray.push(action);
@@ -118,7 +113,8 @@ const main = async () => {
     console.log(
       `Upgrade to Tier 5 successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
-  }};
+  }
+};
 
 main().catch((err) => {
   console.error("Error in main execution:", err);

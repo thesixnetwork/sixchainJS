@@ -31,7 +31,7 @@ const main = async () => {
       result.group.forEach((group, index) => {
         console.log(`${index + 1}. Group:`, JSON.stringify(group, null, 2));
       });
-      
+
       if (result.pagination) {
         console.log("\n=== Pagination Info ===");
         console.log("Pagination:", JSON.stringify(result.pagination, null, 2));

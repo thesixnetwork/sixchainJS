@@ -33,7 +33,9 @@ const main = async () => {
     rpcEndpoint: rpcUrl,
   });
 
-  console.log(`Querying mint permission for token: ${TOKEN_NAME}, address: ${ADDRESS}...`);
+  console.log(
+    `Querying mint permission for token: ${TOKEN_NAME}, address: ${ADDRESS}...`
+  );
 
   try {
     const response = await client.sixprotocol.tokenmngr.mintperm({

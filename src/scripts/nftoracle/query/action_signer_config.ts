@@ -32,9 +32,10 @@ const main = async () => {
 
   try {
     // Query specific action signer config
-    const actionSignerConfig = await queryClient.sixprotocol.nftoracle.actionSignerConfig({
-      chain: CHAIN,
-    });
+    const actionSignerConfig =
+      await queryClient.sixprotocol.nftoracle.actionSignerConfig({
+        chain: CHAIN,
+      });
 
     console.log(`\n=== Action Signer Config Details ===`);
     if (actionSignerConfig.actionSignerConfig) {
@@ -55,7 +56,10 @@ const main = async () => {
       console.log("Action signer config not found for this chain");
     }
   } catch (error: any) {
-    console.error("Error querying action signer config:", error.message || error);
+    console.error(
+      "Error querying action signer config:",
+      error.message || error
+    );
   }
 };
 

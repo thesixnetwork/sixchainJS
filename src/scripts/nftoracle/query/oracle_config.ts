@@ -24,19 +24,30 @@ const main = async () => {
 
   try {
     // Query oracle configuration
-    const oracleConfig = await queryClient.sixprotocol.nftoracle.oracleConfig({});
+    const oracleConfig = await queryClient.sixprotocol.nftoracle.oracleConfig(
+      {}
+    );
 
     console.log(`\n=== Oracle Configuration ===`);
     if (oracleConfig.oracleConfig) {
       const config = oracleConfig.oracleConfig;
-      console.log("Minimum Confirmation:", config.minimumConfirmation?.toString());
+      console.log(
+        "Minimum Confirmation:",
+        config.minimumConfirmation?.toString()
+      );
 
-      if (config.requiredConfirmTaskList && config.requiredConfirmTaskList.length > 0) {
+      if (
+        config.requiredConfirmTaskList &&
+        config.requiredConfirmTaskList.length > 0
+      ) {
         console.log("\n=== Required Confirmation Task List ===");
         config.requiredConfirmTaskList.forEach((task, index) => {
           console.log(`Task ${index + 1}:`);
           console.log("  Task:", task.task);
-          console.log("  Required Confirmation:", task.requiredConfirmation?.toString());
+          console.log(
+            "  Required Confirmation:",
+            task.requiredConfirmation?.toString()
+          );
         });
       } else {
         console.log("\nNo required confirmation tasks found");
@@ -47,8 +58,14 @@ const main = async () => {
         config.chainConfigs.forEach((chainConfig, index) => {
           console.log(`Chain Config ${index + 1}:`);
           console.log("  Chain:", chainConfig.chain);
-          console.log("  Min Confirmation:", chainConfig.minConfirmation?.toString());
-          console.log("  Confirmation Block Count:", chainConfig.confirmationBlockCount?.toString());
+          console.log(
+            "  Min Confirmation:",
+            chainConfig.minConfirmation?.toString()
+          );
+          console.log(
+            "  Confirmation Block Count:",
+            chainConfig.confirmationBlockCount?.toString()
+          );
         });
       } else {
         console.log("\nNo chain configurations found");
@@ -63,7 +80,10 @@ const main = async () => {
       console.log("Oracle configuration not found");
     }
   } catch (error: any) {
-    console.error("Error querying oracle configuration:", error.message || error);
+    console.error(
+      "Error querying oracle configuration:",
+      error.message || error
+    );
   }
 };
 

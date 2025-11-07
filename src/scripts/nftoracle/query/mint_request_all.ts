@@ -26,19 +26,23 @@ const main = async () => {
 
   try {
     // Query all mint requests
-    const mintRequests = await queryClient.sixprotocol.nftoracle.mintRequestAll({
-      pagination: {
-        limit: parseInt(LIMIT),
-        offset: 0,
-        key: new Uint8Array(),
-        countTotal: true,
-        reverse: false,
-      },
-    });
+    const mintRequests = await queryClient.sixprotocol.nftoracle.mintRequestAll(
+      {
+        pagination: {
+          limit: parseInt(LIMIT),
+          offset: 0,
+          key: new Uint8Array(),
+          countTotal: true,
+          reverse: false,
+        },
+      }
+    );
 
     console.log(`\n=== All Mint Requests ===`);
     if (mintRequests.mintRequest && mintRequests.mintRequest.length > 0) {
-      console.log(`Total found: ${mintRequests.pagination?.total?.toString() || "Unknown"}`);
+      console.log(
+        `Total found: ${mintRequests.pagination?.total?.toString() || "Unknown"}`
+      );
       console.log(`Showing: ${mintRequests.mintRequest.length} requests\n`);
 
       mintRequests.mintRequest.forEach((request, index) => {
@@ -59,7 +63,10 @@ const main = async () => {
         console.log("");
       });
 
-      if (mintRequests.pagination?.nextKey && mintRequests.pagination.nextKey.length > 0) {
+      if (
+        mintRequests.pagination?.nextKey &&
+        mintRequests.pagination.nextKey.length > 0
+      ) {
         console.log("More results available. Use pagination to fetch more.");
       }
     } else {

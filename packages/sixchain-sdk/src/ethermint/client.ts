@@ -4,8 +4,6 @@ import {
   defaultRegistryTypes,
   AminoTypes,
   SigningStargateClient,
-  SigningStargateClientOptions,
-  GasPrice,
 } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 import * as ethermintEvmV1TxRegistry from "./evm/v1/tx.registry";
@@ -22,14 +20,11 @@ export const ethermintProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [
 ];
 export const getSigningEthermintClientOptions = ({
   defaultTypes = defaultRegistryTypes,
-  options,
 }: {
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
-  options?: SigningStargateClientOptions;
 } = {}): {
   registry: Registry;
   aminoTypes: AminoTypes;
-  options?: SigningStargateClientOptions;
 } => {
   const registry = new Registry([...defaultTypes, ...ethermintProtoRegistry]);
   const aminoTypes = new AminoTypes({
@@ -38,23 +33,19 @@ export const getSigningEthermintClientOptions = ({
   return {
     registry,
     aminoTypes,
-    options,
   };
 };
 export const getSigningEthermintClient = async ({
   rpcEndpoint,
   signer,
-  options,
   defaultTypes = defaultRegistryTypes,
 }: {
   rpcEndpoint: string | HttpEndpoint;
   signer: OfflineSigner;
-  options?: SigningStargateClientOptions;
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => {
   const { registry, aminoTypes } = getSigningEthermintClientOptions({
     defaultTypes,
-    options,
   });
   const client = await SigningStargateClient.connectWithSigner(
     rpcEndpoint,
@@ -62,7 +53,6 @@ export const getSigningEthermintClient = async ({
     {
       registry: registry as any,
       aminoTypes,
-      ...options,
     }
   );
   return client;

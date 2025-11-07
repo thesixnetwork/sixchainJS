@@ -66,12 +66,14 @@ const main = async () => {
 
   // Submit verify collection owner message
   const submitVerifyCollectionOwner =
-    sixprotocol.nftoracle.MessageComposer.withTypeUrl.submitVerifyCollectionOwner({
-      creator: address,
-      verifyRequestID: parseInt(VERIFY_REQUEST_ID),
-      nftSchemaCode: NFT_SCHEMA_CODE,
-      base64OriginContractInfo: BASE64_ORIGIN_CONTRACT_INFO,
-    });
+    sixprotocol.nftoracle.MessageComposer.withTypeUrl.submitVerifyCollectionOwner(
+      {
+        creator: address,
+        verifyRequestID: parseInt(VERIFY_REQUEST_ID),
+        nftSchemaCode: NFT_SCHEMA_CODE,
+        base64OriginContractInfo: BASE64_ORIGIN_CONTRACT_INFO,
+      }
+    );
 
   const msgArray = [submitVerifyCollectionOwner];
 
@@ -84,13 +86,16 @@ const main = async () => {
     {
       gasMultiplier: 1.5,
       gasPrice: 1.25,
-      fallbackGas: COMMON_GAS_LIMITS.NFT_ORACLE.SUBMIT_VERIFY_COLLECTION_OWNER || 200000,
+      fallbackGas:
+        COMMON_GAS_LIMITS.NFT_ORACLE.SUBMIT_VERIFY_COLLECTION_OWNER || 200000,
       denom: "usix",
     }
   );
 
   if (txResponse.code !== 0) {
-    console.error(`Error submitting verify collection owner: ${txResponse.rawLog}`);
+    console.error(
+      `Error submitting verify collection owner: ${txResponse.rawLog}`
+    );
     return false;
   } else {
     console.log(

@@ -26,27 +26,36 @@ const main = async () => {
 
   try {
     // Query all action signers
-    const actionSigners = await queryClient.sixprotocol.nftoracle.actionSignerAll({
-      pagination: {
-        limit: parseInt(LIMIT),
-        offset: 0,
-        key: new Uint8Array(),
-        countTotal: true,
-        reverse: false,
-      },
-    });
+    const actionSigners =
+      await queryClient.sixprotocol.nftoracle.actionSignerAll({
+        pagination: {
+          limit: parseInt(LIMIT),
+          offset: 0,
+          key: new Uint8Array(),
+          countTotal: true,
+          reverse: false,
+        },
+      });
 
     console.log(`\n=== All Action Signers ===`);
     if (actionSigners.actionSigner && actionSigners.actionSigner.length > 0) {
-      console.log(`Total found: ${actionSigners.pagination?.total?.toString() || "Unknown"}`);
+      console.log(
+        `Total found: ${actionSigners.pagination?.total?.toString() || "Unknown"}`
+      );
       console.log(`Showing: ${actionSigners.actionSigner.length} signers\n`);
 
       actionSigners.actionSigner.forEach((signer, index) => {
         console.log(`--- Action Signer ${index + 1} ---`);
         console.log("Actor Address:", signer.actorAddress);
         console.log("Owner Address:", signer.ownerAddress);
-        console.log("Required Confirmation:", signer.requiredConfirmation?.toString());
-        console.log("Creation Block Height:", signer.creationBlockHeight?.toString());
+        console.log(
+          "Required Confirmation:",
+          signer.requiredConfirmation?.toString()
+        );
+        console.log(
+          "Creation Block Height:",
+          signer.creationBlockHeight?.toString()
+        );
         console.log("Expire At:", signer.expireAt);
         console.log("Creator:", signer.creator);
 
@@ -64,7 +73,10 @@ const main = async () => {
         console.log("");
       });
 
-      if (actionSigners.pagination?.nextKey && actionSigners.pagination.nextKey.length > 0) {
+      if (
+        actionSigners.pagination?.nextKey &&
+        actionSigners.pagination.nextKey.length > 0
+      ) {
         console.log("More results available. Use pagination to fetch more.");
       }
     } else {

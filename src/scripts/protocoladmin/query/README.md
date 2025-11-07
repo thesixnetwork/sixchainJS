@@ -5,6 +5,7 @@ This directory contains query scripts for the protocoladmin module that mirror t
 ## Available Commands
 
 ### 1. Parameters Query
+
 Query the parameters of the protocoladmin module.
 
 ```bash
@@ -16,6 +17,7 @@ yarn ts-node ./scripts/protocoladmin/query/params.ts fivenet
 ```
 
 ### 2. List All Groups
+
 List all protocol admin groups.
 
 ```bash
@@ -27,6 +29,7 @@ yarn ts-node ./scripts/protocoladmin/query/list-group.ts fivenet
 ```
 
 ### 3. Show Specific Group
+
 Show details of a specific group by name.
 
 ```bash
@@ -38,9 +41,11 @@ yarn ts-node ./scripts/protocoladmin/query/show-group.ts fivenet [group_name]
 ```
 
 **Parameters:**
+
 - `group_name`: The name of the group to query
 
 ### 4. List All Admins
+
 List all protocol admins across all groups.
 
 ```bash
@@ -52,6 +57,7 @@ yarn ts-node ./scripts/protocoladmin/query/list-admin.ts fivenet
 ```
 
 ### 5. Show Specific Admin
+
 Show details of a specific admin in a specific group.
 
 ```bash
@@ -63,10 +69,12 @@ yarn ts-node ./scripts/protocoladmin/query/show-admin.ts fivenet [group_name] [a
 ```
 
 **Parameters:**
+
 - `group_name`: The name of the group
 - `admin_address`: The address of the admin to query
 
 ### 6. List Admins of Group
+
 List all admins that belong to a specific group.
 
 ```bash
@@ -78,26 +86,28 @@ yarn ts-node ./scripts/protocoladmin/query/list-admin-of-group.ts fivenet [group
 ```
 
 **Parameters:**
+
 - `group_name`: The name of the group to query admins for
 
 ## Network Options
 
 All scripts accept the following network options:
+
 - `local`: Local development network
-- `fivenet`: Testnet environment  
+- `fivenet`: Testnet environment
 - `sixnet`: Mainnet environment
 
 ## CLI Command Mapping
 
 These scripts correspond to the following CLI commands:
 
-| Script | CLI Command |
-|--------|-------------|
-| `params.ts` | `sixd query protocoladmin params` |
-| `list-group.ts` | `sixd query protocoladmin list-group` |
-| `show-group.ts` | `sixd query protocoladmin show-group [name]` |
-| `list-admin.ts` | `sixd query protocoladmin list-admin` |
-| `show-admin.ts` | `sixd query protocoladmin show-admin [group] [admin]` |
+| Script                   | CLI Command                                            |
+| ------------------------ | ------------------------------------------------------ |
+| `params.ts`              | `sixd query protocoladmin params`                      |
+| `list-group.ts`          | `sixd query protocoladmin list-group`                  |
+| `show-group.ts`          | `sixd query protocoladmin show-group [name]`           |
+| `list-admin.ts`          | `sixd query protocoladmin list-admin`                  |
+| `show-admin.ts`          | `sixd query protocoladmin show-admin [group] [admin]`  |
 | `list-admin-of-group.ts` | `sixd query protocoladmin list-admin-of-group [group]` |
 
 ## Examples

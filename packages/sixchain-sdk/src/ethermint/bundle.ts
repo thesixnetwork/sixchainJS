@@ -14,16 +14,16 @@ import * as _124 from "./types/v1/account";
 import * as _125 from "./types/v1/dynamic_fee";
 import * as _126 from "./types/v1/indexer";
 import * as _127 from "./types/v1/web3";
-import * as _310 from "./evm/v1/tx.amino";
-import * as _311 from "./feemarket/v1/tx.amino";
-import * as _312 from "./evm/v1/tx.registry";
-import * as _313 from "./feemarket/v1/tx.registry";
-import * as _314 from "./evm/v1/query.rpc.Query";
-import * as _315 from "./feemarket/v1/query.rpc.Query";
-import * as _316 from "./evm/v1/tx.rpc.msg";
-import * as _317 from "./feemarket/v1/tx.rpc.msg";
-import * as _370 from "./rpc.query";
-import * as _371 from "./rpc.tx";
+import * as _309 from "./evm/v1/tx.amino";
+import * as _310 from "./feemarket/v1/tx.amino";
+import * as _311 from "./evm/v1/tx.registry";
+import * as _312 from "./feemarket/v1/tx.registry";
+import * as _313 from "./evm/v1/query.rpc.Query";
+import * as _314 from "./feemarket/v1/query.rpc.Query";
+import * as _315 from "./evm/v1/tx.rpc.msg";
+import * as _316 from "./feemarket/v1/tx.rpc.msg";
+import * as _369 from "./rpc.query";
+import * as _370 from "./rpc.tx";
 export namespace ethermint {
   export namespace crypto {
     export namespace v1 {
@@ -39,10 +39,10 @@ export namespace ethermint {
       ..._116,
       ..._117,
       ..._118,
-      ..._310,
-      ..._312,
-      ..._314,
-      ..._316,
+      ..._309,
+      ..._311,
+      ..._313,
+      ..._315,
     };
   }
   export namespace feemarket {
@@ -52,10 +52,10 @@ export namespace ethermint {
       ..._121,
       ..._122,
       ..._123,
-      ..._311,
-      ..._313,
-      ..._315,
-      ..._317,
+      ..._310,
+      ..._312,
+      ..._314,
+      ..._316,
     };
   }
   export namespace types {
@@ -67,7 +67,7 @@ export namespace ethermint {
     };
   }
   export const ClientFactory = {
+    ..._369,
     ..._370,
-    ..._371,
   };
 }

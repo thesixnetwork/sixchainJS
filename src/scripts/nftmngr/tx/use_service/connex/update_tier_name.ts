@@ -1,5 +1,4 @@
 import {
-
   getSigningSixprotocolClient,
   sixprotocol,
   COMMON_GAS_LIMITS,
@@ -51,7 +50,6 @@ const main = async () => {
   schemaCode = `${org_name}.${_name}`;
 
   const ref_id = uuidv4();
-  
 
   const action =
     sixprotocol.nftmngr.MessageComposer.withTypeUrl.performActionByAdmin({
@@ -87,8 +85,8 @@ const main = async () => {
     console.log(
       `Update Tier Name successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
-  };
-}
+  }
+};
 main().catch((err) => {
   console.error("Error in main execution:", err);
 });
