@@ -1,6 +1,12 @@
 //@ts-nocheck
 import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
-import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
+import {
+  defaultRegistryTypes,
+  AminoTypes,
+  SigningStargateClient,
+  SigningStargateClientOptions,
+  GasPrice,
+} from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 import * as cosmosAuthV1beta1TxRegistry from "./auth/v1beta1/tx.registry";
 import * as cosmosAuthzV1beta1TxRegistry from "./authz/v1beta1/tx.registry";
@@ -62,9 +68,14 @@ export const cosmosProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [
   ...cosmosUpgradeV1beta1TxRegistry.registry,
   ...cosmosVestingV1beta1TxRegistry.registry,
 ];
-export const getSigningCosmosClientOptions = (): {
+export const getSigningCosmosClientOptions = ({
+  options,
+}: {
+  options?: SigningStargateClientOptions;
+}): {
   registry: Registry;
   aminoTypes: AminoTypes;
+  options?: SigningStargateClientOptions;
 } => {
   const registry = new Registry([...cosmosProtoRegistry]);
   const aminoTypes = new AminoTypes({
@@ -73,22 +84,27 @@ export const getSigningCosmosClientOptions = (): {
   return {
     registry,
     aminoTypes,
+    options,
   };
 };
 export const getSigningCosmosClient = async ({
   rpcEndpoint,
   signer,
+  options,
 }: {
   rpcEndpoint: string | HttpEndpoint;
   signer: OfflineSigner;
+  options?: SigningStargateClientOptions;
 }) => {
-  const { registry, aminoTypes } = getSigningCosmosClientOptions();
+  const { registry, aminoTypes } = getSigningCosmosClientOptions({ options });
   const client = await SigningStargateClient.connectWithSigner(
     rpcEndpoint,
     signer,
     {
       registry: registry as any,
       aminoTypes,
+      aminoTypes,
+      ...options,
     }
   );
   return client;

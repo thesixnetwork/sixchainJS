@@ -21,3 +21,4 @@ export * from "./ibc/client";
 export * from "./sixprotocol/bundle";
 export * from "./sixprotocol/client";
 export * from "./tendermint/bundle";
+export * from "./utils";
