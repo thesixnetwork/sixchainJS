@@ -1,0 +1,593 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
+	"strconv"
+	"time"
+
+	"cosmossdk.io/math"
+	"github.com/cosmos/cosmos-sdk/client"
+	"github.com/cosmos/cosmos-sdk/client/flags"
+	"github.com/cosmos/cosmos-sdk/codec"
+	"github.com/cosmos/cosmos-sdk/codec/types"
+	cryptocodec "github.com/cosmos/cosmos-sdk/crypto/codec"
+	"github.com/cosmos/cosmos-sdk/crypto/hd"
+	"github.com/cosmos/cosmos-sdk/crypto/keyring"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/cosmos/cosmos-sdk/types/tx/signing"
+	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
+	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
+	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
+	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
+	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
+	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
+	"github.com/cosmos/go-bip39"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+
+	// SixProtocol modules
+	nftadminmoduletypes "github.com/thesixnetwork/six-protocol/v4/x/nftadmin/types"
+	nftmngrmoduletypes "github.com/thesixnetwork/six-protocol/v4/x/nftmngr/types"
+	nftoraclemoduletypes "github.com/thesixnetwork/six-protocol/v4/x/nftoracle/types"
+	protocoladminmoduletypes "github.com/thesixnetwork/six-protocol/v4/x/protocoladmin/types"
+	tokenmngrmoduletypes "github.com/thesixnetwork/six-protocol/v4/x/tokenmngr/types"
+)
+
+const (
+	// Network configurations
+	MAINNET_RPC   = "https://sixnet-rpc.sixprotocol.net:443"
+	MAINNET_GRPC  = "sixnet-rpc.sixprotocol.net:9090"
+	MAINNET_CHAIN = "sixnet"
+
+	TESTNET_RPC   = "https://rpc1.fivenet.sixprotocol.net:443"
+	TESTNET_GRPC  = "rpc1.fivenet.sixprotocol.net:9090"
+	TESTNET_CHAIN = "fivenet"
+
+	// SIX Protocol specifics
+	ADDRESS_PREFIX = "6x"
+	DENOM          = "usix"
+	GAS_LIMIT      = uint64(200000)
+	GAS_PRICE      = "1.25"
+
+	// Default recipient address for examples
+	DEFAULT_RECIPIENT = "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp"
+)
+
+type NetworkConfig struct {
+	RPC     string
+	GRPC    string
+	ChainID string
+}
+
+type SixClient struct {
+	config    NetworkConfig
+	keyring   keyring.Keyring
+	clientCtx client.Context
+	conn      *grpc.ClientConn
+}
+
+func init() {
+	// Set SIX Protocol address prefixes
+	config := sdk.GetConfig()
+	config.SetBech32PrefixForAccount(ADDRESS_PREFIX, ADDRESS_PREFIX+"pub")
+	config.SetBech32PrefixForValidator(ADDRESS_PREFIX+"valoper", ADDRESS_PREFIX+"valoperpub")
+	config.SetBech32PrefixForConsensusNode(ADDRESS_PREFIX+"valcons", ADDRESS_PREFIX+"valconspub")
+	config.Seal()
+}
+
+func main() {
+	// Parse command line arguments
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: go run bank.go <network> [command]")
+		fmt.Println("Networks: mainnet, testnet")
+		fmt.Println("Commands: send, balance, multi-send, nft-balance, token-balance")
+		fmt.Println("\nExamples:")
+		fmt.Println("  go run bank.go testnet send")
+		fmt.Println("  go run bank.go testnet balance")
+		fmt.Println("  go run bank.go testnet nft-balance")
+		os.Exit(1)
+	}
+
+	network := os.Args[1]
+	command := "send"
+	if len(os.Args) > 2 {
+		command = os.Args[2]
+	}
+
+	// Get network configuration
+	config := getNetworkConfig(network)
+	if config == nil {
+		log.Fatal("Invalid network. Use 'mainnet' or 'testnet'")
+	}
+
+	// Initialize client
+	client, err := NewSixClient(*config)
+	if err != nil {
+		log.Fatal("Failed to create client:", err)
+	}
+	defer client.Close()
+
+	// Load mnemonic from environment
+	mnemonic := os.Getenv("MNEMONIC")
+	if mnemonic == "" {
+		log.Fatal("MNEMONIC environment variable not set")
+	}
+
+	// Add account to keyring
+	err = client.AddAccount("main", mnemonic)
+	if err != nil {
+		log.Fatal("Failed to add account:", err)
+	}
+
+	// Execute command
+	switch command {
+	case "send":
+		err = client.SendTokens()
+	case "balance":
+		err = client.QueryBalance()
+	case "multi-send":
+		err = client.MultiSend()
+	case "nft-balance":
+		err = client.QueryNFTBalance()
+	case "token-balance":
+		err = client.QueryTokenBalance()
+	default:
+		log.Fatal("Unknown command:", command)
+	}
+
+	if err != nil {
+		log.Fatal("Command failed:", err)
+	}
+}
+
+func getNetworkConfig(network string) *NetworkConfig {
+	switch network {
+	case "mainnet":
+		return &NetworkConfig{
+			RPC:     MAINNET_RPC,
+			GRPC:    MAINNET_GRPC,
+			ChainID: MAINNET_CHAIN,
+		}
+	case "testnet":
+		return &NetworkConfig{
+			RPC:     TESTNET_RPC,
+			GRPC:    TESTNET_GRPC,
+			ChainID: TESTNET_CHAIN,
+		}
+	default:
+		return nil
+	}
+}
+
+func NewSixClient(config NetworkConfig) (*SixClient, error) {
+	// Create codec and registry with all SixProtocol modules
+	registry := types.NewInterfaceRegistry()
+
+	// Register standard Cosmos modules
+	authtypes.RegisterInterfaces(registry)
+	banktypes.RegisterInterfaces(registry)
+	govtypes.RegisterInterfaces(registry)
+	stakingtypes.RegisterInterfaces(registry)
+	cryptocodec.RegisterInterfaces(registry)
+
+	// Register SixProtocol modules
+	nftmngrmoduletypes.RegisterInterfaces(registry)
+	tokenmngrmoduletypes.RegisterInterfaces(registry)
+	nftadminmoduletypes.RegisterInterfaces(registry)
+	nftoraclemoduletypes.RegisterInterfaces(registry)
+	protocoladminmoduletypes.RegisterInterfaces(registry)
+
+	cdc := codec.NewProtoCodec(registry)
+
+	// Create legacy amino codec for keyring
+	amino := codec.NewLegacyAmino()
+
+	// Create keyring with proper codec
+	kr := keyring.NewInMemory(cdc)
+
+	// Connect to gRPC
+	conn, err := grpc.Dial(config.GRPC, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		return nil, fmt.Errorf("failed to connect to gRPC: %w", err)
+	}
+
+	// Create TxConfig
+	txConfig := authtx.NewTxConfig(cdc, authtx.DefaultSignModes)
+
+	// Create client context
+	clientCtx := client.Context{}.
+		WithCodec(cdc).
+		WithInterfaceRegistry(registry).
+		WithTxConfig(txConfig).
+		WithLegacyAmino(amino).
+		WithAccountRetriever(authtypes.AccountRetriever{}).
+		WithBroadcastMode(flags.BroadcastSync).
+		WithKeyring(kr).
+		WithChainID(config.ChainID).
+		WithGRPCClient(conn).
+		WithNodeURI(config.RPC)
+
+	return &SixClient{
+		config:    config,
+		keyring:   kr,
+		clientCtx: clientCtx,
+		conn:      conn,
+	}, nil
+}
+
+func (c *SixClient) Close() {
+	if c.conn != nil {
+		c.conn.Close()
+	}
+}
+
+func (c *SixClient) AddAccount(name, mnemonic string) error {
+	if !bip39.IsMnemonicValid(mnemonic) {
+		return fmt.Errorf("invalid mnemonic")
+	}
+
+	_, err := c.keyring.NewAccount(name, mnemonic, "", hd.CreateHDPath(118, 0, 0).String(), hd.Secp256k1)
+	return err
+}
+
+func (c *SixClient) GetAddress(keyName string) (sdk.AccAddress, error) {
+	info, err := c.keyring.Key(keyName)
+	if err != nil {
+		return nil, err
+	}
+	return info.GetAddress()
+}
+
+func (c *SixClient) SendTokens() error {
+	// Use default recipient address
+	toAddress := DEFAULT_RECIPIENT
+	amount := sdk.NewCoins(sdk.NewCoin(DENOM, math.NewInt(10000000))) // 10 SIX
+
+	fromAddr, err := c.GetAddress("main")
+	if err != nil {
+		return err
+	}
+
+	toAddr, err := sdk.AccAddressFromBech32(toAddress)
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("🚀 Sending %s from %s to %s\n", amount.String(), fromAddr.String(), toAddress)
+	fmt.Printf("💰 Amount: 10 SIX (%s %s)\n", amount[0].Amount.String(), amount[0].Denom)
+
+	// Create message
+	msg := banktypes.NewMsgSend(fromAddr, toAddr, amount)
+
+	// Build and broadcast transaction
+	txHash, err := c.BroadcastTx([]sdk.Msg{msg}, "send tokens via SixChain Go SDK")
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("✅ Transaction successful! Hash: %s\n", txHash)
+	fmt.Printf("🔍 Explorer: https://sixscan.io/%s/tx/%s\n", c.config.ChainID, txHash)
+	return nil
+}
+
+func (c *SixClient) QueryBalance() error {
+	address, err := c.GetAddress("main")
+	if err != nil {
+		return err
+	}
+
+	bankClient := banktypes.NewQueryClient(c.conn)
+
+	fmt.Printf("💳 Querying balance for address: %s\n", address.String())
+	fmt.Printf("🌐 Network: %s\n", c.config.ChainID)
+
+	// Query all balances
+	allResp, err := bankClient.AllBalances(context.Background(), &banktypes.QueryAllBalancesRequest{
+		Address: address.String(),
+	})
+	if err != nil {
+		return err
+	}
+
+	if len(allResp.Balances) == 0 {
+		fmt.Println("💸 No balances found")
+		return nil
+	}
+
+	fmt.Println("💰 Account Balances:")
+	for _, coin := range allResp.Balances {
+		fmt.Printf("   %s %s", coin.Amount.String(), coin.Denom)
+
+		// Convert usix to SIX for display
+		if coin.Denom == DENOM {
+			sixAmount := coin.Amount.Quo(math.NewInt(1000000))
+			fmt.Printf(" (%.6f SIX)", float64(sixAmount.Int64())/1.0)
+		}
+		fmt.Println()
+	}
+
+	// Query specific SIX denom balance
+	resp, err := bankClient.Balance(context.Background(), &banktypes.QueryBalanceRequest{
+		Address: address.String(),
+		Denom:   DENOM,
+	})
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("\n📊 SIX Balance Details:\n")
+	fmt.Printf("   Raw: %s %s\n", resp.Balance.Amount.String(), resp.Balance.Denom)
+	sixAmount := resp.Balance.Amount.Quo(math.NewInt(1000000))
+	fmt.Printf("   Formatted: %s SIX\n", sixAmount.String())
+
+	return nil
+}
+
+func (c *SixClient) MultiSend() error {
+	fromAddr, err := c.GetAddress("main")
+	if err != nil {
+		return err
+	}
+
+	// Multiple recipients with realistic addresses
+	recipients := []struct {
+		address string
+		amount  sdk.Coins
+		name    string
+	}{
+		{DEFAULT_RECIPIENT, sdk.NewCoins(sdk.NewCoin(DENOM, math.NewInt(5000000))), "Alice"},
+		{"6x1faucet123example456789abcdefghijk", sdk.NewCoins(sdk.NewCoin(DENOM, math.NewInt(3000000))), "Faucet"},
+	}
+
+	var inputs banktypes.Input
+	var outputs []banktypes.Output
+
+	// Calculate total amount needed
+	totalAmount := sdk.NewCoins()
+	for _, recipient := range recipients {
+		totalAmount = totalAmount.Add(recipient.amount...)
+	}
+
+	// Create input
+	inputs = banktypes.Input{
+		Address: fromAddr.String(),
+		Coins:   totalAmount,
+	}
+
+	// Create outputs
+	for _, recipient := range recipients {
+		outputs = append(outputs, banktypes.Output{
+			Address: recipient.address,
+			Coins:   recipient.amount,
+		})
+	}
+
+	// Create multi-send message
+	msg := banktypes.NewMsgMultiSend(inputs, outputs)
+
+	fmt.Printf("💫 Multi-sending from %s\n", fromAddr.String())
+	fmt.Printf("📊 Total amount: %s\n", totalAmount.String())
+	fmt.Println("📤 Recipients:")
+	for _, recipient := range recipients {
+		sixAmount := recipient.amount[0].Amount.Quo(math.NewInt(1000000))
+		fmt.Printf("   %s (%s): %s (%s SIX)\n",
+			recipient.name, recipient.address, recipient.amount.String(), sixAmount.String())
+	}
+
+	// Broadcast transaction
+	txHash, err := c.BroadcastTx([]sdk.Msg{msg}, "multi-send via SixChain Go SDK")
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("✅ Multi-send successful! Hash: %s\n", txHash)
+	fmt.Printf("🔍 Explorer: https://sixscan.io/%s/tx/%s\n", c.config.ChainID, txHash)
+	return nil
+}
+
+func (c *SixClient) BroadcastTx(msgs []sdk.Msg, memo string) (string, error) {
+	// Get account info
+	fromAddr, err := c.GetAddress("main")
+	if err != nil {
+		return "", err
+	}
+
+	// Build transaction
+	txBuilder := c.clientCtx.TxConfig.NewTxBuilder()
+	err = txBuilder.SetMsgs(msgs...)
+	if err != nil {
+		return "", err
+	}
+
+	// Set gas and fees
+	txBuilder.SetGasLimit(GAS_LIMIT)
+
+	// Calculate fee: gas_limit * gas_price
+	gasPrice, err := math.LegacyNewDecFromStr(GAS_PRICE)
+	if err != nil {
+		return "", err
+	}
+	feeAmount := gasPrice.MulInt64(int64(GAS_LIMIT)).TruncateInt()
+	fee := sdk.NewCoins(sdk.NewCoin(DENOM, feeAmount))
+	txBuilder.SetFeeAmount(fee)
+
+	txBuilder.SetMemo(memo)
+
+	// Get signing info
+	info, err := c.keyring.Key("main")
+	if err != nil {
+		return "", err
+	}
+
+	pubKey, err := info.GetPubKey()
+	if err != nil {
+		return "", err
+	}
+
+	// Query account for sequence number
+	authClient := authtypes.NewQueryClient(c.conn)
+	accResp, err := authClient.Account(context.Background(), &authtypes.QueryAccountRequest{
+		Address: fromAddr.String(),
+	})
+	if err != nil {
+		return "", err
+	}
+
+	var acc authtypes.AccountI
+	err = c.clientCtx.Codec.UnpackAny(accResp.Account, &acc)
+	if err != nil {
+		return "", err
+	}
+
+	// Create signature placeholder
+	sigV2 := signing.SignatureV2{
+		PubKey: pubKey,
+		Data: &signing.SingleSignatureData{
+			SignMode:  signing.SignMode_SIGN_MODE_DIRECT,
+			Signature: nil,
+		},
+		Sequence: acc.GetSequence(),
+	}
+
+	err = txBuilder.SetSignatures(sigV2)
+	if err != nil {
+		return "", err
+	}
+
+	// Sign transaction
+	signerData := authsigning.SignerData{
+		ChainID:       c.config.ChainID,
+		AccountNumber: acc.GetAccountNumber(),
+		Sequence:      acc.GetSequence(),
+	}
+
+	// Generate the bytes to be signed
+	signBytes, err := authsigning.GetSignBytesAdapter(
+		context.Background(),
+		c.clientCtx.TxConfig.SignModeHandler(),
+		signing.SignMode_SIGN_MODE_DIRECT,
+		signerData,
+		txBuilder.GetTx(),
+	)
+	if err != nil {
+		return "", err
+	}
+
+	// Sign using keyring
+	signatureBytes, pubKey, err := c.keyring.Sign("main", signBytes, signing.SignMode_SIGN_MODE_DIRECT)
+	if err != nil {
+		return "", err
+	}
+
+	// Create signature V2
+	sigV2 = signing.SignatureV2{
+		PubKey: pubKey,
+		Data: &signing.SingleSignatureData{
+			SignMode:  signing.SignMode_SIGN_MODE_DIRECT,
+			Signature: signatureBytes,
+		},
+		Sequence: acc.GetSequence(),
+	}
+
+	err = txBuilder.SetSignatures(sigV2)
+	if err != nil {
+		return "", err
+	}
+
+	// Encode transaction
+	txBytes, err := c.clientCtx.TxConfig.TxEncoder()(txBuilder.GetTx())
+	if err != nil {
+		return "", err
+	}
+
+	// Broadcast transaction
+	res, err := c.clientCtx.BroadcastTx(txBytes)
+	if err != nil {
+		return "", err
+	}
+
+	if res.Code != 0 {
+		return "", fmt.Errorf("transaction failed: %s", res.RawLog)
+	}
+
+	fmt.Printf("⛽ Gas used: %d/%d (%.1f%%)\n", res.GasUsed, res.GasWanted,
+		float64(res.GasUsed)/float64(res.GasWanted)*100)
+
+	return res.TxHash, nil
+}
+
+// QueryNFTBalance queries NFT-related information for the account
+func (c *SixClient) QueryNFTBalance() error {
+	address, err := c.GetAddress("main")
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("🎨 Querying NFT information for address: %s\n", address.String())
+	fmt.Printf("🌐 Network: %s\n", c.config.ChainID)
+
+	// Note: This would require implementing specific NFT queries
+	// For now, we'll show the structure for SixProtocol NFT queries
+	fmt.Println("📋 NFT query functionality:")
+	fmt.Println("   - NFT Schema ownership")
+	fmt.Println("   - NFT Data ownership")
+	fmt.Println("   - Oracle permissions")
+	fmt.Println("   - Admin privileges")
+
+	fmt.Println("\n💡 To implement specific NFT queries, add:")
+	fmt.Println("   - nftmngrmoduletypes.NewQueryClient(c.conn)")
+	fmt.Println("   - Query methods for schemas, NFT data, etc.")
+
+	return nil
+}
+
+// QueryTokenBalance queries custom token information for the account
+func (c *SixClient) QueryTokenBalance() error {
+	address, err := c.GetAddress("main")
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("🪙 Querying custom tokens for address: %s\n", address.String())
+	fmt.Printf("🌐 Network: %s\n", c.config.ChainID)
+
+	// Note: This would require implementing specific token queries
+	// For now, we'll show the structure for SixProtocol token queries
+	fmt.Println("📋 Token query functionality:")
+	fmt.Println("   - Custom token balances")
+	fmt.Println("   - Token metadata")
+	fmt.Println("   - Minting permissions")
+	fmt.Println("   - Burning capabilities")
+
+	fmt.Println("\n💡 To implement specific token queries, add:")
+	fmt.Println("   - tokenmngrmoduletypes.NewQueryClient(c.conn)")
+	fmt.Println("   - Query methods for tokens, permissions, etc.")
+
+	return nil
+}
+
+// Utility functions
+
+func (c *SixClient) WaitForTx(txHash string, timeout time.Duration) error {
+	start := time.Now()
+	for time.Since(start) < timeout {
+		// Query transaction
+		// Note: This would require additional RPC client setup
+		time.Sleep(2 * time.Second)
+		fmt.Printf("Checking transaction %s...\n", txHash)
+		// In a real implementation, you'd query the transaction status here
+		break
+	}
+	return nil
+}
+
+func ParseAmount(amountStr string) (sdk.Coins, error) {
+	amount, err := strconv.ParseInt(amountStr, 10, 64)
+	if err != nil {
+		return nil, err
+	}
+	return sdk.NewCoins(sdk.NewCoin(DENOM, math.NewInt(amount))), nil
+}
