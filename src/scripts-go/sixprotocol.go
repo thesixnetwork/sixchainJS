@@ -35,15 +35,16 @@ import (
 const (
 	// Network configurations
 	MainnetRPC   = "https://sixnet-rpc.sixprotocol.net:443"
-	MainnetGRPC  = "grpc.sixnet.sixprotocol:443"
+	MainnetGRPC  = "grpc.sixnet.sixprotocol.net:443"
 	MainnetCHAIN = "sixnet"
 
 	TestnetRPC   = "https://rpc1.fivenet.sixprotocol.net:443"
-	TestnetGRPC  = "grpc.fivenet.sixprotocol:443"
+	TestnetGRPC  = "grpc.fivenet.sixprotocol.net:443"
+	//TestnetGRPC  = "110.238.112.68:9090"
 	TestnetCHAIN = "fivenet"
 
 	LocalRPC   = "http://localhost:26657"
-	LocalGRPC  = "grpc.fivenet.sixprotocol:443"
+	LocalGRPC  = "localhost:9090"
 	LocalCHAIN = "testnet"
 
 	// SIX Protocol specifics
@@ -183,6 +184,12 @@ func getNetworkConfig(network string) *NetworkConfig {
 			GRPC:    TestnetGRPC,
 			ChainID: TestnetCHAIN,
 		}
+	case "local":
+		return &NetworkConfig{
+			RPC:     LocalRPC,
+			GRPC:    LocalGRPC,
+			ChainID: LocalCHAIN,
+		}
 	default:
 		return nil
 	}
@@ -213,7 +220,7 @@ func NewSixProtocolClient(config NetworkConfig) (*SixProtocolClient, error) {
 	kr := keyring.NewInMemory(cdc)
 
 	// Connect to gRPC
-	conn, err := grpc.Dial(config.GRPC, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.NewClient(config.GRPC, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect to gRPC: %w", err)
 	}
