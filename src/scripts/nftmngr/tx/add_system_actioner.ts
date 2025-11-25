@@ -8,6 +8,7 @@ import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import dotenv from "dotenv";
 import allAddress from "./all_address";
 import { getConnectorConfig } from "@client-util";
+import { GasPrice } from "@cosmjs/stargate";
 dotenv.config();
 import divine_elite from "../resources/schemas/divineelite-nft-schema.json";
 import preventive from "../resources/schemas/preventive-nft-schema.json";
@@ -30,6 +31,8 @@ const addSystemActioner = async (start: number, end: number) => {
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
     prefix: "6x",
   });
+
+  const gasPrice = GasPrice.fromString("1.25usix");
   // Get signing client
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,

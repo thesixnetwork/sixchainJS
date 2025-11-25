@@ -1,0 +1,113 @@
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
+} from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
+import { GasPrice } from "@cosmjs/stargate";
+import { getConnectorConfig } from "@client-util";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+import exmapleSchema from "../../../resources/schemas/certificate-schema.json";
+
+const NETOWRK = process.argv[2]!;
+
+if (!NETOWRK) {
+  throw new Error(
+    "INPUT NETWORK BY RUNNING: bun run ./scripts/deploy.ts fivenet || yarn ts-node ./scripts/deploy.ts fivenet"
+  );
+}
+
+let schemaCode: string;
+schemaCode = `sixprotocol.dual_chain_gold_nft`;
+exmapleSchema.code = schemaCode;
+
+if (!NETOWRK) {
+  throw new Error(
+    "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
+  );
+}
+
+export const Deploy = async () => {
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETOWRK);
+  const gasPrice = GasPrice.fromString("1.25usix");
+
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
+  });
+
+  const accounts = await wallet.getAccounts();
+  const address = accounts[0].address;
+
+  let msgArray: Array<EncodeObject> = [];
+
+  let encodeBase64Schema = Buffer.from(JSON.stringify(exmapleSchema)).toString(
+    "base64"
+  );
+
+  const msgCreateNFTSchema =
+    sixprotocol.nftmngr.MessageComposer.withTypeUrl.createNFTSchema({
+      creator: address,
+      nftSchemaBase64: encodeBase64Schema,
+    });
+
+  msgArray.push(msgCreateNFTSchema);
+
+  const memo = "deploy nft achema";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
+    address,
+    msgArray,
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.CREATE_NFT_SCHEMA,
+      denom: "usix",
+    }
+  );
+  if (txResponse.code) {
+    console.log(txResponse.rawLog);
+  }
+  console.log(
+    `gasUsed: ${txResponse.gasUsed}\ngasWanted:${txResponse.gasWanted}\n`
+  );
+  return txResponse;
+};
+
+// ask to enter confirmmation
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+readline.question(
+  `Are you sure you want to deploy ${schemaCode} to ${NETOWRK} (y/n)?`,
+  (answer: any) => {
+    if (
+      answer === "y" ||
+      answer === "Y" ||
+      answer === "yes" ||
+      answer === "Yes"
+    ) {
+      console.log("deploying...");
+      Deploy();
+    } else {
+      console.log("aborting...");
+      process.exit(1);
+    }
+    readline.close();
+  }
+);

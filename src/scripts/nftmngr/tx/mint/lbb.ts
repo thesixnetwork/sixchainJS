@@ -1,0 +1,134 @@
+import {
+  getSigningSixprotocolClient,
+  sixprotocol,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
+} from "@sixnetwork/sixchain-sdk";
+import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
+import { GasPrice } from "@cosmjs/stargate";
+import { getConnectorConfig } from "@client-util";
+import dotenv from "dotenv";
+
+dotenv.config();
+import LBB from "../../resources/metadatas/lbb.json";
+
+const NETWORK = process.argv[2]!;
+const TOKEN_ID = process.argv[3]!;
+const TIER = process.argv[4]!;
+
+let schemaCode: string; // Make sure to initialize this variable before using
+
+async function generateNFTData(tier: string, tokenId: string): Promise<any> {
+  schemaCode = "sixprotocol.dual_chain_gold_nft"
+
+  const nftData = {
+    ...LBB,
+    nft_schema_code: schemaCode,
+    token_id: tokenId,
+  };
+
+  nftData.origin_image = `https://storage.googleapis.com/samitivej-nft-metadata-image/original.png`;
+  return nftData;
+}
+
+async function isTokenMinted(
+  queryClient: any,
+  schemaCode: string,
+  tokenId: string
+): Promise<boolean> {
+  try {
+    const token = await queryClient.sixprotocol.nftmngr.nftData({
+      nftSchemaCode: schemaCode,
+      tokenId: tokenId,
+      withGlobal: false,
+    });
+    return !!token;
+  } catch (error) {
+    return false;
+  }
+}
+
+async function mintNFT(tier: string, tokenId: number) {
+  console.log(`Minting... tier: ${tier}, tokenId: ${tokenId}`);
+
+  if (!NETWORK) {
+    throw new Error(
+      "Network not specified. Please provide a network as an argument (local, fivenet, sixnet)."
+    );
+  }
+
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+  const gasPrice = GasPrice.fromString("1.25usix");
+
+  // Create wallet from mnemonic
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
+
+  // Get signing client
+  const client = await getSigningSixprotocolClient({
+    rpcEndpoint: rpcUrl,
+    signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
+  });
+
+  // Create query client for checking if token exists
+  const queryClient = await sixprotocol.ClientFactory.createRPCQueryClient({
+    rpcEndpoint: rpcUrl,
+  });
+
+  // Get account address
+  const accounts = await wallet.getAccounts();
+  const address = accounts[0].address;
+  let msgArray: Array<EncodeObject> = [];
+
+  const token_id = tokenId.toString();
+
+  if (await isTokenMinted(queryClient, schemaCode, token_id)) {
+    console.log(`Token ID ${token_id} is already minted.`);
+    return;
+  }
+
+  const nftData = await generateNFTData(tier, token_id);
+  const encodeBase64Metadata = Buffer.from(JSON.stringify(nftData)).toString(
+    "base64"
+  );
+
+  const msgCreateMetadata =
+    sixprotocol.nftmngr.MessageComposer.withTypeUrl.createMetadata({
+      creator: address,
+      nftSchemaCode: schemaCode,
+      tokenId: token_id,
+      base64NFTData: encodeBase64Metadata,
+    });
+
+  msgArray.push(msgCreateMetadata);
+
+  const memo = "Mint NFT Metadata Token";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
+    address,
+    msgArray,
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.NFT_MANAGER.CREATE_METADATA,
+      denom: "usix",
+    }
+  );
+
+  if (txResponse.code !== 0) {
+    console.error(`Error minting NFT: ${txResponse.rawLog}`);
+  } else {
+    console.log(
+      `Minting successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+    );
+  }
+}
+
+mintNFT(String(TIER), Number(TOKEN_ID))
+  .then(() => console.log("Minting completed"))
+  .catch((err) => console.error(err));

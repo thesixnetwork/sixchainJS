@@ -1,9 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
+	"io"
 	"log"
+	"net/http"
 	"os"
 
 	"cosmossdk.io/math"
@@ -21,8 +25,6 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/cosmos/go-bip39"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 
 	// SixProtocol modules
 	nftadminmoduletypes "github.com/thesixnetwork/six-protocol/v4/x/nftadmin/types"
@@ -35,16 +37,15 @@ import (
 const (
 	// Network configurations
 	MainnetRPC   = "https://sixnet-rpc.sixprotocol.net:443"
-	MainnetGRPC  = "grpc.sixnet.sixprotocol.net:443"
+	MainnetAPI   = "https://sixnet-api.sixprotocol.net"
 	MainnetCHAIN = "sixnet"
 
 	TestnetRPC   = "https://rpc1.fivenet.sixprotocol.net:443"
-	TestnetGRPC  = "grpc.fivenet.sixprotocol.net:443"
-	//TestnetGRPC  = "110.238.112.68:9090"
+	TestnetAPI   = "https://api1.fivenet.sixprotocol.net"
 	TestnetCHAIN = "fivenet"
 
 	LocalRPC   = "http://localhost:26657"
-	LocalGRPC  = "localhost:9090"
+	LocalAPI   = "http://localhost:1317"
 	LocalCHAIN = "testnet"
 
 	// SIX Protocol specifics
@@ -56,15 +57,15 @@ const (
 
 type NetworkConfig struct {
 	RPC     string
-	GRPC    string
+	API     string
 	ChainID string
 }
 
 type SixProtocolClient struct {
-	config    NetworkConfig
-	keyring   keyring.Keyring
-	clientCtx client.Context
-	conn      *grpc.ClientConn
+	config     NetworkConfig
+	keyring    keyring.Keyring
+	clientCtx  client.Context
+	httpClient *http.Client
 }
 
 func init() {
@@ -131,6 +132,14 @@ func main() {
 		err = client.ListNFTSchemas()
 	case "list-tokens":
 		err = client.ListTokens()
+	case "balance":
+		err = client.QueryBalance()
+	case "debug-api":
+		err = client.DebugAPIEndpoints()
+	case "send":
+		err = client.SendTokens()
+	case "address":
+		err = client.ShowAddress()
 	default:
 		log.Fatal("Unknown command:", command)
 	}
@@ -161,10 +170,19 @@ func printUsage() {
 	fmt.Println("  burn-token        - Burn tokens from address")
 	fmt.Println("  list-tokens       - List all custom tokens")
 	fmt.Println()
+	fmt.Println("Bank Commands:")
+	fmt.Println("  balance           - Query account balance")
+	fmt.Println("  send              - Send tokens to another address")
+	fmt.Println("  address           - Show your wallet address")
+	fmt.Println()
+	fmt.Println("Debug Commands:")
+	fmt.Println("  debug-api         - Test API endpoints and show available paths")
+	fmt.Println()
 	fmt.Println("Examples:")
 	fmt.Println("  go run sixprotocol.go testnet create-schema")
 	fmt.Println("  go run sixprotocol.go testnet create-token")
 	fmt.Println("  go run sixprotocol.go testnet query-schema")
+	fmt.Println("  go run sixprotocol.go testnet balance")
 	fmt.Println()
 	fmt.Println("Environment variables:")
 	fmt.Println("  MNEMONIC - Your wallet mnemonic phrase")
@@ -175,19 +193,19 @@ func getNetworkConfig(network string) *NetworkConfig {
 	case "mainnet":
 		return &NetworkConfig{
 			RPC:     MainnetRPC,
-			GRPC:    MainnetGRPC,
+			API:     MainnetAPI,
 			ChainID: MainnetCHAIN,
 		}
 	case "testnet":
 		return &NetworkConfig{
 			RPC:     TestnetRPC,
-			GRPC:    TestnetGRPC,
+			API:     TestnetAPI,
 			ChainID: TestnetCHAIN,
 		}
 	case "local":
 		return &NetworkConfig{
 			RPC:     LocalRPC,
-			GRPC:    LocalGRPC,
+			API:     LocalAPI,
 			ChainID: LocalCHAIN,
 		}
 	default:
@@ -219,11 +237,8 @@ func NewSixProtocolClient(config NetworkConfig) (*SixProtocolClient, error) {
 	// Create keyring with proper codec
 	kr := keyring.NewInMemory(cdc)
 
-	// Connect to gRPC
-	conn, err := grpc.NewClient(config.GRPC, grpc.WithTransportCredentials(insecure.NewCredentials()))
-	if err != nil {
-		return nil, fmt.Errorf("failed to connect to gRPC: %w", err)
-	}
+	// Create HTTP client
+	httpClient := &http.Client{}
 
 	// Create TxConfig
 	txConfig := authtx.NewTxConfig(cdc, authtx.DefaultSignModes)
@@ -238,21 +253,18 @@ func NewSixProtocolClient(config NetworkConfig) (*SixProtocolClient, error) {
 		WithBroadcastMode(flags.BroadcastSync).
 		WithKeyring(kr).
 		WithChainID(config.ChainID).
-		WithGRPCClient(conn).
 		WithNodeURI(config.RPC)
 
 	return &SixProtocolClient{
-		config:    config,
-		keyring:   kr,
-		clientCtx: clientCtx,
-		conn:      conn,
+		config:     config,
+		keyring:    kr,
+		clientCtx:  clientCtx,
+		httpClient: httpClient,
 	}, nil
 }
 
 func (c *SixProtocolClient) Close() {
-	if c.conn != nil {
-		c.conn.Close()
-	}
+	// HTTP client doesn't need explicit closing
 }
 
 func (c *SixProtocolClient) AddAccount(name, mnemonic string) error {
@@ -378,18 +390,35 @@ func (c *SixProtocolClient) QueryNFTSchema() error {
 	// Example schema code - in real implementation, this could be passed as parameter
 	schemaCode := "example-schema"
 
-	nftClient := nftmngrmoduletypes.NewQueryClient(c.conn)
-
 	fmt.Printf("🔍 Querying NFT schema: %s\n", schemaCode)
 
-	resp, err := nftClient.NFTSchema(context.Background(), &nftmngrmoduletypes.QueryGetNFTSchemaRequest{
-		Code: schemaCode,
-	})
+	// Make HTTP request to REST API
+	url := fmt.Sprintf("%s/sixprotocol/nftmngr/nft_schema/%s", c.config.API, schemaCode)
+	resp, err := c.httpClient.Get(url)
 	if err != nil {
 		return fmt.Errorf("failed to query NFT schema: %w", err)
 	}
+	defer resp.Body.Close()
 
-	schema := resp.NFTSchema
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("API returned status %d", resp.StatusCode)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Errorf("failed to read response: %w", err)
+	}
+
+	var apiResp struct {
+		NFTSchema nftmngrmoduletypes.NFTSchema `json:"nftSchema"`
+	}
+
+	err = json.Unmarshal(body, &apiResp)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+
+	schema := apiResp.NFTSchema
 	fmt.Printf("📋 Schema Details:\n")
 	fmt.Printf("   Code: %s\n", schema.Code)
 	fmt.Printf("   Name: %s\n", schema.Name)
@@ -436,27 +465,48 @@ func (c *SixProtocolClient) TransferSchemaOwnership() error {
 }
 
 func (c *SixProtocolClient) ListNFTSchemas() error {
-	nftClient := nftmngrmoduletypes.NewQueryClient(c.conn)
-
 	fmt.Println("📑 Listing all NFT schemas...")
 
-	resp, err := nftClient.NFTSchemaAll(context.Background(), &nftmngrmoduletypes.QueryAllNFTSchemaRequest{})
+	// Make HTTP request to REST API
+	url := fmt.Sprintf("%s/sixprotocol/nftmngr/nft_schema", c.config.API)
+	resp, err := c.httpClient.Get(url)
 	if err != nil {
 		return fmt.Errorf("failed to list NFT schemas: %w", err)
 	}
+	defer resp.Body.Close()
 
-	if len(resp.NFTSchema) == 0 {
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("API returned status %d", resp.StatusCode)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Errorf("failed to read response: %w", err)
+	}
+
+	var apiResp struct {
+		NFTSchema []nftmngrmoduletypes.NFTSchema `json:"nftSchema"`
+	}
+
+	err = json.Unmarshal(body, &apiResp)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+
+	if len(apiResp.NFTSchema) == 0 {
 		fmt.Println("📭 No NFT schemas found")
 		return nil
 	}
 
-	fmt.Printf("📋 Found %d NFT schemas:\n\n", len(resp.NFTSchema))
+	fmt.Printf("📋 Found %d NFT schemas:\n\n", len(apiResp.NFTSchema))
 
-	for i, schema := range resp.NFTSchema {
-		fmt.Printf("%d. %s (%s)\n", i+1, schema.Name, schema.Code)
+	for i, schema := range apiResp.NFTSchema {
+		fmt.Printf("%d. %s - %s\n", i+1, schema.Code, schema.Name)
 		fmt.Printf("   Owner: %s\n", schema.Owner)
 		fmt.Printf("   Verified: %v\n", schema.IsVerified)
-		fmt.Printf("   Description: %s\n", schema.Description)
+		if schema.Description != "" {
+			fmt.Printf("   Description: %s\n", schema.Description)
+		}
 		fmt.Println()
 	}
 
@@ -502,18 +552,35 @@ func (c *SixProtocolClient) QueryToken() error {
 	// Example token name - in real implementation, this could be passed as parameter
 	tokenName := "example-token"
 
-	tokenClient := tokenmngrmoduletypes.NewQueryClient(c.conn)
-
 	fmt.Printf("🔍 Querying token: %s\n", tokenName)
 
-	resp, err := tokenClient.Token(context.Background(), &tokenmngrmoduletypes.QueryGetTokenRequest{
-		Name: tokenName,
-	})
+	// Make HTTP request to REST API
+	url := fmt.Sprintf("%s/sixprotocol/tokenmngr/token/%s", c.config.API, tokenName)
+	resp, err := c.httpClient.Get(url)
 	if err != nil {
 		return fmt.Errorf("failed to query token: %w", err)
 	}
+	defer resp.Body.Close()
 
-	token := resp.Token
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("API returned status %d", resp.StatusCode)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Errorf("failed to read response: %w", err)
+	}
+
+	var apiResp struct {
+		Token tokenmngrmoduletypes.Token `json:"token"`
+	}
+
+	err = json.Unmarshal(body, &apiResp)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+
+	token := apiResp.Token
 	fmt.Printf("🪙 Token Details:\n")
 	fmt.Printf("   Name: %s\n", token.Name)
 	fmt.Printf("   Base: %s\n", token.Base)
@@ -591,23 +658,99 @@ func (c *SixProtocolClient) BurnToken() error {
 }
 
 func (c *SixProtocolClient) ListTokens() error {
-	tokenClient := tokenmngrmoduletypes.NewQueryClient(c.conn)
-
 	fmt.Println("📑 Listing all custom tokens...")
 
-	resp, err := tokenClient.TokenAll(context.Background(), &tokenmngrmoduletypes.QueryAllTokenRequest{})
-	if err != nil {
-		return fmt.Errorf("failed to list tokens: %w", err)
+	// Try multiple possible endpoints
+	endpoints := []string{
+		"/sixprotocol/tokenmngr/token",
+		"/sixprotocol/tokenmngr/tokens",
+		"/sixprotocol/tokenmngr/token_all",
+		"/cosmos/bank/v1beta1/supply",
 	}
 
-	if len(resp.Token) == 0 {
+	var resp *http.Response
+	var err error
+	var workingEndpoint string
+
+	for _, endpoint := range endpoints {
+		url := fmt.Sprintf("%s%s", c.config.API, endpoint)
+		fmt.Printf("🔍 Trying endpoint: %s\n", url)
+
+		resp, err = c.httpClient.Get(url)
+		if err != nil {
+			fmt.Printf("❌ Error: %v\n", err)
+			continue
+		}
+
+		if resp.StatusCode == http.StatusOK {
+			workingEndpoint = endpoint
+			fmt.Printf("✅ Found working endpoint: %s\n", endpoint)
+			break
+		} else {
+			fmt.Printf("❌ Status %d for endpoint: %s\n", resp.StatusCode, endpoint)
+			resp.Body.Close()
+		}
+	}
+
+	if resp == nil || resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("no working endpoint found for token listing")
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Errorf("failed to read response: %w", err)
+	}
+
+	fmt.Printf("📄 Raw response from %s:\n%s\n\n", workingEndpoint, string(body))
+
+	// Try different response structures based on endpoint
+	if workingEndpoint == "/cosmos/bank/v1beta1/supply" {
+		var supplyResp struct {
+			Supply []struct {
+				Denom  string `json:"denom"`
+				Amount string `json:"amount"`
+			} `json:"supply"`
+		}
+
+		err = json.Unmarshal(body, &supplyResp)
+		if err != nil {
+			return fmt.Errorf("failed to unmarshal supply response: %w", err)
+		}
+
+		fmt.Printf("💰 Found %d denominations:\n\n", len(supplyResp.Supply))
+		for i, coin := range supplyResp.Supply {
+			fmt.Printf("%d. %s: %s\n", i+1, coin.Denom, coin.Amount)
+		}
+		return nil
+	}
+
+	// Try SixProtocol token structure
+	var tokenResp struct {
+		Token []tokenmngrmoduletypes.Token `json:"token"`
+	}
+
+	err = json.Unmarshal(body, &tokenResp)
+	if err != nil {
+		// Try alternative structure
+		var altResp struct {
+			Tokens []tokenmngrmoduletypes.Token `json:"tokens"`
+		}
+		err2 := json.Unmarshal(body, &altResp)
+		if err2 != nil {
+			return fmt.Errorf("failed to unmarshal token response with both structures: %v, %v", err, err2)
+		}
+		tokenResp.Token = altResp.Tokens
+	}
+
+	if len(tokenResp.Token) == 0 {
 		fmt.Println("📭 No custom tokens found")
 		return nil
 	}
 
-	fmt.Printf("🪙 Found %d custom tokens:\n\n", len(resp.Token))
+	fmt.Printf("🪙 Found %d custom tokens:\n\n", len(tokenResp.Token))
 
-	for i, token := range resp.Token {
+	for i, token := range tokenResp.Token {
 		fmt.Printf("%d. %s (%s)\n", i+1, token.Name, token.Base)
 		fmt.Printf("   Creator: %s\n", token.Creator)
 		fmt.Printf("   Max Supply: %s\n", token.MaxSupply.String())
@@ -657,20 +800,43 @@ func (c *SixProtocolClient) BroadcastTx(msgs []sdk.Msg, memo string) (string, er
 		return "", err
 	}
 
-	// Query account for sequence number
-	authClient := authtypes.NewQueryClient(c.conn)
-	accResp, err := authClient.Account(context.Background(), &authtypes.QueryAccountRequest{
-		Address: fromAddr.String(),
-	})
+	// Query account for sequence number via REST API
+	url := fmt.Sprintf("%s/cosmos/auth/v1beta1/accounts/%s", c.config.API, fromAddr.String())
+	accResp, err := c.httpClient.Get(url)
+	if err != nil {
+		return "", err
+	}
+	defer accResp.Body.Close()
+
+	if accResp.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("failed to query account: status %d", accResp.StatusCode)
+	}
+
+	accBody, err := io.ReadAll(accResp.Body)
 	if err != nil {
 		return "", err
 	}
 
-	var acc authtypes.AccountI
-	err = c.clientCtx.Codec.UnpackAny(accResp.Account, &acc)
+	var accApiResp struct {
+		Account struct {
+			Type          string      `json:"@type"`
+			Address       string      `json:"address"`
+			PubKey        interface{} `json:"pub_key"`
+			AccountNumber string      `json:"account_number"`
+			Sequence      string      `json:"sequence"`
+		} `json:"account"`
+	}
+
+	err = json.Unmarshal(accBody, &accApiResp)
 	if err != nil {
 		return "", err
 	}
+
+	// Parse account number and sequence
+	accountNumber := uint64(0)
+	sequence := uint64(0)
+	fmt.Sscanf(accApiResp.Account.AccountNumber, "%d", &accountNumber)
+	fmt.Sscanf(accApiResp.Account.Sequence, "%d", &sequence)
 
 	// Create signature placeholder
 	sigV2 := signing.SignatureV2{
@@ -679,7 +845,7 @@ func (c *SixProtocolClient) BroadcastTx(msgs []sdk.Msg, memo string) (string, er
 			SignMode:  signing.SignMode_SIGN_MODE_DIRECT,
 			Signature: nil,
 		},
-		Sequence: acc.GetSequence(),
+		Sequence: sequence,
 	}
 
 	err = txBuilder.SetSignatures(sigV2)
@@ -690,8 +856,8 @@ func (c *SixProtocolClient) BroadcastTx(msgs []sdk.Msg, memo string) (string, er
 	// Sign transaction
 	signerData := authsigning.SignerData{
 		ChainID:       c.config.ChainID,
-		AccountNumber: acc.GetAccountNumber(),
-		Sequence:      acc.GetSequence(),
+		AccountNumber: accountNumber,
+		Sequence:      sequence,
 	}
 
 	// Generate the bytes to be signed
@@ -719,7 +885,7 @@ func (c *SixProtocolClient) BroadcastTx(msgs []sdk.Msg, memo string) (string, er
 			SignMode:  signing.SignMode_SIGN_MODE_DIRECT,
 			Signature: signatureBytes,
 		},
-		Sequence: acc.GetSequence(),
+		Sequence: sequence,
 	}
 
 	err = txBuilder.SetSignatures(sigV2)
@@ -733,18 +899,250 @@ func (c *SixProtocolClient) BroadcastTx(msgs []sdk.Msg, memo string) (string, er
 		return "", err
 	}
 
-	// Broadcast transaction
-	res, err := c.clientCtx.BroadcastTx(txBytes)
-	if err != nil {
-		return "", err
+	// Broadcast transaction via HTTP since gRPC is not available
+	fmt.Printf("📡 Broadcasting transaction (size: %d bytes)...\n", len(txBytes))
+
+	// Create HTTP broadcast request
+	broadcastReq := struct {
+		TxBytes string `json:"tx_bytes"`
+		Mode    string `json:"mode"`
+	}{
+		TxBytes: fmt.Sprintf("%x", txBytes), // Convert to hex
+		Mode:    "BROADCAST_MODE_SYNC",
 	}
+
+	reqBytes, err := json.Marshal(broadcastReq)
+	if err != nil {
+		return "", fmt.Errorf("failed to marshal broadcast request: %w", err)
+	}
+
+	// Post to broadcast endpoint
+	url := fmt.Sprintf("%s/cosmos/tx/v1beta1/txs", c.config.API)
+	resp, err := c.httpClient.Post(url, "application/json", bytes.NewBuffer(reqBytes))
+	if err != nil {
+		return "", fmt.Errorf("failed to broadcast transaction: %w", err)
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return "", fmt.Errorf("failed to read broadcast response: %w", err)
+	}
+
+	fmt.Printf("📡 Broadcast response (status %d): %s\n", resp.StatusCode, string(body))
+
+	if resp.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("broadcast failed with status %d: %s", resp.StatusCode, string(body))
+	}
+
+	// Parse response
+	var broadcastResp struct {
+		TxResponse struct {
+			TxHash    string `json:"txhash"`
+			Code      uint32 `json:"code"`
+			RawLog    string `json:"raw_log"`
+			GasUsed   string `json:"gas_used"`
+			GasWanted string `json:"gas_wanted"`
+		} `json:"tx_response"`
+	}
+
+	err = json.Unmarshal(body, &broadcastResp)
+	if err != nil {
+		return "", fmt.Errorf("failed to unmarshal broadcast response: %w", err)
+	}
+
+	res := broadcastResp.TxResponse
 
 	if res.Code != 0 {
-		return "", fmt.Errorf("transaction failed: %s", res.RawLog)
+		return "", fmt.Errorf("transaction failed (code %d): %s", res.Code, res.RawLog)
 	}
 
-	fmt.Printf("⛽ Gas used: %d/%d (%.1f%%)\n", res.GasUsed, res.GasWanted,
-		float64(res.GasUsed)/float64(res.GasWanted)*100)
+	// Parse gas values
+	gasUsed := uint64(0)
+	gasWanted := uint64(0)
+	fmt.Sscanf(res.GasUsed, "%d", &gasUsed)
+	fmt.Sscanf(res.GasWanted, "%d", &gasWanted)
+
+	if gasWanted > 0 {
+		fmt.Printf("⛽ Gas used: %d/%d (%.1f%%)\n", gasUsed, gasWanted,
+			float64(gasUsed)/float64(gasWanted)*100)
+	} else {
+		fmt.Printf("⛽ Gas used: %d\n", gasUsed)
+	}
 
 	return res.TxHash, nil
+}
+
+// HTTP helper methods
+func (c *SixProtocolClient) httpGet(path string) ([]byte, error) {
+	url := fmt.Sprintf("%s%s", c.config.API, path)
+	resp, err := c.httpClient.Get(url)
+	if err != nil {
+		return nil, fmt.Errorf("HTTP GET failed: %w", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("API returned status %d for %s", resp.StatusCode, path)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read response body: %w", err)
+	}
+
+	return body, nil
+}
+
+func (c *SixProtocolClient) QueryBalance() error {
+	address, err := c.GetAddress("main")
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("💰 Querying balance for address: %s\n", address.String())
+
+	// Query balance via REST API
+	path := fmt.Sprintf("/cosmos/bank/v1beta1/balances/%s", address.String())
+	body, err := c.httpGet(path)
+	if err != nil {
+		return err
+	}
+
+	var balanceResp struct {
+		Balances []struct {
+			Denom  string `json:"denom"`
+			Amount string `json:"amount"`
+		} `json:"balances"`
+	}
+
+	err = json.Unmarshal(body, &balanceResp)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal balance response: %w", err)
+	}
+
+	if len(balanceResp.Balances) == 0 {
+		fmt.Println("💸 No balances found")
+		return nil
+	}
+
+	fmt.Printf("💰 Account balances:\n")
+	for _, balance := range balanceResp.Balances {
+		if balance.Denom == DENOM {
+			// Convert usix to SIX for display
+			amount, ok := math.NewIntFromString(balance.Amount)
+			if !ok {
+				sixAmount := amount.Quo(math.NewInt(1000000))
+				fmt.Printf("   %s SIX (%s %s)\n", sixAmount.String(), balance.Amount, balance.Denom)
+			} else {
+				fmt.Printf("   %s %s\n", balance.Amount, balance.Denom)
+			}
+		} else {
+			fmt.Printf("   %s %s\n", balance.Amount, balance.Denom)
+		}
+	}
+
+	return nil
+}
+
+func (c *SixProtocolClient) DebugAPIEndpoints() error {
+	fmt.Println("🔍 Testing API endpoints...")
+	fmt.Printf("API Base URL: %s\n\n", c.config.API)
+
+	// List of endpoints to test
+	endpoints := []struct {
+		path        string
+		description string
+	}{
+		{"/", "Root API"},
+		{"/cosmos/bank/v1beta1/supply", "Total supply"},
+		{"/cosmos/base/tendermint/v1beta1/node_info", "Node info"},
+		{"/sixprotocol/tokenmngr/token", "SixProtocol tokens"},
+		{"/sixprotocol/tokenmngr/tokens", "SixProtocol tokens (alt)"},
+		{"/sixprotocol/nftmngr/nft_schema", "NFT schemas"},
+		{"/sixprotocol/nftmngr/nft_schemas", "NFT schemas (alt)"},
+		{"/swagger/", "API documentation"},
+	}
+
+	for _, endpoint := range endpoints {
+		url := fmt.Sprintf("%s%s", c.config.API, endpoint.path)
+		fmt.Printf("Testing: %-50s (%s)\n", endpoint.path, endpoint.description)
+
+		resp, err := c.httpClient.Get(url)
+		if err != nil {
+			fmt.Printf("  ❌ Error: %v\n\n", err)
+			continue
+		}
+		defer resp.Body.Close()
+
+		fmt.Printf("  📊 Status: %d %s\n", resp.StatusCode, http.StatusText(resp.StatusCode))
+		fmt.Printf("  📝 Content-Type: %s\n", resp.Header.Get("Content-Type"))
+
+		if resp.StatusCode == http.StatusOK {
+			body, err := io.ReadAll(resp.Body)
+			if err != nil {
+				fmt.Printf("  ❌ Failed to read body: %v\n\n", err)
+				continue
+			}
+
+			// Show first 200 characters of response
+			preview := string(body)
+			if len(preview) > 200 {
+				preview = preview[:200] + "..."
+			}
+			fmt.Printf("  📄 Preview: %s\n", preview)
+		}
+		fmt.Println()
+	}
+
+	return nil
+}
+
+func (c *SixProtocolClient) SendTokens() error {
+	// Get sender address
+	fromAddr, err := c.GetAddress("main")
+	if err != nil {
+		return err
+	}
+
+	// Hardcoded recipient and amount for testing
+	toAddress := "6x13g50hqdqsjk85fmgqz2h5xdxq49lsmjdwlemsp"
+	amount := math.NewInt(1000000) // 1 SIX token
+
+	fmt.Printf("💸 Sending %s %s from %s to %s\n",
+		amount.String(), DENOM, fromAddr.String(), toAddress)
+
+	toAddr, err := sdk.AccAddressFromBech32(toAddress)
+	if err != nil {
+		return fmt.Errorf("invalid recipient address: %w", err)
+	}
+
+	// Create send message
+	msg := banktypes.NewMsgSend(
+		fromAddr,
+		toAddr,
+		sdk.NewCoins(sdk.NewCoin(DENOM, amount)),
+	)
+
+	// Broadcast transaction
+	txHash, err := c.BroadcastTx([]sdk.Msg{msg}, "send tokens via Go SDK")
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("✅ Transaction successful! Hash: %s\n", txHash)
+	return nil
+}
+
+func (c *SixProtocolClient) ShowAddress() error {
+	address, err := c.GetAddress("main")
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("📍 Your wallet address: %s\n", address.String())
+	fmt.Printf("🔍 You can view this address on the explorer:\n")
+	fmt.Printf("   https://sixscan.io/fivenet/account/%s\n", address.String())
+
+	return nil
 }
