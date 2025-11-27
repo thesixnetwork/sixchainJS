@@ -33,11 +33,11 @@
     "@cosmology/telescope": "1.5.4"
   },
   "dependencies": {
-    "@cosmjs/amino": "^0.33.1",
-    "@cosmjs/encoding": "0.33.1",
-    "@cosmjs/math": "0.33.1",
-    "@cosmjs/proto-signing": "^0.33.1",
-    "@cosmjs/stargate": "^0.33.1",
+    "@cosmjs/amino": "0.35.0",
+    "@cosmjs/encoding": "0.35.0",
+    "@cosmjs/math": "0.35.0",
+    "@cosmjs/proto-signing": "0.35.0",
+    "@cosmjs/stargate": "0.35.0",
     "protobufjs": "^7.5.4"
   },
   "keywords": [],

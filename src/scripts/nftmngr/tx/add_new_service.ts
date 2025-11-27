@@ -1,5 +1,6 @@
 import {
   getSigningSixprotocolClient,
+  getSigningSixprotocolClientOptions,
   sixprotocol,
   COMMON_GAS_LIMITS,
   signAndBroadcastWithRetry,
@@ -23,12 +24,16 @@ const main = async () => {
   }
 
   const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
-
   // Create wallet from mnemonic
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
     prefix: "6x",
   });
   const gasPrice = GasPrice.fromString("1.25usix");
+  const signignCleint = await getSigningSixprotocolClientOptions({
+    options: {
+      gasPrice: gasPrice,
+    },
+  })
   // Get signing client
   const client = await getSigningSixprotocolClient({
     rpcEndpoint: rpcUrl,
