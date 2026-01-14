@@ -35,7 +35,11 @@ const delegate = async () => {
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
-  const validator_address = "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76";
+  let validator_address = "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76";
+
+  if (NETWORK == "fivenet") {
+    validator_address = "6xvaloper1fl9ypcr9al7w2294adtla42njc0qnws66gdv73";
+  }
 
   const delegate_amount: Coin = {
     amount: "20000000000",

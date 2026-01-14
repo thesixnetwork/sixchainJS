@@ -1,37 +1,52 @@
-import { getSigningSixprotocolClient, cosmos } from "@sixnetwork/sixchain-sdk";
+import {
+  getSigningCosmosClient,
+  cosmos,
+  COMMON_GAS_LIMITS,
+  signAndBroadcastWithRetry,
+} from "@sixnetwork/sixchain-sdk";
 import { DirectSecp256k1HdWallet, EncodeObject } from "@cosmjs/proto-signing";
 import { Coin } from "@cosmjs/amino";
-
+import { GasPrice } from "@cosmjs/stargate";
+import { getConnectorConfig } from "@client-util";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const undelegate = async () => {
-  const rpcEndpoint = "http://localhost:26657";
+  const NETWORK = process.argv[2];
 
+  const { rpcUrl, mnemonic } = await getConnectorConfig(NETWORK);
+  const gasPrice = GasPrice.fromString("1.25usix");
   // Create wallet from mnemonic
-  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-    process.env.ALICE_MNEMONIC!,
-    { prefix: "6x" }
-  );
+  const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
+    prefix: "6x",
+  });
 
   // Get signing client
-  const client = await getSigningSixprotocolClient({
-    rpcEndpoint,
+  const client = await getSigningCosmosClient({
+    rpcEndpoint: rpcUrl,
     signer: wallet,
+    options: {
+      gasPrice: gasPrice,
+    },
   });
 
   // Get account address
   const accounts = await wallet.getAccounts();
   const address = accounts[0].address;
 
-  const validator_address = "6xvaloper13dwxflzhc3qlkcy9syfnhr8tu2kdvuavhzdf9f";
+  let validator_address = "6xvaloper13g50hqdqsjk85fmgqz2h5xdxq49lsmjdz3mr76";
+
+  if (NETWORK == "fivenet") {
+    validator_address = "6xvaloper1fl9ypcr9al7w2294adtla42njc0qnws66gdv73";
+  }
 
   const delegate_amount: Coin = {
-    amount: "20000000",
+    amount: "20000000000",
     denom: "usix",
   };
 
+  let msgArray: Array<EncodeObject> = [];
   const msgUndelegate =
     cosmos.staking.v1beta1.MessageComposer.withTypeUrl.undelegate({
       amount: delegate_amount,
@@ -39,60 +54,35 @@ const undelegate = async () => {
       validatorAddress: validator_address,
     });
 
+  msgArray.push(msgUndelegate);
   // First attempt with auto gas
-  console.log("Attempting undelegation with auto gas...");
-  let txResponse = await client.signAndBroadcast(
+  console.log("Attempting undelegate with auto gas...");
+  const memo = "undelegate";
+  let txResponse = await signAndBroadcastWithRetry(
+    client,
     address,
-    [msgUndelegate],
-    "auto",
-    "undelegate"
+    msgArray,
+    memo,
+    {
+      gasMultiplier: 1.5,
+      gasPrice: 1.25,
+      fallbackGas: COMMON_GAS_LIMITS.STAKING.DELEGATE,
+      denom: "usix",
+    }
   );
-
-  // If out of gas error (code 11), retry with calculated fee
-  if (txResponse.code === 11) {
-    console.log("Out of gas error detected. Retrying with calculated fee...");
-    console.log(
-      `Previous attempt: gasWanted=${txResponse.gasWanted}, gasUsed=${txResponse.gasUsed}`
-    );
-
-    // Calculate fee using utility function with higher multiplier
-    const { fee, gasUsed, gasLimit } = await calculateFeeFromSimulation(
-      client,
-      address,
-      [msgUndelegate],
-      "undelegate",
-      {
-        gasMultiplier: 1.5, // 50% buffer
-        gasPrice: 1.25,
-        fallbackGas: COMMON_GAS_LIMITS.STAKING,
-        denom: "usix",
-      }
-    );
-
-    console.log(`Calculated fee: gasLimit=${gasLimit}, gasUsed=${gasUsed}`);
-
-    // Retry with calculated fee
-    txResponse = await client.signAndBroadcast(
-      address,
-      [msgUndelegate],
-      fee,
-      "undelegate"
-    );
-  }
 
   if (txResponse.code !== 0) {
     console.error(`Error in undelegation: ${txResponse.rawLog}`);
   } else {
     console.log(
-      `Undelegation successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
+      `Delegation successful: gasUsed=${txResponse.gasUsed}, gasWanted=${txResponse.gasWanted}, hash=${txResponse.transactionHash}`
     );
   }
-  console.log(txResponse);
 };
 
 undelegate()
-  .then((res) => {
-    console.log(res);
+  .then(() => {
+    console.log;
   })
   .catch((err) => {
     console.log(err);
